@@ -23,14 +23,12 @@ animation without a clear purpose. Don't introduce trendy effects.
   between sections.
 
 ## Photography section specifics
-- The **only** file to touch to add/remove/reorder albums is
-  `photography/js/config.js`. Never hardcode album data elsewhere.
-- Photos live in `photography/photos/<slug>/`.
-- **Before adding new photos, resize to ~2000px on the long edge.** Full-size
-  camera/Lightroom exports are too large for this repo (slow site, git bloat,
-  possible GitHub file-size rejections). If asked to add photos and they look
-  oversized, flag this before committing.
-- Album URLs: `photography/album.html?a=<slug>`.
+See README.md § "Add your own albums" for the actual process — don't
+duplicate those instructions here, they can drift out of sync.
+
+The one thing worth restating because it's easy to forget: resize photos to
+~2000px on the long edge before adding them. Flag it if asked to add photos
+that look oversized.
 
 ## Practice section specifics
 - `practice/index.html` is a hub linking to `reading.html`, `listening.html`,

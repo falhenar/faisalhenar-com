@@ -90,3 +90,15 @@ share the whole homepage. The `a=` part matches the album's `slug` in
 - The design is deliberately quiet: black background, one warm accent color,
   photos numbered like frames on a contact sheet — built around black and
   white work.
+
+## Before pushing changes live
+
+There's no build step or CI, so whatever you push to `main` is live within a
+minute or two. Before running `git push`:
+
+1. Open the changed page(s) locally in a browser (double-click the .html
+   file, or use a local server) — check it actually looks right.
+2. If you changed `config.js` (added a photo/album), double-check the file
+   paths match real filenames — a typo here fails silently (broken image,
+   not an error).
+3. Then commit and push.
