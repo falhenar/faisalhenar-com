@@ -237,29 +237,6 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   padding-bottom: 1px;
 }
 
-.entry-feed{
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0 0;
-  font-size: 0.76rem;
-  color: var(--muted);
-}
-.entry-feed .feed-tag{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 3px;
-  padding: 1px 6px;
-}
-.entry-feed .feed-url{
-  font-family: 'IBM Plex Mono', monospace;
-  word-break: break-all;
-}
-
 .book-entry{
   display:grid;
   grid-template-columns: 64px 1fr;
