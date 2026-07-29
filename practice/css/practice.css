@@ -118,9 +118,9 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   letter-spacing: 0.06em;
 }
 .room-card .room-icon{
-  width: 56px;
+  width: 96px;
   height: auto;
-  margin: 2px 0 4px;
+  margin: 6px 0 18px;
   display: block;
 }
 .room-card .room-icon *{
