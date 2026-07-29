@@ -1,0 +1,38 @@
+/*
+  ALBUMS CONFIG
+  -------------
+  This is the only file you need to touch to add or change albums.
+
+  To add a new album:
+  1. Create a folder inside /photos with your album's slug name,
+     e.g. photos/my-new-album/
+  2. Put your image files in that folder (jpg or png, any name).
+  3. Copy one of the blocks below, change the values, and list your
+     image filenames in the "photos" array.
+
+  slug   -> used in the URL, e.g. "quiet-mornings" -> album.html?a=quiet-mornings
+            use lowercase letters, numbers and hyphens only, no spaces
+  title  -> the name shown on the site
+  photos -> array of filenames that live inside photos/<slug>/
+*/
+
+const ALBUMS = [
+  {
+    slug: "first-roll",
+    title: "First Roll",
+    photos: [
+      "photos/first-roll/P6030666.jpg",
+      "photos/first-roll/P6241167.jpg",
+      "photos/first-roll/P6271115.jpg",
+      "photos/first-roll/P6281299.jpg",
+      "photos/first-roll/P6281389.jpg",
+      "photos/first-roll/P6281404.jpg",
+      "photos/first-roll/P6301905.jpg",
+      "photos/first-roll/P6301922.jpg"
+    ]
+  },
+  // Add your next real album here, following the same pattern as "first-roll" above.
+  // (Placeholder albums with picsum.photos images have been removed now that
+  // real photos are in place — copy the "first-roll" block above as a starting
+  // point whenever you're ready to add another one.)
+];

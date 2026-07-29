@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faisal Henar — Photography</title>
+<meta name="description" content="A private collection of black and white photographs.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="sprocket-strip top" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="mark">
+      <a href="../index.html">Faisal Henar</a>
+    </div>
+    <div class="section-label">Photography</div>
+  </header>
+
+  <section class="intro">
+    <h1>A quiet, unhurried record of things worth looking at twice.</h1>
+    <p class="sub">A small, private collection of black and white photographs, organized by roll. Shared with the people I choose to share it with — not built for a crowd.</p>
+  </section>
+
+  <main class="contact-sheet" id="contact-sheet">
+    <!-- albums are rendered here by js/render-home.js -->
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Faisal Henar</span>
+    <span class="mono">Black &amp; White</span>
+  </footer>
+
+  <div class="sprocket-strip bottom" aria-hidden="true"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/render-home.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

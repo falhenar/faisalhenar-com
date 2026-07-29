@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faisal Henar</title>
+<meta name="description" content="Photography, practice, and a few other things worth keeping.">
+<link rel="stylesheet" href="css/hub.css">
+</head>
+<body>
+
+  <div class="top-line">
+    <span>Faisal Henar</span>
+    <span>Paramaribo</span>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">faisalhenar.com</div>
+    <h1>A home for the different rooms of a life.</h1>
+    <p>A quiet corner online — some for photographs I've taken, some for a Buddhist practice I keep returning to, and room for whatever else finds its way here next. Shared with the people I choose to share it with.</p>
+  </section>
+
+  <div class="wander" aria-hidden="true">
+    <svg viewBox="0 0 900 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 40 30 C 200 5, 320 55, 450 30 S 700 5, 860 30" />
+    </svg>
+  </div>
+
+  <main class="rooms">
+    <a class="room door-photography" href="photography/index.html">
+      <div class="room-num mono">I.</div>
+      <div class="room-illustration" aria-hidden="true">
+        <svg viewBox="0 0 120 170" fill="none" stroke="#B8842B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="16" y="12" width="88" height="146" rx="3"/>
+          <rect x="28" y="26" width="64" height="52"/>
+          <rect x="28" y="90" width="64" height="52"/>
+          <circle cx="86" cy="90" r="6"/>
+          <circle cx="86" cy="90" r="1.6" fill="#B8842B"/>
+        </svg>
+      </div>
+      <div class="room-title">Photography</div>
+      <p class="room-dek">Black and white, mostly. Frames from a first roll, with more to come.</p>
+      <div class="room-tag">Enter &rarr;</div>
+    </a>
+
+    <a class="room door-practice" href="practice/index.html">
+      <div class="room-num mono">II.</div>
+      <div class="room-illustration" aria-hidden="true">
+        <svg viewBox="0 0 120 170" fill="none" stroke="#4B5842" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 158 V54 C16 27 35 12 60 12 C85 12 104 27 104 54 V158 Z"/>
+          <line x1="32" y1="158" x2="32" y2="100"/>
+          <line x1="88" y1="158" x2="88" y2="100"/>
+          <circle cx="60" cy="70" r="17" stroke-dasharray="86 20" transform="rotate(-95 60 70)"/>
+        </svg>
+      </div>
+      <div class="room-title">Practice</div>
+      <p class="room-dek">Readings, talks, and places that have shaped a Buddhist practice.</p>
+      <div class="room-tag">Enter &rarr;</div>
+    </a>
+
+    <div class="room future">
+      <div class="room-num mono">III.</div>
+      <div class="room-illustration" aria-hidden="true">
+        <svg viewBox="0 0 120 170" fill="none" stroke="#8A7F6B" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7">
+          <rect x="16" y="12" width="88" height="146" rx="3"/>
+        </svg>
+      </div>
+      <p class="room-dek">More rooms, when they're ready.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Faisal Henar</span>
+    <span>Built quietly, updated slowly</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+/* ---------------------------------------------------
+   faisalhenar.com — PRACTICE section
+   Palette:  --bg #EDEEE7 (soft stone)  --ink #2B2B27
+             --muted #7C8073   --line #D9DACE
+             --accent #4B5842 (moss)
+   Type:     Lora (headings, quiet serif) / Inter (body)
+             IBM Plex Mono (meta) — kept as the one thread
+             tying this section back to the rest of the site
+--------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --bg: #EDEEE7;
+  --bg-raised: #E4E6DB;
+  --ink: #2B2B27;
+  --muted: #7C8073;
+  --line: #D9DACE;
+  --accent: #4B5842;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+a{ color: inherit; }
+a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
+.mono{ font-family: 'IBM Plex Mono', monospace; }
+
+.top-link{
+  display:block;
+  padding: 20px 32px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.top-link:hover{ color: var(--accent); }
+
+/* quiet ensō mark, used once */
+.enso{
+  width: 46px; height: 46px;
+  margin: 8px auto 28px;
+  display:block;
+}
+.enso circle{
+  fill:none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 230 26;
+}
+
+.intro{
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 32px 56px;
+  text-align: center;
+}
+.intro h1{
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+.intro p{
+  color: var(--muted);
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.section{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px 56px;
+}
+.section-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.entry{
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.entry:last-child{ border-bottom: none; }
+.entry .entry-title{
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+.entry .entry-title a{ text-decoration: none; }
+.entry .entry-title a:hover{ color: var(--accent); }
+.entry .entry-by{
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.entry .entry-note{
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0 0 8px;
+  max-width: 56ch;
+}
+.entry .entry-link{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+
+.book-entry{
+  display:grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: flex-start;
+}
+.book-entry .book-spine{
+  width: 64px;
+  height: 92px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+}
+
+.site-footer{
+  padding: 30px 32px 44px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+@media (max-width: 640px){
+  .intro, .section{ padding-left: 20px; padding-right: 20px; }
+}

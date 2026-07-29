@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Album — Faisal Henar Photography</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="sprocket-strip top" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="mark">
+      <a href="index.html">Faisal Henar</a>
+    </div>
+    <div class="section-label">Photography</div>
+  </header>
+
+  <section class="album-header">
+    <a class="back-link" href="index.html">&larr; All albums</a>
+    <h1 id="album-title">Album</h1>
+    <p class="album-meta" id="album-meta"></p>
+  </section>
+
+  <main class="roll" id="roll">
+    <!-- exposures rendered here by js/render-album.js -->
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">Close &times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&larr;</button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&rarr;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Faisal Henar</span>
+    <span class="mono">Black &amp; White</span>
+  </footer>
+
+  <div class="sprocket-strip bottom" aria-hidden="true"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/render-album.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
