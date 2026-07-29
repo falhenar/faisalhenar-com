@@ -84,4 +84,21 @@
     if (e.key === 'ArrowLeft' && currentIndex > 0) showAt(currentIndex - 1);
     if (e.key === 'ArrowRight' && currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
   });
+
+  // Swipe navigation (touch devices)
+  var touchStartX = 0, touchStartY = 0;
+  var SWIPE_THRESHOLD = 40;
+
+  lightbox.addEventListener('touchstart', function(e){
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0 && currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
+    if (dx > 0 && currentIndex > 0) showAt(currentIndex - 1);
+  }, { passive: true });
 })();

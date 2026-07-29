@@ -282,10 +282,13 @@ a:focus-visible, button:focus-visible{
   max-height: 88vh;
   object-fit: contain;
   filter: grayscale(1) contrast(1.05);
+  position: relative;
+  z-index: 1;
 }
 .lightbox .lightbox-close{
   position: absolute;
   top: 20px; right: 28px;
+  z-index: 2;
   background: none;
   border: none;
   color: var(--fg);
@@ -299,6 +302,7 @@ a:focus-visible, button:focus-visible{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;
   background: none;
   border: none;
   color: var(--fg);
