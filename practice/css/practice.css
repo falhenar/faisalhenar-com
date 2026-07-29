@@ -117,6 +117,23 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--accent);
   letter-spacing: 0.06em;
 }
+.room-card .room-icon{
+  width: 56px;
+  height: auto;
+  margin: 2px 0 4px;
+  display: block;
+}
+.room-card .room-icon *{
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.room-card .room-icon .fill-dot{
+  fill: var(--accent);
+  stroke: none;
+}
 .room-card .room-card-title{
   font-family: 'Lora', serif;
   font-weight: 600;
