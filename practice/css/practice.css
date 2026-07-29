@@ -105,6 +105,8 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 10px;
   text-decoration: none;
   transition: background 0.2s ease;
@@ -113,6 +115,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   background: var(--bg-raised);
 }
 .room-card .room-num{
+  align-self: flex-start;
   font-size: 0.72rem;
   color: var(--accent);
   letter-spacing: 0.06em;
@@ -144,6 +147,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   font-size: 0.88rem;
   color: var(--muted);
   margin: 0;
+  max-width: 26ch;
   flex-grow: 1;
 }
 .room-card .room-card-tag{
