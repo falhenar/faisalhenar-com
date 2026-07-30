@@ -358,17 +358,16 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 
 .book-entry{
-  display:grid;
-  grid-template-columns: 64px 1fr;
-  gap: 18px;
-  align-items: flex-start;
+  border-left: 3px solid var(--accent);
+  padding-left: 18px;
 }
-.book-entry .book-spine{
-  width: 64px;
-  height: 92px;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
+.book-entry .entry-source{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
 }
 
 .site-footer{
