@@ -357,11 +357,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   margin: 10px 0 0;
 }
 
-.book-entry{
-  border-left: 3px solid var(--accent);
-  padding-left: 18px;
-}
-.book-entry .entry-source{
+.entry-source{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.06em;
