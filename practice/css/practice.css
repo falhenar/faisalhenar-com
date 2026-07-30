@@ -147,6 +147,8 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   font-family: 'Lora', serif;
   font-weight: 600;
   font-size: 1.15rem;
+  line-height: 1.6;
+  min-height: calc(1.6em * 2);
   color: var(--ink);
 }
 .room-card .room-card-dek{
