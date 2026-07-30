@@ -40,6 +40,8 @@ a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
 .top-line{
   display:flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
   padding: 22px 32px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
@@ -47,6 +49,62 @@ a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
   text-transform: uppercase;
   color: var(--muted);
 }
+.top-line-right{
+  display:flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- site menu ---------- */
+.menu{ position: relative; }
+.menu-btn{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.menu-btn:hover{ color: var(--ink); border-color: var(--accent); }
+.menu-btn:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+.menu-btn::after{
+  content: '▾';
+  font-size: 0.6rem;
+  transition: transform 0.15s ease;
+}
+.menu-btn[aria-expanded="true"]::after{ transform: rotate(180deg); }
+.menu-panel{
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 168px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(36,31,26,0.14);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+}
+.menu-panel[hidden]{ display: none; }
+.menu-panel a{
+  padding: 9px 10px;
+  font-family: 'Inter', sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.menu-panel a:hover{ background: var(--paper-raised); }
+.menu-panel a.current{ color: var(--accent); font-weight: 600; }
+.menu-panel a:focus-visible{ outline: 2px solid var(--accent); outline-offset: -2px; }
 
 /* ---------- hero ---------- */
 .hero{

@@ -5,11 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practice — Faisal Henar</title>
 <meta name="description" content="Readings, talks, and places that inform a Buddhist practice.">
-<link rel="stylesheet" href="css/practice.css?v=4">
+<link rel="stylesheet" href="css/practice.css?v=5">
 </head>
 <body>
 
-  <a class="top-link" href="../index.html">&larr; faisalhenar.com</a>
+  <div class="hub-topline">
+    <a class="top-link" href="../index.html">&larr; faisalhenar.com</a>
+    <div class="menu" data-menu>
+      <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+      <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
+        <a href="../index.html">Home</a>
+        <a href="../photography/index.html">Photography</a>
+        <a href="index.html" class="current">Practice</a>
+      </nav>
+    </div>
+  </div>
 
   <svg class="dharma-wheel" viewBox="0 0 100 100" aria-hidden="true">
     <circle class="rim" cx="50" cy="50" r="40"></circle>
@@ -72,5 +82,34 @@
     Reflections section — coming later
   </footer>
 
+  <script>
+  (function(){
+    document.querySelectorAll('[data-menu]').forEach(function(menu){
+      var btn = menu.querySelector('[data-menu-btn]');
+      var panel = menu.querySelector('[data-menu-panel]');
+      function closeMenu(){
+        panel.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMenu(){
+        panel.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (panel.hidden) openMenu(); else closeMenu();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && !panel.hidden){
+          closeMenu();
+          btn.focus();
+        }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

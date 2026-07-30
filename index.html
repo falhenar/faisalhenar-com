@@ -5,13 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faisal Henar</title>
 <meta name="description" content="Photography, practice, and a few other things worth keeping.">
-<link rel="stylesheet" href="css/hub.css">
+<link rel="stylesheet" href="css/hub.css?v=1">
 </head>
 <body>
 
   <div class="top-line">
     <span>Faisal Henar</span>
-    <span>Paramaribo</span>
+    <div class="top-line-right">
+      <span>Paramaribo</span>
+      <div class="menu" data-menu>
+        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
+          <a href="index.html" class="current">Home</a>
+          <a href="photography/index.html">Photography</a>
+          <a href="practice/index.html">Practice</a>
+        </nav>
+      </div>
+    </div>
   </div>
 
   <section class="hero">
@@ -80,5 +90,34 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.querySelectorAll('[data-menu]').forEach(function(menu){
+      var btn = menu.querySelector('[data-menu-btn]');
+      var panel = menu.querySelector('[data-menu-panel]');
+      function closeMenu(){
+        panel.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMenu(){
+        panel.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (panel.hidden) openMenu(); else closeMenu();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && !panel.hidden){
+          closeMenu();
+          btn.focus();
+        }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

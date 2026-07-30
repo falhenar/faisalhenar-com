@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faisal Henar — Photography</title>
 <meta name="description" content="A quiet collection of photographs, mostly black and white.">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=1">
 </head>
 <body>
 
@@ -15,7 +15,17 @@
     <div class="mark">
       <a href="../index.html">Faisal Henar</a>
     </div>
-    <div class="section-label">Photography</div>
+    <div class="site-header-right">
+      <div class="section-label">Photography</div>
+      <div class="menu" data-menu>
+        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
+          <a href="../index.html">Home</a>
+          <a href="index.html" class="current">Photography</a>
+          <a href="../practice/index.html">Practice</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <section class="intro">
@@ -37,5 +47,34 @@
   <script src="js/config.js"></script>
   <script src="js/render-home.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.querySelectorAll('[data-menu]').forEach(function(menu){
+      var btn = menu.querySelector('[data-menu-btn]');
+      var panel = menu.querySelector('[data-menu-panel]');
+      function closeMenu(){
+        panel.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMenu(){
+        panel.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (panel.hidden) openMenu(); else closeMenu();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && !panel.hidden){
+          closeMenu();
+          btn.focus();
+        }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
