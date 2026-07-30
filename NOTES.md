@@ -25,7 +25,10 @@ mode) can read and add to this file.
 
 ## Ideas (unsorted)
 
-- (nothing yet — add as they come up)
+- **Sound / Audio room?** — a possible future "room" for recorded chants,
+  quiet soundscapes, or talks revisited often. Came up via an outside
+  review of the site; not evaluated yet, not decided, don't build
+  speculatively.
 
 ## Resolved / decided
 <!-- Move items here once settled, so this stays a record of past decisions
