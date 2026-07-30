@@ -11,13 +11,13 @@
   if (!album) {
     titleEl.textContent = 'Album not found';
     metaEl.textContent = 'Check the link, or go back to all albums.';
-    document.title = 'Album not found — Faisal Henar Photography';
+    document.title = 'Album not found · Faisal Henar Photography';
     return;
   }
 
   titleEl.textContent = album.title;
   metaEl.textContent = album.photos.length + ' frames';
-  document.title = album.title + ' — Faisal Henar Photography';
+  document.title = album.title + ' · Faisal Henar Photography';
   footerTagEl.textContent = album.color ? 'Color' : 'Black & White';
 
   album.photos.forEach(function(src, i){
