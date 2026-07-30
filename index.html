@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faisal Henar</title>
 <meta name="description" content="Photography, practice, and a few other things worth keeping.">
-<link rel="stylesheet" href="css/hub.css?v=1">
+<link rel="stylesheet" href="css/hub.css?v=2">
 </head>
 <body>
 
@@ -85,8 +85,14 @@
   </main>
 
   <footer class="site-footer">
-    <span>© <span id="year"></span> Faisal Henar</span>
-    <span>Built quietly, updated slowly</span>
+    <nav class="footer-nav" aria-label="More">
+      <a href="note.html">A note from me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-meta">
+      <span>© <span id="year"></span> Faisal Henar</span>
+      <span>Built quietly, updated slowly</span>
+    </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

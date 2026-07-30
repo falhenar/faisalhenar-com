@@ -1,0 +1,61 @@
+/* ---------------------------------------------------
+   faisalhenar.com — NOTE-style pages ("a note from me",
+   "contact"). Uses the same tokens as css/hub.css
+   (paper/ink/muted/line/accent, Instrument Serif + Inter
+   + IBM Plex Mono). Load hub.css before this file so the
+   variables exist.
+--------------------------------------------------- */
+
+.note-top{
+  padding: 22px 32px 0;
+}
+.note-top .mark{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.note-top .mark:hover{ color: var(--accent); }
+
+.note{
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 64px 32px 40px;
+}
+
+.note-lead{
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 40px;
+}
+
+.note-body p{
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+.note-body p:last-child{ margin-bottom: 0; }
+.note-body a{
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+
+.note-signoff{
+  margin: 48px 0 0;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  text-align: center;
+  color: var(--accent);
+}
+
+@media (max-width: 640px){
+  .note-top, .note{ padding-left: 20px; padding-right: 20px; }
+}
