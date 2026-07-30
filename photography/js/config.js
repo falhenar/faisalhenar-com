@@ -39,8 +39,12 @@ const ALBUMS = [
     title: "Vietnam Streets, in Color",
     color: true,
     photos: [
-      // TODO: add color photo filenames here once uploaded to
-      // photography/photos/vietnam-streets-color/
+      "photos/vietnam-streets-color/P6050611.jpg",
+      "photos/vietnam-streets-color/P6080541.jpg",
+      "photos/vietnam-streets-color/P6080906.jpg",
+      "photos/vietnam-streets-color/P6080910.jpg",
+      "photos/vietnam-streets-color/P6250883.jpg",
+      "photos/vietnam-streets-color/P6271105.jpg"
     ]
   },
   // Add your next real album here, following the same pattern as "first-roll" above.
