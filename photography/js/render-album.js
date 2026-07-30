@@ -6,7 +6,6 @@
   const roll = document.getElementById('roll');
   const titleEl = document.getElementById('album-title');
   const metaEl = document.getElementById('album-meta');
-  const footerTagEl = document.getElementById('footer-tag');
 
   if (!album) {
     titleEl.textContent = 'Album not found';
@@ -18,7 +17,6 @@
   titleEl.textContent = album.title;
   metaEl.textContent = album.photos.length + ' frames';
   document.title = album.title + ' · Faisal Henar Photography';
-  footerTagEl.textContent = album.color ? 'Color' : 'Black & White';
 
   album.photos.forEach(function(src, i){
     const num = String(i + 1).padStart(2, '0');
