@@ -160,6 +160,9 @@ a:focus-visible, button:focus-visible{
   transform: scale(1.045);
   filter: grayscale(0.85) contrast(1.05);
 }
+.frame.is-color .thumb img{ filter: none; }
+.frame.is-color a.thumb-link:hover img,
+.frame.is-color a.thumb-link:focus-visible img{ filter: none; }
 .frame .meta{
   display:flex;
   justify-content: space-between;
@@ -264,6 +267,7 @@ a:focus-visible, button:focus-visible{
 .roll .exposure button:focus-visible .pic img{
   transform: scale(1.04);
 }
+.roll .exposure.is-color .pic img{ filter: none; }
 
 /* ---------- lightbox ---------- */
 .lightbox{
@@ -285,6 +289,7 @@ a:focus-visible, button:focus-visible{
   position: relative;
   z-index: 1;
 }
+.lightbox img.is-color{ filter: none; }
 .lightbox .lightbox-close{
   position: absolute;
   top: 20px; right: 28px;

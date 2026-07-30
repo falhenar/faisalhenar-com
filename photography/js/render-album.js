@@ -6,6 +6,7 @@
   const roll = document.getElementById('roll');
   const titleEl = document.getElementById('album-title');
   const metaEl = document.getElementById('album-meta');
+  const footerTagEl = document.getElementById('footer-tag');
 
   if (!album) {
     titleEl.textContent = 'Album not found';
@@ -17,12 +18,13 @@
   titleEl.textContent = album.title;
   metaEl.textContent = album.photos.length + ' frames';
   document.title = album.title + ' — Faisal Henar Photography';
+  footerTagEl.textContent = album.color ? 'Color' : 'Black & White';
 
   album.photos.forEach(function(src, i){
     const num = String(i + 1).padStart(2, '0');
     const label = album.slug.slice(0,2).toUpperCase() + '·' + num;
     const exposure = document.createElement('figure');
-    exposure.className = 'exposure';
+    exposure.className = 'exposure' + (album.color ? ' is-color' : '');
     exposure.innerHTML = `
       <button type="button" data-index="${i}" aria-label="Enlarge photo ${num}">
         <span class="frame-id mono">${label}</span>
@@ -49,6 +51,7 @@
   function showAt(i){
     currentIndex = i;
     lightboxImg.src = album.photos[i];
+    lightboxImg.classList.toggle('is-color', !!album.color);
     lightboxCaption.innerHTML = captionFor(i);
     lightboxPrev.disabled = (i === 0);
     lightboxNext.disabled = (i === album.photos.length - 1);

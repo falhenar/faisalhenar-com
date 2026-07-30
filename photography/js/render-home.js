@@ -6,7 +6,7 @@
     const cover = album.photos[0];
 
     const frame = document.createElement('article');
-    frame.className = 'frame';
+    frame.className = 'frame' + (album.color ? ' is-color' : '');
     frame.innerHTML = `
       <div class="frame-id mono">FH · ${num}</div>
       <a class="thumb-link" href="album.html?a=${encodeURIComponent(album.slug)}" aria-label="Open album: ${album.title}">

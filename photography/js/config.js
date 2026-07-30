@@ -13,13 +13,16 @@
   slug   -> used in the URL, e.g. "quiet-mornings" -> album.html?a=quiet-mornings
             use lowercase letters, numbers and hyphens only, no spaces
   title  -> the name shown on the site
+  color  -> true shows the album's photos in their original color; false
+            (default) applies the site's black & white treatment.
   photos -> array of filenames that live inside photos/<slug>/
 */
 
 const ALBUMS = [
   {
     slug: "first-roll",
-    title: "First Roll",
+    title: "Vietnam Streets",
+    color: false,
     photos: [
       "photos/first-roll/P6030666.jpg",
       "photos/first-roll/P6241167.jpg",
@@ -29,6 +32,15 @@ const ALBUMS = [
       "photos/first-roll/P6281404.jpg",
       "photos/first-roll/P6301905.jpg",
       "photos/first-roll/P6301922.jpg"
+    ]
+  },
+  {
+    slug: "vietnam-streets-color",
+    title: "Vietnam Streets, in Color",
+    color: true,
+    photos: [
+      // TODO: add color photo filenames here once uploaded to
+      // photography/photos/vietnam-streets-color/
     ]
   },
   // Add your next real album here, following the same pattern as "first-roll" above.

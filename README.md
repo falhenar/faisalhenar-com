@@ -88,8 +88,9 @@ share the whole homepage. The `a=` part matches the album's `slug` in
   layout. Replace them with your own photos in `photos/` and update the
   `photos` array in `config.js` to point at your files instead.
 - The design is deliberately quiet: black background, one warm accent color,
-  photos numbered like frames on a contact sheet — built around black and
-  white work.
+  photos numbered like frames on a contact sheet — built primarily around
+  black and white work, with color used where an album calls for it (see
+  the `color` field in `config.js`).
 
 ## Before pushing changes live
 
