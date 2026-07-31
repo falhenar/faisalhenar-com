@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Reading — Practice — Faisal Henar">
 <meta name="twitter:description" content="A few books worth sitting with slowly.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=12">
+<link rel="stylesheet" href="css/practice.css?v=13">
 </head>
 <body>
 
@@ -76,34 +76,6 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script>
-  (function(){
-    document.querySelectorAll('[data-menu]').forEach(function(menu){
-      var btn = menu.querySelector('[data-menu-btn]');
-      var panel = menu.querySelector('[data-menu-panel]');
-      function closeMenu(){
-        panel.hidden = true;
-        btn.setAttribute('aria-expanded', 'false');
-      }
-      function openMenu(){
-        panel.hidden = false;
-        btn.setAttribute('aria-expanded', 'true');
-      }
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        if (panel.hidden) openMenu(); else closeMenu();
-      });
-      document.addEventListener('click', function(e){
-        if (!menu.contains(e.target)) closeMenu();
-      });
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape' && !panel.hidden){
-          closeMenu();
-          btn.focus();
-        }
-      });
-    });
-  })();
-  </script>
+  <script src="../js/menu.js?v=1"></script>
 </body>
 </html>
