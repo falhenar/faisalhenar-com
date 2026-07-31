@@ -47,6 +47,20 @@ const ALBUMS = [
       "photos/vietnam-streets-color/P6271105.jpg"
     ]
   },
+  {
+    slug: "suriname-streets",
+    title: "Suriname Streets",
+    color: false,
+    photos: [
+      "photos/suriname-streets/P7231377.jpg",
+      "photos/suriname-streets/P7231325.jpg",
+      "photos/suriname-streets/P7231351.jpg",
+      "photos/suriname-streets/P7231574.jpg",
+      "photos/suriname-streets/P7231379.jpg",
+      "photos/suriname-streets/P7231561.jpg",
+      "photos/suriname-streets/P7231512.jpg"
+    ]
+  },
   // Add your next real album here, following the same pattern as "first-roll" above.
   // (Placeholder albums with picsum.photos images have been removed now that
   // real photos are in place — copy the "first-roll" block above as a starting
