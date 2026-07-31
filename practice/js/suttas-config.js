@@ -1,0 +1,219 @@
+/*
+  SUTTA READINGS CONFIG
+  ----------------------
+  Source pool for the "reflections" feature in the Practice section.
+
+  Selection and order follow Bhikkhu Bodhi's anthology "In the Buddha's
+  Words" (Wisdom Publications), used as a structural spine rather than a
+  random pick — Parts I through X, roughly foundational to advanced.
+  Translations are Bhikkhu Sujato's (CC0) via SuttaCentral unless noted
+  otherwise in `translator`.
+
+  An entry is only "live" once `note` is filled in — that's what makes it
+  eligible to appear on the practice hub and in the archive. Leaving `note`
+  empty just means it's queued, not published. There's no calendar logic
+  and no missed weeks: publish order is write order, not book order.
+
+  Fields:
+  id         -> stable identifier, part-section-item, e.g. "itbw-1-2-3"
+  part       -> Roman numeral of the book's Part (I-X)
+  section    -> the named subsection within that Part, for context
+  label      -> Bodhi's own numbering, e.g. "I.2(3)"
+  title      -> the reading's title as given in the book
+  ref        -> sutta reference (e.g. "SN 3.3"), "from X" if an excerpt
+  translator -> SuttaCentral translator slug (default: sujato)
+  url        -> direct link, including segment anchor for excerpts
+  note       -> your reflection, in your own words. Empty = not published.
+  added      -> date you actually wrote the note (not the book's order)
+*/
+
+const SUTTAS = [
+  // Part I — The Human Condition
+  // 1. Old Age, Illness, and Death
+  {
+    id: "itbw-1-1-1",
+    part: "I",
+    section: "Old Age, Illness, and Death",
+    label: "I.1(1)",
+    title: "Aging and Death",
+    ref: "SN 3.3",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn3.3/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-1-2",
+    part: "I",
+    section: "Old Age, Illness, and Death",
+    label: "I.1(2)",
+    title: "The Simile of the Mountain",
+    ref: "SN 3.25",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn3.25/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-1-3",
+    part: "I",
+    section: "Old Age, Illness, and Death",
+    label: "I.1(3)",
+    title: "The Divine Messengers",
+    ref: "from AN 3.35",
+    translator: "sujato",
+    url: "https://suttacentral.net/an3.35/en/sujato",
+    note: "",
+    added: null
+  },
+
+  // 2. The Tribulations of Unreflective Living
+  {
+    id: "itbw-1-2-1",
+    part: "I",
+    section: "The Tribulations of Unreflective Living",
+    label: "I.2(1)",
+    title: "The Dart of Painful Feeling",
+    ref: "SN 36.6",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn36.6/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-2-2",
+    part: "I",
+    section: "The Tribulations of Unreflective Living",
+    label: "I.2(2)",
+    title: "The Vicissitudes of Life",
+    ref: "AN 8.6",
+    translator: "sujato",
+    url: "https://suttacentral.net/an8.6/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-2-3",
+    part: "I",
+    section: "The Tribulations of Unreflective Living",
+    label: "I.2(3)",
+    title: "Anxiety Due to Change",
+    ref: "SN 22.7",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn22.7/en/sujato",
+    note: "",
+    added: null
+  },
+
+  // 3. A World in Turmoil
+  {
+    id: "itbw-1-3-1",
+    part: "I",
+    section: "A World in Turmoil",
+    label: "I.3(1)",
+    title: "The Origin of Conflict",
+    ref: "AN 2.37 (abridged)",
+    translator: "sujato",
+    url: "https://suttacentral.net/an2.32-41/en/sujato#sc37.1",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-3-2",
+    part: "I",
+    section: "A World in Turmoil",
+    label: "I.3(2)",
+    title: "Why Do Beings Live in Hate?",
+    ref: "from DN 21",
+    translator: "sujato",
+    url: "https://suttacentral.net/dn21/en/sujato#sc51--59",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-3-3",
+    part: "I",
+    section: "A World in Turmoil",
+    label: "I.3(3)",
+    title: "The Dark Chain of Causation",
+    ref: "from DN 15",
+    translator: "sujato",
+    url: "https://suttacentral.net/dn15/en/sujato#sc17",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-3-4",
+    part: "I",
+    section: "A World in Turmoil",
+    label: "I.3(4)",
+    title: "The Roots of Violence and Oppression",
+    ref: "from AN 3.69",
+    translator: "sujato",
+    url: "https://suttacentral.net/an3.69/en/sujato#sc2--4",
+    note: "",
+    added: null
+  },
+
+  // 4. Without Discoverable Beginning
+  {
+    id: "itbw-1-4-1",
+    part: "I",
+    section: "Without Discoverable Beginning",
+    label: "I.4(1)",
+    title: "Grass and Sticks",
+    ref: "SN 15.1",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn15.1/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-4-2",
+    part: "I",
+    section: "Without Discoverable Beginning",
+    label: "I.4(2)",
+    title: "Balls of Clay",
+    ref: "SN 15.2",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn15.2/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-4-3",
+    part: "I",
+    section: "Without Discoverable Beginning",
+    label: "I.4(3)",
+    title: "The Mountain",
+    ref: "SN 15.5",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn15.5/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-4-4",
+    part: "I",
+    section: "Without Discoverable Beginning",
+    label: "I.4(4)",
+    title: "The River Ganges",
+    ref: "SN 15.8",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn15.8/en/sujato",
+    note: "",
+    added: null
+  },
+  {
+    id: "itbw-1-4-5",
+    part: "I",
+    section: "Without Discoverable Beginning",
+    label: "I.4(5)",
+    title: "Dog on a Leash",
+    ref: "SN 22.99",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn22.99/en/sujato",
+    note: "",
+    added: null
+  }
+];
