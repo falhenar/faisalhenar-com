@@ -34,11 +34,18 @@
     return s.ref + ' &middot; ' + s.label + translatorNote + ' &middot; ' + fmtDate(s.added);
   }
 
+  function excerptMarkup(s){
+    if (!s.excerpt) return '';
+    var lines = s.excerpt.split('\n').map(function(line){ return line.trim(); }).filter(Boolean);
+    return '<blockquote class="reflections-excerpt">' + lines.join('<br>') + '</blockquote>';
+  }
+
   function entryMarkup(s){
     return (
       '<article class="entry reflection-entry">' +
         '<p class="entry-title">' + s.title + '</p>' +
         '<p class="entry-by mono">' + fmtMeta(s) + '</p>' +
+        excerptMarkup(s) +
         '<p class="entry-note">' + s.note + '</p>' +
         '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
       '</article>'

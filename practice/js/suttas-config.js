@@ -1,13 +1,13 @@
 /*
   SUTTA READINGS CONFIG
   ----------------------
-  Source pool for the "reflections" feature in the Practice section.
+  Source pool for the "Reflections" feature in the Practice section.
 
   Selection and order follow Bhikkhu Bodhi's anthology "In the Buddha's
   Words" (Wisdom Publications), used as a structural spine rather than a
   random pick — Parts I through X, roughly foundational to advanced.
-  Translations are Bhikkhu Sujato's (CC0) via SuttaCentral unless noted
-  otherwise in `translator`.
+  Translations are Bhikkhu Sujato's (CC0, public domain) via SuttaCentral
+  unless noted otherwise in `translator`.
 
   An entry is only "live" once `note` is filled in — that's what makes it
   eligible to appear on the practice hub and in the archive. Leaving `note`
@@ -23,6 +23,9 @@
   ref        -> sutta reference (e.g. "SN 3.3"), "from X" if an excerpt
   translator -> SuttaCentral translator slug (default: sujato)
   url        -> direct link, including segment anchor for excerpts
+  excerpt    -> a few lines quoted directly from the sutta, your pick.
+                Optional — leave "" if nothing feels quotable. Use \n for
+                line breaks if quoting verse; rendered as a block-quote.
   note       -> your reflection, in your own words. Empty = not published.
   added      -> date you actually wrote the note (not the book's order)
 */
@@ -39,7 +42,8 @@ const SUTTAS = [
     ref: "SN 3.3",
     translator: "sujato",
     url: "https://suttacentral.net/sn3.3/en/sujato",
-    note: "We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous thing, and aim for the good.",
+    excerpt: "Fancy chariots of kings wear out,\nand even this body gets old.\nBut the truth of the good never gets old—\nso the good proclaim to the good.",
+    note: "We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous things, and let's aim for the good.",
     added: "2026-07-30"
   },
   {
@@ -51,6 +55,7 @@ const SUTTAS = [
     ref: "SN 3.25",
     translator: "sujato",
     url: "https://suttacentral.net/sn3.25/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -63,6 +68,7 @@ const SUTTAS = [
     ref: "from AN 3.35",
     translator: "sujato",
     url: "https://suttacentral.net/an3.35/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -77,6 +83,7 @@ const SUTTAS = [
     ref: "SN 36.6",
     translator: "sujato",
     url: "https://suttacentral.net/sn36.6/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -89,6 +96,7 @@ const SUTTAS = [
     ref: "AN 8.6",
     translator: "sujato",
     url: "https://suttacentral.net/an8.6/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -101,6 +109,7 @@ const SUTTAS = [
     ref: "SN 22.7",
     translator: "sujato",
     url: "https://suttacentral.net/sn22.7/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -115,6 +124,7 @@ const SUTTAS = [
     ref: "AN 2.37 (abridged)",
     translator: "sujato",
     url: "https://suttacentral.net/an2.32-41/en/sujato#sc37.1",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -127,6 +137,7 @@ const SUTTAS = [
     ref: "from DN 21",
     translator: "sujato",
     url: "https://suttacentral.net/dn21/en/sujato#sc51--59",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -139,6 +150,7 @@ const SUTTAS = [
     ref: "from DN 15",
     translator: "sujato",
     url: "https://suttacentral.net/dn15/en/sujato#sc17",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -151,6 +163,7 @@ const SUTTAS = [
     ref: "from AN 3.69",
     translator: "sujato",
     url: "https://suttacentral.net/an3.69/en/sujato#sc2--4",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -165,6 +178,7 @@ const SUTTAS = [
     ref: "SN 15.1",
     translator: "sujato",
     url: "https://suttacentral.net/sn15.1/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -177,6 +191,7 @@ const SUTTAS = [
     ref: "SN 15.2",
     translator: "sujato",
     url: "https://suttacentral.net/sn15.2/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -189,6 +204,7 @@ const SUTTAS = [
     ref: "SN 15.5",
     translator: "sujato",
     url: "https://suttacentral.net/sn15.5/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -201,6 +217,7 @@ const SUTTAS = [
     ref: "SN 15.8",
     translator: "sujato",
     url: "https://suttacentral.net/sn15.8/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   },
@@ -213,6 +230,7 @@ const SUTTAS = [
     ref: "SN 22.99",
     translator: "sujato",
     url: "https://suttacentral.net/sn22.99/en/sujato",
+    excerpt: "",
     note: "",
     added: null
   }

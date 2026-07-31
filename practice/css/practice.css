@@ -393,6 +393,16 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--muted);
   font-size: 0.95rem;
 }
+.reflections-excerpt{
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
+  margin: 14px 0 18px;
+}
 
 .entry-source{
   font-family: 'IBM Plex Mono', monospace;
