@@ -39,8 +39,8 @@ const SUTTAS = [
     ref: "SN 3.3",
     translator: "sujato",
     url: "https://suttacentral.net/sn3.3/en/sujato",
-    note: "",
-    added: null
+    note: "We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous thing, and aim for the good.",
+    added: "2026-07-30"
   },
   {
     id: "itbw-1-1-2",
