@@ -420,6 +420,16 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   font-size: 0.7rem;
   text-align: center;
 }
+.footer-nav{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+.footer-nav a:hover,
+.footer-nav a:focus-visible{
+  color: var(--accent);
+}
 
 @media (max-width: 640px){
   .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }

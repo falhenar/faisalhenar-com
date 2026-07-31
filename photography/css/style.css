@@ -244,8 +244,18 @@ a:focus-visible, button:focus-visible{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.03em;
+  gap: 12px;
   display:flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+}
+.footer-nav{
+  display: flex;
+  gap: 20px;
+}
+.footer-nav a:hover,
+.footer-nav a:focus-visible{
+  color: var(--accent);
 }
 
 /* ---------- album page ---------- */
