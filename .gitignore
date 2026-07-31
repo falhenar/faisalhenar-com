@@ -13,3 +13,8 @@ desktop.ini
 /.claude/
 /.agents/
 /.mcp.json
+
+# Never commit credentials, wherever they end up.
+.github-token
+*.token
+.env
