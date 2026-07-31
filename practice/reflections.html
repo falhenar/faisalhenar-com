@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reflections · Practice · Faisal Henar</title>
+<meta name="description" content="A slow read through a small set of suttas, published as I get to them.">
+<meta property="og:title" content="Reflections — Practice — Faisal Henar">
+<meta property="og:description" content="A slow read through a small set of suttas, published as I get to them.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://faisalhenar.com/practice/reflections.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reflections — Practice — Faisal Henar">
+<meta name="twitter:description" content="A slow read through a small set of suttas, published as I get to them.">
+<link rel="stylesheet" href="css/practice.css?v=10">
+</head>
+<body>
+
+  <header class="room-header">
+    <a class="mark" href="../index.html">Faisal Henar</a>
+    <div class="room-header-right">
+      <span class="section-label">Practice</span>
+      <div class="menu" data-menu>
+        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
+          <a href="../index.html">Home</a>
+          <a href="index.html" class="current">Practice</a>
+          <a href="../photography/index.html">Photography</a>
+          <a href="../note.html">Note</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <a class="back-link" href="index.html">&larr; All rooms</a>
+  <h1 class="room-title">Reflections</h1>
+  <p class="room-dek">A slow read through a small set of suttas, published as I actually get to them rather than on a schedule. Selection follows the structure of Bhikkhu Bodhi's <em>In the Buddha's Words</em>; translations are Bhikkhu Sujato's via SuttaCentral, unless noted otherwise.</p>
+
+  <section class="section" id="reflections-list">
+    <!-- rendered by js/render-reflections.js -->
+  </section>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Faisal Henar</span>
+  </footer>
+
+  <script src="js/suttas-config.js"></script>
+  <script src="js/render-reflections.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.querySelectorAll('[data-menu]').forEach(function(menu){
+      var btn = menu.querySelector('[data-menu-btn]');
+      var panel = menu.querySelector('[data-menu-panel]');
+      function closeMenu(){
+        panel.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMenu(){
+        panel.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (panel.hidden) openMenu(); else closeMenu();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && !panel.hidden){
+          closeMenu();
+          btn.focus();
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

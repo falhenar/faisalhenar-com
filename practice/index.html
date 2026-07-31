@@ -12,7 +12,7 @@
 <meta name="twitter:title" content="Practice — Faisal Henar">
 <meta name="twitter:description" content="Readings, talks, and places that have shaped a Buddhist practice.">
 <meta name="description" content="Readings, talks, and places that inform a Buddhist practice.">
-<link rel="stylesheet" href="css/practice.css?v=9">
+<link rel="stylesheet" href="css/practice.css?v=10">
 </head>
 <body>
 
@@ -42,6 +42,10 @@
   <section class="intro">
     <h1>A few things that have shaped the practice.</h1>
     <p>Not a teaching page, just a small, honest list of places, people, and words I keep returning to. A few small rooms, each holding one part of it.</p>
+  </section>
+
+  <section class="reflections-featured" id="reflections-featured" hidden>
+    <!-- rendered by js/render-reflections.js — stays hidden until a reflection exists -->
   </section>
 
   <main class="rooms-grid">
@@ -100,9 +104,12 @@
   </main>
 
   <footer class="site-footer">
-    Reflections section, coming later
+    <span>© <span id="year"></span> Faisal Henar</span>
   </footer>
 
+  <script src="js/suttas-config.js"></script>
+  <script src="js/render-reflections.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script>
   (function(){
     document.querySelectorAll('[data-menu]').forEach(function(menu){
