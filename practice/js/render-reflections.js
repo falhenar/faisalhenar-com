@@ -40,13 +40,19 @@
     return '<blockquote class="reflections-excerpt">' + lines.join('<br>') + '</blockquote>';
   }
 
+  function noteMarkup(s){
+    if (!s.note) return '';
+    var paragraphs = s.note.split(/\n\s*\n/).map(function(p){ return p.trim(); }).filter(Boolean);
+    return paragraphs.map(function(p){ return '<p class="entry-note">' + p + '</p>'; }).join('');
+  }
+
   function entryMarkup(s){
     return (
       '<article class="entry reflection-entry">' +
         '<p class="entry-title">' + s.title + '</p>' +
         '<p class="entry-by mono">' + fmtMeta(s) + '</p>' +
         excerptMarkup(s) +
-        '<p class="entry-note">' + s.note + '</p>' +
+        noteMarkup(s) +
         '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
       '</article>'
     );

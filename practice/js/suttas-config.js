@@ -43,7 +43,7 @@ const SUTTAS = [
     translator: "sujato",
     url: "https://suttacentral.net/sn3.3/en/sujato",
     excerpt: "Fancy chariots of kings wear out,\nand even this body gets old.\nBut the truth of the good never gets old—\nso the good proclaim to the good.",
-    note: "We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous things, and let's aim for the good.",
+    note: "We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous things, and let's aim for the good.\n\nIt sounds so easy. But when we are not mindful we usually just act based on our desires and aversions. It is not for me to judge if those actions are necessarily “good” or “bad”, but it is helpful to observe which results we can observe from those actions. Do they lead to a more peaceful mind? Do they maybe cause harm to ourselves or others?\n\nSo what I have learned in this path, is that one is often best off to try to ground one's intentions in generosity, restraint and wisdom rather than in greed, aversion and delusion. This to me is what it means when we say “let's aim for the good.”",
     added: "2026-07-30"
   },
   {
