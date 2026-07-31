@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watching · Practice · Faisal Henar</title>
+<meta name="description" content="A few YouTube channels worth watching — Dhamma talks and guided meditation.">
+<meta property="og:title" content="Watching — Practice — Faisal Henar">
+<meta property="og:description" content="A few YouTube channels worth watching — Dhamma talks and guided meditation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://faisalhenar.com/practice/watching.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Watching — Practice — Faisal Henar">
+<meta name="twitter:description" content="A few YouTube channels worth watching — Dhamma talks and guided meditation.">
+<link rel="stylesheet" href="css/practice.css?v=9">
+</head>
+<body>
+
+  <header class="room-header">
+    <a class="mark" href="../index.html">Faisal Henar</a>
+    <div class="room-header-right">
+      <span class="section-label">Practice</span>
+      <div class="menu" data-menu>
+        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
+          <a href="../index.html">Home</a>
+          <a href="index.html" class="current">Practice</a>
+          <a href="../photography/index.html">Photography</a>
+          <a href="../note.html">Note</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <a class="back-link" href="index.html">&larr; All rooms</a>
+  <h1 class="room-title">Watching</h1>
+  <p class="room-dek">A short list of channels worth watching &mdash; mostly recorded talks and guided meditation, chosen for substance over production value.</p>
+
+  <section class="section">
+    <div class="entry">
+      <p class="entry-title">Ajahn Achalo Bhikkhu</p>
+      <p class="entry-by">Guided meditations and Dhamma talks</p>
+      <p class="entry-note">Step-by-step guided meditations alongside sutta readings and talks from contemporary teachers, built as a plain, practical resource rather than a polished production.</p>
+      <a class="entry-link" href="https://www.youtube.com/@AjahnAchalo" target="_blank" rel="noopener">Watch &rarr;</a>
+    </div>
+
+    <div class="entry">
+      <p class="entry-title">Clear Mountain Monastery Project</p>
+      <p class="entry-by">Ajahn Kovilo, Ajahn Nisabho, and friends — Thai Forest tradition, Seattle</p>
+      <p class="entry-note">Recorded talks from a small monastery still taking root in the Ajahn Chah forest lineage. Informal and unhurried, clearly made for a small sangha rather than an audience.</p>
+      <a class="entry-link" href="https://www.youtube.com/@ClearMountainMonastery" target="_blank" rel="noopener">Watch &rarr;</a>
+    </div>
+
+    <div class="entry">
+      <p class="entry-title">Doug's Dharma</p>
+      <p class="entry-by">Doug Kraft — early Buddhist teachings, secular framing</p>
+      <p class="entry-note">Short videos relating early Buddhist teachings to ordinary life, from a scholarly but plainspoken, secular angle rather than a devotional one.</p>
+      <a class="entry-link" href="https://www.youtube.com/@DougsDharma" target="_blank" rel="noopener">Watch &rarr;</a>
+    </div>
+
+    <div class="entry">
+      <p class="entry-title">Buddha Speaks</p>
+      <p class="entry-by">The basics, explained simply</p>
+      <p class="entry-note">Short explanations of core Buddhist teachings in plain English. A good place to send someone just starting out, not a deep well for long-time practitioners.</p>
+      <a class="entry-link" href="https://www.youtube.com/@buddha_speaks" target="_blank" rel="noopener">Watch &rarr;</a>
+    </div>
+
+    <div class="entry">
+      <p class="entry-title">James Low</p>
+      <p class="entry-by">Dzogchen and Tibetan Buddhist teachings</p>
+      <p class="entry-note">A different tradition than the rest of this list — Tibetan Dzogchen rather than Theravada — but recorded seminars worth the time regardless of lineage.</p>
+      <a class="entry-link" href="https://www.youtube.com/@jameslow" target="_blank" rel="noopener">Watch &rarr;</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Faisal Henar</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.querySelectorAll('[data-menu]').forEach(function(menu){
+      var btn = menu.querySelector('[data-menu-btn]');
+      var panel = menu.querySelector('[data-menu-panel]');
+      function closeMenu(){
+        panel.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMenu(){
+        panel.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (panel.hidden) openMenu(); else closeMenu();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && !panel.hidden){
+          closeMenu();
+          btn.focus();
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

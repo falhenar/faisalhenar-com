@@ -101,7 +101,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   margin: 0 auto;
   padding: 0 32px 56px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);

@@ -32,8 +32,12 @@ that look oversized.
 
 ## Practice section specifics
 - `practice/index.html` is a hub linking to `reading.html`, `listening.html`,
-  `places.html`. A "Reflections" section is planned but not yet built —
-  don't assume its shape.
+  `watching.html`, `places.html` (in that order — I. through IV.). A
+  "Reflections" section is planned but not yet built — don't assume its shape.
+- `watching.html` lists YouTube channels only, no documentaries or embeds —
+  plain links in the same `.entry` pattern as `listening.html`. Don't add
+  YouTube embeds/iframes (third-party tracking) or thumbnail images
+  (copyright, and it'd be the only non-authored imagery on the site).
 - In `places.html`, Wat Chom Tong must stay first in the monasteries list;
   new entries go below it, not above.
 
