@@ -7,11 +7,8 @@ mode) can read and add to this file.
 
 ## Undecided / open questions
 
-- **Room III (homepage placeholder)** — no clear idea yet what this becomes.
-  Possibilities floated so far: a writing/blog section, project write-ups.
-  Not decided — don't build speculatively.
 - **"Reflections" section (practice/index.html footer says "coming later")**
-  — same situation, undecided.
+  — undecided, not built yet.
 
 ## To revisit later
 
@@ -36,3 +33,7 @@ mode) can read and add to this file.
 
 - Repo moved out of OneDrive to `C:\Dev\faisalhenar.com\faisalhenar-site`
   (July 2026) — do not move it back into a syncing service.
+- **Room III (homepage placeholder)** — removed (July 2026). Nothing concrete
+  was pulling at it, and an empty labeled door read as unfinished rather than
+  quiet. Homepage is now two rooms (Practice, Photography). Revisit only if
+  something real comes up — don't rebuild speculatively.

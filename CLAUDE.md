@@ -55,11 +55,6 @@ that look oversized.
 - No `.github/workflows/` currently. Don't add GitHub Actions unless
   explicitly asked — this is a deliberately simple, low-maintenance setup.
 
-## Homepage placeholder
-"Room III" on the homepage is an intentional placeholder for a future
-section (undecided — possibly writing/blog, possibly project pages). Don't
-fill it in speculatively.
-
 ## What NOT to do
 - Don't introduce a build step, bundler, or framework (React, Vue, static
   site generator, etc.) without being explicitly asked. This is a plain

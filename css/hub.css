@@ -213,21 +213,6 @@ a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .room.door-practice .room-illustration svg{ stroke: #4B5842; }
 
-.room.future{
-  background: transparent;
-  border-style: dashed;
-  align-items: center;
-  justify-content: center;
-  min-height: 340px;
-}
-.room.future .room-dek{
-  margin: 0;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  max-width: none;
-}
-
 @media (max-width: 680px){
   .rooms{ grid-template-columns: 1fr; padding-top: 40px; }
   .room{ min-height: unset; }
