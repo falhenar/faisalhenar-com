@@ -1,0 +1,23 @@
+# Line endings
+#
+# Store every text file with LF in the repository, and check it out with LF,
+# regardless of what the local editor writes. Added August 2026, after an
+# editor rewrote the whole tree as CRLF and git read it as 1,894 changed
+# lines across 14 files — which would have buried a real 81-line change and
+# ruined `git blame` on those files.
+#
+# If this ever looks wrong again, `git diff --ignore-cr-at-eol` shows the real
+# change underneath the noise.
+
+* text=auto eol=lf
+
+# Binary: never convert, never diff as text.
+*.jpg   binary
+*.jpeg  binary
+*.png   binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.pdf   binary
+*.woff  binary
+*.woff2 binary
