@@ -344,6 +344,94 @@ a:focus-visible, button:focus-visible{
 }
 .roll .exposure.is-color .pic img{ filter: none; }
 
+/* ---------- end of roll ---------- */
+.roll-end{
+  margin: 0 32px;
+  padding: 56px 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+/* display:flex would otherwise beat the hidden attribute. */
+.roll-end[hidden]{ display: none; }
+.roll-end .end-mark{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Short rules either side of the marker, like the tail of a film strip. */
+.roll-end .end-mark::before,
+.roll-end .end-mark::after{
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--line);
+}
+.roll-end .next-album{
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  max-width: 100%;
+}
+.roll-end .next-album .thumb{
+  width: 84px;
+  flex: none;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--bg-raised);
+}
+.roll-end .next-album .thumb img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05);
+  transform: scale(1.0);
+  transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+  display: block;
+}
+.roll-end .next-album.is-color .thumb img{ filter: none; }
+.roll-end .next-album:hover .thumb img,
+.roll-end .next-album:focus-visible .thumb img{ transform: scale(1.045); }
+.roll-end .next-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+.roll-end .next-title{
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  display: block;
+}
+.roll-end .next-album:hover .next-title{ color: var(--accent); }
+.roll-end .next-count{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  display: block;
+  margin-top: 6px;
+}
+.roll-end .all-albums{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.roll-end .all-albums:hover,
+.roll-end .all-albums:focus-visible{ color: var(--accent); }
+
 /* ---------- lightbox ---------- */
 .lightbox{
   position: fixed;
@@ -451,4 +539,9 @@ a:focus-visible, button:focus-visible{
   .site-header, .intro, .site-footer, .album-header{ padding-left: 16px; padding-right: 16px; }
   .lightbox .lightbox-nav{ font-size: 1.4rem; padding: 12px 10px; }
   .lightbox-controls{ padding: 10px 8px; }
+  .roll-end{ margin: 0 16px; padding: 44px 0 8px; gap: 32px; }
+  .roll-end .end-mark::before,
+  .roll-end .end-mark::after{ width: 24px; }
+  .roll-end .next-album{ gap: 14px; }
+  .roll-end .next-album .thumb{ width: 68px; }
 }

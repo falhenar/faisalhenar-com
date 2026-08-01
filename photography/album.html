@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Photography — Faisal Henar">
 <meta name="twitter:description" content="A quiet, unhurried record of things worth looking at twice, organized by set.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -55,6 +55,10 @@
     <!-- exposures rendered here by js/render-album.js -->
   </main>
 
+  <nav class="roll-end" id="roll-end" aria-label="Album navigation">
+    <!-- end-of-roll marker and next album rendered here by js/render-album.js -->
+  </nav>
+
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
     <div class="lightbox-stage" id="lightbox-stage">
       <img id="lightbox-img" src="" alt="">
@@ -75,7 +79,7 @@
   <div class="sprocket-strip bottom" aria-hidden="true"></div>
 
   <script src="js/config.js"></script>
-  <script src="js/render-album.js?v=2"></script>
+  <script src="js/render-album.js?v=4"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="../js/menu.js?v=1"></script>
 </body>

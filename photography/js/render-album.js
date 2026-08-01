@@ -4,6 +4,7 @@
   const album = ALBUMS.find(function(a){ return a.slug === slug; });
 
   const roll = document.getElementById('roll');
+  const rollEnd = document.getElementById('roll-end');
   const titleEl = document.getElementById('album-title');
   const metaEl = document.getElementById('album-meta');
 
@@ -11,6 +12,7 @@
     titleEl.textContent = 'Album not found';
     metaEl.textContent = 'Check the link, or go back to all albums.';
     document.title = 'Album not found · Faisal Henar Photography';
+    if (rollEnd) rollEnd.hidden = true;
     return;
   }
 
@@ -31,6 +33,48 @@
     `;
     roll.appendChild(exposure);
   });
+
+  // End of roll: a closing marker, then the next album in ALBUMS order.
+  // Deliberately does not wrap around — the last album ends on "all albums"
+  // rather than looping back to the first.
+  (function renderRollEnd(){
+    if (!rollEnd) return;
+
+    function esc(s){
+      return String(s).replace(/[&<>"]/g, function(c){
+        return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+      });
+    }
+
+    const mark = document.createElement('p');
+    mark.className = 'end-mark';
+    mark.textContent = 'End of roll · ' + String(album.photos.length).padStart(2, '0') + ' frames';
+    rollEnd.appendChild(mark);
+
+    const pos = ALBUMS.indexOf(album);
+    const next = (pos > -1 && pos < ALBUMS.length - 1) ? ALBUMS[pos + 1] : null;
+
+    if (next) {
+      const a = document.createElement('a');
+      a.className = 'next-album' + (next.color ? ' is-color' : '');
+      a.href = 'album.html?a=' + encodeURIComponent(next.slug);
+      a.innerHTML = `
+        <span class="thumb"><img src="${esc(next.photos[0])}" alt="" loading="lazy"></span>
+        <span class="next-text">
+          <span class="next-label">Next album</span>
+          <span class="next-title">${esc(next.title)}</span>
+          <span class="next-count">${next.photos.length} frames</span>
+        </span>
+      `;
+      rollEnd.appendChild(a);
+    }
+
+    const all = document.createElement('a');
+    all.className = 'all-albums';
+    all.href = 'index.html';
+    all.textContent = next ? 'All albums' : '← All albums';
+    rollEnd.appendChild(all);
+  })();
 
   // Lightbox behavior, with previous/next (non-looping)
   const lightbox = document.getElementById('lightbox');
@@ -141,23 +185,45 @@
     if (e.target === lightboxStage) closeLightbox();
   });
 
-  document.addEventListener('keydown', function(e){
-    if (!lightbox.classList.contains('is-open')) return;
+  // Capture phase, so nothing lower in the tree can swallow these keys before
+  // we see them. Bound to window as well as document: when the lightbox is the
+  // native fullscreen element, some browsers route key events there first.
+  function onKeydown(e){
+    // Bound twice (window + document), so ignore the second sighting of an event.
+    if (e.lightboxSeen) return;
+    e.lightboxSeen = true;
 
-    if (e.key === 'Escape'){
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+
+    // e.key is normalised here because older engines report "Left"/"Right"/"Esc".
+    var key = e.key;
+    if (key === 'Left') key = 'ArrowLeft';
+    if (key === 'Right') key = 'ArrowRight';
+    if (key === 'Esc') key = 'Escape';
+
+    if (key === 'Escape'){
       // In native fullscreen the browser handles Escape itself; don't also close.
-      if (!fsElement()) closeLightbox();
+      if (!fsElement()) { e.preventDefault(); closeLightbox(); }
       return;
     }
-    if (e.key === 'f' || e.key === 'F'){
-      if (fsEnabled) toggleFullscreen();
+    if (key === 'f' || key === 'F'){
+      if (fsEnabled) { e.preventDefault(); toggleFullscreen(); }
       return;
     }
-    if (e.key === 'ArrowLeft' && currentIndex > 0) showAt(currentIndex - 1);
-    if (e.key === 'ArrowRight' && currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
+    if (key === 'ArrowLeft'){
+      e.preventDefault();  // otherwise the page also tries to scroll
+      if (currentIndex > 0) showAt(currentIndex - 1);
+      return;
+    }
+    if (key === 'ArrowRight'){
+      e.preventDefault();
+      if (currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
+      return;
+    }
 
     // Keep Tab inside the dialog while it is open.
-    if (e.key === 'Tab'){
+    if (key === 'Tab'){
       const focusable = Array.prototype.filter.call(
         lightbox.querySelectorAll('button:not([disabled]):not([hidden])'),
         function(el){ return el.offsetParent !== null; }
@@ -171,7 +237,9 @@
         e.preventDefault(); first.focus();
       }
     }
-  });
+  }
+  document.addEventListener('keydown', onKeydown, true);
+  window.addEventListener('keydown', onKeydown, true);
 
   // Swipe navigation (touch devices)
   var touchStartX = 0, touchStartY = 0;

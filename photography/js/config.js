@@ -16,6 +16,12 @@
   color  -> true shows the album's photos in their original color; false
             (default) applies the site's black & white treatment.
   photos -> array of filenames that live inside photos/<slug>/
+
+  ORDER MATTERS. The order of this array is the order albums appear on the
+  photography index, and it is also the reading order: the end of each album
+  links to the next one below it here. Reordering these blocks reorders the
+  path a visitor takes through the work, so do it deliberately. The last
+  album has no "next" — it ends on a link back to all albums.
 */
 
 const ALBUMS = [
