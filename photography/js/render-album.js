@@ -129,9 +129,33 @@
     lightboxImg.alt = labelFor(i);
     lightboxImg.classList.toggle('is-color', !!album.color);
     lightboxCaption.innerHTML = captionFor(i);
-    lightboxPrev.disabled = (i === 0);
-    lightboxNext.disabled = (i === album.photos.length - 1);
+
+    // Neither arrow is ever dead. At the two ends of the roll they stop
+    // advancing and start leaving: forward drops you at the end-of-roll block
+    // where the next album waits, back returns you to the top of the album.
+    const atStart = (i === 0);
+    const atEnd = (i === album.photos.length - 1);
+
+    lightboxPrev.classList.toggle('is-start', atStart);
+    lightboxPrev.setAttribute('aria-label', atStart ? 'Back to the top of the album' : 'Previous photo');
+    lightboxPrev.title = atStart ? 'Start of roll' : '';
+
+    lightboxNext.classList.toggle('is-end', atEnd);
+    lightboxNext.setAttribute('aria-label', atEnd ? 'End of roll — back to the album' : 'Next photo');
+    lightboxNext.title = atEnd ? 'End of roll' : '';
+
     preloadNeighbours(i);
+  }
+
+  // Right arrow, next button and left-swipe all come through here.
+  function goNext(){
+    if (currentIndex < album.photos.length - 1){ showAt(currentIndex + 1); return; }
+    closeLightbox({ to: 'end' });
+  }
+  // Left arrow, prev button and right-swipe.
+  function goPrev(){
+    if (currentIndex > 0){ showAt(currentIndex - 1); return; }
+    closeLightbox({ to: 'top' });
   }
 
   function openLightbox(i){
@@ -143,13 +167,38 @@
     lightboxClose.focus();
   }
 
-  function closeLightbox(){
+  // Where the page should land once the viewer closes. Default is the thumbnail
+  // we came from; walking off either end of the roll lands somewhere onward
+  // instead. Focus moves with the scroll, or the two fight each other.
+  function landAt(where){
+    let anchor = null;
+    if (where === 'end' && rollEnd && !rollEnd.hidden) anchor = rollEnd;
+    if (where === 'top') anchor = document.querySelector('.album-header');
+    if (!anchor) return false;
+
+    const target = anchor.querySelector('a');
+    // preventScroll, so focus doesn't yank the page before we scroll it.
+    if (target){
+      try { target.focus({ preventScroll: true }); } catch (err) { target.focus(); }
+    }
+    // Leaving native fullscreen relays out the page; scroll on the next frame.
+    requestAnimationFrame(function(){
+      // No behavior passed: inherits scroll-behavior, which reduced motion turns off.
+      if (where === 'top') window.scrollTo({ top: 0 });
+      else anchor.scrollIntoView({ block: 'center' });
+    });
+    return true;
+  }
+
+  function closeLightbox(opts){
     if (fsElement()) exitFs();
     lightbox.classList.remove('is-open');
     lightbox.hidden = true;
     lightboxImg.src = '';
     document.body.style.overflow = '';
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
+
+    const landed = landAt(opts && opts.to);
+    if (!landed && lastFocused && lastFocused.focus) lastFocused.focus();
     lastFocused = null;
   }
 
@@ -172,14 +221,10 @@
     if (!btn) return;
     openLightbox(parseInt(btn.getAttribute('data-index'), 10));
   });
-  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxClose.addEventListener('click', function(){ closeLightbox(); });
   lightboxFs.addEventListener('click', toggleFullscreen);
-  lightboxPrev.addEventListener('click', function(){
-    if (currentIndex > 0) showAt(currentIndex - 1);
-  });
-  lightboxNext.addEventListener('click', function(){
-    if (currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
-  });
+  lightboxPrev.addEventListener('click', goPrev);
+  lightboxNext.addEventListener('click', goNext);
   // Clicking the empty space around the photo closes the viewer.
   lightboxStage.addEventListener('click', function(e){
     if (e.target === lightboxStage) closeLightbox();
@@ -213,12 +258,12 @@
     }
     if (key === 'ArrowLeft'){
       e.preventDefault();  // otherwise the page also tries to scroll
-      if (currentIndex > 0) showAt(currentIndex - 1);
+      goPrev();
       return;
     }
     if (key === 'ArrowRight'){
       e.preventDefault();
-      if (currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
+      goNext();
       return;
     }
 
@@ -254,6 +299,10 @@
     var dx = e.changedTouches[0].clientX - touchStartX;
     var dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
+    // Deliberately bounded, unlike the arrows and keys. A swipe is a continuous
+    // gesture that's easy to overshoot, and an unresponsive swipe leaves no dead
+    // control on screen the way a greyed-out arrow does. Swap in goNext/goPrev
+    // if you'd rather have it fully symmetric.
     if (dx < 0 && currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
     if (dx > 0 && currentIndex > 0) showAt(currentIndex - 1);
   }, { passive: true });

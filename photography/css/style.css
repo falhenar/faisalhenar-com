@@ -520,6 +520,22 @@ a:focus-visible, button:focus-visible{
 }
 .lightbox .lightbox-prev{ left: 4px; }
 .lightbox .lightbox-next{ right: 4px; }
+/* At either end of the roll the arrow leaves rather than advances. The bar
+   reads as the head or tail of the strip, so the change of job is visible
+   before it's clicked. */
+.lightbox .lightbox-next.is-end,
+.lightbox .lightbox-prev.is-start{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.lightbox .lightbox-next.is-end::after,
+.lightbox .lightbox-prev.is-start::before{
+  content: "";
+  width: 1px;
+  height: 0.8em;
+  background: currentColor;
+}
 .lightbox .lightbox-caption{
   position: absolute;
   bottom: 0; left: 0; right: 0;
