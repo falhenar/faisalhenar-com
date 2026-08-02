@@ -37,7 +37,11 @@
   function excerptMarkup(s){
     if (!s.excerpt) return '';
     var lines = s.excerpt.split('\n').map(function(line){ return line.trim(); }).filter(Boolean);
-    return '<blockquote class="reflections-excerpt">' + lines.join('<br>') + '</blockquote>';
+    return (
+      '<a class="reflections-excerpt-link" href="' + s.url + '" target="_blank" rel="noopener">' +
+        '<blockquote class="reflections-excerpt">' + lines.join('<br>') + '</blockquote>' +
+      '</a>'
+    );
   }
 
   function noteMarkup(s){

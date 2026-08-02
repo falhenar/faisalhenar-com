@@ -499,6 +499,23 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   margin: 14px 0 18px;
 }
 
+/* The excerpt itself links to the sutta — the same place the
+   "Read on SuttaCentral" link below the note goes. Kept subtle:
+   the left rule darkens, nothing moves. */
+.reflections-excerpt-link{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.reflections-excerpt-link:hover .reflections-excerpt,
+.reflections-excerpt-link:focus-visible .reflections-excerpt{
+  border-left-color: var(--ink);
+}
+.reflections-excerpt-link:focus-visible{
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .entry-source{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.68rem;
