@@ -55,9 +55,9 @@ const SUTTAS = [
     ref: "SN 3.25",
     translator: "sujato",
     url: "https://suttacentral.net/sn3.25/en/sujato",
-    excerpt: "",
-    note: "",
-    added: null
+    excerpt: "“I tell you, Great King, I announce to you: old age and death are advancing upon you. Since old age and death are advancing upon you, what would you do?”\n“Sir, what can I do but practice the teachings, practice morality, doing skillful and good actions?”",
+    note: "In our own way, we are all kings of our own little kingdoms. So often, we seem to believe that having the right friends, accumulating wealth, clinging to our possessions, or preserving our youth and beauty will somehow protect us from suffering. Yet we all know that we are subject to aging, sickness, and death. No mansion, no family, and no amount of money can protect us from these realities.\n\nEven though, on some level, we are all aware of these truths, we continue chasing our desires and running from our aversions. Yet no army can stop the forces of nature or alter the course that every human body is destined to follow.\n\nThen there is another trajectory, one that most of us cannot see: the unfolding of causes and conditions according to the natural law of kamma. These causes and conditions shape our past, present, and future experiences. Even if we have not yet developed the insight to perceive this directly, it already seems evident that wholesome actions can lead to beneficial results, even within this very lifetime.\n\nKnowing that this life is finite, why not devote ourselves to cultivating skillful qualities and living with integrity? Such efforts benefit both ourselves and those whose lives we touch.",
+    added: "2026-08-02"
   },
   {
     id: "itbw-1-1-3",
