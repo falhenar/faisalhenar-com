@@ -529,7 +529,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 
   .rooms-grid{ grid-template-columns: 1fr 1fr; }
   .room-card{ padding: 18px 14px; gap: 8px; }
-  .room-card .room-icon{ display: none; }
+  .room-card .room-icon{ width: 56px; margin: 4px 0 10px; }
   .room-card .room-card-title{ font-size: 1rem; min-height: auto; }
-  .room-card .room-card-dek{ font-size: 0.8rem; }
+  .room-card .room-card-dek{ display: none; }
 }
