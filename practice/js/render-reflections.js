@@ -2,13 +2,11 @@
   RENDER: REFLECTIONS
   --------------------
   Reads SUTTAS from suttas-config.js and renders published entries
-  (anything with a non-empty `note` and an `added` date) in two places:
-
-  1. #reflections-featured on practice/index.html — the single most
-     recent entry, hidden entirely if nothing has been published yet.
-  2. #reflections-list on practice/reflections.html — the full archive,
-     most recent first, with a plain empty-state message if nothing
-     has been published yet.
+  (anything with a non-empty `note` and an `added` date) into
+  #reflections-list on practice/reflections.html — the full archive,
+  most recent first, with a plain empty-state message if nothing has
+  been published yet. The reflection text itself sits behind a
+  <details> toggle, the same pattern as the teacher bios in places.html.
 
   `added` is expected as an ISO date string, e.g. "2026-08-03".
 */
@@ -47,7 +45,12 @@
   function noteMarkup(s){
     if (!s.note) return '';
     var paragraphs = s.note.split(/\n\s*\n/).map(function(p){ return p.trim(); }).filter(Boolean);
-    return paragraphs.map(function(p){ return '<p class="entry-note">' + p + '</p>'; }).join('');
+    return (
+      '<details class="entry-bio">' +
+        '<summary>Read the reflection</summary>' +
+        paragraphs.map(function(p){ return '<p>' + p + '</p>'; }).join('') +
+      '</details>'
+    );
   }
 
   function entryMarkup(s){
@@ -60,20 +63,6 @@
         '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
       '</article>'
     );
-  }
-
-  // --- Hub widget: practice/index.html ---
-  var featured = document.getElementById('reflections-featured');
-  if (featured) {
-    var entries = publishedEntries();
-    if (entries.length > 0) {
-      featured.innerHTML =
-        '<div class="reflections-eyebrow">Reflections</div>' +
-        entryMarkup(entries[0]) +
-        '<a class="reflections-more" href="reflections.html">Past entries &rarr;</a>';
-      featured.hidden = false;
-    }
-    // if nothing published yet, leave it hidden — no placeholder, no gap
   }
 
   // --- Archive page: practice/reflections.html ---

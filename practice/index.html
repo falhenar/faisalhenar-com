@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Readings, talks, and places that have shaped a Buddhist practice.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <meta name="description" content="Readings, talks, and places that inform a Buddhist practice.">
-<link rel="stylesheet" href="css/practice.css?v=17">
+<link rel="stylesheet" href="css/practice.css?v=18">
 </head>
 <body>
 
@@ -53,8 +53,23 @@
   </section>
 
   <main class="rooms-grid">
-    <a class="room-card" href="reading.html">
+    <a class="room-card" href="reflections.html">
       <div class="room-num mono">I.</div>
+      <svg class="room-icon" viewBox="0 0 120 170" aria-hidden="true">
+        <rect x="16" y="12" width="88" height="146" rx="3"></rect>
+        <line x1="32" y1="50" x2="88" y2="50"></line>
+        <line x1="32" y1="66" x2="88" y2="66"></line>
+        <line x1="32" y1="82" x2="66" y2="82"></line>
+        <circle class="fill-dot" cx="32" cy="106" r="3"></circle>
+        <line x1="44" y1="106" x2="88" y2="106"></line>
+      </svg>
+      <div class="room-card-title">Reflections &amp; Writings</div>
+      <p class="room-card-dek">Short reflections on suttas I return to.</p>
+      <div class="room-card-tag">Enter &rarr;</div>
+    </a>
+
+    <a class="room-card" href="reading.html">
+      <div class="room-num mono">II.</div>
       <svg class="room-icon" viewBox="0 0 120 170" aria-hidden="true">
         <rect x="16" y="12" width="88" height="146" rx="3"></rect>
         <path d="M60 71 C48 65 34 65 24 71 V99 C34 93 48 93 60 99 C72 93 86 93 96 99 V71 C86 65 72 65 60 71 Z"></path>
@@ -66,7 +81,7 @@
     </a>
 
     <a class="room-card" href="listening.html">
-      <div class="room-num mono">II.</div>
+      <div class="room-num mono">III.</div>
       <svg class="room-icon" viewBox="0 0 120 170" aria-hidden="true">
         <rect x="16" y="12" width="88" height="146" rx="3"></rect>
         <circle class="fill-dot" cx="42" cy="85" r="3.5"></circle>
@@ -80,7 +95,7 @@
     </a>
 
     <a class="room-card" href="watching.html">
-      <div class="room-num mono">III.</div>
+      <div class="room-num mono">IV.</div>
       <svg class="room-icon" viewBox="0 0 120 170" aria-hidden="true">
         <rect x="16" y="12" width="88" height="146" rx="3"></rect>
         <rect x="32" y="46" width="56" height="32" rx="2"></rect>
@@ -92,7 +107,7 @@
     </a>
 
     <a class="room-card" href="places.html">
-      <div class="room-num mono">IV.</div>
+      <div class="room-num mono">V.</div>
       <svg class="room-icon" viewBox="0 0 120 170" aria-hidden="true">
         <rect x="16" y="12" width="88" height="146" rx="3"></rect>
         <rect x="28" y="120" width="64" height="10" rx="1"></rect>
@@ -107,10 +122,6 @@
     </a>
   </main>
 
-  <section class="reflections-featured" id="reflections-featured" hidden>
-    <!-- rendered by js/render-reflections.js — stays hidden until a reflection exists -->
-  </section>
-
   <footer class="site-footer">
     <nav class="footer-nav" aria-label="More">
       <a href="../note.html">A note from me</a>
@@ -119,8 +130,6 @@
     <span>© <span id="year"></span> Faisal Henar</span>
   </footer>
 
-  <script src="js/suttas-config.js?v=2"></script>
-  <script src="js/render-reflections.js?v=3"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="../js/menu.js?v=1"></script>
 </body>
