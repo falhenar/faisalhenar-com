@@ -383,6 +383,14 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   border-bottom: 1px solid var(--line);
 }
 
+.section-dek{
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: -6px 0 22px;
+  max-width: 52ch;
+}
+
 .entry{
   padding: 22px 0;
   border-bottom: 1px solid var(--line);
