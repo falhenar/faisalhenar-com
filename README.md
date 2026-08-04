@@ -14,8 +14,9 @@ photography/           → the photography section
   css/, js/, photos/    → styling, logic, and your photo files
 
 practice/               → the Buddhism/practice section
-  index.html
-  css/
+  index.html            → hub linking to the five rooms
+  reflections.html, reading.html, listening.html, watching.html, places.html
+  css/, js/             → styling, and the configs the rooms render from
 ```
 
 Each section (photography, practice) is self-contained — its own css/js/photos
@@ -31,6 +32,7 @@ live inside its own folder. The homepage just links out to each one.
 ## 2. Connect your domain (faisalhenar.com)
 
 1. In the same repo, go to **Settings → Pages → Custom domain**, enter `faisalhenar.com`, and save.
+   This creates a `CNAME` file in the repo automatically — leave it, deleting it breaks the domain.
 2. On Namecheap's DNS settings, add:
    - Four **A records** (`@`) → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
    - One **CNAME record** (`www`) → `yourusername.github.io`
