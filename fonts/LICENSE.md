@@ -1,13 +1,6 @@
 # Fonts
 
-The `.woff2` files in this folder are self-hosted rather than loaded from
-Google Fonts, so that visiting a page on this site does not make a request
-to a third party. They were taken from Google Fonts in August 2026 and
-subset to `latin` + `latin-ext` only — `latin-ext` is needed for Pali
-diacritics such as `ā`.
-
-All five families are licensed under the SIL Open Font License, Version 1.1,
-which permits redistribution provided this notice travels with the files.
+Self-hosted from Google Fonts (August 2026), subsetted to `latin` + `latin-ext` for Pali diacritics. Licensed under SIL Open Font License 1.1.
 
 | Family | Copyright | Upstream |
 |---|---|---|

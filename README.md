@@ -23,32 +23,18 @@ live inside its own folder. The homepage just links out to each one.
 
 ## 1. Put it on GitHub Pages (free hosting)
 
-1. Go to github.com and create a free account if you don't have one.
-2. Create a new repository. Name it exactly: `faisalhenar-com` (or anything you like).
-3. Upload all the files/folders from this project into that repository
-   (there's an "Add file → Upload files" button on the repo page — you can
-   drag the whole folder in).
-4. In the repository, go to **Settings → Pages**.
-5. Under "Source", choose the `main` branch and `/ (root)`, then Save.
-6. GitHub will give you a link like `https://yourusername.github.io/faisalhenar-com`
-   — that's your site, live. It can take a minute or two to appear.
+1. Create a repository named `faisalhenar-com` and upload all files.
+2. Go to **Settings → Pages**.
+3. Under "Source", choose the `main` branch and `/ (root)`, then Save.
+4. GitHub provides a live link (takes 1–2 minutes to appear).
 
 ## 2. Connect your domain (faisalhenar.com)
 
-1. In the same repo, go to **Settings → Pages → Custom domain**, and type
-   `faisalhenar.com`. Save.
-2. This creates a file called `CNAME` in your repo automatically — leave it.
-3. Go to where you bought the domain (Namecheap) → your domain's **DNS settings**.
-4. Add these records (Namecheap calls this "Advanced DNS"):
-   - Four **A records**, host `@`, pointing to:
-     185.199.108.153
-     185.199.109.153
-     185.199.110.153
-     185.199.111.153
-   - One **CNAME record**, host `www`, pointing to `yourusername.github.io`
-5. DNS changes can take up to a few hours to fully activate. Once it does,
-   back in GitHub Pages settings, tick **"Enforce HTTPS"** so your site loads
-   securely (padlock icon).
+1. In the same repo, go to **Settings → Pages → Custom domain**, enter `faisalhenar.com`, and save.
+2. On Namecheap's DNS settings, add:
+   - Four **A records** (`@`) → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+   - One **CNAME record** (`www`) → `yourusername.github.io`
+3. DNS activates in a few hours. Then tick **"Enforce HTTPS"** in GitHub Pages settings.
 
 ## 3. Add your own albums
 
@@ -94,12 +80,8 @@ share the whole homepage. The `a=` part matches the album's `slug` in
 
 ## Before pushing changes live
 
-There's no build step or CI, so whatever you push to `main` is live within a
-minute or two. Before running `git push`:
+There's no build step, so changes go live immediately. Before pushing:
 
-1. Open the changed page(s) locally in a browser (double-click the .html
-   file, or use a local server) — check it actually looks right.
-2. If you changed `config.js` (added a photo/album), double-check the file
-   paths match real filenames — a typo here fails silently (broken image,
-   not an error).
-3. Then commit and push.
+1. Open changed pages locally and verify they display correctly.
+2. If you changed `config.js`, check file paths match real filenames (typos fail silently).
+3. Commit and push.
