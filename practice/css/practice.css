@@ -523,9 +523,53 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--accent);
 }
 
+/* ---------- quote of the moment ---------- */
+.quote-featured{
+  max-width: 620px;
+  margin: 0 auto 48px;
+  padding: 32px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-raised);
+}
+
+.quote-text{
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 18px;
+  max-width: 55ch;
+}
+
+.quote-attr{
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* the source line keeps its own case — book titles, talk dates and
+   translator credits are too long to read shouted in caps */
+.quote-source{
+  font-size: 0.68rem;
+  line-height: 1.55;
+  color: var(--muted);
+  opacity: 0.8;
+  margin: 5px 0 0;
+  max-width: 52ch;
+}
+.quote-source[hidden]{ display: none; }
+
 @media (max-width: 640px){
   .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }
   .room-header, .back-link, .room-title, .room-dek{ padding-left: 20px; padding-right: 20px; }
+
+  /* the block has no side padding of its own to inherit, so it gets
+     the same 20px gutter the other hub blocks fall back to */
+  .quote-featured{ margin: 0 20px 40px; padding: 24px 18px; }
+  .quote-text{ font-size: 1.05rem; }
 
   .rooms-grid{ grid-template-columns: 1fr 1fr; }
   .room-card{ padding: 18px 14px; gap: 8px; }

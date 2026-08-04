@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Readings, talks, and places that have shaped a Buddhist practice.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <meta name="description" content="Readings, talks, and places that inform a Buddhist practice.">
-<link rel="stylesheet" href="css/practice.css?v=18">
+<link rel="stylesheet" href="css/practice.css?v=19">
 </head>
 <body>
 
@@ -50,6 +50,12 @@
   <section class="intro">
     <h1>A few things that have shaped the practice.</h1>
     <p>Not a teaching page, just a small, honest list of places, people, and words I keep returning to. A few small rooms, each holding one part of it.</p>
+  </section>
+
+  <section class="quote-featured" id="quote-featured">
+    <blockquote class="quote-text" id="quote-text"></blockquote>
+    <p class="quote-attr mono" id="quote-attr"></p>
+    <p class="quote-source mono" id="quote-source"></p>
   </section>
 
   <main class="rooms-grid">
@@ -132,5 +138,7 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="../js/menu.js?v=1"></script>
+  <script src="js/quotes-config.js?v=1"></script>
+  <script src="js/render-quotes.js?v=1"></script>
 </body>
 </html>
