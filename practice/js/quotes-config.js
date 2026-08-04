@@ -26,10 +26,12 @@
     Investigator" (Winter 2007).
   - Some Ajahn Chah and Ajahn Sumedho lines are cross-checked against
     Abhayagiri's Ajahn Pasanno Archive, which transcribes from audio.
-  - Widely-circulated Ajahn Chah "internet quotes" that couldn't be traced
-    to a primary printed source were left out rather than risk a
-    misattribution. "Food for the Heart" and "A Still Forest Pool" are the
-    reliable anthologies to draw more from.
+  - Quotes that couldn't be traced to a primary source were left out
+    rather than carry a vague credit — including several widely-circulated
+    lines that are almost certainly genuine but unplaceable. Better a
+    shorter list than one that cites "teachings of X". "Food for the Heart"
+    and "A Still Forest Pool" are the reliable Ajahn Chah anthologies to
+    draw more from.
   - No Bhikkhu Bodhi translation in this batch — worth adding properly
     later rather than guessing at wording.
 */
@@ -67,7 +69,7 @@ const QUOTES = [
     themes: ["wisdom", "humility"]
   },
   {
-    text: "Health is the highest gain, contentment the greatest wealth; a trustworthy person is the best kinsman, Nibbana the highest bliss.",
+    text: "Health is the most precious gain and contentment the greatest wealth. A trustworthy person is the best kinsman, Nibbana the highest bliss.",
     author: "The Buddha",
     source: "Dhammapada, v. 204, trans. Acharya Buddharakkhita",
     themes: ["contentment", "gratitude"]
@@ -85,9 +87,9 @@ const QUOTES = [
     themes: ["simplicity", "wisdom", "mindfulness"]
   },
   {
-    text: "Conquer anger with non-anger. Conquer badness with goodness. Conquer meanness with generosity, and lies with truth.",
+    text: "Overcome the angry by non-anger; overcome the wicked by goodness; overcome the miser by generosity; overcome the liar by truth.",
     author: "The Buddha",
-    source: "Dhammapada, v. 223, trans. Thanissaro Bhikkhu",
+    source: "Dhammapada, v. 223, trans. Acharya Buddharakkhita",
     themes: ["compassion", "wisdom"]
   },
   {
@@ -99,7 +101,7 @@ const QUOTES = [
   {
     text: "Just as the great ocean has one taste, the taste of salt, so too this Dhamma and Discipline has one taste: the taste of liberation.",
     author: "The Buddha",
-    source: "Udāna 5.5",
+    source: "Udāna 5.5, trans. John D. Ireland",
     themes: ["wisdom", "suffering-liberation"]
   },
 
@@ -141,12 +143,6 @@ const QUOTES = [
     themes: ["suffering-liberation", "wisdom"]
   },
   {
-    text: "We are all just visitors to this time, this place. We are just passing through. Our stay is short and the moment of our departure uncertain.",
-    author: "Ajahn Chah",
-    source: "Widely reproduced reflection, Wat Pah Nanachat teachings",
-    themes: ["impermanence", "gratitude"]
-  },
-  {
     text: "Enlightenment is not something you can find by searching. It's a matter of stopping.",
     author: "Ajahn Chah",
     source: "A Still Forest Pool",
@@ -168,12 +164,6 @@ const QUOTES = [
   },
 
   // ---- Ajahn Brahm --------------------------------------------------------
-  {
-    text: "If you know how to let go and be at peace, you know everything you need to know about living in the world.",
-    author: "Ajahn Brahm",
-    source: "Public teaching, widely reproduced by the Buddhist Society of Western Australia",
-    themes: ["letting-go", "contentment"]
-  },
   {
     text: "Careful patience is the fastest way!",
     author: "Ajahn Brahm",
@@ -257,12 +247,6 @@ const QUOTES = [
     themes: ["gratitude", "contentment"]
   },
   {
-    text: "Smile, breathe, and go slowly.",
-    author: "Thich Nhat Hanh",
-    source: "Widely repeated teaching phrase from his talks and writings",
-    themes: ["simplicity", "mindfulness"]
-  },
-  {
     text: "The most precious gift we can offer others is our presence.",
     author: "Thich Nhat Hanh",
     source: "Peace Is Every Step",
@@ -277,7 +261,7 @@ const QUOTES = [
   {
     text: "Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.",
     author: "Thich Nhat Hanh",
-    source: "Teaching verse (gatha), widely published in his writings",
+    source: "Being Peace",
     themes: ["mindfulness", "impermanence"]
   },
   {
@@ -285,12 +269,6 @@ const QUOTES = [
     author: "Thich Nhat Hanh",
     source: "Peace Is Every Step",
     themes: ["ordinary-life", "contentment"]
-  },
-  {
-    text: "When you love someone, the best thing you can offer is your presence.",
-    author: "Thich Nhat Hanh",
-    source: "Being Peace",
-    themes: ["compassion", "mindfulness"]
   },
   {
     text: "Breathing in, I calm body and mind. Breathing out, I smile.",
@@ -351,7 +329,7 @@ const QUOTES = [
   {
     text: "Attention is the rarest and purest form of generosity.",
     author: "Simone Weil",
-    source: "Gravity and Grace",
+    source: "Letter to Joë Bousquet, 13 April 1942",
     themes: ["compassion", "mindfulness"]
   },
   {
