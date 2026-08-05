@@ -11,7 +11,7 @@
       <div class="frame-id mono">FH · ${num}</div>
       <a class="thumb-link" href="album.html?a=${encodeURIComponent(album.slug)}" aria-label="Open album: ${album.title}">
         <div class="thumb">
-          <img src="${cover}" alt="" loading="lazy">
+          <img src="${cfImage(cover, 800)}" alt="" loading="lazy">
         </div>
       </a>
       <div class="meta">

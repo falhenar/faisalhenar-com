@@ -28,7 +28,7 @@
     exposure.innerHTML = `
       <button type="button" data-index="${i}" aria-label="Enlarge photo ${num}">
         <span class="frame-id mono">${label}</span>
-        <span class="pic"><img src="${src}" alt="" loading="lazy"></span>
+        <span class="pic"><img src="${cfImage(src, 700)}" alt="" loading="lazy"></span>
       </button>
     `;
     roll.appendChild(exposure);
@@ -59,7 +59,7 @@
       a.className = 'next-album' + (next.color ? ' is-color' : '');
       a.href = 'album.html?a=' + encodeURIComponent(next.slug);
       a.innerHTML = `
-        <span class="thumb"><img src="${esc(next.photos[0])}" alt="" loading="lazy"></span>
+        <span class="thumb"><img src="${esc(cfImage(next.photos[0], 300))}" alt="" loading="lazy"></span>
         <span class="next-text">
           <span class="next-label">Next album</span>
           <span class="next-title">${esc(next.title)}</span>
@@ -119,13 +119,13 @@
     [i - 1, i + 1].forEach(function(n){
       if (n < 0 || n >= album.photos.length) return;
       const img = new Image();
-      img.src = album.photos[n];
+      img.src = cfImage(album.photos[n], 2000);
     });
   }
 
   function showAt(i){
     currentIndex = i;
-    lightboxImg.src = album.photos[i];
+    lightboxImg.src = cfImage(album.photos[i], 2000);
     lightboxImg.alt = labelFor(i);
     lightboxImg.classList.toggle('is-color', !!album.color);
     lightboxCaption.innerHTML = captionFor(i);
