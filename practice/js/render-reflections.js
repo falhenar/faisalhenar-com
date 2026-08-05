@@ -5,8 +5,10 @@
   (anything with a non-empty `note` and an `added` date) into
   #reflections-list on practice/reflections.html — the full archive,
   most recent first, with a plain empty-state message if nothing has
-  been published yet. The reflection text itself sits behind a
-  <details> toggle, the same pattern as the teacher bios in places.html.
+  been published yet. Each entry collapses to its title and byline;
+  opening it reveals the excerpt, the reflection and the source link.
+  Same <details> pattern as the teacher bios in places.html, just
+  scaled up to cover the whole entry.
 
   `added` is expected as an ISO date string, e.g. "2026-08-03".
 */
@@ -45,22 +47,27 @@
   function noteMarkup(s){
     if (!s.note) return '';
     var paragraphs = s.note.split(/\n\s*\n/).map(function(p){ return p.trim(); }).filter(Boolean);
-    return (
-      '<details class="entry-bio">' +
-        '<summary>Read the reflection</summary>' +
-        paragraphs.map(function(p){ return '<p>' + p + '</p>'; }).join('') +
-      '</details>'
-    );
+    return paragraphs.map(function(p){
+      return '<p class="reflection-note">' + p + '</p>';
+    }).join('');
   }
 
   function entryMarkup(s){
     return (
       '<article class="entry reflection-entry">' +
-        '<p class="entry-title">' + s.title + '</p>' +
-        '<p class="entry-by mono">' + fmtMeta(s) + '</p>' +
-        excerptMarkup(s) +
-        noteMarkup(s) +
-        '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
+        '<details class="reflection">' +
+          '<summary>' +
+            '<span class="reflection-head">' +
+              '<span class="entry-title">' + s.title + '</span>' +
+              '<span class="entry-by mono">' + fmtMeta(s) + '</span>' +
+            '</span>' +
+          '</summary>' +
+          '<div class="reflection-body">' +
+            excerptMarkup(s) +
+            noteMarkup(s) +
+            '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
+          '</div>' +
+        '</details>' +
       '</article>'
     );
   }
