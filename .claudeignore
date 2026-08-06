@@ -1,0 +1,7 @@
+# Binary assets — never useful in text context, only referenced by path
+# from config.js / suttas-config.js / quotes-config.js.
+photography/photos/**
+fonts/**
+images/*.png
+favicon.ico
+apple-touch-icon.png
