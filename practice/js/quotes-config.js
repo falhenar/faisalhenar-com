@@ -141,6 +141,70 @@ const QUOTES = [
     themes: ["wisdom", "mindfulness"]
   },
 
+  // ---- Nāgārjuna ----------------------------------------------------------
+  {
+    text: "There is not the slightest difference between cyclic existence and nirvana. There is not the slightest difference between nirvana and cyclic existence.",
+    author: "Nāgārjuna",
+    source: "Mūlamadhyamakakārikā, Ch. 25, v.19, trans. Jay L. Garfield, \"The Fundamental Wisdom of the Middle Way\" (Oxford University Press, 1995)",
+    themes: ["wisdom", "letting-go"]
+  },
+
+  // ---- Śāntideva ------------------------------------------------------------
+  {
+    text: "All the joy the world contains has come through wishing happiness for others. All the misery the world contains has come through wanting pleasure for oneself.",
+    author: "Śāntideva",
+    source: "The Way of the Bodhisattva, Ch. 8, v.129, trans. Padmakara Translation Group (Shambhala Publications, revised ed. 2006)",
+    themes: ["compassion", "wisdom"]
+  },
+
+  // ---- Asaṅga ---------------------------------------------------------------
+  {
+    text: "All conscious objects are only constructs of consciousness because there are no external objects. They are like a dream.",
+    author: "Asaṅga",
+    source: "The Summary of the Great Vehicle (Mahāyānasaṃgraha), Ch. II.6, trans. John P. Keenan (Numata Center for Buddhist Translation and Research, rev. 2nd ed. 2003)",
+    themes: ["wisdom", "impermanence"]
+  },
+
+  // ---- Vasubandhu -----------------------------------------------------------
+  {
+    text: "He has, in an absolute manner, destroyed all blindness; He has drawn out the world from the mire of transmigration: I render homage to Him, to this teacher of truth, before composing the treatise called the Abhidharmakosa.",
+    author: "Vasubandhu",
+    source: "Abhidharmakośabhāṣyam, Ch. 1, v.1, trans. Louis de La Vallée Poussin / Leo M. Pruden (Asian Humanities Press, 1991)",
+    themes: ["humility", "wisdom"]
+  },
+
+  // ---- Bodhidharma ----------------------------------------------------------
+  {
+    text: "To find a buddha, you have to see your nature. Whoever sees his or her nature is a buddha.",
+    author: "Bodhidharma",
+    source: "The Zen Teaching of Bodhidharma, \"Bloodstream Sermon,\" trans. Red Pine (North Point Press, 1987)",
+    themes: ["wisdom", "simplicity"]
+  },
+
+  // ---- Huineng --------------------------------------------------------------
+  {
+    text: "Bodhi originally has no tree, the mirror also has no stand. Buddha nature is always clean and pure; where is there room for dust?",
+    author: "Huineng",
+    source: "The Platform Sutra of the Sixth Patriarch, trans. Philip B. Yampolsky (Columbia University Press, 1967)",
+    themes: ["impermanence", "letting-go"]
+  },
+
+  // ---- Huangbo --------------------------------------------------------------
+  {
+    text: "All the Buddhas and all sentient beings are nothing but the One Mind, beside which nothing exists.",
+    author: "Huangbo",
+    source: "The Zen Teaching of Huang Po: On the Transmission of Mind, trans. John Blofeld (Grove Press, 1958)",
+    themes: ["wisdom", "simplicity"]
+  },
+
+  // ---- Linji ----------------------------------------------------------------
+  {
+    text: "On your lump of red flesh is a true man without rank who is always going in and out of the face of every one of you. Those who have not yet confirmed this, look, look!",
+    author: "Linji",
+    source: "The Record of Linji, trans. Ruth Fuller Sasaki, ed. Thomas Yūhō Kirchner (University of Hawai'i Press, 2009)",
+    themes: ["ordinary-life", "wisdom"]
+  },
+
   // ---- Ajahn Chah -------------------------------------------------------
   {
     text: "If you let go a little, you will have a little peace. If you let go a lot, you will have a lot of peace. And if you let go completely, you will have complete peace.",
@@ -283,6 +347,46 @@ const QUOTES = [
     themes: ["letting-go", "wisdom"]
   },
 
+  // ---- Ajahn Liem Thitadhammo ------------------------------------------
+  {
+    text: "We should see and understand that nothing is ours. Nothing belongs to us.",
+    author: "Ajahn Liem Thitadhammo",
+    source: "\"The Lightness of Letting Go,\" Dhamma talk at Dhammagiri Forest Hermitage, trans. Alex Oliver (15 March 2023)",
+    themes: ["letting-go", "wisdom"]
+  },
+
+  // ---- Ajahn Pasanno -----------------------------------------------------
+  {
+    text: "There's no way that you can have anger and resentment and feel peaceful and happy.",
+    author: "Ajahn Pasanno",
+    source: "Thanksgiving Retreat 2010, Session 1 (Nov. 20, 2010), The Ajahn Pasanno Question and Story Archive, Abhayagiri Buddhist Monastery",
+    themes: ["letting-go", "suffering-liberation"]
+  },
+
+  // ---- Ajahn Ñāṇadhammo ----------------------------------------------------
+  {
+    text: "This condition, this experience, this happiness or suffering is impermanent; this, too, will change.",
+    author: "Ajahn Ñāṇadhammo",
+    source: "\"The Power of Faith,\" Dhamma talk at Wat Pah Nanachat, 27 September 2002 (Wat Pah Nanachat, 2003)",
+    themes: ["impermanence", "letting-go"]
+  },
+
+  // ---- Ajahn Maha Bua -----------------------------------------------------
+  {
+    text: "Don't simply sit and keep on sitting, or walk and keep on walking. You have to remember to notice what results and benefits you get from your efforts as well.",
+    author: "Ajahn Maha Bua",
+    source: "Things As They Are: A Collection of Talks on the Training of the Mind, trans. Thanissaro Bhikkhu (Forest Dhamma Books)",
+    themes: ["mindfulness", "wisdom"]
+  },
+
+  // ---- Ajahn Tate -----------------------------------------------------------
+  {
+    text: "All dhammas exist here, within each of us and the one that knows Dhamma is the heart or mind.",
+    author: "Ajahn Tate",
+    source: "The Autobiography of a Forest Monk, \"Parents' Life Story,\" trans. Bhikkhu Ariyesako (1996)",
+    themes: ["wisdom", "mindfulness"]
+  },
+
   // ---- Mahasi Sayadaw -----------------------------------------------------
   {
     text: "As ultimate reality emerges, concepts submerge. As concepts emerge, ultimate reality submerges.",
@@ -301,6 +405,22 @@ const QUOTES = [
     author: "Mahasi Sayadaw",
     source: "Practical Insight Meditation: Basic and Progressive Stages, Preface",
     themes: ["suffering-liberation", "wisdom"]
+  },
+
+  // ---- Sayadaw U Pandita -----------------------------------------------
+  {
+    text: "We do not practice meditation to gain admiration from anyone. Rather, we practice to contribute to peace in the world.",
+    author: "Sayadaw U Pandita",
+    source: "In This Very Life: Liberation Teachings of the Buddha, \"Basic Morality & Meditation Instructions\" (Wisdom Publications, 1992)",
+    themes: ["humility", "compassion"]
+  },
+
+  // ---- Sayadaw U Silananda -----------------------------------------------
+  {
+    text: "Mindfulness is something like a stone hitting a wall.",
+    author: "Sayadaw U Silananda",
+    source: "The Four Foundations of Mindfulness, Introduction (Wisdom Publications, 2002)",
+    themes: ["mindfulness"]
   },
 
   // ---- Sayadaw U Tejaniya --------------------------------------------------
@@ -443,6 +563,14 @@ const QUOTES = [
     themes: ["mindfulness", "wisdom"]
   },
 
+  // ---- Bhikkhu Ñāṇamoli -----------------------------------------------------
+  {
+    text: "A guiding principle—the foremost, in fact—has throughout been avoidance of misrepresentation or distortion; for the ideal translation (which has yet to be made) should, like a looking glass, not discolour or blur or warp the original which it reflects.",
+    author: "Bhikkhu Ñāṇamoli",
+    source: "The Path of Purification (Visuddhimagga), Translator's Preface, trans. Bhikkhu Ñāṇamoli (Buddhist Publication Society, 1956)",
+    themes: ["humility", "wisdom"]
+  },
+
   // ---- Bhikkhu Analayo ---------------------------------------------------
   {
     text: "In the end, however, all four satipaṭṭhānas partake of the same essence. Each of them leads to realisation, like different gateways leading to the same city.",
@@ -457,6 +585,14 @@ const QUOTES = [
     author: "Jetsunma Tenzin Palmo",
     source: "Reflections on a Mountain Lake",
     themes: ["letting-go", "simplicity"]
+  },
+
+  // ---- Ayya Khema -----------------------------------------------------------
+  {
+    text: "Nothing in the whole universe is comparable to the mind or can take its place. Everything is mind-made.",
+    author: "Ayya Khema",
+    source: "Being Nobody, Going Nowhere: Meditations on the Buddhist Path, Ch. 1, \"Meditation—Why and How\" (Wisdom Publications, 1987)",
+    themes: ["wisdom", "mindfulness"]
   },
 
   // ---- Pema Chödrön ---------------------------------------------------------
@@ -487,6 +623,94 @@ const QUOTES = [
     author: "Patrul Rinpoche",
     source: "The Words of My Perfect Teacher, trans. Padmakara Translation Group",
     themes: ["compassion"]
+  },
+
+  // ---- Longchenpa -------------------------------------------------------
+  {
+    text: "To amass a multitude of profound texts, such as scriptures, commentaries and oral instructions, without practicing them, will be of no benefit at the time of death. 'To watch your mind' is my heart advice.",
+    author: "Longchenpa",
+    source: "Thirty Pieces of Heart Advice, trans. Daniela Hartmann (Lotsawa House, 2014)",
+    themes: ["wisdom", "mindfulness"]
+  },
+
+  // ---- Jigme Lingpa -------------------------------------------------------
+  {
+    text: "Realization of the pure awareness that transcends the mind is the specialty of the Great Perfection.",
+    author: "Jigme Lingpa",
+    source: "Yeshe Lama, trans. Lama Chonam & Sangye Khandro (Snow Lion Publications, 2013)",
+    themes: ["wisdom"]
+  },
+
+  // ---- Dudjom Rinpoche -----------------------------------------------------
+  {
+    text: "Do not blame your past karma; instead, be someone who purely and flawlessly practices the Dharma. Do not blame temporary negative circumstances; instead, be someone who remains steadfast in the face of whatever circumstances may arise.",
+    author: "Dudjom Rinpoche",
+    source: "Wisdom Nectar: Dudjom Rinpoche's Heart Advice, p. 58, trans. Ron Garry (Snow Lion Publications / Tsadra Foundation, 2011)",
+    themes: ["suffering-liberation", "wisdom"]
+  },
+
+  // ---- Chatral Rinpoche -----------------------------------------------------
+  {
+    text: "Even if a person is a lowly beggar, if they are in harmony with the Dharma they can be called a great person who is a holder of the teachings.",
+    author: "Chatral Rinpoche",
+    source: "Compassionate Action: The Teachings of Chatral Rinpoche, trans. Zach Larson (Snow Lion Publications, 2005)",
+    themes: ["humility", "simplicity"]
+  },
+
+  // ---- Tsoknyi Rinpoche -----------------------------------------------------
+  {
+    text: "We'll discover a sense of confidence that isn't rooted in arrogance or pride. We'll realize that we're always sheltered, always safe, and always home.",
+    author: "Tsoknyi Rinpoche",
+    source: "Open Heart, Open Mind: A Guide to Inner Transformation, with Eric Swanson (Harmony/Random House, 2012)",
+    themes: ["contentment", "wisdom"]
+  },
+
+  // ---- Tulku Urgyen Rinpoche -----------------------------------------------------
+  {
+    text: "True virtue, real goodness, is created through recognizing our buddha nature, our natural state. Recognize your mind, and in the absence of any concrete thing, rest loosely.",
+    author: "Tulku Urgyen Rinpoche",
+    source: "As It Is, Volume II, trans. Erik Pema Kunsang, ed. Marcia Schmidt & Kerry Moran (Rangjung Yeshe Publications, 2000)",
+    themes: ["wisdom", "simplicity"]
+  },
+
+  // ---- Chögyam Trungpa -----------------------------------------------------
+  {
+    text: "It is important to see that the main point of any spiritual practice is to step out of the bureaucracy of ego.",
+    author: "Chögyam Trungpa",
+    source: "Cutting Through Spiritual Materialism, \"Spiritual Materialism\" (Shambhala Publications, 1973)",
+    themes: ["letting-go", "simplicity"]
+  },
+
+  // ---- Jetsun Khandro Rinpoche -----------------------------------------------------
+  {
+    text: "Compassion releases others from your struggle to make them conform to your wishes. There is a great deal of kindness in giving others the freedom to evolve naturally as they are.",
+    author: "Jetsun Khandro Rinpoche",
+    source: "How Not to Miss the Point: The Buddha's Wisdom for a Life Well Lived (Shambhala Publications, 2025)",
+    themes: ["compassion", "letting-go"]
+  },
+
+  // ---- Anam Thubten -----------------------------------------------------
+  {
+    text: "True ethics is not just about following some old scriptures nor about adhering to a behavior code dictated by any given society. Its roots lie in each of us—empathy and compassion.",
+    author: "Anam Thubten",
+    source: "\"Ethics Are the Heart of Spiritual Practice,\" Lion's Roar (2026)",
+    themes: ["compassion", "wisdom"]
+  },
+
+  // ---- Tenzin Wangyal Rinpoche -----------------------------------------------------
+  {
+    text: "There is no danger of disrupting something important when we change our dreams. All we disrupt is our ignorance.",
+    author: "Tenzin Wangyal Rinpoche",
+    source: "The Tibetan Yogas of Dream and Sleep: Practices for Awakening, 2nd ed. (Shambhala Publications, 1998/2022)",
+    themes: ["wisdom", "letting-go"]
+  },
+
+  // ---- Dzongsar Khyentse Rinpoche -----------------------------------------------------
+  {
+    text: "Buddhists venerate wisdom above all else. Wisdom surpasses morality, love, common sense, tolerance, and vegetarianism.",
+    author: "Dzongsar Khyentse Rinpoche",
+    source: "What Makes You Not a Buddhist (Shambhala Publications, 2007)",
+    themes: ["wisdom"]
   },
 
   // ---- Japanese Zen Masters -----------------------------------------------
@@ -551,6 +775,70 @@ const QUOTES = [
     themes: ["letting-go", "simplicity"]
   },
 
+  // ---- Keizan Jōkin -----------------------------------------------------
+  {
+    text: "Even if you sit until your seat breaks through, even if you persevere mindless of fatigue, even if you are a person of lofty deeds and pure behavior, if you haven't reached this realm of satori, you still can't get out of the prison of the world.",
+    author: "Keizan Jōkin",
+    source: "Transmission of Light (Denkoroku), trans. Thomas Cleary (North Point Press, 1990)",
+    themes: ["suffering-liberation", "wisdom"]
+  },
+
+  // ---- Kōun Yamada -----------------------------------------------------
+  {
+    text: "The entrance into Zen is the grasping of one's essential nature. It is absolutely impossible, however, to come to a clear understanding of our essential nature by any intellectual or philosophical method. It is accomplished only by the experience of self-realization through zazen.",
+    author: "Kōun Yamada",
+    source: "The Gateless Gate, Case 1 commentary (Wisdom Publications, 2004 ed.)",
+    themes: ["wisdom", "mindfulness"]
+  },
+
+  // ---- Robert Aitken -----------------------------------------------------
+  {
+    text: "We must save the world, but we can only save it by saving little pieces of it, each of us using his or her own small, partial ability.",
+    author: "Robert Aitken",
+    source: "The Mind of Clover: Essays in Zen Buddhist Ethics (North Point Press, 1984)",
+    themes: ["compassion", "humility", "ordinary-life"]
+  },
+
+  // ---- Taizan Maezumi -----------------------------------------------------
+  {
+    text: "The pitfall is always within yourself. This very body and mind is the Way. You are complete to begin with. There is no gap, but you think there is.",
+    author: "Taizan Maezumi",
+    source: "Appreciate Your Life: The Essence of Zen Practice, ed. Wendy Egyoku Nakao & Eve Myonen Marko (Shambhala Publications, 2001)",
+    themes: ["wisdom", "contentment"]
+  },
+
+  // ---- Bernie Glassman -----------------------------------------------------
+  {
+    text: "In my view, we can't heal ourselves or other people unless we bear witness. In the Zen Peacemaker Order we stress bearing witness to the wholeness of life, to every aspect of the situation that arises.",
+    author: "Bernie Glassman",
+    source: "Bearing Witness: A Zen Master's Lessons in Making Peace (Bell Tower, 1998)",
+    themes: ["compassion", "suffering-liberation"]
+  },
+
+  // ---- John Daido Loori -----------------------------------------------------
+  {
+    text: "The life of the Buddha is the manifestation of compassion, but if you do not engage it, it does nothing. It all depends on you.",
+    author: "John Daido Loori",
+    source: "The Eight Gates of Zen: A Program of Zen Training (Dharma Communications/Shambhala, 2002)",
+    themes: ["compassion", "ordinary-life"]
+  },
+
+  // ---- Kosho Uchiyama -----------------------------------------------------
+  {
+    text: "All of us, regardless of whether we realize it or not, are living out the self as the whole universe.",
+    author: "Kosho Uchiyama",
+    source: "Opening the Hand of Thought: Foundations of Zen Buddhist Practice (Wisdom Publications, 2004)",
+    themes: ["wisdom", "letting-go"]
+  },
+
+  // ---- Zenkei Blanche Hartman -----------------------------------------------------
+  {
+    text: "This morning as I wake, I vow with all beings to see each thing as it is and not to forsake the world.",
+    author: "Zenkei Blanche Hartman",
+    source: "Seeds for a Boundless Life: Zen Teachings from the Heart (Shambhala Publications, 2015)",
+    themes: ["gratitude", "ordinary-life"]
+  },
+
   // ---- Joseph Goldstein -----------------------------------------------------
   {
     text: "The practice has become that simple: not-clinging, and then moments of recognizing clinging, and then not-clinging, and so on.",
@@ -573,6 +861,102 @@ const QUOTES = [
     author: "Sharon Salzberg",
     source: "Real Love: The Art of Mindful Connection, as discussed in \"The Power of Real Love,\" Lion's Roar, Nov 4, 2017",
     themes: ["compassion", "wisdom"]
+  },
+
+  // ---- Larry Rosenberg -----------------------------------------------------
+  {
+    text: "The way to get from point A to point B is really to be at A.",
+    author: "Larry Rosenberg",
+    source: "Breath by Breath: The Liberating Practice of Insight Meditation (Shambhala, 1998); excerpted in Tricycle, Spring 1998",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+
+  // ---- Christopher Titmuss -----------------------------------------------------
+  {
+    text: "In a Buddhist monastery, monks treat the guideline of not taking what is not given with utmost seriousness. Monks do not take the razor, book, robe, or begging bowl of another monk without securing permission first. It is a discipline in letting go, in patience, and in waiting for something to be available.",
+    author: "Christopher Titmuss",
+    source: "Light on Enlightenment (Rider/Shambhala, 2000)",
+    themes: ["letting-go", "simplicity", "humility"]
+  },
+
+  // ---- Christina Feldman -----------------------------------------------------
+  {
+    text: "A compassionate life is a fearless life.",
+    author: "Christina Feldman",
+    source: "Boundless Heart: The Buddha's Path of Kindness, Compassion, Joy, and Equanimity (Shambhala, 2017)",
+    themes: ["compassion", "wisdom"]
+  },
+
+  // ---- Rodney Smith -----------------------------------------------------
+  {
+    text: "Relinquishment is letting go of everything that is not authentic and natural.",
+    author: "Rodney Smith",
+    source: "Stepping Out of Self-Deception: The Buddha's Liberating Teaching of No-Self (Shambhala, 2010)",
+    themes: ["letting-go", "simplicity"]
+  },
+
+  // ---- Tara Brach -----------------------------------------------------
+  {
+    text: "Learning to pause is the first step in the practice of Radical Acceptance.",
+    author: "Tara Brach",
+    source: "Radical Acceptance: Embracing Your Life with the Heart of a Buddha (Bantam, 2003)",
+    themes: ["mindfulness", "letting-go"]
+  },
+
+  // ---- Sylvia Boorstein -----------------------------------------------------
+  {
+    text: "It's a big step, of course, from freeways to famines to wars, but it's wonderful to have confirmation that spacious acceptance is humanly possible. Spiritual practice might be discovering that potential in ourselves and enlarging it.",
+    author: "Sylvia Boorstein",
+    source: "It's Easier Than You Think: The Buddhist Way to Happiness (HarperOne, 1995)",
+    themes: ["contentment", "wisdom"]
+  },
+
+  // ---- James Baraz -----------------------------------------------------
+  {
+    text: "The secret to skillful meditation is bringing your attention back with great patience and kindness.",
+    author: "James Baraz",
+    source: "\"Mindfulness: The Most Direct Path,\" Lion's Roar, September 1, 2010",
+    themes: ["mindfulness", "compassion"]
+  },
+
+  // ---- Ruth King -----------------------------------------------------
+  {
+    text: "Racism is a heart disease. How we think and respond is at the core of racial suffering and racial healing. If we cannot think clearly and respond wisely, we will continue to damage the world's heart.",
+    author: "Ruth King",
+    source: "Mindful of Race: Transforming Racism from the Inside Out (Sounds True, 2018)",
+    themes: ["wisdom", "compassion", "suffering-liberation"]
+  },
+
+  // ---- Spring Washam -----------------------------------------------------
+  {
+    text: "When we're purifying ourselves, when we're letting go of ancestral sorrows, it doesn't necessarily come with bliss and light.",
+    author: "Spring Washam",
+    source: "A Fierce Heart: Finding Strength, Courage, and Wisdom in Any Moment (Hay House, 2017); excerpted in Kosmos Journal",
+    themes: ["impermanence", "suffering-liberation", "letting-go"]
+  },
+
+  // ---- Shinzen Young -----------------------------------------------------
+  {
+    text: "You can dramatically extend life—not by multiplying the number of your years, but by expanding the fullness of your moments.",
+    author: "Shinzen Young",
+    source: "The Science of Enlightenment: How Meditation Works, Ch. 1 (Sounds True, 2016)",
+    themes: ["mindfulness", "impermanence"]
+  },
+
+  // ---- Loch Kelly -----------------------------------------------------
+  {
+    text: "You can choose any time of the day to step off the train of thought and into awake awareness. Once you've done this, you will naturally find new motivation, creativity, kindness, and passion for life.",
+    author: "Loch Kelly",
+    source: "Shift into Freedom: The Science and Practice of Open-Hearted Awareness (Sounds True, 2015)",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+
+  // ---- Adyashanti -----------------------------------------------------
+  {
+    text: "In a certain sense, enlightenment is dying into the ordinary, or into an extraordinary ordinariness. We start to realize the ordinary is extraordinary.",
+    author: "Adyashanti",
+    source: "The End of Your World: Uncensored Straight Talk on the Nature of Enlightenment (Sounds True, 2008)",
+    themes: ["ordinary-life", "wisdom"]
   },
 
   // ---- Taigen Dan Leighton -----------------------------------------------------
@@ -637,6 +1021,134 @@ const QUOTES = [
     author: "Khenpo Tsultrim Gyamtso Rinpoche",
     source: "\"See the True Nature, then Let Go and Relax in That,\" interview with Melvin McLeod, Buddhadharma, 2004, trans. Ari Goldfield",
     themes: ["letting-go", "suffering-liberation"]
+  },
+
+  // ---- Lao Tzu -------------------------------------------------------
+  {
+    text: "Knowing others is intelligence; knowing yourself is true wisdom.",
+    author: "Lao Tzu",
+    source: "Tao Te Ching, Verse 33, trans. Stephen Mitchell (Harper Perennial, 1988)",
+    themes: ["wisdom", "humility"]
+  },
+
+  // ---- Zhuangzi -------------------------------------------------------
+  {
+    text: "Great understanding is broad and unhurried; little understanding is cramped and busy.",
+    author: "Zhuangzi",
+    source: "Zhuangzi, Ch. 2, \"Discussion on Making All Things Equal,\" trans. Burton Watson (Columbia University Press, 1968)",
+    themes: ["wisdom", "simplicity"]
+  },
+
+  // ---- Meister Eckhart -------------------------------------------------------
+  {
+    text: "The eye with which I see God is the same eye with which God sees me; my eye and God's eye are one eye, one seeing, one knowing and one love.",
+    author: "Meister Eckhart",
+    source: "Sermon 12 (German Sermons), in Meister Eckhart: Sermons and Treatises, trans. M. O'C. Walshe (Element Books, 1987)",
+    themes: ["wisdom", "silence"]
+  },
+
+  // ---- Teresa of Ávila -------------------------------------------------------
+  {
+    text: "Humility must always be doing its work like a bee making its honey in the hive: without humility all will be lost.",
+    author: "Teresa of Ávila",
+    source: "Interior Castle, First Mansions, Ch. 2, trans. E. Allison Peers (Image Books)",
+    themes: ["humility"]
+  },
+
+  // ---- John of the Cross -------------------------------------------------------
+  {
+    text: "At the evening of life, you will be examined in love. Learn to love as God desires to be loved and abandon your own ways of acting.",
+    author: "John of the Cross",
+    source: "Sayings of Light and Love, no. 57, trans. Kieran Kavanaugh & Otilio Rodriguez (ICS Publications)",
+    themes: ["letting-go", "wisdom"]
+  },
+
+  // ---- Thomas Merton -------------------------------------------------------
+  {
+    text: "The truest solitude is not something outside you, not an absence of men or of sound around you; it is an abyss opening up in the center of your own soul.",
+    author: "Thomas Merton",
+    source: "New Seeds of Contemplation (New Directions, 1961)",
+    themes: ["silence", "ordinary-life"]
+  },
+
+  // ---- Edith Stein -------------------------------------------------------
+  {
+    text: "Whoever seeks the truth is seeking God, whether consciously or unconsciously.",
+    author: "Edith Stein",
+    source: "Self-Portrait in Letters, 1916–1942, Letter 45, to Sister Adelgundis Jaegerschmid, trans. Josephine Koeppel (ICS Publications, 1993)",
+    themes: ["wisdom"]
+  },
+
+  // ---- Etty Hillesum -------------------------------------------------------
+  {
+    text: "I have broken my body like bread and shared it out among men. And why not, they were hungry and had gone without for so long.",
+    author: "Etty Hillesum",
+    source: "An Interrupted Life: The Diaries, 1941–1943, diary entry, 13 October 1942, trans. Arnold J. Pomerans (Pantheon Books)",
+    themes: ["compassion", "suffering-liberation"]
+  },
+
+  // ---- Albert Camus -------------------------------------------------------
+  {
+    text: "The struggle itself toward the heights is enough to fill a man's heart. One must imagine Sisyphus happy.",
+    author: "Albert Camus",
+    source: "The Myth of Sisyphus, trans. Justin O'Brien (Alfred A. Knopf, 1955)",
+    themes: ["suffering-liberation", "contentment"]
+  },
+
+  // ---- Rainer Maria Rilke -------------------------------------------------------
+  {
+    text: "Be patient toward all that is unsolved in your heart and try to love the questions themselves, like locked rooms and like books that are written in a very foreign language.",
+    author: "Rainer Maria Rilke",
+    source: "Letters to a Young Poet, Letter Four, trans. Stephen Mitchell (Vintage Books, 1984)",
+    themes: ["wisdom", "letting-go"]
+  },
+
+  // ---- Nisargadatta Maharaj -------------------------------------------------------
+  {
+    text: "Mind creates the abyss, the heart crosses it.",
+    author: "Nisargadatta Maharaj",
+    source: "I Am That, Ch. 3, trans. Maurice Frydman (Chetana, 1973)",
+    themes: ["wisdom", "suffering-liberation"]
+  },
+
+  // ---- Ramana Maharshi -------------------------------------------------------
+  {
+    text: "Happiness is the very nature of the Self; happiness and the Self are not different.",
+    author: "Ramana Maharshi",
+    source: "Who Am I? (Nan Yar), Q24, \"What is Happiness?\" (Sri Ramanasramam)",
+    themes: ["contentment", "wisdom"]
+  },
+
+  // ---- Jiddu Krishnamurti -------------------------------------------------------
+  {
+    text: "Man has throughout the ages been seeking something beyond himself, beyond material welfare — something we call truth or God or reality, a timeless state — something that cannot be disturbed by circumstances, by thought or by human corruption.",
+    author: "Jiddu Krishnamurti",
+    source: "Freedom from the Known, Ch. 1 (Harper & Row, 1969)",
+    themes: ["wisdom", "letting-go"]
+  },
+
+  // ---- Eckhart Tolle -------------------------------------------------------
+  {
+    text: "Realize deeply that the present moment is all you ever have.",
+    author: "Eckhart Tolle",
+    source: "The Power of Now: A Guide to Spiritual Enlightenment, p. 35 (New World Library, 2010 ed.)",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+
+  // ---- Byron Katie -------------------------------------------------------
+  {
+    text: "When I argue with reality, I lose—but only 100 percent of the time.",
+    author: "Byron Katie",
+    source: "Loving What Is: Four Questions That Can Change Your Life (Harmony Books, 2002)",
+    themes: ["letting-go", "contentment"]
+  },
+
+  // ---- Anthony de Mello -------------------------------------------------------
+  {
+    text: "Spirituality means waking up. Most people, even though they don't know it, are asleep.",
+    author: "Anthony de Mello",
+    source: "Awareness: The Perils and Opportunities of Reality, \"On Waking Up\" (Doubleday, 1990)",
+    themes: ["mindfulness", "wisdom"]
   },
 
   // ---- Marcus Aurelius -------------------------------------------------
