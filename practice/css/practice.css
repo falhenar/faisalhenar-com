@@ -474,6 +474,18 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   max-width: 56ch;
   margin: 10px 0 0;
 }
+.entry-bio p a,
+.entry-bio-lead a{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.entry-bio-lead{
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: 0.85;
+  max-width: 56ch;
+  margin: 0;
+}
 
 /* ---------- reflections (archive page) ---------- */
 
