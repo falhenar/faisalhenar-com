@@ -1216,12 +1216,6 @@ const QUOTES = [
     source: "\"The Summer Day,\" House of Light (1990)",
     themes: ["ordinary-life", "gratitude"]
   },
-  {
-    text: "You do not have to be good. You do not have to walk on your knees for a hundred miles through the desert, repenting.",
-    author: "Mary Oliver",
-    source: "\"Wild Geese,\" Dream Work (1986)",
-    themes: ["compassion", "letting-go", "humility"]
-  },
 
   // ---- Simone Weil -------------------------------------------------------
   {
