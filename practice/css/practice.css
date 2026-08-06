@@ -392,6 +392,18 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   max-width: 52ch;
 }
 
+.quiet-note{
+  margin: 24px 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 56ch;
+}
+.quiet-note a{
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+
 .entry{
   padding: 22px 0;
   border-bottom: 1px solid var(--line);
