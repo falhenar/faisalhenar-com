@@ -37,7 +37,8 @@ const ALBUMS = [
       "photos/first-roll/P6281389.jpg",
       "photos/first-roll/P6281404.jpg",
       "photos/first-roll/P6301905.jpg",
-      "photos/first-roll/P6301922.jpg"
+      "photos/first-roll/P6301922.jpg",
+      "photos/first-roll/P6271096.jpg"
     ]
   },
   {
@@ -64,11 +65,10 @@ const ALBUMS = [
       "photos/suriname-streets/P7231574.jpg",
       "photos/suriname-streets/P7231379.jpg",
       "photos/suriname-streets/P7231561.jpg",
-      "photos/suriname-streets/P7231512.jpg"
+      "photos/suriname-streets/P7231512.jpg",
+      "photos/suriname-streets/Busses20260723.jpg",
+      "photos/suriname-streets/Kwatta-markt20260805-01.jpg",
+      "photos/suriname-streets/kwattamarkt20260805-2.jpg"
     ]
-  },
-  // Add your next real album here, following the same pattern as "first-roll" above.
-  // (Placeholder albums with picsum.photos images have been removed now that
-  // real photos are in place — copy the "first-roll" block above as a starting
-  // point whenever you're ready to add another one.)
+  }
 ];
