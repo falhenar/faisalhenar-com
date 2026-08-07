@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Meditation — Practice — Faisal Henar">
 <meta name="twitter:description" content="Instruction and tools for sitting practice — texts I come back to often, and apps to use daily.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=18">
+<link rel="stylesheet" href="css/practice.css?v=21">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -55,7 +55,7 @@
       <p class="entry-title">A personal note</p>
       <p class="entry-bio-lead">I've benefited a great deal from the teachers I've met along this path, particularly the instructions I received from Ajahn Poonsak at Wat Chom Tong, in the lineage of Ajahn Tong. If you're serious about deepening your practice&hellip;</p>
       <details class="entry-bio">
-        <summary>Continue reading</summary>
+        <summary aria-expanded="false"><span class="entry-bio-more">Continue reading</span><span class="entry-bio-less">Show less</span></summary>
         <p>I'd recommend finding a teacher who can guide you. We live in a time when information is readily available online, which is genuinely useful, but it doesn't compare to practicing under an established teacher.</p>
         <p>That said, sometimes circumstances don't allow for practicing with a teacher. In those cases, texts and meditation apps can be a good way to learn, though it takes real effort and determination on your own. It also helps to find others willing to talk, share, and practice together. If you'd ever like to talk about practice, feel free to reach out through the <a href="../contact.html">contact page</a>.</p>
       </details>
@@ -114,6 +114,14 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.querySelectorAll('.entry-bio').forEach(function (details) {
+      var summary = details.querySelector('summary');
+      details.addEventListener('toggle', function () {
+        summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+      });
+    });
+  </script>
   <script src="../js/menu.js?v=1"></script>
 </body>
 </html>
