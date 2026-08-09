@@ -107,7 +107,7 @@
   }
 
   function labelFor(i){
-    return album.title + ' — frame ' + String(i + 1).padStart(2, '0') +
+    return album.title + ' · frame ' + String(i + 1).padStart(2, '0') +
            ' of ' + String(album.photos.length).padStart(2, '0');
   }
   function captionFor(i){
@@ -141,7 +141,7 @@
     lightboxPrev.title = atStart ? 'Start of roll' : '';
 
     lightboxNext.classList.toggle('is-end', atEnd);
-    lightboxNext.setAttribute('aria-label', atEnd ? 'End of roll — back to the album' : 'Next photo');
+    lightboxNext.setAttribute('aria-label', atEnd ? 'End of roll, back to the album' : 'Next photo');
     lightboxNext.title = atEnd ? 'End of roll' : '';
 
     preloadNeighbours(i);

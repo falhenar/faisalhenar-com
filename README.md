@@ -6,7 +6,10 @@ This is a plain HTML/CSS/JS site. No build tools, no installs needed.
 
 ```
 index.html            → the homepage (front door to everything)
+contact.html           → contact page
+note.html              → "a note from me" page
 css/hub.css            → homepage styling
+css/note.css           → note.html styling
 
 photography/           → the photography section
   index.html            → album grid homepage
@@ -14,8 +17,9 @@ photography/           → the photography section
   css/, js/, photos/    → styling, logic, and your photo files
 
 practice/               → the Buddhism/practice section
-  index.html            → hub linking to the five rooms
-  reflections.html, reading.html, listening.html, watching.html, places.html
+  index.html            → hub linking to the six rooms
+  reflections.html, reading.html, listening.html, watching.html,
+  places.html, meditation.html
   css/, js/             → styling, and the configs the rooms render from
 ```
 
@@ -33,9 +37,14 @@ live inside its own folder. The homepage just links out to each one.
 
 1. In the same repo, go to **Settings → Pages → Custom domain**, enter `faisalhenar.com`, and save.
    This creates a `CNAME` file in the repo automatically — leave it, deleting it breaks the domain.
-2. On Namecheap's DNS settings, add:
+2. DNS for this site is hosted at Cloudflare, not the registrar. If you're
+   setting this up fresh: point your domain's nameservers at Cloudflare,
+   then in the Cloudflare dashboard add:
    - Four **A records** (`@`) → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
    - One **CNAME record** (`www`) → `yourusername.github.io`
+   (Namecheap, or whoever you registered through, only handles registration
+   once the nameservers point elsewhere — its DNS panel won't reflect
+   anything after that.)
 3. DNS activates in a few hours. Then tick **"Enforce HTTPS"** in GitHub Pages settings.
 
 ## 3. Add your own albums
@@ -61,7 +70,23 @@ To add a new album:
 To remove an album, delete its block from `config.js`.
 To reorder albums, reorder the blocks — they appear on the homepage in that order.
 
-## 4. Sharing an album
+## 4. Adding reflections and quotes
+
+Same idea as albums — one config file each, no code to touch.
+
+**Reflections** (the Practice → Reflections room):
+`practice/js/suttas-config.js`. Each entry is a sutta reading with an
+optional excerpt and your own `note`. An entry only appears on the site
+once `note` is filled in — leave it empty to queue a reading without
+publishing it yet. Order on the page follows the order you *wrote* notes
+in, not the order entries sit in the file.
+
+**Quotes** (the shuffled quote block on the Practice hub):
+`practice/js/quotes-config.js`. Each entry needs `text`, `author`, and a
+`source` that's actually checkable — no quote goes in without one. See the
+comment block at the top of that file for translator/sourcing notes.
+
+## 5. Sharing an album
 
 Every album has its own link, for example:
 `https://faisalhenar.com/photography/album.html?a=first-roll`

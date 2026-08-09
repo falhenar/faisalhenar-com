@@ -16,6 +16,7 @@
 
   Fields:
   id         -> stable identifier, part-section-item, e.g. "itbw-1-2-3"
+  book       -> key into BOOKS below, groups entries into their block
   part       -> Roman numeral of the book's Part (I-X)
   section    -> the named subsection within that Part, for context
   label      -> Bodhi's own numbering, e.g. "I.2(3)"
@@ -28,13 +29,34 @@
                 line breaks if quoting verse; rendered as a block-quote.
   note       -> your reflection, in your own words. Empty = not published.
   added      -> date you actually wrote the note (not the book's order)
+
+  ---------------------------------------------------------------------
+
+  BOOKS
+  -----
+  One entry per book/text being reflected on. The page renders one
+  heading block per book, in the order listed here, followed by that
+  book's published entries (most recent first). To start reflecting on
+  a new book: add an entry here, then add SUTTAS entries with a
+  matching `book` key.
+
+  title  -> the book/text's title, shown as the block heading
+  note   -> a short line of context: author, translator, why this text
 */
+
+const BOOKS = {
+  itbw: {
+    title: "In the Buddha's Words",
+    note: "Bhikkhu Bodhi's anthology (Wisdom Publications), used as a structural spine: Parts I through X, roughly foundational to advanced. Translations are Bhikkhu Sujato's via SuttaCentral, unless noted otherwise."
+  }
+};
 
 const SUTTAS = [
   // Part I — The Human Condition
   // 1. Old Age, Illness, and Death
   {
     id: "itbw-1-1-1",
+    book: "itbw",
     part: "I",
     section: "Old Age, Illness, and Death",
     label: "I.1(1)",
@@ -48,6 +70,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-1-2",
+    book: "itbw",
     part: "I",
     section: "Old Age, Illness, and Death",
     label: "I.1(2)",
@@ -61,21 +84,23 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-1-3",
+    book: "itbw",
     part: "I",
     section: "Old Age, Illness, and Death",
     label: "I.1(3)",
     title: "The Divine Messengers",
-    ref: "from AN 3.35",
+    ref: "from AN 3.36",
     translator: "sujato",
-    url: "https://suttacentral.net/an3.35/en/sujato",
-    excerpt: "",
-    note: "",
-    added: null
+    url: "https://suttacentral.net/an3.36/en/sujato",
+    excerpt: "‘My man, because you were negligent, you didn’t do good by way of body, speech, and mind. Well, they’ll definitely punish you to fit your negligence. That bad deed wasn’t done by your mother, father, brother, or sister. It wasn’t done by friends and colleagues, by relatives and kin, by the deities, or by ascetics and brahmins. That bad deed was done by you alone, and you alone will experience the result.’",
+    note: "Whenever we suffer, we're quick to blame something, or someone, for it. It's not easy to see how our own actions are often at the root of that same suffering. Of course, many causes and conditions shape our current reality. Yet in this moment, we all have the ability to either follow or abandon whatever craving or aversion arises in the mind. It's that simple.\n\nBut is it easy? No. Absolutely not. That same craving and aversion springs from causes and conditions formed by our own past.\n\nThat's where practice comes in: to be mindful in every moment. When standing, walking, sitting, or lying down, be mindful of whatever arises in the mind, and use discernment to separate the skillful from the unskillful, the wholesome from the unwholesome. We can each find our own way out of suffering.",
+    added: "2026-08-09"
   },
 
   // 2. The Tribulations of Unreflective Living
   {
     id: "itbw-1-2-1",
+    book: "itbw",
     part: "I",
     section: "The Tribulations of Unreflective Living",
     label: "I.2(1)",
@@ -89,6 +114,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-2-2",
+    book: "itbw",
     part: "I",
     section: "The Tribulations of Unreflective Living",
     label: "I.2(2)",
@@ -102,6 +128,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-2-3",
+    book: "itbw",
     part: "I",
     section: "The Tribulations of Unreflective Living",
     label: "I.2(3)",
@@ -117,6 +144,7 @@ const SUTTAS = [
   // 3. A World in Turmoil
   {
     id: "itbw-1-3-1",
+    book: "itbw",
     part: "I",
     section: "A World in Turmoil",
     label: "I.3(1)",
@@ -130,6 +158,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-3-2",
+    book: "itbw",
     part: "I",
     section: "A World in Turmoil",
     label: "I.3(2)",
@@ -143,6 +172,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-3-3",
+    book: "itbw",
     part: "I",
     section: "A World in Turmoil",
     label: "I.3(3)",
@@ -156,6 +186,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-3-4",
+    book: "itbw",
     part: "I",
     section: "A World in Turmoil",
     label: "I.3(4)",
@@ -171,6 +202,7 @@ const SUTTAS = [
   // 4. Without Discoverable Beginning
   {
     id: "itbw-1-4-1",
+    book: "itbw",
     part: "I",
     section: "Without Discoverable Beginning",
     label: "I.4(1)",
@@ -184,6 +216,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-4-2",
+    book: "itbw",
     part: "I",
     section: "Without Discoverable Beginning",
     label: "I.4(2)",
@@ -197,6 +230,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-4-3",
+    book: "itbw",
     part: "I",
     section: "Without Discoverable Beginning",
     label: "I.4(3)",
@@ -210,6 +244,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-4-4",
+    book: "itbw",
     part: "I",
     section: "Without Discoverable Beginning",
     label: "I.4(4)",
@@ -223,6 +258,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-4-5",
+    book: "itbw",
     part: "I",
     section: "Without Discoverable Beginning",
     label: "I.4(5)",

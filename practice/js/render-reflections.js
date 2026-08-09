@@ -1,14 +1,18 @@
 /*
   RENDER: REFLECTIONS
   --------------------
-  Reads SUTTAS from suttas-config.js and renders published entries
-  (anything with a non-empty `note` and an `added` date) into
-  #reflections-list on practice/reflections.html — the full archive,
-  most recent first, with a plain empty-state message if nothing has
-  been published yet. Each entry collapses to its title and byline;
-  opening it reveals the excerpt, the reflection and the source link.
-  Same <details> pattern as the teacher bios in places.html, just
-  scaled up to cover the whole entry.
+  Reads BOOKS and SUTTAS from suttas-config.js and renders published
+  entries (anything with a non-empty `note` and an `added` date) into
+  #reflections-list on practice/reflections.html. Entries are grouped
+  into one block per book, in BOOKS's key order; within a block, most
+  recent first. Each book block gets a heading + short note (same
+  section-label / section-dek pattern used elsewhere on the site), and
+  is only rendered once it has at least one published entry. A plain
+  empty-state message is shown if nothing has been published anywhere
+  yet. Each entry collapses to its title and byline; opening it reveals
+  the excerpt, the reflection and the source link. Same <details>
+  pattern as the teacher bios in places.html, just scaled up to cover
+  the whole entry.
 
   `added` is expected as an ISO date string, e.g. "2026-08-03".
 */
@@ -19,6 +23,17 @@
       .filter(function(s){ return s.note && s.note.trim().length > 0 && s.added; })
       .slice()
       .sort(function(a, b){ return new Date(b.added) - new Date(a.added); });
+  }
+
+  function publishedByBook(){
+    var all = publishedEntries();
+    return Object.keys(BOOKS).map(function(key){
+      return {
+        key: key,
+        book: BOOKS[key],
+        entries: all.filter(function(s){ return s.book === key; })
+      };
+    }).filter(function(group){ return group.entries.length > 0; });
   }
 
   function fmtDate(iso){
@@ -72,13 +87,23 @@
     );
   }
 
+  function bookBlockMarkup(group){
+    return (
+      '<section class="section">' +
+        '<div class="section-label">' + group.book.title + '</div>' +
+        '<p class="section-dek">' + group.book.note + '</p>' +
+        group.entries.map(entryMarkup).join('') +
+      '</section>'
+    );
+  }
+
   // --- Archive page: practice/reflections.html ---
   var list = document.getElementById('reflections-list');
   if (list) {
-    var all = publishedEntries();
-    list.innerHTML = all.length > 0
-      ? all.map(entryMarkup).join('')
-      : '<p class="reflections-empty">Nothing published yet. The first entry will appear here once it exists.</p>';
+    var groups = publishedByBook();
+    list.innerHTML = groups.length > 0
+      ? groups.map(bookBlockMarkup).join('')
+      : '<section class="section"><p class="reflections-empty">Nothing published yet. The first entry will appear here once it exists.</p></section>';
   }
 
 })();
