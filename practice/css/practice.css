@@ -637,6 +637,53 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 .quote-source[hidden]{ display: none; }
 
+/* ---------- sutta of the day ---------- */
+.sutta-of-day{
+  max-width: 620px;
+  margin: 48px auto 56px;
+  padding: 0 32px;
+}
+.sutta-of-day-label{
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+.sutta-of-day-link{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.sutta-of-day-text{
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--ink);
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
+  margin: 0;
+  max-width: 55ch;
+  transition: border-color 0.2s ease;
+}
+.sutta-of-day-link:hover .sutta-of-day-text,
+.sutta-of-day-link:focus-visible .sutta-of-day-text{
+  border-left-color: var(--ink);
+}
+.sutta-of-day-link:focus-visible{
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+.sutta-of-day-source{
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  opacity: 0.8;
+  margin: 10px 0 0 20px;
+}
+.sutta-of-day-source[hidden]{ display: none; }
+
 @media (max-width: 640px){
   .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }
   .room-header, .back-link, .room-title, .room-dek{ padding-left: 20px; padding-right: 20px; }
@@ -645,6 +692,9 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
      the same 20px gutter the other hub blocks fall back to */
   .quote-featured{ margin: 0 20px 40px; padding: 24px 18px; }
   .quote-text{ font-size: 1.05rem; }
+
+  .sutta-of-day{ padding: 0 20px; margin: 40px auto 48px; }
+  .sutta-of-day-text{ font-size: 1.05rem; }
 
   .rooms-grid{ grid-template-columns: 1fr 1fr; }
   .room-card{ padding: 18px 14px; gap: 8px; }
