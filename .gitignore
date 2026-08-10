@@ -14,6 +14,10 @@ desktop.ini
 /.agents/
 /.mcp.json
 
+# Same as above, but unanchored: a stray practice/.claude/ turned up once
+# (a tool wrote local settings a level too deep). Catch it wherever it lands.
+.claude/
+
 # Never commit credentials, wherever they end up.
 .github-token
 *.token
