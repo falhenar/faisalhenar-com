@@ -15,6 +15,11 @@
   title  -> the name shown on the site
   color  -> true shows the album's photos in their original color; false
             (default) applies the site's black & white treatment.
+  note   -> two or three sentences: where, when, what you were looking at.
+            Optional; leave it out and the album page simply shows no note.
+            This is the only prose in the photography section, so it is also
+            the only text search engines have to go on. Write it for a reader,
+            not for a search engine. Also used as the page's meta description.
   alt    -> one plain description covering the whole album, used as the alt
             text for every photo in it, with the frame number appended
             ("..., frame 03"). Screen readers read this instead of nothing.
@@ -34,6 +39,7 @@ const ALBUMS = [
     title: "Vietnam Streets",
     color: false,
     alt: "Black and white street photograph, Vietnam",
+    note: "Vietnam, June 2026. Photographs made over five days of walking, on an Olympus E-M10 Mark II.",
     photos: [
       "photos/first-roll/P6030666.jpg",
       "photos/first-roll/P6241167.jpg",
@@ -51,6 +57,7 @@ const ALBUMS = [
     title: "Vietnam Streets, in Color",
     color: true,
     alt: "Colour street photograph, Vietnam",
+    note: "Vietnam, June 2026. The same weeks as the black and white set, kept in color where the color was the point.",
     photos: [
       "photos/vietnam-streets-color/P6050611.jpg",
       "photos/vietnam-streets-color/P6080541.jpg",
@@ -65,6 +72,7 @@ const ALBUMS = [
     title: "Suriname Streets",
     color: false,
     alt: "Black and white street photograph, Paramaribo, Suriname",
+    note: "Paramaribo, July and August 2026. Street scenes close to home, including a morning at the Kwatta market.",
     photos: [
       "photos/suriname-streets/P7231377.jpg",
       "photos/suriname-streets/P7231325.jpg",

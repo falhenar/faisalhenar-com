@@ -21,15 +21,48 @@
   document.title = album.title + ' · Faisal Henar Photography';
 
   // Each album is a distinct page as far as search and sharing are concerned.
-  // Without this they all canonicalize to bare album.html.
-  (function setCanonical(){
+  // Without this they all canonicalize to bare album.html, and every album
+  // shares one generic description and title. Both are fixed here.
+  (function setPageMeta(){
+    var url = 'https://faisalhenar.com/photography/album.html?a=' + encodeURIComponent(album.slug);
+
+    function meta(sel, attr, name, value){
+      if (!value) return;
+      var el = document.head.querySelector(sel);
+      if (!el){
+        el = document.createElement('meta');
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', value);
+    }
+
     var link = document.querySelector('link[rel="canonical"]');
     if (!link){
       link = document.createElement('link');
       link.rel = 'canonical';
       document.head.appendChild(link);
     }
-    link.href = 'https://faisalhenar.com/photography/album.html?a=' + encodeURIComponent(album.slug);
+    link.href = url;
+
+    var title = album.title + ' \u00b7 Faisal Henar Photography';
+    meta('meta[property="og:url"]', 'property', 'og:url', url);
+    meta('meta[property="og:title"]', 'property', 'og:title', title);
+    meta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    if (album.note){
+      meta('meta[name="description"]', 'name', 'description', album.note);
+      meta('meta[property="og:description"]', 'property', 'og:description', album.note);
+      meta('meta[name="twitter:description"]', 'name', 'twitter:description', album.note);
+    }
+  })();
+
+  // The album's own words, if it has any. Optional by design.
+  (function renderNote(){
+    var noteEl = document.getElementById('album-note');
+    if (!noteEl) return;
+    if (!album.note){ noteEl.hidden = true; return; }
+    noteEl.textContent = album.note;
+    noteEl.hidden = false;
   })();
 
   // Falls back to the title if an album has no alt yet.

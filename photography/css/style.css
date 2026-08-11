@@ -377,6 +377,16 @@ a:focus-visible, button:focus-visible{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
 }
+/* Optional. Hidden until render-album.js finds a note on the album, so an
+   album without one keeps the tighter header it has always had. */
+.album-header .album-note{
+  max-width: 58ch;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+.album-header .album-note[hidden]{ display: none; }
 
 .roll{
   display:grid;
