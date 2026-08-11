@@ -39,7 +39,7 @@ const ALBUMS = [
     title: "Vietnam Streets",
     color: false,
     alt: "Black and white street photograph, Vietnam",
-    note: "Vietnam, June 2026. Photographs made over five days of walking, on an Olympus E-M10 Mark II.",
+    note: "Vietnam, June 2026. Photographs made on a few photowalks, observing the beauty of the people while getting familiar with the camera.",
     photos: [
       "photos/first-roll/P6030666.jpg",
       "photos/first-roll/P6241167.jpg",
@@ -72,7 +72,7 @@ const ALBUMS = [
     title: "Suriname Streets",
     color: false,
     alt: "Black and white street photograph, Paramaribo, Suriname",
-    note: "Paramaribo, July and August 2026. Street scenes close to home, including a morning at the Kwatta market.",
+    note: "Paramaribo, July and August 2026. Street scenes close to home, what a beautiful people we have in this country.",
     photos: [
       "photos/suriname-streets/P7231377.jpg",
       "photos/suriname-streets/P7231325.jpg",
