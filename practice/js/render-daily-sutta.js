@@ -20,6 +20,13 @@
 
   If the config is missing or empty the whole block is removed, so the
   page never shows an empty frame.
+
+  When today's sutta is one FH has published a reflection on, a second
+  line links through to it. That match is read live from SUTTAS
+  (suttas-config.js, loaded alongside this on the hub) rather than being
+  duplicated into the daily config, so the two lists can never drift out
+  of sync. Refs are compared loosely: "from AN 3.36" and "AN 2.37
+  (abridged)" name the same sutta as "AN 3.36" and "AN 2.37".
 */
 (function(){
 
@@ -56,5 +63,30 @@
   }
   srcEl.textContent = meta;
   if (!meta) srcEl.hidden = true;
+
+  // --- link to the reflection, if there is one ---
+
+  function normRef(r){
+    return String(r || '')
+      .replace(/^from\s+/i, '')      // "from AN 3.36"    -> "AN 3.36"
+      .replace(/\s*\(.*\)\s*$/, '')  // "AN 2.37 (abridged)" -> "AN 2.37"
+      .trim()
+      .toLowerCase();
+  }
+
+  var reflections = (typeof SUTTAS !== 'undefined' && Array.isArray(SUTTAS)) ? SUTTAS : [];
+  var todaysRef = normRef(sutta.ref);
+  if (!todaysRef) return;
+
+  var match = reflections.filter(function(s){
+    return s && s.note && s.note.trim().length > 0 && s.added && normRef(s.ref) === todaysRef;
+  })[0];
+  if (!match) return;
+
+  var link = document.createElement('a');
+  link.className = 'sutta-of-day-reflection';
+  link.href = 'reflections.html#r-' + match.id;
+  link.textContent = 'I have written a reflection on this one \u2192';
+  block.appendChild(link);
 
 })();

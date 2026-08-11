@@ -15,6 +15,12 @@
   the whole entry.
 
   `added` is expected as an ISO date string, e.g. "2026-08-03".
+
+  Each entry gets id="r-<entry id>" on its <details>, so other pages can
+  deep-link a single reflection. Arriving with a matching #hash opens that
+  entry and scrolls to it; without one, everything stays collapsed as
+  before. See render-daily-sutta.js, which links here when the sutta of
+  the day happens to be one that has been written about.
 */
 (function(){
 
@@ -70,7 +76,7 @@
   function entryMarkup(s){
     return (
       '<article class="entry reflection-entry">' +
-        '<details class="reflection">' +
+        '<details class="reflection" id="r-' + s.id + '">' +
           '<summary>' +
             '<span class="reflection-head">' +
               '<span class="entry-title">' + s.title + '</span>' +
@@ -104,6 +110,19 @@
     list.innerHTML = groups.length > 0
       ? groups.map(bookBlockMarkup).join('')
       : '<section class="section"><p class="reflections-empty">Nothing published yet. The first entry will appear here once it exists.</p></section>';
+
+    // Landing on #r-<id> opens that entry rather than dropping the reader on a
+    // wall of collapsed titles. Runs after innerHTML, so the browser's own
+    // hash scroll (which fired before this list existed) is redone here.
+    (function openHashed(){
+      var hash = window.location.hash;
+      if (!hash || hash.length < 2) return;
+      var target;
+      try { target = list.querySelector(hash); } catch (err) { return; }
+      if (!target || target.tagName !== 'DETAILS') return;
+      target.open = true;
+      target.scrollIntoView({ block: 'start' });
+    })();
   }
 
 })();

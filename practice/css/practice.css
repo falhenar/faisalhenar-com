@@ -703,6 +703,23 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 .sutta-of-day-source[hidden]{ display: none; }
 
+/* Only rendered on days when today's sutta has a published reflection, so
+   most of the time this block is just the quote and its source. */
+.sutta-of-day-reflection{
+  display: inline-block;
+  margin: 16px 0 0 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.sutta-of-day-reflection:hover,
+.sutta-of-day-reflection:focus-visible{
+  border-bottom-color: var(--accent);
+}
+
 @media (max-width: 640px){
   .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }
   .room-header, .back-link, .room-title, .room-dek{ padding-left: 20px; padding-right: 20px; }
