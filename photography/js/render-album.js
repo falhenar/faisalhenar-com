@@ -20,6 +20,23 @@
   metaEl.textContent = album.photos.length + ' frames';
   document.title = album.title + ' · Faisal Henar Photography';
 
+  // Each album is a distinct page as far as search and sharing are concerned.
+  // Without this they all canonicalize to bare album.html.
+  (function setCanonical(){
+    var link = document.querySelector('link[rel="canonical"]');
+    if (!link){
+      link = document.createElement('link');
+      link.rel = 'canonical';
+      document.head.appendChild(link);
+    }
+    link.href = 'https://faisalhenar.com/photography/album.html?a=' + encodeURIComponent(album.slug);
+  })();
+
+  // Falls back to the title if an album has no alt yet.
+  function altFor(a){
+    return a.alt || (a.title + ', photograph');
+  }
+
   album.photos.forEach(function(src, i){
     const num = String(i + 1).padStart(2, '0');
     const label = album.slug.slice(0,2).toUpperCase() + '·' + num;
@@ -28,7 +45,7 @@
     exposure.innerHTML = `
       <button type="button" data-index="${i}" aria-label="Enlarge photo ${num}">
         <span class="frame-id mono">${label}</span>
-        <span class="pic"><img src="${cfImage(src, 700)}" alt="" loading="lazy"></span>
+        <span class="pic"><img src="${cfImage(src, 700)}" alt="${altFor(album)}, frame ${num}" loading="lazy"></span>
       </button>
     `;
     roll.appendChild(exposure);
@@ -59,7 +76,7 @@
       a.className = 'next-album' + (next.color ? ' is-color' : '');
       a.href = 'album.html?a=' + encodeURIComponent(next.slug);
       a.innerHTML = `
-        <span class="thumb"><img src="${esc(cfImage(next.photos[0], 300))}" alt="" loading="lazy"></span>
+        <span class="thumb"><img src="${esc(cfImage(next.photos[0], 300))}" alt="${esc(altFor(next))}, cover" loading="lazy"></span>
         <span class="next-text">
           <span class="next-label">Next album</span>
           <span class="next-title">${esc(next.title)}</span>
@@ -107,7 +124,7 @@
   }
 
   function labelFor(i){
-    return album.title + ' · frame ' + String(i + 1).padStart(2, '0') +
+    return altFor(album) + ', frame ' + String(i + 1).padStart(2, '0') +
            ' of ' + String(album.photos.length).padStart(2, '0');
   }
   function captionFor(i){

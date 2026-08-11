@@ -15,6 +15,10 @@
   title  -> the name shown on the site
   color  -> true shows the album's photos in their original color; false
             (default) applies the site's black & white treatment.
+  alt    -> one plain description covering the whole album, used as the alt
+            text for every photo in it, with the frame number appended
+            ("..., frame 03"). Screen readers read this instead of nothing.
+            Describe what a viewer would see, not keywords. Keep it short.
   photos -> array of filenames that live inside photos/<slug>/
 
   ORDER MATTERS. The order of this array is the order albums appear on the
@@ -29,6 +33,7 @@ const ALBUMS = [
     slug: "first-roll",
     title: "Vietnam Streets",
     color: false,
+    alt: "Black and white street photograph, Vietnam",
     photos: [
       "photos/first-roll/P6030666.jpg",
       "photos/first-roll/P6241167.jpg",
@@ -45,6 +50,7 @@ const ALBUMS = [
     slug: "vietnam-streets-color",
     title: "Vietnam Streets, in Color",
     color: true,
+    alt: "Colour street photograph, Vietnam",
     photos: [
       "photos/vietnam-streets-color/P6050611.jpg",
       "photos/vietnam-streets-color/P6080541.jpg",
@@ -58,6 +64,7 @@ const ALBUMS = [
     slug: "suriname-streets",
     title: "Suriname Streets",
     color: false,
+    alt: "Black and white street photograph, Paramaribo, Suriname",
     photos: [
       "photos/suriname-streets/P7231377.jpg",
       "photos/suriname-streets/P7231325.jpg",
