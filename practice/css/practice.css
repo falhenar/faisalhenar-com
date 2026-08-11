@@ -252,6 +252,25 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 
 /* ---------- room subpages ---------- */
+/* quiet per-room mark, echoes the dharma wheel treatment on the hub,
+   just the inner symbol with no card border around it */
+.room-header-icon{
+  width: 44px;
+  height: auto;
+  margin: 10px auto 0;
+  display: block;
+}
+.room-header-icon *{
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.room-header-icon .fill-dot{
+  fill: var(--accent);
+  stroke: none;
+}
 .room-header{
   display: flex;
   justify-content: space-between;
