@@ -1,0 +1,56 @@
+.elsewhere{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 32px 40px;
+}
+
+.section{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 56px;
+}
+.section-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.entry{
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.entry:last-child{ border-bottom: none; }
+.entry .entry-title{
+  font-family: 'Instrument Serif', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+.entry .entry-title a{ text-decoration: none; }
+.entry .entry-title a:hover{ color: var(--accent); }
+.entry .entry-by{
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.entry .entry-note{
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0 0 8px;
+  max-width: 56ch;
+}
+.entry .entry-link{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
