@@ -48,6 +48,10 @@ const BOOKS = {
   itbw: {
     title: "In the Buddha's Words",
     note: "Bhikkhu Bodhi's anthology (Wisdom Publications), used as a structural spine: Parts I through X, roughly foundational to advanced. Translations are Bhikkhu Sujato's via SuttaCentral, unless noted otherwise."
+  },
+  keepers: {
+    title: "Reflections on Suttas That Stay With Me",
+    note: "Suttas outside the anthology above — encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed."
   }
 };
 
@@ -269,5 +273,19 @@ const SUTTAS = [
     excerpt: "",
     note: "",
     added: null
+  },
+
+  // --- Reflections on Suttas That Stay With Me ---
+  {
+    id: "keepers-1",
+    book: "keepers",
+    label: "1",
+    title: "Let go of philosophy",
+    ref: "SN 5.10",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn5.10/en/sujato",
+    excerpt: "Who created this sentient being?\nWhere is its maker?\nWhere has the being arisen?\nAnd where does it cease?",
+    note: "Who doesn't love to philosophize about life. Probably a lot of people don't. But for most of my life, I enjoyed it to the fullest. Or maybe enjoyment is the wrong word to describe it, because at times I even took it too far. Always questioning everything. So much that my head would hurt.\n\nI wanted to know why and how the world worked, how and why us people move through it as we do, and sometimes I found it the most important thing to find out who was responsible. Who was responsible for this war, or that conspiracy, or even worse, who was responsible for my suffering. Because that surely could not be me, right?\n\nBut questioning the state of the world is like arguing with reality. Look deep inside and ask yourself, what would knowing the answers to all these questions actually solve? In fact, often asking the questions leads to the arising of desire, aversion, restlessness, sluggishness and doubts. Hindrances to achieving true peace of mind. And when we are not able to live in peace with the world as it is, how can we ever create peace in the world we live in.\n\nWhen we say “let it go”, it does not mean we do not care. It means that grasping at our ideas on how it should be, prevents us from actually caring for what is in front of us.",
+    added: "2026-08-12"
   }
 ];
