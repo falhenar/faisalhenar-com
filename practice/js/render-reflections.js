@@ -34,10 +34,14 @@
   function publishedByBook(){
     var all = publishedEntries();
     return Object.keys(BOOKS).map(function(key){
+      var entries = all.filter(function(s){ return s.book === key; });
+      if (BOOKS[key].order === 'structural') {
+        entries = entries.slice().sort(function(a, b){ return SUTTAS.indexOf(a) - SUTTAS.indexOf(b); });
+      }
       return {
         key: key,
         book: BOOKS[key],
-        entries: all.filter(function(s){ return s.book === key; })
+        entries: entries
       };
     }).filter(function(group){ return group.entries.length > 0; });
   }
@@ -49,10 +53,11 @@
   }
 
   function fmtMeta(s){
-    var translatorNote = (s.translator && s.translator !== 'sujato')
-      ? ' &middot; trans. ' + s.translator
-      : '';
-    return s.ref + ' &middot; ' + s.label + translatorNote + ' &middot; ' + fmtDate(s.added);
+    var parts = [s.ref];
+    if (s.label) parts.push(s.label);
+    if (s.translator && s.translator !== 'sujato') parts.push('trans. ' + s.translator);
+    parts.push(fmtDate(s.added));
+    return parts.join(' &middot; ');
   }
 
   function excerptMarkup(s){
@@ -79,7 +84,7 @@
         '<details class="reflection" id="r-' + s.id + '">' +
           '<summary>' +
             '<span class="reflection-head">' +
-              '<span class="entry-title">' + s.title + '</span>' +
+              '<h3 class="entry-title">' + s.title + '</h3>' +
               '<span class="entry-by mono">' + fmtMeta(s) + '</span>' +
             '</span>' +
           '</summary>' +
@@ -96,7 +101,7 @@
   function bookBlockMarkup(group){
     return (
       '<section class="section">' +
-        '<div class="section-label">' + group.book.title + '</div>' +
+        '<h2 class="section-label">' + group.book.title + '</h2>' +
         '<p class="section-dek">' + group.book.note + '</p>' +
         group.entries.map(entryMarkup).join('') +
       '</section>'
