@@ -52,7 +52,7 @@ const BOOKS = {
   },
   keepers: {
     title: "Reflections on Suttas That Stay With Me",
-    note: "Suttas outside the anthology above — encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.",
+    note: "Suttas outside the anthology above, encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.",
     order: "chronological"
   }
 };
