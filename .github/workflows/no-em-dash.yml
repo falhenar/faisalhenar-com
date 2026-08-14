@@ -1,0 +1,75 @@
+name: No em dashes
+
+# Runs on every push to main, whoever made it: you, the GitHub web editor,
+# or an assistant. Repairs what it can, commits the repair back, and fails
+# loudly (you get an email from GitHub) if anything is left that needs a
+# human decision.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check visible copy
+        id: check
+        run: |
+          set +e
+          python3 tools/no-em-dash.py --fix > report.txt 2>&1
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat report.txt
+
+      - name: Commit repairs
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing to commit."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit \
+            -m "Replace em dashes in visible copy" \
+            -m "Automatic repair by tools/no-em-dash.py. Worth re-reading: the script picks a comma, and a colon or a full stop sometimes reads better."
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Ask GitHub Pages to rebuild
+        # A push made with GITHUB_TOKEN does not start a new workflow run, so
+        # the repair commit would sit in the repo without going live. This
+        # asks for the build directly. Harmless if Pages is not branch-based.
+        if: steps.commit.outputs.pushed == 'true'
+        continue-on-error: true
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/builds"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo '## Em dash check'
+            echo
+            echo '```'
+            cat report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail if anything is left
+        if: steps.check.outputs.status != '0'
+        run: |
+          echo "Some em dashes need a human decision. See the summary above."
+          exit 1
