@@ -22,6 +22,8 @@
   label      -> Bodhi's own numbering, e.g. "I.2(3)"
   title      -> the reading's title as given in the book
   ref        -> sutta reference (e.g. "SN 3.3"), "from X" if an excerpt
+  suttaTitle -> canonical Pali title, shown as part of a "ref · suttaTitle"
+                subtitle once an entry is opened
   translator -> SuttaCentral translator slug (default: sujato)
   url        -> direct link, including segment anchor for excerpts
   excerpt    -> a few lines quoted directly from the sutta, your pick.
@@ -68,6 +70,7 @@ const SUTTAS = [
     label: "I.1(1)",
     title: "Aging and Death",
     ref: "SN 3.3",
+    suttaTitle: "Jarāmaraṇasutta",
     translator: "sujato",
     url: "https://suttacentral.net/sn3.3/en/sujato",
     excerpt: "Fancy chariots of kings wear out,\nand even this body gets old.\nBut the truth of the good never gets old—\nso the good proclaim to the good.",
@@ -82,6 +85,7 @@ const SUTTAS = [
     label: "I.1(2)",
     title: "The Simile of the Mountain",
     ref: "SN 3.25",
+    suttaTitle: "Pabbatūpamasutta",
     translator: "sujato",
     url: "https://suttacentral.net/sn3.25/en/sujato",
     excerpt: "“I tell you, Great King, I announce to you: old age and death are advancing upon you. Since old age and death are advancing upon you, what would you do?”\n“Sir, what can I do but practice the teachings, practice morality, doing skillful and good actions?”",
@@ -96,6 +100,7 @@ const SUTTAS = [
     label: "I.1(3)",
     title: "The Divine Messengers",
     ref: "from AN 3.36",
+    suttaTitle: "Devadūtasutta",
     translator: "sujato",
     url: "https://suttacentral.net/an3.36/en/sujato",
     excerpt: "‘My man, because you were negligent, you didn’t do good by way of body, speech, and mind. Well, they’ll definitely punish you to fit your negligence. That bad deed wasn’t done by your mother, father, brother, or sister. It wasn’t done by friends and colleagues, by relatives and kin, by the deities, or by ascetics and brahmins. That bad deed was done by you alone, and you alone will experience the result.’",
@@ -284,10 +289,11 @@ const SUTTAS = [
     label: "",
     title: "Let Go of Philosophy",
     ref: "SN 5.10",
+    suttaTitle: "Vajirāsutta",
     translator: "sujato",
     url: "https://suttacentral.net/sn5.10/en/sujato",
     excerpt: "Who created this sentient being?\nWhere is its maker?\nWhere has the being arisen?\nAnd where does it cease?",
-    note: "Who doesn't love to philosophize about life? Probably a lot of people don't. But for most of my life, I enjoyed it. Or maybe enjoyment is the wrong word to describe it, because at times I even took it too far. Always questioning everything. So much that my head would hurt.\n\nI wanted to know why and how the world worked, how and why we move through it as we do, and sometimes the most important thing was to find out who was responsible. Who was responsible for this war, or that conspiracy, or even worse, who was responsible for my suffering. Because that surely could not be me, right?\n\nBut questioning the state of the world is like arguing with reality. But I have to ask myself: what would knowing the answers to all these questions actually solve? In fact, often asking the questions leads to the arising of desire, aversion, restlessness, sluggishness and doubts. Hindrances to achieving peace of mind. And when we are not able to live in peace with the world as it is, how can we ever create peace in the world we live in?\n\nWhen we say “let it go”, it does not mean we do not care. It means that grasping at our ideas on how it should be prevents us from actually caring for what is in front of us.",
+    note: "Who doesn't love to philosophize about life? Probably a lot of people don't. But for most of my life, I enjoyed it. Or maybe enjoyment is the wrong word to describe it, because at times I even took it too far. Always questioning everything. So much that my head would hurt.\n\nI wanted to know why and how the world worked, how and why we move through it as we do, and sometimes the most important thing was to find out who was responsible. Who was responsible for this war, or that conspiracy, or even worse, who was responsible for my suffering. Because that surely could not be me, right?\n\nQuestioning the state of the world is like arguing with reality. But I had to ask myself: what would knowing the answers to all these questions actually solve? In fact, often asking the questions leads to the arising of desire, aversion, restlessness, sluggishness and doubts. <a href=\"https://suttacentral.net/sn46.40/en/sujato\" target=\"_blank\" rel=\"noopener\">Hindrances</a> to achieving peace of mind. And when we are not able to live in peace with our own minds, how can we ever create peace in the world we live in?\n\nWhen we say “let it go”, it does not mean we do not care. It means that grasping at our ideas on how it should be prevents us from actually caring for what is in front of us.",
     added: "2026-08-12"
   }
 ];

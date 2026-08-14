@@ -52,11 +52,15 @@
     return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
-  function fmtMeta(s){
-    var parts = [s.ref];
+  function fmtSubtitle(s){
+    if (!s.ref) return '';
+    return s.ref + (s.suttaTitle ? ' · ' + s.suttaTitle : '');
+  }
+
+  function fmtStructural(s){
+    var parts = [];
     if (s.label) parts.push(s.label);
     if (s.translator && s.translator !== 'sujato') parts.push('trans. ' + s.translator);
-    parts.push(fmtDate(s.added));
     return parts.join(' &middot; ');
   }
 
@@ -79,16 +83,19 @@
   }
 
   function entryMarkup(s){
+    var structural = fmtStructural(s);
     return (
       '<article class="entry reflection-entry">' +
         '<details class="reflection" id="r-' + s.id + '">' +
           '<summary>' +
             '<span class="reflection-head">' +
               '<h3 class="entry-title">' + s.title + '</h3>' +
-              '<span class="entry-by mono">' + fmtMeta(s) + '</span>' +
+              '<span class="entry-by mono">' + fmtDate(s.added) + '</span>' +
             '</span>' +
           '</summary>' +
           '<div class="reflection-body">' +
+            '<p class="reflection-subtitle mono">' + fmtSubtitle(s) + '</p>' +
+            (structural ? '<p class="reflection-structural mono">' + structural + '</p>' : '') +
             excerptMarkup(s) +
             noteMarkup(s) +
             '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
@@ -100,11 +107,15 @@
 
   function bookBlockMarkup(group){
     return (
-      '<section class="section">' +
-        '<h2 class="section-label">' + group.book.title + '</h2>' +
-        '<p class="section-dek">' + group.book.note + '</p>' +
-        group.entries.map(entryMarkup).join('') +
-      '</section>'
+      '<details class="section book-block">' +
+        '<summary class="book-summary">' +
+          '<h2 class="section-label">' + group.book.title + '</h2>' +
+          '<p class="section-dek">' + group.book.note + '</p>' +
+        '</summary>' +
+        '<div class="book-entries">' +
+          group.entries.map(entryMarkup).join('') +
+        '</div>' +
+      '</details>'
     );
   }
 
@@ -125,6 +136,8 @@
       var target;
       try { target = list.querySelector(hash); } catch (err) { return; }
       if (!target || target.tagName !== 'DETAILS') return;
+      var parentBook = target.closest('details.book-block');
+      if (parentBook) parentBook.open = true;
       target.open = true;
       target.scrollIntoView({ block: 'start' });
     })();
