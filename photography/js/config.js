@@ -38,8 +38,6 @@ const ALBUMS = [
     slug: "first-roll",
     title: "Vietnam Streets",
     color: false,
-    alt: "Black and white street photograph, Vietnam",
-    note: "Vietnam, June 2026. Photographs made on a few photowalks, observing the beauty of the people while getting familiar with the camera.",
     photos: [
       "photos/first-roll/P6030666.jpg",
       "photos/first-roll/P6241167.jpg",
@@ -56,8 +54,6 @@ const ALBUMS = [
     slug: "vietnam-streets-color",
     title: "Vietnam Streets, in Color",
     color: true,
-    alt: "Colour street photograph, Vietnam",
-    note: "Vietnam, June 2026. The same weeks as the black and white set, kept in color where the color was the point.",
     photos: [
       "photos/vietnam-streets-color/P6050611.jpg",
       "photos/vietnam-streets-color/P6080541.jpg",
@@ -71,8 +67,6 @@ const ALBUMS = [
     slug: "suriname-streets",
     title: "Suriname Streets",
     color: false,
-    alt: "Black and white street photograph, Paramaribo, Suriname",
-    note: "Paramaribo, July and August 2026. Street scenes close to home, what a beautiful people we have in this country.",
     photos: [
       "photos/suriname-streets/P7231377.jpg",
       "photos/suriname-streets/P7231325.jpg",
@@ -83,7 +77,9 @@ const ALBUMS = [
       "photos/suriname-streets/P7231512.jpg",
       "photos/suriname-streets/Busses20260723.jpg",
       "photos/suriname-streets/Kwatta-markt20260805-01.jpg",
-      "photos/suriname-streets/kwattamarkt20260805-2.jpg"
+      "photos/suriname-streets/kwattamarkt20260805-2.jpg",
+      "photos/suriname-streets/P8091370 (Groot).jpg",
+      "photos/suriname-streets/P8091271 (Groot).jpg"
     ]
   }
 ];
