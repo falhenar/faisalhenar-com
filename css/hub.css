@@ -1,7 +1,7 @@
 /* ---------------------------------------------------
    faisalhenar.com — HUB (root homepage)
-   Palette:  --paper #F7F0E1   --ink #241F1A   --muted #8A7F6B
-             --line #E3D8BE    --accent #B8842B (brass/ochre)
+   Palette:  --paper #F7F0E1   --ink #241F1A   --muted #6F6656
+             --line #E3D8BE    --accent #875F1E (brass/ochre)
    Type:     Instrument Serif (headline, warm & personal)
               Inter (body) / IBM Plex Mono (eyebrow, meta)
    Signature: a single hand-drawn line wandering between the
@@ -100,9 +100,15 @@
   --paper: #F7F0E1;
   --paper-raised: #EFE6D0;
   --ink: #241F1A;
-  --muted: #8A7F6B;
+  /* muted and accent were #8A7F6B and #B8842B until August 2026. Both carry
+     body-size text (.hero p, .room-dek, .note-body a) and both fell below the
+     4.5:1 WCAG AA minimum: 3.47:1 and 2.90:1 on paper, worse on paper-raised.
+     accent also draws the focus outline, which was under the 3:1 required for
+     a non-text indicator. Chosen to clear 4.5:1 against paper-raised, which
+     the two room cards use, so they clear paper comfortably too. */
+  --muted: #6F6656;
   --line: #E3D8BE;
-  --accent: #B8842B;
+  --accent: #875F1E;
 }
 
 *{ box-sizing: border-box; }

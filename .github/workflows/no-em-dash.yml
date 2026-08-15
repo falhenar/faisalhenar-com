@@ -1,9 +1,19 @@
 name: No em dashes
 
 # Runs on every push to main, whoever made it: you, the GitHub web editor,
-# or an assistant. Repairs what it can, commits the repair back, and fails
-# loudly (you get an email from GitHub) if anything is left that needs a
-# human decision.
+# or an assistant. Reports what it finds and fails loudly (you get an email
+# from GitHub) so the correction is made deliberately.
+#
+# This workflow deliberately does not repair anything. It used to run with
+# --fix, commit the result and push it to main. tools/no-em-dash.py is careful
+# about what it will touch (verbatim quotation is exempt, see QUOTE_FIELDS),
+# but as STYLE.md says, automatic repair picks a comma every time and a comma
+# is often not the right mark. On a site whose point is the writing, the
+# author should choose the punctuation, not the runner. Reading the failure
+# and fixing the line by hand takes a minute and produces a better sentence.
+#
+# The report is written to the runner's temp directory, not the repository,
+# so no scan artefact is ever committed or published.
 
 on:
   push:
@@ -11,8 +21,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
+  contents: read
 
 jobs:
   check:
@@ -24,38 +33,9 @@ jobs:
         id: check
         run: |
           set +e
-          python3 tools/no-em-dash.py --fix > report.txt 2>&1
+          python3 tools/no-em-dash.py > "$RUNNER_TEMP/report.txt" 2>&1
           echo "status=$?" >> "$GITHUB_OUTPUT"
-          cat report.txt
-
-      - name: Commit repairs
-        id: commit
-        run: |
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Nothing to commit."
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit \
-            -m "Replace em dashes in visible copy" \
-            -m "Automatic repair by tools/no-em-dash.py. Worth re-reading: the script picks a comma, and a colon or a full stop sometimes reads better."
-          git push
-          echo "pushed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Ask GitHub Pages to rebuild
-        # A push made with GITHUB_TOKEN does not start a new workflow run, so
-        # the repair commit would sit in the repo without going live. This
-        # asks for the build directly. Harmless if Pages is not branch-based.
-        if: steps.commit.outputs.pushed == 'true'
-        continue-on-error: true
-        run: |
-          curl -sS -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages/builds"
+          cat "$RUNNER_TEMP/report.txt"
 
       - name: Summary
         if: always()
@@ -64,12 +44,14 @@ jobs:
             echo '## Em dash check'
             echo
             echo '```'
-            cat report.txt
+            cat "$RUNNER_TEMP/report.txt"
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Fail if anything is left
+      - name: Fail if anything was found
         if: steps.check.outputs.status != '0'
         run: |
-          echo "Some em dashes need a human decision. See the summary above."
+          echo "Em dashes found in visible copy. See the summary above for the file and line."
+          echo "Fix them by hand: prefer rewriting the sentence, then a colon or a full stop."
+          echo "Verbatim quotation is exempt and the script already skips it."
           exit 1

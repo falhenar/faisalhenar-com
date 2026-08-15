@@ -12,8 +12,8 @@
 <meta name="robots" content="noindex">
 <!-- Absolute paths throughout: GitHub Pages serves this file for a bad URL at
      any depth, so relative paths would break depending on where you landed. -->
-<link rel="stylesheet" href="/css/hub.css?v=4">
-<link rel="stylesheet" href="/css/note.css?v=1">
+<link rel="stylesheet" href="/css/hub.css?v=5">
+<link rel="stylesheet" href="/css/note.css?v=2">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -21,13 +21,14 @@
 <body>
 
   <header class="note-top">
-    <a class="mark" href="/index.html">Faisal Henar</a>
+    <a class="mark" href="/">Faisal Henar</a>
     <div class="menu" data-menu>
-      <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
       <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-        <a href="/index.html">Home</a>
-        <a href="/practice/index.html">Practice</a>
-        <a href="/photography/index.html">Photography</a>
+        <a href="/">Home</a>
+        <a href="/practice/">Practice</a>
+        <a href="/photography/">Photography</a>
+        <a href="/elsewhere.html">Elsewhere</a>
         <a href="/note.html">A note from me</a>
         <a href="/contact.html">Contact</a>
       </nav>
@@ -35,12 +36,12 @@
   </header>
 
   <main class="note">
-    <p class="note-lead">There's nothing at this address.</p>
+    <h1 class="note-lead">There's nothing at this address.</h1>
 
     <div class="note-body">
       <p>The page you were looking for doesn't exist, or it has moved. Either way, nothing is broken on your end.</p>
 
-      <p>The two rooms of the site are <a href="/practice/index.html">Practice</a> and <a href="/photography/index.html">Photography</a>. You can also start again from <a href="/index.html">the front door</a>.</p>
+      <p>The two rooms of the site are <a href="/practice/">Practice</a> and <a href="/photography/">Photography</a>. You can also start again from <a href="/">the front door</a>.</p>
 
       <p>If you followed a link from somewhere and it brought you here, I'd like to know: <a href="mailto:faisal@faisalhenar.com">faisal@faisalhenar.com</a>.</p>
     </div>
@@ -55,9 +56,16 @@
       <span>© <span id="year"></span> Faisal Henar</span>
       <span>Built quietly, updated slowly</span>
     </div>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="/">Home</a>
+        <a href="/practice/">Practice</a>
+        <a href="/photography/">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="/js/menu.js?v=1"></script>
+  <script src="/js/menu.js?v=2"></script>
 </body>
 </html>

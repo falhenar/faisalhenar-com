@@ -21,31 +21,32 @@
 <meta name="twitter:title" content="Faisal Henar">
 <meta name="twitter:description" content="A home for the different rooms of a life: photography and a Buddhist practice.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/hub.css?v=4">
+<link rel="stylesheet" href="css/hub.css?v=5">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
-  <div class="top-line">
+  <header class="top-line">
     <span>Faisal Henar</span>
     <div class="top-line-right">
       <span>Paramaribo</span>
       <div class="menu" data-menu>
-        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
         <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-          <a href="index.html" class="current">Home</a>
-          <a href="practice/index.html">Practice</a>
-          <a href="photography/index.html">Photography</a>
+          <a href="./" class="current" aria-current="page">Home</a>
+          <a href="practice/">Practice</a>
+          <a href="photography/">Photography</a>
           <a href="elsewhere.html">Elsewhere</a>
           <a href="note.html">A note from me</a>
           <a href="contact.html">Contact</a>
         </nav>
       </div>
     </div>
-  </div>
+  </header>
 
+  <main>
   <section class="hero">
     <div class="eyebrow">faisalhenar.com</div>
     <h1>A home for the different rooms of a life.</h1>
@@ -58,8 +59,8 @@
     </svg>
   </div>
 
-  <main class="rooms">
-    <a class="room door-practice" href="practice/index.html">
+  <div class="rooms">
+    <a class="room door-practice" href="practice/">
       <div class="room-num mono">I.</div>
       <div class="room-illustration" aria-hidden="true">
         <svg viewBox="0 0 120 170" fill="none" stroke="#4B5842" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,7 +80,7 @@
       <div class="room-tag">Enter &rarr;</div>
     </a>
 
-    <a class="room door-photography" href="photography/index.html">
+    <a class="room door-photography" href="photography/">
       <div class="room-num mono">II.</div>
       <div class="room-illustration" aria-hidden="true">
         <svg viewBox="0 0 120 170" fill="none" stroke="#B8842B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -94,6 +95,7 @@
       <p class="room-dek">A slow collection of photographs, added to as time allows.</p>
       <div class="room-tag">Enter &rarr;</div>
     </a>
+  </div>
   </main>
 
   <footer class="site-footer">
@@ -106,9 +108,16 @@
       <span>© <span id="year"></span> Faisal Henar</span>
       <span>Built quietly, updated slowly</span>
     </div>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="./">Home</a>
+        <a href="practice/">Practice</a>
+        <a href="photography/">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/menu.js?v=1"></script>
+  <script src="js/menu.js?v=2"></script>
 </body>
 </html>

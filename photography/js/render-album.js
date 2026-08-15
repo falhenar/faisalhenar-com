@@ -1,4 +1,14 @@
 (function(){
+  if (typeof ALBUMS === 'undefined' || !Array.isArray(ALBUMS)) return;
+
+  // Author-written config, not user input. Escaped anyway: a straight double
+  // quote in a title or alt would close the attribute it sits in.
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('a');
   const album = ALBUMS.find(function(a){ return a.slug === slug; });
@@ -77,8 +87,8 @@
     exposure.className = 'exposure' + (album.color ? ' is-color' : '');
     exposure.innerHTML = `
       <button type="button" data-index="${i}" aria-label="Enlarge photo ${num}">
-        <span class="frame-id mono">${label}</span>
-        <span class="pic"><img src="${cfImage(src, 700)}" alt="${altFor(album)}, frame ${num}" loading="lazy"></span>
+        <span class="frame-id mono">${esc(label)}</span>
+        <span class="pic"><img src="${cfImage(src, 700)}" alt="${esc(altFor(album))}, frame ${num}" loading="lazy"></span>
       </button>
     `;
     roll.appendChild(exposure);
@@ -89,12 +99,6 @@
   // rather than looping back to the first.
   (function renderRollEnd(){
     if (!rollEnd) return;
-
-    function esc(s){
-      return String(s).replace(/[&<>"]/g, function(c){
-        return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
-      });
-    }
 
     const mark = document.createElement('p');
     mark.className = 'end-mark';
@@ -121,7 +125,7 @@
 
     const all = document.createElement('a');
     all.className = 'all-albums';
-    all.href = 'index.html';
+    all.href = './';
     all.textContent = next ? 'All albums' : '← All albums';
     rollEnd.appendChild(all);
   })();
@@ -161,7 +165,7 @@
            ' of ' + String(album.photos.length).padStart(2, '0');
   }
   function captionFor(i){
-    return album.title + ' &middot; ' + String(i + 1).padStart(2, '0') + ' / ' + String(album.photos.length).padStart(2, '0');
+    return album.title + ' \u00b7 ' + String(i + 1).padStart(2, '0') + ' / ' + String(album.photos.length).padStart(2, '0');
   }
 
   // Warm the neighbouring frames so arrow/swipe navigation doesn't flash.
@@ -178,7 +182,7 @@
     lightboxImg.src = cfImage(album.photos[i], 2000);
     lightboxImg.alt = labelFor(i);
     lightboxImg.classList.toggle('is-color', !!album.color);
-    lightboxCaption.innerHTML = captionFor(i);
+    lightboxCaption.textContent = captionFor(i);
 
     // Neither arrow is ever dead. At the two ends of the roll they stop
     // advancing and start leaving: forward drops you at the end-of-roll block

@@ -21,8 +21,8 @@
 <meta name="twitter:title" content="Contact · Faisal Henar">
 <meta name="twitter:description" content="Get in touch.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/hub.css?v=4">
-<link rel="stylesheet" href="css/note.css?v=1">
+<link rel="stylesheet" href="css/hub.css?v=5">
+<link rel="stylesheet" href="css/note.css?v=2">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -30,22 +30,22 @@
 <body>
 
   <header class="note-top">
-    <a class="mark" href="index.html">Faisal Henar</a>
+    <a class="mark" href="./">Faisal Henar</a>
     <div class="menu" data-menu>
-      <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
       <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-        <a href="index.html">Home</a>
-        <a href="practice/index.html">Practice</a>
-        <a href="photography/index.html">Photography</a>
+        <a href="./">Home</a>
+        <a href="practice/">Practice</a>
+        <a href="photography/">Photography</a>
         <a href="elsewhere.html">Elsewhere</a>
         <a href="note.html">A note from me</a>
-        <a href="contact.html" class="current">Contact</a>
+        <a href="contact.html" class="current" aria-current="page">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="note">
-    <p class="note-lead">Get in touch</p>
+    <h1 class="note-lead">Get in touch</h1>
 
     <div class="note-body">
       <p>This website is a quiet corner of the internet where I share my photographs, reflections, and experiences along the Buddhist path. If something here has been meaningful to you, I'd love to hear from you.</p>
@@ -68,9 +68,16 @@
       <span>© <span id="year"></span> Faisal Henar</span>
       <span>Built quietly, updated slowly</span>
     </div>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="./">Home</a>
+        <a href="practice/">Practice</a>
+        <a href="photography/">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/menu.js?v=1"></script>
+  <script src="js/menu.js?v=2"></script>
 </body>
 </html>

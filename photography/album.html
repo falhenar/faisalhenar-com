@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Photography · Faisal Henar">
 <meta name="twitter:description" content="A quiet, unhurried record of things worth looking at twice, organized by set.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -31,16 +31,16 @@
 
   <header class="site-header">
     <div class="mark">
-      <a href="index.html">Faisal Henar</a>
+      <a href="./">Faisal Henar</a>
     </div>
     <div class="site-header-right">
       <div class="section-label">Photography</div>
       <div class="menu" data-menu>
-        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
         <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-          <a href="../index.html">Home</a>
-          <a href="../practice/index.html">Practice</a>
-          <a href="index.html" class="current">Photography</a>
+          <a href="../">Home</a>
+          <a href="../practice/">Practice</a>
+          <a href="./" class="current" aria-current="true">Photography</a>
           <a href="../elsewhere.html">Elsewhere</a>
           <a href="../note.html">A note from me</a>
           <a href="../contact.html">Contact</a>
@@ -49,20 +49,25 @@
     </div>
   </header>
 
+  <main>
   <section class="album-header">
-    <a class="back-link" href="index.html">&larr; All albums</a>
+    <a class="back-link" href="./">&larr; All albums</a>
     <h1 id="album-title">Album</h1>
     <p class="album-meta" id="album-meta"></p>
     <p class="album-note" id="album-note" hidden></p>
+    <noscript>
+      <p class="album-note">The photographs on this page are placed by JavaScript. With JavaScript off the frames do not load. Every album is listed on the photography page.</p>
+    </noscript>
   </section>
 
-  <main class="roll" id="roll">
+  <div class="roll" id="roll">
     <!-- exposures rendered here by js/render-album.js -->
-  </main>
+  </div>
 
   <nav class="roll-end" id="roll-end" aria-label="Album navigation">
     <!-- end-of-roll marker and next album rendered here by js/render-album.js -->
   </nav>
+  </main>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
     <div class="lightbox-stage" id="lightbox-stage">
@@ -84,14 +89,21 @@
       <a href="../contact.html">Contact</a>
       <a href="../elsewhere.html">Elsewhere</a>
     </nav>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="../">Home</a>
+        <a href="../practice/">Practice</a>
+        <a href="./">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <div class="sprocket-strip bottom" aria-hidden="true"></div>
 
   <script src="js/config.js?v=2"></script>
   <script src="js/image-url.js?v=1"></script>
-  <script src="js/render-album.js?v=8"></script>
+  <script src="js/render-album.js?v=9"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="../js/menu.js?v=1"></script>
+  <script src="../js/menu.js?v=2"></script>
 </body>
 </html>

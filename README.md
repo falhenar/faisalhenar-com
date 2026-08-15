@@ -86,6 +86,23 @@ in, not the order entries sit in the file.
 `source` that's actually checkable — no quote goes in without one. See the
 comment block at the top of that file for translator/sourcing notes.
 
+**Sutta of the day** (the dated block at the foot of the Practice hub):
+`practice/js/daily-sutta-config.js`. One entry per sutta, each with `text`,
+`ref` and a SuttaCentral `url`. The entry shown is chosen from the calendar
+date, so everyone sees the same one on a given day and it changes at midnight.
+Adding entries just lengthens the cycle. When the day's sutta is one you have
+written a reflection on, the block links through to it automatically, matched
+on `ref` against `suttas-config.js`, so the two lists cannot drift apart.
+
+**Elsewhere** (`elsewhere.html`): a plain hand-edited page, no config.
+
+## Writing style
+
+`STYLE.md` carries one hard rule: no em dashes in visible copy, with verbatim
+quotation exempt. `.github/workflows/no-em-dash.yml` checks every push to
+`main` and fails the run if it finds one. It reports only. It does not edit
+your writing, so when it fails, fix the line yourself and push again.
+
 ## 5. Sharing an album
 
 Every album has its own link, for example:
@@ -97,9 +114,14 @@ share the whole homepage. The `a=` part matches the album's `slug` in
 
 ## Notes
 
-- The placeholder photos are pulled from picsum.photos so you can preview the
-  layout. Replace them with your own photos in `photos/` and update the
-  `photos` array in `config.js` to point at your files instead.
+- Every photograph on the site is one of Faisal's own, in
+  `photography/photos/<album-slug>/`. There are no placeholder images.
+- Photos are served through Cloudflare's image resizing, so the originals in
+  `photos/` are never touched. `photography/js/image-url.js` rewrites each
+  request through `/cdn-cgi/image/`, which resizes and re-encodes to AVIF or
+  WebP depending on the browser. This needs Image Resizing switched on for the
+  zone in the Cloudflare dashboard. If it is ever turned off, those requests
+  404 and no photograph loads.
 - The design is deliberately quiet: black background, one warm accent color,
   photos numbered like frames on a contact sheet — built primarily around
   black and white work, with color used where an album calls for it (see

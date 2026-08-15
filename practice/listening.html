@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Listening · Practice · Faisal Henar">
 <meta name="twitter:description" content="Talks worth having on in the background, usually 10–30 minutes.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=27">
+<link rel="stylesheet" href="css/practice.css?v=28">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -29,15 +29,15 @@
 <body>
 
   <header class="room-header">
-    <a class="mark" href="../index.html">Faisal Henar</a>
+    <a class="mark" href="../">Faisal Henar</a>
     <div class="room-header-right">
       <span class="section-label">Practice</span>
       <div class="menu" data-menu>
-        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
         <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-          <a href="../index.html">Home</a>
-          <a href="index.html" class="current">Practice</a>
-          <a href="../photography/index.html">Photography</a>
+          <a href="../">Home</a>
+          <a href="./" class="current" aria-current="true">Practice</a>
+          <a href="../photography/">Photography</a>
           <a href="../elsewhere.html">Elsewhere</a>
           <a href="../note.html">A note from me</a>
           <a href="../contact.html">Contact</a>
@@ -54,46 +54,49 @@
     <path d="M42 51 A34 34 0 0 1 42 119"></path>
   </svg>
 
-  <a class="back-link" href="index.html">&larr; All rooms</a>
+  <main>
+  <a class="back-link" href="./">&larr; All rooms</a>
   <h1 class="room-title">Listening</h1>
   <p class="room-dek">Podcasts and audiobook talks worth returning to. Some make good background listening; others reward sitting down and paying attention.</p>
 
   <section class="section">
     <div class="entry">
-      <p class="entry-title">The Collected Teachings of Ajahn Chah: Audiobook</p>
+      <h2 class="entry-title">The Collected Teachings of Ajahn Chah: Audiobook</h2>
       <p class="entry-by">Amaravati Buddhist Monastery, read by Ajahn Amaro</p>
       <p class="entry-note">The complete collection of Ajahn Chah's talks translated into English, read in full during the winter of 2012.</p>
       <a class="entry-link" href="https://pod.link/aHR0cHM6Ly9mZWVkcy5hbWFyYXZhdGkub3JnL3Nlcmllcy90aGUtY29sbGVjdGVkLXRlYWNoaW5ncy1vZi1hamFobi1jaGFoL2ZlZWQv" target="_blank" rel="noopener">Listen &rarr;</a>
     </div>
 
     <div class="entry">
-      <p class="entry-title">The Forest Path Podcast</p>
+      <h2 class="entry-title">The Forest Path Podcast</h2>
       <p class="entry-by">Sol Hanna</p>
       <p class="entry-note">Narrated translations of meditation masters of the forest tradition of Theravada Buddhism.</p>
       <a class="entry-link" href="https://pod.link/aHR0cHM6Ly9mZWVkcy5jYXN0b3MuY29tLzczcW4z" target="_blank" rel="noopener">Listen &rarr;</a>
     </div>
 
     <div class="entry">
-      <p class="entry-title">Mindfulness Insight Meditation: Buddhist Teachings</p>
+      <h2 class="entry-title">Mindfulness Insight Meditation: Buddhist Teachings</h2>
       <p class="entry-by">Sayar Myat, Satipatthana Meditation Society of Canada</p>
       <p class="entry-note">Dhamma talks and instruction in Satipatthana Vipassana following the Venerable Mahasi Sayadaw's approach, in the Theravada tradition.</p>
       <a class="entry-link" href="https://pod.link/aHR0cHM6Ly9yc3MuYnV6enNwcm91dC5jb20vMTg1NzYzNC5yc3M" target="_blank" rel="noopener">Listen &rarr;</a>
     </div>
 
     <div class="entry">
-      <p class="entry-title">Evening talks by Thanissaro Bhikkhu</p>
+      <h2 class="entry-title">Evening talks by Thanissaro Bhikkhu</h2>
       <p class="entry-by">Dhammatalks.org, Metta Forest Monastery</p>
       <p class="entry-note">Evening meditation talks on mindfulness, concentration, and the path of practice, most running about 12 minutes, short enough for a quick sit or a commute.</p>
       <a class="entry-link" href="https://pod.link/1569745165" target="_blank" rel="noopener">Listen &rarr;</a>
     </div>
 
     <div class="entry">
-      <p class="entry-title">Wisdom of the Masters</p>
+      <h2 class="entry-title">Wisdom of the Masters</h2>
       <p class="entry-by">Samaneri Jayasara</p>
       <p class="entry-note">Teachings from spiritual masters across traditions (Buddhism, Advaita Vedanta, Christian mysticism, and Sufism), narrated to create a meditative mood.</p>
       <a class="entry-link" href="https://pod.link/aHR0cHM6Ly9hbmNob3IuZm0vcy80OWE1NDE5OC9wb2RjYXN0L3Jzcw" target="_blank" rel="noopener">Listen &rarr;</a>
     </div>
   </section>
+
+  </main>
 
   <footer class="site-footer">
     <nav class="footer-nav" aria-label="More">
@@ -102,9 +105,16 @@
       <a href="../elsewhere.html">Elsewhere</a>
     </nav>
     <span>© <span id="year"></span> Faisal Henar</span>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="../">Home</a>
+        <a href="./">Practice</a>
+        <a href="../photography/">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="../js/menu.js?v=1"></script>
+  <script src="../js/menu.js?v=2"></script>
 </body>
 </html>

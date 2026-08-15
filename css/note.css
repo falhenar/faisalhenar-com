@@ -29,6 +29,9 @@
   padding: 64px 32px 40px;
 }
 
+/* This is the <h1> on note.html, contact.html, elsewhere.html and 404.html.
+   font-weight, font-size and margin are all doing double duty here: they set
+   the look, and they neutralise the browser's h1 defaults. Don't drop them. */
 .note-lead{
   font-family: 'Instrument Serif', serif;
   font-style: italic;

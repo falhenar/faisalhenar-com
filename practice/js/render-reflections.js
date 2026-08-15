@@ -24,6 +24,22 @@
 */
 (function(){
 
+  if (typeof SUTTAS === 'undefined' || !Array.isArray(SUTTAS) ||
+      typeof BOOKS === 'undefined' || !BOOKS) return;
+
+  /* WHAT IS ESCAPED HERE, AND WHAT IS NOT
+     `note` deliberately carries HTML: keepers-1 has an inline <a> to
+     SuttaCentral inside its prose, and more will follow. So the prose bodies
+     (note, excerpt, book note) are written raw, on purpose.
+     Everything that lands in an attribute, plus the short title fields, is
+     escaped: a straight double quote in a url or title would otherwise close
+     the attribute around it and break the entry. */
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
   function publishedEntries(){
     return SUTTAS
       .filter(function(s){ return s.note && s.note.trim().length > 0 && s.added; })
@@ -68,8 +84,8 @@
     if (!s.excerpt) return '';
     var lines = s.excerpt.split('\n').map(function(line){ return line.trim(); }).filter(Boolean);
     return (
-      '<a class="reflections-excerpt-link" href="' + s.url + '" target="_blank" rel="noopener">' +
-        '<blockquote class="reflections-excerpt">' + lines.join('<br>') + '</blockquote>' +
+      '<a class="reflections-excerpt-link" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
+        '<blockquote class="reflections-excerpt">' + lines.join('<br>\n') + '</blockquote>' +
       '</a>'
     );
   }
@@ -86,10 +102,10 @@
     var structural = fmtStructural(s);
     return (
       '<article class="entry reflection-entry">' +
-        '<details class="reflection" id="r-' + s.id + '">' +
+        '<details class="reflection" id="r-' + esc(s.id) + '">' +
           '<summary>' +
             '<span class="reflection-head">' +
-              '<h3 class="entry-title">' + s.title + '</h3>' +
+              '<h3 class="entry-title">' + esc(s.title) + '</h3>' +
               '<span class="entry-by mono">' + fmtDate(s.added) + '</span>' +
             '</span>' +
           '</summary>' +
@@ -98,7 +114,7 @@
             (structural ? '<p class="reflection-structural mono">' + structural + '</p>' : '') +
             excerptMarkup(s) +
             noteMarkup(s) +
-            '<a class="entry-link" href="' + s.url + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
+            '<a class="entry-link" href="' + esc(s.url) + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
           '</div>' +
         '</details>' +
       '</article>'
@@ -109,7 +125,7 @@
     return (
       '<details class="section book-block">' +
         '<summary class="book-summary">' +
-          '<h2 class="section-label">' + group.book.title + '</h2>' +
+          '<h2 class="section-label">' + esc(group.book.title) + '</h2>' +
           '<p class="section-dek">' + group.book.note + '</p>' +
         '</summary>' +
         '<div class="book-entries">' +

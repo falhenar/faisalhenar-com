@@ -1,7 +1,7 @@
 /* ---------------------------------------------------
    faisalhenar.com — PRACTICE section
    Palette:  --bg #EDEEE7 (soft stone)  --ink #2B2B27
-             --muted #7C8073   --line #D9DACE
+             --muted #65685E   --line #D9DACE
              --accent #4B5842 (moss)
    Type:     Lora (headings, quiet serif) / Inter (body)
              IBM Plex Mono (meta) — kept as the one thread
@@ -100,7 +100,11 @@
   --bg: #EDEEE7;
   --bg-raised: #E4E6DB;
   --ink: #2B2B27;
-  --muted: #7C8073;
+  /* was #7C8073, which gave 3.46:1 on bg and 3.20:1 on bg-raised, below the
+     4.5:1 WCAG AA minimum for the body-size text it carries (.room-dek,
+     .entry-by, .quote-source). Chosen to clear 4.5:1 on bg-raised.
+     --accent is already 6.48:1 and is unchanged. */
+  --muted: #65685E;
   --line: #D9DACE;
   --accent: #4B5842;
 }

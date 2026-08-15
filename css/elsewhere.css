@@ -16,6 +16,9 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
+  /* margin-top matters: this is an <h2> on elsewhere.html, so the browser's
+     0.83em heading default has to be cancelled or the sections drift apart. */
+  margin-top: 0;
   margin-bottom: 18px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--line);

@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Reflections · Practice · Faisal Henar">
 <meta name="twitter:description" content="A slow read through a small set of suttas, published as I get to them.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=27">
+<link rel="stylesheet" href="css/practice.css?v=28">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -29,15 +29,15 @@
 <body>
 
   <header class="room-header">
-    <a class="mark" href="../index.html">Faisal Henar</a>
+    <a class="mark" href="../">Faisal Henar</a>
     <div class="room-header-right">
       <span class="section-label">Practice</span>
       <div class="menu" data-menu>
-        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
         <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-          <a href="../index.html">Home</a>
-          <a href="index.html" class="current">Practice</a>
-          <a href="../photography/index.html">Photography</a>
+          <a href="../">Home</a>
+          <a href="./" class="current" aria-current="true">Practice</a>
+          <a href="../photography/">Photography</a>
           <a href="../elsewhere.html">Elsewhere</a>
           <a href="../note.html">A note from me</a>
           <a href="../contact.html">Contact</a>
@@ -55,13 +55,22 @@
     <line x1="44" y1="106" x2="88" y2="106"></line>
   </svg>
 
-  <a class="back-link" href="index.html">&larr; All rooms</a>
+  <main>
+  <a class="back-link" href="./">&larr; All rooms</a>
   <h1 class="room-title">Reflections</h1>
   <p class="room-dek">A slow read through the texts I keep returning to, published as I actually get to them rather than on a schedule. The anthology below follows its own structure; the suttas after it don't; they're simply ones that stayed with me. Sources and translations are noted per entry.</p>
+
+  <noscript>
+    <section class="section">
+      <p class="reflections-empty">The reflections are assembled in your browser, so they need JavaScript. With JavaScript off nothing is listed here.</p>
+    </section>
+  </noscript>
 
   <div id="reflections-list">
     <!-- rendered by js/render-reflections.js -->
   </div>
+
+  </main>
 
   <footer class="site-footer">
     <nav class="footer-nav" aria-label="More">
@@ -70,11 +79,18 @@
       <a href="../elsewhere.html">Elsewhere</a>
     </nav>
     <span>© <span id="year"></span> Faisal Henar</span>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="../">Home</a>
+        <a href="./">Practice</a>
+        <a href="../photography/">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <script src="js/suttas-config.js?v=5"></script>
-  <script src="js/render-reflections.js?v=9"></script>
+  <script src="js/render-reflections.js?v=10"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="../js/menu.js?v=1"></script>
+  <script src="../js/menu.js?v=2"></script>
 </body>
 </html>

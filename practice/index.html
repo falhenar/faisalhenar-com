@@ -21,27 +21,27 @@
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <meta name="description" content="Readings, talks, and places that inform a Buddhist practice.">
 <link rel="canonical" href="https://faisalhenar.com/practice/">
-<link rel="stylesheet" href="css/practice.css?v=27">
+<link rel="stylesheet" href="css/practice.css?v=28">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
-  <div class="hub-topline">
-    <a class="top-link" href="../index.html">&larr; faisalhenar.com</a>
+  <header class="hub-topline">
+    <a class="top-link" href="../">&larr; faisalhenar.com</a>
     <div class="menu" data-menu>
-      <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
       <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-        <a href="../index.html">Home</a>
-        <a href="index.html" class="current">Practice</a>
-        <a href="../photography/index.html">Photography</a>
+        <a href="../">Home</a>
+        <a href="./" class="current" aria-current="page">Practice</a>
+        <a href="../photography/">Photography</a>
         <a href="../elsewhere.html">Elsewhere</a>
         <a href="../note.html">A note from me</a>
         <a href="../contact.html">Contact</a>
       </nav>
     </div>
-  </div>
+  </header>
 
   <svg class="dharma-wheel" viewBox="0 0 100 100" aria-hidden="true">
     <circle class="rim" cx="50" cy="50" r="40"></circle>
@@ -52,6 +52,7 @@
     <circle class="hub" cx="50" cy="50" r="3.5"></circle>
   </svg>
 
+  <main>
   <section class="intro">
     <h1>A few things that have shaped the practice.</h1>
     <p>Not a teaching page, just a small, honest list of places, people, and words I keep returning to. A few small rooms, each holding one part of it.</p>
@@ -63,7 +64,7 @@
     <p class="quote-source mono" id="quote-source"></p>
   </section>
 
-  <main class="rooms-grid">
+  <div class="rooms-grid">
     <a class="room-card" href="reflections.html">
       <svg class="room-icon" viewBox="0 0 120 170" aria-hidden="true">
         <rect x="16" y="12" width="88" height="146" rx="3"></rect>
@@ -139,7 +140,7 @@
       <p class="room-card-dek">Teachers, monasteries, and the community around them.</p>
       <div class="room-card-tag">Enter &rarr;</div>
     </a>
-  </main>
+  </div>
 
   <section class="sutta-of-day" id="sutta-of-day">
     <p class="sutta-of-day-label mono">Sutta of the day</p>
@@ -148,6 +149,7 @@
     </a>
     <p class="sutta-of-day-source mono" id="sutta-of-day-source"></p>
   </section>
+  </main>
 
   <footer class="site-footer">
     <nav class="footer-nav" aria-label="More">
@@ -156,16 +158,23 @@
       <a href="../elsewhere.html">Elsewhere</a>
     </nav>
     <span>© <span id="year"></span> Faisal Henar</span>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="../">Home</a>
+        <a href="./">Practice</a>
+        <a href="../photography/">Photography</a>
+      </nav>
+    </noscript>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="../js/menu.js?v=1"></script>
+  <script src="../js/menu.js?v=2"></script>
   <script src="js/quotes-config.js?v=1"></script>
   <script src="js/render-quotes.js?v=1"></script>
   <script src="js/daily-sutta-config.js?v=1"></script>
   <!-- suttas-config is the source of truth for which suttas have a published
        reflection; render-daily-sutta reads it to decide whether to link one. -->
   <script src="js/suttas-config.js?v=5"></script>
-  <script src="js/render-daily-sutta.js?v=2"></script>
+  <script src="js/render-daily-sutta.js?v=3"></script>
 </body>
 </html>

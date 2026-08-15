@@ -11,6 +11,11 @@
 
   var CLOSE_DELAY = 180; // ms of grace when the pointer leaves
 
+  // Collected so the two document-level listeners below can be registered once
+  // instead of once per menu. With a single menu per page the old arrangement
+  // worked; it would have fired N times the day a page carried two.
+  var menus = [];
+
   document.querySelectorAll('[data-menu]').forEach(function (menu) {
     var btn = menu.querySelector('[data-menu-btn]');
     var panel = menu.querySelector('[data-menu-panel]');
@@ -71,15 +76,21 @@
       if (!menu.contains(e.relatedTarget)) closeMenu();
     });
 
-    document.addEventListener('click', function (e) {
-      if (!menu.contains(e.target)) closeMenu();
-    });
+    menus.push({ menu: menu, btn: btn, panel: panel, close: closeMenu });
+  });
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !panel.hidden) {
-        closeMenu();
-        btn.focus();
-      }
+  document.addEventListener('click', function (e) {
+    menus.forEach(function (m) {
+      if (!m.menu.contains(e.target)) m.close();
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    menus.forEach(function (m) {
+      if (m.panel.hidden) return;
+      m.close();
+      m.btn.focus();
     });
   });
 })();

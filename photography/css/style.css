@@ -398,6 +398,11 @@ a:focus-visible, button:focus-visible{
 }
 .roll .exposure{
   background: var(--bg);
+  /* <figure> carries a UA default margin of 1em 40px. Without this reset each
+     frame sits 40px in from both edges of its grid cell, which shrinks the
+     photograph by ~38% (about half its width on a phone) and replaces the
+     1px hairline gaps below with wide gutters. */
+  margin: 0;
   padding: 0;
 }
 .roll .exposure button{

@@ -54,7 +54,7 @@
 
   var sutta = pool[idx];
   var lines = sutta.text.split('\n').map(function(line){ return line.trim(); }).filter(Boolean);
-  textEl.innerHTML = lines.join('<br>');
+  textEl.innerHTML = lines.join('<br>\n');
   linkEl.href = sutta.url;
 
   var meta = sutta.ref || '';
