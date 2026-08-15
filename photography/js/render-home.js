@@ -18,6 +18,13 @@
     return album.alt || (album.title + ', photograph');
   }
 
+  // The cover is always the album's first photo, so prefer its own
+  // per-photo alt (from config.js's PHOTOS registry) over the old
+  // album-wide fallback.
+  function coverAlt(album){
+    return (album.photoAlts && album.photoAlts[0]) || altFor(album);
+  }
+
   ALBUMS.forEach(function(album, i){
     const num = String(i + 1).padStart(2, '0');
     const cover = album.photos[0];
@@ -28,7 +35,7 @@
       <div class="frame-id mono">FH · ${num}</div>
       <a class="thumb-link" href="album.html?a=${encodeURIComponent(album.slug)}" aria-label="Open album: ${esc(album.title)}">
         <div class="thumb">
-          <img src="${cfImage(cover, 800)}" alt="${esc(altFor(album))}, cover"${i === 0 ? '' : ' loading="lazy"'}>
+          <img src="${cfImage(cover, 800)}" alt="${esc(coverAlt(album))}, cover"${i === 0 ? '' : ' loading="lazy"'}>
         </div>
       </a>
       <div class="meta">

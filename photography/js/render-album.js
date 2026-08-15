@@ -55,7 +55,7 @@
     }
     link.href = url;
 
-    var title = album.title + ' \u00b7 Faisal Henar Photography';
+    var title = album.title + ' · Faisal Henar Photography';
     meta('meta[property="og:url"]', 'property', 'og:url', url);
     meta('meta[property="og:title"]', 'property', 'og:title', title);
     meta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
@@ -80,6 +80,17 @@
     return a.alt || (a.title + ', photograph');
   }
 
+  // Per-photo alt, now that config.js supplies one alt per photo (via the
+  // PHOTOS registry, resolved into album.photoAlts by the ALBUMS adapter).
+  // Falls back to the old album-wide text if photoAlts is ever missing,
+  // so a hand-edited or older-shaped album config still renders.
+  function photoAlt(a, i){
+    return (a.photoAlts && a.photoAlts[i]) || altFor(a);
+  }
+  function coverAlt(a){
+    return (a.photoAlts && a.photoAlts[0]) || altFor(a);
+  }
+
   album.photos.forEach(function(src, i){
     const num = String(i + 1).padStart(2, '0');
     const label = album.slug.slice(0,2).toUpperCase() + '·' + num;
@@ -88,7 +99,7 @@
     exposure.innerHTML = `
       <button type="button" data-index="${i}" aria-label="Enlarge photo ${num}">
         <span class="frame-id mono">${esc(label)}</span>
-        <span class="pic"><img src="${cfImage(src, 700)}" alt="${esc(altFor(album))}, frame ${num}" loading="lazy"></span>
+        <span class="pic"><img src="${cfImage(src, 700)}" alt="${esc(photoAlt(album, i))}" loading="lazy"></span>
       </button>
     `;
     roll.appendChild(exposure);
@@ -113,7 +124,7 @@
       a.className = 'next-album' + (next.color ? ' is-color' : '');
       a.href = 'album.html?a=' + encodeURIComponent(next.slug);
       a.innerHTML = `
-        <span class="thumb"><img src="${esc(cfImage(next.photos[0], 300))}" alt="${esc(altFor(next))}, cover" loading="lazy"></span>
+        <span class="thumb"><img src="${esc(cfImage(next.photos[0], 300))}" alt="${esc(coverAlt(next))}, cover" loading="lazy"></span>
         <span class="next-text">
           <span class="next-label">Next album</span>
           <span class="next-title">${esc(next.title)}</span>
@@ -130,234 +141,74 @@
     rollEnd.appendChild(all);
   })();
 
-  // Lightbox behavior, with previous/next (non-looping)
-  const lightbox = document.getElementById('lightbox');
-  const lightboxStage = document.getElementById('lightbox-stage');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxClose = document.getElementById('lightbox-close');
-  const lightboxPrev = document.getElementById('lightbox-prev');
-  const lightboxNext = document.getElementById('lightbox-next');
-  const lightboxFs = document.getElementById('lightbox-fullscreen');
+  // Fullscreen viewer, built on the shared module in viewer.js. Album
+  // coupling (the caption text, and walking off either end of the roll
+  // into the next album or back to the top) lives here, passed in as
+  // small callbacks; the module itself knows nothing about albums.
+  if (typeof createPhotoViewer !== 'function') return;
 
-  let currentIndex = 0;
-  let lastFocused = null;
+  const viewer = createPhotoViewer({
+    root: document.getElementById('lightbox'),
+    stage: document.getElementById('lightbox-stage'),
+    img: document.getElementById('lightbox-img'),
+    closeBtn: document.getElementById('lightbox-close'),
+    prevBtn: document.getElementById('lightbox-prev'),
+    nextBtn: document.getElementById('lightbox-next'),
+    fsBtn: document.getElementById('lightbox-fullscreen'),
+    captionEl: document.getElementById('lightbox-caption'),
 
-  // Native fullscreen is not available everywhere (notably iOS Safari, which
-  // only allows it on <video>). Only offer the button where it will work.
-  const fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
-  if (fsEnabled) lightboxFs.hidden = false;
+    captionFor: function (photo, i){
+      return album.title + ' · ' + String(i + 1).padStart(2, '0') + ' / ' + String(album.photos.length).padStart(2, '0');
+    },
 
-  function fsElement(){
-    return document.fullscreenElement || document.webkitFullscreenElement || null;
-  }
-  function requestFs(el){
-    if (el.requestFullscreen) return el.requestFullscreen();
-    if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
-  }
-  function exitFs(){
-    if (document.exitFullscreen) return document.exitFullscreen();
-    if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
-  }
-
-  function labelFor(i){
-    return altFor(album) + ', frame ' + String(i + 1).padStart(2, '0') +
-           ' of ' + String(album.photos.length).padStart(2, '0');
-  }
-  function captionFor(i){
-    return album.title + ' \u00b7 ' + String(i + 1).padStart(2, '0') + ' / ' + String(album.photos.length).padStart(2, '0');
-  }
-
-  // Warm the neighbouring frames so arrow/swipe navigation doesn't flash.
-  function preloadNeighbours(i){
-    [i - 1, i + 1].forEach(function(n){
-      if (n < 0 || n >= album.photos.length) return;
-      const img = new Image();
-      img.src = cfImage(album.photos[n], 2000);
-    });
-  }
-
-  function showAt(i){
-    currentIndex = i;
-    lightboxImg.src = cfImage(album.photos[i], 2000);
-    lightboxImg.alt = labelFor(i);
-    lightboxImg.classList.toggle('is-color', !!album.color);
-    lightboxCaption.textContent = captionFor(i);
+    boundaryLabel: {
+      prev: function () { return 'Back to the top of the album'; },
+      next: function () { return 'End of roll, back to the album'; }
+    },
 
     // Neither arrow is ever dead. At the two ends of the roll they stop
-    // advancing and start leaving: forward drops you at the end-of-roll block
-    // where the next album waits, back returns you to the top of the album.
-    const atStart = (i === 0);
-    const atEnd = (i === album.photos.length - 1);
+    // advancing and start leaving: forward drops you at the end-of-roll
+    // block where the next album waits, back returns you to the top of
+    // the album. Focus moves with the scroll, or the two fight each other.
+    onBoundary: function (direction){
+      viewer.close({ restoreFocus: false });
+      landAt(direction === 'next' ? 'end' : 'top');
+    }
+  });
 
-    lightboxPrev.classList.toggle('is-start', atStart);
-    lightboxPrev.setAttribute('aria-label', atStart ? 'Back to the top of the album' : 'Previous photo');
-    lightboxPrev.title = atStart ? 'Start of roll' : '';
-
-    lightboxNext.classList.toggle('is-end', atEnd);
-    lightboxNext.setAttribute('aria-label', atEnd ? 'End of roll, back to the album' : 'Next photo');
-    lightboxNext.title = atEnd ? 'End of roll' : '';
-
-    preloadNeighbours(i);
-  }
-
-  // Right arrow, next button and left-swipe all come through here.
-  function goNext(){
-    if (currentIndex < album.photos.length - 1){ showAt(currentIndex + 1); return; }
-    closeLightbox({ to: 'end' });
-  }
-  // Left arrow, prev button and right-swipe.
-  function goPrev(){
-    if (currentIndex > 0){ showAt(currentIndex - 1); return; }
-    closeLightbox({ to: 'top' });
-  }
-
-  function openLightbox(i){
-    lastFocused = document.activeElement;
-    lightbox.hidden = false;
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    showAt(i);
-    lightboxClose.focus();
-  }
-
-  // Where the page should land once the viewer closes. Default is the thumbnail
-  // we came from; walking off either end of the roll lands somewhere onward
-  // instead. Focus moves with the scroll, or the two fight each other.
+  // Where the page should land once the viewer closes at a boundary.
+  // preventScroll on focus, so focus doesn't yank the page before we
+  // scroll it; the actual scroll happens next frame so leaving native
+  // fullscreen (which relays out the page) doesn't fight it.
   function landAt(where){
     let anchor = null;
     if (where === 'end' && rollEnd && !rollEnd.hidden) anchor = rollEnd;
     if (where === 'top') anchor = document.querySelector('.album-header');
-    if (!anchor) return false;
+    if (!anchor) return;
 
     const target = anchor.querySelector('a');
-    // preventScroll, so focus doesn't yank the page before we scroll it.
     if (target){
       try { target.focus({ preventScroll: true }); } catch (err) { target.focus(); }
     }
-    // Leaving native fullscreen relays out the page; scroll on the next frame.
     requestAnimationFrame(function(){
       // No behavior passed: inherits scroll-behavior, which reduced motion turns off.
       if (where === 'top') window.scrollTo({ top: 0 });
       else anchor.scrollIntoView({ block: 'center' });
     });
-    return true;
   }
 
-  function closeLightbox(opts){
-    if (fsElement()) exitFs();
-    lightbox.classList.remove('is-open');
-    lightbox.hidden = true;
-    lightboxImg.src = '';
-    document.body.style.overflow = '';
-
-    const landed = landAt(opts && opts.to);
-    if (!landed && lastFocused && lastFocused.focus) lastFocused.focus();
-    lastFocused = null;
-  }
-
-  function toggleFullscreen(){
-    if (fsElement()) { exitFs(); return; }
-    const p = requestFs(lightbox);
-    if (p && p.catch) p.catch(function(){ /* denied — the overlay is still full-bleed */ });
-  }
-
-  function syncFsButton(){
-    const on = !!fsElement();
-    lightboxFs.textContent = on ? 'Exit full screen' : 'Full screen';
-    lightboxFs.setAttribute('aria-pressed', on ? 'true' : 'false');
-  }
-  document.addEventListener('fullscreenchange', syncFsButton);
-  document.addEventListener('webkitfullscreenchange', syncFsButton);
+  const viewerPhotos = album.photos.map(function (src, i) {
+    return {
+      url: cfImage(src, 2000),
+      alt: photoAlt(album, i),
+      color: !!album.color
+    };
+  });
 
   roll.addEventListener('click', function(e){
     const btn = e.target.closest('button[data-index]');
     if (!btn) return;
-    openLightbox(parseInt(btn.getAttribute('data-index'), 10));
+    const i = parseInt(btn.getAttribute('data-index'), 10);
+    viewer.open(viewerPhotos, i, btn);
   });
-  lightboxClose.addEventListener('click', function(){ closeLightbox(); });
-  lightboxFs.addEventListener('click', toggleFullscreen);
-  lightboxPrev.addEventListener('click', goPrev);
-  lightboxNext.addEventListener('click', goNext);
-  // Clicking the empty space around the photo closes the viewer.
-  lightboxStage.addEventListener('click', function(e){
-    if (e.target === lightboxStage) closeLightbox();
-  });
-
-  // Capture phase, so nothing lower in the tree can swallow these keys before
-  // we see them. Bound to window as well as document: when the lightbox is the
-  // native fullscreen element, some browsers route key events there first.
-  function onKeydown(e){
-    // Bound twice (window + document), so ignore the second sighting of an event.
-    if (e.lightboxSeen) return;
-    e.lightboxSeen = true;
-
-    if (!lightbox.classList.contains('is-open')) return;
-    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
-
-    // e.key is normalised here because older engines report "Left"/"Right"/"Esc".
-    var key = e.key;
-    if (key === 'Left') key = 'ArrowLeft';
-    if (key === 'Right') key = 'ArrowRight';
-    if (key === 'Esc') key = 'Escape';
-
-    if (key === 'Escape'){
-      // In native fullscreen the browser handles Escape itself; don't also close.
-      if (!fsElement()) { e.preventDefault(); closeLightbox(); }
-      return;
-    }
-    if (key === 'f' || key === 'F'){
-      if (fsEnabled) { e.preventDefault(); toggleFullscreen(); }
-      return;
-    }
-    if (key === 'ArrowLeft'){
-      e.preventDefault();  // otherwise the page also tries to scroll
-      goPrev();
-      return;
-    }
-    if (key === 'ArrowRight'){
-      e.preventDefault();
-      goNext();
-      return;
-    }
-
-    // Keep Tab inside the dialog while it is open.
-    if (key === 'Tab'){
-      const focusable = Array.prototype.filter.call(
-        lightbox.querySelectorAll('button:not([disabled]):not([hidden])'),
-        function(el){ return el.offsetParent !== null; }
-      );
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first){
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last){
-        e.preventDefault(); first.focus();
-      }
-    }
-  }
-  document.addEventListener('keydown', onKeydown, true);
-  window.addEventListener('keydown', onKeydown, true);
-
-  // Swipe navigation (touch devices)
-  var touchStartX = 0, touchStartY = 0;
-  var SWIPE_THRESHOLD = 40;
-
-  lightbox.addEventListener('touchstart', function(e){
-    touchStartX = e.changedTouches[0].clientX;
-    touchStartY = e.changedTouches[0].clientY;
-  }, { passive: true });
-
-  lightbox.addEventListener('touchend', function(e){
-    var dx = e.changedTouches[0].clientX - touchStartX;
-    var dy = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
-    // Deliberately bounded, unlike the arrows and keys. A swipe is a continuous
-    // gesture that's easy to overshoot, and an unresponsive swipe leaves no dead
-    // control on screen the way a greyed-out arrow does. Swap in goNext/goPrev
-    // if you'd rather have it fully symmetric.
-    if (dx < 0 && currentIndex < album.photos.length - 1) showAt(currentIndex + 1);
-    if (dx > 0 && currentIndex > 0) showAt(currentIndex - 1);
-  }, { passive: true });
 })();
