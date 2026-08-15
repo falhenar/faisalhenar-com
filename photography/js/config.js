@@ -6,17 +6,18 @@
   1. PHOTOS      - every photograph the site knows about. The single
                     source of truth: source path, size, colour treatment,
                     alt text, and the date it was added.
-  2. EXHIBITION  - the curated, hand-ordered sequence for the future
-                    Exhibition page. Not built or displayed yet (Stage 2).
-  3. ALBUMS      - the current album pages (album.html, the photography
-                    index) still run on this shape. Rather than keep a
-                    second copy of every photo's data, ALBUMS is built
-                    automatically from PHOTOS + ALBUM_META below, each
-                    time the page loads. Edit PHOTOS and ALBUM_META;
-                    never edit ALBUMS by hand.
+  2. EXHIBITION  - the curated, hand-ordered sequence for the main
+                    Photography page (photography/index.html), rendered
+                    by js/render-exhibition.js.
+  3. ALBUMS      - album.html still runs on this shape, kept around while
+                    the old album pages remain live alongside the new
+                    Exhibition. Rather than keep a second copy of every
+                    photo's data, ALBUMS is built automatically from
+                    PHOTOS + ALBUM_META below, each time the page loads.
+                    Edit PHOTOS and ALBUM_META; never edit ALBUMS by hand.
 
-  Stage 2 will retire ALBUM_META and this adapter once the Exhibition
-  and Index pages exist and album.html is retired.
+  Stage 4 retires ALBUM_META and this adapter, once the Index page also
+  exists and album.html is retired.
 */
 
 /*
@@ -242,25 +243,83 @@ const PHOTOS = {
 /*
   2. EXHIBITION
   -------------
-  The future curated wall. Not rendered anywhere yet (that's Stage 2).
-  This is scaffolding: the 27 existing photos in their current album
-  order, as bare ids, so the data structure exists and is exercised.
-  Nothing about this order is a curatorial decision, and it should be
-  treated as a placeholder until the wall is actually sequenced by hand.
+  The curated sequence on photography/index.html, rendered by
+  js/render-exhibition.js.
 
-  Bare id  -> standard, centred photo (the common case).
-  Optional per-slot hints (not used below; shown for reference):
-    { photo: "vc-04", size: "wide" }
-    { photo: "sr-06", size: "intimate" }
-    { photo: "vn-02", align: "left" }
-    { pair: ["sr-08", "sr-09"] }
+  The Exhibition is 15 of the 27 photographs, in a hand-chosen order,
+  following a manual review of the full collection. It was 23 until a
+  second pass cut it back: a sequence a reader finishes is worth more
+  than a sequence that shows everything. vn-03, vn-06, vn-07, vn-08,
+  vc-06, sr-01, sr-03, sr-05, sr-07, sr-08, sr-09 and sr-10 are
+  deliberately not listed below. They stay in PHOTOS, so they still
+  appear in the Index and in the legacy albums; they are just not part
+  of this particular sequence.
+
+  THE ROW GRAMMAR
+
+  The page is one centred column, and the only unit is a row. A row holds
+  one photograph or two, and there is nothing else to configure: no
+  per-photograph size, no left/right offset, no spacing vocabulary. The
+  earlier "duo / plate / size / align / space" model is gone, along with
+  the dark field it was designed for.
+
+    { row: ["id"] }              one photograph across the full column.
+                                 Use it where a photograph earns the
+                                 presence; it is the tallest thing the
+                                 page can do.
+
+    { row: ["id"],
+      width: "narrow" }          one photograph at about 62% of the
+                                 column, centred. A pause. Used sparingly.
+
+    { row: ["idA", "idB"] }      two photographs sharing the row, left to
+                                 right in reading order. Their widths come
+                                 from their own proportions, so both end
+                                 up the same height and neither is
+                                 cropped. A landscape next to a portrait
+                                 lands near 64/36 by itself.
+
+  Two optional flags, both rare:
+
+    weight: [a, b]               multiplies each photograph's share of a
+                                 two-photograph row. Keep it near 1. Used
+                                 once, so vc-05 carries its row.
+    turn: true                   a slightly longer pause above this row.
+                                 Used exactly twice, at the two points
+                                 where the sequence changes register.
+
+  MOVEMENTS (not labelled on the page; they only guide the sequence)
+    I     Vietnam, monochrome    vn-01, vn-02, vn-09, vn-04, vn-05
+    II    Vietnam, colour        vc-01 .. vc-05
+    III   Suriname, monochrome   sr-02, sr-04, sr-06, sr-12, sr-11
+
+  Five photographs each. That is a consequence of the edit rather than a
+  rule, and nothing on the page announces it.
+
+  Ten rows: five shared, three full-column singles, one narrow single,
+  and one full-column single opening each of the last two movements. The
+  sequence opens on a shared row and closes on sr-11 alone, narrow and
+  centred.
 */
 
 const EXHIBITION = [
-  "vn-01", "vn-02", "vn-03", "vn-04", "vn-05", "vn-06", "vn-07", "vn-08", "vn-09",
-  "vc-01", "vc-02", "vc-03", "vc-04", "vc-05", "vc-06",
-  "sr-01", "sr-02", "sr-03", "sr-04", "sr-05", "sr-06",
-  "sr-07", "sr-08", "sr-09", "sr-10", "sr-11", "sr-12"
+  // I. Vietnam, monochrome. vn-01 and vn-02 open in conversation; vn-09
+  // takes the room to itself; vn-04 and vn-05 close the movement together.
+  { row: ["vn-01", "vn-02"] },
+  { row: ["vn-09"] },
+  { row: ["vn-04", "vn-05"] },
+
+  // II. Colour. vc-01 announces the change alone.
+  { row: ["vc-01"], turn: true },
+  { row: ["vc-02", "vc-03"] },
+  { row: ["vc-04", "vc-05"], weight: [1, 1.25] },
+
+  // III. Suriname, back to monochrome. sr-12 stands alone before the
+  // ending, and sr-11 closes the sequence on its own, narrow.
+  { row: ["sr-02"], turn: true },
+  { row: ["sr-04", "sr-06"] },
+  { row: ["sr-12"] },
+  { row: ["sr-11"], width: "narrow" }
 ];
 
 /*

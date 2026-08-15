@@ -11,7 +11,7 @@
 <meta name="description" content="A quiet, personal collection of photographs.">
 <link rel="canonical" href="https://faisalhenar.com/photography/">
 <meta property="og:title" content="Photography · Faisal Henar">
-<meta property="og:description" content="A quiet, unhurried record of things worth looking at twice, organized by set.">
+<meta property="og:description" content="A quiet, personal collection of photographs.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://faisalhenar.com/photography/">
 <meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
@@ -19,58 +19,72 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Photography · Faisal Henar">
-<meta name="twitter:description" content="A quiet, unhurried record of things worth looking at twice, organized by set.">
+<meta name="twitter:description" content="A quiet, personal collection of photographs.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=15">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body>
+<body class="folio">
 
-  <div class="sprocket-strip top" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <div class="mark">
-      <a href="../">Faisal Henar</a>
-    </div>
-    <div class="site-header-right">
-      <div class="section-label">Photography</div>
-      <div class="menu" data-menu>
-        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
-        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
-          <a href="../">Home</a>
-          <a href="../practice/">Practice</a>
-          <a href="./" class="current" aria-current="page">Photography</a>
-          <a href="../elsewhere.html">Elsewhere</a>
-          <a href="../note.html">A note from me</a>
-          <a href="../contact.html">Contact</a>
-        </nav>
-      </div>
+  <header class="hub-topline">
+    <a class="top-link" href="../">&larr; faisalhenar.com</a>
+    <div class="menu" data-menu>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+      <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections" hidden>
+        <a href="../">Home</a>
+        <a href="../practice/">Practice</a>
+        <a href="./" class="current" aria-current="page">Photography</a>
+        <a href="../elsewhere.html">Elsewhere</a>
+        <a href="../note.html">A note from me</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-  <section class="intro">
-    <h1>A quiet, unhurried record of things worth looking at twice.</h1>
-    <p class="sub">A small collection of photographs, organized by set, kept quiet rather than promoted. Not built for a crowd.</p>
-    <noscript>
-      <p class="sub">The album list is built in your browser, so it needs JavaScript. With JavaScript off there is nothing to show here. The rest of the site still works.</p>
-    </noscript>
-  </section>
+  <main class="page">
+    <div class="page-head">
+      <h1>Photography</h1>
+      <noscript>
+        <p class="page-noscript">These photographs are placed by JavaScript, so none will appear with it off. The <a href="album.html?a=first-roll">Vietnam Streets</a> album lists its photos as plain links instead.</p>
+      </noscript>
+    </div>
 
-  <div class="contact-sheet" id="contact-sheet">
-    <!-- albums are rendered here by js/render-home.js -->
-  </div>
+    <div class="exhibition" id="exhibition">
+      <!-- the curated sequence, rendered by js/render-exhibition.js -->
+    </div>
+
+    <section class="index" aria-labelledby="index-heading">
+      <div class="section-head">
+        <h2 id="index-heading">Index</h2>
+        <p class="section-meta" id="index-count"></p>
+      </div>
+      <div class="index-grid" id="index-grid">
+        <!-- the whole collection, newest first, rendered by the same script -->
+      </div>
+    </section>
   </main>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <div class="lightbox-stage" id="lightbox-stage">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <div class="lightbox-controls">
+      <button class="lightbox-btn" id="lightbox-fullscreen" type="button" aria-pressed="false" hidden>Full screen</button>
+      <button class="lightbox-btn" id="lightbox-close" type="button">Close &times;</button>
+    </div>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photo">&larr;</button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Next photo">&rarr;</button>
+  </div>
+
   <footer class="site-footer">
-    <span>© <span id="year"></span> Faisal Henar</span>
     <nav class="footer-nav" aria-label="More">
       <a href="../note.html">A note from me</a>
       <a href="../contact.html">Contact</a>
       <a href="../elsewhere.html">Elsewhere</a>
     </nav>
+    <span>© <span id="year"></span> Faisal Henar</span>
     <noscript>
       <nav class="footer-nav" aria-label="Site sections">
         <a href="../">Home</a>
@@ -80,11 +94,10 @@
     </noscript>
   </footer>
 
-  <div class="sprocket-strip bottom" aria-hidden="true"></div>
-
-  <script src="js/config.js?v=3"></script>
+  <script src="js/config.js?v=6"></script>
   <script src="js/image-url.js?v=1"></script>
-  <script src="js/render-home.js?v=4"></script>
+  <script src="js/viewer.js?v=1"></script>
+  <script src="js/render-exhibition.js?v=4"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="../js/menu.js?v=2"></script>
 </body>

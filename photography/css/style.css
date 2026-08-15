@@ -1,9 +1,26 @@
 /* ---------------------------------------------------
-   faisalhenar.com — design tokens
-   Palette:  --bg #0b0b0a   --fg #ededea   --muted #8c8a85
-             --line #2a2a27  --accent #c9962f (safelight amber)
-   Type:     Fraunces (display) / Inter (body) / IBM Plex Mono (frame data)
-   Motif:    contact sheet + film sprocket holes, frame numbering
+   faisalhenar.com — photography stylesheet
+
+   Two treatments share this file, because the two page types share a
+   header, a footer, a menu and a viewer:
+
+   1. The folio (photography/index.html, <body class="folio">).
+      Light paper, one centred 820px column, rows of one or two
+      photographs, then the Index. See the folio block below; it carries
+      its own token overrides.
+      Palette:  --bg #F9F5ED   --fg #241F1A   --muted #6F6656
+                --line #E6DFD1  --accent #875F1E (the hub's brass)
+
+   2. The darkroom (photography/album.html, the legacy albums).
+      The original treatment, unchanged: black ground, sprocket strips,
+      frame numbering, the contact-sheet roll.
+      Palette:  --bg #0b0b0a   --fg #ededea   --muted #8c8a85
+                --line #2a2a27  --accent #c9962f (safelight amber)
+
+   The :root tokens below are the darkroom's, so album.html needs no
+   class of its own. The fullscreen viewer is dark in both.
+
+   Type: Fraunces (display) / Inter (body) / IBM Plex Mono (small meta)
 --------------------------------------------------- */
 
 /* Self-hosted fonts. Replaced the Google Fonts @import in August 2026:
@@ -248,88 +265,333 @@ a:focus-visible, button:focus-visible{
 .menu-panel a.current{ color: var(--accent); font-weight: 500; }
 .menu-panel a:focus-visible{ outline: 1px solid var(--accent); outline-offset: -2px; }
 
-/* ---------- intro ---------- */
-.intro{
-  padding: 56px 32px 40px;
-  max-width: 640px;
+/* =====================================================================
+   THE FOLIO: the light Photography page (index.html)
+   =====================================================================
+   Everything from here to the footer belongs to photography/index.html,
+   which carries <body class="folio">. album.html does not, so the legacy
+   album pages keep the dark contact-sheet treatment above and below this
+   block untouched.
+
+   This replaces the Stage 2E "dark exhibition wall": black field,
+   sprocket strips, per-photo size tiers, left/right offsets, bottom-
+   aligned duos and a spacing vocabulary of close/moderate/spacious. All
+   of that is gone. What is here instead is a single centred column and
+   three row types. Nothing positions a photograph individually; the row
+   it belongs to decides everything.
+
+   The page reads: header, one heading, the curated Exhibition, the
+   Index, footer.
+--------------------------------------------------------------------- */
+
+/* ---------- folio tokens ----------
+   The site's hub (css/hub.css) is already warm paper on dark ink:
+   --paper #F7F0E1, --ink #241F1A, --muted #6F6656, --accent #875F1E.
+   The folio uses that family but lightens and desaturates the paper: a
+   strongly warm ground casts a tint over black and white photographs,
+   which is the one thing this page cannot afford. Type, rules and accent
+   stay exactly the hub's, so the page still reads as part of the site.
+
+   The tokens are overridden rather than renamed, so the header, menu and
+   footer above and below simply follow. */
+body.folio{
+  --bg: #F9F5ED;
+  --bg-raised: #F3EFE7;
+  --fg: #241F1A;
+  --muted: #6F6656;
+  --line: #E6DFD1;
+  --accent: #875F1E;
+
+  /* One column width for the whole page: heading, photographs, Index,
+     header and footer all align to it. 820px at desktop sits in the
+     middle of the 760-920px target and keeps a full-width landscape at
+     615px tall, which is a photograph rather than a slide. */
+  --col: 820px;
+  --pad: 32px;
+
+  /* Two photographs sharing a row, and the rows themselves. */
+  --gutter: 20px;
+  --row-gap: 52px;
+
+  background: var(--bg);
+  color: var(--fg);
 }
-.intro h1{
+
+/* The viewer is a different room and stays dark. Resetting the tokens
+   inside it means the close/arrow controls keep their darkroom amber and
+   light-on-dark contrast without a single duplicated rule. */
+body.folio .lightbox{
+  --bg: #0b0b0a;
+  --fg: #ededea;
+  --muted: #8c8a85;
+  --accent: #c9962f;
+  color: var(--fg);
+}
+
+/* The sprocket strips are the dark room's signature and do not belong on
+   paper. index.html no longer prints them; this is belt and braces. */
+body.folio .sprocket-strip{ display: none; }
+
+/* ---------- header and footer on the folio ----------
+   Both follow Practice (practice/css/practice.css), which is the site's
+   pattern for an interior section: a full-width top line with a back
+   link at the left and the shared boxed Menu at the right, no rule
+   underneath, and a centred footer whose links sit above the copyright
+   line. Neither is part of the folio composition, so neither is held to
+   the photographic column. The section label ("Photography") stays out
+   of the header because the h1 below says it once, which is enough.
+
+   The class names are Practice's too (.hub-topline, .top-link), so the
+   two pages stay comparable at a glance. album.html keeps .site-header
+   and the darkroom rules further up this file. */
+.hub-topline{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 20px var(--pad);
+}
+.top-link{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.top-link:hover{ color: var(--accent); }
+
+body.folio .menu-panel{ box-shadow: 0 10px 24px rgba(36,31,26,0.10); }
+body.folio .menu-panel a:hover{ background: rgba(36,31,26,0.05); }
+
+/* The 96px is the folio's own: the Index runs to the bottom of the
+   column and needs the air. Everything else here is Practice's footer. */
+body.folio .site-footer{
+  display: block;
+  text-align: center;
+  margin-top: 96px;
+  padding: 30px var(--pad) 44px;
+  border-top: 0;
+}
+body.folio .footer-nav{
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+/* ---------- the column ---------- */
+.page{
+  max-width: calc(var(--col) + var(--pad) * 2);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* One heading, then the first photograph. No standfirst, no kicker, no
+   second "Photography" anywhere on the page. */
+.page-head{
+  padding: 44px 0 26px;
+}
+.page-head h1{
   font-family: 'Fraunces', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-  line-height: 1.4;
+  font-size: 2rem;
+  line-height: 1.1;
   color: var(--fg);
   margin: 0;
 }
-.intro .sub{
-  margin-top: 14px;
+.page-noscript{
+  margin: 14px 0 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
+.page-noscript a{ color: var(--accent); text-decoration: underline; }
 
-/* ---------- contact sheet grid ---------- */
-.contact-sheet{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  margin: 0 32px;
-  border: 1px solid var(--line);
+/* ---------- the Exhibition ----------
+   Three row types, and nothing else:
+
+     .row                 two photographs sharing one row
+     .row--single         one photograph across the full column
+     .row--narrow         one photograph, ~62% of the column, centred
+
+   How a two-photograph row divides itself: each frame gets
+   flex-basis: 0 and a flex-grow equal to its own aspect ratio (set as a
+   custom property by the renderer). Widths therefore land in proportion
+   to the photographs' shapes, which is exactly the condition for both
+   photographs ending up the same height. A landscape beside a portrait
+   comes out roughly 64/36 without anyone choosing those numbers, no
+   photograph is cropped, and the row is a clean rectangle rather than a
+   pair of boxes with dead space under the shorter one.
+
+   config.js can multiply that grow value (`weight`) where one of the two
+   should carry more presence. It is a nudge, not a layout: keep it near
+   1 and use it rarely. */
+.exhibition{
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
+}
+.row{
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gutter);
+  margin: 0;
 }
 .frame{
-  background: var(--bg);
-  padding: 20px 20px 24px;
-  display:flex;
-  flex-direction: column;
-  gap: 14px;
+  margin: 0;
+  min-width: 0;
+  flex: var(--grow, 1) 1 0;
 }
-.frame .frame-id{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--accent);
-  letter-spacing: 0.06em;
+.row--single .frame{ flex: 1 1 0; }
+.row--narrow{ justify-content: center; }
+.row--narrow .frame{ flex: 0 1 62%; }
+
+/* The two places the sequence changes register: into colour, and back
+   out of it. A slightly longer pause above those rows, and that is the
+   whole spacing vocabulary. No per-photograph offsets. */
+.row--turn{ margin-top: 26px; }
+
+.frame button{
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  /* Photographs sit directly on the paper: no card, no border, no
+     shadow, nothing between the ground and the image. */
 }
-.frame .thumb{
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  background: var(--bg-raised);
-  position: relative;
-}
-.frame .thumb img{
-  width:100%; height:100%;
-  object-fit: cover;
+.frame img{
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Carried over unchanged from the dark wall so the black and white
+     frames keep the treatment they were edited against; colour files are
+     left alone, as before. */
   filter: contrast(1.05);
-  transform: scale(1.0);
-  transition: transform 0.6s cubic-bezier(.2,.7,.2,1), filter 0.4s ease;
-  display:block;
 }
-.frame a.thumb-link{ display:block; }
-.frame a.thumb-link:hover img,
-.frame a.thumb-link:focus-visible img{
-  transform: scale(1.045);
-  filter: contrast(1.05);
+.frame img.is-color{ filter: none; }
+
+/* Hover does not touch the photograph. Two treatments came before this
+   one and both did: a slight scale, which pushed its neighbour in a
+   shared row, and then opacity 0.82, which answered a visitor's interest
+   by making the print fade toward the paper. What is left is the frame,
+   not the picture -- a brass hairline just outside it.
+
+   This adds no new vocabulary. The global button:focus-visible rule near
+   the top of this file already draws exactly this line for the keyboard;
+   all that happens here is that the mouse gets it too, so hover and
+   focus are one state instead of two. outline sits outside layout, so
+   nothing shifts and no neighbour moves.
+
+   The Index below keeps its own fade on purpose: it is a reference sheet
+   to be scanned, where dimming reads as scanning. The Exhibition is the
+   show. */
+.frame button:hover{
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
 }
-.frame.is-color .thumb img{ filter: none; }
-.frame.is-color a.thumb-link:hover img,
-.frame.is-color a.thumb-link:focus-visible img{ filter: none; }
-.frame .meta{
-  display:flex;
+
+/* ---------- the Index ----------
+   Secondary by construction, not by apology: it sits after the whole
+   Exhibition, under a small heading, at roughly a sixth of the scale.
+   It is the rest of the collection, newest first, and it is meant to be
+   scanned rather than read. */
+.index{
+  margin-top: 104px;
+}
+.section-head{
+  display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 12px;
+  gap: 16px;
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
 }
-.frame .title{
+.section-head h2{
   font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--fg);
+  margin: 0;
 }
-.frame .count{
+.section-meta{
+  margin: 0;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--muted);
-  white-space: nowrap;
+}
+
+.index-grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.index-grid button{
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+}
+/* The single place on this page where a photograph is cropped, and the
+   reason is legibility of the grid itself: a reference sheet whose rows
+   are all different heights is harder to scan than the thing it is a
+   reference to. The collection is almost entirely 4:3, so in practice
+   only the two portrait frames are trimmed, from the centre, and only
+   here. The Exhibition and the viewer always show the full frame. */
+.index-grid img{
+  display: block;
+  width: 100%;
+  /* Overrides the intrinsic height attribute the renderer sets on every
+     image (it is there to reserve space in the Exhibition); here the
+     ratio below decides the height instead. */
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.05);
+  transition: opacity 0.25s ease;
+}
+.index-grid img.is-color{ filter: none; }
+.index-grid button:hover img,
+.index-grid button:focus-visible img{ opacity: 0.7; }
+
+/* ---------- folio, narrower screens ----------
+   The column structure is kept at every width; what changes is the outer
+   padding, when a shared row is still worth keeping, and how many
+   columns the Index runs. */
+@media (max-width: 900px){
+  body.folio{ --row-gap: 44px; }
+  .index-grid{ grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 720px){
+  body.folio{ --pad: 22px; --gutter: 14px; --row-gap: 40px; }
+  .page-head{ padding: 32px 0 22px; }
+  .page-head h1{ font-size: 1.7rem; }
+  .index{ margin-top: 76px; }
+  .index-grid{ grid-template-columns: repeat(4, 1fr); }
+  body.folio .site-footer{ margin-top: 72px; }
+}
+/* Below this a shared row would put each photograph under about 280px,
+   which is Index scale, not Exhibition scale. Rows stack instead, and
+   the sequence becomes one column, in order. */
+@media (max-width: 620px){
+  .row{ flex-direction: column; gap: 22px; }
+  .row > .frame,
+  .row--narrow .frame{ flex: 0 0 auto; width: 100%; }
+  .row--turn{ margin-top: 14px; }
+}
+@media (max-width: 480px){
+  body.folio{ --pad: 16px; --row-gap: 34px; }
+  .index-grid{ grid-template-columns: repeat(3, 1fr); gap: 6px; }
 }
 
 /* ---------- footer ---------- */
