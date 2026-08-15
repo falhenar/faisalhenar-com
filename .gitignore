@@ -22,3 +22,6 @@ desktop.ini
 .github-token
 *.token
 .env
+
+# Temporary working tools, not part of the production site.
+/_working/
