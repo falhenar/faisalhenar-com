@@ -49,11 +49,3 @@
   margin: 0 0 8px;
   max-width: 56ch;
 }
-.entry .entry-link{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.02em;
-  color: var(--accent);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 1px;
-}

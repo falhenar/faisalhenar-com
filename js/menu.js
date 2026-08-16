@@ -21,6 +21,10 @@
     var panel = menu.querySelector('[data-menu-panel]');
     if (!btn || !panel) return;
 
+    // Markup ships without `hidden` so the panel is a plain visible link
+    // list when JS doesn't run. Close it here once JS is confirmed running.
+    panel.hidden = true;
+
     var closeTimer = null;
     // Set when a click closes the menu, so the pointer still resting on the
     // button does not immediately reopen it.
