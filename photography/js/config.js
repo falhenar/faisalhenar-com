@@ -1,7 +1,7 @@
 /*
   PHOTOGRAPHY DATA
   ----------------
-  This file has three parts, in order:
+  This file has two parts, in order:
 
   1. PHOTOS      - every photograph the site knows about. The single
                     source of truth: source path, size, colour treatment,
@@ -9,24 +9,15 @@
   2. EXHIBITION  - the curated, hand-ordered sequence for the main
                     Photography page (photography/index.html), rendered
                     by js/render-exhibition.js.
-  3. ALBUMS      - album.html still runs on this shape, kept around while
-                    the old album pages remain live alongside the new
-                    Exhibition. Rather than keep a second copy of every
-                    photo's data, ALBUMS is built automatically from
-                    PHOTOS + ALBUM_META below, each time the page loads.
-                    Edit PHOTOS and ALBUM_META; never edit ALBUMS by hand.
-
-  Stage 4 retires ALBUM_META and this adapter, once the Index page also
-  exists and album.html is retired.
 */
 
 /*
   1. PHOTOS
   ---------
   One entry per photograph, keyed by a short stable id. The id is what
-  EXHIBITION (and, later, ALBUM_META) uses to refer to a photo, so it
-  must never change once a photo has one, even if the photo is moved,
-  resequenced, or renamed on disk.
+  EXHIBITION uses to refer to a photo, so it must never change once a
+  photo has one, even if the photo is moved, resequenced, or renamed on
+  disk.
 
   id      -> short, human-editable, stable. Prefixes so far: "vn" for the
              first (black & white) Vietnam roll, "vc" for the colour
@@ -321,49 +312,3 @@ const EXHIBITION = [
   { row: ["sr-12"] },
   { row: ["sr-11"], width: "narrow" }
 ];
-
-/*
-  3. ALBUMS (compatibility layer for the current site)
-  -----------------------------------------------------
-  album.html and the photography index still expect an ALBUMS array
-  shaped like { slug, title, color, photos: [srcPaths] }, with an
-  optional per-album alt fallback. ALBUM_META below records only what
-  albums add on top of PHOTOS: which photos belong to the album, in
-  what order, and the album's slug/title. The adapter beneath it builds
-  the exact ALBUMS shape the existing render-home.js and render-album.js
-  already read, resolving each id against PHOTOS. This is deliberately
-  the only place photo ids turn back into full photo objects for the
-  old pages, so PHOTOS stays the single source of truth: nothing here
-  duplicates a src, a dimension, or an alt text, it only looks them up.
-
-  This whole section is temporary. It goes away in Stage 4, when
-  album.html is retired.
-*/
-
-const ALBUM_META = [
-  { slug: "first-roll", title: "Vietnam Streets",
-    photos: ["vn-01", "vn-02", "vn-03", "vn-04", "vn-05", "vn-06", "vn-07", "vn-08", "vn-09"] },
-  { slug: "vietnam-streets-color", title: "Vietnam Streets, in Color",
-    photos: ["vc-01", "vc-02", "vc-03", "vc-04", "vc-05", "vc-06"] },
-  { slug: "suriname-streets", title: "Suriname Streets",
-    photos: ["sr-01", "sr-02", "sr-03", "sr-04", "sr-05", "sr-06", "sr-07", "sr-08", "sr-09", "sr-10", "sr-11", "sr-12"] }
-];
-
-const ALBUMS = ALBUM_META.map(function (meta) {
-  const photoIds = meta.photos;
-  const photoObjs = photoIds.map(function (id) { return PHOTOS[id]; });
-  return {
-    slug: meta.slug,
-    title: meta.title,
-    // Every photo in a given album currently shares one colour treatment,
-    // so the first photo's value stands for the whole album, matching the
-    // old per-album "color" flag exactly.
-    color: !!(photoObjs[0] && photoObjs[0].color),
-    photos: photoObjs.map(function (p) { return p.src; }),
-    // Per-photo alt, same length and order as "photos", so the renderers
-    // can show each photo's own description instead of one album-wide
-    // fallback. render-home.js and render-album.js fall back to the old
-    // title-based text if this is ever missing for some reason.
-    photoAlts: photoObjs.map(function (p) { return p.alt; })
-  };
-});

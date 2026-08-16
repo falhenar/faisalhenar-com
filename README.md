@@ -14,7 +14,6 @@ css/note.css           → note.html styling
 photography/           → the photography section
   index.html            → the folio: a curated Exhibition, then an Index
                           of the whole collection
-  album.html            → legacy: one old album's photos, dark treatment
   css/, js/, photos/    → styling, logic, and your photo files
 
 practice/               → the Buddhism/practice section
@@ -71,12 +70,6 @@ Exhibition only if you decide it belongs there.
   (`vn-01`, `sr-12`). The id is how the other lists refer to it, so it
   never changes once given, even if the file is moved or renamed.
 - **`EXHIBITION`** — the curated sequence, written as rows. See below.
-- **`ALBUM_META`** — legacy. It feeds the old `album.html` pages, which are
-  still reachable by their original links. Its `photos` arrays hold **ids**,
-  not file paths. Nothing new needs to go here.
-
-`ALBUMS` at the bottom of the file is generated from the other two. Never
-edit it by hand.
 
 ### To add a photograph
 
@@ -162,21 +155,6 @@ quotation exempt. `.github/workflows/no-em-dash.yml` checks every push to
 `main` and fails the run if it finds one. It reports only. It does not edit
 your writing, so when it fails, fix the line yourself and push again.
 
-## 5. The legacy album pages
-
-Before the folio, photographs were grouped into albums, each with its own
-page and its own link:
-
-`https://faisalhenar.com/photography/album.html?a=first-roll`
-
-Those links still work and are deliberately kept alive, because someone may
-have shared one. `album.html` keeps the original dark contact-sheet
-treatment; it does not use the light folio design, and it is driven by
-`ALBUM_META`. The `a=` part matches an album's `slug`.
-
-Nothing new needs an album. Add photographs to `PHOTOS` and, if they earn
-it, to `EXHIBITION`.
-
 ## Notes
 
 - Every photograph on the site is one of Faisal's own, in
@@ -191,8 +169,7 @@ it, to `EXHIBITION`.
   warm off-white ground, one centred 820px column, photographs sitting
   directly on the paper with no border, card or shadow. Hovering one draws
   a thin accent line just outside the frame; the photograph itself is never
-  altered. The legacy `album.html` pages keep the older dark contact-sheet
-  treatment, on purpose.
+  altered.
 - Black and white is the default. Colour is a per-photograph decision (the
   `color` field in `config.js`), used where the colour is the point.
 

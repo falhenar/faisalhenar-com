@@ -1,24 +1,16 @@
 /* ---------------------------------------------------
    faisalhenar.com — photography stylesheet
 
-   Two treatments share this file, because the two page types share a
-   header, a footer, a menu and a viewer:
-
-   1. The folio (photography/index.html, <body class="folio">).
-      Light paper, one centred 820px column, rows of one or two
-      photographs, then the Index. See the folio block below; it carries
-      its own token overrides.
+   One page (photography/index.html, <body class="folio">): light paper,
+   one centred 820px column, rows of one or two photographs, then the
+   Index. See the folio block below; it carries its own token overrides.
       Palette:  --bg #F9F5ED   --fg #241F1A   --muted #6F6656
                 --line #E6DFD1  --accent #875F1E (the hub's brass)
 
-   2. The darkroom (photography/album.html, the legacy albums).
-      The original treatment, unchanged: black ground, sprocket strips,
-      frame numbering, the contact-sheet roll.
+   The :root tokens below are dark — they exist only for the fullscreen
+   viewer, which stays dark regardless of the folio's paper.
       Palette:  --bg #0b0b0a   --fg #ededea   --muted #8c8a85
                 --line #2a2a27  --accent #c9962f (safelight amber)
-
-   The :root tokens below are the darkroom's, so album.html needs no
-   class of its own. The fullscreen viewer is dark in both.
 
    Type: Fraunces (display) / Inter (body) / IBM Plex Mono (small meta)
 --------------------------------------------------- */
@@ -145,69 +137,6 @@ a:focus-visible, button:focus-visible{
 
 .mono{ font-family: 'IBM Plex Mono', monospace; }
 
-/* ---------- sprocket strip (signature motif) ---------- */
-.sprocket-strip{
-  height: 20px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 0 24px;
-  overflow: hidden;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--bg-raised) 0px, var(--bg-raised) 10px,
-    var(--bg) 10px, var(--bg) 28px
-  );
-}
-.sprocket-strip span{
-  width: 6px; height: 8px;
-  background: var(--bg);
-  border-radius: 1px;
-  flex: 0 0 auto;
-}
-.sprocket-strip.top{ border-bottom: 1px solid var(--line); }
-.sprocket-strip.bottom{ border-top: 1px solid var(--line); margin-top: 64px; }
-
-/* ---------- header ---------- */
-.site-header{
-  display:flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 40px 32px 28px;
-  border-bottom: 1px solid var(--line);
-}
-.site-header-right{
-  display:flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-.site-header .mark{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.site-header .mark a{ display:flex; align-items:baseline; gap: 8px; }
-.site-header .mark .dot{ color: var(--accent); }
-.site-header .section-label{
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--fg);
-}
-.site-header nav{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 /* ---------- site menu ---------- */
 .menu{ position: relative; }
 .menu-btn{
@@ -269,9 +198,7 @@ a:focus-visible, button:focus-visible{
    THE FOLIO: the light Photography page (index.html)
    =====================================================================
    Everything from here to the footer belongs to photography/index.html,
-   which carries <body class="folio">. album.html does not, so the legacy
-   album pages keep the dark contact-sheet treatment above and below this
-   block untouched.
+   which carries <body class="folio">.
 
    This replaces the Stage 2E "dark exhibition wall": black field,
    sprocket strips, per-photo size tiers, left/right offsets, bottom-
@@ -328,10 +255,6 @@ body.folio .lightbox{
   color: var(--fg);
 }
 
-/* The sprocket strips are the dark room's signature and do not belong on
-   paper. index.html no longer prints them; this is belt and braces. */
-body.folio .sprocket-strip{ display: none; }
-
 /* ---------- header and footer on the folio ----------
    Both follow Practice (practice/css/practice.css), which is the site's
    pattern for an interior section: a full-width top line with a back
@@ -342,8 +265,7 @@ body.folio .sprocket-strip{ display: none; }
    of the header because the h1 below says it once, which is enough.
 
    The class names are Practice's too (.hub-topline, .top-link), so the
-   two pages stay comparable at a glance. album.html keeps .site-header
-   and the darkroom rules further up this file. */
+   two pages stay comparable at a glance. */
 .hub-topline{
   display: flex;
   justify-content: space-between;
@@ -615,186 +537,6 @@ body.folio .footer-nav{
   color: var(--accent);
 }
 
-/* ---------- album page ---------- */
-.album-header{
-  padding: 48px 32px 32px;
-  border-bottom: 1px solid var(--line);
-}
-.back-link{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.back-link:hover{ color: var(--accent); }
-.album-header h1{
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  margin: 18px 0 6px;
-}
-.album-header .album-meta{
-  color: var(--muted);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-}
-/* Optional. Hidden until render-album.js finds a note on the album, so an
-   album without one keeps the tighter header it has always had. */
-.album-header .album-note{
-  max-width: 58ch;
-  margin: 16px 0 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.65;
-}
-.album-header .album-note[hidden]{ display: none; }
-
-.roll{
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  margin: 1px 32px 0;
-  border: 1px solid var(--line);
-}
-.roll .exposure{
-  background: var(--bg);
-  /* <figure> carries a UA default margin of 1em 40px. Without this reset each
-     frame sits 40px in from both edges of its grid cell, which shrinks the
-     photograph by ~38% (about half its width on a phone) and replaces the
-     1px hairline gaps below with wide gutters. */
-  margin: 0;
-  padding: 0;
-}
-.roll .exposure button{
-  display:block;
-  width:100%;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  position: relative;
-}
-.roll .exposure .frame-id{
-  position: absolute;
-  top: 10px; left: 10px;
-  z-index: 2;
-  font-family: 'IBM Plex Mono', monospace;
-  color: #F4EFE4;
-  background: rgba(11,11,10,0.55);
-  padding: 2px 6px;
-  font-size: 0.68rem;
-  pointer-events: none;
-}
-.roll .exposure .pic{
-  display: block;
-  overflow:hidden;
-  background: var(--bg-raised);
-  aspect-ratio: 4/5;
-}
-.roll .exposure .pic img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  display:block;
-  filter: contrast(1.05);
-  transition: transform 0.5s ease;
-}
-.roll .exposure button:hover .pic img,
-.roll .exposure button:focus-visible .pic img{
-  transform: scale(1.04);
-}
-.roll .exposure.is-color .pic img{ filter: none; }
-
-/* ---------- end of roll ---------- */
-.roll-end{
-  margin: 0 32px;
-  padding: 56px 0 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  text-align: center;
-}
-/* display:flex would otherwise beat the hidden attribute. */
-.roll-end[hidden]{ display: none; }
-.roll-end .end-mark{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--muted);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-/* Short rules either side of the marker, like the tail of a film strip. */
-.roll-end .end-mark::before,
-.roll-end .end-mark::after{
-  content: "";
-  width: 40px;
-  height: 1px;
-  background: var(--line);
-}
-.roll-end .next-album{
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  text-align: left;
-  max-width: 100%;
-}
-.roll-end .next-album .thumb{
-  width: 84px;
-  flex: none;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  background: var(--bg-raised);
-}
-.roll-end .next-album .thumb img{
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: contrast(1.05);
-  transform: scale(1.0);
-  transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
-  display: block;
-}
-.roll-end .next-album.is-color .thumb img{ filter: none; }
-.roll-end .next-album:hover .thumb img,
-.roll-end .next-album:focus-visible .thumb img{ transform: scale(1.045); }
-.roll-end .next-label{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 8px;
-}
-.roll-end .next-title{
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: 1.15rem;
-  display: block;
-}
-.roll-end .next-album:hover .next-title{ color: var(--accent); }
-.roll-end .next-count{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--muted);
-  display: block;
-  margin-top: 6px;
-}
-.roll-end .all-albums{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.roll-end .all-albums:hover,
-.roll-end .all-albums:focus-visible{ color: var(--accent); }
-
 /* ---------- lightbox ---------- */
 .lightbox{
   position: fixed;
@@ -899,28 +641,9 @@ body.folio .footer-nav{
   height: 0.8em;
   background: currentColor;
 }
-.lightbox .lightbox-caption{
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 2;
-  padding: 28px 20px 20px;
-  text-align: center;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--muted);
-  background: linear-gradient(to top, rgba(8,8,7,0.55), rgba(8,8,7,0));
-  pointer-events: none;
-}
-
 @media (max-width: 640px){
-  .roll{ grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); margin-left: 16px; margin-right: 16px; }
   .contact-sheet{ margin: 0 16px; }
-  .site-header, .intro, .site-footer, .album-header{ padding-left: 16px; padding-right: 16px; }
+  .intro, .site-footer{ padding-left: 16px; padding-right: 16px; }
   .lightbox .lightbox-nav{ font-size: 1.4rem; padding: 12px 10px; }
   .lightbox-controls{ padding: 10px 8px; }
-  .roll-end{ margin: 0 16px; padding: 44px 0 8px; gap: 32px; }
-  .roll-end .end-mark::before,
-  .roll-end .end-mark::after{ width: 24px; }
-  .roll-end .next-album{ gap: 14px; }
-  .roll-end .next-album .thumb{ width: 68px; }
 }
