@@ -244,6 +244,33 @@ body.folio{
   color: var(--fg);
 }
 
+/* A single, static way back, in flow at the end of the Index. It is not
+   fixed or sticky on purpose: nothing on this page should sit over a
+   photograph. Type matches .section-meta so no new vocabulary is added. */
+body.folio .to-top{
+  margin: 40px 0 0;
+  text-align: right;
+}
+body.folio .to-top a{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+body.folio .to-top a:hover,
+body.folio .to-top a:focus-visible{ color: var(--accent); }
+
+/* The folio is around 6000px. Smooth-scrolling all of it rewinds the
+   sequence at speed. Jump instead, on this page only, so the smooth
+   behaviour elsewhere on the site is untouched. */
+html:has(body.folio){ scroll-behavior: auto; }
+
+/* #top is a container, not a control. It takes focus so the keyboard
+   follows the jump; it should not paint a focus ring. */
+body.folio #top:focus{ outline: none; }
+
 /* The viewer is a different room and stays dark. Resetting the tokens
    inside it means the close/arrow controls keep their darkroom amber and
    light-on-dark contrast without a single duplicated rule. */
