@@ -11,6 +11,9 @@ WHAT IT LOOKS AT
   It ignores code, CSS, HTML comments, <script> and <style> blocks, and JS
   comments. An em dash in a comment hurts nobody.
 
+  It also skips anything git is told to ignore. Scratch folders such as
+  /_working/ never reach the live site, so copy inside them is not copy.
+
 WHAT IT LEAVES ALONE
   Verbatim quotation. A line from a book or a sutta translation is not your
   copy, and silently repunctuating it would be misquoting. The exempt fields
@@ -28,6 +31,7 @@ USAGE
 import argparse
 import pathlib
 import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -280,12 +284,49 @@ def scan_file(path, fix):
     return findings, changed
 
 
+def git_ignored(paths):
+    """The subset of `paths` that git is told to ignore.
+
+    Scratch folders like /_working/ are gitignored, so they never reach the
+    live site and the CI run never sees them. Without this the script still
+    walked them locally and failed on copy that is not published anywhere,
+    which looks exactly like a real failure.
+
+    Returns an empty set if git is unavailable or this is not a checkout, so
+    the script still runs from an unpacked zip. CI is unaffected either way:
+    ignored files are not in the checkout to begin with.
+    """
+    if not paths:
+        return set()
+    sent = {str(p): p for p in paths}
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(ROOT), "check-ignore", "--stdin", "-z"],
+            input="\0".join(sent) + "\0",
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return set()
+    # 0 = at least one path ignored, 1 = none. Anything else means git could
+    # not answer (no repo, no git), and filtering nothing is the safe default.
+    if proc.returncode not in (0, 1):
+        return set()
+    return {sent[line] for line in proc.stdout.split("\0") if line in sent}
+
+
 def iter_files():
+    candidates = []
     for pattern in INCLUDE_GLOBS:
         for path in sorted(ROOT.glob(pattern)):
             parts = path.relative_to(ROOT).parts[:-1]
             if any(part in SKIP_DIRS for part in parts):
                 continue
+            candidates.append(path)
+
+    ignored = git_ignored(candidates)
+    for path in candidates:
+        if path not in ignored:
             yield path
 
 
