@@ -2,7 +2,7 @@
   THE PHOTOGRAPHY PAGE
   --------------------
   Renders both halves of photography/index.html: the curated Exhibition
-  (from EXHIBITION in config.js) and, beneath it, the Index (every
+  (from data/exhibition.json) and, beneath it, the Index (every
   photograph in PHOTOS, newest first). One viewer serves both; the only
   difference between them is which ordered set it is handed.
 
@@ -11,10 +11,12 @@
   each frame's share of a shared row, which is its aspect ratio. Nothing
   here measures the page, positions anything, or reads the viewport.
 */
-(function () {
+function renderPhotography() {
   const exhibitionEl = document.getElementById('exhibition');
   const indexEl = document.getElementById('index-grid');
-  if (typeof PHOTOS === 'undefined' || typeof EXHIBITION === 'undefined') return;
+  if (typeof PHOTOS === 'undefined' || typeof EXHIBITION === 'undefined') {
+    throw new Error('Photography data was not loaded.');
+  }
 
   /*
     Requested source widths. The Exhibition column is 820px, so a
@@ -173,4 +175,19 @@
     const countEl = document.getElementById('index-count');
     if (countEl) countEl.textContent = indexOrder.length + ' photographs';
   }
-})();
+}
+
+function showPhotographyDataError(error) {
+  var exhibitionEl = document.getElementById('exhibition');
+  if (exhibitionEl) {
+    exhibitionEl.textContent = 'The photographs could not be loaded. Please try again later.';
+    exhibitionEl.setAttribute('role', 'status');
+  }
+  if (window.console && console.error) console.error(error);
+}
+
+if (window.PHOTOGRAPHY_DATA_READY) {
+  window.PHOTOGRAPHY_DATA_READY.then(renderPhotography).catch(showPhotographyDataError);
+} else {
+  showPhotographyDataError(new Error('Photography data loader is missing.'));
+}

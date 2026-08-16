@@ -49,41 +49,51 @@ live inside its own folder. The homepage just links out to each one.
 
 ## 3. Add photographs
 
-Everything lives in one file: `photography/js/config.js`. You do not need to
-touch any other file to add or remove a photograph.
+Photography content has two authoritative data files:
+
+- `photography/data/photos.json` is the ordered master collection.
+- `photography/data/exhibition.json` is the curated sequence.
+
+The private local Photography Manager validates and updates these files. The
+instructions below describe the data for maintenance and recovery.
 
 ### How the Photography page is built
 
 It is one page with two halves, and they answer different questions.
 
 - **The Exhibition** is a curated sequence: a selection, hand-ordered, most
-  of the collection deliberately left out. It comes from `EXHIBITION`.
+  of the collection deliberately left out. It comes from `exhibition.json`.
 - **The Index** below it is the whole collection, newest first. It needs no
-  list of its own; it is every entry in `PHOTOS`, sorted by `added`.
+  list of its own; it is every entry in `photos.json`, sorted by `added`.
 
 So a new photograph appears in the Index automatically. It joins the
 Exhibition only if you decide it belongs there.
 
-### The three lists in `config.js`
+### The two data files
 
-- **`PHOTOS`** — one entry per photograph, keyed by a short stable id
-  (`vn-01`, `sr-12`). The id is how the other lists refer to it, so it
+- **`photos.json`** contains one object per photograph. Each has a short stable
+  id (`vn-01`, `sr-12`). The id is how the Exhibition refers to it, so it
   never changes once given, even if the file is moved or renamed.
-- **`EXHIBITION`** — the curated sequence, written as rows. See below.
+- **`exhibition.json`** contains the curated sequence, written as rows. See
+  below.
 
 ### To add a photograph
 
-1. Resize it to around 2000px on the long edge, and put it in a folder
-   under `photography/photos/` — lowercase, hyphens instead of spaces.
-2. Add an entry to `PHOTOS`:
+1. Use the Photography Manager to prepare a finished JPEG or TIFF. It creates
+   an sRGB JPEG at no more than 2560px on the long edge and places it under
+   `photography/photos/<year>/`.
+2. Add an object to `photos.json`:
 
-   ```js
-   "sr-13": {
-     src: "photos/suriname-streets/P8091402.jpg",
-     w: 2000, h: 1500, color: false,
-     alt: "A plain description of what is in the frame.",
-     added: "2026-08-20"
-   },
+   ```json
+   {
+     "id": "fh-0001",
+     "src": "photos/2026/fh-0001.jpg",
+     "w": 2560,
+     "h": 1920,
+     "color": false,
+     "alt": "A plain description of what is in the frame.",
+     "added": "2026-08-20"
+   }
    ```
 
    - `src` is relative to `photography/`, so it starts with `photos/`.
@@ -97,7 +107,7 @@ Exhibition only if you decide it belongs there.
      is what orders the Index.
 
 3. Decide whether it enters the Exhibition. Most photographs should not.
-   If it does, add it to a row in `EXHIBITION` at the point in the
+   If it does, add it to a row in `exhibition.json` at the point in the
    sequence where it belongs.
 
 ### The Exhibition rows
@@ -105,10 +115,10 @@ Exhibition only if you decide it belongs there.
 The page is one centred column and the only unit is a row. There are three
 kinds, and nothing else to configure:
 
-```js
-{ row: ["sr-04", "sr-06"] }          // two photographs sharing one row
-{ row: ["sr-12"] }                   // one, full column width
-{ row: ["sr-11"], width: "narrow" }  // one, ~62% and centred. A pause.
+```json
+{ "row": ["sr-04", "sr-06"] }
+{ "row": ["sr-12"] }
+{ "row": ["sr-11"], "width": "narrow" }
 ```
 
 Two flags, both rare: `weight: [1, 1.25]` nudges one photograph's share of
@@ -118,9 +128,9 @@ sequence changes register.
 A shared row divides itself by the photographs' own proportions, so both
 end up the same height and neither is cropped. You do not choose widths.
 
-To remove a photograph from the sequence, take its id out of `EXHIBITION`.
-It stays in `PHOTOS`, so it remains in the Index. Deleting the `PHOTOS`
-entry removes it from the site entirely.
+To remove a photograph from the sequence, take its id out of
+`exhibition.json`. It stays in `photos.json`, so it remains in the Index.
+Removing a photograph from the master collection is a separate operation.
 
 ## 4. Adding reflections and quotes
 
@@ -171,12 +181,15 @@ your writing, so when it fails, fix the line yourself and push again.
   a thin accent line just outside the frame; the photograph itself is never
   altered.
 - Black and white is the default. Colour is a per-photograph decision (the
-  `color` field in `config.js`), used where the colour is the point.
+  `color` field in `photos.json`), used where the colour is the point.
 
 ## Before pushing changes live
 
 There's no build step, so changes go live immediately. Before pushing:
 
-1. Open changed pages locally and verify they display correctly.
-2. If you changed `config.js`, check file paths match real filenames (typos fail silently).
+1. Serve the repository on localhost and open changed pages in a browser. A
+   local server is required because browsers do not fetch JSON from `file:`
+   pages.
+2. Run the Photography Manager validator. It checks JSON shape, stable IDs,
+   paths, dates, alt text, dimensions, and Exhibition references.
 3. Commit and push.

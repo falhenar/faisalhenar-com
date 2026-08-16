@@ -345,7 +345,7 @@ body.folio .footer-nav{
    photograph is cropped, and the row is a clean rectangle rather than a
    pair of boxes with dead space under the shorter one.
 
-   config.js can multiply that grow value (`weight`) where one of the two
+   exhibition.json can multiply that grow value (`weight`) where one of the two
    should carry more presence. It is a nudge, not a layout: keep it near
    1 and use it rarely. */
 .exhibition{
