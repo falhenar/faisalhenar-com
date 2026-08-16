@@ -81,18 +81,10 @@ function renderPhotography() {
   });
 
   /* ---------- the Index ----------
-     Every photograph in the collection, newest first. The Exhibition is
-     a selection and says nothing about when a photograph arrived; the
-     Index is the whole thing and is ordered by "added" so a returning
-     visitor can see what is new without a "recent" section intruding on
-     the sequence above. Ties keep their order in PHOTOS, which is
-     stable, so the grid never reshuffles between loads. */
-  const indexOrder = Object.keys(PHOTOS).sort(function (a, b) {
-    const da = PHOTOS[a].added || '';
-    const db = PHOTOS[b].added || '';
-    if (da === db) return 0;
-    return da < db ? 1 : -1;
-  });
+     Every photograph in the collection, in the approved sequence stored
+     in photos.json. New photographs are placed first by default; the
+     private manager can then refine the sequence deliberately. */
+  const indexOrder = Object.keys(PHOTOS);
 
   const indexItems = indexOrder.map(function (id) {
     const p = PHOTOS[id];
