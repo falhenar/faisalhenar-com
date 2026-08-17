@@ -9,15 +9,6 @@
     "added": "2026-08-17"
   },
   {
-    "id": "fh-0006",
-    "src": "photos/2026/fh-0006.jpg",
-    "w": 2560,
-    "h": 1920,
-    "color": true,
-    "alt": "Dames-in-het-wit-nabij-palmentuin",
-    "added": "2026-08-17"
-  },
-  {
     "id": "fh-0001",
     "src": "photos/2026/fh-0001.jpg",
     "w": 2560,
@@ -25,6 +16,15 @@
     "color": false,
     "alt": "Brassband-en-dans-op-het-onafhankelijkheidsplein",
     "added": "2026-08-16"
+  },
+  {
+    "id": "fh-0006",
+    "src": "photos/2026/fh-0006.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Dames-in-het-wit-nabij-palmentuin",
+    "added": "2026-08-17"
   },
   {
     "id": "sr-11",
