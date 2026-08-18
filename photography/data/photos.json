@@ -54,15 +54,6 @@
     "added": "2026-08-15"
   },
   {
-    "id": "vn-09",
-    "src": "photos/first-roll/P6271096.jpg",
-    "w": 2000,
-    "h": 1500,
-    "color": false,
-    "alt": "Black and white photograph of an older man sitting on a doorstep in a narrow alley, a pho restaurant sign behind him.",
-    "added": "2026-08-05"
-  },
-  {
     "id": "sr-08",
     "src": "photos/suriname-streets/Busses20260723.jpg",
     "w": 2000,
@@ -232,6 +223,15 @@
     "color": false,
     "alt": "Black and white photograph of a man reading a book at a cafe table, a standing fan and bookshelves behind him.",
     "added": "2026-07-28"
+  },
+  {
+    "id": "vn-09",
+    "src": "photos/first-roll/P6271096.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "Black and white photograph of an older man sitting on a doorstep in a narrow alley, a pho restaurant sign behind him.",
+    "added": "2026-08-05"
   },
   {
     "id": "vn-02",
