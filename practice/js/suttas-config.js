@@ -60,8 +60,7 @@ const BOOKS = {
     title: "Reflections on Suttas That Stay With Me",
     note: "Suttas outside the anthology above, encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.",
     order: "chronological"
-  }
-};
+  }};
 
 const SUTTAS = [
   // Part I — The Human Condition
@@ -121,12 +120,13 @@ const SUTTAS = [
     label: "I.2(1)",
     title: "The Dart of Painful Feeling",
     ref: "SN 36.6",
+    suttaTitle: "Sallasutta",
     translator: "sujato",
     url: "https://suttacentral.net/sn36.6/en/sujato",
-    excerpt: "",
-    note: "",
-    added: null
-  },
+    excerpt: "When an unlearned ordinary person experiences painful physical feelings they sorrow and wail and lament, beating their breast and falling into confusion. They experience two feelings: physical and mental.\n\nIt’s like a person who is struck with an arrow, only to be struck with a second arrow. That person experiences the feeling of two arrows.\n\nIn the same way, when an unlearned ordinary person experiences painful physical feelings they sorrow and wail and lament, beating their breast and falling into confusion. They experience two feelings: physical and mental.",
+    note: "We will all experience suffering in our lives in one form or another. In that sense, getting struck by the \"first arrow\" is a given for all of us. We age, we get sick and at some point we will all die. All of this comes with uncomfortable feelings. \n\nThe \"second arrow\" took me a while to comprehend. It seems easy to tell ourselves not to wail and lament about the pain we are feeling, only to catch ourselves wailing and lamenting again a few minutes later. It is not about telling ourselves to \"toughen up\" or \"get over it already\". That is its own form of sorrowing over what we feel. It is no help telling someone else to \"get a grip\" or \"lighten up\". We can only get there by our own investigation. \n\nThe methods of investigation the Buddha taught us are mindfulness and vipassana. Mindfulness teaches us to know when we are walking, standing, sitting or lying down. These are the four postures to be mindful of. Yet this expands to all our experiences. Vipassana shows us to know every experience we are going through: to know when we are touching, when we are eating, when we are talking, when we are feeling. That knowing of everything that happens, at the moment it arises, that is the practice that will let us overcome our suffering. \n\nI am not saying that I am completely free from suffering. What I can say is life has become easier since I have been able to put down the second arrow sooner than I could before. \n\n\n\n",
+    added: "2026-08-20"
+},
   {
     id: "itbw-1-2-2",
     book: "itbw",
@@ -312,5 +312,4 @@ const SUTTAS = [
     excerpt: "And how do you look after others by looking after yourself? By development, cultivation, and practice of meditation.\nAnd how do you look after yourself by looking after others? By acceptance, harmlessness, love, and sympathy.",
     note: "When my spouse and I were still in a so-called long distance relationship, we regularly talked about different suttas that piqued our interest. One of these suttas was the Sedakasutta. This sutta describes the story of how the pole acrobat Medakathālikā climbs up a bamboo pole standing above her teacher’s shoulders. When the teacher told Medakathālikā to look after him, and he shall look after her, Medakathālikā quickly corrected her teacher. She told him it wasn’t that simple. He should look after himself, and she’d look after herself.\n\nOften, when we are in a relationship with another, we expect the other to take care of us, and to be the person that will keep us balanced. Oh, how often this turns into disappointment. We get disappointed in the other for not being able to keep us stable and we get disappointed in ourselves for trusting another person with our sanity.\n\nThis sutta let me see this construct we have about relationships, in a different light. Because how can I ever keep another person balanced, when I myself am wobbling. And how can I ever expect another person to keep me straight when I cannot stop shaking and disrupting.\n\nNo, it should be the other way around, exactly as Medakathālikā says in this sutta. When I can cultivate mindfulness and steadiness of mind, I take care of myself. And by taking care of myself, I can now truly take care of others.\n\nThus the practice of meditation, where we spend time looking inside our own mind, is not a selfish act at all. We practice meditation for the benefit of all around us and ultimately, for the benefit of all beings.",
     added: "2026-08-19"
-  }
-];
+  }];
