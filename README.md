@@ -137,11 +137,12 @@ Removing a photograph from the master collection is a separate operation.
 Same idea as albums — one config file each, no code to touch.
 
 **Reflections** (the Practice → Reflections room):
-`practice/js/suttas-config.js`. Each entry is a sutta reading with an
-optional excerpt and your own `note`. An entry only appears on the site
-once `note` is filled in — leave it empty to queue a reading without
-publishing it yet. Order on the page follows the order you *wrote* notes
-in, not the order entries sit in the file.
+`practice/js/suttas-config.js`. Its legacy `BOOKS` object defines the visible
+page sections, and `SUTTAS` holds the source-ordered Reflection queue. A
+Reflection may include a sutta or other source, but source fields are optional.
+An entry appears only when both `note` and `added` are filled. Structural page
+sections follow source order; chronological sections show the newest published
+entry first, using source order to break same-date ties.
 
 **Quotes** (the shuffled quote block on the Practice hub):
 `practice/js/quotes-config.js`. Each entry needs `text`, `author`, and a

@@ -1,7 +1,10 @@
 /*
   SUTTA READINGS CONFIG
   ----------------------
-  Source pool for the "Reflections" feature in the Practice section.
+  Authoritative page sections and source-ordered editing queue for the
+  "Reflections" feature in the Practice section. The legacy BOOKS and SUTTAS
+  declaration names remain for compatibility; a page section need not be a
+  book, and a Reflection need not have an external source.
 
   Selection and order follow Bhikkhu Bodhi's anthology "In the Buddha's
   Words" (Wisdom Publications), used as a structural spine rather than a
@@ -9,24 +12,25 @@
   Translations are Bhikkhu Sujato's (CC0, public domain) via SuttaCentral
   unless noted otherwise in `translator`.
 
-  An entry is only "live" once `note` is filled in — that's what makes it
-  eligible to appear on the practice hub and in the archive. Leaving `note`
-  empty just means it's queued, not published. There's no calendar logic
-  and no missed weeks: publish order is write order, not book order.
+  An entry is only "live" once `note` is filled in and `added` contains the
+  date it was published. Leaving `note` empty means it is queued. A note with
+  no date is written but unpublished.
 
   Fields:
-  id         -> stable identifier, part-section-item, e.g. "itbw-1-2-3"
-  book       -> key into BOOKS below, groups entries into their block
+  id         -> stable lowercase identifier, e.g. "itbw-1-2-3"
+  book       -> legacy field name for the BOOKS page-section key
   part       -> Roman numeral of the book's Part (I-X)
   section    -> the named subsection within that Part, for context
   label      -> Bodhi's own numbering, e.g. "I.2(3)"
-  title      -> the reading's title as given in the book
-  ref        -> sutta reference (e.g. "SN 3.3"), "from X" if an excerpt
+  title      -> the Reflection title
+  ref        -> optional sutta reference (e.g. "SN 3.3"), "from X" if an excerpt
   suttaTitle -> canonical Pali title, shown as part of a "ref · suttaTitle"
                 subtitle once an entry is opened
   translator -> SuttaCentral translator slug (default: sujato)
-  url        -> direct link, including segment anchor for excerpts
-  excerpt    -> a few lines quoted directly from the sutta, your pick.
+  url        -> optional direct link, including segment anchor for excerpts
+  sourceTitle, sourceAuthor, sourceLocation, sourceUrl
+             -> optional generic source metadata for non-sutta Reflections
+  excerpt    -> a few lines quoted directly from the source, your pick.
                 Optional — leave "" if nothing feels quotable. Use \n for
                 line breaks if quoting verse; rendered as a block-quote.
   note       -> your reflection, in your own words. Empty = not published.
@@ -36,14 +40,14 @@
 
   BOOKS
   -----
-  One entry per book/text being reflected on. The page renders one
-  heading block per book, in the order listed here, followed by that
-  book's published entries (most recent first). To start reflecting on
-  a new book: add an entry here, then add SUTTAS entries with a
-  matching `book` key.
+  One entry per visible page section. A section may follow a book or group
+  of texts, or collect source-free Reflections on a subject. The page renders
+  section blocks in the order listed here and hides sections without a
+  published entry. Add SUTTAS entries with a matching legacy `book` key.
 
-  title  -> the book/text's title, shown as the block heading
-  note   -> a short line of context: author, translator, why this text
+  title  -> the page-section title, shown as the block heading
+  note   -> a short introduction to the section
+  order  -> "structural" for source order, "chronological" for newest first
 */
 
 const BOOKS = {

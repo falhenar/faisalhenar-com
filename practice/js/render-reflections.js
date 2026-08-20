@@ -3,14 +3,14 @@
   --------------------
   Reads BOOKS and SUTTAS from suttas-config.js and renders published
   entries (anything with a non-empty `note` and an `added` date) into
-  #reflections-list on practice/reflections.html. Entries are grouped
-  into one block per book, in BOOKS's key order; within a block, most
-  recent first. Each book block gets a heading + short note (same
+  #reflections-list on practice/reflections.html. The legacy BOOKS object
+  defines visible page sections, in its key order. Each page-section block
+  gets a heading + short note (same
   section-label / section-dek pattern used elsewhere on the site), and
   is only rendered once it has at least one published entry. A plain
   empty-state message is shown if nothing has been published anywhere
   yet. Each entry collapses to its title and byline; opening it reveals
-  the excerpt, the reflection and the source link. Same <details>
+  the excerpt, the reflection and a source link when one exists. Same <details>
   pattern as the teacher bios in places.html, just scaled up to cover
   the whole entry.
 
@@ -30,7 +30,7 @@
   /* WHAT IS ESCAPED HERE, AND WHAT IS NOT
      `note` deliberately carries HTML: keepers-1 has an inline <a> to
      SuttaCentral inside its prose, and more will follow. So the prose bodies
-     (note, excerpt, book note) are written raw, on purpose.
+     (note, excerpt, page-section note) are written raw, on purpose.
      Everything that lands in an attribute, plus the short title fields, is
      escaped: a straight double quote in a url or title would otherwise close
      the attribute around it and break the entry. */
@@ -44,10 +44,12 @@
     return SUTTAS
       .filter(function(s){ return s.note && s.note.trim().length > 0 && s.added; })
       .slice()
-      .sort(function(a, b){ return new Date(b.added) - new Date(a.added); });
+      .sort(function(a, b){
+        return (new Date(b.added) - new Date(a.added)) || (SUTTAS.indexOf(a) - SUTTAS.indexOf(b));
+      });
   }
 
-  function publishedByBook(){
+  function publishedBySection(){
     var all = publishedEntries();
     return Object.keys(BOOKS).map(function(key){
       var entries = all.filter(function(s){ return s.book === key; });
@@ -56,7 +58,7 @@
       }
       return {
         key: key,
-        book: BOOKS[key],
+        section: BOOKS[key],
         entries: entries
       };
     }).filter(function(group){ return group.entries.length > 0; });
@@ -69,25 +71,39 @@
   }
 
   function fmtSubtitle(s){
-    if (!s.ref) return '';
-    return s.ref + (s.suttaTitle ? ' · ' + s.suttaTitle : '');
+    var reference = s.ref || s.sourceLocation || '';
+    var sourceTitle = s.sourceTitle || s.suttaTitle || '';
+    if (!reference) return sourceTitle ? esc(sourceTitle) : '';
+    return esc(reference) + (sourceTitle ? ' · ' + esc(sourceTitle) : '');
   }
 
   function fmtStructural(s){
     var parts = [];
-    if (s.label) parts.push(s.label);
-    if (s.translator && s.translator !== 'sujato') parts.push('trans. ' + s.translator);
+    if (s.label) parts.push(esc(s.label));
+    if (s.translator && s.translator !== 'sujato') parts.push('trans. ' + esc(s.translator));
     return parts.join(' &middot; ');
   }
 
   function excerptMarkup(s){
     if (!s.excerpt) return '';
     var lines = s.excerpt.split('\n').map(function(line){ return line.trim(); }).filter(Boolean);
+    var quotation = '<blockquote class="reflections-excerpt">' + lines.join('<br>\n') + '</blockquote>';
+    var url = s.sourceUrl || s.url;
+    if (!url) return quotation;
     return (
-      '<a class="reflections-excerpt-link" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
-        '<blockquote class="reflections-excerpt">' + lines.join('<br>\n') + '</blockquote>' +
+      '<a class="reflections-excerpt-link" href="' + esc(url) + '" target="_blank" rel="noopener">' +
+        quotation +
       '</a>'
     );
+  }
+
+  function sourceLinkMarkup(s){
+    var url = s.sourceUrl || s.url;
+    if (!url) return '';
+    var label = /^https:\/\/(?:www\.)?suttacentral\.net(?:\/|$)/i.test(url)
+      ? 'Read on SuttaCentral'
+      : 'Read the source';
+    return '<a class="entry-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + label + ' &rarr;</a>';
   }
 
   function noteMarkup(s){
@@ -100,6 +116,7 @@
 
   function entryMarkup(s){
     var structural = fmtStructural(s);
+    var subtitle = fmtSubtitle(s);
     return (
       '<article class="entry reflection-entry">' +
         '<details class="reflection" id="r-' + esc(s.id) + '">' +
@@ -110,23 +127,23 @@
             '</span>' +
           '</summary>' +
           '<div class="reflection-body">' +
-            '<p class="reflection-subtitle mono">' + fmtSubtitle(s) + '</p>' +
+            (subtitle ? '<p class="reflection-subtitle mono">' + subtitle + '</p>' : '') +
             (structural ? '<p class="reflection-structural mono">' + structural + '</p>' : '') +
             excerptMarkup(s) +
             noteMarkup(s) +
-            '<a class="entry-link" href="' + esc(s.url) + '" target="_blank" rel="noopener">Read on SuttaCentral &rarr;</a>' +
+            sourceLinkMarkup(s) +
           '</div>' +
         '</details>' +
       '</article>'
     );
   }
 
-  function bookBlockMarkup(group){
+  function sectionBlockMarkup(group){
     return (
       '<details class="section book-block">' +
         '<summary class="book-summary">' +
-          '<h2 class="section-label">' + esc(group.book.title) + '</h2>' +
-          '<p class="section-dek">' + group.book.note + '</p>' +
+          '<h2 class="section-label">' + esc(group.section.title) + '</h2>' +
+          '<p class="section-dek">' + group.section.note + '</p>' +
         '</summary>' +
         '<div class="book-entries">' +
           group.entries.map(entryMarkup).join('') +
@@ -138,9 +155,9 @@
   // --- Archive page: practice/reflections.html ---
   var list = document.getElementById('reflections-list');
   if (list) {
-    var groups = publishedByBook();
+    var groups = publishedBySection();
     list.innerHTML = groups.length > 0
-      ? groups.map(bookBlockMarkup).join('')
+      ? groups.map(sectionBlockMarkup).join('')
       : '<section class="section"><p class="reflections-empty">Nothing published yet. The first entry will appear here once it exists.</p></section>';
 
     // Landing on #r-<id> opens that entry rather than dropping the reader on a
