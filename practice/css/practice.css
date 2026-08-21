@@ -757,6 +757,71 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   border-bottom-color: var(--accent);
 }
 
+
+/* ---------- hub: latest reflection ----------
+   Sits between the quote block and the room grid. Deliberately unframed:
+   the quote above has a raised background and an accent rule, the grid
+   below is a bordered box, so a third frame here would read as clutter —
+   and an accent-ruled block directly under the quote would look like a
+   second quotation. Whitespace does the separating; the eyebrow does the
+   labelling. Width and left edge match the quote block's text above it. */
+.latest-reflection{
+  max-width: 620px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+}
+.latest-reflection[hidden]{ display: none; }
+
+.latest-reflection-eyebrow{
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.latest-reflection-title{
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.latest-reflection-title a{
+  color: inherit;
+  text-decoration: none;
+}
+.latest-reflection-title a:hover,
+.latest-reflection-title a:focus-visible{ color: var(--accent); }
+
+.latest-reflection-sub{
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--muted);
+  opacity: 0.8;
+  margin: 0 0 12px;
+}
+
+.latest-reflection-teaser{
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ink);
+  opacity: 0.85;
+  max-width: 56ch;
+  margin: 0 0 16px;
+}
+
+.latest-reflection-more{
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.latest-reflection-more:hover{ text-decoration: underline; }
+
 @media (max-width: 640px){
   .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }
   .room-header, .back-link, .room-title, .room-dek{ padding-left: 20px; padding-right: 20px; }
@@ -764,6 +829,10 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   /* the block has no side padding of its own to inherit, so it gets
      the same 20px gutter the other hub blocks fall back to */
   .quote-featured{ margin: 0 20px 40px; padding: 24px 18px; }
+
+  /* falls back to the 20px gutter the intro and room grid use, rather than
+     the quote card's deeper inset — this block has no card to sit inside */
+  .latest-reflection{ padding: 0 20px; margin-bottom: 40px; }
   .quote-text{ font-size: 1.05rem; }
 
   .sutta-of-day{ padding: 0 20px; margin: 40px auto 48px; }

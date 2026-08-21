@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <meta name="description" content="Readings, talks, and places that inform a Buddhist practice.">
 <link rel="canonical" href="https://faisalhenar.com/practice/">
-<link rel="stylesheet" href="css/practice.css?v=28">
+<link rel="stylesheet" href="css/practice.css?v=29">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -63,6 +63,11 @@
     <p class="quote-attr mono" id="quote-attr"></p>
     <p class="quote-source mono" id="quote-source"></p>
   </section>
+
+  <!-- Filled by render-latest-reflection.js from suttas-config.js.
+       Ships hidden: with JS off, or with nothing published yet, the hub
+       goes straight from the quote to the rooms. -->
+  <section class="latest-reflection" id="latest-reflection" hidden></section>
 
   <div class="rooms-grid">
     <a class="room-card" href="reflections.html">
@@ -176,5 +181,6 @@
        reflection; render-daily-sutta reads it to decide whether to link one. -->
   <script src="js/suttas-config.js?v=5"></script>
   <script src="js/render-daily-sutta.js?v=3"></script>
+  <script src="js/render-latest-reflection.js?v=1"></script>
 </body>
 </html>
