@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "updated": { "datetime": "2026-08", "label": "August 2026" },
+  "collections": [
+    {
+      "id": "starting-out",
+      "kind": "shelf",
+      "items": [
+        {
+          "id": "watch-buddha-speaks",
+          "title": "Buddha Speaks",
+          "author": "Anonymous channel, plain-English explainers",
+          "url": "https://www.youtube.com/@buddha_speaks",
+          "description": "Short explanations of core teachings, kept simple without being vague. A good place to send someone just starting out, and not a deep well for anyone else.",
+          "meta": "Non-sectarian · short explainers"
+        },
+        {
+          "id": "watch-bswa",
+          "title": "Buddhist Society of Western Australia",
+          "author": "Ajahn Brahm and the sangha at Bodhinyana and Dhammasara, Perth",
+          "url": "https://www.youtube.com/@BuddhistSocietyWA",
+          "description": "Talks recorded at Dhammaloka Buddhist Centre: plainspoken, often funny, carried by stories. A common first stop for people new to meditation, and a common last one for people who want something drier.",
+          "meta": "Thai forest, Australia · weekly talks · also on [Listening](listening.html#listen-ajahn-brahm)"
+        },
+        {
+          "id": "watch-tergar",
+          "title": "Tergar Meditation Community",
+          "author": "Yongey Mingyur Rinpoche",
+          "url": "https://www.youtube.com/@TergarMeditationCommunity",
+          "description": "Meditation instruction built around the Joy of Living curriculum. Tibetan in lineage, taught in plain and often funny language that leans on modern science as much as on tradition. The most structured way in on this page.",
+          "meta": "Tibetan, Karma Kagyu · guided course · [tergar.org](https://tergar.org/)"
+        }
+      ]
+    },
+    {
+      "id": "practising",
+      "kind": "shelf",
+      "items": [
+        {
+          "id": "watch-ajahn-achalo",
+          "title": "Ajahn Achalo Bhikkhu",
+          "author": "Ajahn Achalo, Anandagiri Forest Monastery, Thailand",
+          "url": "https://www.youtube.com/@AjahnAchalo",
+          "description": "Step-by-step guided meditations alongside sutta readings and talks. Built as a plain, usable resource rather than a polished production, which is the reason to use it.",
+          "meta": "Thai forest · guided sits and talks"
+        },
+        {
+          "id": "watch-yuttadhammo",
+          "title": "Yuttadhammo Bhikkhu",
+          "author": "Bhante Yuttadhammo, Sirimangalo International",
+          "url": "https://www.youtube.com/@yuttadhammo",
+          "description": "Practice instruction and live question sessions in the Mahasi method as taught in the Ajahn Tong lineage, which is the tradition behind [The Only Way](reading.html#meditation-the-only-way-path-to-nibbana) on the reading shelf and the centre at Wat Chom Tong. He answers ordinary questions directly, which is rarer than it should be.",
+          "meta": "Mahasi, Ajahn Tong lineage · instruction and questions · [sirimangalo.org](https://sirimangalo.org/)"
+        },
+        {
+          "id": "watch-sujato-metta",
+          "title": "Metta Meditation, Santi Forest Monastery 2007",
+          "author": "Bhante Sujato, ten talks, uploaded by Samita ASBL",
+          "url": "https://www.youtube.com/playlist?list=PLTcGMzIEhlsa0maPxIduPyYSNonn0_umT",
+          "description": "Ten talks from a rains retreat in New South Wales, working through metta practice in more detail than almost anything else available. The translations used across [Reflections](reflections.html) are Bhante Sujato's.",
+          "meta": "Thai forest · ten talks · re-uploaded archive, not an official channel"
+        }
+      ]
+    },
+    {
+      "id": "sitting-in",
+      "kind": "shelf",
+      "items": [
+        {
+          "id": "watch-amaravati",
+          "title": "Amaravati Buddhist Monastery",
+          "author": "Ajahn Amaro and the sangha, Hertfordshire, England",
+          "url": "https://www.youtube.com/@amaravatibuddhistmonastery",
+          "description": "The monastery Ajahn Sumedho founded in 1984, in the same lineage as Ajahn Chah. Less introductory than most of this page: closer to sitting in on the life of the place than to being taught.",
+          "meta": "Thai forest, England · talks and monastery life · also on [Listening](listening.html#listen-amaravati)"
+        },
+        {
+          "id": "watch-abhayagiri",
+          "title": "Abhayagiri Buddhist Monastery",
+          "author": "Ajahn Pasanno and the sangha, Redwood Valley, California",
+          "url": "https://www.youtube.com/@AbhayagiriBuddhistMonastery",
+          "description": "Talks from the resident sangha and visiting teachers, recorded much as they were given. The video and audio archives do not overlap completely, so it is worth checking both.",
+          "meta": "Thai forest, California · talks · also on [Listening](listening.html#listen-abhayagiri)"
+        },
+        {
+          "id": "watch-cittaviveka",
+          "title": "Cittaviveka, Chithurst Buddhist Monastery",
+          "author": "The sangha at Chithurst, West Sussex, England",
+          "url": "https://www.youtube.com/@cittaviveka",
+          "description": "The first of the English forest monasteries, established in 1979. Quieter and less frequently posted than Amaravati, which suits it.",
+          "meta": "Thai forest, England · talks"
+        },
+        {
+          "id": "watch-wat-marp-jan",
+          "title": "Wat Marp Jan",
+          "author": "Ajahn Anan Akiñcano and the sangha, Rayong, Thailand",
+          "url": "https://www.youtube.com/@watmarpjan",
+          "description": "A forest monastery founded by a disciple of Ajahn Chah. Some material is in Thai without translation, so this is the one entry here where you may have to hunt.",
+          "meta": "Thai forest, Thailand · talks, some untranslated · also on [Listening](listening.html#listen-ajahn-anan)"
+        },
+        {
+          "id": "watch-clear-mountain",
+          "title": "Clear Mountain Monastery",
+          "author": "Ajahn Kovilo, Ajahn Nisabho and friends, greater Seattle",
+          "url": "https://www.youtube.com/@ClearMountainMonastery",
+          "description": "Talks and question sessions from a monastery still taking root. Informal and unhurried, clearly made for a small sangha rather than for an audience.",
+          "meta": "Thai forest, Seattle · talks and questions · also on [Listening](listening.html#listen-clear-mountain)"
+        },
+        {
+          "id": "watch-ajahn-sona",
+          "title": "Ajahn Sona",
+          "author": "Ajahn Sona, Birken Forest Buddhist Monastery, British Columbia",
+          "url": "https://www.youtube.com/@AjahnSona",
+          "description": "Long-form talks that take their time and assume you will too. Among the most carefully argued teaching coming out of the Western forest sangha.",
+          "meta": "Thai forest, Canada · long-form talks"
+        },
+        {
+          "id": "watch-james-low",
+          "title": "James Low",
+          "author": "James Low, Dzogchen in the Nyingma tradition",
+          "url": "https://www.youtube.com/@jameslow",
+          "description": "A different tradition from the rest of this page, and the least introductory thing on it. Recorded seminars rather than talks, worth the time regardless of lineage.",
+          "meta": "Tibetan, Dzogchen · recorded seminars · [simplybeing.co.uk](https://www.simplybeing.co.uk/)"
+        }
+      ]
+    },
+    {
+      "id": "study",
+      "kind": "shelf",
+      "items": [
+        {
+          "id": "watch-dougs-dharma",
+          "title": "Doug's Dharma",
+          "author": "Doug Smith, early Buddhism with a secular framing",
+          "url": "https://www.youtube.com/@DougsDharma",
+          "description": "Short videos relating early Buddhist teaching to ordinary life, from a scholarly angle rather than a devotional one. Useful for the same reason it is limited: it stays outside the practice looking in.",
+          "meta": "Early Buddhism, secular framing · short videos"
+        },
+        {
+          "id": "watch-bhikkhu-bodhi-teaching-as-it-is",
+          "title": "The Buddha's Teaching As It Is",
+          "author": "Bhikkhu Bodhi, Washington Buddhist Vihara, 1979",
+          "url": "https://www.youtube.com/playlist?list=PLlLsJKuLUkUoXxZWJcMNVbavrowbBY7p0",
+          "description": "Ten lectures on the fundamentals of early Buddhism, given nearly fifty years ago and still the clearest sustained account I know of. His anthology [In the Buddha's Words](reading.html#early-in-the-buddha-s-words) is on the reading shelf.",
+          "meta": "Early Buddhism · ten lectures · re-uploaded archive; [audio at Bodhi Monastery](https://bodhimonastery.org/online-dharma-lectures)"
+        }
+      ]
+    }
+  ]
+}

@@ -1133,13 +1133,14 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   .reading-page .reading-updated{ padding-left: 20px; padding-right: 20px; }
 }
 
-/* ---------- listening: podcasts and narrated collections ----------
-   Uses the shared .shelf-page typography above. Only two things differ:
-   entries carry a second link in the meta line, so the section deks run
-   a little longer, and there is no featured or beginner tier. */
-.listening-page .page-intro{ margin-bottom: 40px; }
-.listening-page .shelf:first-of-type{ padding-top: 0; }
-.listening-page .listening-updated{
+/* ---------- shelf rooms: listening, watching ----------
+   Shared with the .shelf-page typography above. Both rooms open straight
+   into their first shelf, so the top padding comes off, and both close
+   with a dated stamp. */
+.shelf-page .page-intro{ margin-bottom: 40px; }
+.listening-page .shelf:first-of-type,
+.watching-page .shelf:first-of-type{ padding-top: 0; }
+.shelf-page .shelf-updated{
   max-width: 860px;
   margin: 0 auto;
   padding: 0 32px 72px;
@@ -1149,5 +1150,5 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--muted);
 }
 @media (max-width: 640px){
-  .listening-page .listening-updated{ padding-left: 20px; padding-right: 20px; }
+  .shelf-page .shelf-updated{ padding-left: 20px; padding-right: 20px; }
 }

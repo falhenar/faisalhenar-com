@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  /* Shared renderer for shelf-style rooms (Listening, Watching). Reads the
+     JSON path from data-shelf-src on <main> and fills every element carrying
+     data-shelf-list with the matching collection. Reading still uses
+     render-reading.js: it has three extra layouts (return, path, talk) that
+     would only complicate this one. Migrate it if those ever go away. */
+
   function element(tag, className, text) {
     var node = document.createElement(tag);
     if (className) node.className = className;
@@ -8,8 +14,7 @@
     return node;
   }
 
-  /* accepts absolute URLs, same-page hashes and same-site relative paths.
-     render-reading.js allows only the first two; worth back-porting there. */
+  /* accepts absolute URLs, same-page hashes and same-site relative paths */
   function appendInline(parent, value) {
     var pattern = /\[([^\]]+)\]\(([^)\s]+)\)/g;
     var cursor = 0;
@@ -25,14 +30,14 @@
     parent.appendChild(document.createTextNode(value.slice(cursor)));
   }
 
-  function title(show) {
+  function title(item) {
     var heading = element("h3", "entry-title");
-    if (!show.url) {
-      heading.textContent = show.title;
+    if (!item.url) {
+      heading.textContent = item.title;
       return heading;
     }
-    var link = element("a", "", show.title);
-    link.href = show.url;
+    var link = element("a", "", item.title);
+    link.href = item.url;
     link.rel = "noopener";
     var external = element("span", "ext", " ↗");
     external.setAttribute("aria-hidden", "true");
@@ -41,44 +46,47 @@
     return heading;
   }
 
-  function renderShow(show) {
+  function renderItem(item) {
     var article = element("article", "book-entry");
-    if (show.id) article.id = show.id;
-    article.appendChild(title(show));
-    article.appendChild(element("p", "entry-by", show.author));
-    if (show.description) {
+    if (item.id) article.id = item.id;
+    article.appendChild(title(item));
+    article.appendChild(element("p", "entry-by", item.author));
+    if (item.description) {
       var description = element("p", "entry-note");
-      appendInline(description, show.description);
+      appendInline(description, item.description);
       article.appendChild(description);
     }
-    if (show.meta) {
+    if (item.meta) {
       var meta = element("p", "entry-meta mono");
-      appendInline(meta, show.meta);
+      appendInline(meta, item.meta);
       article.appendChild(meta);
     }
     return article;
   }
 
   function showError() {
-    var target = document.querySelector("[data-listening-list]");
+    var target = document.querySelector("[data-shelf-list]");
     if (!target) return;
     target.appendChild(element("p", "entry-note", "This list could not be loaded. Please try again later."));
   }
 
-  fetch("data/listening.json", {cache: "no-cache"}).then(function (response) {
-    if (!response.ok) throw new Error("Listening data request failed.");
+  var root = document.querySelector("[data-shelf-src]");
+  if (!root) return;
+
+  fetch(root.getAttribute("data-shelf-src"), {cache: "no-cache"}).then(function (response) {
+    if (!response.ok) throw new Error("Shelf data request failed.");
     return response.json();
   }).then(function (data) {
     data.collections.forEach(function (collection) {
-      var target = document.querySelector('[data-listening-list="' + collection.id + '"]');
+      var target = document.querySelector('[data-shelf-list="' + collection.id + '"]');
       if (!target) return;
-      collection.shows.forEach(function (show) {
-        target.appendChild(renderShow(show));
+      collection.items.forEach(function (item) {
+        target.appendChild(renderItem(item));
       });
-      var count = document.querySelector('[data-listening-count="' + collection.id + '"]');
-      if (count) count.textContent = String(collection.shows.length);
+      var count = document.querySelector('[data-shelf-count="' + collection.id + '"]');
+      if (count) count.textContent = String(collection.items.length);
     });
-    var updated = document.querySelector("[data-listening-updated]");
+    var updated = document.querySelector("[data-shelf-updated]");
     if (updated && data.updated) {
       updated.dateTime = data.updated.datetime;
       updated.textContent = data.updated.label;

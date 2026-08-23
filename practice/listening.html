@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Listening · Practice · Faisal Henar">
 <meta name="twitter:description" content="Podcasts and narrated collections from the forest tradition and beyond.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=33">
+<link rel="stylesheet" href="css/practice.css?v=34">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -54,7 +54,7 @@
     <path d="M42 51 A34 34 0 0 1 42 119"></path>
   </svg>
 
-  <main>
+  <main data-shelf-src="data/listening.json">
   <a class="back-link" href="./">&larr; All rooms</a>
   <h1 class="room-title">Listening</h1>
   <p class="room-dek">Podcasts and narrated collections I keep coming back to, most of them from the Thai forest tradition.</p>
@@ -77,28 +77,28 @@
   <section class="section shelf" id="read-aloud">
     <h2 class="shelf-title">Texts read aloud</h2>
     <p class="shelf-dek">Finite works, narrated. These have a first episode and a last one, so you can work through them the way you would a book.</p>
-    <div class="shelf-books" data-listening-list="read-aloud"></div>
+    <div class="shelf-books" data-shelf-list="read-aloud"></div>
   </section>
 
   <section class="section shelf" id="monasteries">
     <h2 class="shelf-title">From the monasteries</h2>
     <p class="shelf-dek">Places rather than single voices. Talks given to whoever was sitting there that evening, recorded as they happened.</p>
-    <div class="shelf-books" data-listening-list="monasteries"></div>
+    <div class="shelf-books" data-shelf-list="monasteries"></div>
   </section>
 
   <section class="section shelf" id="teachers">
     <h2 class="shelf-title">Single teachers</h2>
     <p class="shelf-dek">One voice at length. The division from the section above is loose: these feeds come from monasteries too, they are just gathered under a teacher's name.</p>
-    <div class="shelf-books" data-listening-list="teachers"></div>
+    <div class="shelf-books" data-shelf-list="teachers"></div>
   </section>
 
   <section class="section shelf" id="insight">
     <h2 class="shelf-title">The insight tradition</h2>
     <p class="shelf-dek">Outside the Thai forest lineage most of this page sits in. Both come by way of Mahasi Sayadaw and the Burmese satipaṭṭhāna teaching that reached the West through him.</p>
-    <div class="shelf-books" data-listening-list="insight"></div>
+    <div class="shelf-books" data-shelf-list="insight"></div>
   </section>
 
-  <p class="listening-updated mono">List last changed <time data-listening-updated datetime="2026-08">August 2026</time>.</p>
+  <p class="shelf-updated mono">List last changed <time data-shelf-updated datetime="2026-08">August 2026</time>.</p>
 
   </main>
 
@@ -119,7 +119,7 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/render-listening.js"></script>
+  <script src="js/render-shelf.js"></script>
   <script src="../js/menu.js?v=2"></script>
 </body>
 </html>

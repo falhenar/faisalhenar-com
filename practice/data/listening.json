@@ -5,7 +5,7 @@
     {
       "id": "read-aloud",
       "kind": "shelf",
-      "shows": [
+      "items": [
         {
           "id": "listen-collected-teachings-ajahn-chah",
           "title": "The Collected Teachings of Ajahn Chah: Audiobook",
@@ -35,7 +35,7 @@
     {
       "id": "monasteries",
       "kind": "shelf",
-      "shows": [
+      "items": [
         {
           "id": "listen-abhayagiri",
           "title": "Abhayagiri Monastery",
@@ -73,7 +73,7 @@
     {
       "id": "teachers",
       "kind": "shelf",
-      "shows": [
+      "items": [
         {
           "id": "listen-thanissaro-evening",
           "title": "Evening talks by Thanissaro Bhikkhu",
@@ -103,7 +103,7 @@
     {
       "id": "insight",
       "kind": "shelf",
-      "shows": [
+      "items": [
         {
           "id": "listen-insight-hour",
           "title": "Insight Hour with Joseph Goldstein",
