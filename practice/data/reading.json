@@ -270,20 +270,20 @@
           "meta": "Free · Forest Dhamma"
         },
         {
-          "id": "talk-3-things-as-they-are",
-          "title": "Things as They Are",
-          "author": "Ajaan Mahā Boowa Ñāṇasampanno",
-          "url": "https://forestdhamma.org/2019/09/09/things-as-they-are/",
-          "description": "A collection of Dhamma talks given to monks in training at Wat Pa Baan Taad.",
-          "descriptionStyle": "note",
-          "meta": "Free · Forest Dhamma"
-        },
-        {
           "id": "talk-3-forest-desana-s",
           "title": "Forest Desanās",
           "author": "Ajaan Mahā Boowa Ñāṇasampanno",
           "url": "https://forestdhamma.org/2018/07/09/forest-desanas/",
           "description": "Short talks translated from Thai, given informally to the monastic community.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "talk-3-things-as-they-are",
+          "title": "Things as They Are",
+          "author": "Ajaan Mahā Boowa Ñāṇasampanno",
+          "url": "https://forestdhamma.org/2019/09/09/things-as-they-are/",
+          "description": "A collection of Dhamma talks given to monks in training at Wat Pa Baan Taad.",
           "descriptionStyle": "note",
           "meta": "Free · Forest Dhamma"
         }
