@@ -1,0 +1,336 @@
+{
+  "version": 1,
+  "updated": {
+    "datetime": "2026-08",
+    "label": "August 2026"
+  },
+  "collections": [
+    {
+      "id": "return",
+      "title": "Books I return to",
+      "kind": "return",
+      "books": [
+        {
+          "id": "return-four-noble-truths",
+          "title": "The Four Noble Truths",
+          "author": "Ajahn Sumedho",
+          "url": "https://www.abhayagiri.org/books/464-the-four-noble-truths",
+          "description": "This book came with me on an e-reader during a trip to Thailand, when I was looking for a way through the monkey mind that had held me in a chokehold for much of my life, perhaps all of it. Together with my experience at my first Goenka retreat in Suriname, it gave me faith that this path could genuinely lead to the lessening, and perhaps eventually the overcoming, of suffering.",
+          "descriptionStyle": "reflection",
+          "meta": "Free · Abhayagiri Monastery"
+        },
+        {
+          "id": "return-bodhinyana",
+          "title": "Bodhinyana",
+          "author": "Ajahn Chah",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-chah-bodhinyana",
+          "description": "This book came with me when I visited Suddhavari Monastery in Brazil. Staying at a monastery in Ajahn Chah's lineage, I felt deeply grateful for another opportunity to deepen the practice. My time there taught me a great deal about practising mindfulness during ordinary duties, and this book became part of that experience.",
+          "descriptionStyle": "reflection",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "return-practical-insight",
+          "title": "Practical Insight Meditation: Basic and Progressive Stages",
+          "author": "Mahāsi Sayādaw",
+          "url": "https://buddhistuniversity.net/content/booklets/practical-insight-meditation_mahasi",
+          "description": "Ajahn Tong's approach belongs to the wider Mahāsi tradition. This short text helped me see more clearly the lineage behind the meditation instructions I had received. It sits alongside the books in [Meditation & Practice](#meditation-practice).",
+          "descriptionStyle": "reflection",
+          "meta": "Free · Buddhist University · BPS BP503S",
+          "wide": true
+        }
+      ]
+    },
+    {
+      "id": "begin",
+      "title": "New to Buddhist reading?",
+      "kind": "path",
+      "books": [
+        {
+          "id": "begin-the-four-noble-truths",
+          "title": "The Four Noble Truths",
+          "author": "Ajahn Sumedho",
+          "url": "https://www.abhayagiri.org/books/464-the-four-noble-truths",
+          "description": "A brief orientation to the central framework.",
+          "descriptionStyle": "note",
+          "meta": "Free · Abhayagiri Monastery · [why I return to it](#return-four-noble-truths)"
+        },
+        {
+          "id": "begin-mindfulness-in-plain-english",
+          "title": "Mindfulness in Plain English",
+          "author": "Bhante Henepola Gunaratana",
+          "url": "https://buddhistuniversity.net/content/monographs/mindfulness-in-plain-english_gunaratana",
+          "description": "Practical meditation instruction in accessible language.",
+          "descriptionStyle": "note",
+          "meta": "Free · Buddhist University"
+        },
+        {
+          "id": "begin-the-art-of-living-peace-and-freedom-in-the-here-and-now",
+          "title": "The Art of Living: Peace and Freedom in the Here and Now",
+          "author": "Thich Nhat Hanh",
+          "url": "https://www.harpercollins.com/products/the-art-of-living-thich-nhat-hanh?variant=40609592082466",
+          "description": "A gentler treatment of awareness in ordinary life. Thich Nhat Hanh writes from the Zen tradition rather than the Theravada teachers above, so the register is different. It is also the one book in this sequence you have to buy.",
+          "descriptionStyle": "note",
+          "meta": "Buy · HarperCollins"
+        }
+      ]
+    },
+    {
+      "id": "meditation-practice",
+      "title": "Meditation & Practice",
+      "kind": "shelf-single",
+      "books": [
+        {
+          "id": "meditation-the-only-way-path-to-nibbana",
+          "title": "The Only Way: Path to Nibbana",
+          "author": "Ajahn Tong Sirimangalo",
+          "url": "",
+          "description": "Since visiting Wat Chom Tong Vipassana Meditation Center in 2023, these instructions have stayed with me in daily practice. The book has since been revised and republished, but the words I encountered then still remain with me.",
+          "descriptionStyle": "reflection",
+          "meta": "Wat Chom Tong · no edition online; usually given at the monastery"
+        },
+        {
+          "id": "meditation-on-meditation",
+          "title": "On Meditation",
+          "author": "Ajahn Chah",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-chah-food-on-meditation",
+          "description": "Although the formal teachings I receive come through Ajahn Tong's lineage, I am also deeply moved by Ajahn Chah's lineage. The manner of teaching is different, and I feel fortunate that both have crossed my path.",
+          "descriptionStyle": "reflection",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "meditation-mindfulness-the-path-to-the-deathless",
+          "title": "Mindfulness: The Path to the Deathless",
+          "author": "Ajahn Sumedho",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-sumedho-mindfulness-the-path-to-the-deathless",
+          "description": "Instructions on awareness in posture, feeling, and daily activity.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "meditation-the-heart-of-buddhist-meditation",
+          "title": "The Heart of Buddhist Meditation",
+          "author": "Nyanaponika Thera",
+          "url": "https://buddho.org/book/the-heart-of-buddhist-meditation/",
+          "description": "A study of satipaṭṭhāna, first published by the Buddhist Publication Society.",
+          "descriptionStyle": "note",
+          "meta": "Free · Buddho.org · BPS BP509S"
+        },
+        {
+          "id": "meditation-in-this-very-life",
+          "title": "In This Very Life",
+          "author": "Sayādaw U Paṇḍita",
+          "url": "https://buddho.org/book/in-this-very-life-the-liberation-teachings-of-the-buddha/",
+          "description": "Another teacher in the Mahāsi lineage, Sayādaw U Paṇḍita helped me understand more clearly what sustained vipassanā practice can look like in daily life.",
+          "descriptionStyle": "reflection",
+          "meta": "Free · Buddho.org · BPS BP508S"
+        },
+        {
+          "id": "meditation-a-householder-s-vinaya",
+          "title": "A Householder's Vinaya",
+          "author": "Allan Cooper",
+          "url": "https://householdersvinaya.com/wp-content/uploads/2020/06/A-Householders-Vinaya-Allan-Cooper.pdf",
+          "description": "Allan Cooper wrote the kind of book I had been looking for. After a retreat, I can quickly fall back into old habits. This book offers practical tools for carrying a measure of ethics, concentration and wisdom back into life at home.",
+          "descriptionStyle": "reflection",
+          "meta": "Free PDF · householdersvinaya.com"
+        }
+      ]
+    },
+    {
+      "id": "lives",
+      "title": "Lives",
+      "kind": "shelf",
+      "books": [
+        {
+          "id": "lives-gold-wrapped-in-rags",
+          "title": "Gold Wrapped in Rags",
+          "author": "Ajaan Jia Cundo, translated by Ajaan Dick Sīlaratano",
+          "url": "https://forestdhamma.org/2024/02/08/gold-wrapped-in-rags/",
+          "description": "The autobiography of a forest monk who trained under Ajaan Mun and practiced alongside Ajaan Mahā Boowa, told in his own words.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "lives-venerable-a-cariya-mun-bhu-ridatta-thera",
+          "title": "Venerable Ācariya Mun Bhūridatta Thera",
+          "author": "Ajaan Mahā Boowa Ñāṇasampanno, translated by Ajaan Dick Sīlaratano",
+          "url": "https://forestdhamma.org/2022/02/09/venerable-acariya-mun-bhuridatta-thera/",
+          "description": "Ajaan Mahā Boowa's account of his own teacher, Ajaan Mun, a central figure of the modern Thai Forest Tradition.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "lives-samana",
+          "title": "Samana",
+          "author": "Ajaan Mahā Boowa Ñāṇasampanno, edited by Ajaan Dick Sīlaratano",
+          "url": "https://forestdhamma.org/2020/02/09/samana/",
+          "description": "A short account of Ajaan Mahā Boowa's final days and passing, written for those who practiced with him.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "lives-uncommon-wisdom",
+          "title": "Uncommon Wisdom",
+          "author": "Ajaan Dick Sīlaratano",
+          "url": "https://forestdhamma.org/2024/02/06/uncommon-wisdom/",
+          "description": "The life of Ajaan Paññāvaḍḍho, an English-born monk who trained for decades under Ajaan Mahā Boowa in the northeastern Thai forest tradition.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "lives-mae-chee-kaew",
+          "title": "Mae Chee Kaew",
+          "author": "Ajaan Dick Sīlaratano",
+          "url": "https://forestdhamma.org/2019/12/09/mae-chee-kaew/",
+          "description": "The life of a laywoman turned nun in rural northeastern Thailand who studied under several of the era's best-known meditation teachers.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        }
+      ]
+    },
+    {
+      "id": "teachings-1",
+      "title": "Ajahn Chah",
+      "kind": "talk",
+      "books": [
+        {
+          "id": "talk-1-everything-is-teaching-us",
+          "title": "Everything Is Teaching Us",
+          "author": "Ajahn Chah, translated by Paul Breiter",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-chah-everything-is-teaching-us",
+          "description": "Talks on meeting ordinary situations, irritation, boredom, doubt, as material for practice rather than obstacles to it.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "talk-1-food-for-the-heart",
+          "title": "Food for the Heart",
+          "author": "Ajahn Chah",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-chah-food-for-the-heart",
+          "description": "A substantial collection of Ajahn Chah's talks, gathered for readers coming to his teaching for the first time.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "talk-1-a-taste-of-freedom",
+          "title": "A Taste of Freedom",
+          "author": "Ajahn Chah",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-chah-a-taste-of-freedom",
+          "description": "A short collection of talks originally given to Western monks training in Ajahn Chah's monasteries.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        }
+      ]
+    },
+    {
+      "id": "teachings-2",
+      "title": "Ajahn Sumedho",
+      "kind": "talk",
+      "books": [
+        {
+          "id": "talk-2-the-way-it-is",
+          "title": "The Way It Is",
+          "author": "Ajahn Sumedho",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-sumedho-the-way-it-is",
+          "description": "Talks on meditation and the nature of mind, from one of Ajahn Chah's first Western disciples.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "talk-2-intuitive-awareness",
+          "title": "Intuitive Awareness",
+          "author": "Ajahn Sumedho",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-sumedho-intuitive-awareness",
+          "description": "Talks on recognizing awareness itself, rather than its changing contents.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "talk-2-now-is-the-knowing",
+          "title": "Now Is the Knowing",
+          "author": "Ajahn Sumedho",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-sumedho-now-is-the-knowing",
+          "description": "A collection of short talks on present-moment awareness.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha"
+        }
+      ]
+    },
+    {
+      "id": "teachings-3",
+      "title": "Ajaan Mahā Boowa",
+      "kind": "talk",
+      "books": [
+        {
+          "id": "talk-3-arahattamagga-arahattaphala-the-path-to-arahantship",
+          "title": "Arahattamagga Arahattaphala: The Path to Arahantship",
+          "author": "Ajaan Mahā Boowa Ñāṇasampanno",
+          "url": "https://forestdhamma.org/2019/12/09/arahattamagga-arahattaphala-5/",
+          "description": "Ajaan Mahā Boowa's account of the path and its fruition, drawn from talks given late in his teaching life.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "talk-3-things-as-they-are",
+          "title": "Things as They Are",
+          "author": "Ajaan Mahā Boowa Ñāṇasampanno",
+          "url": "https://forestdhamma.org/2019/09/09/things-as-they-are/",
+          "description": "A collection of Dhamma talks given to monks in training at Wat Pa Baan Taad.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        },
+        {
+          "id": "talk-3-forest-desana-s",
+          "title": "Forest Desanās",
+          "author": "Ajaan Mahā Boowa Ñāṇasampanno",
+          "url": "https://forestdhamma.org/2018/07/09/forest-desanas/",
+          "description": "Short talks translated from Thai, given informally to the monastic community.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Dhamma"
+        }
+      ]
+    },
+    {
+      "id": "early-texts",
+      "title": "Early Buddhist Texts",
+      "kind": "shelf",
+      "books": [
+        {
+          "id": "early-in-the-buddha-s-words",
+          "title": "In the Buddha's Words",
+          "author": "Edited and introduced by Bhikkhu Bodhi",
+          "url": "https://wisdomexperience.org/product/buddhas-words/",
+          "description": "A thematic anthology of discourses from the Pāli Canon.",
+          "descriptionStyle": "note",
+          "meta": "Buy · Wisdom Publications"
+        },
+        {
+          "id": "early-the-middle-length-discourses-of-the-buddha",
+          "title": "The Middle Length Discourses of the Buddha",
+          "author": "Majjhima Nikāya, translated by Bhikkhu Ñāṇamoli and Bhikkhu Bodhi",
+          "url": "https://wisdomexperience.org/product/middle-length-discourses-buddha/",
+          "description": "A complete translation of the Majjhima Nikāya.",
+          "descriptionStyle": "note",
+          "meta": "Buy · Wisdom Publications"
+        },
+        {
+          "id": "early-the-connected-discourses-of-the-buddha",
+          "title": "The Connected Discourses of the Buddha",
+          "author": "Saṁyutta Nikāya, translated by Bhikkhu Bodhi",
+          "url": "https://wisdomexperience.org/product/connected-discourses-buddha/",
+          "description": "A complete translation of the Saṁyutta Nikāya.",
+          "descriptionStyle": "note",
+          "meta": "Buy · Wisdom Publications"
+        },
+        {
+          "id": "early-the-worn-out-skin",
+          "title": "The Worn-out Skin",
+          "author": "Nyanaponika Thera",
+          "url": "https://accesstoinsight.org/lib/authors/nyanaponika/wheel241.html",
+          "description": "A translation of the Uraga Sutta with a short modern reflection on shedding attachment.",
+          "descriptionStyle": "note",
+          "meta": "Free · Access to Insight · BPS The Wheel 241"
+        }
+      ]
+    }
+  ]
+}

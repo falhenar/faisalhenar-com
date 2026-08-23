@@ -157,6 +157,11 @@ Adding entries just lengthens the cycle. When the day's sutta is one you have
 written a reflection on, the block links through to it automatically, matched
 on `ref` against `suttas-config.js`, so the two lists cannot drift apart.
 
+**Reading shelf** (`practice/reading.html`): book entries live in
+`practice/data/reading.json` and are rendered by `practice/js/render-reading.js`
+inside the page's fixed visual layout. Use Website Manager's Reading screen to
+add, edit, remove, or reorder books without editing the page markup.
+
 **Elsewhere** (`elsewhere.html`): a plain hand-edited page, no config.
 
 ## Writing style
