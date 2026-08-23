@@ -822,35 +822,37 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 .latest-reflection-more:hover{ text-decoration: underline; }
 
-/* ---------- reading: personal Buddhist bookshelf ----------
-   Scoped to body.reading-page so nothing here reaches the other rooms.
-   Two widths on purpose: the return/beginner sections stay at a narrow,
-   intimate prose measure, the shelves widen out for a scalable bookcase. */
-.reading-page .reading-intro{
+/* ---------- shared shelf typography ----------
+   Used by any shelf-style room (currently reading and listening), scoped
+   to body.shelf-page. Two widths on purpose: the intro/contents sections
+   stay at a narrow, intimate prose measure, the shelves widen out for a
+   scalable bookcase. The reading-only rules further below stay scoped to
+   body.reading-page. */
+.shelf-page .page-intro{
   max-width: 620px;
   margin: 0 auto 44px;
   padding: 0 32px;
 }
-.reading-page .reading-intro p{
+.shelf-page .page-intro p{
   color: var(--muted);
   font-size: 0.95rem;
   margin: 0 0 14px;
 }
-.reading-page .reading-intro p:last-child{ margin-bottom: 0; }
+.shelf-page .page-intro p:last-child{ margin-bottom: 0; }
 
-.reading-page .reading-contents{
+.shelf-page .page-contents{
   max-width: 780px;
   margin: 0 auto 48px;
   padding: 0 32px;
 }
-.reading-page .reading-contents-label{
+.shelf-page .page-contents-label{
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 10px;
 }
-.reading-page .reading-contents ul{
+.shelf-page .page-contents ul{
   list-style: none;
   margin: 0;
   padding: 10px 0 0;
@@ -859,50 +861,50 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   flex-wrap: wrap;
   gap: 10px 20px;
 }
-.reading-page .reading-contents li{
+.shelf-page .page-contents li{
   padding-right: 20px;
   border-right: 1px solid var(--line);
 }
-.reading-page .reading-contents li:last-child{
+.shelf-page .page-contents li:last-child{
   padding-right: 0;
   border-right: none;
 }
-.reading-page .reading-contents a{
+.shelf-page .page-contents a{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.02em;
   color: var(--accent);
 }
-.reading-page .reading-contents a:hover{ color: var(--ink); }
-.reading-page .reading-contents a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
+.shelf-page .page-contents a:hover{ color: var(--ink); }
+.shelf-page .page-contents a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 600px){
-  .reading-page .reading-contents ul{ flex-direction: column; gap: 0; }
-  .reading-page .reading-contents li{
+  .shelf-page .page-contents ul{ flex-direction: column; gap: 0; }
+  .shelf-page .page-contents li{
     padding: 10px 0;
     border-right: none;
     border-bottom: 1px solid var(--line);
   }
-  .reading-page .reading-contents li:first-child{ padding-top: 0; }
-  .reading-page .reading-contents li:last-child{ padding-bottom: 0; border-bottom: none; }
+  .shelf-page .page-contents li:first-child{ padding-top: 0; }
+  .shelf-page .page-contents li:last-child{ padding-bottom: 0; border-bottom: none; }
 }
 
 /* the site's entry typography is scoped to .entry, which this page does
    not use — .book-entry and .return-book carry the same three parts, so
    they get the same three rules. Values copied from .entry above; if that
    block changes, change it here too. */
-.reading-page .entry-title{
+.shelf-page .entry-title{
   font-family: 'Lora', serif;
   font-weight: 600;
   font-size: 1.15rem;
   margin: 0 0 4px;
 }
-.reading-page .entry-by{
+.shelf-page .entry-by{
   font-size: 0.85rem;
   color: var(--muted);
   margin: 0 0 8px;
 }
-.reading-page .entry-note{
+.shelf-page .entry-note{
   font-size: 0.92rem;
   color: var(--ink);
   opacity: 0.85;
@@ -941,23 +943,23 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
    name as its accessible name. Underline sits at --line and warms to
    --accent on hover, so the affordance is there without a green stripe
    repeating down the page. */
-.reading-page .entry-title a{
+.shelf-page .entry-title a{
   color: inherit;
   text-decoration: none;
   transition: color 0.15s ease;
 }
-.reading-page .entry-title a:hover,
-.reading-page .entry-title a:focus-visible{ color: var(--accent); }
-.reading-page .entry-title a:hover .ext,
-.reading-page .entry-title a:focus-visible .ext{ color: var(--accent); }
-.reading-page .entry-title a:focus-visible{
+.shelf-page .entry-title a:hover,
+.shelf-page .entry-title a:focus-visible{ color: var(--accent); }
+.shelf-page .entry-title a:hover .ext,
+.shelf-page .entry-title a:focus-visible .ext{ color: var(--accent); }
+.shelf-page .entry-title a:focus-visible{
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 /* external marker: punctuation, not decoration. A narrow no-break space
    before it in the markup keeps it from wrapping alone. */
-.reading-page .entry-title .ext{
+.shelf-page .entry-title .ext{
   font-size: 0.72em;
   color: var(--muted);
   vertical-align: 0.15em;
@@ -966,7 +968,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 
 /* replaces the .entry-source eyebrow: cost, then where the link goes,
    then the edition where it matters. One line, at the foot of the card. */
-.reading-page .entry-meta{
+.shelf-page .entry-meta{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.06em;
@@ -974,15 +976,15 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--muted);
   margin: 10px 0 0;
 }
-.reading-page .entry-meta a,
+.shelf-page .entry-meta a,
 .reading-page .shelf-dek a,
 .reading-page .teacher-note a{
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
 }
-.reading-page .entry-meta a:hover,
-.reading-page .entry-meta a:focus-visible,
+.shelf-page .entry-meta a:hover,
+.shelf-page .entry-meta a:focus-visible,
 .reading-page .shelf-dek a:hover,
 .reading-page .teacher-note a:hover{
   color: var(--accent);
@@ -1028,30 +1030,30 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 .reading-page .reading-shelves-head .section-label{ margin-bottom: 6px; }
 .reading-page .reading-shelves-head .section-dek{ margin: 0; }
 
-.reading-page .shelf{ max-width: 860px; padding-top: 40px; padding-bottom: 48px; scroll-margin-top: 2rem; }
-.reading-page .shelf + .shelf{
+.shelf-page .shelf{ max-width: 860px; padding-top: 40px; padding-bottom: 48px; scroll-margin-top: 2rem; }
+.shelf-page .shelf + .shelf{
   padding-top: 56px;
   border-top: 1px solid var(--line);
 }
-.reading-page .shelf-title{
+.shelf-page .shelf-title{
   font-family: 'Lora', serif;
   font-weight: 600;
   font-size: 1.5rem;
   margin: 0 0 6px;
   color: var(--ink);
 }
-.reading-page .shelf-dek{
+.shelf-page .shelf-dek{
   color: var(--muted);
   font-size: 0.88rem;
   margin: 0 0 26px;
   max-width: 56ch;
 }
-.reading-page .shelf-books{
+.shelf-page .shelf-books{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 4px 44px;
 }
-.reading-page .book-entry{
+.shelf-page .book-entry{
   padding: 20px 0;
   border-top: 1px solid var(--line);
 }
@@ -1099,19 +1101,19 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   .room-card .room-card-title{ font-size: 1rem; min-height: auto; }
   .room-card .room-card-dek{ display: none; }
 
-  .reading-page .reading-intro,
+  .shelf-page .page-intro,
   .reading-page .reading-shelves-head{ padding-left: 20px; padding-right: 20px; }
   .reading-page .reading-beginner{ margin: 0 20px 56px; padding: 22px 18px 24px; max-width: none; }
   .reading-page .reading-shelves-head{ padding-top: 36px; }
-  .reading-page .shelf + .shelf{ padding-top: 44px; }
+  .shelf-page .shelf + .shelf{ padding-top: 44px; }
   .reading-page .return-grid,
-  .reading-page .shelf-books{ grid-template-columns: 1fr; }
+  .shelf-page .shelf-books{ grid-template-columns: 1fr; }
   .reading-page .return-book--wide{ grid-column: auto; }
 }
 
-.reading-page .shelf-books--single{ grid-template-columns: 1fr; }
+.shelf-page .shelf-books--single{ grid-template-columns: 1fr; }
 
-.reading-page .reading-contents-n{
+.shelf-page .page-contents-n{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.62rem;
   color: var(--muted);
@@ -1129,4 +1131,23 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 @media (max-width: 640px){
   .reading-page .reading-updated{ padding-left: 20px; padding-right: 20px; }
+}
+
+/* ---------- listening: podcasts and narrated collections ----------
+   Uses the shared .shelf-page typography above. Only two things differ:
+   entries carry a second link in the meta line, so the section deks run
+   a little longer, and there is no featured or beginner tier. */
+.listening-page .page-intro{ margin-bottom: 40px; }
+.listening-page .shelf:first-of-type{ padding-top: 0; }
+.listening-page .listening-updated{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px 72px;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+@media (max-width: 640px){
+  .listening-page .listening-updated{ padding-left: 20px; padding-right: 20px; }
 }

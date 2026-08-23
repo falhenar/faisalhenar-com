@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "updated": { "datetime": "2026-08", "label": "August 2026" },
+  "collections": [
+    {
+      "id": "read-aloud",
+      "kind": "shelf",
+      "shows": [
+        {
+          "id": "listen-collected-teachings-ajahn-chah",
+          "title": "The Collected Teachings of Ajahn Chah: Audiobook",
+          "author": "Read by Ajahn Amaro, Amaravati Buddhist Monastery",
+          "url": "https://amaravati.org/series/the-collected-teachings-of-ajahn-chah/",
+          "description": "The complete collection of Ajahn Chah's talks in English, read in full during the winter of 2012. Two of the printed volumes, [Bodhinyana](reading.html#return-bodhinyana) and [Everything Is Teaching Us](reading.html#talk-1-everything-is-teaching-us), are on the reading shelf.",
+          "meta": "Free · Amaravati Monastery · [in podcast apps](https://pod.link/aHR0cHM6Ly9mZWVkcy5hbWFyYXZhdGkub3JnL3Nlcmllcy90aGUtY29sbGVjdGVkLXRlYWNoaW5ncy1vZi1hamFobi1jaGFoL2ZlZWQv)"
+        },
+        {
+          "id": "listen-forest-path",
+          "title": "The Forest Path Podcast",
+          "author": "Sol Hanna, Everyday Dhamma Network",
+          "url": "https://everydaydhamma.net/podcast/forest-path-podcast",
+          "description": "Narrated translations of forest tradition teachers, much of it material that exists in English as text but rarely as audio. A good companion to the [Lives shelf](reading.html#lives).",
+          "meta": "Free · about 20 minutes · [in podcast apps](https://pod.link/aHR0cHM6Ly9mZWVkcy5jYXN0b3MuY29tLzczcW4z)"
+        },
+        {
+          "id": "listen-wisdom-of-the-masters",
+          "title": "Wisdom of the Masters",
+          "author": "Samaneri Jayasara",
+          "url": "https://www.youtube.com/@wisdomofthemasters",
+          "description": "Readings from teachers across several traditions: Buddhist, Advaita, Christian mystical, Sufi. Narrated slowly, closer to a contemplative recording than a talk. The widest net on this page and the least Theravada.",
+          "meta": "Free · [in podcast apps](https://pod.link/aHR0cHM6Ly9hbmNob3IuZm0vcy80OWE1NDE5OC9wb2RjYXN0L3Jzcw)"
+        }
+      ]
+    },
+    {
+      "id": "monasteries",
+      "kind": "shelf",
+      "shows": [
+        {
+          "id": "listen-abhayagiri",
+          "title": "Abhayagiri Monastery",
+          "author": "Abhayagiri Buddhist Monastery, Redwood Valley, California",
+          "url": "https://www.abhayagiri.org/talks",
+          "description": "Talks from the resident sangha and visiting teachers. The podcast feed carries only the twenty most recent; the monastery's own archive goes back much further and can be browsed by teacher, which is why the title links there.",
+          "meta": "Free · recent talks in the feed, full archive on site · [in podcast apps](https://pod.link/600138148)"
+        },
+        {
+          "id": "listen-amaravati",
+          "title": "Amaravati Buddhist Monastery",
+          "author": "Amaravati Buddhist Monastery, Hertfordshire, England",
+          "url": "https://amaravati.org/dhamma-audio-library/",
+          "description": "Dhamma talks from the monastery Ajahn Sumedho founded in 1984. The audio library also holds separate collections of his talks and of recorded readings, so the library page is the better door than any single feed. His books are on the [reading shelf](reading.html#teachings-talks).",
+          "meta": "Free · about 40 minutes · [in podcast apps](https://pod.link/336829720)"
+        },
+        {
+          "id": "listen-ratanagiri",
+          "title": "Aruna Ratanagiri",
+          "author": "Ajahn Munindo and the sangha, Northumberland, England",
+          "url": "https://www.ratanagiri.org.uk/teachings-luang-por-munindo-audio",
+          "description": "Talks from Ajahn Munindo, unhurried even by the standards of this page. The monastery publishes its own feed; the Apple listing that circulates elsewhere points at a dead address and stopped updating in 2025.",
+          "meta": "Free · Aruna Ratanagiri · [in podcast apps](https://pod.link/aHR0cHM6Ly93d3cucmF0YW5hZ2lyaS5vcmcudWsvdGVhY2hpbmdzLWx1YW5nLXBvci1tdW5pbmRvLWF1ZGlvP2Zvcm1hdD1yc3M)"
+        },
+        {
+          "id": "listen-clear-mountain",
+          "title": "Clear Mountain Monastery",
+          "author": "Clear Mountain Monastery, greater Seattle",
+          "url": "https://www.clearmountainmonastery.org/",
+          "description": "Talks and question sessions from an aspiring forest monastery, recorded while the community is still being established. That gives it a different texture from the older places above: more questions, fewer settled answers.",
+          "meta": "Free · 15 to 90 minutes · [in podcast apps](https://pod.link/1560755363)"
+        }
+      ]
+    },
+    {
+      "id": "teachers",
+      "kind": "shelf",
+      "shows": [
+        {
+          "id": "listen-thanissaro-evening",
+          "title": "Evening talks by Thanissaro Bhikkhu",
+          "author": "Metta Forest Monastery, California",
+          "url": "https://www.dhammatalks.org/audio/evening/",
+          "description": "Evening talks given before the sit, on mindfulness, concentration and the shape of the path. Most run about twelve minutes, which makes them the easiest thing on this page to fit into a day.",
+          "meta": "Free · about 12 minutes · [in podcast apps](https://pod.link/1569745165)"
+        },
+        {
+          "id": "listen-ajahn-anan",
+          "title": "Ajahn Anan Podcast",
+          "author": "Ajahn Anan Akiñcano, Wat Marp Jan, Thailand",
+          "url": "https://watmarpjan.org/en/",
+          "description": "Translated talks from a disciple of Ajahn Chah, abbot at Wat Marp Jan. The archive runs to well over a thousand recordings, so the way in is a title that catches you rather than the first episode.",
+          "meta": "Free · about 20 minutes · [in podcast apps](https://pod.link/1223775322)"
+        },
+        {
+          "id": "listen-ajahn-brahm",
+          "title": "Ajahn Brahm Podcast",
+          "author": "Ajahn Brahm, remastered by Everyday Dhamma Network",
+          "url": "https://everydaydhamma.net/podcast/ajahn-brahm-podcast",
+          "description": "Older talks cleaned up and reissued rather than new recordings. The register is warmer and funnier than most of this page, carried by stories, which some people find is exactly the way in and others do not. His sangha's video channel is on [Watching](watching.html).",
+          "meta": "Free · about an hour · [in podcast apps](https://pod.link/1651126858)"
+        }
+      ]
+    },
+    {
+      "id": "insight",
+      "kind": "shelf",
+      "shows": [
+        {
+          "id": "listen-insight-hour",
+          "title": "Insight Hour with Joseph Goldstein",
+          "author": "Joseph Goldstein, Be Here Now Network",
+          "url": "https://beherenownetwork.com/category/insight-hour-with-joseph-goldstein/",
+          "description": "A long series working through the Satipaṭṭhāna Sutta passage by passage, with retreat talks alongside it. Worth knowing before you start: unlike everything else here it is a commercial production and carries advertising.",
+          "meta": "Free with ads · about an hour · [in podcast apps](https://pod.link/1017103666)"
+        },
+        {
+          "id": "listen-sayar-myat",
+          "title": "Mindfulness Insight Meditation: Buddhist Teachings",
+          "author": "Sayar Myat, Satipatthana Meditation Society of Canada",
+          "url": "https://satipatthana.ca/",
+          "description": "Talks and practice instruction in satipaṭṭhāna vipassanā following Mahasi Sayadaw's method, with more time given to instruction than most of this page.",
+          "meta": "Free · about 30 minutes · [in podcast apps](https://pod.link/aHR0cHM6Ly9yc3MuYnV6enNwcm91dC5jb20vMTg1NzYzNC5yc3M)"
+        }
+      ]
+    }
+  ]
+}
