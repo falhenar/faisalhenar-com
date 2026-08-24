@@ -440,6 +440,19 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 .entry .entry-title a{ text-decoration: none; }
 .entry .entry-title a:hover{ color: var(--accent); }
+.entry .entry-title a:hover .ext,
+.entry .entry-title a:focus-visible .ext{ color: var(--accent); }
+.entry .entry-title a:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.entry .entry-title .ext{
+  font-size: 0.72em;
+  color: var(--muted);
+  vertical-align: 0.15em;
+  border-bottom: none;
+}
 .entry .entry-by{
   font-size: 0.85rem;
   color: var(--muted);
@@ -1151,4 +1164,35 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 @media (max-width: 640px){
   .shelf-page .shelf-updated{ padding-left: 20px; padding-right: 20px; }
+}
+
+/* ---------- meditation room ---------- */
+.meditation-page .page-intro{
+  max-width: 620px;
+  margin: 0 auto 44px;
+  padding: 0 32px;
+}
+.meditation-page .page-intro p{
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 14px;
+}
+.meditation-page .page-intro p:last-child{ margin-bottom: 0; }
+.meditation-page .entry-meta{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+.meditation-page .entry-meta a{
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.meditation-page .entry-meta a:hover,
+.meditation-page .entry-meta a:focus-visible{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }

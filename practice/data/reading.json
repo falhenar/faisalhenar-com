@@ -290,6 +290,22 @@
       ]
     },
     {
+      "id": "teachings-4",
+      "title": "Ajahn Anan Akiñcano",
+      "kind": "talk",
+      "books": [
+        {
+          "id": "talk-4-seeking-buddho",
+          "title": "Seeking Buddho",
+          "author": "Ajahn Anan Akiñcano",
+          "url": "https://watmarpjan.org/en/wp-content/uploads/sites/2/seeking-buddho.pdf",
+          "description": "Reflections on meditation practice and the search for a teacher, from the Thai forest tradition.",
+          "descriptionStyle": "note",
+          "meta": "Free · Wat Marp Jan"
+        }
+      ]
+    },
+    {
       "id": "early-texts",
       "title": "Early Buddhist Texts",
       "kind": "shelf",
