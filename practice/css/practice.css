@@ -1205,6 +1205,28 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
    "meditation-page sheet-page" so .entry-meta above is reused for the "Sheet n of 3 /
    Download PDF" line for free. */
 
+.sheet-page .sheet-meta{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sheet-page .sheet-meta a{
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.sheet-page .sheet-meta a:hover,
+.sheet-page .sheet-meta a:focus-visible{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 .sheet-page .section p{ max-width: 62ch; }
 
 .sheet-page .sheet-sub{
@@ -1282,7 +1304,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   .sheet-page .room-header,
   .sheet-page .room-header-icon,
   .sheet-page .back-link,
-  .sheet-page .entry-meta,
+  .sheet-page .sheet-meta,
   .sheet-page .site-footer{ display: none; }
   .sheet-page{ background: #fff; }
   .sheet-page .room-title{ margin-top: 0; }
