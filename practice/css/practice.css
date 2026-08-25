@@ -1308,7 +1308,22 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   .sheet-page .site-footer{ display: none; }
   .sheet-page{ background: #fff; }
   .sheet-page .room-title{ margin-top: 0; }
-  .sheet-page .sheet-aside{ background: #f2f2ee; break-inside: avoid; }
-  .sheet-page .sheet-figures{ break-inside: avoid; }
-  @page{ margin: 18mm 16mm; }
+  .sheet-page .room-dek{ margin-bottom: 20px; }
+
+  /* Figures are sized for a comfortable on-screen column (up to 260px wide),
+     which on a printed page is tall enough that it often doesn't fit the
+     space left on the current page, so the whole figure gets pushed to a
+     fresh one and leaves a gap behind it. Capping the printed height (not
+     width, the figures mix portrait and wide originals) keeps that from
+     happening in all but the tightest cases. 55mm sits mid-range of the
+     42-68mm the original standalone PDF build used per figure. */
+  .sheet-page .sheet-figures{ margin: 14px 0; gap: 20px; break-inside: avoid; }
+  .sheet-page .sheet-figure{ max-width: 150mm; }
+  .sheet-page .sheet-figure img{ max-height: 55mm; width: auto; }
+
+  .sheet-page .section{ padding-bottom: 20px; }
+  .sheet-page .section-label{ margin-top: 14px; }
+  .sheet-page .sheet-sub{ margin-top: 16px; }
+  .sheet-page .sheet-aside{ margin: 16px auto; padding: 14px 18px 16px; background: #f2f2ee; break-inside: avoid; }
+  @page{ margin: 16mm 16mm; }
 }
