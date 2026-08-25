@@ -1196,3 +1196,97 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+
+/* ---------- instruction sheets (sitting / walking / mindful prostration) ----------
+   Reuses .section, .section-label, .back-link and .room-title from the shared room
+   layout above. This block adds only what the sheets need beyond that: a narrower
+   reading measure, a subhead for the "Thinking / Feeling / States of mind" breaks,
+   the noting-word emphasis, one aside treatment, and figure layout. Body class is
+   "meditation-page sheet-page" so .entry-meta above is reused for the "Sheet n of 3 /
+   Download PDF" line for free. */
+
+.sheet-page .section p{ max-width: 62ch; }
+
+.sheet-page .sheet-sub{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 22px 0 8px;
+}
+
+.sheet-page em.noting{
+  font-style: normal;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Same visual treatment as .reading-page .reading-beginner: one aside per
+   sheet, at most. If a sheet wants a second one, that's a sign the aside
+   should be folded back into the running prose instead. */
+.sheet-page .sheet-aside{
+  max-width: 656px;
+  margin: 28px auto;
+  padding: 22px 24px 24px;
+  background: var(--bg-raised);
+  border-left: 3px solid var(--accent);
+}
+.sheet-page .sheet-aside p{ margin: 0; max-width: 56ch; }
+.sheet-page .sheet-aside p:first-child{ font-weight: 600; margin-bottom: 6px; }
+
+.sheet-page .sheet-figures{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin: 28px 0;
+}
+.sheet-page .sheet-figure{
+  flex: 1 1 220px;
+  max-width: 260px;
+  text-align: center;
+  margin: 0;
+}
+.sheet-page .sheet-figure img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.sheet-page .sheet-figure figcaption{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 10px;
+  max-width: 30ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sheet-page .sheet-credit{
+  max-width: 656px;
+  margin: 8px auto 0;
+  padding: 22px 24px 0;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 640px){
+  .sheet-page .sheet-aside,
+  .sheet-page .sheet-credit{ margin-left: 20px; margin-right: 20px; }
+}
+
+@media print{
+  .sheet-page .room-header,
+  .sheet-page .room-header-icon,
+  .sheet-page .back-link,
+  .sheet-page .entry-meta,
+  .sheet-page .site-footer{ display: none; }
+  .sheet-page{ background: #fff; }
+  .sheet-page .room-title{ margin-top: 0; }
+  .sheet-page .sheet-aside{ background: #f2f2ee; break-inside: avoid; }
+  .sheet-page .sheet-figures{ break-inside: avoid; }
+  @page{ margin: 18mm 16mm; }
+}
