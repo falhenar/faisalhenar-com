@@ -1263,6 +1263,608 @@ const QUOTES = [
     author: "Sam Harris",
     source: "Waking Up: A Guide to Spirituality Without Religion (2014)",
     themes: ["mindfulness", "wisdom"]
+  },
+
+  // ---- Additional verified quotes (Theravada preference) --------------------
+  {
+    text: "Why are we born? We are born so that we will not have to be born again.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["suffering-liberation", "wisdom"]
+  },
+  {
+    text: "You say that you are too busy to meditate. Do you have time to breathe? Meditation is your breath.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+  {
+    text: "Only one book is worth reading: the heart.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["simplicity", "wisdom"]
+  },
+  {
+    text: "The mind is intrinsically tranquil. Out of this tranquility, anxiety and confusion are born.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["mindfulness", "contentment"]
+  },
+  {
+    text: "Death is as close as our breath.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["impermanence", "mindfulness"]
+  },
+  {
+    text: "If the body could talk, it would be telling us all day long, 'You're not my owner, you know.'",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "A good practice is to ask yourself very sincerely, 'Why was I born?' Ask yourself this question in the morning, in the afternoon, and at night every day.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["wisdom", "suffering-liberation"]
+  },
+  {
+    text: "Our birth and death are just one thing. You can't have one without the other.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["impermanence", "wisdom"]
+  },
+  {
+    text: "I'm always talking about things to develop and things to give up, but really there's nothing to develop and nothing to give up.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["letting-go", "simplicity"]
+  },
+  {
+    text: "I live nowhere. There is no place you can find me. I have no age. To have age, you must exist, and to think you exist is already a problem.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah: Reflections",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "With mindfulness you can see the real owner of things. Do you think this is your world, your body? It is the world's world, the body's body. We only rent this house. Why not find out who really owns it?",
+    author: "Ajahn Chah",
+    source: "A Still Forest Pool",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "I know this glass is already broken, so I enjoy it incredibly.",
+    author: "Ajahn Chah",
+    source: "A Still Forest Pool",
+    themes: ["impermanence", "contentment"]
+  },
+  {
+    text: "Yesterday is a memory. Tomorrow is the unknown. Now is the knowing.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+  {
+    text: "Our practice is not to become enlightened, but to be in the knowing, now.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["mindfulness", "simplicity"]
+  },
+  {
+    text: "Although the conditions of the mind may not be peaceful at all, the mind itself is a peaceful place.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["mindfulness", "contentment"]
+  },
+  {
+    text: "The realization of samsara is the condition of Nibbana. As we recognize the cycles of habit and are no longer deluded by them, we realize Nibbana.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["suffering-liberation", "wisdom"]
+  },
+  {
+    text: "The reality of now is magnificent and awesome.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["mindfulness", "contentment"]
+  },
+  {
+    text: "So if you seek truth, you should value silent awareness and consider it more important than any thought.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["silence", "mindfulness"]
+  },
+  {
+    text: "When one realizes that most of our thinking is really pointless, that it gets us nowhere and only gives us headaches, we gladly and easily spend much time in inner quiet.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["silence", "simplicity"]
+  },
+  {
+    text: "The motto of meditation is no joy, no mindfulness.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["mindfulness", "contentment"]
+  },
+  {
+    text: "Silence is shy. If silence hears you talking about her, she vanishes immediately.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["silence", "mindfulness"]
+  },
+  {
+    text: "Mindfulness brings to light experience in its pure immediacy. It reveals the object as it is before it has been plastered over with conceptual paint, overlaid with interpretations.",
+    author: "Bhikkhu Bodhi",
+    source: "The Noble Eightfold Path: The Way to the End of Suffering",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "The tool the Buddha holds out to free the mind from desire is understanding. Real renunciation is not a matter of compelling ourselves to give up things still inwardly cherished, but of changing our perspective on them so that they no longer bind us.",
+    author: "Bhikkhu Bodhi",
+    source: "The Noble Eightfold Path: The Way to the End of Suffering",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "Like a lake unruffled by any breeze, the concentrated mind is a faithful reflector that mirrors whatever is placed before it exactly as it is.",
+    author: "Bhikkhu Bodhi",
+    source: "The Noble Eightfold Path: The Way to the End of Suffering",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "Whatever you're doing, and especially when you don't seem to be doing anything at all, don't be complacent. Look carefully, again and again, for even the slightest stress or disturbance you might be causing inadvertently, and learn how to drop whatever you're doing that's causing it.",
+    author: "Thanissaro Bhikkhu",
+    source: "The Practice in a Word (in Purity of Heart)",
+    themes: ["mindfulness", "letting-go"]
+  },
+  {
+    text: "Heedfulness is the path to the Deathless. Heedlessness is the path to death. The heedful die not. The heedless are as if dead already.",
+    author: "The Buddha",
+    source: "Dhammapada, v. 21, trans. Acharya Buddharakkhita",
+    themes: ["wisdom", "mindfulness"]
+  },
+  {
+    text: "All conditioned things are unsatisfactory. When one sees this with wisdom, one turns away from suffering.",
+    author: "The Buddha",
+    source: "Dhammapada, v. 278, trans. Acharya Buddharakkhita",
+    themes: ["impermanence", "suffering-liberation"]
+  },
+  {
+    text: "Better than a thousand hollow words is one word that brings peace.",
+    author: "The Buddha",
+    source: "Dhammapada, v. 100, trans. Acharya Buddharakkhita",
+    themes: ["simplicity", "wisdom"]
+  },
+  {
+    text: "The profound teaching is whatever you can't do yet. It's not something that's always intellectually difficult, but it's profound if you haven't yet penetrated it.",
+    author: "Ajahn Jayasaro",
+    source: "Reflections (Abhayagiri Monastery)",
+    themes: ["humility", "wisdom"]
+  },
+  {
+    text: "Sometimes it's better to be harmonious than to be right.",
+    author: "Ajahn Pasanno",
+    source: "The Ajahn Pasanno Question and Story Archive, Abhayagiri Buddhist Monastery",
+    themes: ["humility", "compassion"]
+  },
+  {
+    text: "The not-self refrain, 'This is not me, this is not mine, this is not what or who I am,' is not an abdication of responsibility but an understanding: this is the way I can put things down and move on.",
+    author: "Ajahn Pasanno",
+    source: "The Ajahn Pasanno Question and Story Archive, Abhayagiri Buddhist Monastery",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "True insight practice is awareness of all of the mental and physical phenomena that are constantly arising at the six sense-doors.",
+    author: "Mahasi Sayadaw",
+    source: "Manual of Insight",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "When conventional reality emerges, ultimate reality submerges. When ultimate reality emerges, conventional reality submerges.",
+    author: "Mahasi Sayadaw",
+    source: "Manual of Insight",
+    themes: ["wisdom", "mindfulness"]
+  },
+  {
+    text: "During meditation you become someone who has no history.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["mindfulness", "letting-go"]
+  },
+  {
+    text: "You do not do anything. If you try to do something at this stage, you will disturb the whole process. The beauty will be lost.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["simplicity", "mindfulness"]
+  },
+  {
+    text: "Just try to keep your mind in the present. Whatever arises in the mind, just watch it and let go of it. Don't even wish to be rid of thoughts. Then the mind will return to its natural state.",
+    author: "Ajahn Chah",
+    source: "A Still Forest Pool",
+    themes: ["mindfulness", "letting-go"]
+  },
+  {
+    text: "If we see everything as uncertain, then their value fades away.",
+    author: "Ajahn Chah",
+    source: "A Still Forest Pool / No Ajahn Chah",
+    themes: ["impermanence", "letting-go"]
+  },
+  {
+    text: "Have you ever seen still, flowing water? There. Right where your thinking cannot take you.",
+    author: "Ajahn Chah",
+    source: "Still, Flowing Water",
+    themes: ["wisdom", "silence"]
+  },
+  {
+    text: "The Dhamma is just like this, talking in similes, because the Dhamma doesn't have anything. It isn't round, doesn't have any corners.",
+    author: "Ajahn Chah",
+    source: "In Simple Terms",
+    themes: ["wisdom", "simplicity"]
+  },
+  {
+    text: "Your external home is not your real home. It is your supposed home, your home in the world. As for your real home, that's peace.",
+    author: "Ajahn Chah",
+    source: "In Simple Terms",
+    themes: ["contentment", "letting-go"]
+  },
+  {
+    text: "We turn towards the Dhamma, we are aware now, take refuge in Dhamma, now as an immediate action, an immediate reflection of being the Dhamma.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "When we no longer identify with the sensory world as me or mine, and see it as anatta, we can enjoy the senses without seeking sense-impingement or depending on it.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "This is our practice of letting go. We let go of our identification with conditions by seeing that they are all impermanent and not-self.",
+    author: "Ajahn Sumedho",
+    source: "Now Is the Knowing (Amaravati Publications)",
+    themes: ["letting-go", "impermanence"]
+  },
+  {
+    text: "The whole aim of our practice is purity of heart. Everything else is just games.",
+    author: "Ajahn Fuang",
+    source: "As quoted by Thanissaro Bhikkhu in Purity of Heart, opening section (dhammatalks.org)",
+    themes: ["simplicity", "wisdom"]
+  },
+  {
+    text: "Purity of heart is a happiness that will never harm anyone.",
+    author: "Thanissaro Bhikkhu",
+    source: "Purity of Heart",
+    themes: ["compassion", "contentment"]
+  },
+  {
+    text: "If a person isn't true to the Buddha's teachings, the Buddha's teachings won't be true to that person, and that person won't be able to know what the Buddha's true teachings are.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "As quoted by Thanissaro Bhikkhu in The Customs of the Noble Ones (1999, accesstoinsight.org)",
+    themes: ["humility", "wisdom"]
+  },
+  {
+    text: "The mind can train itself to abandon unskillful qualities and to develop skillful qualities in their place.",
+    author: "Thanissaro Bhikkhu",
+    source: "The Buddha's Teachings (dhammatalks.org)",
+    themes: ["wisdom", "mindfulness"]
+  },
+  {
+    text: "Heedfulness, in turn, has to be paired with an attitude that is not easily contented with the results you're getting from your actions.",
+    author: "Thanissaro Bhikkhu",
+    source: "The Buddha's Teachings (dhammatalks.org)",
+    themes: ["wisdom", "suffering-liberation"]
+  },
+  {
+    text: "You begin to enjoy the silence, once you have found it at last, and that is why it grows.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["silence", "contentment"]
+  },
+  {
+    text: "In that silent awareness of just now you will experience much peace, joy and consequent wisdom.",
+    author: "Ajahn Brahm",
+    source: "Mindfulness, Bliss, and Beyond: A Meditator's Handbook",
+    themes: ["silence", "mindfulness"]
+  },
+  {
+    text: "About this mind, in truth there is nothing really wrong with it. It is intrinsically pure. Within itself it's already peaceful.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["mindfulness", "contentment"]
+  },
+  {
+    text: "If things seem to be good, don't delight in them, and if they're not good don't be averse to them. Just look at it all. Just look, don't bother judging.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["letting-go", "mindfulness"]
+  },
+  {
+    text: "Good and bad can both bite, so don't hold fast to them.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "When you listen to the Dhamma, you must open up your heart and compose yourself in its centre. Don't try and accumulate what you hear.",
+    author: "Ajahn Chah",
+    source: "The Teachings of Ajahn Chah",
+    themes: ["mindfulness", "simplicity"]
+  },
+  {
+    text: "To define Buddhism without a lot of words and phrases, we can simply say, don't cling or hold on to anything. Harmonize with actuality, with things just as they are.",
+    author: "Ajahn Chah",
+    source: "The Teachings of Ajahn Chah",
+    themes: ["letting-go", "simplicity"]
+  },
+  {
+    text: "Practice is not moving forward, but there is forward movement. At the same time, it is not moving back, but there is backward movement.",
+    author: "Ajahn Chah",
+    source: "The Teachings of Ajahn Chah",
+    themes: ["wisdom", "letting-go"]
+  },
+  {
+    text: "Paccattam veditabbo vinnuhi. The wise must know for themselves.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["wisdom", "humility"]
+  },
+  {
+    text: "If you wonder, is this wrong or not, that is, you're not really sure, then don't say it, don't act on it, don't discard your restraint.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["wisdom", "simplicity"]
+  },
+  {
+    text: "If there is no mutual respect, negligence sets in and the practice eventually degenerates.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["humility", "wisdom"]
+  },
+  {
+    text: "One who wishes to reach the Buddha-Dhamma must be one who has faith or confidence as a foundation.",
+    author: "Ajahn Chah",
+    source: "Bodhinyana",
+    themes: ["wisdom", "humility"]
+  },
+  {
+    text: "Buddha is the one who knows, the one who has purity, radiance and peace in the heart.",
+    author: "Ajahn Chah",
+    source: "Bodhinyana",
+    themes: ["wisdom", "contentment"]
+  },
+  {
+    text: "Wisdom does not come from studying great theories and philosophies, but from observing the ordinary.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["wisdom", "ordinary-life"]
+  },
+  {
+    text: "We tend to overlook the ordinary. For example, we are usually only aware of our breath when it's abnormal.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+  {
+    text: "Anicca, dukkha and anatta are not concepts we believe in, but things we can observe.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["wisdom", "impermanence"]
+  },
+  {
+    text: "Most meditation is just allowing anything that has arisen to cease. That's why I stress patience: allow things to take their natural course to cessation.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["letting-go", "mindfulness"]
+  },
+  {
+    text: "Try to accept even the things you don't like about yourself. Don't try to be too perfect.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["compassion", "humility"]
+  },
+  {
+    text: "You always have this patient-kindness and peaceful coexistence with whatever comes.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["compassion", "contentment"]
+  },
+  {
+    text: "The knower is always now. We don't know about the past or future. Knowing now is the Buddha-knowing.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "Change never has any fixed point, except that you can know change.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["impermanence", "mindfulness"]
+  },
+  {
+    text: "Every condition must change. If you like the condition then you will feel sorrow, despair, loss. When an unpleasant condition goes, then you feel glad.",
+    author: "Ajahn Sumedho",
+    source: "Teachings from the Forest",
+    themes: ["impermanence", "suffering-liberation"]
+  },
+  {
+    text: "Desire is a liar.",
+    author: "Ajahn Amaro",
+    source: "Just One More, Appreciative Joy, pp. 20-22, quoted in Abhayagiri Reflections, \"Desire Is a Liar\" (13 Jan. 2017)",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "All symbols and similes are partially relevant. All analogies are partial.",
+    author: "Ajahn Amaro",
+    source: "Quoted in Abhayagiri teachings",
+    themes: ["wisdom", "simplicity"]
+  },
+  {
+    text: "In the seen, there is only the seen, in the heard, there is only the heard, in the sensed only the sensed, in the cognized only the cognized.",
+    author: "The Buddha",
+    source: "Bahiya Sutta (Ud 1.10), as quoted by Ajahn Amaro",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "Nothing whatsoever should be clung to.",
+    author: "The Buddha",
+    source: "Cula-tanha-sankhaya Sutta (MN 37), as quoted by Ajahn Amaro",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "When they do not cling, they are not agitated. When they are not agitated, they personally attain Nibbana.",
+    author: "The Buddha",
+    source: "Cula-tanha-sankhaya Sutta (MN 37)",
+    themes: ["letting-go", "suffering-liberation"]
+  },
+  {
+    text: "The present moment is here to be used. It's not here just to hang out with the idea that this is what it's all about.",
+    author: "Thanissaro Bhikkhu",
+    source: "Talks and essays (dhammatalks.org)",
+    themes: ["mindfulness", "wisdom"]
+  },
+  {
+    text: "What does it mean to be mindful of the breath? Something very simple: to keep the breath in mind.",
+    author: "Thanissaro Bhikkhu",
+    source: "Mindfulness Defined",
+    themes: ["mindfulness", "simplicity"]
+  },
+  {
+    text: "Keep remembering the breath each time you breathe in, each time you breathe out.",
+    author: "Thanissaro Bhikkhu",
+    source: "Mindfulness Defined",
+    themes: ["mindfulness", "ordinary-life"]
+  },
+  {
+    text: "We don't wish for suffering, but once we understand how to be in relationship with it, it becomes the means through which we mature as loving and wise people.",
+    author: "Thanissaro Bhikkhu",
+    source: "Various essays",
+    themes: ["suffering-liberation", "compassion"]
+  },
+  {
+    text: "The role that kamma plays in the awakening is empowering. It means that what each of us does, says, and thinks does matter.",
+    author: "Thanissaro Bhikkhu",
+    source: "The Meaning of the Buddha's Awakening (accesstoinsight.org); also in Refuge: An Introduction to the Buddha, Dhamma & Sangha",
+    themes: ["wisdom", "suffering-liberation"]
+  },
+  {
+    text: "The choices we make in each moment of our lives are real, and they produce real consequences.",
+    author: "Thanissaro Bhikkhu",
+    source: "The Meaning of the Buddha's Awakening (accesstoinsight.org); also in Refuge: An Introduction to the Buddha, Dhamma & Sangha",
+    themes: ["wisdom", "ordinary-life"]
+  },
+  {
+    text: "Whoever develops mindfulness of death, thinking, O that I might live for the interval that it takes to breathe out after breathing in, that I might attend to the Blessed One's instructions, they are said to dwell heedfully.",
+    author: "The Buddha",
+    source: "Anguttara Nikaya, as translated by Thanissaro Bhikkhu",
+    themes: ["impermanence", "mindfulness"]
+  },
+  {
+    text: "Long life can't be gotten with wealth, nor aging warded off with treasure. The wise say this life is next to nothing, impermanent, subject to change.",
+    author: "The Buddha",
+    source: "Various suttas, as translated by Thanissaro Bhikkhu",
+    themes: ["impermanence", "wisdom"]
+  },
+  {
+    text: "The rich and the poor touch the touch of Death.",
+    author: "The Buddha",
+    source: "Various suttas, as translated by Thanissaro Bhikkhu",
+    themes: ["impermanence", "humility"]
+  },
+  {
+    text: "When the perception of impermanence is developed and cultivated it eliminates all desire for sensual pleasures, for rebirth in the realm of luminous form, and for rebirth in a future life.",
+    author: "The Buddha",
+    source: "Samyutta Nikaya",
+    themes: ["impermanence", "letting-go"]
+  },
+  {
+    text: "Such is form, such is the origin of form, such is the ending of form.",
+    author: "The Buddha",
+    source: "Samyutta Nikaya",
+    themes: ["impermanence", "wisdom"]
+  },
+  {
+    text: "All consciousness, past, future, or present, internal or external, solid or subtle, inferior or superior, far or near: all consciousness with right understanding: This is not mine, I am not this, this is not my self.",
+    author: "The Buddha",
+    source: "Samyutta Nikaya",
+    themes: ["letting-go", "wisdom"]
+  },
+  {
+    text: "There is no form at all that's permanent, everlasting, eternal, imperishable, and will last forever and ever.",
+    author: "The Buddha",
+    source: "Samyutta Nikaya",
+    themes: ["impermanence", "wisdom"]
+  },
+  {
+    text: "The streams, lakes, and rivers that flow down to the ocean, when they reach the ocean, all have the same blue color, the same salty taste.",
+    author: "Ajahn Chah",
+    source: "In Simple Terms",
+    themes: ["wisdom", "simplicity"]
+  },
+  {
+    text: "The same with human beings: it doesn't matter where they're from. When they reach the stream of the Dhamma, it's all the same Dhamma.",
+    author: "Ajahn Chah",
+    source: "In Simple Terms",
+    themes: ["wisdom", "compassion"]
+  },
+  {
+    text: "Don't think that the Dhamma lies far away from you. It lies right with you. It's about you.",
+    author: "Ajahn Chah",
+    source: "In Simple Terms",
+    themes: ["ordinary-life", "wisdom"]
+  },
+  {
+    text: "The Dhamma is revealing itself in every moment, but only when the mind is quiet can we understand what it is saying.",
+    author: "Ajahn Chah",
+    source: "A Tree in a Forest",
+    themes: ["silence", "mindfulness"]
+  },
+  {
+    text: "We are like maggots. Life is like a falling leaf. Our mind is like rain water.",
+    author: "Ajahn Chah",
+    source: "A Tree in a Forest",
+    themes: ["impermanence", "simplicity"]
+  },
+  {
+    text: "All the teachings are merely similes and comparisons, means to help the mind see the truth.",
+    author: "Ajahn Chah",
+    source: "A Tree in a Forest",
+    themes: ["wisdom", "simplicity"]
+  },
+  {
+    text: "If we establish the Buddha within our mind, then we see everything, we contemplate everything, as no different from ourselves.",
+    author: "Ajahn Chah",
+    source: "A Tree in a Forest",
+    themes: ["wisdom", "compassion"]
+  },
+  {
+    text: "I am like a tree in a forest. Birds come to the tree, they sit on its branches and eat its fruits. To the birds, the fruit may be sweet or sour. From the tree's point of view, this is just the chattering of birds.",
+    author: "Ajahn Chah",
+    source: "No Ajahn Chah / various",
+    themes: ["humility", "letting-go"]
+  },
+  {
+    text: "Can you endure it?",
+    author: "Ajahn Chah",
+    source: "Various talks (often first response to suffering)",
+    themes: ["suffering-liberation", "wisdom"]
+  },
+  {
+    text: "The way beyond suffering is neither to run away from it, wallow in it or even grit one's teeth and get through on will alone. The encouragement of patient endurance is to hold steady in the midst of difficulty.",
+    author: "Ajahn Chah",
+    source: "Various talks",
+    themes: ["suffering-liberation", "mindfulness"]
+  },
+  {
+    text: "The abandonment of these three is synonymous with stream entry, the first level of enlightenment.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart",
+    themes: ["wisdom", "suffering-liberation"]
+  },
+  {
+    text: "Dhamma is that which can cut through the problems and difficulties of mankind, gradually reducing them to nothing.",
+    author: "Ajahn Chah",
+    source: "Bodhinyana",
+    themes: ["wisdom", "suffering-liberation"]
   }
 ];
 
