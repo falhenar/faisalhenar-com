@@ -26,27 +26,6 @@ practice/               → the Buddhism/practice section
 Each section (photography, practice) is self-contained — its own css/js/photos
 live inside its own folder. The homepage just links out to each one.
 
-## 1. Put it on GitHub Pages (free hosting)
-
-1. Create a repository named `faisalhenar-com` and upload all files.
-2. Go to **Settings → Pages**.
-3. Under "Source", choose the `main` branch and `/ (root)`, then Save.
-4. GitHub provides a live link (takes 1–2 minutes to appear).
-
-## 2. Connect your domain (faisalhenar.com)
-
-1. In the same repo, go to **Settings → Pages → Custom domain**, enter `faisalhenar.com`, and save.
-   This creates a `CNAME` file in the repo automatically — leave it, deleting it breaks the domain.
-2. DNS for this site is hosted at Cloudflare, not the registrar. If you're
-   setting this up fresh: point your domain's nameservers at Cloudflare,
-   then in the Cloudflare dashboard add:
-   - Four **A records** (`@`) → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-   - One **CNAME record** (`www`) → `yourusername.github.io`
-   (Namecheap, or whoever you registered through, only handles registration
-   once the nameservers point elsewhere — its DNS panel won't reflect
-   anything after that.)
-3. DNS activates in a few hours. Then tick **"Enforce HTTPS"** in GitHub Pages settings.
-
 ## 3. Add photographs
 
 Photography content has two authoritative data files:
