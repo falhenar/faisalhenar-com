@@ -218,6 +218,15 @@
           "description": "A short collection of talks originally given to Western monks training in Ajahn Chah's monasteries.",
           "descriptionStyle": "note",
           "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "talk-1-bodhinyana",
+          "title": "Bodhinyana",
+          "author": "Ajahn Chah",
+          "url": "https://www.forestsangha.org/publications-all-publications/ajahn-chah-bodhinyana",
+          "description": "A collection of Dhamma talks given to monks at Wat Pah Pong, on the discipline and attitude that make practice possible.",
+          "descriptionStyle": "note",
+          "meta": "Free · Forest Sangha · [why I return to it](#return-bodhinyana)"
         }
       ]
     },
