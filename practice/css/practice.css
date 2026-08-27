@@ -415,6 +415,15 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   max-width: 52ch;
 }
 
+/* In-text links inside prose (entry notes, page intros): same treatment
+   as .quiet-note / .note-body — accent colour plus a hairline underline. */
+.entry .entry-note a,
+.page-intro a{
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+
 .quiet-note{
   margin: 24px 0 0;
   font-size: 0.88rem;
