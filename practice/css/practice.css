@@ -1205,6 +1205,26 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+.meditation-page .lang-note{
+  max-width: 620px;
+  margin: 0 auto 6px;
+  padding: 0 32px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.meditation-page .lang-note a{
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.meditation-page .lang-note a:hover,
+.meditation-page .lang-note a:focus-visible{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
 
 /* ---------- instruction sheets (sitting / walking / mindful prostration) ----------
    Reuses .section, .section-label, .back-link and .room-title from the shared room
