@@ -1226,6 +1226,11 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   border-bottom-color: var(--accent);
 }
 
+/* nederlands.html carries no room-header-icon (it's a gateway, not a room),
+   so .back-link needs its own top padding to replace the space the icon
+   block used to hold open under the header rule. */
+.nederlands-page .back-link{ padding-top: 44px; }
+
 /* ---------- instruction sheets (sitting / walking / mindful prostration) ----------
    Reuses .section, .section-label, .back-link and .room-title from the shared room
    layout above. This block adds only what the sheets need beyond that: a narrower
