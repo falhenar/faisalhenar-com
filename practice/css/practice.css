@@ -1103,7 +1103,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 640px){
   .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }
-  .room-header, .back-link, .room-title, .room-dek{ padding-left: 20px; padding-right: 20px; }
+  .room-header, .back-link, .room-title, .room-dek, .lang-note{ padding-left: 20px; padding-right: 20px; }
 
   /* the block has no side padding of its own to inherit, so it gets
      the same 20px gutter the other hub blocks fall back to */
@@ -1206,7 +1206,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   border-bottom-color: var(--accent);
 }
 .meditation-page .lang-note{
-  max-width: 620px;
+  max-width: 720px;
   margin: 0 auto 6px;
   padding: 0 32px;
   font-family: 'IBM Plex Mono', monospace;
