@@ -1,0 +1,30 @@
+{
+  "_comment": "Tracks English pages that have a hand-translated Dutch mirror. 'synced_to' is the commit SHA the Dutch mirror was last brought up to date with. Run tools/check-nl-mirrors.py before pushing to see which pairs have drifted; after porting changes over, update synced_to to the new HEAD sha in the same commit.",
+  "pairs": [
+    {
+      "source": "practice/meditation.html",
+      "mirror": "practice/meditation-nl.html",
+      "synced_to": "4aa5fc01a2c1138cfebd91a71c5fe8f1c871a50e"
+    },
+    {
+      "source": "practice/places.html",
+      "mirror": "practice/places-nl.html",
+      "synced_to": "4aa5fc01a2c1138cfebd91a71c5fe8f1c871a50e"
+    },
+    {
+      "source": "practice/sitting-meditation.html",
+      "mirror": "practice/sitting-meditation-nl.html",
+      "synced_to": "4aa5fc01a2c1138cfebd91a71c5fe8f1c871a50e"
+    },
+    {
+      "source": "practice/walking-meditation.html",
+      "mirror": "practice/walking-meditation-nl.html",
+      "synced_to": "4aa5fc01a2c1138cfebd91a71c5fe8f1c871a50e"
+    },
+    {
+      "source": "practice/mindful-prostration.html",
+      "mirror": "practice/mindful-prostration-nl.html",
+      "synced_to": "4aa5fc01a2c1138cfebd91a71c5fe8f1c871a50e"
+    }
+  ]
+}
