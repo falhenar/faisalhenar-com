@@ -42,8 +42,9 @@ It is one page with two halves, and they answer different questions.
 
 - **The Exhibition** is a curated sequence: a selection, hand-ordered, most
   of the collection deliberately left out. It comes from `exhibition.json`.
-- **The Index** below it is the whole collection, newest first. It needs no
-  list of its own; it is every entry in `photos.json`, sorted by `added`.
+- **The Index** below it is the whole collection in the approved sequence
+  stored directly in `photos.json`. The private manager starts new work
+  newest first, then preserves the manually approved order.
 
 So a new photograph appears in the Index automatically. It joins the
 Exhibition only if you decide it belongs there.
@@ -136,6 +137,10 @@ Adding entries just lengthens the cycle. When the day's sutta is one you have
 written a reflection on, the block links through to it automatically, matched
 on `ref` against `suttas-config.js`, so the two lists cannot drift apart.
 
+**Latest Reflection** (the featured block on the Practice hub) is also derived
+from `suttas-config.js` by `practice/js/render-latest-reflection.js`. The same
+published-entry rule used by the archive selects the newest dated Reflection.
+
 **Reading shelf** (`practice/reading.html`): book entries live in
 `practice/data/reading.json` and are rendered by `practice/js/render-reading.js`
 inside the page's fixed visual layout. Use Website Manager's Reading screen to
@@ -175,6 +180,8 @@ There's no build step, so changes go live immediately. Before pushing:
 1. Serve the repository on localhost and open changed pages in a browser. A
    local server is required because browsers do not fetch JSON from `file:`
    pages.
-2. Run the Photography Manager validator. It checks JSON shape, stable IDs,
-   paths, dates, alt text, dimensions, and Exhibition references.
+2. Run `python3 tools/validate-site.py`. It performs the same read-only
+   whole-site validation used by Website Manager and GitHub Actions, including
+   Photography data, public links and assets, metadata, language pairs,
+   structured data, cache versions, and declared renderer dependencies.
 3. Commit and push.
