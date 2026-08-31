@@ -1,5 +1,221 @@
 [
   {
+    "id": "fh-0024",
+    "src": "photos/2026/fh-0024.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Young girl waiting at doorstep Vietnam",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0025",
+    "src": "photos/2026/fh-0025.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Man selling lottery tickets",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0026",
+    "src": "photos/2026/fh-0026.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Dog on motorcycle in front of shop",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0027",
+    "src": "photos/2026/fh-0027.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Man selling hats from bicycle",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0028",
+    "src": "photos/2026/fh-0028.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Man feeding quale on lap",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0029",
+    "src": "photos/2026/fh-0029.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": true,
+    "alt": "Praying lady in temple with a lot of incense",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0030",
+    "src": "photos/2026/fh-0030.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": true,
+    "alt": "Old couple at traffic light",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0031",
+    "src": "photos/2026/fh-0031.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Lady on motorcycle, lady surprised",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0032",
+    "src": "photos/2026/fh-0032.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": true,
+    "alt": "Dog lying, man sitting",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0033",
+    "src": "photos/2026/fh-0033.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Vietnam triangle hat triangle on road",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0009",
+    "src": "photos/2026/fh-0009.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Man washing motorcycle",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0010",
+    "src": "photos/2026/fh-0010.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Classy man at market in Vietnam",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0034",
+    "src": "photos/2026/fh-0034.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Hard working man pushing load at market in Vietnam",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0011",
+    "src": "photos/2026/fh-0011.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Shop owner looking at inventory",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0013",
+    "src": "photos/2026/fh-0013.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Fancy barista cleaning table in Vietnam",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0014",
+    "src": "photos/2026/fh-0014.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Business suit in alley in Vietnam",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0035",
+    "src": "photos/2026/fh-0035.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Woman with hat passing wall plants",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0015",
+    "src": "photos/2026/fh-0015.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": true,
+    "alt": "Phone repair man at work",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0016",
+    "src": "photos/2026/fh-0016.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Kids play fighting from above",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0036",
+    "src": "photos/2026/fh-0036.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Lady observing the street from alley stairs",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0017",
+    "src": "photos/2026/fh-0017.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": true,
+    "alt": "Sun bathing man casting shadow behind him",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0037",
+    "src": "photos/2026/fh-0037.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": true,
+    "alt": "Barista making a pour over coffee",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0038",
+    "src": "photos/2026/fh-0038.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Old couple working out in the morning in Vietnam",
+    "added": "2026-08-30"
+  },
+  {
+    "id": "fh-0023",
+    "src": "photos/2026/fh-0023.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Dog watching over the shoulder of man",
+    "added": "2026-08-30"
+  },
+  {
     "id": "fh-0008",
     "src": "photos/2026/fh-0008.jpg",
     "w": 1920,
