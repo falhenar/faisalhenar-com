@@ -26,10 +26,6 @@
 
     var button = document.createElement('button');
     button.type = 'button';
-    button.setAttribute(
-      'aria-label',
-      'Open photograph, ' + (index + 1) + ' of ' + total + ' in the Index'
-    );
     button.appendChild(image);
     button.addEventListener('click', function () {
       viewer.open(viewer.items, index, button);
@@ -49,9 +45,8 @@
     var patternIndex = 0;
     while (photoIndex < photos.length) {
       var pattern = desktopPattern[patternIndex % desktopPattern.length];
-      var band = document.createElement('section');
+      var band = document.createElement('div');
       band.className = 'editorial-band band-' + pattern.name;
-      band.setAttribute('aria-label', 'Index grouping');
       var end = Math.min(photoIndex + pattern.size, photos.length);
       for (var index = photoIndex; index < end; index += 1) {
         band.appendChild(createFigure(photos[index], index, photos.length, index < 3, 1200, viewer));
@@ -64,9 +59,8 @@
 
   function renderPhone(photos, viewer) {
     for (var index = 0; index < photos.length; index += 2) {
-      var pair = document.createElement('section');
+      var pair = document.createElement('div');
       pair.className = 'phone-pair ' + ((index / 2) % 2 === 0 ? 'pair-left' : 'pair-right');
-      pair.setAttribute('aria-label', 'Index pairing');
       pair.appendChild(createFigure(photos[index], index, photos.length, index < 2, 760, viewer));
       if (photos[index + 1]) {
         pair.appendChild(createFigure(photos[index + 1], index + 1, photos.length, index < 2, 760, viewer));
