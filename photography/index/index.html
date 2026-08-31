@@ -7,60 +7,54 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Photography · Faisal Henar</title>
-<meta name="description" content="A quiet, personal collection of photographs.">
-<link rel="canonical" href="https://faisalhenar.com/photography/">
-<meta property="og:title" content="Photography · Faisal Henar">
-<meta property="og:description" content="A quiet, personal collection of photographs.">
+<title>Photography Index · Faisal Henar</title>
+<meta name="description" content="The complete photography collection of Faisal Henar.">
+<link rel="canonical" href="https://faisalhenar.com/photography/index/">
+<meta property="og:title" content="Photography Index · Faisal Henar">
+<meta property="og:description" content="The complete photography collection of Faisal Henar.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://faisalhenar.com/photography/">
+<meta property="og:url" content="https://faisalhenar.com/photography/index/">
 <meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Photography · Faisal Henar">
-<meta name="twitter:description" content="A quiet, personal collection of photographs.">
+<meta name="twitter:title" content="Photography Index · Faisal Henar">
+<meta name="twitter:description" content="The complete photography collection of Faisal Henar.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/style.css?v=18">
+<link rel="stylesheet" href="../css/style.css?v=18">
+<link rel="stylesheet" href="../css/index.css?v=1">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="folio">
+<body class="folio index-page">
 
   <header class="hub-topline" id="top" tabindex="-1">
-    <a class="top-link" href="../">&larr; faisalhenar.com</a>
+    <a class="top-link" href="../">&larr; Photography</a>
     <div class="menu" data-menu>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
       <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections">
-        <a href="../">Home</a>
-        <a href="../practice/">Practice</a>
-        <a href="./" class="current" aria-current="page">Photography</a>
-        <a href="../elsewhere.html">Elsewhere</a>
-        <a href="../note.html">A note from me</a>
-        <a href="../contact.html">Contact</a>
+        <a href="../../">Home</a>
+        <a href="../../practice/">Practice</a>
+        <a href="../" class="current" aria-current="page">Photography</a>
+        <a href="../../elsewhere.html">Elsewhere</a>
+        <a href="../../note.html">A note from me</a>
+        <a href="../../contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="page">
-    <div class="page-head">
-      <h1>Photography</h1>
+    <div class="page-head index-page-head">
+      <h1>Index</h1>
+      <p class="section-meta" id="index-count" aria-live="polite"></p>
       <noscript>
         <p class="page-noscript">These photographs are placed by JavaScript, so none will appear with it off.</p>
       </noscript>
     </div>
 
-    <div class="exhibition" id="exhibition">
-      <!-- the curated sequence, rendered by js/render-exhibition.js -->
-    </div>
-
-    <nav class="index-entry" aria-label="Complete photography collection">
-      <a href="index/">
-        <span class="index-entry-title">Index</span>
-        <span class="section-meta" id="index-link-count"></span>
-      </a>
-    </nav>
+    <div class="editorial-desktop" id="desktop-index" aria-label="Complete photography Index"></div>
+    <div class="editorial-phone" id="phone-index" aria-label="Complete photography Index"></div>
 
     <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
   </main>
@@ -79,25 +73,24 @@
 
   <footer class="site-footer">
     <nav class="footer-nav" aria-label="More">
-      <a href="../note.html">A note from me</a>
-      <a href="../contact.html">Contact</a>
-      <a href="../elsewhere.html">Elsewhere</a>
+      <a href="../../note.html">A note from me</a>
+      <a href="../../contact.html">Contact</a>
+      <a href="../../elsewhere.html">Elsewhere</a>
     </nav>
     <span>© <span id="year"></span> Faisal Henar</span>
     <noscript>
       <nav class="footer-nav" aria-label="Site sections">
-        <a href="../">Home</a>
-        <a href="../practice/">Practice</a>
-        <a href="./">Photography</a>
+        <a href="../../">Home</a>
+        <a href="../../practice/">Practice</a>
+        <a href="../">Photography</a>
       </nav>
     </noscript>
   </footer>
 
-  <script src="js/data-loader.js?v=1"></script>
-  <script src="js/image-url.js?v=1"></script>
-  <script src="js/viewer.js?v=1"></script>
-  <script src="js/render-exhibition.js?v=8"></script>
+  <script src="../js/image-url.js?v=1"></script>
+  <script src="../js/viewer.js?v=1"></script>
+  <script src="../js/render-index.js?v=1"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="../js/menu.js?v=2"></script>
+  <script src="../../js/menu.js?v=2"></script>
 </body>
 </html>

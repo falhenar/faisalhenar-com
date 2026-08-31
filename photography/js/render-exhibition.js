@@ -1,10 +1,10 @@
 /*
-  THE PHOTOGRAPHY PAGE
-  --------------------
-  Renders both halves of photography/index.html: the curated Exhibition
-  (from data/exhibition.json) and, beneath it, the Index (every
-  photograph in PHOTOS, newest first). One viewer serves both; the only
-  difference between them is which ordered set it is handed.
+  THE PHOTOGRAPHY EXHIBITION
+  --------------------------
+  Renders the curated Exhibition in photography/index.html from
+  data/exhibition.json. The complete Index now has its own page. Paging
+  forward from the Exhibition can still continue through photographs not
+  already shown here, in the approved order stored by photos.json.
 
   Layout is entirely CSS (see the folio block in css/style.css). This
   file decides grouping and order, and sets exactly one geometric value:
@@ -85,6 +85,9 @@ function renderPhotography() {
      in photos.json. New photographs are placed first by default; the
      private manager can then refine the sequence deliberately. */
   const indexOrder = Object.keys(PHOTOS);
+
+  const indexLinkCountEl = document.getElementById('index-link-count');
+  if (indexLinkCountEl) indexLinkCountEl.textContent = indexOrder.length + ' photographs';
 
   const indexItems = indexOrder.map(function (id) {
     const p = PHOTOS[id];

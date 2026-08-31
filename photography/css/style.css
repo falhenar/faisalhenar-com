@@ -476,6 +476,30 @@ body.folio .footer-nav{
   color: var(--muted);
 }
 
+/* The complete collection now has its own page. This quiet handoff sits
+   after the Exhibition and uses the existing heading and metadata type. */
+.index-entry{
+  margin-top: 104px;
+  border-top: 1px solid var(--line);
+}
+.index-entry a{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 22px 0 14px;
+  color: inherit;
+  text-decoration: none;
+}
+.index-entry-title{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+.index-entry a:hover .index-entry-title,
+.index-entry a:focus-visible .index-entry-title{ color: var(--accent); }
+
 .index-grid{
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -526,6 +550,7 @@ body.folio .footer-nav{
   .page-head{ padding: 32px 0 22px; }
   .page-head h1{ font-size: 1.7rem; }
   .index{ margin-top: 76px; }
+  .index-entry{ margin-top: 76px; }
   .index-grid{ grid-template-columns: repeat(4, 1fr); }
   body.folio .site-footer{ margin-top: 72px; }
 }

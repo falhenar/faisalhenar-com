@@ -12,8 +12,8 @@ css/hub.css            → homepage styling
 css/note.css           → note.html styling
 
 photography/           → the photography section
-  index.html            → the folio: a curated Exhibition, then an Index
-                          of the whole collection
+  index.html            → the curated Exhibition
+  index/index.html      → the complete editorial Index
   css/, js/, photos/    → styling, logic, and your photo files
 
 practice/               → the Buddhism/practice section
@@ -36,15 +36,15 @@ Photography content has two authoritative data files:
 The private local Photography Manager validates and updates these files. The
 instructions below describe the data for maintenance and recovery.
 
-### How the Photography page is built
+### How the Photography section is built
 
-It is one page with two halves, and they answer different questions.
+It has two related pages, and they answer different questions.
 
 - **The Exhibition** is a curated sequence: a selection, hand-ordered, most
   of the collection deliberately left out. It comes from `exhibition.json`.
-- **The Index** below it is the whole collection in the approved sequence
-  stored directly in `photos.json`. The private manager starts new work
-  newest first, then preserves the manually approved order.
+- **The Index** has its own page. It presents the whole collection in the
+  approved sequence stored directly in `photos.json`. The private manager
+  starts new work newest first, then preserves the manually approved order.
 
 So a new photograph appears in the Index automatically. It joins the
 Exhibition only if you decide it belongs there.
@@ -83,8 +83,8 @@ Exhibition only if you decide it belongs there.
    - `color: true` keeps the photograph in colour; `false` applies the
      site's black and white treatment.
    - `alt` describes the photograph for someone who cannot see it.
-   - `added` is the date it entered the collection. This, and only this,
-     is what orders the Index.
+   - `added` is the date it entered the collection. The array order is the
+     public Index sequence.
 
 3. Decide whether it enters the Exhibition. Most photographs should not.
    If it does, add it to a row in `exhibition.json` at the point in the
@@ -165,11 +165,10 @@ your writing, so when it fails, fix the line yourself and push again.
   WebP depending on the browser. This needs Image Resizing switched on for the
   zone in the Cloudflare dashboard. If it is ever turned off, those requests
   404 and no photograph loads.
-- The design is deliberately quiet. The Photography page is a light folio:
-  warm off-white ground, one centred 820px column, photographs sitting
-  directly on the paper with no border, card or shadow. Hovering one draws
-  a thin accent line just outside the frame; the photograph itself is never
-  altered.
+- The design is deliberately quiet. The Exhibition is a centred 820px folio.
+  The separate Index uses a wider editorial field on desktop and staggered
+  two-photograph pairings on phones. Both keep the warm off-white ground.
+  Photographs sit directly on the paper with no border, card, shadow or crop.
 - Black and white is the default. Colour is a per-photograph decision (the
   `color` field in `photos.json`), used where the colour is the point.
 

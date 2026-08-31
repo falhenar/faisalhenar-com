@@ -30,7 +30,7 @@ DEPENDENCIES = (
     {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/render-reading.js"), "effects": ("Reading shelf",)},
     {"id": "listening", "label": "Listening", "sources": ("practice/data/listening.json",), "consumers": ("practice/listening.html", "practice/js/render-shelf.js"), "effects": ("Listening shelf",)},
     {"id": "watching", "label": "Watching", "sources": ("practice/data/watching.json",), "consumers": ("practice/watching.html", "practice/js/render-shelf.js"), "effects": ("Watching shelf",)},
-    {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/js/data-loader.js", "photography/js/render-exhibition.js", "photography/js/viewer.js", "photography/js/image-url.js", "photography/photos/"), "effects": ("Exhibition", "Index", "viewer", "image files")},
+    {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/index/index.html", "photography/css/index.css", "photography/js/data-loader.js", "photography/js/render-exhibition.js", "photography/js/render-index.js", "photography/js/viewer.js", "photography/js/image-url.js", "photography/photos/"), "effects": ("Exhibition", "Index", "viewer", "image files")},
     {"id": "language-pairs", "label": "English and Dutch pages", "sources": ("practice/data/nl-mirrors.json",), "consumers": ("practice/*-nl.html", "practice/*.html"), "effects": ("reciprocal hreflang", "translation drift review")},
 )
 
@@ -249,7 +249,8 @@ def local_target(page, raw):
 
 
 def validate_pages(issues):
-    pages = sorted({path.relative_to(ROOT).as_posix() for folder in (ROOT, ROOT / "practice", ROOT / "photography") for path in folder.glob("*.html")})
+    page_folders = (ROOT, ROOT / "practice", ROOT / "photography", ROOT / "photography" / "index")
+    pages = sorted({path.relative_to(ROOT).as_posix() for folder in page_folders for path in folder.glob("*.html")})
     parsed, versions = {}, defaultdict(set)
     for relative in pages:
         try: text = (ROOT / relative).read_text(encoding="utf-8")
@@ -410,7 +411,8 @@ def validate_data(issues, parsed_pages):
         ("reflections", "practice/reflections.html", ("js/suttas-config.js", "js/render-reflections.js"), "The Reflection archive must load its data and renderer."),
         ("reflections", "practice/index.html", ("js/suttas-config.js", "js/render-latest-reflection.js"), "The Practice hub must load Reflection data and the latest-Reflection renderer."),
         ("daily-sutta", "practice/index.html", ("js/daily-sutta-config.js", "js/suttas-config.js", "js/render-daily-sutta.js"), "The Practice hub must load daily data, Reflection data, and the daily renderer."),
-        ("photography", "photography/index.html", ("js/data-loader.js", "js/image-url.js", "js/viewer.js", "js/render-exhibition.js"), "Photography must load its data, image URL helper, viewer, and Exhibition/Index renderer."),
+        ("photography", "photography/index.html", ("js/data-loader.js", "js/image-url.js", "js/viewer.js", "js/render-exhibition.js"), "The Exhibition must load its data, image URL helper, viewer, and renderer."),
+        ("photography", "photography/index/index.html", ("../js/image-url.js", "../js/viewer.js", "../js/render-index.js"), "The Index must load its image URL helper, viewer, and editorial renderer."),
     )
     for dependency, relative, markers, message in contracts:
         try: text = (ROOT / relative).read_text(encoding="utf-8")
