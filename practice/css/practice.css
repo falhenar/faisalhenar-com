@@ -1205,7 +1205,10 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
-.meditation-page .lang-note{
+/* Used on any bilingual page: the room pages, the instruction sheets, and
+   the Practice hub. Unscoped on purpose — .intro overrides the block metrics
+   below, everything else takes these as given. */
+.lang-note{
   max-width: 720px;
   margin: 0 auto 6px;
   padding: 0 32px;
@@ -1215,15 +1218,23 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   text-transform: uppercase;
   color: var(--muted);
 }
-.meditation-page .lang-note a{
+.lang-note a{
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
 }
-.meditation-page .lang-note a:hover,
-.meditation-page .lang-note a:focus-visible{
+.lang-note a:hover,
+.lang-note a:focus-visible{
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+/* In the hub intro the line sits inside a centred, already-padded block, so
+   it drops its own width and gutters and just takes breathing room above.
+   Two classes, so it also wins over the 640px gutter rule further down. */
+.intro .lang-note{
+  max-width: none;
+  margin: 18px 0 0;
+  padding: 0;
 }
 
 /* nederlands.html carries no room-header-icon (it's a gateway, not a room),
