@@ -784,6 +784,14 @@ const DAILY_SUTTAS = [
     translator: "sujato",
     url: "https://suttacentral.net/sn47.13/en/sujato",
     text: "Live as your own island, your own refuge, with no other refuge. Let the teaching be your island and your refuge, with no other refuge.\nWhether now or after I have passed, any who shall live as their own island, their own refuge, with no other refuge; with the teaching as their island and their refuge, with no other refuge—those mendicants of mine who want to train shall be among the best of the best."
+  },
+  {
+    id: "sn45.2",
+    title: "Half the Spiritual Life",
+    ref: "SN 45.2",
+    translator: "sujato",
+    url: "https://suttacentral.net/sn45.2/en/sujato",
+    text: "Not so, Ānanda! Not so, Ānanda! Good friends, companions, and associates are the whole of the spiritual life."
   }
 ];
 
