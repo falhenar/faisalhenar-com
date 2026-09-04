@@ -1275,6 +1275,18 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 
 .sheet-page .section p{ max-width: 62ch; }
 
+.sheet-page .page-intro{
+  max-width: 620px;
+  margin: 0 auto 40px;
+  padding: 0 32px;
+}
+.sheet-page .page-intro p{
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 14px;
+}
+.sheet-page .page-intro p:last-child{ margin-bottom: 0; }
+
 .sheet-page .sheet-sub{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.72rem;
