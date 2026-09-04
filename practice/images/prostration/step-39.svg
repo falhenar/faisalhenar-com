@@ -1,6 +1,7 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1056.000000pt" height="882.000000pt" viewBox="0 0 1056.000000 882.000000"
  preserveAspectRatio="xMidYMid meet">
+<g class="place" transform="translate(42.0,63.0)">
 
 <g transform="translate(0.000000,882.000000) scale(0.100000,-0.100000)"
 fill="#2B2B27">
@@ -204,4 +205,5 @@ m488 -35 c0 -8 -7 -14 -15 -14 -10 0 -15 10 -15 26 0 22 2 25 15 14 8 -7 15
 -16 0 -39 7 -49 15 -20 15 -49 18 -73 8z M6533 6813 c-14 -5 -18 -33 -4 -33 4
 0 22 -13 39 -30 55 -52 85 -17 33 39 -28 30 -42 35 -68 24z"/>
 </g>
+</g><!--place-->
 </svg>
