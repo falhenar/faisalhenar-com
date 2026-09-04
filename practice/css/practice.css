@@ -1108,10 +1108,14 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
    sheet itself (.step-set.step-strip), where only the key positions of a
    block are shown.
 
-   The noting word under each plate is HTML text, not part of the artwork, so
-   one set of images serves both the English and the Dutch page. That is also
-   why the plates carry a hairline border here: they come with their own pale
-   blue ground, and the line keeps them from floating on the stone paper. */
+   The plates are SVG line drawings on transparency, converted from the sheets
+   by tools/figures/tolines.py: every filled shape reduced to its own outline,
+   every stroke redrawn at one weight. They sit straight on the paper, with no
+   border, the same as the figures on the sheets themselves.
+
+   The noting word under each plate, and the position number beside it, are
+   HTML text rather than part of the artwork, so one set of drawings serves
+   both the English and the Dutch page. */
 
 .sheet-page .step-set{
   display: grid;
@@ -1128,12 +1132,21 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   gap: 16px 12px;
   margin: 22px 0 16px;
 }
-.sheet-page .step-plate{ margin: 0; }
+.sheet-page .step-plate{ margin: 0; position: relative; }
 .sheet-page .step-plate img{
   width: 100%;
   height: auto;
   display: block;
-  border: 1px solid var(--line);
+}
+.sheet-page .step-num{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  line-height: 1;
 }
 .sheet-page .step-word{
   display: block;
