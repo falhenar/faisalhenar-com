@@ -29,3 +29,22 @@ file.
 
 After changing any figure, regenerate the affected PDFs. See
 `claude/meditation-instruction-sheets.md` in the project for how.
+
+## The prostration plates
+
+`sources/prostration-sheet-1.jpg` to `-3.jpg` are the three step sheets the
+Sirimangalo team sent FH, showing every position of one prostration. They are
+used with their permission, and are credited on the pages that show them.
+
+`cut-prostration-plates.py` cuts them into the 41 plates in
+`practice/images/prostration/`: kneeling A and B, then `step-01` to
+`step-39`. It finds the panels by their pale blue ground, which leaves the
+English caption under each panel behind, and drops the dark frame that the
+panels on sheet 2 carry. The drawings themselves are untouched. The noting
+word is set as HTML text on the page instead, which is what lets one set of
+images serve both the English and the Dutch page.
+
+`../build-prostration-steps.py` writes the two step-by-step pages from
+`../prostration-steps-data.py`, where the noting word and the description of
+each position live in both languages. Edit the wording there, not in the
+HTML, and rerun it.
