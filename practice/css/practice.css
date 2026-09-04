@@ -1126,9 +1126,13 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   padding: 0;
 }
 .sheet-page .step-set.step-strip{
-  /* 96px keeps six plates on one row across the sheet's 656px measure, so a
-     six-position block does not wrap a single orphan onto a second row. */
-  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  /* A strip sits under the paragraph it illustrates, so it holds three, four or
+     five plates depending on the block. Capping the track at 120px keeps every
+     plate the same size whatever the count, rather than letting a short strip
+     blow its drawings up, and the row is centred under the text. Five at 120px
+     plus the gaps still clears the sheet's 656px measure. */
+  grid-template-columns: repeat(auto-fit, minmax(96px, 120px));
+  justify-content: center;
   gap: 16px 12px;
   margin: 22px 0 16px;
 }
@@ -1467,7 +1471,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   /* The plates are small and there are up to twenty in a section, so a fixed
      four-across grid prints tighter than the fluid on-screen one. */
   .sheet-page .step-set{ grid-template-columns: repeat(4, 1fr); gap: 12px 10px; margin-top: 16px; }
-  .sheet-page .step-set.step-strip{ grid-template-columns: repeat(6, 1fr); gap: 10px 8px; }
+  .sheet-page .step-set.step-strip{ grid-template-columns: repeat(auto-fit, minmax(16mm, 22mm)); justify-content: center; gap: 10px 8px; }
   .sheet-page .step-plate{ break-inside: avoid; }
   .sheet-page .step-word{ font-size: 0.6rem; margin-top: 4px; }
   .sheet-page .step-note{ margin-top: 14px; }
