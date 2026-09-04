@@ -1235,6 +1235,7 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   max-width: none;
   margin: 18px 0 0;
   padding: 0;
+  font-size: 0.62rem;
 }
 
 /* nederlands.html carries no room-header-icon (it's a gateway, not a room),
