@@ -179,7 +179,8 @@ There's no build step, so changes go live immediately. Before pushing:
 1. Serve the repository on localhost and open changed pages in a browser. A
    local server is required because browsers do not fetch JSON from `file:`
    pages.
-2. Run `python3 tools/validate-site.py`. It performs the same read-only
+2. Run `python3 tools/validate-site.py` (Windows: `python` or `py`). It
+   performs the same read-only
    whole-site validation used by Website Manager and GitHub Actions, including
    Photography data, public links and assets, metadata, language pairs,
    structured data, cache versions, and declared renderer dependencies.

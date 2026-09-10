@@ -58,6 +58,8 @@ python3 tools/no-em-dash.py          # report, exits 1 if anything is found
 python3 tools/no-em-dash.py --fix    # repair what it can, report the rest
 ```
 
+(Windows: use `python` or `py` in place of `python3`.)
+
 `.github/workflows/no-em-dash.yml` runs it on every push to `main`, commits
 the repairs, and fails the run if anything is left that needs a decision.
 
