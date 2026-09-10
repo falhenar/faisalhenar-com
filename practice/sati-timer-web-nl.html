@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Sati Timer, voor desktop · Praktijk · Faisal Henar</title>
+<meta name="description" content="De Sati Timer meditatie-app, als browserpagina voor desktop. Duur, fasen en bellen voor de noteermethode onderwezen door Ajahn Tong Sirimangalo.">
+<link rel="canonical" href="https://faisalhenar.com/practice/sati-timer-web-nl.html">
+<link rel="alternate" hreflang="nl" href="https://faisalhenar.com/practice/sati-timer-web-nl.html">
+<link rel="alternate" hreflang="en" href="https://faisalhenar.com/practice/sati-timer-web.html">
+<meta property="og:title" content="Sati Timer, voor desktop · Praktijk · Faisal Henar">
+<meta property="og:description" content="De Sati Timer meditatie-app, als browserpagina voor desktop.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://faisalhenar.com/practice/sati-timer-web-nl.html">
+<meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sati Timer, voor desktop · Faisal Henar">
+<meta name="twitter:description" content="De Sati Timer meditatie-app, als browserpagina voor desktop.">
+<meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
+<link rel="stylesheet" href="css/practice.css?v=46">
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body class="meditation-page timer-page">
+
+  <header class="room-header">
+    <a class="mark" href="../">Faisal Henar</a>
+    <div class="room-header-right">
+      <span class="section-label">Praktijk</span>
+      <div class="menu" data-menu>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
+        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections">
+          <a href="../">Home</a>
+          <a href="./" class="current" aria-current="true">Praktijk</a>
+          <a href="../photography/">Fotografie</a>
+          <a href="../elsewhere.html">Overig</a>
+          <a href="../note.html">Een woord van mij</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <svg class="room-header-icon" viewBox="0 0 120 170" aria-hidden="true">
+    <rect x="16" y="12" width="88" height="146" rx="3"></rect>
+    <circle cx="60" cy="58" r="9"></circle>
+    <path d="M46 72 C40 84 38 100 38 116 C46 111 74 111 82 116 C82 100 80 84 74 72 C69 67 51 67 46 72 Z"></path>
+    <circle class="fill-dot" cx="60" cy="99" r="2.5"></circle>
+    <line x1="34" y1="122" x2="86" y2="122"></line>
+  </svg>
+
+  <main>
+  <a class="back-link" href="meditation-nl.html">&larr; Meditatie</a>
+  <h1 class="room-title">Sati Timer, voor desktop</h1>
+  <p class="lang-note">Ook beschikbaar in het <a href="sati-timer-web.html">Engels</a></p>
+  <p class="room-dek">Dezelfde timer als de Android-app, als pagina die je direct in een desktopbrowser gebruikt: duur, fasen en bellen voor de noteermethode op deze pagina.</p>
+
+  <p class="timer-note">Dit draait volledig in het tabblad: er wordt niets verstuurd, en er wordt niets opgeslagen behalve wat je zelf als voorinstelling opslaat, op dit apparaat. Anders dan de app moet het tabblad open en op de voorgrond blijven om de tijd bij te houden; sluit je het, dan stopt de sessie.</p>
+
+  <div class="timer-tool" id="timer-tool">
+
+    <div class="timer-tool-bar">
+      <button type="button" id="timer-theme-btn">Systeem</button>
+    </div>
+
+    <!-- ---------------- instelling ---------------- -->
+    <div id="timer-setup">
+      <div class="timer-dial-wrap">
+        <div class="timer-dial-shell">
+          <canvas class="timer-dial" id="timer-dial-canvas" width="236" height="236" role="slider" aria-label="Sessieduur" aria-valuemin="1" aria-valuemax="120"></canvas>
+          <div class="timer-dial-center">
+            <span class="timer-dial-minutes" id="timer-dial-minutes">20</span>
+            <span class="timer-dial-label" data-t="min">MIN</span>
+            <span class="timer-dial-lap" id="timer-dial-lap"></span>
+          </div>
+        </div>
+        <input type="number" class="timer-minutes-input" id="timer-minutes-input" min="1" max="120">
+      </div>
+
+      <div class="timer-chips" id="timer-duration-chips"></div>
+
+      <div class="timer-stage-row" id="timer-stage-row"></div>
+
+      <button type="button" class="timer-start-btn" id="timer-start-btn" data-t="start">Starten</button>
+
+      <div class="timer-summary">
+        <details>
+          <summary><span data-t="countdownLabel">Aftellen voor start</span><span class="timer-summary-value" id="timer-countdown-value"></span></summary>
+          <div class="timer-summary-body">
+            <p class="timer-summary-note" data-t="countdownBody"></p>
+            <div class="timer-chips" id="timer-countdown-chips"></div>
+          </div>
+        </details>
+        <details>
+          <summary><span data-t="intervalLabel">Intervalbel</span><span class="timer-summary-value" id="timer-interval-value"></span></summary>
+          <div class="timer-summary-body">
+            <p class="timer-summary-note" data-t="intervalBody"></p>
+            <div class="timer-chips" id="timer-interval-chips"></div>
+          </div>
+        </details>
+        <details>
+          <summary><span data-t="bellsLabel">Bellen</span><span class="timer-summary-value" id="timer-bells-value"></span></summary>
+          <div class="timer-summary-body">
+            <div class="timer-bell-block">
+              <div class="timer-bell-block-head">
+                <span data-t="startingBell">Startbel</span>
+                <label class="timer-switch"><input type="checkbox" id="timer-start-bell-toggle"><span class="timer-switch-track"></span><span class="timer-switch-thumb"></span></label>
+              </div>
+              <div class="timer-bell-row">
+                <select class="timer-select" id="timer-start-bell-select"></select>
+                <button type="button" class="timer-icon-btn" id="timer-start-bell-hear" data-t="hearIt">Beluister</button>
+              </div>
+            </div>
+            <div class="timer-bell-block" id="timer-interval-bell-block" hidden>
+              <div class="timer-bell-block-head"><span data-t="intervalLabel">Intervalbel</span></div>
+              <div class="timer-bell-row">
+                <select class="timer-select" id="timer-interval-bell-select"></select>
+                <button type="button" class="timer-icon-btn" id="timer-interval-bell-hear" data-t="hearIt">Beluister</button>
+              </div>
+            </div>
+            <div class="timer-bell-block" id="timer-stage-bell-block" hidden>
+              <div class="timer-bell-block-head"><span data-t="betweenStages">Tussen fases</span><span class="timer-summary-value" id="timer-stage-bell-note"></span></div>
+              <div class="timer-bell-row">
+                <select class="timer-select" id="timer-stage-bell-select"></select>
+                <button type="button" class="timer-icon-btn" id="timer-stage-bell-hear" data-t="hearIt">Beluister</button>
+              </div>
+            </div>
+            <div class="timer-bell-block">
+              <div class="timer-bell-block-head">
+                <span data-t="endingBell">Eindbel</span>
+                <label class="timer-switch"><input type="checkbox" id="timer-end-bell-toggle"><span class="timer-switch-track"></span><span class="timer-switch-thumb"></span></label>
+              </div>
+              <div class="timer-bell-row">
+                <select class="timer-select" id="timer-end-bell-select"></select>
+                <button type="button" class="timer-icon-btn" id="timer-end-bell-hear" data-t="hearIt">Beluister</button>
+              </div>
+            </div>
+          </div>
+        </details>
+        <details>
+          <summary><span data-t="volumeLabel">Volume</span><span class="timer-summary-value" id="timer-volume-value"></span></summary>
+          <div class="timer-summary-body">
+            <p class="timer-summary-note" data-t="volumeBody"></p>
+            <div class="timer-bell-row">
+              <input type="range" min="0" max="1" step="0.01" id="timer-volume-slider" style="flex:1">
+              <button type="button" class="timer-icon-btn" id="timer-volume-hear" data-t="hearIt">Beluister</button>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="timer-switch-row">
+        <span data-t="repeat">Herhalen tot je stopt</span>
+        <label class="timer-switch"><input type="checkbox" id="timer-repeat-toggle"><span class="timer-switch-track"></span><span class="timer-switch-thumb"></span></label>
+      </div>
+      <div class="timer-switch-row">
+        <span data-t="keepScreenOn">Scherm aan houden</span>
+        <label class="timer-switch"><input type="checkbox" id="timer-keep-screen-toggle"><span class="timer-switch-track"></span><span class="timer-switch-thumb"></span></label>
+      </div>
+
+      <details class="timer-summary" style="margin-top:20px">
+        <summary><span data-t="savePreset">Deze instellingen opslaan als voorinstelling</span></summary>
+        <div class="timer-summary-body">
+          <div class="timer-preset-form">
+            <input type="text" id="timer-preset-name" data-t-placeholder="presetName" placeholder="Naam van de voorinstelling">
+            <button type="button" class="timer-icon-btn" id="timer-preset-save" data-t="save">Opslaan</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="timer-summary">
+        <summary><span data-t="presetsTitle">Mijn voorinstellingen</span></summary>
+        <div class="timer-summary-body">
+          <ul class="timer-preset-list" id="timer-preset-list"></ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- ---------------- lopende sessie ---------------- -->
+    <div id="timer-session" hidden>
+      <div class="timer-session">
+        <div class="timer-dial-shell">
+          <canvas class="timer-dial" id="timer-session-canvas" width="236" height="236" style="cursor:default"></canvas>
+          <div class="timer-dial-center">
+            <div class="timer-session-stage" id="timer-session-stage"></div>
+            <div class="timer-session-time" id="timer-session-time">0:00</div>
+            <div class="timer-session-hint" id="timer-session-hint"></div>
+          </div>
+        </div>
+        <div class="timer-session-controls">
+          <button type="button" id="timer-pause-btn" data-t="pause">Pauzeren</button>
+          <button type="button" class="timer-primary" id="timer-stop-btn" data-t="stop">Stoppen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------- voltooid ---------------- -->
+    <div id="timer-complete" hidden>
+      <div class="timer-complete">
+        <h2 data-t="completeTitle">Sessie voltooid</h2>
+        <button type="button" class="timer-start-btn" id="timer-done-btn" data-t="done" style="width:auto;padding:12px 32px">Klaar</button>
+      </div>
+    </div>
+
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="More">
+      <a href="../note.html">Een woord van mij</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../elsewhere.html">Overig</a>
+    </nav>
+    <span>&copy; <span id="year"></span> Faisal Henar</span>
+    <noscript>
+      <nav class="footer-nav" aria-label="Site sections">
+        <a href="../">Home</a>
+        <a href="./">Praktijk</a>
+        <a href="../photography/">Fotografie</a>
+      </nav>
+    </noscript>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="../js/menu.js?v=2"></script>
+  <script src="js/sati-timer.js?v=1"></script>
+</body>
+</html>

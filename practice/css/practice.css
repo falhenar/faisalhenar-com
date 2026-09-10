@@ -1478,3 +1478,415 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   .sheet-page .step-link{ display: none; }
   @page{ margin: 16mm 16mm; }
 }
+
+/* ---------- Sati Timer web companion ----------
+   The desktop/browser twin of the Android app: same noting-practice timer
+   (duration, stages, start/interval/end bells, repeat), reskinned into the
+   Practice room's own stone/moss identity rather than the app's own brand
+   (moss-green + ochre, Bricolage Grotesque) — this page is a room in the
+   same house as the instruction sheets, not an embedded product.
+
+   Dark mode is new here — no other Practice page has one — added because
+   a timer is plausibly run in a dim room at night. Tokens are scoped to
+   .timer-page so they never leak into the rest of the site, and they
+   follow the same structural roles the app's own dark theme uses
+   (background / raised surface / ink / muted / accent / line), restated
+   in this room's stone-and-moss language rather than the app's green and
+   ochre. The page always opens light regardless of the visitor's system
+   theme (sati-timer.js sets [data-theme] explicitly on load) — dark is
+   opt-in only, via the theme toggle button. */
+.timer-page{
+  --bg: #EDEEE7;
+  --bg-raised: #E4E6DB;
+  --ink: #2B2B27;
+  --muted: #65685E;
+  --line: #D9DACE;
+  --accent: #4B5842;
+}
+.timer-page[data-theme="dark"]{
+  --bg: #1E211D;
+  --bg-raised: #272B25;
+  --ink: #E7E8E1;
+  --muted: #9A9D8F;
+  --line: #3A3F36;
+  --accent: #7C9270;
+}
+
+.timer-page .timer-note{
+  max-width: 620px;
+  margin: 0 auto 32px;
+  padding: 0 32px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.timer-tool{
+  max-width: 460px;
+  margin: 0 auto 56px;
+  padding: 0 32px;
+}
+
+.timer-tool-bar{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.timer-tool-bar button{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.timer-tool-bar button:hover{ color: var(--ink); border-color: var(--accent); }
+.timer-tool-bar button:focus-visible{ outline: 1px solid var(--accent); outline-offset: 2px; }
+
+.timer-dial-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+}
+.timer-dial{ touch-action: none; cursor: grab; }
+.timer-dial:active{ cursor: grabbing; }
+.timer-dial-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.timer-dial-minutes{
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 2.6rem;
+  color: var(--ink);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.timer-dial-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.timer-dial-lap{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.timer-minutes-input{
+  width: 68px;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  padding: 4px 6px;
+}
+.timer-minutes-input:focus-visible{ outline: 1px solid var(--accent); outline-offset: 2px; }
+
+.timer-chips{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.timer-chip{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.timer-chip:hover{ border-color: var(--accent); }
+.timer-chip[aria-pressed="true"]{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.timer-chip:focus-visible{ outline: 1px solid var(--accent); outline-offset: 2px; }
+
+.timer-stage-row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+.timer-stage-total{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.timer-stage-actions{
+  display: flex;
+  gap: 14px;
+}
+.timer-text-btn{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.timer-text-btn:hover{ border-bottom-color: var(--accent); }
+.timer-text-btn:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
+
+.timer-start-btn{
+  display: block;
+  width: 100%;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 16px;
+  margin: 0 0 22px;
+  cursor: pointer;
+}
+.timer-start-btn:hover{ opacity: 0.92; }
+.timer-start-btn:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.timer-summary{
+  border: 1px solid var(--line);
+  margin: 0 0 20px;
+}
+.timer-summary details{ border-bottom: 1px solid var(--line); }
+.timer-summary details:last-child{ border-bottom: none; }
+.timer-summary summary{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.timer-summary summary::-webkit-details-marker{ display: none; }
+.timer-summary summary:hover{ background: var(--bg-raised); }
+.timer-summary summary:focus-visible{ outline: 1px solid var(--accent); outline-offset: -2px; }
+.timer-summary-value{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.timer-summary-body{
+  padding: 4px 16px 18px;
+}
+.timer-summary-note{
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.timer-bell-block{
+  background: var(--bg-raised);
+  padding: 12px 14px;
+  margin: 0 0 10px;
+}
+.timer-bell-block:last-child{ margin-bottom: 0; }
+.timer-bell-block-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+}
+.timer-bell-row{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.timer-select{
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 6px 8px;
+}
+.timer-icon-btn{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.timer-icon-btn:hover{ border-color: var(--accent); }
+
+.timer-switch-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 0.92rem;
+}
+.timer-switch{
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.timer-switch input{
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.timer-switch-track{
+  position: absolute;
+  inset: 0;
+  background: var(--line);
+  transition: background 0.15s ease;
+}
+.timer-switch input:checked + .timer-switch-track{ background: var(--accent); }
+.timer-switch input:focus-visible + .timer-switch-track{ outline: 1px solid var(--accent); outline-offset: 2px; }
+.timer-switch-thumb{
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  background: var(--bg);
+  transition: transform 0.15s ease;
+}
+.timer-switch input:checked ~ .timer-switch-thumb{ transform: translateX(18px); }
+
+.timer-preset-form{
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 0;
+}
+.timer-preset-form input[type="text"]{
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  padding: 8px 10px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.timer-preset-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.timer-preset-list li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.timer-preset-name{ font-size: 0.88rem; color: var(--ink); }
+.timer-preset-meta{ font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; color: var(--muted); display: block; margin-top: 2px; }
+.timer-preset-empty{ font-size: 0.85rem; color: var(--muted); padding: 10px 0; }
+
+/* ---------- session (running sit) view ---------- */
+.timer-session{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 8px 0 24px;
+}
+.timer-session-stage{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  min-height: 1em;
+}
+.timer-session-time{
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 3.2rem;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.timer-session-hint{
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.timer-session-controls{
+  display: flex;
+  gap: 12px;
+}
+.timer-session-controls button{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+.timer-session-controls button:hover{ border-color: var(--accent); color: var(--accent); }
+.timer-session-controls .timer-primary{ background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.timer-session-controls .timer-primary:hover{ opacity: 0.92; color: var(--bg); }
+
+.timer-complete{
+  text-align: center;
+  padding: 12px 0 24px;
+}
+.timer-complete h2{
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+[hidden]{ display: none !important; }
+
+@media (max-width: 640px){
+  .timer-tool, .timer-page .timer-note{ padding-left: 20px; padding-right: 20px; }
+}
+
+.timer-dial-shell{
+  position: relative;
+  width: 236px;
+  height: 236px;
+  margin: 0 auto;
+}
+.timer-dial-shell canvas{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.timer-dial-shell .timer-dial-center{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.timer-session-controls{ margin-top: 4px; }
