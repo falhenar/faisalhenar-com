@@ -1,8 +1,8 @@
 {
   "version": 1,
   "updated": {
-    "datetime": "2026-08",
-    "label": "August 2026"
+    "datetime": "2026-09",
+    "label": "September 2026"
   },
   "collections": [
     {
@@ -96,6 +96,15 @@
           "description": "Although the formal teachings I receive come through Ajahn Tong's lineage, I am also deeply moved by Ajahn Chah's lineage. The manner of teaching is different, and I feel fortunate that both have crossed my path.",
           "descriptionStyle": "reflection",
           "meta": "Free · Forest Sangha"
+        },
+        {
+          "id": "meditation-keeping-the-breath-in-mind",
+          "title": "Keeping the Breath in Mind",
+          "author": "Ajahn Lee Dhammadharo",
+          "url": "https://www.dhammatalks.org/books/KeepingTheBreath/",
+          "description": "Two short manuals on breath meditation from the Thai forest tradition. The first gives a step-by-step method: where to direct the breath, how to work with it, what the stages of jhāna feel like from the inside. The second is looser, drawn from talks. Practical rather than doctrinal, and unusually concrete about what to actually do.",
+          "meta": "Free · Dhammatalks.org",
+          "descriptionStyle": "note"
         },
         {
           "id": "meditation-mindfulness-the-path-to-the-deathless",
