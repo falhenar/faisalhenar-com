@@ -500,50 +500,12 @@ body.folio .footer-nav{
 .index-entry a:hover .index-entry-title,
 .index-entry a:focus-visible .index-entry-title{ color: var(--accent); }
 
-.index-grid{
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
-}
-.index-grid button{
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  line-height: 0;
-}
-/* The single place on this page where a photograph is cropped, and the
-   reason is legibility of the grid itself: a reference sheet whose rows
-   are all different heights is harder to scan than the thing it is a
-   reference to. The collection is almost entirely 4:3, so in practice
-   only the two portrait frames are trimmed, from the centre, and only
-   here. The Exhibition and the viewer always show the full frame. */
-.index-grid img{
-  display: block;
-  width: 100%;
-  /* Overrides the intrinsic height attribute the renderer sets on every
-     image (it is there to reserve space in the Exhibition); here the
-     ratio below decides the height instead. */
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center;
-  filter: contrast(1.05);
-  transition: opacity 0.25s ease;
-}
-.index-grid img.is-color{ filter: none; }
-.index-grid button:hover img,
-.index-grid button:focus-visible img{ opacity: 0.7; }
 
 /* ---------- folio, narrower screens ----------
    The column structure is kept at every width; what changes is the outer
-   padding, when a shared row is still worth keeping, and how many
-   columns the Index runs. */
+   padding and when a shared row is still worth keeping. */
 @media (max-width: 900px){
   body.folio{ --row-gap: 44px; }
-  .index-grid{ grid-template-columns: repeat(5, 1fr); }
 }
 @media (max-width: 720px){
   body.folio{ --pad: 22px; --gutter: 14px; --row-gap: 40px; }
@@ -551,7 +513,6 @@ body.folio .footer-nav{
   .page-head h1{ font-size: 1.7rem; }
   .index{ margin-top: 76px; }
   .index-entry{ margin-top: 76px; }
-  .index-grid{ grid-template-columns: repeat(4, 1fr); }
   body.folio .site-footer{ margin-top: 72px; }
 }
 /* Below this a shared row would put each photograph under about 280px,
@@ -565,7 +526,6 @@ body.folio .footer-nav{
 }
 @media (max-width: 480px){
   body.folio{ --pad: 16px; --row-gap: 34px; }
-  .index-grid{ grid-template-columns: repeat(3, 1fr); gap: 6px; }
 }
 
 /* ---------- footer ---------- */
@@ -698,4 +658,60 @@ body.folio .footer-nav{
   .intro, .site-footer{ padding-left: 16px; padding-right: 16px; }
   .lightbox .lightbox-nav{ font-size: 1.4rem; padding: 12px 10px; }
   .lightbox-controls{ padding: 10px 8px; }
+}
+
+
+/* ---------------------------------------------------------------
+   Skip link and tap targets. Added September 2026.
+
+   The skip link is the first focusable thing on every page, so one
+   Tab jumps past the header and the menu to the content. It is off
+   screen until focused, never hidden with display:none, which would
+   take it out of the tab order and defeat the point.
+
+   The tap-target rules below raise small text links to the 24px
+   minimum WCAG 2.2 asks for (2.5.8). They do it with an invisible
+   pseudo-element rather than padding, because padding on these links
+   would change the spacing of the header and footer. The box is
+   inside the link, so it only ever extends that link's own hit area.
+   --------------------------------------------------------------- */
+
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.skip-link:focus{
+  left: 8px;
+  top: 8px;
+}
+
+/* Focus lands here from the skip link. The ring is suppressed because
+   this focus is programmatic, not something the visitor tabbed to. */
+#main:focus{ outline: none; }
+
+.footer-nav a,
+.top-link,
+.to-top a{
+  position: relative;
+}
+.footer-nav a::after,
+.top-link::after,
+.to-top a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
 }

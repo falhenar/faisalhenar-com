@@ -21,13 +21,15 @@
 <meta name="twitter:title" content="A note from me · Faisal Henar">
 <meta name="twitter:description" content="A short personal note: photography, Buddhist practice, and a little about who I am.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/hub.css?v=5">
+<link rel="stylesheet" href="css/hub.css?v=6">
 <link rel="stylesheet" href="css/note.css?v=2">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="note-top">
     <a class="mark" href="./">Faisal Henar</a>
@@ -44,7 +46,7 @@
     </div>
   </header>
 
-  <main class="note">
+  <main id="main" tabindex="-1" class="note">
     <h1 class="note-lead">Practice, photography, and a life in progress.</h1>
 
     <div class="note-body">
@@ -65,7 +67,12 @@
       the writing that speaks in my own voice. Where a page summarizes someone
       else's life or work, I've checked it against the sources.</p>
 
-      <p>I hope you enjoy your time here. If something you see or read resonates with you, please feel free to reach out <a href="mailto:faisal@faisalhenar.com">by email</a>.</p>
+      <!-- email_off: Cloudflare Scrape Shield rewrites every mailto into a
+           JavaScript placeholder, which left this address unreadable to
+           anyone without JavaScript. The plain address is already public
+           in this repository, so the obfuscation was costing readers
+           without buying any protection. (September 2026) -->
+      <p>I hope you enjoy your time here. If something you see or read resonates with you, please feel free to reach out <!--email_off--><a href="mailto:faisal@faisalhenar.com">by email</a><!--/email_off-->.</p>
     </div>
 
     <p class="note-signoff">May we all be free from suffering and find peace and happiness.</p>
@@ -90,7 +97,6 @@
     </noscript>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/menu.js?v=2"></script>
+  <script src="js/menu.js?v=3"></script>
 </body>
 </html>

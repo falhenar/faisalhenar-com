@@ -294,6 +294,11 @@ a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
 .room .room-title{
   font-family: 'Instrument Serif', serif;
   font-style: italic;
+  /* These became <h2> in September 2026 so the two rooms appear in the
+     document outline. The weight is pinned because a heading defaults to
+     bold and Instrument Serif ships at 400 only, so the browser would
+     synthesise a bolder face. Nothing about the page changed visually. */
+  font-weight: 400;
   font-size: 2rem;
   margin: 0 0 10px;
 }
@@ -359,4 +364,58 @@ a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
 @media (max-width: 640px){
   .top-line, .hero, .site-footer{ padding-left: 20px; padding-right: 20px; }
   .footer-meta{ flex-direction: column; gap: 6px; }
+}
+
+
+/* ---------------------------------------------------------------
+   Skip link and tap targets. Added September 2026.
+
+   The skip link is the first focusable thing on every page, so one
+   Tab jumps past the header and the menu to the content. It is off
+   screen until focused, never hidden with display:none, which would
+   take it out of the tab order and defeat the point.
+
+   The tap-target rules below raise small text links to the 24px
+   minimum WCAG 2.2 asks for (2.5.8). They do it with an invisible
+   pseudo-element rather than padding, because padding on these links
+   would change the spacing of the header and footer. The box is
+   inside the link, so it only ever extends that link's own hit area.
+   --------------------------------------------------------------- */
+
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.skip-link:focus{
+  left: 8px;
+  top: 8px;
+}
+
+/* Focus lands here from the skip link. The ring is suppressed because
+   this focus is programmatic, not something the visitor tabbed to. */
+#main:focus{ outline: none; }
+
+.footer-nav a,
+.mark{
+  position: relative;
+}
+.footer-nav a::after,
+.mark::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
 }

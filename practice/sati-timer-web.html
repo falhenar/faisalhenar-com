@@ -10,7 +10,9 @@
 <title>Sati Timer, for desktop · Practice · Faisal Henar</title>
 <meta name="description" content="The Sati Timer meditation app, as a browser page for desktop. Duration, stages, and bells for the noting practice taught by Ajahn Tong Sirimangalo.">
 <link rel="canonical" href="https://faisalhenar.com/practice/sati-timer-web.html">
+<link rel="alternate" hreflang="en" href="https://faisalhenar.com/practice/sati-timer-web.html">
 <link rel="alternate" hreflang="nl" href="https://faisalhenar.com/practice/sati-timer-web-nl.html">
+<link rel="alternate" hreflang="x-default" href="https://faisalhenar.com/practice/sati-timer-web.html">
 <meta property="og:title" content="Sati Timer, for desktop · Practice · Faisal Henar">
 <meta property="og:description" content="The Sati Timer meditation app, as a browser page for desktop.">
 <meta property="og:type" content="website">
@@ -22,12 +24,14 @@
 <meta name="twitter:title" content="Sati Timer, for desktop · Faisal Henar">
 <meta name="twitter:description" content="The Sati Timer meditation app, as a browser page for desktop.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=46">
+<link rel="stylesheet" href="css/practice.css?v=47">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="meditation-page timer-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="room-header">
     <a class="mark" href="../">Faisal Henar</a>
@@ -55,7 +59,7 @@
     <line x1="34" y1="122" x2="86" y2="122"></line>
   </svg>
 
-  <main>
+  <main id="main" tabindex="-1">
   <a class="back-link" href="meditation.html">&larr; Meditation</a>
   <h1 class="room-title">Sati Timer, for desktop</h1>
   <p class="lang-note">Also available in <a href="sati-timer-web-nl.html">Dutch</a></p>
@@ -81,7 +85,7 @@
             <span class="timer-dial-lap" id="timer-dial-lap"></span>
           </div>
         </div>
-        <input type="number" class="timer-minutes-input" id="timer-minutes-input" min="1" max="120">
+        <input type="number" class="timer-minutes-input" id="timer-minutes-input" min="1" max="120" aria-label="Duration in minutes" data-t-arialabel="minutesInputLabel">
       </div>
 
       <div class="timer-chips" id="timer-duration-chips"></div>
@@ -110,46 +114,46 @@
           <div class="timer-summary-body">
             <div class="timer-bell-block">
               <div class="timer-bell-block-head">
-                <span data-t="startingBell">Starting bell</span>
+                <span id="timer-start-bell-label" data-t="startingBell">Starting bell</span>
                 <label class="timer-switch"><input type="checkbox" id="timer-start-bell-toggle"><span class="timer-switch-track"></span><span class="timer-switch-thumb"></span></label>
               </div>
               <div class="timer-bell-row">
-                <select class="timer-select" id="timer-start-bell-select"></select>
+                <select class="timer-select" id="timer-start-bell-select" aria-labelledby="timer-start-bell-label"></select>
                 <button type="button" class="timer-icon-btn" id="timer-start-bell-hear" data-t="hearIt">Hear it</button>
               </div>
             </div>
             <div class="timer-bell-block" id="timer-interval-bell-block" hidden>
-              <div class="timer-bell-block-head"><span data-t="intervalLabel">Interval bell</span></div>
+              <div class="timer-bell-block-head"><span id="timer-interval-bell-label" data-t="intervalLabel">Interval bell</span></div>
               <div class="timer-bell-row">
-                <select class="timer-select" id="timer-interval-bell-select"></select>
+                <select class="timer-select" id="timer-interval-bell-select" aria-labelledby="timer-interval-bell-label"></select>
                 <button type="button" class="timer-icon-btn" id="timer-interval-bell-hear" data-t="hearIt">Hear it</button>
               </div>
             </div>
             <div class="timer-bell-block" id="timer-stage-bell-block" hidden>
-              <div class="timer-bell-block-head"><span data-t="betweenStages">Between stages</span><span class="timer-summary-value" id="timer-stage-bell-note"></span></div>
+              <div class="timer-bell-block-head"><span id="timer-stage-bell-label" data-t="betweenStages">Between stages</span><span class="timer-summary-value" id="timer-stage-bell-note"></span></div>
               <div class="timer-bell-row">
-                <select class="timer-select" id="timer-stage-bell-select"></select>
+                <select class="timer-select" id="timer-stage-bell-select" aria-labelledby="timer-stage-bell-label"></select>
                 <button type="button" class="timer-icon-btn" id="timer-stage-bell-hear" data-t="hearIt">Hear it</button>
               </div>
             </div>
             <div class="timer-bell-block">
               <div class="timer-bell-block-head">
-                <span data-t="endingBell">Ending bell</span>
+                <span id="timer-end-bell-label" data-t="endingBell">Ending bell</span>
                 <label class="timer-switch"><input type="checkbox" id="timer-end-bell-toggle"><span class="timer-switch-track"></span><span class="timer-switch-thumb"></span></label>
               </div>
               <div class="timer-bell-row">
-                <select class="timer-select" id="timer-end-bell-select"></select>
+                <select class="timer-select" id="timer-end-bell-select" aria-labelledby="timer-end-bell-label"></select>
                 <button type="button" class="timer-icon-btn" id="timer-end-bell-hear" data-t="hearIt">Hear it</button>
               </div>
             </div>
           </div>
         </details>
         <details>
-          <summary><span data-t="volumeLabel">Volume</span><span class="timer-summary-value" id="timer-volume-value"></span></summary>
+          <summary><span id="timer-volume-label" data-t="volumeLabel">Volume</span><span class="timer-summary-value" id="timer-volume-value"></span></summary>
           <div class="timer-summary-body">
             <p class="timer-summary-note" data-t="volumeBody"></p>
             <div class="timer-bell-row">
-              <input type="range" min="0" max="1" step="0.01" id="timer-volume-slider" style="flex:1">
+              <input type="range" min="0" max="1" step="0.01" id="timer-volume-slider" aria-labelledby="timer-volume-label" style="flex:1">
               <button type="button" class="timer-icon-btn" id="timer-volume-hear" data-t="hearIt">Hear it</button>
             </div>
           </div>
@@ -169,7 +173,7 @@
         <summary><span data-t="savePreset">Save these settings as a preset</span></summary>
         <div class="timer-summary-body">
           <div class="timer-preset-form">
-            <input type="text" id="timer-preset-name" data-t-placeholder="presetName" placeholder="Preset name">
+            <input type="text" id="timer-preset-name" data-t-placeholder="presetName" placeholder="Preset name" aria-label="Preset name" data-t-arialabel="presetName">
             <button type="button" class="timer-icon-btn" id="timer-preset-save" data-t="save">Save</button>
           </div>
         </div>
@@ -229,8 +233,7 @@
     </noscript>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="../js/menu.js?v=2"></script>
-  <script src="js/sati-timer.js?v=1"></script>
+  <script src="../js/menu.js?v=3"></script>
+  <script src="js/sati-timer.js?v=2"></script>
 </body>
 </html>

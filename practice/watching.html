@@ -21,12 +21,14 @@
 <meta name="twitter:title" content="Watching · Practice · Faisal Henar">
 <meta name="twitter:description" content="Buddhist channels and recorded talks, arranged from a first look to sitting in.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=46">
+<link rel="stylesheet" href="css/practice.css?v=47">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="watching-page shelf-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="room-header">
     <a class="mark" href="../">Faisal Henar</a>
@@ -52,7 +54,7 @@
     <path d="M49 73 L49 97 L71 85 Z"></path>
   </svg>
 
-  <main data-shelf-src="data/watching.json">
+  <main id="main" tabindex="-1" data-shelf-src="data/watching.json">
   <a class="back-link" href="./">&larr; All rooms</a>
   <h1 class="room-title">Watching</h1>
   <p class="room-dek">Buddhist channels and recorded talks, arranged from a first look to sitting in.</p>
@@ -116,8 +118,7 @@
     </noscript>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="js/render-shelf.js"></script>
-  <script src="../js/menu.js?v=2"></script>
+  <script src="../js/menu.js?v=3"></script>
 </body>
 </html>

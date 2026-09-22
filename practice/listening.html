@@ -21,12 +21,14 @@
 <meta name="twitter:title" content="Listening · Practice · Faisal Henar">
 <meta name="twitter:description" content="Podcasts and narrated collections from the forest tradition and beyond.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=46">
+<link rel="stylesheet" href="css/practice.css?v=47">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="listening-page shelf-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="room-header">
     <a class="mark" href="../">Faisal Henar</a>
@@ -54,7 +56,7 @@
     <path d="M42 51 A34 34 0 0 1 42 119"></path>
   </svg>
 
-  <main data-shelf-src="data/listening.json">
+  <main id="main" tabindex="-1" data-shelf-src="data/listening.json">
   <a class="back-link" href="./">&larr; All rooms</a>
   <h1 class="room-title">Listening</h1>
   <p class="room-dek">Podcasts and narrated collections I keep coming back to, most of them from the Thai forest tradition.</p>
@@ -118,8 +120,7 @@
     </noscript>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="js/render-shelf.js"></script>
-  <script src="../js/menu.js?v=2"></script>
+  <script src="../js/menu.js?v=3"></script>
 </body>
 </html>

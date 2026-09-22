@@ -12,13 +12,15 @@
 <meta name="robots" content="noindex">
 <!-- Absolute paths throughout: GitHub Pages serves this file for a bad URL at
      any depth, so relative paths would break depending on where you landed. -->
-<link rel="stylesheet" href="/css/hub.css?v=5">
+<link rel="stylesheet" href="/css/hub.css?v=6">
 <link rel="stylesheet" href="/css/note.css?v=2">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="note-top">
     <a class="mark" href="/">Faisal Henar</a>
@@ -35,7 +37,7 @@
     </div>
   </header>
 
-  <main class="note">
+  <main id="main" tabindex="-1" class="note">
     <h1 class="note-lead">There's nothing at this address.</h1>
 
     <div class="note-body">
@@ -43,7 +45,12 @@
 
       <p>The two rooms of the site are <a href="/practice/">Practice</a> and <a href="/photography/">Photography</a>. You can also start again from <a href="/">the front door</a>.</p>
 
-      <p>If you followed a link from somewhere and it brought you here, I'd like to know: <a href="mailto:faisal@faisalhenar.com">faisal@faisalhenar.com</a>.</p>
+      <!-- email_off: Cloudflare Scrape Shield rewrites every mailto into a
+           JavaScript placeholder, which left this address unreadable to
+           anyone without JavaScript. The plain address is already public
+           in this repository, so the obfuscation was costing readers
+           without buying any protection. (September 2026) -->
+      <p>If you followed a link from somewhere and it brought you here, I'd like to know: <!--email_off--><a href="mailto:faisal@faisalhenar.com">faisal@faisalhenar.com</a><!--/email_off-->.</p>
     </div>
   </main>
 
@@ -65,7 +72,6 @@
     </noscript>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="/js/menu.js?v=2"></script>
+  <script src="/js/menu.js?v=3"></script>
 </body>
 </html>

@@ -98,3 +98,15 @@
     });
   });
 })();
+
+/* Footer copyright year. Moved here September 2026 from an inline
+   <script> that was repeated on all 28 pages. Inline scripts are the
+   one thing that stops this site adopting a strict Content Security
+   Policy, and 28 copies of one line was not worth that. menu.js is
+   already loaded by every page, at the end of the body, so the
+   element exists by the time this runs. */
+(function () {
+  'use strict';
+  var el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
+})();

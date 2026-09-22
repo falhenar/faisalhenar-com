@@ -235,7 +235,11 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 }
 .room-card .room-card-title{
   font-family: 'Lora', serif;
+  /* These became <h2> in September 2026 so the six rooms appear in the
+     document outline. The weight and margin are pinned because a heading
+     defaults to bold with margins of its own. Nothing changed visually. */
   font-weight: 600;
+  margin: 0;
   font-size: 1.15rem;
   line-height: 1.6;
   min-height: calc(1.6em * 2);
@@ -1205,7 +1209,11 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   .room-card{ padding: 18px 14px; gap: 8px; }
   .room-card .room-icon{ width: 56px; margin: 4px 0 10px; }
   .room-card .room-card-title{ font-size: 1rem; min-height: auto; }
-  .room-card .room-card-dek{ display: none; }
+  /* The description used to be hidden here. It is the only thing that
+     says what a room holds, and most visitors arrive on a phone, so
+     hiding it on the smaller screen was the wrong way round. Kept
+     smaller instead. (September 2026) */
+  .room-card .room-card-dek{ font-size: 0.82rem; line-height: 1.5; }
 
   .shelf-page .page-intro,
   .reading-page .reading-shelves-head{ padding-left: 20px; padding-right: 20px; }
@@ -1890,3 +1898,71 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   pointer-events: none;
 }
 .timer-session-controls{ margin-top: 4px; }
+
+
+/* ---------------------------------------------------------------
+   Skip link and tap targets. Added September 2026.
+
+   The skip link is the first focusable thing on every page, so one
+   Tab jumps past the header and the menu to the content. It is off
+   screen until focused, never hidden with display:none, which would
+   take it out of the tab order and defeat the point.
+
+   The tap-target rules below raise small text links to the 24px
+   minimum WCAG 2.2 asks for (2.5.8). They do it with an invisible
+   pseudo-element rather than padding, because padding on these links
+   would change the spacing of the header and footer. The box is
+   inside the link, so it only ever extends that link's own hit area.
+   --------------------------------------------------------------- */
+
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.skip-link:focus{
+  left: 8px;
+  top: 8px;
+}
+
+/* Focus lands here from the skip link. The ring is suppressed because
+   this focus is programmatic, not something the visitor tabbed to. */
+#main:focus{ outline: none; }
+
+.footer-nav a,
+.top-link,
+.back-link,
+.lang-note a,
+.latest-reflection-more,
+.mark,
+.sutta-of-day-reflection,
+.sheet-meta a,
+.timer-text-btn{
+  position: relative;
+}
+.footer-nav a::after,
+.top-link::after,
+.back-link::after,
+.lang-note a::after,
+.latest-reflection-more::after,
+.mark::after,
+.sutta-of-day-reflection::after,
+.sheet-meta a::after,
+.timer-text-btn::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+}

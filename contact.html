@@ -21,13 +21,15 @@
 <meta name="twitter:title" content="Contact · Faisal Henar">
 <meta name="twitter:description" content="Get in touch.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/hub.css?v=5">
+<link rel="stylesheet" href="css/hub.css?v=6">
 <link rel="stylesheet" href="css/note.css?v=2">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="note-top">
     <a class="mark" href="./">Faisal Henar</a>
@@ -44,7 +46,7 @@
     </div>
   </header>
 
-  <main class="note">
+  <main id="main" tabindex="-1" class="note">
     <h1 class="note-lead">Get in touch</h1>
 
     <div class="note-body">
@@ -52,7 +54,12 @@
 
       <p>You're welcome to get in touch with questions, thoughts, feedback, or simply to introduce yourself.</p>
 
-      <p><strong>Email:</strong> <a href="mailto:faisal@faisalhenar.com">faisal@faisalhenar.com</a></p>
+      <!-- email_off: Cloudflare Scrape Shield rewrites every mailto into a
+           JavaScript placeholder, which left this address unreadable to
+           anyone without JavaScript. The plain address is already public
+           in this repository, so the obfuscation was costing readers
+           without buying any protection. (September 2026) -->
+      <p><strong>Email:</strong> <!--email_off--><a href="mailto:faisal@faisalhenar.com">faisal@faisalhenar.com</a><!--/email_off--></p>
 
       <p>Thank you for stopping by.</p>
     </div>
@@ -77,7 +84,6 @@
     </noscript>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/menu.js?v=2"></script>
+  <script src="js/menu.js?v=3"></script>
 </body>
 </html>

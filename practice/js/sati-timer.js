@@ -40,6 +40,7 @@
       totalMin: function (n) { return 'Total ' + n + ' min'; },
       repeat: 'Repeat until stopped', keepScreenOn: 'Keep the screen on',
       savePreset: 'Save these settings as a preset', presetName: 'Preset name', save: 'Save',
+      minutesInputLabel: 'Duration in minutes',
       presetsTitle: 'My presets', presetsEmpty: 'No presets saved yet.',
       load: 'Load', delete: 'Delete',
       startingIn: 'Starting in', startingInSeconds: function (n) { return 'Starting in ' + n + ' seconds'; },
@@ -69,6 +70,7 @@
       totalMin: function (n) { return 'Totaal ' + n + ' min'; },
       repeat: 'Herhalen tot je stopt', keepScreenOn: 'Scherm aan houden',
       savePreset: 'Deze instellingen opslaan als voorinstelling', presetName: 'Naam van de voorinstelling', save: 'Opslaan',
+      minutesInputLabel: 'Duur in minuten',
       presetsTitle: 'Mijn voorinstellingen', presetsEmpty: 'Nog geen voorinstellingen opgeslagen.',
       load: 'Laden', delete: 'Verwijderen',
       startingIn: 'Begint over', startingInSeconds: function (n) { return 'Begint over ' + n + ' seconden'; },
@@ -405,6 +407,15 @@
     document.querySelectorAll('[data-t-placeholder]').forEach(function (el) {
       var key = el.getAttribute('data-t-placeholder');
       if (typeof T[key] === 'string') el.setAttribute('placeholder', T[key]);
+    });
+    // Controls whose visible label is a value rather than words (the
+    // minute field, the preset name) carry their accessible name here,
+    // so it is translated with everything else rather than frozen in
+    // English on the Dutch page. The markup also ships a static
+    // aria-label in the page's own language as the fallback.
+    document.querySelectorAll('[data-t-arialabel]').forEach(function (el) {
+      var key = el.getAttribute('data-t-arialabel');
+      if (typeof T[key] === 'string') el.setAttribute('aria-label', T[key]);
     });
 
     populateBellSelect(els.startBellSelect);
