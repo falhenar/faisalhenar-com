@@ -58,14 +58,13 @@ class WebsiteValidatorTests(unittest.TestCase):
                 validator.ROOT = original
         self.assertEqual(target[1], "outside")
 
-    def test_reciprocal_hreflang_is_enforced(self):
+    def _hreflang_issues(self, source_html, mirror_html):
+        """Run the language-pair checks over a throwaway pair of pages."""
         original = validator.ROOT
         with tempfile.TemporaryDirectory() as temporary:
             validator.ROOT = Path(temporary)
             practice = validator.ROOT / "practice"
             (practice / "data").mkdir(parents=True)
-            source_html = '<link rel="alternate" hreflang="nl" href="https://faisalhenar.com/practice/foo-nl.html">'
-            mirror_html = "<p>no hreflang back to the English page</p>"
             (practice / "foo.html").write_text(source_html, encoding="utf-8")
             (practice / "foo-nl.html").write_text(mirror_html, encoding="utf-8")
             (practice / "data" / "nl-mirrors.json").write_text(
@@ -83,8 +82,33 @@ class WebsiteValidatorTests(unittest.TestCase):
                 validator.validate_data(issues, parsed_pages)
             finally:
                 validator.ROOT = original
-        hreflang_issues = [item for item in issues if item["code"] == "hreflang"]
-        self.assertEqual([item["path"] for item in hreflang_issues], ["practice/foo-nl.html"])
+        return [item for item in issues if item["code"] == "hreflang"]
+
+    COMPLETE_SET = (
+        '<link rel="alternate" hreflang="en" href="https://faisalhenar.com/practice/foo.html">'
+        '<link rel="alternate" hreflang="nl" href="https://faisalhenar.com/practice/foo-nl.html">'
+        '<link rel="alternate" hreflang="x-default" href="https://faisalhenar.com/practice/foo.html">'
+    )
+
+    def test_complete_language_set_passes(self):
+        self.assertEqual(self._hreflang_issues(self.COMPLETE_SET, self.COMPLETE_SET), [])
+
+    def test_missing_reciprocal_hreflang_is_enforced(self):
+        source_html = '<link rel="alternate" hreflang="nl" href="https://faisalhenar.com/practice/foo-nl.html">'
+        mirror_html = "<p>no hreflang back to the English page</p>"
+        paths = [item["path"] for item in self._hreflang_issues(source_html, mirror_html)]
+        self.assertIn("practice/foo-nl.html", paths)
+
+    def test_missing_self_reference_and_x_default_are_enforced(self):
+        """The September 2026 regression: both pages linked each other, but
+        neither declared itself and no page declared x-default, which leaves
+        the set incomplete as far as Google is concerned."""
+        source_html = '<link rel="alternate" hreflang="nl" href="https://faisalhenar.com/practice/foo-nl.html">'
+        mirror_html = '<link rel="alternate" hreflang="en" href="https://faisalhenar.com/practice/foo.html">'
+        issues = self._hreflang_issues(source_html, mirror_html)
+        languages = {item["message"].split("=")[1].split(" ")[0] for item in issues}
+        self.assertEqual(languages, {"en", "nl", "x-default"})
+        self.assertEqual({item["path"] for item in issues}, {"practice/foo.html", "practice/foo-nl.html"})
 
     def test_required_dependency_relationships_are_declared(self):
         declarations = {item["id"]: item for item in validator.DEPENDENCIES}

@@ -402,10 +402,16 @@ def validate_data(issues, parsed_pages):
     manifest = read_json("practice/data/nl-mirrors.json", issues, "Language pairs"); pairs = manifest.get("pairs", []) if isinstance(manifest, dict) else []
     for number, pair in enumerate(pairs, 1):
         if not isinstance(pair, dict) or set(pair) != {"source", "mirror", "synced_to"} or not re.fullmatch(r"[0-9a-f]{40}", str(pair.get("synced_to", ""))): issues.append(issue("language-manifest", "Language pairs", "practice/data/nl-mirrors.json", f"Pair {number} has an invalid schema.", ("language-pairs",))); continue
-        for page, language, other in ((pair["source"], "nl", pair["mirror"]), (pair["mirror"], "en", pair["source"])):
-            parser = parsed_pages.get(page); expected = page_url(other)
-            links = [] if parser is None else [attrs.get("href") for tag, attrs in parser.attrs if tag == "link" and attrs.get("rel", "").lower() == "alternate" and attrs.get("hreflang", "").lower() == language]
-            if links != [expected]: issues.append(issue("hreflang", "Language pairs", page, f"Reciprocal hreflang={language} must point to {expected}.", ("language-pairs",)))
+        # Every page in a language set must declare the whole set, including
+        # itself, plus an x-default. Google treats a set without a
+        # self-reference as incomplete and may ignore it. Checking the
+        # reciprocal link alone let three of ten pages drift (September 2026).
+        for page in (pair["source"], pair["mirror"]):
+            parser = parsed_pages.get(page)
+            for language, other in (("en", pair["source"]), ("nl", pair["mirror"]), ("x-default", pair["source"])):
+                expected = page_url(other)
+                links = [] if parser is None else [attrs.get("href") for tag, attrs in parser.attrs if tag == "link" and attrs.get("rel", "").lower() == "alternate" and attrs.get("hreflang", "").lower() == language]
+                if links != [expected]: issues.append(issue("hreflang", "Language pairs", page, f"hreflang={language} must be declared exactly once and point to {expected}.", ("language-pairs",)))
     counts["language_pairs"] = len(pairs)
     contracts = (
         ("reflections", "practice/reflections.html", ("js/suttas-config.js", "js/render-reflections.js"), "The Reflection archive must load its data and renderer."),
