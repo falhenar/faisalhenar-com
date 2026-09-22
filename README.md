@@ -169,8 +169,11 @@ your writing, so when it fails, fix the line yourself and push again.
   The separate Index uses a wider editorial field on desktop and staggered
   two-photograph pairings on phones. Both keep the warm off-white ground.
   Photographs sit directly on the paper with no border, card, shadow or crop.
-- Black and white is the default. Colour is a per-photograph decision (the
-  `color` field in `photos.json`), used where the colour is the point.
+- Colour or black and white is a per-photograph decision (the `color`
+  field in `photos.json`). Black and white was the default early on; as of
+  September 2026 colour is the majority of the collection. Neither is a
+  house rule, and the counts will keep moving. Don't read the ratio as a
+  policy.
 
 ## Before pushing changes live
 
