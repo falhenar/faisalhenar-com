@@ -23,5 +23,10 @@ desktop.ini
 *.token
 .env
 
+# Python bytecode from tools/. Turned up untracked in the working tree
+# after running the validators.
+__pycache__/
+*.pyc
+
 # Temporary working tools, not part of the production site.
 /_working/
