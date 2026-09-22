@@ -145,13 +145,11 @@ function createPhotoViewer(config) {
     prevBtn.setAttribute('aria-label', atStart
       ? (boundaryLabel.prev ? boundaryLabel.prev() : 'Previous photo')
       : 'Previous photo');
-    prevBtn.title = atStart && boundaryLabel.prev ? '' : '';
 
     nextBtn.classList.toggle('is-end', atEnd);
     nextBtn.setAttribute('aria-label', atEnd
       ? (boundaryLabel.next ? boundaryLabel.next() : 'Next photo')
       : 'Next photo');
-    nextBtn.title = atEnd && boundaryLabel.next ? '' : '';
 
     preloadNeighbours(i);
   }
