@@ -15,6 +15,16 @@ jobs:
 
       - name: Test the validator
         run: python3 -m unittest discover -s tools/tests -v
-
+      
+      - name: Check the generated Reflection pages are current
+        run: |
+          python3 tools/build-reflections.py
+          if ! git diff --quiet; then
+            echo "The generated Reflection pages are out of date."
+            echo "Run: python3 tools/build-reflections.py, then commit the result."
+            git --no-pager diff --stat
+            exit 1
+          fi
+      
       - name: Validate the complete public website
         run: python3 tools/validate-site.py
