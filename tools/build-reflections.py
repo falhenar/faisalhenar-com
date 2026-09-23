@@ -104,11 +104,24 @@ def description(entry):
 
 
 def subtitle(entry):
+    """Reference and source title, for the Reflection's own page."""
     reference = entry.get("ref") or entry.get("sourceLocation") or ""
     source = entry.get("sourceTitle") or entry.get("suttaTitle") or ""
     if not reference:
         return esc(source) if source else ""
     return esc(reference) + (" &middot; " + esc(source) if source else "")
+
+
+def archive_reference(entry):
+    """The shorter form, for the contents page: one name for the text, not two.
+
+    The Pali title is carried on the Reflection's own page, under the
+    heading, where there is room for it. Here it is the difference between
+    every row fitting on one line and the longest one folding its date onto
+    a second, which made the list look like two different designs.
+    """
+    return esc(entry.get("ref") or entry.get("sourceLocation")
+               or entry.get("sourceTitle") or entry.get("suttaTitle") or "")
 
 
 def structural(entry):
@@ -342,7 +355,7 @@ def archive_markup(groups):
         out.append('      <p class="section-dek">' + group["section"]["note"] + "</p>")
         out.append('      <ol class="reflection-index">')
         for entry in group["entries"]:
-            line = subtitle(entry)
+            line = archive_reference(entry)
             out.append('        <li class="reflection-index-item">')
             out.append('          <a href="reflections/' + esc(entry["slug"]) + '.html">')
             out.append('            <span class="reflection-index-title">' + esc(entry["title"]) + "</span>")
