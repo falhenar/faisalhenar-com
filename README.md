@@ -177,6 +177,14 @@ your writing, so when it fails, fix the line yourself and push again.
   have to be kept in step with `css/index.css` and the folio block in
   `css/style.css`. If a layout changes there and not here, the browser will
   still choose a size, just the wrong one.
+- The Sati Timer's Android build is not in this repository. It lives in
+  GitHub Releases, tagged `sati-timer-<version>`, and four pages link to it:
+  `practice/meditation.html`, `practice/meditation-nl.html`,
+  `practice/sati-timer-web.html` and `practice/sati-timer-web-nl.html`.
+  Shipping a new version means publishing the release first, then updating
+  those four links and the version and size in the two `meditation` pages,
+  in one commit. Keeping the binary out means the repository does not grow
+  by three megabytes per release.
 - Reflections are static pages, one per published entry, written by
   `tools/build-reflections.py` from `practice/js/suttas-config.js` into
   `practice/reflections/`. The essays are not edited there: the config is the
