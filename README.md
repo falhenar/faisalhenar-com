@@ -108,7 +108,9 @@ kinds, and nothing else to configure:
 
 Two flags, both rare: `weight: [1, 1.25]` nudges one photograph's share of
 a shared row, and `turn: true` puts a longer pause above a row where the
-sequence changes register.
+sequence changes register. That flag is about spacing only. It has nothing
+to do with the named ending described below, which unfortunately shares the
+word.
 
 A shared row divides itself by the photographs' own proportions, so both
 end up the same height and neither is cropped. You do not choose widths.
@@ -116,6 +118,26 @@ end up the same height and neither is cropped. You do not choose widths.
 To remove a photograph from the sequence, take its id out of
 `exhibition.json`. It stays in `photos.json`, so it remains in the Index.
 Removing a photograph from the master collection is a separate operation.
+
+### Where the Exhibition ends
+
+The Exhibition ends in words, not with a rule: "That is the selection.
+Eleven photographs, chosen and placed in order." The same sentence appears
+again in the viewer, as a full-screen card at the last photograph with two
+answers and no third one that is another press of Next. A visitor should
+know they have left the selection and entered the archive, rather than
+drift from one into the other.
+
+**The count is read from `exhibition.json`, not written in the HTML.**
+Change the rows and both sentences follow: words up to twenty, a numeral
+above that, and the singular handled. It said "Eleven photographs" twice in
+the markup until September 2026, which would have gone on being true for
+exactly as long as the selection held eleven.
+
+The viewer's counts follow the same rule. Opening a frame hands it the
+Exhibition and nothing else, so it says "photo 03 of 11" and means it.
+Accepting the ending swaps in the whole collection at that point, so the
+next photograph is "photo 12 of 107".
 
 ## 4. Adding reflections and quotes
 
