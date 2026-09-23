@@ -410,16 +410,18 @@ body.folio .footer-nav{
   /* Photographs sit directly on the paper: no card, no border, no
      shadow, nothing between the ground and the image. */
 }
+/* No per-photograph treatment. Until September 2026 a photograph without
+   `color: true` in photos.json was served with filter: contrast(1.05),
+   and one with it was left alone. The flag turned out to contradict the
+   file on roughly half the collection, so the bump was landing more or
+   less at random, and the README described it as a black and white
+   treatment, which it never was. Every photograph now shows as it was
+   edited. */
 .frame img{
   display: block;
   width: 100%;
   height: auto;
-  /* Carried over unchanged from the dark wall so the black and white
-     frames keep the treatment they were edited against; colour files are
-     left alone, as before. */
-  filter: contrast(1.05);
 }
-.frame img.is-color{ filter: none; }
 
 /* Hover does not touch the photograph. Two treatments came before this
    one and both did: a slight scale, which pushed its neighbour in a
@@ -580,11 +582,9 @@ body.folio .footer-nav{
   max-width: 100dvw;
   max-height: 100dvh;
   object-fit: contain;
-  filter: contrast(1.05);
   position: relative;
   z-index: 1;
 }
-.lightbox img.is-color{ filter: none; }
 
 /* Controls sit above the photo, dimmed until the pointer is near them. */
 .lightbox-controls{

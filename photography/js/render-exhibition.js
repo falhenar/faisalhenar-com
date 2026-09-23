@@ -42,7 +42,6 @@ function renderPhotography() {
     if (natural) img.style.aspectRatio = p.w + ' / ' + p.h;
     img.setAttribute('decoding', 'async');
     img.setAttribute('loading', eager ? 'eager' : 'lazy');
-    if (p.color) img.classList.add('is-color');
 
     const button = document.createElement('button');
     button.type = 'button';
@@ -76,7 +75,7 @@ function renderPhotography() {
 
   const exhibitionItems = exhibitionOrder.map(function (id) {
     const p = PHOTOS[id];
-    return { url: cfImage(p.src, SRC_WIDTH.viewer), alt: p.alt, color: !!p.color };
+    return { url: cfImage(p.src, SRC_WIDTH.viewer), alt: p.alt };
   });
 
   /* ---------- the Index ----------
@@ -112,7 +111,7 @@ function renderPhotography() {
   );
   const continuousItems = continuousOrder.map(function (id) {
     const p = PHOTOS[id];
-    return { url: cfImage(p.src, SRC_WIDTH.viewer), alt: p.alt, color: !!p.color };
+    return { url: cfImage(p.src, SRC_WIDTH.viewer), alt: p.alt };
   });
 
   /* ---------- one viewer, two sets ---------- */

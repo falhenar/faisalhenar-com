@@ -95,7 +95,7 @@
         fsBtn: document.getElementById('lightbox-fullscreen')
       });
       viewer.items = photos.map(function (photo) {
-        return { url: photoUrl(photo, 2000), alt: photo.alt, color: !!photo.color };
+        return { url: photoUrl(photo, 2000), alt: photo.alt };
       });
 
       count.textContent = photos.length + ' photographs';

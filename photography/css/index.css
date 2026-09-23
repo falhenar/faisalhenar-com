@@ -80,9 +80,6 @@ body.index-page .page{
 }
 .editorial-phone{ display: none; }
 
-body.index-page .lightbox img,
-body.index-page .lightbox img.is-color{ filter: none; }
-
 @media (max-width: 680px){
   body.index-page .page{
     padding-left: 16px;

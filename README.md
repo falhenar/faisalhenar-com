@@ -80,8 +80,13 @@ Exhibition only if you decide it belongs there.
    - `w` and `h` are the file's real pixel dimensions. They reserve the
      right space before the image loads, so nothing jumps on the page.
      Wrong numbers mean a visible layout shift.
-   - `color: true` keeps the photograph in colour; `false` applies the
-     site's black and white treatment.
+   - `color` is no longer read by the site. It described a treatment the
+     CSS never applied (`false` only added five percent contrast, never
+     a black and white conversion) and it contradicted the file on about
+     half the collection. September 2026: the site stopped using it and
+     every photograph now shows as it was edited. The field stays in the
+     data only because the Photography Manager still requires it; see
+     `docs/roadmap-2026-09.md` for what removing it there would take.
    - `alt` describes the photograph for someone who cannot see it.
    - `added` is the date it entered the collection. The array order is the
      public Index sequence.
@@ -169,11 +174,11 @@ your writing, so when it fails, fix the line yourself and push again.
   The separate Index uses a wider editorial field on desktop and staggered
   two-photograph pairings on phones. Both keep the warm off-white ground.
   Photographs sit directly on the paper with no border, card, shadow or crop.
-- Colour or black and white is a per-photograph decision (the `color`
-  field in `photos.json`). Black and white was the default early on; as of
-  September 2026 colour is the majority of the collection. Neither is a
-  house rule, and the counts will keep moving. Don't read the ratio as a
-  policy.
+- Colour or black and white is a decision made in the edit, before the
+  photograph reaches the site. The site applies no treatment of its own.
+  Black and white was the default early on; as of September 2026 colour
+  is the majority of the collection. Neither is a house rule, and the
+  counts will keep moving. Don't read the ratio as a policy.
 
 ## Before pushing changes live
 

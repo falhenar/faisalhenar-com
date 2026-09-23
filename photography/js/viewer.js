@@ -38,14 +38,13 @@
     });
 
     viewer.open(photos, startIndex, originEl);
-    // photos: array of { url, alt, color }
+    // photos: array of { url, alt }
     //   url   -> already-resolved image URL for full-size viewing
     //            (the caller applies cfImage or any other helper first;
     //            this module has no opinion on image hosting).
     //   alt   -> accessible name for the image; also used to build the
     //            default aria-label ("<alt>, photo 3 of 40") unless
     //            labelFor is supplied.
-    //   color -> optional; toggles the 'is-color' class on the image.
     // startIndex: which photo to open on.
     // originEl: the element to return focus to when the viewer closes
     //           normally (click Close, Escape, click outside, or a
@@ -129,7 +128,6 @@ function createPhotoViewer(config) {
     const photo = photos[i];
     img.src = photo.url;
     img.alt = defaultLabelFor(i);
-    img.classList.toggle('is-color', !!photo.color);
     if (captionEl) {
       if (captionFor) {
         captionEl.textContent = captionFor(photo, i, photos.length);
