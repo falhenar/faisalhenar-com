@@ -357,6 +357,56 @@ def jsonstr(value):
     return json.dumps(value, ensure_ascii=False)
 
 
+def withdrawn_markup(slug, css_version, base_version, menu_version):
+    """The page left behind when a Reflection stops being published.
+
+    Deleting it would break every link anyone has shared, and leaving the
+    essay up would defeat the point of withdrawing it. So the text goes and
+    the address stays, pointing at the archive. Nothing is destroyed: publish
+    the entry again and this file is overwritten with the Reflection.
+
+    It is marked noindex, which is also what keeps it out of the sitemap;
+    tools/validate-site.py treats those two as the same decision.
+    """
+    url = ORIGIN + "/practice/reflections/" + slug + ".html"
+    title = "Withdrawn &middot; Reflections &middot; Faisal Henar"
+    desc = "This reflection is no longer published. The others are in the archive."
+    return "\n".join([
+        "<!DOCTYPE html>",
+        '<html lang="en">',
+        "<head>",
+        '<meta charset="UTF-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+        '<meta name="robots" content="noindex, follow">',
+        '<meta http-equiv="refresh" content="0; url=../reflections.html">',
+        '<link rel="icon" href="/favicon.ico" sizes="any">',
+        "<title>" + title + "</title>",
+        '<meta name="description" content="' + desc + '">',
+        '<link rel="canonical" href="' + url + '">',
+        '<meta property="og:title" content="' + title + '">',
+        '<meta property="og:description" content="' + desc + '">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:url" content="' + url + '">',
+        '<meta property="og:image" content="' + ORIGIN + '/images/og-image.png">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<link rel="stylesheet" href="/css/base.css?v=' + base_version + '">',
+        '<link rel="stylesheet" href="../css/practice.css?v=' + css_version + '">',
+        "</head>",
+        '<body class="reflection-page">',
+        "",
+        '  <main id="main" tabindex="-1">',
+        '  <h1 class="room-title">Withdrawn</h1>',
+        '  <p class="room-dek">This reflection is no longer published. '
+        '<a href="../reflections.html">The others are here</a>.</p>',
+        "  </main>",
+        "",
+        '  <script src="../../js/menu.js?v=' + menu_version + '"></script>',
+        "</body>",
+        "</html>",
+    ]) + "\n"
+
+
 def archive_markup(groups):
     out = []
     for group in groups:
@@ -472,20 +522,22 @@ def main():
                 write(path, markup)
                 written += 1
 
-    stale = sorted(n for n in os.listdir(OUT_DIR) if n.endswith(".html") and n not in wanted)
-    if stale:
-        print("  NOTE: these pages no longer match a published Reflection and were left in place:")
-        for name in stale:
-            print("    practice/reflections/" + name)
-        print("  Unpublishing is rare enough that this tool does not delete. Remove them by hand,")
-        print("  and leave a redirect if the page was ever public.")
+    retired = 0
+    for name in sorted(n for n in os.listdir(OUT_DIR) if n.endswith(".html") and n not in wanted):
+        path = os.path.join(OUT_DIR, name)
+        markup = withdrawn_markup(name[:-5], css_version, base_version, menu_version)
+        if read(path) != markup:
+            write(path, markup)
+            retired += 1
+            print("  withdrawn: practice/reflections/%s now redirects to the archive" % name)
 
     write(ARCHIVE, splice(archive_text, archive_markup(groups), "practice/reflections.html"))
     write(SITEMAP, splice(read(SITEMAP), sitemap_markup(groups), "sitemap.xml"))
 
     total = sum(len(g["entries"]) for g in groups)
-    print("Reflections: %d published, %d page%s rewritten, archive and sitemap updated."
-          % (total, written, "" if written == 1 else "s"))
+    print("Reflections: %d published, %d page%s rewritten%s, archive and sitemap updated."
+          % (total, written, "" if written == 1 else "s",
+             ", %d withdrawn" % retired if retired else ""))
 
 
 if __name__ == "__main__":

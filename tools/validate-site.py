@@ -318,7 +318,16 @@ def validate_pages(issues):
     try:
         tree = ET.parse(ROOT / "sitemap.xml"); namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         actual = {node.text.strip() for node in tree.findall("s:url/s:loc", namespace) if node.text}
-        expected = {page_url(page) for page in pages if page != "404.html"}
+        # A page marked noindex is one we have asked search engines to leave
+        # alone, and the sitemap is the list we ask them to read. The two are
+        # the same decision, so a noindex page is expected to be absent rather
+        # than reported as missing. Today that is the withdrawn-Reflection
+        # redirect, which keeps a shared link working without being a page.
+        noindex = {relative for relative, parser in parsed.items()
+                   if any(tag == "meta" and attrs.get("name", "").lower() == "robots"
+                          and "noindex" in attrs.get("content", "").lower()
+                          for tag, attrs in parser.attrs)}
+        expected = {page_url(page) for page in pages if page != "404.html" and page not in noindex}
         for url in sorted(expected - actual): issues.append(issue("sitemap", "Sitemap", "sitemap.xml", f"Missing public page: {url}."))
         for url in sorted(actual - expected): issues.append(issue("sitemap", "Sitemap", "sitemap.xml", f"Unknown public page: {url}."))
     except Exception as exc: issues.append(issue("sitemap", "Sitemap", "sitemap.xml", str(exc)))

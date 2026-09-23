@@ -118,6 +118,31 @@ class WebsiteValidatorTests(unittest.TestCase):
 
 
 
+class NoindexSitemapTests(unittest.TestCase):
+    """A page we ask search engines to skip is not expected in the sitemap.
+
+    The sitemap is the list we ask them to read, so listing a page there while
+    telling them not to index it is a contradiction. Today the only such page
+    is the redirect left behind when a Reflection is withdrawn.
+    """
+
+    def noindex_pages(self, markup):
+        parser = validator.Page()
+        parser.feed(markup)
+        parser.close()
+        return any(tag == "meta" and attrs.get("name", "").lower() == "robots"
+                   and "noindex" in attrs.get("content", "").lower()
+                   for tag, attrs in parser.attrs)
+
+    def test_a_noindex_page_is_recognised(self):
+        self.assertTrue(self.noindex_pages('<meta name="robots" content="noindex, follow">'))
+        self.assertTrue(self.noindex_pages('<meta name="ROBOTS" content="NOINDEX">'))
+
+    def test_an_ordinary_page_is_not(self):
+        self.assertFalse(self.noindex_pages('<meta name="description" content="A page.">'))
+        self.assertFalse(self.noindex_pages('<meta name="robots" content="follow">'))
+
+
 class BaseStylesheetTests(unittest.TestCase):
     """Every page loads css/base.css, and loads it first.
 

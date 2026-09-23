@@ -123,6 +123,37 @@ class OrderTests(unittest.TestCase):
         self.assertEqual([g["key"] for g in groups], ["kept"])
 
 
+class WithdrawnPageTests(unittest.TestCase):
+    """What happens to the page when a Reflection stops being published.
+
+    Deleting it would break every link anyone had shared. Leaving the essay up
+    would defeat the point of withdrawing it. So the text goes and the address
+    stays, pointing at the archive.
+    """
+
+    def markup(self):
+        return builder.withdrawn_markup("some-reflection", "53", "1", "3")
+
+    def test_the_essay_is_gone_and_the_address_still_answers(self):
+        page = self.markup()
+        self.assertIn('http-equiv="refresh"', page)
+        self.assertIn("../reflections.html", page)
+        self.assertIn("Withdrawn", page)
+
+    def test_it_asks_not_to_be_indexed(self):
+        """Which is also what keeps it out of the sitemap; see validate-site.py."""
+        self.assertIn('name="robots" content="noindex', self.markup())
+
+    def test_it_still_carries_what_every_page_must_carry(self):
+        """A page that fails the site validator is not a usable way to withdraw."""
+        page = self.markup()
+        for required in ('rel="canonical"', 'property="og:title"', 'property="og:description"',
+                         'property="og:type"', 'property="og:url"', 'property="og:image"'):
+            with self.subTest(required=required):
+                self.assertIn(required, page)
+        self.assertIn("/practice/reflections/some-reflection.html", page)
+
+
 class QuotationExemptionTests(unittest.TestCase):
     """STYLE.md exempts verbatim quotation from the punctuation rule.
 
