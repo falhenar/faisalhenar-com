@@ -37,6 +37,8 @@ The exempt fields are:
 - `text` and `source` in `practice/js/quotes-config.js`
 - `text` in `practice/js/daily-sutta-config.js`
 - `excerpt` in `practice/js/suttas-config.js`
+- anything inside a `<blockquote>` on a page, which is where that excerpt
+  ends up once a Reflection page is generated
 
 Anything else in those files, including every `note`, is FH's own writing
 and follows the rule.

@@ -78,14 +78,17 @@
   var todaysRef = normRef(sutta.ref);
   if (!todaysRef) return;
 
+  // `slug` is required as well as published: a Reflection only has a page
+  // once tools/build-reflections.py has run, and a link to a page that does
+  // not exist is worse than no link.
   var match = reflections.filter(function(s){
-    return s && s.note && s.note.trim().length > 0 && s.added && normRef(s.ref) === todaysRef;
+    return s && s.slug && s.note && s.note.trim().length > 0 && s.added && normRef(s.ref) === todaysRef;
   })[0];
   if (!match) return;
 
   var link = document.createElement('a');
   link.className = 'sutta-of-day-reflection';
-  link.href = 'reflections.html#r-' + match.id;
+  link.href = 'reflections/' + encodeURIComponent(match.slug) + '.html';
   link.textContent = 'I have written a reflection on this one \u2192';
   block.appendChild(link);
 

@@ -53,7 +53,11 @@ class Page(HTMLParser):
             if values.get(key): self.links.append((key, values[key]))
         if tag == "script" and values.get("type", "").lower() == "application/ld+json":
             self.ld += 1; self.ld_parts = []
-        elif tag in {"script", "style", "template"}: self.hidden += 1
+        # A blockquote is quoted material, not our copy. STYLE.md exempts the
+        # `excerpt` field from the punctuation rule because repunctuating a
+        # translation is misquoting it; a blockquote on a page is that same
+        # field rendered, so the exemption has to follow it here.
+        elif tag in {"script", "style", "template", "blockquote"}: self.hidden += 1
         for key in ("alt", "title", "aria-label", "content"):
             if values.get(key): self.visible.append(values[key])
 
@@ -61,7 +65,7 @@ class Page(HTMLParser):
         tag = tag.lower()
         if tag == "script" and self.ld:
             self.ld -= 1; self.json_ld.append("".join(self.ld_parts)); self.ld_parts = []
-        elif tag in {"script", "style", "template"} and self.hidden: self.hidden -= 1
+        elif tag in {"script", "style", "template", "blockquote"} and self.hidden: self.hidden -= 1
 
     def handle_data(self, data):
         if self.ld: self.ld_parts.append(data)
@@ -249,7 +253,7 @@ def local_target(page, raw):
 
 
 def validate_pages(issues):
-    page_folders = (ROOT, ROOT / "practice", ROOT / "photography", ROOT / "photography" / "index")
+    page_folders = (ROOT, ROOT / "practice", ROOT / "practice" / "reflections", ROOT / "photography", ROOT / "photography" / "index")
     pages = sorted({path.relative_to(ROOT).as_posix() for folder in page_folders for path in folder.glob("*.html")})
     parsed, versions = {}, defaultdict(set)
     for relative in pages:

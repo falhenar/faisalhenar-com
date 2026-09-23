@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Reflections · Practice · Faisal Henar">
 <meta name="twitter:description" content="A slow read through a small set of suttas, published as I get to them.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/practice.css?v=47">
+<link rel="stylesheet" href="css/practice.css?v=50">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -62,14 +62,72 @@
   <h1 class="room-title">Reflections</h1>
   <p class="room-dek">A slow read through the texts I keep returning to, published as I actually get to them rather than on a schedule. The suttas below largely follow the structure of Bhikkhu Bodhi's anthology <a href="reading.html#early-in-the-buddha-s-words">In the Buddha's Words</a>; a handful after it don't, they're simply ones that stayed with me. Sources and translations are noted per entry.</p>
 
-  <noscript>
-    <section class="section">
-      <p class="reflections-empty">The reflections are assembled in your browser, so they need JavaScript. With JavaScript off nothing is listed here.</p>
-    </section>
-  </noscript>
-
   <div id="reflections-list">
-    <!-- rendered by js/render-reflections.js -->
+    <!-- Written by tools/build-reflections.py from practice/js/suttas-config.js.
+         Everything between the markers is generated: edit the config and run
+         the tool, not this block. -->
+<!-- BUILD:reflections -->
+    <section class="section">
+      <h2 class="section-label">In the Buddha's Words</h2>
+      <p class="section-dek">Bhikkhu Bodhi's anthology (Wisdom Publications), used as a structural spine: Parts I through X, roughly foundational to advanced. Translations are Bhikkhu Sujato's via SuttaCentral, unless noted otherwise.</p>
+      <ol class="reflection-index">
+        <li class="reflection-index-item">
+          <a href="reflections/aging-and-death.html">
+            <span class="reflection-index-title">Aging and Death</span>
+            <span class="reflection-index-meta mono">SN 3.3 &middot; Jarāmaraṇasutta &middot; 30 July 2026</span>
+          </a>
+        </li>
+        <li class="reflection-index-item">
+          <a href="reflections/the-simile-of-the-mountain.html">
+            <span class="reflection-index-title">The Simile of the Mountain</span>
+            <span class="reflection-index-meta mono">SN 3.25 &middot; Pabbatūpamasutta &middot; 2 August 2026</span>
+          </a>
+        </li>
+        <li class="reflection-index-item">
+          <a href="reflections/the-divine-messengers.html">
+            <span class="reflection-index-title">The Divine Messengers</span>
+            <span class="reflection-index-meta mono">from AN 3.36 &middot; Devadūtasutta &middot; 9 August 2026</span>
+          </a>
+        </li>
+        <li class="reflection-index-item">
+          <a href="reflections/the-dart-of-painful-feeling.html">
+            <span class="reflection-index-title">The Dart of Painful Feeling</span>
+            <span class="reflection-index-meta mono">SN 36.6 &middot; Sallasutta &middot; 20 August 2026</span>
+          </a>
+        </li>
+        <li class="reflection-index-item">
+          <a href="reflections/the-vicissitudes-of-life.html">
+            <span class="reflection-index-title">The Vicissitudes of Life</span>
+            <span class="reflection-index-meta mono">AN 8.6 &middot; 31 August 2026</span>
+          </a>
+        </li>
+        <li class="reflection-index-item">
+          <a href="reflections/anxiety-due-to-change.html">
+            <span class="reflection-index-title">Anxiety Due to Change</span>
+            <span class="reflection-index-meta mono">SN 22.7 &middot; 16 September 2026</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+    <section class="section">
+      <h2 class="section-label">Reflections on Suttas That Stay With Me</h2>
+      <p class="section-dek">Suttas outside the anthology above, encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.</p>
+      <ol class="reflection-index">
+        <li class="reflection-index-item">
+          <a href="reflections/taking-care-of-ourselves-we-take-care-of-others.html">
+            <span class="reflection-index-title">Taking Care of Ourselves, We Take Care of Others</span>
+            <span class="reflection-index-meta mono">SN 47.19 &middot; Sedakasutta &middot; 19 August 2026</span>
+          </a>
+        </li>
+        <li class="reflection-index-item">
+          <a href="reflections/the-stories-we-build.html">
+            <span class="reflection-index-title">The Stories We Build</span>
+            <span class="reflection-index-meta mono">SN 5.10 &middot; Vajirāsutta &middot; 12 August 2026</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+<!-- /BUILD:reflections -->
   </div>
 
   </main>
@@ -90,8 +148,8 @@
     </noscript>
   </footer>
 
-  <script src="js/suttas-config.js?v=5"></script>
-  <script src="js/render-reflections.js?v=11"></script>
+  <script src="js/suttas-config.js?v=6"></script>
+  <script src="js/render-reflections.js?v=12"></script>
   <script src="../js/menu.js?v=3"></script>
 </body>
 </html>

@@ -177,6 +177,13 @@ your writing, so when it fails, fix the line yourself and push again.
   have to be kept in step with `css/index.css` and the folio block in
   `css/style.css`. If a layout changes there and not here, the browser will
   still choose a size, just the wrong one.
+- Reflections are static pages, one per published entry, written by
+  `tools/build-reflections.py` from `practice/js/suttas-config.js` into
+  `practice/reflections/`. The essays are not edited there: the config is the
+  source and the pages are output, so an edit made in a generated page is
+  lost the next time the tool runs. Each published entry carries a frozen
+  `slug` that fixes its URL for good; `practice/js/render-reflections.js` now
+  does nothing but forward the old `reflections.html#r-<id>` links to it.
 - The design is deliberately quiet. The Exhibition is a centred 820px folio.
   The separate Index uses a wider editorial field on desktop and staggered
   two-photograph pairings on phones. Both keep the warm off-white ground.
@@ -191,12 +198,19 @@ your writing, so when it fails, fix the line yourself and push again.
 
 There's no build step, so changes go live immediately. Before pushing:
 
-1. Serve the repository on localhost and open changed pages in a browser. A
+1. If a Reflection was added, edited or published, run
+   `python3 tools/build-reflections.py`. It writes the page for each
+   published Reflection into `practice/reflections/`, rebuilds the archive
+   list on `practice/reflections.html`, and updates the Reflection entries in
+   `sitemap.xml`. Nothing else needs it; running it when nothing changed is
+   harmless and prints that nothing was rewritten.
+2. Serve the repository on localhost and open changed pages in a browser. A
    local server is required because browsers do not fetch JSON from `file:`
    pages.
-2. Run `python3 tools/validate-site.py` (Windows: `python` or `py`). It
+3. Run `python3 tools/validate-site.py` (Windows: `python` or `py`). It
    performs the same read-only
    whole-site validation used by Website Manager and GitHub Actions, including
    Photography data, public links and assets, metadata, language pairs,
-   structured data, cache versions, and declared renderer dependencies.
-3. Commit and push.
+   structured data, cache versions, and declared renderer dependencies. It
+   will catch a Reflection page that step 1 should have rebuilt and did not.
+4. Commit and push.

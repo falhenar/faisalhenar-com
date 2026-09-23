@@ -67,6 +67,7 @@ const SUTTAS = [
   // 1. Old Age, Illness, and Death
   {
     id: "itbw-1-1-1",
+    slug: "aging-and-death",
     book: "itbw",
     part: "I",
     section: "Old Age, Illness, and Death",
@@ -82,6 +83,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-1-2",
+    slug: "the-simile-of-the-mountain",
     book: "itbw",
     part: "I",
     section: "Old Age, Illness, and Death",
@@ -97,6 +99,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-1-3",
+    slug: "the-divine-messengers",
     book: "itbw",
     part: "I",
     section: "Old Age, Illness, and Death",
@@ -114,6 +117,7 @@ const SUTTAS = [
   // 2. The Tribulations of Unreflective Living
   {
     id: "itbw-1-2-1",
+    slug: "the-dart-of-painful-feeling",
     book: "itbw",
     part: "I",
     section: "The Tribulations of Unreflective Living",
@@ -129,6 +133,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-2-2",
+    slug: "the-vicissitudes-of-life",
     book: "itbw",
     part: "I",
     section: "The Tribulations of Unreflective Living",
@@ -143,6 +148,7 @@ const SUTTAS = [
   },
   {
     id: "itbw-1-2-3",
+    slug: "anxiety-due-to-change",
     book: "itbw",
     part: "I",
     section: "The Tribulations of Unreflective Living",
@@ -289,6 +295,7 @@ const SUTTAS = [
   // --- Reflections on Suttas That Stay With Me ---
   {
     id: "keepers-1",
+    slug: "the-stories-we-build",
     book: "keepers",
     label: "",
     title: "The Stories We Build",
@@ -302,6 +309,7 @@ const SUTTAS = [
   },
   {
     id: "keepers-2",
+    slug: "taking-care-of-ourselves-we-take-care-of-others",
     book: "keepers",
     label: "",
     title: "Taking Care of Ourselves, We Take Care of Others",

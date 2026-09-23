@@ -653,6 +653,134 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   outline-offset: 3px;
 }
 
+/* A REFLECTION ON ITS OWN PAGE
+   ---------------------------------------------------------------
+   Until September 2026 every Reflection lived inside an accordion on
+   one page, so the note was styled as a preview: small, faded, and
+   sitting under a title you had to open. On its own page the note is
+   the body of the page, so it is given the size and the colour that
+   says so. The classes are shared with the archive rather than
+   duplicated, and only re-tuned here under body.reflection-page. */
+.reflection-page .reflection-note{
+  font-size: 1rem;
+  line-height: 1.75;
+  opacity: 1;
+  /* One measure for the whole page, shared with the excerpt below, rather
+     than the 56ch the archive preview used. */
+  max-width: 34rem;
+  margin: 0 0 18px;
+}
+.reflection-page .reflection-note:last-of-type{ margin-bottom: 0; }
+.reflection-page-subtitle{
+  max-width: 720px;
+  margin: 0 auto 4px;
+  padding: 0 32px;
+  font-size: 0.95rem;
+}
+.reflection-page-meta{
+  max-width: 720px;
+  margin: 0 auto 34px;
+  padding: 0 32px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+/* The quotation and the note are held to one measure. An excerpt allowed to
+   run the full column while the prose stops at 56ch reads as two columns of
+   different widths stacked on each other. */
+.reflection-article .reflections-excerpt{ margin-top: 0; max-width: 34rem; }
+.reflection-article .reflections-excerpt-link{ max-width: 34rem; }
+.reflection-article .entry-link{
+  display: inline-block;
+  margin-top: 22px;
+}
+
+/* Previous and next, inside the section the Reflection belongs to. Two
+   links and a way back, laid out as a row that becomes a column when
+   there is no room for one. */
+.reflection-nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 26px 32px 64px;
+  border-top: 1px solid var(--line);
+}
+.reflection-step{
+  display: block;
+  flex: 1 1 200px;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--ink);
+}
+.reflection-step-all{ flex: 0 1 auto; margin-left: auto; text-align: right; }
+.reflection-step-label{
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.reflection-step-title{
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+.reflection-step:hover .reflection-step-title,
+.reflection-step:focus-visible .reflection-step-title{ color: var(--accent); }
+.reflection-step:focus-visible{ outline: 1px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 560px){
+  .reflection-nav{ flex-direction: column; gap: 18px; }
+  /* In a column, flex-basis is height, so the 200px that sets a sensible
+     minimum width on a wide screen would otherwise space these three links
+     200px apart down the page. */
+  .reflection-step{ flex: 0 0 auto; }
+  .reflection-step-all{ margin-left: 0; text-align: left; }
+}
+
+/* THE ARCHIVE
+   A contents page: one line per Reflection, title and where it came
+   from. The essays themselves live on their own pages now, so this
+   page's job is to let someone find one, not to hold them. */
+.reflection-index{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.reflection-index-item{
+  border-bottom: 1px solid var(--line);
+}
+.reflection-index-item:last-child{ border-bottom: none; }
+.reflection-index-item > a{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 20px;
+  /* 44px of height without a box: the row is the target. */
+  padding: 14px 0;
+  text-decoration: none;
+  color: var(--ink);
+}
+.reflection-index-title{
+  font-family: 'Lora', serif;
+  font-size: 1.02rem;
+  line-height: 1.4;
+}
+.reflection-index-meta{
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.reflection-index-item > a:hover .reflection-index-title,
+.reflection-index-item > a:focus-visible .reflection-index-title{ color: var(--accent); }
+.reflection-index-item > a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 2px; }
+
 .entry-source{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.68rem;

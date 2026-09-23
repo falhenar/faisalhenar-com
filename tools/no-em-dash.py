@@ -75,8 +75,13 @@ TITLE_ATTRS = ("og:title", "twitter:title", 'name="title"', "name='title'")
 # Region extraction
 # ---------------------------------------------------------------------------
 
+# A blockquote is quoted material, and STYLE.md exempts quotation from the
+# rule: a translation's em dash is the translator's, not ours. The `excerpt`
+# field is already exempt in QUOTE_FIELDS below; once it is rendered onto a
+# page it is a blockquote, so the exemption has to travel with it.
 HTML_BLIND = re.compile(
-    r"<!--.*?-->|<script\b[^>]*>.*?</script\s*>|<style\b[^>]*>.*?</style\s*>",
+    r"<!--.*?-->|<script\b[^>]*>.*?</script\s*>|<style\b[^>]*>.*?</style\s*>"
+    r"|<blockquote\b[^>]*>.*?</blockquote\s*>",
     re.S | re.I,
 )
 JS_BLIND = re.compile(r"/\*.*?\*/|//[^\n]*", re.S)

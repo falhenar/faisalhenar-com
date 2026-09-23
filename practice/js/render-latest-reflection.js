@@ -8,8 +8,7 @@
   What it shows, and why:
   - an eyebrow, "Latest reflection", because the Reflections room card sits
     a few centimetres below and the widget has to say what makes it different;
-  - the title, linking to reflections.html#r-<id>, which render-reflections.js
-    already knows how to open and scroll to;
+  - the title, linking straight to that Reflection's own page;
   - a subtitle of "ref · sutta title" (or the generic source fields for
     non-sutta entries) — the same line the archive shows once an entry opens;
   - the opening of the note, trimmed to whole sentences, as a teaser;
@@ -75,7 +74,11 @@
       return (new Date(b.added) - new Date(a.added)) || (SUTTAS.indexOf(a) - SUTTAS.indexOf(b));
     })[0];
 
-  if (!latest) return;
+  // A published entry without a frozen slug has no page yet, which means
+  // tools/build-reflections.py has not been run since it was published.
+  // Showing a link to a page that is not there would be worse than showing
+  // nothing, so the widget stays hidden until the tool has run.
+  if (!latest || !latest.slug) return;
 
   var sub = subtitle(latest);
   var lead = teaser(latest.note);
@@ -83,7 +86,7 @@
   root.innerHTML =
     '<h2 class="latest-reflection-eyebrow mono">Latest reflection</h2>' +
     '<h3 class="latest-reflection-title">' +
-      '<a href="reflections.html#r-' + esc(latest.id) + '">' + esc(latest.title) + '</a>' +
+      '<a href="reflections/' + esc(latest.slug) + '.html">' + esc(latest.title) + '</a>' +
     '</h3>' +
     (sub ? '<p class="latest-reflection-sub mono">' + esc(sub) + '</p>' : '') +
     (lead ? '<p class="latest-reflection-teaser">' + esc(lead) + '</p>' : '') +
