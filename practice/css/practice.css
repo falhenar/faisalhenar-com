@@ -478,7 +478,11 @@ a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
   margin: 0 0 8px;
   max-width: 56ch;
 }
-.entry .entry-link{
+/* Was .entry .entry-link, which needed an .entry ancestor. The Reflection
+   accordion used to supply one; its own page does not, so the rule stopped
+   reaching the "Read on SuttaCentral" link and quietly dropped its
+   underline. The class names itself, so it no longer asks for a parent. */
+.entry-link{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.02em;

@@ -8,6 +8,10 @@ body.index-page .page{
 }
 .index-page-head{
   display: flex;
+  /* The heading and the count share the first line; anything after them
+     carries flex-basis 100% and drops onto its own. Without this the row
+     never breaks and they all squeeze together instead. */
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
@@ -20,6 +24,32 @@ body.index-page .page{
 .index-page-head .page-noscript{
   flex-basis: 100%;
 }
+/* The heading and the count sit on one line; this drops onto its own,
+   under both. It exists to answer the question a visitor arriving from the
+   Exhibition is holding: is this more, or is this the same again. */
+.index-page-dek{
+  /* Full width, so the flex line breaks before it. The measure is held by
+     the span inside rather than by a max-width here: a max-width on the
+     item itself clamps the size the browser uses to decide where the line
+     breaks, so the paragraph would quietly fit beside the heading again
+     and the break would never happen. */
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.index-page-dek > span{
+  display: block;
+  max-width: 54ch;
+}
+.index-page-dek a{
+  color: inherit;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+.index-page-dek a:hover,
+.index-page-dek a:focus-visible{ color: var(--accent); border-bottom-color: currentColor; }
 
 .editorial-desktop{
   display: flex;

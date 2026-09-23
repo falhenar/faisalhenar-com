@@ -202,6 +202,29 @@ function renderPhotography() {
   const turnCountEl = document.getElementById('turn-count');
   if (turnCountEl) turnCountEl.textContent = indexOrder.length + ' photographs';
 
+  /*
+    How many photographs the selection holds, in words, wherever the page
+    says so. It used to say "Eleven photographs" in two places in the HTML,
+    which was true on the day it was written and would have gone on being
+    said after the twelfth was hung. The Exhibition is a curated sequence
+    and its length is meant to change, so the sentence has to count.
+  */
+  const NUMBER_WORDS = ['no', 'One', 'Two', 'Three', 'Four', 'Five', 'Six',
+    'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen',
+    'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen',
+    'Twenty'];
+
+  function countInWords(n) {
+    // Past twenty a numeral reads better than a word, and a selection that
+    // large has stopped being a selection anyway.
+    const word = (n >= 0 && n < NUMBER_WORDS.length) ? NUMBER_WORDS[n] : String(n);
+    return word + (n === 1 ? ' photograph' : ' photographs');
+  }
+
+  document.querySelectorAll('[data-exhibition-count]').forEach(function (el) {
+    el.textContent = countInWords(exhibitionOrder.length);
+  });
+
   // The frame the current viewing started from. Focus goes back to it if
   // the visitor stops at the turn, so the page does not lose its place.
   let viewerOrigin = null;
