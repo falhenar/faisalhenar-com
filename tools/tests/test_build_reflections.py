@@ -41,11 +41,21 @@ class SlugTests(unittest.TestCase):
         self.assertIn('    slug: "aging-and-death",\n', after)
         self.assertEqual(after.count('slug: "aging-and-death"'), 1)
 
-    def test_two_entries_with_the_same_title_do_not_share_a_url(self):
+    def test_two_entries_that_would_share_a_url_are_refused_by_name(self):
+        """A URL is permanent, so a person chooses it rather than inheriting a number."""
         text = '  {\n    id: "a",\n    title: "Same",\n  },\n  {\n    id: "b",\n    title: "Same",\n  },\n'
         published = [{"id": "a", "title": "Same"}, {"id": "b", "title": "Same"}]
-        _, minted = builder.freeze_slugs(text, published)
-        self.assertEqual([slug for _id, slug in minted], ["same", "same-2"])
+        with self.assertRaises(SystemExit) as caught:
+            builder.freeze_slugs(text, published)
+        message = str(caught.exception)
+        self.assertIn("a", message)
+        self.assertIn("b", message)
+        self.assertIn("same.html", message)
+
+    def test_a_title_with_nothing_sluggable_is_refused(self):
+        text = '  {\n    id: "a",\n    title: "...",\n  },\n'
+        with self.assertRaises(SystemExit):
+            builder.freeze_slugs(text, [{"id": "a", "title": "..."}])
 
 
 class DescriptionTests(unittest.TestCase):

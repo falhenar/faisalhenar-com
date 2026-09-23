@@ -404,11 +404,22 @@ def freeze_slugs(text, published):
         if entry.get("slug"):
             continue
         slug = slugify(entry["title"])
-        base, number = slug, 2
-        taken = {e.get("slug") for e in published if e.get("slug")}
-        while slug in taken:
-            slug = "%s-%d" % (base, number)
-            number += 1
+        taken = {e.get("slug"): e["id"] for e in published if e.get("slug")}
+        if not slug:
+            raise SystemExit(
+                "ERROR: %s has a title with no letters or digits in it, so no slug can be "
+                "worked out. Give it a slug by hand in suttas-config.js." % entry["id"]
+            )
+        if slug in taken:
+            # Deliberately not "-2". A URL is permanent and a person should
+            # choose it, not inherit a number from whichever entry happened to
+            # be published first. The Website Manager refuses the same way, so
+            # the two agree; see SPEC-reflection-publishing.md in that project.
+            raise SystemExit(
+                "ERROR: %s and %s would both be published at /practice/reflections/%s.html.\n"
+                "Give one of them a slug by hand in suttas-config.js, then run this again."
+                % (taken[slug], entry["id"], slug)
+            )
         entry["slug"] = slug
         needle = '    id: "%s",\n' % entry["id"]
         if text.count(needle) != 1:
