@@ -263,6 +263,21 @@ def validate_pages(issues):
         expected = page_url(relative); special = relative == "404.html"
         canonical = [attrs.get("href") for tag, attrs in parser.attrs if tag == "link" and attrs.get("rel", "").lower() == "canonical"]
         if not special and canonical != [expected]: issues.append(issue("canonical", "Metadata", relative, f"Canonical URL must be exactly {expected}."))
+        # Every page loads css/base.css, and loads it before its section
+        # stylesheet: base draws the shared chrome and the section file
+        # re-tunes it, so the order decides which one wins. A page that
+        # misses it renders the menu, the skip link and the reset unstyled,
+        # which is easy to ship and easy not to notice on a page you did
+        # not happen to open. Caught here rather than by eye.
+        sheets = [attrs.get("href", "") for tag, attrs in parser.attrs
+                  if tag == "link" and attrs.get("rel", "").lower() == "stylesheet"]
+        base_at = next((i for i, href in enumerate(sheets) if "css/base.css" in href), None)
+        section_at = next((i for i, href in enumerate(sheets)
+                           if re.search(r"css/(?:hub|practice|style)\.css", href)), None)
+        if base_at is None:
+            issues.append(issue("base-stylesheet", "Pages", relative, "Every page must load css/base.css."))
+        elif section_at is not None and base_at > section_at:
+            issues.append(issue("base-stylesheet", "Pages", relative, "css/base.css must load before the section stylesheet."))
         og = {attrs.get("property"): attrs.get("content") for tag, attrs in parser.attrs if tag == "meta" and attrs.get("property", "").startswith("og:")}
         for key in (() if special else ("og:title", "og:description", "og:type", "og:url", "og:image")):
             if not og.get(key): issues.append(issue("open-graph", "Metadata", relative, f"Missing {key}."))

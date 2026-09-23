@@ -23,54 +23,6 @@
    All five families are SIL Open Font License 1.1 — see /fonts/LICENSE.md. */
 
 @font-face{
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face{
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url('/fonts/inter-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face{
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono-400-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono-500-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face{
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono-500-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
   font-family: 'Fraunces';
   font-style: normal;
   font-weight: 300 600;
@@ -110,110 +62,26 @@
   --muted: #8c8a85;
   --line: #2a2a27;
   --accent: #c9962f;
+
+  /* Read by css/base.css. The dark viewer's values. A custom property
+     that refers to another one is resolved where it is DEFINED, not
+     where it is used, so these have to be restated in body.folio below
+     rather than left to inherit: otherwise the menu on the light folio
+     header would be handed the dark viewer's panel. */
+  --menu-bg: #1a1a18;
+  --menu-hover: rgba(237,237,234,0.06);
+  --menu-shadow: 0 12px 28px rgba(0,0,0,0.45);
 }
 
-*{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+body{ font-weight: 400; }
+/* Buttons carry the same ring as links here: the viewer's controls
+   are buttons, and they are the only way out of it. */
+button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
 
-body{
-  margin:0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
-
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior: auto; }
-  *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-}
-
-a{ color: inherit; text-decoration: none; }
-a:focus-visible, button:focus-visible{
-  outline: 1px solid var(--accent);
-  outline-offset: 3px;
-}
-
-.mono{ font-family: 'IBM Plex Mono', monospace; }
-
-/* ---------- site menu ---------- */
-.menu{ position: relative; }
-.menu-btn{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  background: none;
-  border: 1px solid var(--line);
-  padding: 5px 10px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.menu-btn:hover{ color: var(--fg); border-color: var(--accent); }
-.menu-btn:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
-.menu-btn::after{
-  content: '▾';
-  font-size: 0.6rem;
-  transition: transform 0.15s ease;
-}
-.menu-btn[aria-expanded="true"]::after{ transform: rotate(180deg); }
-.menu-panel{
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 168px;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  z-index: 50;
-}
-.menu-panel[hidden]{ display: none; }
-/* invisible bridge over the gap, so hover survives the trip from button to panel */
-.menu-panel::before{
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 0;
-  right: 0;
-  height: 8px;
-}
-.menu-panel a{
-  padding: 9px 10px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  color: var(--fg);
-}
-.menu-panel a:hover{ background: rgba(237,237,234,0.06); }
-.menu-panel a.current{ color: var(--accent); font-weight: 500; }
-.menu-panel a:focus-visible{ outline: 1px solid var(--accent); outline-offset: -2px; }
-
-/* =====================================================================
-   THE FOLIO: the light Photography page (index.html)
-   =====================================================================
-   Everything from here to the footer belongs to photography/index.html,
-   which carries <body class="folio">.
-
-   This replaces the Stage 2E "dark exhibition wall": black field,
-   sprocket strips, per-photo size tiers, left/right offsets, bottom-
-   aligned duos and a spacing vocabulary of close/moderate/spacious. All
-   of that is gone. What is here instead is a single centred column and
-   three row types. Nothing positions a photograph individually; the row
-   it belongs to decides everything.
-
-   The page reads: header, one heading, the curated Exhibition, the
-   Index, footer.
---------------------------------------------------------------------- */
 
 /* ---------- folio tokens ----------
    The site's hub (css/hub.css) is already warm paper on dark ink:
-   --paper #F7F0E1, --ink #241F1A, --muted #6F6656, --accent #875F1E.
+   --bg #F7F0E1, --fg #241F1A, --muted #6F6656, --accent #875F1E.
    The folio uses that family but lightens and desaturates the paper: a
    strongly warm ground casts a tint over black and white photographs,
    which is the one thing this page cannot afford. Type, rules and accent
@@ -228,6 +96,12 @@ body.folio{
   --muted: #6F6656;
   --line: #E6DFD1;
   --accent: #875F1E;
+
+  /* The same three tokens base.css reads, in the folio's light palette.
+     See the note in :root: they are restated rather than inherited. */
+  --menu-bg: #F3EFE7;
+  --menu-hover: rgba(36,31,26,0.05);
+  --menu-shadow: 0 10px 24px rgba(36,31,26,0.10);
 
   /* One column width for the whole page: heading, photographs, Index,
      header and footer all align to it. 820px at desktop sits in the
@@ -310,8 +184,6 @@ body.folio .lightbox{
 }
 .top-link:hover{ color: var(--accent); }
 
-body.folio .menu-panel{ box-shadow: 0 10px 24px rgba(36,31,26,0.10); }
-body.folio .menu-panel a:hover{ background: rgba(36,31,26,0.05); }
 
 /* The 96px is the folio's own: the Index runs to the bottom of the
    column and needs the air. Everything else here is Practice's footer. */
@@ -782,29 +654,6 @@ body.folio .footer-nav{
    would change the spacing of the header and footer. The box is
    inside the link, so it only ever extends that link's own hit area.
    --------------------------------------------------------------- */
-
-.skip-link{
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  z-index: 200;
-  padding: 10px 16px;
-  background: var(--bg);
-  color: var(--fg);
-  border: 1px solid var(--accent);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-}
-.skip-link:focus{
-  left: 8px;
-  top: 8px;
-}
-
-/* Focus lands here from the skip link. The ring is suppressed because
-   this focus is programmatic, not something the visitor tabbed to. */
-#main:focus{ outline: none; }
 
 .footer-nav a,
 .top-link,

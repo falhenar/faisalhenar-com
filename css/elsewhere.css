@@ -44,7 +44,7 @@
 }
 .entry .entry-note{
   font-size: 0.92rem;
-  color: var(--ink);
+  color: var(--fg);
   opacity: 0.85;
   margin: 0 0 8px;
   max-width: 56ch;

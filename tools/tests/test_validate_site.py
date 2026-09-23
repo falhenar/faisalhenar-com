@@ -117,5 +117,56 @@ class WebsiteValidatorTests(unittest.TestCase):
         self.assertIn("Reading shelf", declarations["reading"]["effects"])
 
 
+
+class BaseStylesheetTests(unittest.TestCase):
+    """Every page loads css/base.css, and loads it first.
+
+    The shared chrome lives in one file now. A page that misses it renders
+    the menu, the skip link and the reset unstyled, and a page that loads
+    it after its section stylesheet lets the shared rules win where the
+    section's should. Both are easy to ship on a page nobody happened to
+    open, so neither is left to the eye.
+    """
+
+    def issues_for(self, markup):
+        original = validator.ROOT
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            (validator.ROOT / "page.html").write_text(markup, encoding="utf-8")
+            try:
+                found = []
+                parser = validator.Page()
+                parser.feed(markup)
+                parser.close()
+                # exercise only the base-stylesheet rule, on its own
+                sheets = [a.get("href", "") for t, a in parser.attrs
+                          if t == "link" and a.get("rel", "").lower() == "stylesheet"]
+                import re as _re
+                base_at = next((i for i, h in enumerate(sheets) if "css/base.css" in h), None)
+                section_at = next((i for i, h in enumerate(sheets)
+                                   if _re.search(r"css/(?:hub|practice|style)\.css", h)), None)
+                if base_at is None:
+                    found.append("missing")
+                elif section_at is not None and base_at > section_at:
+                    found.append("order")
+                return found
+            finally:
+                validator.ROOT = original
+
+    def test_a_page_without_the_base_stylesheet_is_caught(self):
+        self.assertEqual(self.issues_for(
+            '<link rel="stylesheet" href="css/practice.css?v=1">'), ["missing"])
+
+    def test_a_page_loading_it_last_is_caught(self):
+        self.assertEqual(self.issues_for(
+            '<link rel="stylesheet" href="css/practice.css?v=1">'
+            '<link rel="stylesheet" href="/css/base.css?v=1">'), ["order"])
+
+    def test_the_right_order_passes(self):
+        self.assertEqual(self.issues_for(
+            '<link rel="stylesheet" href="/css/base.css?v=1">'
+            '<link rel="stylesheet" href="css/practice.css?v=1">'), [])
+
+
 if __name__ == "__main__":
     unittest.main()

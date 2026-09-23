@@ -38,14 +38,14 @@
   font-weight: 400;
   font-size: clamp(1.4rem, 3vw, 1.8rem);
   line-height: 1.4;
-  color: var(--ink);
+  color: var(--fg);
   margin: 0 0 40px;
 }
 
 .note-body p{
   font-size: 1.02rem;
   line-height: 1.75;
-  color: var(--ink);
+  color: var(--fg);
   margin: 0 0 24px;
 }
 .note-body p:last-child{ margin-bottom: 0; }

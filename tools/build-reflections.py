@@ -227,7 +227,7 @@ def nav_markup(previous, following, section_title):
             + "    </nav>\n")
 
 
-def page_markup(entry, previous, following, section, css_version, menu_version):
+def page_markup(entry, previous, following, section, css_version, base_version, menu_version):
     url = ORIGIN + "/practice/reflections/" + entry["slug"] + ".html"
     title = esc(entry["title"]) + " &middot; Reflections &middot; Faisal Henar"
     desc = esc(description(entry))
@@ -277,6 +277,9 @@ def page_markup(entry, previous, following, section, css_version, menu_version):
     parts.append('<meta name="twitter:title" content="' + title + '">')
     parts.append('<meta name="twitter:description" content="' + desc + '">')
     parts.append('<meta name="twitter:image" content="' + ORIGIN + '/images/og-image.png">')
+    # base.css first, then the section's own: the shared chrome is drawn by
+    # the first and re-tuned by the second, so the order is load-bearing.
+    parts.append('<link rel="stylesheet" href="/css/base.css?v=' + base_version + '">')
     parts.append('<link rel="stylesheet" href="../css/practice.css?v=' + css_version + '">')
     parts.append('<script type="application/ld+json">')
     parts.extend(ld)
@@ -430,11 +433,16 @@ def main():
             print("  slug frozen: %s -> %s" % (entry_id, slug))
 
     archive_text = read(ARCHIVE)
+    # The generated pages have to carry the same ?v= as every hand-written
+    # page, or validate-site.py reports the stylesheet at two versions. They
+    # are read from the archive page rather than written here, so bumping a
+    # version is still one edit followed by a run of this tool.
     css_version = re.search(r'css/practice\.css\?v=(\d+)', archive_text)
+    base_version = re.search(r'css/base\.css\?v=(\d+)', archive_text)
     menu_version = re.search(r'js/menu\.js\?v=(\d+)', archive_text)
-    if not css_version or not menu_version:
+    if not css_version or not base_version or not menu_version:
         raise SystemExit("ERROR: could not read the asset versions from practice/reflections.html.")
-    css_version, menu_version = css_version.group(1), menu_version.group(1)
+    css_version, base_version, menu_version = css_version.group(1), base_version.group(1), menu_version.group(1)
 
     groups = page_order(books, published)
 
@@ -447,7 +455,7 @@ def main():
             following = entries[position + 1] if position + 1 < len(entries) else None
             name = entry["slug"] + ".html"
             wanted.add(name)
-            markup = page_markup(entry, previous, following, group["section"], css_version, menu_version)
+            markup = page_markup(entry, previous, following, group["section"], css_version, base_version, menu_version)
             path = os.path.join(OUT_DIR, name)
             if not os.path.exists(path) or read(path) != markup:
                 write(path, markup)

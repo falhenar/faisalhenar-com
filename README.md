@@ -184,6 +184,17 @@ your writing, so when it fails, fix the line yourself and push again.
   lost the next time the tool runs. Each published entry carries a frozen
   `slug` that fixes its URL for good; `practice/js/render-reflections.js` now
   does nothing but forward the old `reflections.html#r-<id>` links to it.
+- `css/base.css` holds the parts that are the same everywhere: the two
+  faces every section sets text in, the reset, the skip link and the menu.
+  Every page loads it first, then its own section stylesheet. It styles
+  with tokens and defines none: a section stylesheet has to set `--bg`,
+  `--bg-raised`, `--fg`, `--muted`, `--line`, `--accent`, `--menu-bg`,
+  `--menu-hover` and `--menu-shadow` in its `:root`, and again in any
+  scope that changes the palette (`body.folio`, `.timer-page[data-theme]`).
+  A custom property that refers to another is resolved where it is
+  defined, not where it is used, so a reference written once in `:root`
+  will not follow a theme. `tools/validate-site.py` checks that every page
+  loads it, and loads it first.
 - The design is deliberately quiet. The Exhibition is a centred 820px folio.
   The separate Index uses a wider editorial field on desktop and staggered
   two-photograph pairings on phones. Both keep the warm off-white ground.
