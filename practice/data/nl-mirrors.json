@@ -1,40 +1,40 @@
 {
-  "_comment": "Tracks English pages that have a hand-translated Dutch mirror. 'synced_to' is the commit SHA the Dutch mirror was last brought up to date with. Run tools/check-nl-mirrors.py before pushing to see which pairs have drifted; after porting changes over, update synced_to to the new HEAD sha in the same commit.",
+  "_comment": "Tracks English pages that have a hand-translated Dutch mirror. 'synced_to' is the commit SHA the Dutch mirror was last brought up to date with. Run tools/check-nl-mirrors.py before pushing to see which pairs have drifted; it ignores commits that touched the English and Dutch page together, since that is what porting looks like here. After porting changes over, update synced_to to the new HEAD sha in the same commit as the Dutch-side edit.",
   "pairs": [
     {
       "source": "practice/meditation.html",
       "mirror": "practice/meditation-nl.html",
-      "synced_to": "23040e59eeb9fd04622df83c181d213d27f4e4bd"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     },
     {
       "source": "practice/places.html",
       "mirror": "practice/places-nl.html",
-      "synced_to": "23040e59eeb9fd04622df83c181d213d27f4e4bd"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     },
     {
       "source": "practice/sitting-meditation.html",
       "mirror": "practice/sitting-meditation-nl.html",
-      "synced_to": "23040e59eeb9fd04622df83c181d213d27f4e4bd"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     },
     {
       "source": "practice/walking-meditation.html",
       "mirror": "practice/walking-meditation-nl.html",
-      "synced_to": "23040e59eeb9fd04622df83c181d213d27f4e4bd"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     },
     {
       "source": "practice/mindful-prostration.html",
       "mirror": "practice/mindful-prostration-nl.html",
-      "synced_to": "23040e59eeb9fd04622df83c181d213d27f4e4bd"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     },
     {
       "source": "practice/mindful-prostration-steps.html",
       "mirror": "practice/mindful-prostration-steps-nl.html",
-      "synced_to": "23040e59eeb9fd04622df83c181d213d27f4e4bd"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     },
     {
       "source": "practice/sati-timer-web.html",
       "mirror": "practice/sati-timer-web-nl.html",
-      "synced_to": "76d6709a9b389de72421c54be978e4e3aa90817d"
+      "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
     }
   ]
 }

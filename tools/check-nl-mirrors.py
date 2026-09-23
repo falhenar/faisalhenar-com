@@ -18,9 +18,16 @@ WHAT IT DOES
   page that may need porting to the Dutch one, and nobody has confirmed
   either way.
 
-  This is a reminder, not a translator. A stale result can be a false
-  alarm (e.g. a typo fix that doesn't apply in Dutch) -- the point is
-  that a human looks and decides, instead of drift going unnoticed.
+  A commit that touched the English page and the Dutch page together is
+  not counted: that is what porting looks like here, so counting it as
+  drift only produces noise. In September 2026 this tool reported all
+  seven pairs stale when every one of them had in fact been ported in
+  the same commit as the English change, and only the synced_to shas
+  were behind. A reminder that cries wolf gets ignored.
+
+  This is a reminder, not a translator. A stale result can still be a
+  false alarm (e.g. a typo fix that doesn't apply in Dutch) -- the point
+  is that a human looks and decides, instead of drift going unnoticed.
 
 AFTER YOU PORT CHANGES OVER
   Update that pair's "synced_to" in practice/data/nl-mirrors.json to the
@@ -77,19 +84,37 @@ def check_pair(pair, show_diff):
         return f"  ! synced_to sha {synced_to} not found in this repo ({err})"
 
     rc, log, _ = git(
-        "log", "--oneline", f"{synced_to}..HEAD", "--", source
+        "log", "--format=%H %h %s", f"{synced_to}..HEAD", "--", source
     )
     if rc != 0:
         return f"  ! git log failed for {source}"
 
-    if not log:
-        return None  # up to date
+    # A commit that changed the English page AND the Dutch page in the same
+    # breath has already been ported: that is exactly what porting looks
+    # like in this repo's history. Counting those as drift made all seven
+    # pairs read as stale in September 2026 when not one of them was, which
+    # is the failure mode that makes a reminder tool worth ignoring.
+    unported = []
+    for line in log.splitlines():
+        if not line.strip():
+            continue
+        full_sha, rest = line.split(" ", 1)
+        rc_t, touched, _ = git(
+            "show", "--name-only", "--format=", full_sha, "--", mirror
+        )
+        if rc_t == 0 and touched.strip():
+            continue  # the Dutch page moved in the same commit
+        unported.append(rest)
+
+    if not unported:
+        return None  # up to date, or every change was ported as it was made
 
     lines = [
         f"STALE  {source} -> {mirror}",
-        f"       commits on {source} since last sync ({synced_to[:7]}):",
+        f"       commits on {source} since last sync ({synced_to[:7]}) that did",
+        f"       not also touch {mirror}:",
     ]
-    for line in log.splitlines():
+    for line in unported:
         lines.append(f"         {line}")
 
     if show_diff:
