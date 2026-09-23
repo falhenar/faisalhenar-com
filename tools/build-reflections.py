@@ -119,9 +119,16 @@ def archive_reference(entry):
     heading, where there is room for it. Here it is the difference between
     every row fitting on one line and the longest one folding its date onto
     a second, which made the list look like two different designs.
+
+    The "from" that marks an excerpt is dropped here for the same reason it
+    is kept there. A contents column answers which text; the reader learns
+    it is a passage the moment they open the page, which is when it starts
+    to matter. Leaving it in put one lowercase word in a column of bare
+    references, four times over once the queue is published.
     """
-    return esc(entry.get("ref") or entry.get("sourceLocation")
-               or entry.get("sourceTitle") or entry.get("suttaTitle") or "")
+    reference = (entry.get("ref") or entry.get("sourceLocation")
+                 or entry.get("sourceTitle") or entry.get("suttaTitle") or "")
+    return esc(re.sub(r"^from\s+", "", reference.strip(), flags=re.I))
 
 
 def structural(entry):

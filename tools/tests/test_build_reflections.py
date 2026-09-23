@@ -62,6 +62,30 @@ class DescriptionTests(unittest.TestCase):
         self.assertEqual(result, "Short enough to stand on its own.")
 
 
+class ArchiveReferenceTests(unittest.TestCase):
+    """The contents column answers which text, and nothing else."""
+
+    def test_the_pali_title_stays_on_the_page_not_in_the_list(self):
+        entry = {"ref": "SN 3.3", "suttaTitle": "Jar\u0101mara\u1e47asutta"}
+        self.assertEqual(builder.archive_reference(entry), "SN 3.3")
+        self.assertEqual(builder.subtitle(entry), "SN 3.3 &middot; Jar\u0101mara\u1e47asutta")
+
+    def test_the_excerpt_qualifier_is_dropped_in_the_list_and_kept_on_the_page(self):
+        entry = {"ref": "from AN 3.36", "suttaTitle": "Devad\u016btasutta"}
+        self.assertEqual(builder.archive_reference(entry), "AN 3.36")
+        self.assertTrue(builder.subtitle(entry).startswith("from AN 3.36"))
+
+    def test_only_a_leading_from_is_dropped(self):
+        self.assertEqual(builder.archive_reference({"ref": "Fromage 1.1"}), "Fromage 1.1")
+        self.assertEqual(builder.archive_reference({"ref": "AN 3.36, from the section on messengers"}),
+                         "AN 3.36, from the section on messengers")
+
+    def test_an_entry_with_no_sutta_reference_falls_back_to_its_source(self):
+        self.assertEqual(builder.archive_reference({"sourceLocation": "chapter 4"}), "chapter 4")
+        self.assertEqual(builder.archive_reference({"sourceTitle": "The Island"}), "The Island")
+        self.assertEqual(builder.archive_reference({}), "")
+
+
 class OrderTests(unittest.TestCase):
     BOOKS = {"spine": {"title": "Spine", "note": "", "order": "structural"},
              "kept": {"title": "Kept", "note": "", "order": "chronological"}}
