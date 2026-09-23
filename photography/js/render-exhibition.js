@@ -30,11 +30,20 @@ function renderPhotography() {
 
   // natural: keep the photograph's own proportions (the Exhibition). The
   // Index passes false and lets its CSS hold every cell to one shape.
-  function buildFrame(id, srcWidth, grow, eager, natural) {
+  function buildFrame(id, srcWidth, grow, eager, natural, slot) {
     const p = PHOTOS[id];
 
     const img = document.createElement('img');
     img.src = cfImage(p.src, srcWidth);
+    // srcWidth above is the fallback for a browser with no srcset support
+    // and for local preview; everywhere else the pair below decides.
+    if (slot) {
+      const set = cfSrcset(p.src, slot.maxCss, p.w);
+      if (set) {
+        img.srcset = set;
+        img.sizes = slot.sizes;
+      }
+    }
     img.alt = p.alt;
     img.width = p.w;
     img.height = p.h;
@@ -58,6 +67,35 @@ function renderPhotography() {
     figure.appendChild(button);
 
     return { figure: figure, button: button };
+  }
+
+  /*
+    How wide a frame is actually drawn, written as the browser needs to
+    hear it. The column is 820px with 32px of padding, so it is fluid
+    between 620 and 884px of viewport and fixed above that; below 620 the
+    rows stop sharing and every frame takes the whole column. `fraction`
+    is the share of the row this frame holds: 1 for a single, 0.62 for a
+    narrow one, and for a shared row the same proportion the flex-grow
+    above gives it. These have to stay in step with the folio block in
+    css/style.css.
+  */
+  function frameSlot(fraction, shared) {
+    const g = shared ? 1 : 0;
+    const f = fraction.toFixed(4);
+    const wide = Math.round(fraction * (820 - 20 * g));
+    return {
+      sizes: [
+        '(max-width: 480px) calc(100vw - 32px)',
+        '(max-width: 620px) calc(100vw - 44px)',
+        '(max-width: 720px) calc((100vw - ' + (44 + 14 * g) + 'px) * ' + f + ')',
+        '(max-width: 884px) calc((100vw - ' + (64 + 20 * g) + 'px) * ' + f + ')',
+        wide + 'px'
+      ].join(', '),
+      // The widest it is ever drawn is either its share of the full
+      // column, or the whole column at the 620px stacking point, which
+      // for a narrow or shared frame is the larger of the two.
+      maxCss: Math.max(wide, 576)
+    };
   }
 
   /* ---------- the Exhibition ---------- */
@@ -240,15 +278,25 @@ function renderPhotography() {
     const srcWidth = shared ? SRC_WIDTH.shared
       : (entry.width === 'narrow' ? SRC_WIDTH.narrow : SRC_WIDTH.single);
 
-    row.ids.forEach(function (id, i) {
+    // The grow values first, because a shared row's frames are sized in
+    // proportion to them and `sizes` has to say so.
+    const grows = row.ids.map(function (id, i) {
       const p = PHOTOS[id];
       // Aspect ratio, optionally nudged by config so one photograph in a
       // shared row carries a little more of it. Only the ratio between
       // the two values matters.
       const weight = (entry.weight && entry.weight[i]) || 1;
-      const grow = shared ? ((p.w / p.h) * weight).toFixed(4) : null;
+      return (p.w / p.h) * weight;
+    });
+    const growTotal = grows.reduce(function (a, b) { return a + b; }, 0);
 
-      const built = buildFrame(id, srcWidth, grow, rowIndex === 0, true);
+    row.ids.forEach(function (id, i) {
+      const grow = shared ? grows[i].toFixed(4) : null;
+      const fraction = shared
+        ? grows[i] / growTotal
+        : (entry.width === 'narrow' ? 0.62 : 1);
+
+      const built = buildFrame(id, srcWidth, grow, rowIndex === 0, true, frameSlot(fraction, shared));
       built.button.setAttribute(
         'aria-label',
         'Open photograph, ' + (row.indexes[i] + 1) + ' of ' + exhibitionOrder.length

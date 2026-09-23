@@ -170,6 +170,13 @@ your writing, so when it fails, fix the line yourself and push again.
   WebP depending on the browser. This needs Image Resizing switched on for the
   zone in the Cloudflare dashboard. If it is ever turned off, those requests
   404 and no photograph loads.
+- Each photograph is offered at several widths through `srcset`, and each page
+  tells the browser through `sizes` how wide that photograph will actually be
+  drawn. The `sizes` values are hand-written from the stylesheets: the grid
+  spans in `render-index.js` and the column arithmetic in `render-exhibition.js`
+  have to be kept in step with `css/index.css` and the folio block in
+  `css/style.css`. If a layout changes there and not here, the browser will
+  still choose a size, just the wrong one.
 - The design is deliberately quiet. The Exhibition is a centred 820px folio.
   The separate Index uses a wider editorial field on desktop and staggered
   two-photograph pairings on phones. Both keep the warm off-white ground.
