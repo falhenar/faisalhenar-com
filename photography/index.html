@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Photography · Faisal Henar">
 <meta name="twitter:description" content="Photographs by Faisal Henar: a short hand-ordered sequence of street and documentary work from Suriname and Vietnam. The full collection has its own Index.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
-<link rel="stylesheet" href="css/style.css?v=20">
+<link rel="stylesheet" href="css/style.css?v=21">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -57,9 +57,19 @@
       <!-- the curated sequence, rendered by js/render-exhibition.js -->
     </div>
 
+    <!-- The end of the Exhibition, named. See Decision 1 in the roadmap:
+         the walk continues past the selection, on the condition that the
+         turn is stated rather than implied. This block is the half a
+         visitor meets while scrolling; the #turn overlay below is the
+         half a visitor meets while paging through the viewer. -->
+    <div class="exhibition-end">
+      <p class="exhibition-end-meta">End of the Exhibition</p>
+      <p class="exhibition-end-line">That is the selection. Eleven photographs, chosen and placed in order. Everything else I have kept is in the Index.</p>
+    </div>
+
     <nav class="index-entry" aria-label="Complete photography collection">
       <a href="index/">
-        <span class="index-entry-title">Index</span>
+        <span class="index-entry-title">Continue into the Index</span>
         <span class="section-meta" id="index-link-count"></span>
       </a>
     </nav>
@@ -77,6 +87,21 @@
     </div>
     <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photo">&larr;</button>
     <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Next photo">&rarr;</button>
+  </div>
+
+  <!-- The same turn, in the viewer. Dark, because it interrupts the
+       fullscreen viewer and should read as the viewer stopping, not as
+       the page coming back. Filled and driven by js/render-exhibition.js. -->
+  <div class="turn" id="turn" role="dialog" aria-modal="true" aria-labelledby="turn-title" hidden>
+    <div class="turn-card">
+      <p class="turn-meta">End of the Exhibition</p>
+      <h2 class="turn-title" id="turn-title">That is the selection.</h2>
+      <p class="turn-body">Eleven photographs, chosen and placed in order. Everything else I have kept is in the Index: <span id="turn-count">the whole collection</span>, in the order they were placed.</p>
+      <div class="turn-actions">
+        <button class="turn-btn turn-btn--go" type="button" id="turn-continue">Continue into the Index</button>
+        <button class="turn-btn" type="button" id="turn-stop">Stop here</button>
+      </div>
+    </div>
   </div>
 
   <footer class="site-footer">
@@ -98,7 +123,7 @@
   <script src="js/data-loader.js?v=1"></script>
   <script src="js/image-url.js?v=1"></script>
   <script src="js/viewer.js?v=3"></script>
-  <script src="js/render-exhibition.js?v=10"></script>
+  <script src="js/render-exhibition.js?v=11"></script>
   <script src="../js/menu.js?v=3"></script>
 </body>
 </html>

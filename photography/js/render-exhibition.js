@@ -3,8 +3,9 @@
   --------------------------
   Renders the curated Exhibition in photography/index.html from
   data/exhibition.json. The complete Index now has its own page. Paging
-  forward from the Exhibition can still continue through photographs not
-  already shown here, in the approved order stored by photos.json.
+  forward from the eleventh photograph reaches a named ending, and going
+  on from there into the rest of the collection is a deliberate answer
+  to it rather than another press of Next.
 
   Layout is entirely CSS (see the folio block in css/style.css). This
   file decides grouping and order, and sets exactly one geometric value:
@@ -102,10 +103,11 @@ function renderPhotography() {
   const exhibitionIdSet = {};
   exhibitionOrder.forEach(function (id) { exhibitionIdSet[id] = true; });
 
-  // Paging past the end of the Exhibition continues into the rest of the
-  // collection (Index photos not already shown), in Index order. The Index
-  // page is unaffected: it has its own renderer, render-index.js, which
-  // builds its own set.
+  // The set the viewer moves to once the turn is accepted: the eleven of
+  // the Exhibition, then every other photograph in Index order. The first
+  // eleven keep their places, so "continue" simply opens this set at 11.
+  // The Index page is unaffected: it has its own renderer,
+  // render-index.js, which builds its own set.
   const continuousOrder = exhibitionOrder.concat(
     indexOrder.filter(function (id) { return !exhibitionIdSet[id]; })
   );
@@ -116,7 +118,20 @@ function renderPhotography() {
 
   /* ---------- one viewer, two sets ---------- */
 
+  /*
+    Two sets, and which one the viewer is holding matters.
+
+    Opening a frame gives the viewer the eleven photographs of the
+    Exhibition and nothing else, so its counts say "photo 03 of 11" and
+    mean it. Pressing Next on the eleventh does not quietly hand over
+    the other ninety-six: it ends the selection and offers the rest,
+    which is the turn recorded as Decision 1 in the roadmap. Accepting
+    swaps in the continuous set, where the same photograph is number 12
+    of 107 and the counts are again true.
+  */
   let viewer = null;
+  let inExhibition = true;
+
   if (typeof createPhotoViewer === 'function') {
     viewer = createPhotoViewer({
       root: document.getElementById('lightbox'),
@@ -125,16 +140,89 @@ function renderPhotography() {
       closeBtn: document.getElementById('lightbox-close'),
       prevBtn: document.getElementById('lightbox-prev'),
       nextBtn: document.getElementById('lightbox-next'),
-      fsBtn: document.getElementById('lightbox-fullscreen')
-      // No captionEl and no onBoundary: the viewer shows the photograph
-      // and close/previous/next only, and paging stops at either end of
-      // whichever set it was opened with.
+      fsBtn: document.getElementById('lightbox-fullscreen'),
+      // No captionEl: the viewer shows the photograph and
+      // close/previous/next only.
+      onBoundary: function (direction) {
+        if (direction === 'next' && inExhibition) showTurn();
+      },
+      boundaryLabel: {
+        next: function () {
+          return inExhibition
+            ? 'End of the Exhibition. Continue into the Index'
+            : 'Last photograph';
+        }
+      }
+    });
+  }
+
+  /* ---------- the turn ---------- */
+
+  const turnEl = document.getElementById('turn');
+  const turnContinueBtn = document.getElementById('turn-continue');
+  const turnStopBtn = document.getElementById('turn-stop');
+  const turnCountEl = document.getElementById('turn-count');
+  if (turnCountEl) turnCountEl.textContent = indexOrder.length + ' photographs';
+
+  // The frame the current viewing started from. Focus goes back to it if
+  // the visitor stops at the turn, so the page does not lose its place.
+  let viewerOrigin = null;
+
+  const turnReady = !!(turnEl && turnContinueBtn && turnStopBtn && viewer);
+
+  function showTurn() {
+    if (!turnReady) return;
+    // Close the viewer without handing focus back to the page: the turn
+    // takes the screen and owns focus until it is answered.
+    viewer.close({ restoreFocus: false });
+    turnEl.hidden = false;
+    document.body.style.overflow = 'hidden';
+    turnContinueBtn.focus();
+  }
+
+  function hideTurn() {
+    turnEl.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function continueIntoIndex() {
+    hideTurn();
+    inExhibition = false;
+    // The eleventh photograph of the Exhibition is the eleventh of the
+    // continuous set too, so carrying on means opening at index 11.
+    viewer.open(continuousItems, exhibitionOrder.length, viewerOrigin);
+  }
+
+  function stopAtTurn() {
+    hideTurn();
+    if (viewerOrigin && viewerOrigin.focus) {
+      try { viewerOrigin.focus({ preventScroll: true }); } catch (err) { viewerOrigin.focus(); }
+    }
+  }
+
+  if (turnReady) {
+    turnContinueBtn.addEventListener('click', continueIntoIndex);
+    turnStopBtn.addEventListener('click', stopAtTurn);
+    // The turn has its own keys because the viewer is closed behind it:
+    // Escape answers "stop here", and Tab stays between the two answers.
+    turnEl.addEventListener('keydown', function (e) {
+      const key = e.key === 'Esc' ? 'Escape' : e.key;
+      if (key === 'Escape') { e.preventDefault(); stopAtTurn(); return; }
+      if (key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === turnContinueBtn) {
+        e.preventDefault(); turnStopBtn.focus();
+      } else if (!e.shiftKey && document.activeElement === turnStopBtn) {
+        e.preventDefault(); turnContinueBtn.focus();
+      }
     });
   }
 
   function opener(items, i, button) {
     return function () {
-      if (viewer) viewer.open(items, i, button);
+      if (!viewer) return;
+      viewerOrigin = button;
+      inExhibition = (items === exhibitionItems);
+      viewer.open(items, i, button);
     };
   }
 
@@ -165,7 +253,7 @@ function renderPhotography() {
         'aria-label',
         'Open photograph, ' + (row.indexes[i] + 1) + ' of ' + exhibitionOrder.length
       );
-      built.button.addEventListener('click', opener(continuousItems, row.indexes[i], built.button));
+      built.button.addEventListener('click', opener(exhibitionItems, row.indexes[i], built.button));
       el.appendChild(built.figure);
     });
 

@@ -480,9 +480,45 @@ body.folio .footer-nav{
 
 /* The complete collection now has its own page. This quiet handoff sits
    after the Exhibition and uses the existing heading and metadata type. */
+/* The end of the Exhibition, on the page.
+
+   Decision 1 (roadmap, September 2026) kept the walk going past the
+   selection, on one condition: the turn has to be stated, not implied.
+   A rule on its own reads as decoration, and the Exhibition quietly
+   becomes the archive. So the ending is named here in words, and the
+   link that follows says what it is for. The viewer half of the same
+   turn is the .turn overlay further down. */
+.exhibition-end{
+  margin-top: 96px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.exhibition-end-meta{
+  margin: 0 0 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.exhibition-end-line{
+  margin: 0;
+  max-width: 34em;
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
 .index-entry{
   margin-top: 104px;
   border-top: 1px solid var(--line);
+}
+/* When the ending above is present it already carries the space and the
+   rule, so the link below joins onto it instead of starting again. */
+.exhibition-end + .index-entry{
+  margin-top: 18px;
+  border-top: none;
 }
 .index-entry a{
   display: flex;
@@ -565,6 +601,77 @@ body.folio .footer-nav{
   padding: 0;
 }
 .lightbox.is-open{ display:flex; }
+
+/* THE TURN AT THE END OF THE EXHIBITION (viewer half)
+   ---------------------------------------------------
+   Shown after the viewer closes on the eleventh photograph, in the
+   viewer's own dark, so that reaching the end of the selection reads as
+   the viewer stopping rather than the page coming back. Continuing is a
+   button press, never a page turn: that is the whole point of the
+   choice recorded as Decision 1. The dark values are literal rather
+   than tokens because this sits inside body.folio, whose tokens are the
+   light paper. */
+.turn{
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: #080807;
+  color: #ededea;
+}
+.turn[hidden]{ display: none; }
+.turn-card{ max-width: 34em; }
+.turn-meta{
+  margin: 0 0 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c9962f;
+}
+.turn-title{
+  margin: 0 0 14px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1.25;
+}
+.turn-body{
+  margin: 0 0 32px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #b3b0a9;
+}
+.turn-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.turn-btn{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  /* 44px, not the 24px minimum: this is the one control that decides
+     whether a visitor sees the rest of the collection. */
+  min-height: 44px;
+  padding: 12px 20px;
+  background: none;
+  border: 1px solid #3a3a35;
+  color: #ededea;
+  cursor: pointer;
+}
+.turn-btn:hover{ border-color: #c9962f; color: #c9962f; }
+.turn-btn:focus-visible{ outline: 2px solid #c9962f; outline-offset: 3px; }
+.turn-btn--go{ border-color: #c9962f; color: #c9962f; }
+.turn-btn--go:hover{ background: #c9962f; color: #080807; }
+@media (max-width: 480px){
+  .turn-title{ font-size: 1.4rem; }
+  .turn-actions{ flex-direction: column; align-items: stretch; }
+}
 
 /* The stage fills the viewport; the photo sits inside it, letterboxed. */
 .lightbox .lightbox-stage{

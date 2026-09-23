@@ -69,6 +69,45 @@
     }
   }
 
+  /*
+    One branch, not both.
+
+    The two layouts are different enough that CSS alone cannot express
+    one from the other, so the page keeps two containers. Building both
+    of them, though, put 214 <img> elements on a page that shows 107,
+    and left a phone with three eager desktop-width photographs it would
+    never display. So only the matching branch is built, and the other
+    is built if and when the viewport crosses the breakpoint. The value
+    below has to stay in step with the one in css/index.css.
+  */
+  var PHONE_QUERY = '(max-width: 680px)';
+  var phoneQuery = window.matchMedia ? window.matchMedia(PHONE_QUERY) : null;
+  var builtBranch = null;
+
+  function renderBranch(photos, viewer) {
+    var wanted = (phoneQuery && phoneQuery.matches) ? 'phone' : 'desktop';
+    if (wanted === builtBranch) return;
+    desktop.textContent = '';
+    phone.textContent = '';
+    if (wanted === 'phone') {
+      renderPhone(photos, viewer);
+    } else {
+      renderDesktop(photos, viewer);
+    }
+    builtBranch = wanted;
+  }
+
+  function watchBranch(photos, viewer) {
+    if (!phoneQuery) return;
+    var onChange = function () { renderBranch(photos, viewer); };
+    if (phoneQuery.addEventListener) {
+      phoneQuery.addEventListener('change', onChange);
+    } else if (phoneQuery.addListener) {
+      // Safari before 14.
+      phoneQuery.addListener(onChange);
+    }
+  }
+
   function showError(error) {
     count.textContent = 'The Index could not be loaded';
     count.setAttribute('role', 'alert');
@@ -99,8 +138,8 @@
       });
 
       count.textContent = photos.length + ' photographs';
-      renderDesktop(photos, viewer);
-      renderPhone(photos, viewer);
+      renderBranch(photos, viewer);
+      watchBranch(photos, viewer);
     })
     .catch(showError);
 })();
