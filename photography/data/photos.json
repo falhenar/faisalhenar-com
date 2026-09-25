@@ -1,5 +1,14 @@
 [
   {
+    "id": "fh-0076",
+    "src": "photos/2026/fh-0076.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "A white stone Buddha in a temple garden, one hand raised in teaching, with disciples seated around him. Paper lanterns hang from the trees above.",
+    "added": "2026-09-13"
+  },
+  {
     "id": "fh-0087",
     "src": "photos/2026/fh-0087.jpg",
     "w": 2560,
@@ -79,15 +88,6 @@
     "color": true,
     "alt": "A close-up of my wife's eye. Palm trees and the figure taking the photograph are reflected in the iris.",
     "added": "2026-09-04"
-  },
-  {
-    "id": "fh-0076",
-    "src": "photos/2026/fh-0076.jpg",
-    "w": 2560,
-    "h": 1920,
-    "color": true,
-    "alt": "A white stone Buddha in a temple garden, one hand raised in teaching, with disciples seated around him. Paper lanterns hang from the trees above.",
-    "added": "2026-09-13"
   },
   {
     "id": "fh-0075",
@@ -185,7 +185,7 @@
     "w": 2560,
     "h": 1919,
     "color": true,
-    "alt": "A church gate seen from below. The iron arch above it reads “Jezus zegt komt herwaarts tot mij”.",
+    "alt": "A church gate seen from below. The iron arch above it reads \u201cJezus zegt komt herwaarts tot mij\u201d.",
     "added": "2026-09-04"
   },
   {
