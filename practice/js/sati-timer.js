@@ -87,21 +87,37 @@
     }
   }[LANG];
 
-  // ---------------- bells (BellSound.kt, real fundamentals) ----------------
+  // ---------------- bells (BellSound.kt: same nine sounds, same order) ----------------
+  // Files are the app's own res/raw bells (tools/bells_v2 in the SatiTimer repo), copied to
+  // audio/sati-timer/ as .ogg plus an .mp3 for browsers without Vorbis. By family, low to
+  // high within each; the two short (~7 s) sounds last, for interval bells.
 
   var BELLS = [
-    { id: 'gong', hz: 98, name: { en: 'Gong', nl: 'Gong' }, short: { en: 'Gong', nl: 'Gong' } },
     { id: 'bowl-low', hz: 131, name: { en: 'Singing Bowl, low', nl: 'Klankschaal, laag' }, short: { en: 'Bowl low', nl: 'Schaal, laag' } },
     { id: 'bowl', hz: 196, name: { en: 'Singing Bowl', nl: 'Klankschaal' }, short: { en: 'Bowl', nl: 'Schaal' } },
     { id: 'bowl-small', hz: 294, name: { en: 'Singing Bowl, small', nl: 'Klankschaal, klein' }, short: { en: 'Bowl small', nl: 'Schaal, klein' } },
-    { id: 'bell', hz: 392, name: { en: 'Bell', nl: 'Bel' }, short: { en: 'Bell', nl: 'Bel' } },
-    { id: 'bell-small', hz: 494, name: { en: 'Bell, small', nl: 'Kleine bel' }, short: { en: 'Bell small', nl: 'Kleine bel' } }
+    { id: 'temple-bell', hz: 175, name: { en: 'Temple Bell', nl: 'Tempelbel' }, short: { en: 'Temple bell', nl: 'Tempelbel' } },
+    { id: 'bell-small', hz: 494, name: { en: 'Bell, small', nl: 'Kleine bel' }, short: { en: 'Bell small', nl: 'Kleine bel' } },
+    { id: 'rin', hz: 587, name: { en: 'Rin', nl: 'Rin' }, short: { en: 'Rin', nl: 'Rin' } },
+    { id: 'tingsha', hz: 1760, name: { en: 'Tingsha', nl: 'Tingsha' }, short: { en: 'Tingsha', nl: 'Tingsha' } },
+    { id: 'short-bell', hz: 659, name: { en: 'Bell, short', nl: 'Korte bel' }, short: { en: 'Bell short', nl: 'Korte bel' } },
+    { id: 'short-tingsha', hz: 1760, name: { en: 'Tingsha, short', nl: 'Tingsha, kort' }, short: { en: 'Tingsha short', nl: 'Tingsha kort' } }
   ];
-  var DEFAULT_BELL = 'bowl', DEFAULT_INTERVAL_BELL = 'bell-small', DEFAULT_END_BELL = 'bowl-low';
+  var DEFAULT_BELL = 'bowl', DEFAULT_INTERVAL_BELL = 'short-bell', DEFAULT_END_BELL = 'bowl-low';
+
+  // Saved presets store the bell id. The first set's gong and bell were dropped, so map
+  // them to their nearest successor instead of letting a preset point at a missing file.
+  var LEGACY_BELLS = { 'gong': 'temple-bell', 'bell': 'bell-small' };
+
+  function bellId(id) {
+    for (var i = 0; i < BELLS.length; i++) if (BELLS[i].id === id) return id;
+    return LEGACY_BELLS[id] || DEFAULT_BELL;
+  }
 
   function bellById(id) {
+    id = bellId(id);
     for (var i = 0; i < BELLS.length; i++) if (BELLS[i].id === id) return BELLS[i];
-    return BELLS[2];
+    return BELLS[1];
   }
 
   // ---------------- audio ----------------
@@ -113,7 +129,7 @@
 
   function playBell(id, volume) {
     try {
-      var a = new Audio('audio/sati-timer/' + id + '.' + AUDIO_EXT);
+      var a = new Audio('audio/sati-timer/' + bellId(id) + '.' + AUDIO_EXT);
       a.volume = Math.max(0, Math.min(1, volume));
       a.play().catch(function () {});
     } catch (e) { /* audio unavailable; the sit still advances */ }
@@ -343,7 +359,7 @@
     if (!root) return;
 
     var draft = {
-      stages: [20], stageBellSound: DEFAULT_BELL,
+      stages: [20], stageBellSound: DEFAULT_INTERVAL_BELL,
       countdownSeconds: 0, intervalMinutes: 0,
       startBellEnabled: true, startBellSound: DEFAULT_BELL,
       endBellEnabled: true, endBellSound: DEFAULT_END_BELL,
@@ -590,10 +606,10 @@
         loadBtn.style.marginRight = '14px';
         loadBtn.addEventListener('click', function () {
           draft.stages = p.stages.slice();
-          draft.stageBellSound = p.stageBellSound; draft.countdownSeconds = p.countdownSeconds;
+          draft.stageBellSound = bellId(p.stageBellSound); draft.countdownSeconds = p.countdownSeconds;
           draft.intervalMinutes = p.intervalMinutes; draft.startBellEnabled = p.startBellEnabled;
-          draft.startBellSound = p.startBellSound; draft.endBellEnabled = p.endBellEnabled;
-          draft.endBellSound = p.endBellSound; draft.intervalBellSound = p.intervalBellSound;
+          draft.startBellSound = bellId(p.startBellSound); draft.endBellEnabled = p.endBellEnabled;
+          draft.endBellSound = bellId(p.endBellSound); draft.intervalBellSound = bellId(p.intervalBellSound);
           draft.autoRestart = p.autoRestart; draft.volume = p.volume;
           selectedStage = 0;
           renderAll();
