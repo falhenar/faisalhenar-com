@@ -2467,6 +2467,992 @@ const QUOTES = [
     themes: [
       "letting-go"
     ]
+  },
+
+  // Buddhist additions verified against the linked texts, 2 October 2026.
+  // Sources distinguish canonical verses, modern teachings, and recollections.
+  // Verse line breaks are collapsed to spaces; leading ellipses mark excerpts.
+  // Verification: https://accesstoinsight.org/lib/thai/khamdee/yourown.html
+  {
+    text: "Our problem is that we like good results but don't like creating good causes.",
+    author: "Ajahn Khamdee Pabhaso",
+    source: "Making the Dhamma Your Own, trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/khamdee/yourown.html
+  {
+    text: "Mindfulness and discernment are the factors that govern the heart.",
+    author: "Ajahn Khamdee Pabhaso",
+    source: "Making the Dhamma Your Own, trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/buddharakkhita/wheel365.html
+  {
+    text: "Metta is indeed a universal, unselfish and all-embracing love.",
+    author: "Acharya Buddharakkhita",
+    source: "Metta: The Philosophy and Practice of Universal Love, §1, Introduction",
+    themes: [
+      "compassion"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/buddharakkhita/wheel365.html
+  {
+    text: "True metta is devoid of self-interest.",
+    author: "Acharya Buddharakkhita",
+    source: "Metta: The Philosophy and Practice of Universal Love, §1, Introduction",
+    themes: [
+      "compassion",
+      "letting-go"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/piyadassi/wheel001.html
+  {
+    text: "Contentment is a characteristic of the really happy individual.",
+    author: "Piyadassi Thera",
+    source: "The Seven Factors of Enlightenment, §§IV–V (Wheel No. 1)",
+    themes: [
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/piyadassi/wheel001.html
+  {
+    text: "Calmness is not weakness.",
+    author: "Piyadassi Thera",
+    source: "The Seven Factors of Enlightenment, §§IV–V (Wheel No. 1)",
+    themes: [
+      "wisdom",
+      "silence"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/phut/sao.html
+  {
+    text: "Meditate on the word 'Buddho.'",
+    author: "Ajahn Sao Kantasilo",
+    source: "Ajaan Sao's Teaching, recollections by Ajahn Phut Thaniyo, trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "simplicity"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/phut/sao.html
+  {
+    text: "You have to make it know inside.",
+    author: "Ajahn Sao Kantasilo",
+    source: "Ajaan Sao's Teaching, recollections by Ajahn Phut Thaniyo, trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/suwat/concentration.html
+  {
+    text: "You have to be mindful of the present and alert to the present, too.",
+    author: "Ajahn Suwat Suvaco",
+    source: "Right Concentration, trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/suwat/concentration.html
+  {
+    text: "You have to depend on both mindfulness and alertness together.",
+    author: "Ajahn Suwat Suvaco",
+    source: "Right Concentration, trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/dune/giftsheleft.html
+  {
+    text: "Practice right at the mind.",
+    author: "Ajahn Dune Atulo",
+    source: "Gifts He Left Behind, §§30, 43, compiled by Phra Bodhinandamuni, trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "simplicity"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/dune/giftsheleft.html
+  {
+    text: "Not worrying, not being attached: That's the mental dwelling of those who practice.",
+    author: "Ajahn Dune Atulo",
+    source: "Gifts He Left Behind, §§30, 43, compiled by Phra Bodhinandamuni, trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/khantipalo/wheel116.html
+  {
+    text: "However, diligence and heedfulness will eventually win for one the fruits of tranquillity.",
+    author: "Bhikkhu Khantipalo",
+    source: "Practical Advice for Meditators, Introduction / Regular Daily Sitting (Wheel Nos. 116–117)",
+    themes: [
+      "mindfulness",
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/khantipalo/wheel116.html
+  {
+    text: "For success, great persistence and evenness of effort are necessary.",
+    author: "Bhikkhu Khantipalo",
+    source: "Practical Advice for Meditators, Introduction / Regular Daily Sitting (Wheel Nos. 116–117)",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/khin/wheel231.html
+  {
+    text: "For progress in Vipassana Meditation, a student must keep knowing Anicca as continuously as possible.",
+    author: "Sayagyi U Ba Khin",
+    source: "The Essentials of Buddha Dhamma in Meditative Practice, opening section (Wheel No. 231)",
+    themes: [
+      "impermanence",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/nyanaponika/wheel121.html
+  {
+    text: "But the only safe remedy is to face it — with mindfulness.",
+    author: "Nyanaponika Thera",
+    source: "The Power of Mindfulness, §1, Tidying Up the Mental Household (Wheel Nos. 121–122)",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/nyanaponika/wheel121.html
+  {
+    text: "… the difficulty is only the persistence in applying it.",
+    author: "Nyanaponika Thera",
+    source: "The Power of Mindfulness, §1, Tidying Up the Mental Household (Wheel Nos. 121–122)",
+    themes: [
+      "mindfulness",
+      "humility"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/nyanaponika/wheel303.html
+  {
+    text: "… one should be aware of the feelings as a conditioned and transient process.",
+    author: "Nyanaponika Thera",
+    source: "Contemplation of Feeling, Introduction (Wheel Nos. 303–304)",
+    themes: [
+      "impermanence",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/khema/allofus.html
+  {
+    text: "We need to take a step back and be a neutral observer of the whole process.",
+    author: "Ayya Khema",
+    source: "All of Us, I: The Dhamma of the Blessed One is Perfectly Expounded",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/khema/allofus.html
+  {
+    text: "We are blessed with an inner wealth.",
+    author: "Ayya Khema",
+    source: "All of Us, I: The Dhamma of the Blessed One is Perfectly Expounded",
+    themes: [
+      "gratitude",
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/kee/stoplook.html
+  {
+    text: "This is why people who are intelligent and discerning prefer criticism to praise. Stupid people prefer praise to criticism.",
+    author: "Upasika Kee Nanayon",
+    source: "Stop, Look, and Let Go, talk of 28 July 1965, trans. Thanissaro Bhikkhu",
+    themes: [
+      "humility",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/nyanaponika/devotion.html
+  {
+    text: "It is by recognizing and honoring someone or something higher that one honors and enhances one's own inner potentialities.",
+    author: "Nyanaponika Thera",
+    source: "Devotion in Buddhism, discussion of respect and reverence",
+    themes: [
+      "humility",
+      "gratitude"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.05.10.than.html
+  {
+    text: "Washing my feet, I noticed the water.",
+    author: "Paṭācārā",
+    source: "Therīgāthā 5.10 (vv. 112–116), trans. Thanissaro Bhikkhu",
+    themes: [
+      "ordinary-life",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.05.10.than.html
+  {
+    text: "Like the flame's unbinding was the liberation of awareness.",
+    author: "Paṭācārā",
+    source: "Therīgāthā 5.10 (vv. 112–116), trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.10.01.than.html
+  {
+    text: "Associating with an admirable friend even a fool becomes wise.",
+    author: "Kisāgotamī",
+    source: "Therīgāthā 10.1 (vv. 213–223), trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "compassion"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.10.01.than.html
+  {
+    text: "I've cut out the arrow, put down the burden, done the task.",
+    author: "Kisāgotamī",
+    source: "Therīgāthā 10.1 (vv. 213–223), trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.04.01.hekh.html
+  {
+    text: "Seeing the world's deep misery, we both went forth",
+    author: "Bhaddā Kāpilānī",
+    source: "Therīgāthā 4.1 (vv. 63–66), trans. Hellmuth Hecker and Sister Khema",
+    themes: [
+      "suffering-liberation",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.04.01.hekh.html
+  {
+    text: "Cooled of passions, we have found our freedom.",
+    author: "Bhaddā Kāpilānī",
+    source: "Therīgāthā 4.1 (vv. 63–66), trans. Hellmuth Hecker and Sister Khema",
+    themes: [
+      "letting-go",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.05.02.than.html
+  {
+    text: "All ties — human & divine — have been cut.",
+    author: "Vimalā",
+    source: "Therīgāthā 5.2 (vv. 72–76), trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.05.02.than.html
+  {
+    text: "Having cast off all effluents, cooled am I, unbound.",
+    author: "Vimalā",
+    source: "Therīgāthā 5.2 (vv. 72–76), trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.05.08.than.html
+  {
+    text: "The five aggregates, comprehended, stand like a tree with its root cut through.",
+    author: "Soṇā",
+    source: "Therīgāthā 5.8 (vv. 102–106), trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "letting-go"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.05.08.than.html
+  {
+    text: "I develop the theme-less meditation, well-focused oneness.",
+    author: "Soṇā",
+    source: "Therīgāthā 5.8 (vv. 102–106), trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "silence"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.13.02.than.html
+  {
+    text: "They do the best work: They abandon passion & anger.",
+    author: "Rohiṇī",
+    source: "Therīgāthā 13.2 (vv. 271–290), Rohiṇī's speech, trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.13.02.than.html
+  {
+    text: "Take on the precepts: That will lead to your well-being.",
+    author: "Rohiṇī",
+    source: "Therīgāthā 13.2 (vv. 271–290), Rohiṇī's speech, trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.12.01.than.html
+  {
+    text: "Let the robe be yours. I don't need it.",
+    author: "Puṇṇikā",
+    source: "Therīgāthā 12.1 (vv. 236–251), Puṇṇikā's speech, trans. Thanissaro Bhikkhu",
+    themes: [
+      "simplicity",
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thig/thig.12.01.than.html
+  {
+    text: "Take on the precepts: That will lead to your liberation.",
+    author: "Puṇṇikā",
+    source: "Therīgāthā 12.1 (vv. 236–251), Puṇṇikā's speech, trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.06.12.than.html
+  {
+    text: "You make things worse when you flare up at someone who's angry.",
+    author: "Brahmadatta",
+    source: "Theragāthā 6.12 (vv. 441–446), trans. Thanissaro Bhikkhu",
+    themes: [
+      "compassion",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.14.01.than.html
+  {
+    text: "Don't let the moment pass you by.",
+    author: "Revata",
+    source: "Theragāthā 14.1 (vv. 645–658), trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.14.01.than.html
+  {
+    text: "Attain completion through heedfulness: that is my message.",
+    author: "Revata",
+    source: "Theragāthā 14.1 (vv. 645–658), trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.14.02.than.html
+  {
+    text: "… those who are filled with discernment — as the ocean, with water — don't look down on others.",
+    author: "Godatta",
+    source: "Theragāthā 14.2 (vv. 659–672), trans. Thanissaro Bhikkhu",
+    themes: [
+      "humility",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.14.02.than.html
+  {
+    text: "For them there is nothing dear or undear.",
+    author: "Godatta",
+    source: "Theragāthā 14.2 (vv. 659–672), trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "contentment"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.04.10.than.html
+  {
+    text: "The Dhamma protects those who live by the Dhamma.",
+    author: "Dhammika",
+    source: "Theragāthā 4.10 (vv. 303–306), trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.04.10.than.html
+  {
+    text: "The Dhamma well-practiced brings bliss.",
+    author: "Dhammika",
+    source: "Theragāthā 4.10 (vv. 303–306), trans. Thanissaro Bhikkhu",
+    themes: [
+      "contentment",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.18.00.than.html
+  {
+    text: "Their lovely surfaces wet with rain, mountains frequented by seers & echoing with peacocks: those rocky crags refresh me.",
+    author: "Mahā Kassapa",
+    source: "Theragāthā 18 (vv. 1051–1090), trans. Thanissaro Bhikkhu",
+    themes: [
+      "contentment",
+      "silence"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.10.02.than.html
+  {
+    text: "I myself will bring it about. No one can do it for anyone else.",
+    author: "Ekavihāriya",
+    source: "Theragāthā 10.2 (vv. 537–546), trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/tipitaka/kn/thag/thag.10.02.than.html
+  {
+    text: "As I desire to do this, may my purpose succeed.",
+    author: "Ekavihāriya",
+    source: "Theragāthā 10.2 (vv. 537–546), trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/webu/wheel375.html
+  {
+    text: "Be steadfast in your effort.",
+    author: "Webu Sayadaw",
+    source: "The Essential Practice: Part I, What Really Matters, trans. Roger Bischoff (Wheel Nos. 375–376)",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/webu/wheel375.html
+  {
+    text: "Strive with happiness in your heart and when you are successful, be truly happy.",
+    author: "Webu Sayadaw",
+    source: "The Essential Practice: Part I, What Really Matters, trans. Roger Bischoff (Wheel Nos. 375–376)",
+    themes: [
+      "contentment",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/nyanaponika/whyend.html
+  {
+    text: "The Buddha declares that he teaches the Dhamma for the sole purpose of leading beings to freedom from suffering.",
+    author: "Nyanaponika Thera",
+    source: "Why End Suffering?, opening paragraph",
+    themes: [
+      "suffering-liberation",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/authors/various/wheel367.html
+  {
+    text: "Regarded from another angle, giving can also be identified with the personal quality of generosity (caga).",
+    author: "Bhikkhu Bodhi",
+    source: "Dana: The Practice of Giving, Introduction (Wheel Nos. 367–369)",
+    themes: [
+      "compassion",
+      "letting-go"
+    ]
+  },
+
+  // Additional Thai Forest teachings verified 2 October 2026.
+  // Verification: https://accesstoinsight.org/lib/thai/chah/heartfood.html
+  {
+    text: "We conquer ourselves, we don't try to conquer others.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart, Dhamma Fighting; Sangha translation",
+    themes: [
+      "wisdom",
+      "humility"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/heartfood.html
+  {
+    text: "Practice of the Dhamma is not done by following your moods.",
+    author: "Ajahn Chah",
+    source: "Food for the Heart, Dhamma Fighting; Sangha translation",
+    themes: [
+      "mindfulness",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/bodhinyana.html
+  {
+    text: "The true refuge is the trained mind.",
+    author: "Ajahn Chah",
+    source: "Bodhinyana, Fragments of a Teaching; trans. Sangha, Bung Wai Forest Monastery",
+    themes: [
+      "wisdom",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/bodhinyana.html
+  {
+    text: "Teachers are those who only point out the direction of the Path.",
+    author: "Ajahn Chah",
+    source: "Bodhinyana, Fragments of a Teaching; trans. Sangha, Bung Wai Forest Monastery",
+    themes: [
+      "humility",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/living.html
+  {
+    text: "We have to come back to ourselves.",
+    author: "Ajahn Chah",
+    source: "Living Dhamma, Why are we here?; trans. Sangha, Wat Pah Nanachat",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/living.html
+  {
+    text: "If we don't have wisdom everything round us will be a source of suffering.",
+    author: "Ajahn Chah",
+    source: "Living Dhamma, Why are we here?; trans. Sangha, Wat Pah Nanachat",
+    themes: [
+      "wisdom",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/atasteof
+  {
+    text: "To calm the mind means to find the right balance.",
+    author: "Ajahn Chah",
+    source: "A Taste of Freedom, On Meditation; trans. Ajahn Puriso",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/chah/atasteof
+  {
+    text: "When we see the truth, peace arises.",
+    author: "Ajahn Chah",
+    source: "A Taste of Freedom, On Meditation; trans. Ajahn Puriso",
+    themes: [
+      "wisdom",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/demons.html
+  {
+    text: "Even our enemies, when we become familiar with them, can become our friends.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "The Demons of Defilement, trans. Thanissaro Bhikkhu",
+    themes: [
+      "compassion"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/demons.html
+  {
+    text: "An excellent person takes something good and makes it better.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "The Demons of Defilement, trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/consciousnesses.html
+  {
+    text: "If you have effort but no endurance, you won't get anywhere.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Consciousnesses, opening teaching on persistence; trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/consciousnesses.html
+  {
+    text: "So we should regard effort as coming first, and endurance second.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Consciousnesses, opening teaching on persistence; trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/inmind.html
+  {
+    text: "Whoever trains the mind to be centered gains a refuge.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Keeping the Breath in Mind, Introduction; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/inmind.html
+  {
+    text: "A centered mind is like a fortress.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Keeping the Breath in Mind, Introduction; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/knowledge.html
+  {
+    text: "So you have to be observant.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Knowledge, discussion of directed thought and evaluation; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/knowledge.html
+  {
+    text: "If you think too much, it'll run away with your concentration.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Knowledge, discussion of directed thought and evaluation; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/startsmall.html
+  {
+    text: "Clinging is the cause of all suffering and stress.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Starting Out Small, Clinging; trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/startsmall.html
+  {
+    text: "Thoughts of past and future are things we don't need to think about.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Starting Out Small, Clinging; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "letting-go"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/foodthought.html
+  {
+    text: "Keep practicing concentration until your heart matures, step by step.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Food for Thought, An Inner Mainstay and Bodily Debts; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/foodthought.html
+  {
+    text: "All the attachment comes from our side alone.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Food for Thought, An Inner Mainstay and Bodily Debts; trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/strength.html
+  {
+    text: "If the mind is murky, make it clear.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Inner Strength, A Mind of Pure Gold; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/strength.html
+  {
+    text: "Set your heart on doing it right now.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Inner Strength, A Mind of Pure Gold; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/skillof.html
+  {
+    text: "Don't forget the people who have helped you.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "The Skill of Release, The Affairs of the World; compiled and trans. Thanissaro Bhikkhu",
+    themes: [
+      "gratitude"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/skillof.html
+  {
+    text: "Find some way of doing good to repay them.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "The Skill of Release, The Affairs of the World; compiled and trans. Thanissaro Bhikkhu",
+    themes: [
+      "gratitude",
+      "compassion"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/startsmall2.html
+  {
+    text: "Don't latch onto what you see, because all things are inconstant.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Starting Out Small (Portfolio 2), Coming Ashore; trans. Thanissaro Bhikkhu",
+    themes: [
+      "impermanence",
+      "letting-go"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/startsmall2.html
+  {
+    text: "There's nothing certain or dependable at all.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Starting Out Small (Portfolio 2), Coming Ashore; trans. Thanissaro Bhikkhu",
+    themes: [
+      "impermanence"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/startsmall3.html
+  {
+    text: "When you think, you do it with a mind of good will.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Starting Out Small (Portfolio 3), The Essence of Merit; trans. Thanissaro Bhikkhu",
+    themes: [
+      "compassion",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/startsmall3.html
+  {
+    text: "When you speak, you do it with a mind of good will.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "Starting Out Small (Portfolio 3), The Essence of Merit; trans. Thanissaro Bhikkhu",
+    themes: [
+      "compassion",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/goodness
+  {
+    text: "Regard what you've done as your wealth.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "The Power of Goodness, 4 October 1960; trans. Thanissaro Bhikkhu",
+    themes: [
+      "contentment",
+      "gratitude"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/lee/goodness
+  {
+    text: "So you shouldn't underestimate the power of goodness.",
+    author: "Ajahn Lee Dhammadharo",
+    source: "The Power of Goodness, 4 October 1960; trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/thate/buddho.html
+  {
+    text: "Don't let your attention stray out ahead or behind.",
+    author: "Ajahn Tate",
+    source: "Buddho, meditation instructions; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/thate/buddho.html
+  {
+    text: "Let things follow their own course.",
+    author: "Ajahn Tate",
+    source: "Buddho, meditation instructions; trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/thate/stepsalong.html
+  {
+    text: "Don't let feelings of greed or desire, disappointment or dejection arise.",
+    author: "Ajahn Tate",
+    source: "Steps Along the Path, meditation instructions; trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/thate/stepsalong.html
+  {
+    text: "Let there simply be awareness and the act of focusing.",
+    author: "Ajahn Tate",
+    source: "Steps Along the Path, meditation instructions; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/sim/simplyso.html
+  {
+    text: "It is the present moment that is important.",
+    author: "Ajahn Sim Buddhacaro",
+    source: "Simply So, Source and Stream; trans. Jayasaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/sim/simplyso.html
+  {
+    text: "Be vigilant and care for the mind right here.",
+    author: "Ajahn Sim Buddhacaro",
+    source: "Simply So, Source and Stream; trans. Jayasaro Bhikkhu",
+    themes: [
+      "mindfulness",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/mun/released.html
+  {
+    text: "Practice is what keeps the true Dhamma pure.",
+    author: "Ajahn Mun Bhuridatta",
+    source: "A Heart Released, §§1–2 section headings; recorded teachings, trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/mun/released.html
+  {
+    text: "To follow the Buddha, we must train ourselves well before training others.",
+    author: "Ajahn Mun Bhuridatta",
+    source: "A Heart Released, §§1–2 section headings; recorded teachings, trans. Thanissaro Bhikkhu",
+    themes: [
+      "humility",
+      "wisdom"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/fuang/itself.html
+  {
+    text: "To listen well, your heart has to be quiet and still.",
+    author: "Ajahn Fuang",
+    source: "Awareness Itself, People Practicing the Dhamma; compiled and trans. Thanissaro Bhikkhu",
+    themes: [
+      "silence",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/fuang/itself.html
+  {
+    text: "You listen with your heart, not just with your ears.",
+    author: "Ajahn Fuang",
+    source: "Awareness Itself, People Practicing the Dhamma; compiled and trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "compassion"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/dune/giftsheleft.html
+  {
+    text: "Suffering is something to be comprehended.",
+    author: "Ajahn Dune Atulo",
+    source: "Gifts He Left Behind, §24, Throw it away; compiled by Phra Bodhinandamuni, trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/dune/giftsheleft.html
+  {
+    text: "When you comprehend it, you let it go.",
+    author: "Ajahn Dune Atulo",
+    source: "Gifts He Left Behind, §24, Throw it away; compiled by Phra Bodhinandamuni, trans. Thanissaro Bhikkhu",
+    themes: [
+      "letting-go",
+      "suffering-liberation"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/suwat/fistful.html
+  {
+    text: "If we want to study the Dhamma, we have to study our own heart.",
+    author: "Ajahn Suwat Suvaco",
+    source: "A Fistful of Sand, A Fistful of Sand; trans. Thanissaro Bhikkhu",
+    themes: [
+      "wisdom",
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/suwat/fistful.html
+  {
+    text: "Simply be mindful of the breath.",
+    author: "Ajahn Suwat Suvaco",
+    source: "A Fistful of Sand, A Fistful of Sand; trans. Thanissaro Bhikkhu",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/boowa/london.html
+  {
+    text: "The important factor in any method of mind-development is mindfulness (Sati).",
+    author: "Ajahn Maha Bua",
+    source: "The Dhamma Teaching of Acariya Maha Boowa in London, opening meditation instructions; trans. Bhikkhu Paññavaddho",
+    themes: [
+      "mindfulness"
+    ]
+  },
+  // Verification: https://accesstoinsight.org/lib/thai/boowa/london.html
+  {
+    text: "Forgetting mindfulness means failing in one's task, and one will not get results.",
+    author: "Ajahn Maha Bua",
+    source: "The Dhamma Teaching of Acariya Maha Boowa in London, opening meditation instructions; trans. Bhikkhu Paññavaddho",
+    themes: [
+      "mindfulness",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://amaravati.org/dhamma-article-ajahn-sundara-way-liberation/
+  {
+    text: "We begin to notice the details of kindness and our world becomes much happier.",
+    author: "Ajahn Sundara",
+    source: "On the Way to Liberation, reflection of 20 September 2015, Amaravati Buddhist Monastery",
+    themes: [
+      "compassion",
+      "ordinary-life"
+    ]
+  },
+  // Verification: https://amaravati.org/dhamma-article-ajahn-sundara-way-liberation/
+  {
+    text: "And we need to make peace with our delusion.",
+    author: "Ajahn Sundara",
+    source: "On the Way to Liberation, reflection of 20 September 2015, Amaravati Buddhist Monastery",
+    themes: [
+      "wisdom",
+      "compassion"
+    ]
+  },
+  // Verification: https://cdn.amaravati.org/wp-content/uploads/2014/09/Simple_Kindness_-_Ajahn_Candasiri.pdf
+  {
+    text: "We make peace with things just as they are.",
+    author: "Ajahn Candasiri",
+    source: "Simple Kindness, The Four Noble Truths, p. 16 (2012)",
+    themes: [
+      "letting-go",
+      "contentment"
+    ]
+  },
+  // Verification: https://cdn.amaravati.org/wp-content/uploads/2014/09/Simple_Kindness_-_Ajahn_Candasiri.pdf
+  {
+    text: "In that way a real transformation can happen.",
+    author: "Ajahn Candasiri",
+    source: "Simple Kindness, The Four Noble Truths, p. 18, on self-forgiveness (2012)",
+    themes: [
+      "compassion",
+      "wisdom"
+    ]
   }
 ];
 
