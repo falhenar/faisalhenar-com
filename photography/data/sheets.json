@@ -1,0 +1,332 @@
+{
+ "sheets": [
+  {
+   "id": "2026-09-16-market",
+   "title": "16 September, the market",
+   "line": "",
+   "kind": "day",
+   "places": [],
+   "frames": [
+    "fh-0086",
+    "fh-0082",
+    "fh-0083",
+    "fh-0084",
+    "fh-0085"
+   ],
+   "circled": [
+    "fh-0084"
+   ]
+  },
+  {
+   "id": "2026-09-04-dawn-to-the-churches",
+   "title": "4 September, dawn to the churches",
+   "line": "",
+   "kind": "walk",
+   "places": [
+    "Leonsberg",
+    "Paramaribo"
+   ],
+   "frames": [
+    "fh-0056",
+    "fh-0065",
+    "fh-0063",
+    "fh-0061",
+    "fh-0059",
+    "fh-0058",
+    "fh-0057",
+    "fh-0060",
+    "fh-0064",
+    "fh-0053",
+    "fh-0062",
+    "fh-0054",
+    "fh-0055"
+   ],
+   "circled": [
+    "fh-0065",
+    "fh-0057"
+   ]
+  },
+  {
+   "id": "2026-09-02-mango-tree",
+   "title": "2 September, the mango tree",
+   "line": "",
+   "kind": "day",
+   "places": [],
+   "frames": [
+    "fh-0050",
+    "fh-0051",
+    "fh-0052"
+   ],
+   "circled": [
+    "fh-0051",
+    "fh-0052"
+   ]
+  },
+  {
+   "id": "2026-08-20-leonsberg-pier",
+   "title": "Leonsberg pier, 20 August and 1 September",
+   "line": "",
+   "kind": "series",
+   "places": [
+    "Leonsberg"
+   ],
+   "frames": [
+    "fh-0070",
+    "fh-0069",
+    "fh-0068",
+    "fh-0067",
+    "fh-0066"
+   ],
+   "circled": [
+    "fh-0067",
+    "fh-0066"
+   ]
+  },
+  {
+   "id": "2026-08-09-ingi-dei",
+   "title": "9 August, Ingi dei",
+   "line": "",
+   "kind": "day",
+   "places": [
+    "Paramaribo"
+   ],
+   "frames": [
+    "sr-12",
+    "sr-11",
+    "fh-0001",
+    "fh-0005",
+    "fh-0006"
+   ],
+   "circled": [
+    "sr-12"
+   ]
+  },
+  {
+   "id": "2026-08-05-kwatta-market",
+   "title": "Kwatta market, 5 August",
+   "line": "",
+   "kind": "day",
+   "places": [
+    "Kwatta"
+   ],
+   "frames": [
+    "sr-09",
+    "sr-10"
+   ],
+   "circled": []
+  },
+  {
+   "id": "2026-07-23-morning",
+   "title": "23 July, morning",
+   "line": "",
+   "kind": "walk",
+   "places": [
+    "Leonsberg",
+    "Paramaribo"
+   ],
+   "frames": [
+    "fh-0002",
+    "sr-08",
+    "sr-02",
+    "sr-03",
+    "sr-01",
+    "sr-05",
+    "sr-04",
+    "sr-07",
+    "sr-06"
+   ],
+   "circled": [
+    "sr-06"
+   ]
+  },
+  {
+   "id": "2026-06-30-sai-gon",
+   "title": "Sài Gòn, 30 June",
+   "line": "",
+   "kind": "day",
+   "places": [
+    "Sài Gòn"
+   ],
+   "frames": [
+    "fh-0025",
+    "vn-07",
+    "vn-08",
+    "fh-0026"
+   ],
+   "circled": []
+  },
+  {
+   "id": "2026-06-27-my-tho",
+   "title": "Mỹ Tho, the last mornings",
+   "line": "",
+   "kind": "trip",
+   "places": [
+    "Mỹ Tho"
+   ],
+   "frames": [
+    "fh-0038",
+    "fh-0090",
+    "fh-0091",
+    "vn-09",
+    "vc-06",
+    "vn-03",
+    "fh-0022",
+    "fh-0023",
+    "vn-04",
+    "fh-0092",
+    "fh-0024",
+    "vn-05",
+    "vn-06"
+   ],
+   "circled": [
+    "fh-0090",
+    "fh-0091",
+    "vn-04"
+   ]
+  },
+  {
+   "id": "2026-06-15-da-lat",
+   "title": "Đà Lạt, 15 and 16 June",
+   "line": "",
+   "kind": "trip",
+   "places": [
+    "Đà Lạt"
+   ],
+   "frames": [
+    "fh-0012",
+    "fh-0013",
+    "fh-0014",
+    "fh-0035",
+    "fh-0015",
+    "fh-0016",
+    "fh-0036",
+    "fh-0017",
+    "fh-0008",
+    "fh-0077"
+   ],
+   "circled": [
+    "fh-0008",
+    "fh-0077"
+   ]
+  },
+  {
+   "id": "2026-06-11-d-ran",
+   "title": "D'Ran, 11 to 19 June",
+   "line": "",
+   "kind": "trip",
+   "places": [
+    "D'Ran",
+    "Phú Sơn"
+   ],
+   "frames": [
+    "fh-0009",
+    "fh-0078",
+    "fh-0003",
+    "fh-0010",
+    "fh-0034",
+    "fh-0004",
+    "fh-0011",
+    "fh-0087",
+    "fh-0088",
+    "fh-0081",
+    "fh-0089",
+    "fh-0079",
+    "fh-0037",
+    "fh-0093"
+   ],
+   "circled": [
+    "fh-0087",
+    "fh-0088",
+    "fh-0081",
+    "fh-0089"
+   ]
+  },
+  {
+   "id": "2026-06-06-my-tho",
+   "title": "Mỹ Tho, 6 to 10 June",
+   "line": "",
+   "kind": "trip",
+   "places": [
+    "Mỹ Tho"
+   ],
+   "frames": [
+    "fh-0075",
+    "fh-0047",
+    "vc-01",
+    "fh-0032",
+    "fh-0039",
+    "vc-02",
+    "fh-0048",
+    "fh-0049",
+    "fh-0076",
+    "fh-0080",
+    "fh-0033"
+   ],
+   "circled": [
+    "fh-0049",
+    "fh-0076"
+   ]
+  },
+  {
+   "id": "2026-06-04-sai-gon",
+   "title": "Sài Gòn, 4 and 5 June",
+   "line": "",
+   "kind": "trip",
+   "places": [
+    "Sài Gòn"
+   ],
+   "frames": [
+    "fh-0044",
+    "vn-01",
+    "fh-0027",
+    "fh-0045",
+    "fh-0029",
+    "fh-0030",
+    "fh-0031",
+    "fh-0028",
+    "fh-0046"
+   ],
+   "circled": [
+    "vn-01",
+    "fh-0029"
+   ]
+  },
+  {
+   "id": "2026-06-03-sai-gon",
+   "title": "Sài Gòn, 3 June",
+   "line": "",
+   "kind": "day",
+   "places": [
+    "Sài Gòn"
+   ],
+   "frames": [
+    "fh-0040",
+    "fh-0041",
+    "fh-0042",
+    "fh-0043"
+   ],
+   "circled": [
+    "fh-0040"
+   ]
+  },
+  {
+   "id": "loose",
+   "title": "Loose frames",
+   "line": "",
+   "kind": "loose",
+   "places": [
+    "Paramaribo",
+    "Khánh Sơn",
+    "Cam Ranh"
+   ],
+   "frames": [
+    "fh-0007",
+    "vn-02",
+    "vc-05"
+   ],
+   "circled": [
+    "vc-05"
+   ]
+  }
+ ]
+}

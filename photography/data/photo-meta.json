@@ -1,0 +1,662 @@
+{
+ "fh-0086": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-16T09:32",
+  "notes": []
+ },
+ "fh-0082": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-16T11:22",
+  "notes": []
+ },
+ "fh-0083": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-16T11:25",
+  "notes": []
+ },
+ "fh-0084": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-16T11:25",
+  "notes": []
+ },
+ "fh-0085": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-16T11:32",
+  "notes": []
+ },
+ "fh-0056": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-04T06:20",
+  "notes": []
+ },
+ "fh-0065": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T06:37",
+  "notes": []
+ },
+ "fh-0063": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T07:09",
+  "notes": []
+ },
+ "fh-0061": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-04T07:13",
+  "notes": []
+ },
+ "fh-0059": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-04T07:14",
+  "notes": []
+ },
+ "fh-0058": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-04T07:15",
+  "notes": []
+ },
+ "fh-0057": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T07:16",
+  "notes": []
+ },
+ "fh-0060": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T08:03",
+  "notes": []
+ },
+ "fh-0064": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T08:04",
+  "notes": []
+ },
+ "fh-0053": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T09:27",
+  "notes": []
+ },
+ "fh-0062": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T09:30",
+  "notes": []
+ },
+ "fh-0054": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T09:34",
+  "notes": []
+ },
+ "fh-0055": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-09-04T09:53",
+  "notes": []
+ },
+ "fh-0050": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-02T13:53",
+  "notes": []
+ },
+ "fh-0051": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-02T14:05",
+  "notes": []
+ },
+ "fh-0052": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-09-02T14:05",
+  "notes": []
+ },
+ "fh-0070": {
+  "tone": "bw",
+  "place": "Leonsberg",
+  "captured": "2026-08-20T06:24",
+  "notes": []
+ },
+ "fh-0069": {
+  "tone": "bw",
+  "place": "Leonsberg",
+  "captured": "2026-08-20T07:01",
+  "notes": []
+ },
+ "fh-0068": {
+  "tone": "bw",
+  "place": "Leonsberg",
+  "captured": "2026-09-01T18:33",
+  "notes": []
+ },
+ "fh-0067": {
+  "tone": "bw",
+  "place": "Leonsberg",
+  "captured": "2026-09-01T18:34",
+  "notes": []
+ },
+ "fh-0066": {
+  "tone": "bw",
+  "place": "Leonsberg",
+  "captured": "2026-09-01T18:35",
+  "notes": []
+ },
+ "sr-12": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "captured": "2026-08-09T08:53",
+  "notes": []
+ },
+ "sr-11": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "captured": "2026-08-09T12:43",
+  "notes": []
+ },
+ "fh-0001": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "captured": "2026-08-09T18:18",
+  "notes": []
+ },
+ "fh-0005": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "captured": "2026-08-09T18:18",
+  "notes": []
+ },
+ "fh-0006": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "captured": "2026-08-09T18:32",
+  "notes": []
+ },
+ "sr-09": {
+  "tone": "bw",
+  "place": "Kwatta",
+  "captured": "2026-08-05T11:08",
+  "notes": []
+ },
+ "sr-10": {
+  "tone": "bw",
+  "place": "Kwatta",
+  "captured": "2026-08-05T13:48",
+  "notes": []
+ },
+ "fh-0002": {
+  "tone": "colour",
+  "place": "",
+  "captured": "2026-07-23T06:16",
+  "notes": []
+ },
+ "sr-08": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T06:58",
+  "notes": []
+ },
+ "sr-02": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T07:03",
+  "notes": []
+ },
+ "sr-03": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T07:08",
+  "notes": []
+ },
+ "sr-01": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T07:13",
+  "notes": []
+ },
+ "sr-05": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T07:13",
+  "notes": []
+ },
+ "sr-04": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T07:29",
+  "notes": []
+ },
+ "sr-07": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T08:16",
+  "notes": []
+ },
+ "sr-06": {
+  "tone": "bw",
+  "place": "",
+  "captured": "2026-07-23T08:36",
+  "notes": []
+ },
+ "fh-0025": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-30T09:06",
+  "notes": []
+ },
+ "vn-07": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-30T17:13",
+  "notes": []
+ },
+ "vn-08": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-30T17:22",
+  "notes": []
+ },
+ "fh-0026": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-30T17:28",
+  "notes": []
+ },
+ "fh-0038": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T06:21",
+  "notes": []
+ },
+ "fh-0090": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T06:36",
+  "notes": []
+ },
+ "fh-0091": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T06:38",
+  "notes": []
+ },
+ "vn-09": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T08:20",
+  "notes": []
+ },
+ "vc-06": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T08:30",
+  "notes": []
+ },
+ "vn-03": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T08:32",
+  "notes": []
+ },
+ "fh-0022": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-27T09:23",
+  "notes": []
+ },
+ "fh-0023": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-28T05:42",
+  "notes": []
+ },
+ "vn-04": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-28T06:01",
+  "notes": []
+ },
+ "fh-0092": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-28T06:37",
+  "notes": []
+ },
+ "fh-0024": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-28T06:38",
+  "notes": []
+ },
+ "vn-05": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-28T07:03",
+  "notes": []
+ },
+ "vn-06": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-28T07:05",
+  "notes": []
+ },
+ "fh-0012": {
+  "tone": "colour",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T06:36",
+  "notes": []
+ },
+ "fh-0013": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T06:50",
+  "notes": []
+ },
+ "fh-0014": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T07:26",
+  "notes": []
+ },
+ "fh-0035": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T07:31",
+  "notes": []
+ },
+ "fh-0015": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T13:55",
+  "notes": []
+ },
+ "fh-0016": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T15:49",
+  "notes": []
+ },
+ "fh-0036": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-15T15:58",
+  "notes": []
+ },
+ "fh-0017": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-16T05:44",
+  "notes": []
+ },
+ "fh-0008": {
+  "tone": "bw",
+  "place": "Đà Lạt",
+  "captured": "2026-06-16T05:45",
+  "notes": []
+ },
+ "fh-0077": {
+  "tone": "colour",
+  "place": "Đà Lạt",
+  "captured": "2026-06-16T11:15",
+  "notes": []
+ },
+ "fh-0009": {
+  "tone": "bw",
+  "place": "D'Ran",
+  "captured": "2026-06-11T07:26",
+  "notes": []
+ },
+ "fh-0078": {
+  "tone": "colour",
+  "place": "Phú Sơn",
+  "captured": "2026-06-12T10:44",
+  "notes": []
+ },
+ "fh-0003": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-13T05:10",
+  "notes": []
+ },
+ "fh-0010": {
+  "tone": "bw",
+  "place": "D'Ran",
+  "captured": "2026-06-13T06:59",
+  "notes": []
+ },
+ "fh-0034": {
+  "tone": "bw",
+  "place": "D'Ran",
+  "captured": "2026-06-13T07:08",
+  "notes": []
+ },
+ "fh-0004": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-13T07:30",
+  "notes": []
+ },
+ "fh-0011": {
+  "tone": "bw",
+  "place": "D'Ran",
+  "captured": "2026-06-13T07:34",
+  "notes": []
+ },
+ "fh-0087": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-13T15:07",
+  "notes": []
+ },
+ "fh-0088": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-13T15:58",
+  "notes": []
+ },
+ "fh-0081": {
+  "tone": "bw",
+  "place": "D'Ran",
+  "captured": "2026-06-13T16:04",
+  "notes": []
+ },
+ "fh-0089": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-13T16:14",
+  "notes": []
+ },
+ "fh-0079": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-17T16:52",
+  "notes": []
+ },
+ "fh-0037": {
+  "tone": "bw",
+  "place": "D'Ran",
+  "captured": "2026-06-18T06:24",
+  "notes": []
+ },
+ "fh-0093": {
+  "tone": "colour",
+  "place": "D'Ran",
+  "captured": "2026-06-19T06:12",
+  "notes": []
+ },
+ "fh-0075": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-06T06:05",
+  "notes": []
+ },
+ "fh-0047": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-06T06:10",
+  "notes": []
+ },
+ "vc-01": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-06T06:20",
+  "notes": []
+ },
+ "fh-0032": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-06T07:06",
+  "notes": []
+ },
+ "fh-0039": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-08T11:05",
+  "notes": []
+ },
+ "vc-02": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-08T12:37",
+  "notes": []
+ },
+ "fh-0048": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-08T16:06",
+  "notes": []
+ },
+ "fh-0049": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-09T07:46",
+  "notes": []
+ },
+ "fh-0076": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-09T08:02",
+  "notes": []
+ },
+ "fh-0080": {
+  "tone": "colour",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-09T15:21",
+  "notes": []
+ },
+ "fh-0033": {
+  "tone": "bw",
+  "place": "Mỹ Tho",
+  "captured": "2026-06-10T07:17",
+  "notes": []
+ },
+ "fh-0044": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-04T08:10",
+  "notes": []
+ },
+ "vn-01": {
+  "tone": "bw",
+  "place": "Đường Sách, Sài Gòn",
+  "captured": "2026-06-04T08:20",
+  "notes": []
+ },
+ "fh-0027": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-04T09:43",
+  "notes": []
+ },
+ "fh-0045": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-04T11:33",
+  "notes": []
+ },
+ "fh-0029": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-04T11:51",
+  "notes": []
+ },
+ "fh-0030": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-04T12:51",
+  "notes": []
+ },
+ "fh-0031": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-04T17:16",
+  "notes": []
+ },
+ "fh-0028": {
+  "tone": "bw",
+  "place": "Sài Gòn",
+  "captured": "2026-06-05T09:45",
+  "notes": []
+ },
+ "fh-0046": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-05T14:49",
+  "notes": []
+ },
+ "fh-0040": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-03T12:54",
+  "notes": []
+ },
+ "fh-0041": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-03T16:49",
+  "notes": []
+ },
+ "fh-0042": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-03T17:47",
+  "notes": []
+ },
+ "fh-0043": {
+  "tone": "colour",
+  "place": "Sài Gòn",
+  "captured": "2026-06-03T19:20",
+  "notes": []
+ },
+ "fh-0007": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "captured": "2026-08-15T10:01",
+  "notes": []
+ },
+ "vn-02": {
+  "tone": "bw",
+  "place": "Khánh Sơn",
+  "captured": "2026-06-24T08:29",
+  "notes": []
+ },
+ "vc-05": {
+  "tone": "colour",
+  "place": "Cam Ranh",
+  "captured": "2026-06-25T14:44",
+  "notes": []
+ }
+}
