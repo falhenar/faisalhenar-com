@@ -201,6 +201,7 @@
   "tone": "colour",
   "place": "",
   "captured": "2026-07-23T06:16",
+  "alt": "The pier at Leonsberg at sunrise, a covered boat moored alongside and the jetty running out into the river.",
   "notes": []
  },
  "sr-08": {
@@ -225,6 +226,7 @@
   "tone": "bw",
   "place": "",
   "captured": "2026-07-23T07:13",
+  "alt": "Black and white photograph of a woman in a headwrap crossing a street in the early morning, motorbikes passing on either side.",
   "notes": []
  },
  "sr-05": {
@@ -297,6 +299,7 @@
   "tone": "bw",
   "place": "Mỹ Tho",
   "captured": "2026-06-27T08:20",
+  "alt": "Black and white photograph of an older man sitting on a doorstep in a narrow alley, a phở restaurant sign behind him.",
   "notes": []
  },
  "vc-06": {
@@ -405,6 +408,7 @@
   "tone": "bw",
   "place": "Đà Lạt",
   "captured": "2026-06-16T05:45",
+  "alt": "A woman in a conical hat climbs a flight of steps with her bags, bent under the weight, while a man waits at the top. Early sun falls across the stone.",
   "notes": []
  },
  "fh-0077": {
@@ -423,12 +427,14 @@
   "tone": "colour",
   "place": "Phú Sơn",
   "captured": "2026-06-12T10:44",
+  "alt": "Concrete graves set among banana palms and coffee bushes near Phú Sơn, with a village and green hills beyond.",
   "notes": []
  },
  "fh-0003": {
   "tone": "colour",
   "place": "D'Ran",
   "captured": "2026-06-13T05:10",
+  "alt": "Sunrise over a hillside homestay in D'Ran, Vietnam, mist lying in the valley below and a contrail crossing the sky.",
   "notes": []
  },
  "fh-0010": {
@@ -441,12 +447,14 @@
   "tone": "bw",
   "place": "D'Ran",
   "captured": "2026-06-13T07:08",
+  "alt": "Black and white photograph of a man pulling a loaded handcart past a stack of polystyrene crates at a market in the early morning, a hard light catching his face and white jacket.",
   "notes": []
  },
  "fh-0004": {
   "tone": "colour",
   "place": "D'Ran",
   "captured": "2026-06-13T07:30",
+  "alt": "A woman in a conical hat walks past a blue house in D'Ran, Vietnam, carrying her shopping through the early light.",
   "notes": []
  },
  "fh-0011": {
@@ -507,6 +515,7 @@
   "tone": "colour",
   "place": "Mỹ Tho",
   "captured": "2026-06-06T06:10",
+  "alt": "A woman kneels barefoot before a white statue of Quan Âm, incense burning in the urn between them.",
   "notes": []
  },
  "vc-01": {
@@ -525,6 +534,7 @@
   "tone": "colour",
   "place": "Mỹ Tho",
   "captured": "2026-06-08T11:05",
+  "alt": "A woman in a conical hat sits in the bow of a sampan as it moves down a narrow channel through the nipa palms near Mỹ Tho.",
   "notes": []
  },
  "vc-02": {
@@ -537,6 +547,7 @@
   "tone": "colour",
   "place": "Mỹ Tho",
   "captured": "2026-06-08T16:06",
+  "alt": "Motorbikes come down a road in Mỹ Tho, shophouses on both sides and a vendor resting in the shade at the left.",
   "notes": []
  },
  "fh-0049": {
@@ -633,6 +644,7 @@
   "tone": "colour",
   "place": "Sài Gòn",
   "captured": "2026-06-03T17:47",
+  "alt": "Scooters packed at a red light in Sài Gòn at dusk, helmets and tail lights filling the frame.",
   "notes": []
  },
  "fh-0043": {
@@ -651,6 +663,7 @@
   "tone": "bw",
   "place": "Khánh Sơn",
   "captured": "2026-06-24T08:29",
+  "alt": "Black and white photograph of a man standing by a gate with a house number sign reading 47 Âu Cơ, palm trees behind him.",
   "notes": []
  },
  "vc-05": {

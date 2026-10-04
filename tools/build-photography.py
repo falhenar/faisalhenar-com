@@ -2,28 +2,38 @@
 """Write the static pages of the photography room at /photography/room/.
 
 The room is two walls of prints and, behind them, the contact sheets each
-print was circled on. Everything is laid out here, at build time, so the
-pages work with JavaScript off and look the same on every build: circles,
-handwriting wobble and the positions on the boards all come from seeded
-randomness keyed on the photograph's id.
+print was circled on, and a page for every photograph. Everything is laid
+out here, at build time, so the pages work with JavaScript off and look the
+same on every build: circles, handwriting wobble and the positions on the
+boards all come from seeded randomness keyed on the photograph's id.
 
 Reads (never writes):
   photography/data/photos.json       the master collection: src, w, h, alt
   photography/data/sheets.json       contact sheets, newest first
   photography/data/walls.json        the two walls, in hanging order
-  photography/data/photo-meta.json   tone, place and local capture time
+  photography/data/photo-meta.json   tone, place, local capture time, and
+                                     an "alt" that overrides photos.json
+                                     until the same edit reaches it
 
-Writes:
+Writes (see BUILD):
   photography/room/index.html                   the wall
-  photography/room/sheets/<sheet-id>/index.html one per sheet in BUILD_SHEETS
+  photography/room/sheets/index.html            every contact sheet
+  photography/room/sheets/<sheet-id>/index.html one per sheet
+  photography/room/p/<photo-id>/index.html      one per photograph
 
 room.css and room.js beside the pages are written by hand, not by this tool.
-The pages carry the same ?v= as the rest of the site for base.css and
-menu.js, read from photography/index.html.
+No page carries an inline script: the live Content-Security-Policy runs
+scripts from files on the site only. What room.js's viewer needs travels in
+data- attributes on the links.
+
+Before writing anything the build checks the data, then every generated
+page: one h1, a title, a canonical link, noindex, and every internal link
+resolving to a generated page, an id on it, or a file in the site.
 
 Run from the repository root:  python3 tools/build-photography.py
 """
 import hashlib, html, json, math, os, random, re
+from urllib.parse import urlsplit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -31,15 +41,13 @@ ORIGIN = "https://faisalhenar.com"
 DATA = os.path.join(ROOT, "photography", "data")
 ROOM = os.path.join(ROOT, "photography", "room")
 ROOM_URL = "/photography/room/"
+SHEETS_URL = ROOM_URL + "sheets/"
 
-# Sheets that get a page. Later phases add to this list; a sheet not listed
-# here is named in plain text wherever it is mentioned, never linked.
-BUILD_SHEETS = [
-    "2026-09-04-dawn-to-the-churches",
-]
+# What gets built. Later phases add to this list.
+BUILD = ["wall", "sheets-index", "sheets", "photographs"]
 
-ROOM_CSS_VERSION = "2"
-ROOM_JS_VERSION = "2"
+ROOM_CSS_VERSION = "4"
+ROOM_JS_VERSION = "4"
 
 MAX_CIRCLED = 4
 MAX_WALL = 12
@@ -51,7 +59,8 @@ FASTENERS = ["pin-red", "pin-blue", "pin-yellow", "two-pins", "clip", "tape-corn
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 IMAGE_WIDTHS = (400, 800, 1200)
-LARGE_WIDTH = 2000
+PAGE_WIDTHS = (800, 1200, 2000)
+OG_WIDTH = 1200
 BOARD_WIDTH = 1312
 
 
@@ -120,9 +129,9 @@ def board_layout(items, seed, portrait, cw=305):
     return pos, int(y + rowh + 90)
 
 
-def circle_svg(photo_id):
+def circle_svg(photo_id, extra_class=""):
     d = loop_path(seed_of(photo_id))
-    return ('<svg class="circle" viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+    return (f'<svg class="circle{extra_class}" viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
             f'<path d="{d}" pathLength="100" stroke-width="1.25" opacity="0.92"/>'
             f'<path d="{d}" pathLength="100" stroke-width="0.5" opacity="0.45" transform="translate(0.6 0.5)"/>'
             '</svg>')
@@ -138,19 +147,93 @@ def cf_image(photo, width):
     return f"/cdn-cgi/image/width={width},fit=scale-down,format=auto/photography/{photo['src']}"
 
 
-def img_tag(photo, sizes, src_width=800):
-    widths = [w for w in IMAGE_WIDTHS if w <= photo["w"]] or [photo["w"]]
+def img_tag(photo, sizes, src_width=800, widths=IMAGE_WIDTHS, lazy=True):
+    widths = [w for w in widths if w <= photo["w"]] or [photo["w"]]
     srcset = ", ".join(f"{cf_image(photo, w)} {w}w" for w in widths)
+    loading = 'loading="lazy" decoding="async"' if lazy else 'fetchpriority="high" decoding="async"'
     return (f'<img src="{cf_image(photo, src_width)}" srcset="{srcset}" sizes="{sizes}" '
             f'data-orig="{original(photo)}" width="{photo["w"]}" height="{photo["h"]}" '
-            f'alt="{esc(photo["alt"])}" loading="lazy" decoding="async">')
+            f'alt="{esc(photo["alt"])}" {loading}>')
 
 
-def large_href(photo):
-    return f'href="{cf_image(photo, LARGE_WIDTH)}" data-orig="{original(photo)}"'
+# ---------- what is known about one photograph ----------
+
+def photo_url(photo_id):
+    return f"{ROOM_URL}p/{photo_id}/"
 
 
-# ---------- validation ----------
+def sheet_url(sheet_id):
+    return f"{SHEETS_URL}{sheet_id}/"
+
+
+def fmt_day(date, year=True):
+    y, m, d = date.split("-")
+    return f"{int(d)} {MONTHS[int(m) - 1]}" + (f" {y}" if year else "")
+
+
+def fmt_moment(stamp):
+    """'2026-06-08T11:05' -> '8 June 2026, 11:05'."""
+    date, clock = stamp.split("T")
+    return f"{fmt_day(date)}, {clock}"
+
+
+def fmt_range(first, last):
+    """A date or date range from two 'YYYY-MM-DD' strings."""
+    if first == last: return fmt_day(first)
+    if first[:7] == last[:7]: return f"{int(first[8:])} to {fmt_day(last)}"
+    if first[:4] == last[:4]: return f"{fmt_day(first, year=False)} to {fmt_day(last)}"
+    return f"{fmt_day(first)} to {fmt_day(last)}"
+
+
+class Room:
+    """The four data files, joined: everything a page needs about a photograph."""
+
+    def __init__(self, photos, sheets, walls, meta):
+        self.sheets, self.walls, self.meta = sheets, walls, meta
+        # photo-meta "alt" overrides photos.json until the edit reaches it.
+        self.photos = {i: dict(p, alt=meta.get(i, {}).get("alt") or p["alt"]) for i, p in photos.items()}
+        self.sheet_of = {i: s for s in sheets for i in s["frames"]}
+        self.wall_of = {p["id"]: (t, n, p["title"]) for t in ("bw", "colour") for n, p in enumerate(walls[t], 1)}
+
+    def frame_no(self, i):
+        return self.sheet_of[i]["frames"].index(i) + 1
+
+    def heading(self, i):
+        if i in self.wall_of: return self.wall_of[i][2]
+        return f"Frame {self.frame_no(i)}, {self.sheet_of[i]['title']}"
+
+    def place_line(self, i):
+        m = self.meta[i]
+        return " · ".join(x for x in (m["place"], fmt_moment(m["captured"]) if m["captured"] else "") if x)
+
+    def from_label(self, i):
+        return f"From {self.sheet_of[i]['title']}, frame {self.frame_no(i)}"
+
+    def from_href(self, i):
+        return f"{sheet_url(self.sheet_of[i]['id'])}#frame-{self.frame_no(i)}"
+
+    def wall_line(self, i):
+        if i not in self.wall_of: return ""
+        tone, n, _ = self.wall_of[i]
+        return f"On the {WALL_LABELS[tone]} wall, place {n}"
+
+    def wall_href(self, i):
+        return f"{ROOM_URL}#wall-{self.wall_of[i][0]}" if i in self.wall_of else ""
+
+    def viewer_attrs(self, i):
+        """Everything room.js's viewer shows, on the link that opens it."""
+        p = self.photos[i]
+        attrs = {
+            "data-v-src": original(p), "data-v-w": p["w"], "data-v-h": p["h"],
+            "data-v-title": self.heading(i), "data-v-desc": p["alt"],
+            "data-v-meta": self.place_line(i),
+            "data-v-from": self.from_label(i), "data-v-from-href": self.from_href(i),
+            "data-v-wall": self.wall_line(i), "data-v-wall-href": self.wall_href(i),
+        }
+        return " ".join(f'{k}="{esc(str(v))}"' for k, v in attrs.items())
+
+
+# ---------- validation of the data ----------
 
 def validate(photos, sheets, walls, meta):
     problems = []
@@ -178,15 +261,47 @@ def validate(photos, sheets, walls, meta):
             if not p.get("title"): problems.append(f"{i} on the {tone} wall has no title.")
     hung = [p["id"] for t in ("bw", "colour") for p in walls.get(t, [])]
     if len(hung) != len(set(hung)): problems.append("A print hangs twice.")
-    for name in BUILD_SHEETS:
-        if name not in {s["id"] for s in sheets}: problems.append(f"BUILD_SHEETS names {name}, which is not in sheets.json.")
     if problems:
         raise SystemExit("ERROR: the photography room data does not hold together:\n  " + "\n  ".join(problems))
 
 
+# ---------- validation of the pages ----------
+
+ATTR_RE = re.compile(r'\s(href|src|srcset|data-orig|data-v-src|data-v-from-href|data-v-wall-href)="([^"]*)"')
+ID_RE = re.compile(r'\sid="([^"]+)"')
+
+
+def check_pages(pages):
+    """Every generated page: one h1, a title, canonical, noindex; every internal link resolves."""
+    by_url = {"/" + os.path.relpath(path, ROOT).replace(os.sep, "/")[:-len("index.html")]: text
+              for path, text in pages.items()}
+    ids = {url: set(ID_RE.findall(text)) for url, text in by_url.items()}
+    problems = []
+    for url, text in by_url.items():
+        if len(re.findall(r"<h1[\s>]", text)) != 1: problems.append(f"{url}: needs exactly one h1.")
+        if not re.search(r"<title>[^<]+</title>", text): problems.append(f"{url}: has no title.")
+        if f'<link rel="canonical" href="{ORIGIN}{url}">' not in text: problems.append(f"{url}: canonical link missing or wrong.")
+        if '<meta name="robots" content="noindex">' not in text: problems.append(f"{url}: not marked noindex.")
+        for attr, value in ATTR_RE.findall(text):
+            refs = [part.strip().split(" ")[0] for part in value.split(", ")] if attr == "srcset" else [value]
+            for ref in refs:
+                if not ref or not ref.startswith("/") or ref.startswith("//"): continue
+                if ref.startswith("/cdn-cgi/image/"): ref = "/" + ref.split("/", 4)[4]
+                parts = urlsplit(ref); path, frag = parts.path, parts.fragment
+                if path in by_url:
+                    if frag and frag not in ids[path]: problems.append(f"{url}: {attr} {ref} points to a missing id.")
+                    continue
+                target = os.path.join(ROOT, path.lstrip("/").replace("/", os.sep))
+                if path.endswith("/"): target = os.path.join(target, "index.html")
+                if not os.path.isfile(target): problems.append(f"{url}: {attr} {ref} does not resolve.")
+    if problems:
+        raise SystemExit("ERROR: the generated room pages have problems:\n  " + "\n  ".join(sorted(set(problems))))
+
+
 # ---------- shared page parts ----------
 
-def head(title, description, url, versions):
+def head(title, description, url, versions, og_image=None):
+    og = og_image or ("https://faisalhenar.com/images/og-image.png", 1200, 630)
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,13 +319,13 @@ def head(title, description, url, versions):
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{ORIGIN}{url}">
-<meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="{og[0]}">
+<meta property="og:image:width" content="{og[1]}">
+<meta property="og:image:height" content="{og[2]}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)} · Faisal Henar">
 <meta name="twitter:description" content="{esc(description)}">
-<meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
+<meta name="twitter:image" content="{og[0]}">
 <link rel="preload" href="/photography/fonts/familjen-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/base.css?v={versions['base']}">
 <link rel="stylesheet" href="/photography/room/room.css?v={ROOM_CSS_VERSION}">
@@ -264,17 +379,8 @@ def foot(versions):
 """
 
 
-def sheet_url(sheet_id):
-    return f"{ROOM_URL}sheets/{sheet_id}/"
-
-
-def frame_ref(sheet, photo_id, built):
-    """'<sheet title>, frame <n>': a link when the sheet has a page, plain text otherwise."""
-    n = sheet["frames"].index(photo_id) + 1
-    text = f"{esc(sheet['title'])}, frame {n}"
-    if sheet["id"] in built:
-        return f'<a href="{sheet_url(sheet["id"])}#frame-{n}">{text}</a>'
-    return text
+def crumbs(*links):
+    return '<p class="room-crumb">' + " · ".join(f'<a href="{href}">{esc(text)}</a>' for text, href in links) + "</p>"
 
 
 # ---------- the wall ----------
@@ -284,29 +390,26 @@ def fastener(photo_id):
     return f'<span class="fastener fastener--{kind}" aria-hidden="true"></span>'
 
 
-def wall_section(tone, prints, photos, sheet_of, built):
+def wall_section(room, tone):
+    prints = room.walls[tone]; photos = room.photos
     portrait = {p["id"] for p in prints if photos[p["id"]]["h"] > photos[p["id"]]["w"]}
     positions, height = board_layout([p["id"] for p in prints], WALL_SEEDS[tone], portrait)
     other = "colour" if tone == "bw" else "bw"
     figures, items = [], []
     for n, (p, pos) in enumerate(zip(prints, positions), 1):
-        i = p["id"]; photo = photos[i]; sheet = sheet_of[i]
+        i = p["id"]; photo = photos[i]
         shape = "portrait" if i in portrait else "landscape"
-        if sheet["id"] in built:
-            target = f'href="{sheet_url(sheet["id"])}#frame-{sheet["frames"].index(i) + 1}"'
-        else:
-            target = large_href(photo)
+        from_link = f'<a href="{room.from_href(i)}">{esc(room.sheet_of[i]["title"])}, frame {room.frame_no(i)}</a>'
         figures.append(f"""          <figure class="print print--{shape}" style="--x:{pos['x']};--y:{pos['y']};--w:{pos['w']};--rot:{pos['rot']}deg">
-            <a class="print-photo" {target}>{img_tag(photo, "(max-width: 760px) calc(100vw - 48px), 24vw")}</a>
+            <a class="print-photo" href="{photo_url(i)}" {room.viewer_attrs(i)}>{img_tag(photo, "(max-width: 760px) calc(100vw - 48px), 24vw")}</a>
             {fastener(i)}
             <span class="pencil" aria-hidden="true">{jitter_spans(str(n), seed_of(i) + 1)}</span>
-            <figcaption class="print-cap"><span class="print-title">{esc(p['title'])}</span> <span class="print-from">from {frame_ref(sheet, i, built)}</span></figcaption>
+            <figcaption class="print-cap"><span class="print-title">{esc(p['title'])}</span> <span class="print-from">from {from_link}</span></figcaption>
           </figure>""")
-        items.append(f'          <li><span class="list-n">{n}</span> <span class="list-title">{esc(p["title"])}</span> <span class="list-from">from {frame_ref(sheet, i, built)}</span></li>')
-    count = len(prints)
+        items.append(f'          <li><span class="list-n">{n}</span> <span class="list-title">{esc(p["title"])}</span> <span class="list-from">from {from_link}</span></li>')
     return f"""    <section class="wall wall--{tone}" id="wall-{tone}" data-wall="{tone}" aria-labelledby="wall-{tone}-title">
       <div class="wall-head">
-        <h2 id="wall-{tone}-title">{WALL_NAMES[tone]} <span class="wall-count">{count} prints</span></h2>
+        <h2 id="wall-{tone}-title">{WALL_NAMES[tone]} <span class="wall-count">{len(prints)} prints</span></h2>
         <button class="wall-enlarge js-only" type="button" data-enlarge="{tone}" aria-controls="wall-{tone}">Click to enlarge</button>
       </div>
       <div class="wall-tools js-only" role="group" aria-label="Walls">
@@ -314,7 +417,7 @@ def wall_section(tone, prints, photos, sheet_of, built):
         <button type="button" data-enlarge="{other}">{WALL_NAMES[other]} wall</button>
       </div>
       <div class="board-frame">
-        <div class="board" style="--h:{height}" data-board="{tone}">
+        <div class="board" style="--h:{height}" data-board="{tone}" data-v-list data-v-context="{WALL_NAMES[tone]} wall">
 {chr(10).join(figures)}
           <span class="board-label" aria-hidden="true">{jitter_spans(WALL_LABELS[tone], seed_of(tone) + 5)}</span>
         </div>
@@ -325,17 +428,15 @@ def wall_section(tone, prints, photos, sheet_of, built):
     </section>"""
 
 
-def wall_page(photos, sheets, walls, sheet_of, versions, built):
-    latest = sheets[0]
-    latest_ref = (f'<a href="{sheet_url(latest["id"])}">{esc(latest["title"])}</a>'
-                  if latest["id"] in built else esc(latest["title"]))
+def wall_page(room, versions):
+    latest = room.sheets[0]
     description = "Two walls of photographs by Faisal Henar, one in black and white and one in colour, each print first circled on a contact sheet."
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
       <h1>The wall</h1>
       <p class="room-line">Two walls: one in black and white, one in colour. Each photograph was circled on a contact sheet first.</p>
-      <p class="room-latest">Latest sheet: {latest_ref}</p>
+      <p class="room-latest">Latest sheet: <a href="{sheet_url(latest['id'])}">{esc(latest['title'])}</a> · <a href="{SHEETS_URL}">All contact sheets</a></p>
     </div>
 
     <div class="wall-switch js-only" role="group" aria-label="Choose a wall">
@@ -344,70 +445,136 @@ def wall_page(photos, sheets, walls, sheet_of, versions, built):
     </div>
 
     <div class="walls" data-walls data-pick="bw">
-{wall_section("bw", walls["bw"], photos, sheet_of, built)}
-{wall_section("colour", walls["colour"], photos, sheet_of, built)}
+{wall_section(room, "bw")}
+{wall_section(room, "colour")}
     </div>
   </main>
 """
     return head("The wall", description, ROOM_URL, versions) + body + foot(versions)
 
 
-# ---------- a contact sheet ----------
+# ---------- the contact sheets ----------
 
-def fmt_time(stamp, with_day):
-    date, clock = stamp.split("T")
-    if not with_day: return clock
-    _, month, day = date.split("-")
-    return f"{int(day)} {MONTHS[int(month) - 1]} {clock}"
-
-
-def sheet_meta_line(sheet, meta):
+def sheet_meta_line(room, sheet, with_times=True):
     parts = []
     if sheet["places"]: parts.append(", ".join(sheet["places"]))
-    times = sorted(meta[i]["captured"] for i in sheet["frames"] if meta[i]["captured"])
-    if times:
-        same_day = times[0][:10] == times[-1][:10]
-        parts.append(f"{fmt_time(times[0], not same_day)} to {fmt_time(times[-1], not same_day)}")
+    stamps = sorted(room.meta[i]["captured"] for i in sheet["frames"] if room.meta[i]["captured"])
+    if stamps:
+        if with_times:
+            same_day = stamps[0][:10] == stamps[-1][:10]
+            show = (lambda s: s[11:]) if same_day else (lambda s: f"{fmt_day(s[:10], year=False)} {s[11:]}")
+            parts.append(f"{show(stamps[0])} to {show(stamps[-1])}")
+        else:
+            parts.append(fmt_range(stamps[0][:10], stamps[-1][:10]))
     n = len(sheet["frames"])
     parts.append(f"{n} frame{'' if n == 1 else 's'}")
     return " · ".join(esc(p) for p in parts)
 
 
-def sheet_page(sheet, photos, meta, walls, versions):
-    marks = {p["id"]: (t, n) for t in ("bw", "colour") for n, p in enumerate(walls[t], 1)}
+def sheet_page(room, sheet, versions):
     n = len(sheet["frames"])
     frames = []
     for k, i in enumerate(sheet["frames"], 1):
-        photo = photos[i]
+        photo = room.photos[i]
         circled = i in sheet["circled"]
         extra = ""
         if circled: extra += "\n          " + circle_svg(i)
-        if i in marks: extra += f'\n          <span class="wall-mark" aria-hidden="true">{jitter_spans(f"{MARK_WORDS[marks[i][0]]} {marks[i][1]}", seed_of(i) + 3)}</span>'
+        if i in room.wall_of:
+            tone, place, _ = room.wall_of[i]
+            extra += f'\n          <span class="wall-mark" aria-hidden="true">{jitter_spans(f"{MARK_WORDS[tone]} {place}", seed_of(i) + 3)}</span>'
         label = f"Frame {k}" + (", circled" if circled else "")
-        if i in marks: label += f", print {marks[i][1]} on the {WALL_LABELS[marks[i][0]]} wall"
+        if i in room.wall_of: label += f", place {room.wall_of[i][1]} on the {WALL_LABELS[room.wall_of[i][0]]} wall"
+        place = f'<span class="frame-place">{esc(room.meta[i]["place"])}</span>' if sheet["kind"] == "loose" and room.meta[i]["place"] else ""
         frames.append(f"""        <figure class="frame{' frame--circled' if circled else ''}" id="frame-{k}">
-          <a class="frame-photo" {large_href(photo)} aria-describedby="frame-{k}-cap">{img_tag(photo, "(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw", 400)}</a>
-          <figcaption class="frame-cap" id="frame-{k}-cap"><span class="sr-only">{esc(label)}</span><span aria-hidden="true">{k} ▸ {k}A</span></figcaption>{extra}
+          <a class="frame-photo" href="{photo_url(i)}" {room.viewer_attrs(i)} aria-describedby="frame-{k}-cap">{img_tag(photo, "(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw", 400)}</a>
+          <figcaption class="frame-cap" id="frame-{k}-cap"><span class="sr-only">{esc(label)}</span><span aria-hidden="true">{k} ▸ {k}A</span>{place}</figcaption>{extra}
         </figure>""")
     line = f'\n      <p class="room-line">{esc(sheet["line"])}</p>' if sheet["line"] else ""
     description = f"A contact sheet of photographs by Faisal Henar: {sheet['title']}, {n} frames."
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
-      <p class="room-crumb"><a href="{ROOM_URL}">The wall</a></p>
+      {crumbs(("The wall", ROOM_URL), ("Contact sheets", SHEETS_URL))}
       <h1>{esc(sheet['title'])}</h1>
-      <p class="sheet-meta">{sheet_meta_line(sheet, meta)}</p>{line}
+      <p class="sheet-meta">{sheet_meta_line(room, sheet)}</p>{line}
     </div>
 
     <div class="sheet" data-sheet>
       <p class="sheet-edge" aria-hidden="true">faisalhenar.com ▸ {esc(sheet['title'])} ▸ {n} frames</p>
-      <div class="sheet-grid">
+      <div class="sheet-grid" data-v-list data-v-context="{esc(sheet['title'])}">
 {chr(10).join(frames)}
       </div>
     </div>
   </main>
 """
     return head(sheet["title"], description, sheet_url(sheet["id"]), versions) + body + foot(versions)
+
+
+def sheets_index(room, versions):
+    entries = []
+    for sheet in room.sheets:
+        picks = sheet["circled"] or sheet["frames"][:3]
+        thumbs = []
+        for i in picks:
+            ring = circle_svg(i, " circle--small") if sheet["circled"] else ""
+            thumbs.append(f'          <span class="strip-frame">{img_tag(room.photos[i], "120px", 400, (400,))}{ring}</span>')
+        entries.append(f"""      <li class="sheet-entry">
+        <h2><a href="{sheet_url(sheet['id'])}">{esc(sheet['title'])}</a></h2>
+        <p class="sheet-meta">{sheet_meta_line(room, sheet, with_times=False)}</p>
+        <a class="sheet-strip" href="{sheet_url(sheet['id'])}" tabindex="-1" aria-hidden="true">
+{chr(10).join(thumbs)}
+        </a>
+      </li>""")
+    description = "Every contact sheet in Faisal Henar's photography room: each walk, day and trip, newest first."
+    body = f"""
+  <main id="main" tabindex="-1" class="room-main">
+    <div class="room-head">
+      {crumbs(("The wall", ROOM_URL))}
+      <h1>Contact sheets</h1>
+      <p class="room-line">Every walk, day and trip, newest first. Circled frames are the ones that made it onto a wall.</p>
+    </div>
+
+    <ol class="sheet-list">
+{chr(10).join(entries)}
+    </ol>
+  </main>
+"""
+    return head("Contact sheets", description, SHEETS_URL, versions) + body + foot(versions)
+
+
+# ---------- a page per photograph ----------
+
+def photo_page(room, i, versions):
+    photo = room.photos[i]; sheet = room.sheet_of[i]; k = room.frame_no(i)
+    frames = sheet["frames"]
+    prev_id = frames[k - 2] if k > 1 else None
+    next_id = frames[k] if k < len(frames) else None
+    nav = []
+    if prev_id: nav.append(f'<a class="step step--prev" href="{photo_url(prev_id)}" rel="prev">&larr; Frame {k - 1}</a>')
+    if next_id: nav.append(f'<a class="step step--next" href="{photo_url(next_id)}" rel="next">Frame {k + 1} &rarr;</a>')
+    lines = []
+    if room.place_line(i): lines.append(f'<p class="photo-meta">{esc(room.place_line(i))}</p>')
+    lines.append(f'<p class="photo-from"><a href="{room.from_href(i)}">{esc(room.from_label(i))}</a></p>')
+    if i in room.wall_of: lines.append(f'<p class="photo-wall"><a href="{room.wall_href(i)}">{esc(room.wall_line(i))}</a></p>')
+    og_h = round(OG_WIDTH * photo["h"] / photo["w"])
+    og = (f"{ORIGIN}{cf_image(photo, OG_WIDTH)}", OG_WIDTH, og_h)
+    body = f"""
+  <main id="main" tabindex="-1" class="room-main photo-main">
+    {crumbs(("The wall", ROOM_URL), ("Contact sheets", SHEETS_URL), (sheet["title"], sheet_url(sheet["id"])))}
+    <figure class="photo">
+      <div class="photo-frame">{img_tag(photo, "(max-width: 760px) 100vw, 90vw", 1200, PAGE_WIDTHS, lazy=False)}</div>
+      <figcaption class="photo-cap">
+        <h1>{esc(room.heading(i))}</h1>
+        <p class="photo-desc">{esc(photo['alt'])}</p>
+        {chr(10).join("        " + l if n else l for n, l in enumerate(lines))}
+      </figcaption>
+    </figure>
+    <nav class="photo-steps" aria-label="Frames on this sheet">
+      {chr(10).join(nav)}
+    </nav>
+  </main>
+"""
+    return head(room.heading(i), photo["alt"], photo_url(i), versions, og) + body + foot(versions)
 
 
 # ---------- main ----------
@@ -418,6 +585,7 @@ def main():
     walls = load("walls.json")
     meta = load("photo-meta.json")
     validate(photos, sheets, walls, meta)
+    room = Room(photos, sheets, walls, meta)
 
     folio = read(os.path.join(ROOT, "photography", "index.html"))
     base = re.search(r'css/base\.css\?v=(\d+)', folio)
@@ -426,21 +594,27 @@ def main():
         raise SystemExit("ERROR: could not read the base.css and menu.js versions from photography/index.html.")
     versions = {"base": base.group(1), "menu": menu.group(1)}
 
-    sheet_of = {i: s for s in sheets for i in s["frames"]}
-    built = set(BUILD_SHEETS)
-    pages = {os.path.join(ROOM, "index.html"): wall_page(photos, sheets, walls, sheet_of, versions, built)}
-    for sheet in sheets:
-        if sheet["id"] in built:
-            pages[os.path.join(ROOM, "sheets", sheet["id"], "index.html")] = sheet_page(sheet, photos, meta, walls, versions)
+    pages = {}
+    if "wall" in BUILD:
+        pages[os.path.join(ROOM, "index.html")] = wall_page(room, versions)
+    if "sheets-index" in BUILD:
+        pages[os.path.join(ROOM, "sheets", "index.html")] = sheets_index(room, versions)
+    if "sheets" in BUILD:
+        for sheet in sheets:
+            pages[os.path.join(ROOM, "sheets", sheet["id"], "index.html")] = sheet_page(room, sheet, versions)
+    if "photographs" in BUILD:
+        for i in room.sheet_of:
+            pages[os.path.join(ROOM, "p", i, "index.html")] = photo_page(room, i, versions)
+
+    check_pages(pages)
 
     written = 0
     for path, markup in pages.items():
         if not os.path.exists(path) or read(path) != markup:
             write(path, markup)
             written += 1
-    print("Photography room: %d sheets, %d prints on the walls, %d page%s built, %d rewritten."
-          % (len(sheets), len(walls["bw"]) + len(walls["colour"]), len(pages),
-             "" if len(pages) == 1 else "s", written))
+    print("Photography room: %d sheets, %d prints on the walls, %d pages built, %d rewritten."
+          % (len(sheets), len(walls["bw"]) + len(walls["colour"]), len(pages), written))
 
 
 if __name__ == "__main__":
