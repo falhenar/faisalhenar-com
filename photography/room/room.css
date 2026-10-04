@@ -103,6 +103,44 @@ body.room{
 .footer-nav a:hover,
 .footer-nav a:focus-visible{ color: var(--accent); }
 
+/* ---------- the room's own sections ----------
+   The wall, Contact sheets, Everything: a row of pills under the site
+   header, the current one filled. */
+.room-nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 4px var(--pad) 0;
+}
+.room-nav a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.room-nav a:hover{ border-color: var(--text-2); }
+.room-nav a:focus-visible{ outline: 2px solid var(--frame-no); outline-offset: 3px; }
+.room-nav a[aria-current="page"]{
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--room);
+  font-weight: 500;
+}
+.room-nav-n{
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-2);
+}
+.room-nav a[aria-current="page"] .room-nav-n{ color: #5d5b56; }
+
 /* ---------- page head ---------- */
 .room-main{
   max-width: 1440px;
@@ -775,4 +813,101 @@ body.viewer-open{ overflow: hidden; }
 @media (prefers-reduced-motion: reduce){
   .frame:target .frame-photo{ animation: none; outline: 3px solid var(--frame-no); outline-offset: 4px; }
   .viewer-img, .viewer-img.is-loading{ transition: none; opacity: 1; }
+}
+
+/* ---------- the room's sections on a phone ---------- */
+@media (max-width: 760px){
+  .room-nav{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .room-nav a{ min-height: 44px; padding: 6px 8px; font-size: 0.82rem; text-align: center; }
+}
+
+/* ---------- everything ----------
+   Rows of equal height without cropping: each photograph grows in
+   proportion to its own width-to-height ratio (--r), so every photograph
+   in a row scales by the same amount and keeps its shape. The filler
+   after the last photograph soaks up the last row's spare width, so that
+   row stays at the base height instead of stretching. */
+.filters{
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin: 0 0 18px;
+}
+html.js .filters.js-only{ display: flex !important; }
+.filter-group{ display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.filter-label{
+  margin-right: 4px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.filter-group button{
+  min-height: 44px;
+  padding: 0 14px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.filter-group button:hover{ border-color: var(--text-2); }
+.filter-group button[aria-pressed="true"]{
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--room);
+  font-weight: 500;
+}
+.filter-group button:focus-visible{ outline: 2px solid var(--frame-no); outline-offset: 3px; }
+.filter-count{
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-2);
+}
+
+.ev-month[hidden]{ display: none; }
+.ev-month-head{
+  margin: 30px 0 10px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.ev-month:first-child .ev-month-head{ margin-top: 6px; }
+.ev-grid{
+  --row: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ev-grid::after{
+  content: '';
+  flex: 999999 1 0;
+}
+.ev-item{
+  display: block;
+  flex: var(--r) 1 calc(var(--r) * var(--row));
+  max-width: 100%;
+  background: #000;
+}
+.ev-item[hidden]{ display: none; }
+.ev-item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.room-main .ev-item:focus-visible{ outline: 2px solid var(--frame-no); outline-offset: 2px; }
+
+@media (max-width: 760px){
+  .filters{ gap: 10px; }
+  .filter-group{ width: 100%; }
+  .filter-label{ width: 100%; }
+  .filter-group button{ flex: 1 1 auto; padding: 0 10px; }
+  .ev-grid{ --row: 120px; gap: 4px; }
 }

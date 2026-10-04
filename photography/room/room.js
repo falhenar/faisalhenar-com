@@ -1,8 +1,9 @@
 /* Photography room: the small things JavaScript adds to pages that already
    work without it. The wall: enlarge one board, or switch walls on a phone.
    The sheet: circles that draw once in view, a loupe on fine pointers, and
-   press-and-hold zoom on touch. Everywhere: the viewer, which opens a print
-   or a frame over the page and steps through its wall or sheet. Pages are
+   press-and-hold zoom on touch. Everything: the place and tone filters,
+   kept in the address. Everywhere: the viewer, which opens a print, frame
+   or photograph over the page and steps through what is visible. Pages are
    written by tools/build-photography.py; this file is written by hand.
 
    Loaded synchronously in the <head>, so html.js is set before the body
@@ -211,6 +212,62 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- everything ----------
+     Place and tone filters. They combine, they live in the address
+     (?place=vietnam&tone=bw) so a filtered view can be shared and reloaded,
+     and they tell the viewer what to call the list it steps through. */
+  var every = document.querySelector('[data-everything]');
+  var filters = document.querySelector('[data-filters]');
+  if (every && filters) {
+    var NAMES = {
+      place: { all: '', suriname: 'Suriname', vietnam: 'Vietnam' },
+      tone: { all: '', bw: 'black and white', colour: 'colour' }
+    };
+    var state = { place: 'all', tone: 'all' };
+    var params = new URLSearchParams(window.location.search);
+    Object.keys(state).forEach(function (key) {
+      var value = params.get(key);
+      if (value && Object.prototype.hasOwnProperty.call(NAMES[key], value)) state[key] = value;
+    });
+    var photos = every.querySelectorAll('.ev-item');
+    var months = every.querySelectorAll('[data-month]');
+    var buttons = filters.querySelectorAll('[data-filter]');
+    var count = filters.querySelector('[data-count]');
+
+    var apply = function (remember) {
+      var shown = 0;
+      photos.forEach(function (a) {
+        var show = (state.place === 'all' || a.getAttribute('data-place') === state.place) &&
+          (state.tone === 'all' || a.getAttribute('data-tone') === state.tone);
+        a.hidden = !show;
+        if (show) shown += 1;
+      });
+      months.forEach(function (m) { m.hidden = !m.querySelector('.ev-item:not([hidden])'); });
+      count.textContent = shown;
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(state[b.getAttribute('data-filter')] === b.getAttribute('data-value')));
+      });
+      every.setAttribute('data-v-context',
+        ['Everything', NAMES.place[state.place], NAMES.tone[state.tone]].filter(Boolean).join(', '));
+      if (remember) {
+        var query = new URLSearchParams(window.location.search);
+        Object.keys(state).forEach(function (key) {
+          if (state[key] === 'all') query.delete(key); else query.set(key, state[key]);
+        });
+        var q = query.toString();
+        history.replaceState(history.state, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
+      }
+    };
+
+    filters.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-filter]');
+      if (!b) return;
+      state[b.getAttribute('data-filter')] = b.getAttribute('data-value');
+      apply(true);
+    });
+    apply(false);
+  }
+
   /* ---------- the viewer ----------
      Opens over the page from any link carrying data-v-src inside a
      [data-v-list], and steps through that list. The address follows the
@@ -345,7 +402,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!viewer) build();
     ui.hint.hidden = !hintWanted();
     var list = link.closest('[data-v-list]');
-    items = Array.prototype.slice.call(list.querySelectorAll('a[data-v-src]'));
+    // Only what is on show: Everything hides filtered-out photographs.
+    items = Array.prototype.filter.call(list.querySelectorAll('a[data-v-src]'),
+      function (a) { return !a.closest('[hidden]'); });
     opener = link;
     ui.context.textContent = list.getAttribute('data-v-context') || '';
     history.pushState({ roomViewer: true }, '', link.getAttribute('href'));

@@ -20,6 +20,7 @@ Writes (see BUILD):
   photography/room/sheets/index.html            every contact sheet
   photography/room/sheets/<sheet-id>/index.html one per sheet
   photography/room/p/<photo-id>/index.html      one per photograph
+  photography/room/everything/index.html        every photograph, newest first
 
 room.css and room.js beside the pages are written by hand, not by this tool.
 No page carries an inline script: the live Content-Security-Policy runs
@@ -42,12 +43,13 @@ DATA = os.path.join(ROOT, "photography", "data")
 ROOM = os.path.join(ROOT, "photography", "room")
 ROOM_URL = "/photography/room/"
 SHEETS_URL = ROOM_URL + "sheets/"
+EVERYTHING_URL = ROOM_URL + "everything/"
 
 # What gets built. Later phases add to this list.
-BUILD = ["wall", "sheets-index", "sheets", "photographs"]
+BUILD = ["wall", "sheets-index", "sheets", "photographs", "everything"]
 
-ROOM_CSS_VERSION = "4"
-ROOM_JS_VERSION = "4"
+ROOM_CSS_VERSION = "5"
+ROOM_JS_VERSION = "5"
 
 MAX_CIRCLED = 4
 MAX_WALL = 12
@@ -59,6 +61,9 @@ FASTENERS = ["pin-red", "pin-blue", "pin-yellow", "two-pins", "clip", "tape-corn
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 IMAGE_WIDTHS = (400, 800, 1200)
+EVERYTHING_WIDTHS = (300, 600)
+ROW_HEIGHT = {"computer": 200, "phone": 120}
+COUNTRIES = ("Suriname", "Vietnam")
 PAGE_WIDTHS = (800, 1200, 2000)
 OG_WIDTH = 1200
 BOARD_WIDTH = 1312
@@ -250,6 +255,8 @@ def validate(photos, sheets, walls, meta):
         if len(sheet["circled"]) > MAX_CIRCLED: problems.append(f"Sheet {sheet['id']} has {len(sheet['circled'])} circled; at most {MAX_CIRCLED}.")
     for i in meta:
         if i not in seen: problems.append(f"{i} is in photo-meta.json but on no sheet.")
+        if meta[i].get("country") not in COUNTRIES: problems.append(f"{i} has no country (one of {', '.join(COUNTRIES)}) in photo-meta.json.")
+        if not meta[i].get("captured"): problems.append(f"{i} has no capture time, so it cannot be placed on Everything.")
     circled = {i for s in sheets for i in s["circled"]}
     for tone in ("bw", "colour"):
         prints = walls.get(tone, [])
@@ -300,7 +307,17 @@ def check_pages(pages):
 
 # ---------- shared page parts ----------
 
-def head(title, description, url, versions, og_image=None):
+def room_nav(section, total):
+    """The room's own row of sections, under the site header."""
+    items = [("wall", "The wall", ROOM_URL, ""), ("sheets", "Contact sheets", SHEETS_URL, ""),
+             ("everything", "Everything", EVERYTHING_URL, f' <span class="room-nav-n">{total}</span>')]
+    links = "".join(
+        f'\n    <a href="{href}"' + (' aria-current="page"' if key == section else '') + f'>{label}{extra}</a>'
+        for key, label, href, extra in items)
+    return f'  <nav class="room-nav" aria-label="Photography room">{links}\n  </nav>\n'
+
+
+def head(title, description, url, versions, og_image=None, section="wall", total=0):
     og = og_image or ("https://faisalhenar.com/images/og-image.png", 1200, 630)
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -352,7 +369,7 @@ def head(title, description, url, versions, og_image=None):
       </nav>
     </div>
   </header>
-"""
+""" + room_nav(section, total)
 
 
 def foot(versions):
@@ -450,7 +467,7 @@ def wall_page(room, versions):
     </div>
   </main>
 """
-    return head("The wall", description, ROOM_URL, versions) + body + foot(versions)
+    return head("The wall", description, ROOM_URL, versions, section="wall", total=len(room.sheet_of)) + body + foot(versions)
 
 
 # ---------- the contact sheets ----------
@@ -494,7 +511,6 @@ def sheet_page(room, sheet, versions):
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
-      {crumbs(("The wall", ROOM_URL), ("Contact sheets", SHEETS_URL))}
       <h1>{esc(sheet['title'])}</h1>
       <p class="sheet-meta">{sheet_meta_line(room, sheet)}</p>{line}
     </div>
@@ -507,7 +523,7 @@ def sheet_page(room, sheet, versions):
     </div>
   </main>
 """
-    return head(sheet["title"], description, sheet_url(sheet["id"]), versions) + body + foot(versions)
+    return head(sheet["title"], description, sheet_url(sheet["id"]), versions, section="sheets", total=len(room.sheet_of)) + body + foot(versions)
 
 
 def sheets_index(room, versions):
@@ -529,7 +545,6 @@ def sheets_index(room, versions):
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
-      {crumbs(("The wall", ROOM_URL))}
       <h1>Contact sheets</h1>
       <p class="room-line">Every walk, day and trip, newest first. Circled frames are the ones that made it onto a wall.</p>
     </div>
@@ -539,7 +554,7 @@ def sheets_index(room, versions):
     </ol>
   </main>
 """
-    return head("Contact sheets", description, SHEETS_URL, versions) + body + foot(versions)
+    return head("Contact sheets", description, SHEETS_URL, versions, section="sheets", total=len(room.sheet_of)) + body + foot(versions)
 
 
 # ---------- a page per photograph ----------
@@ -560,7 +575,7 @@ def photo_page(room, i, versions):
     og = (f"{ORIGIN}{cf_image(photo, OG_WIDTH)}", OG_WIDTH, og_h)
     body = f"""
   <main id="main" tabindex="-1" class="room-main photo-main">
-    {crumbs(("The wall", ROOM_URL), ("Contact sheets", SHEETS_URL), (sheet["title"], sheet_url(sheet["id"])))}
+    {crumbs((sheet["title"], sheet_url(sheet["id"])))}
     <figure class="photo">
       <div class="photo-frame">{img_tag(photo, "(max-width: 760px) 100vw, 90vw", 1200, PAGE_WIDTHS, lazy=False)}</div>
       <figcaption class="photo-cap">
@@ -574,7 +589,77 @@ def photo_page(room, i, versions):
     </nav>
   </main>
 """
-    return head(room.heading(i), photo["alt"], photo_url(i), versions, og) + body + foot(versions)
+    return head(room.heading(i), photo["alt"], photo_url(i), versions, og, section="sheets", total=len(room.sheet_of)) + body + foot(versions)
+
+
+# ---------- everything ----------
+
+def everything_page(room, versions):
+    order = sorted(room.sheet_of, key=lambda i: (room.meta[i]["captured"], i), reverse=True)
+    months, current = [], None
+    for i in order:
+        key = room.meta[i]["captured"][:7]
+        if key != current:
+            months.append((key, [])); current = key
+        months[-1][1].append(i)
+    sections = []
+    for key, ids in months:
+        y, m = key.split("-")
+        items = []
+        for i in ids:
+            p = room.photos[i]; r = p["w"] / p["h"]
+            sizes = f'(max-width: 760px) {round(r * ROW_HEIGHT["phone"])}px, {round(r * ROW_HEIGHT["computer"])}px'
+            items.append(
+                f'          <a class="ev-item" href="{photo_url(i)}" style="--r:{r:.4f}" '
+                f'data-place="{room.meta[i]["country"].lower()}" data-tone="{room.meta[i]["tone"]}" {room.viewer_attrs(i)}>'
+                f'{img_tag(p, sizes, 300, EVERYTHING_WIDTHS)}</a>')
+        sections.append(f"""      <section class="ev-month" aria-labelledby="month-{key}" data-month>
+        <h2 class="ev-month-head" id="month-{key}">{MONTHS[int(m) - 1]} {y}</h2>
+        <div class="ev-grid">
+{chr(10).join(items)}
+        </div>
+      </section>""")
+
+    def group(name, label, options):
+        buttons = "".join(
+            f'\n          <button type="button" data-filter="{name}" data-value="{value}" aria-pressed="' + ("true" if value == "all" else "false") + f'">{text}</button>'
+            for value, text in options)
+        return f"""        <div class="filter-group" role="group" aria-label="{label}">
+          <span class="filter-label" aria-hidden="true">{label}</span>{buttons}
+        </div>"""
+
+    total = len(order)
+    places = [("all", "All")] + [(c.lower(), c) for c in COUNTRIES]
+    tones = [("all", "All"), ("bw", "Black and white"), ("colour", "Colour")]
+    description = "Every photograph in Faisal Henar's photography room, newest first, by place and by black and white or colour."
+    body = f"""
+  <main id="main" tabindex="-1" class="room-main">
+    <div class="room-head">
+      <h1>Everything</h1>
+      <p class="room-line">Every photograph I kept, newest first.</p>
+    </div>
+
+    <div class="filters js-only" data-filters>
+{group("place", "Place", places)}
+{group("tone", "Tone", tones)}
+      <p class="filter-count" aria-live="polite">Showing <span data-count>{total}</span> of {total}</p>
+    </div>
+
+    <div class="everything" data-everything data-v-list data-v-context="Everything">
+{chr(10).join(sections)}
+    </div>
+  </main>
+"""
+    return head("Everything", description, EVERYTHING_URL, versions, section="everything", total=total) + body + foot(versions)
+
+
+def check_everything(text, ids):
+    """Every photograph exactly once on Everything."""
+    found = re.findall(r'class="ev-item" href="/photography/room/p/([^/]+)/"', text)
+    counts = {i: found.count(i) for i in set(found) | set(ids)}
+    wrong = sorted(f"{i} appears {n} times" for i, n in counts.items() if n != 1)
+    if wrong:
+        raise SystemExit("ERROR: Everything must show every photograph exactly once:\n  " + "\n  ".join(wrong))
 
 
 # ---------- main ----------
@@ -605,6 +690,11 @@ def main():
     if "photographs" in BUILD:
         for i in room.sheet_of:
             pages[os.path.join(ROOM, "p", i, "index.html")] = photo_page(room, i, versions)
+
+    if "everything" in BUILD:
+        path = os.path.join(ROOM, "everything", "index.html")
+        pages[path] = everything_page(room, versions)
+        check_everything(pages[path], room.sheet_of)
 
     check_pages(pages)
 
