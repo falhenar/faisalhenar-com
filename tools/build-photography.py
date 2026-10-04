@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Write the static pages of the photography room at /photography/room/.
+"""Write the static pages of the photography room, which is /photography/.
 
 The room is two walls of prints and, behind them, the contact sheets each
 print was circled on, and a page for every photograph. Everything is laid
@@ -16,40 +16,52 @@ Reads (never writes):
                                      until the same edit reaches it
 
 Writes (see BUILD):
-  photography/room/index.html                   the wall
-  photography/room/sheets/index.html            every contact sheet
-  photography/room/sheets/<sheet-id>/index.html one per sheet
-  photography/room/p/<photo-id>/index.html      one per photograph
-  photography/room/everything/index.html        every photograph, newest first
+  photography/index.html                    the wall
+  photography/sheets/index.html             every contact sheet
+  photography/sheets/<sheet-id>/index.html  one per sheet
+  photography/p/<photo-id>/index.html       one per photograph
+  photography/everything/index.html         every photograph, newest first
+  redirect pages at the older addresses: photography/index/ (the old Index)
+  and everything under photography/room/ (where the room was previewed)
 
-room.css and room.js beside the pages are written by hand, not by this tool.
+photography/room-assets/room.css and room.js are written by hand, not by
+this tool.
 No page carries an inline script: the live Content-Security-Policy runs
 scripts from files on the site only. What room.js's viewer needs travels in
 data- attributes on the links.
 
 Before writing anything the build checks the data, then every generated
-page: one h1, a title, a canonical link, noindex, and every internal link
-resolving to a generated page, an id on it, or a file in the site.
+page (one h1, a title, a canonical link, no noindex; a redirect page is
+noindex and refreshes to its new address), then every page in the site:
+each internal link on a generated page, and each link anywhere that points
+into /photography/, must resolve to a page, an id on it, or a file.
+
+Not touched, and still used by the Website Manager until it is updated:
+photos.json, exhibition.json, photography/photos/, and the old Exhibition
+and Index scripts in photography/js/.
 
 Run from the repository root:  python3 tools/build-photography.py
 """
 import hashlib, html, json, math, os, random, re
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 ORIGIN = "https://faisalhenar.com"
 DATA = os.path.join(ROOT, "photography", "data")
-ROOM = os.path.join(ROOT, "photography", "room")
-ROOM_URL = "/photography/room/"
+ROOM_URL = "/photography/"
 SHEETS_URL = ROOM_URL + "sheets/"
 EVERYTHING_URL = ROOM_URL + "everything/"
+ASSETS_URL = ROOM_URL + "room-assets/"
+PREVIEW_URL = ROOM_URL + "room/"          # where the room was previewed
+OLD_INDEX_URL = ROOM_URL + "index/"       # the Index before the room
+VERSION_SOURCE = "note.html"              # a hand-written page carrying base.css and menu.js versions
 
-# What gets built. Later phases add to this list.
-BUILD = ["wall", "sheets-index", "sheets", "photographs", "everything"]
+# What gets built.
+BUILD = ["wall", "sheets-index", "sheets", "photographs", "everything", "redirects"]
 
-ROOM_CSS_VERSION = "5"
-ROOM_JS_VERSION = "5"
+ROOM_CSS_VERSION = "6"
+ROOM_JS_VERSION = "6"
 
 MAX_CIRCLED = 4
 MAX_WALL = 12
@@ -167,6 +179,11 @@ def photo_url(photo_id):
     return f"{ROOM_URL}p/{photo_id}/"
 
 
+def out_path(url):
+    """The file a site address is served from."""
+    return os.path.join(ROOT, *url.strip("/").split("/"), "index.html")
+
+
 def sheet_url(sheet_id):
     return f"{SHEETS_URL}{sheet_id}/"
 
@@ -278,31 +295,61 @@ ATTR_RE = re.compile(r'\s(href|src|srcset|data-orig|data-v-src|data-v-from-href|
 ID_RE = re.compile(r'\sid="([^"]+)"')
 
 
-def check_pages(pages):
-    """Every generated page: one h1, a title, canonical, noindex; every internal link resolves."""
-    by_url = {"/" + os.path.relpath(path, ROOT).replace(os.sep, "/")[:-len("index.html")]: text
-              for path, text in pages.items()}
-    ids = {url: set(ID_RE.findall(text)) for url, text in by_url.items()}
+def page_address(path):
+    """'/photography/sheets/' for .../photography/sheets/index.html, '/note.html' for note.html."""
+    relative = os.path.relpath(path, ROOT).replace(os.sep, "/")
+    return "/" + (relative[:-len("index.html")] if relative.endswith("index.html") else relative)
+
+
+def site_pages(generated):
+    """Every HTML page in the site as it will be after this build: {address: text}."""
+    pages = {}
+    for folder, dirs, files in os.walk(ROOT):
+        relative = os.path.relpath(folder, ROOT).replace(os.sep, "/")
+        dirs[:] = [d for d in dirs if not d.startswith((".", "_")) and d != "node_modules"
+                   and not (relative == "photography" and d == "photos")]
+        for name in files:
+            if name.endswith(".html"):
+                path = os.path.join(folder, name)
+                pages[page_address(path)] = read(path)
+    pages.update({page_address(path): text for path, text in generated.items()})
+    return pages
+
+
+def check_pages(pages, redirects):
+    """Rules for generated pages, then links across the whole site."""
+    generated = {page_address(path): text for path, text in pages.items()}
     problems = []
-    for url, text in by_url.items():
-        if len(re.findall(r"<h1[\s>]", text)) != 1: problems.append(f"{url}: needs exactly one h1.")
-        if not re.search(r"<title>[^<]+</title>", text): problems.append(f"{url}: has no title.")
+    for url, text in generated.items():
         if f'<link rel="canonical" href="{ORIGIN}{url}">' not in text: problems.append(f"{url}: canonical link missing or wrong.")
-        if '<meta name="robots" content="noindex">' not in text: problems.append(f"{url}: not marked noindex.")
+        if not re.search(r"<title>[^<]+</title>", text): problems.append(f"{url}: has no title.")
+        noindex = re.search(r'<meta name="robots" content="noindex[^"]*">', text)
+        if url in redirects:
+            if not noindex: problems.append(f"{url}: a redirect page must be noindex.")
+            if f'<meta http-equiv="refresh" content="0; url={redirects[url]}">' not in text: problems.append(f"{url}: does not refresh to {redirects[url]}.")
+        else:
+            if noindex: problems.append(f"{url}: is marked noindex.")
+            if len(re.findall(r"<h1[\s>]", text)) != 1: problems.append(f"{url}: needs exactly one h1.")
+
+    everywhere = site_pages(pages)
+    ids = {url: set(ID_RE.findall(text)) for url, text in everywhere.items()}
+    for url, text in everywhere.items():
         for attr, value in ATTR_RE.findall(text):
             refs = [part.strip().split(" ")[0] for part in value.split(", ")] if attr == "srcset" else [value]
             for ref in refs:
-                if not ref or not ref.startswith("/") or ref.startswith("//"): continue
-                if ref.startswith("/cdn-cgi/image/"): ref = "/" + ref.split("/", 4)[4]
-                parts = urlsplit(ref); path, frag = parts.path, parts.fragment
-                if path in by_url:
-                    if frag and frag not in ids[path]: problems.append(f"{url}: {attr} {ref} points to a missing id.")
+                if not ref or ref.startswith(("#", "mailto:", "tel:", "data:", "javascript:")): continue
+                full = urljoin(ORIGIN + url, ref)
+                parts = urlsplit(full)
+                if f"{parts.scheme}://{parts.netloc}" != ORIGIN: continue
+                path, frag = parts.path, parts.fragment
+                if path.startswith("/cdn-cgi/image/"): path = "/" + path.split("/", 4)[4]
+                if url not in generated and not path.startswith(ROOM_URL): continue
+                if path in everywhere:
+                    if frag and frag not in ids[path] and frag not in ("main", "top"): problems.append(f"{url}: {attr} {ref} points to a missing id.")
                     continue
-                target = os.path.join(ROOT, path.lstrip("/").replace("/", os.sep))
-                if path.endswith("/"): target = os.path.join(target, "index.html")
-                if not os.path.isfile(target): problems.append(f"{url}: {attr} {ref} does not resolve.")
+                if not os.path.isfile(os.path.join(ROOT, *path.strip("/").split("/"))): problems.append(f"{url}: {attr} {ref} does not resolve.")
     if problems:
-        raise SystemExit("ERROR: the generated room pages have problems:\n  " + "\n  ".join(sorted(set(problems))))
+        raise SystemExit("ERROR: the photography pages have problems:\n  " + "\n  ".join(sorted(set(problems))))
 
 
 # ---------- shared page parts ----------
@@ -324,7 +371,6 @@ def head(title, description, url, versions, og_image=None, section="wall", total
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -345,8 +391,8 @@ def head(title, description, url, versions, og_image=None, section="wall", total
 <meta name="twitter:image" content="{og[0]}">
 <link rel="preload" href="/photography/fonts/familjen-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/base.css?v={versions['base']}">
-<link rel="stylesheet" href="/photography/room/room.css?v={ROOM_CSS_VERSION}">
-<script src="/photography/room/room.js?v={ROOM_JS_VERSION}"></script>
+<link rel="stylesheet" href="{ASSETS_URL}room.css?v={ROOM_CSS_VERSION}">
+<script src="{ASSETS_URL}room.js?v={ROOM_JS_VERSION}"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "68bb7041afa74c9ea4d36891d27ae977"}}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -447,7 +493,7 @@ def wall_section(room, tone):
 
 def wall_page(room, versions):
     latest = room.sheets[0]
-    description = "Two walls of photographs by Faisal Henar, one in black and white and one in colour, each print first circled on a contact sheet."
+    description = "Walks, contact sheets, and the photographs I'd pin on my own wall."
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
@@ -467,7 +513,7 @@ def wall_page(room, versions):
     </div>
   </main>
 """
-    return head("The wall", description, ROOM_URL, versions, section="wall", total=len(room.sheet_of)) + body + foot(versions)
+    return head("Photography", description, ROOM_URL, versions, section="wall", total=len(room.sheet_of)) + body + foot(versions)
 
 
 # ---------- the contact sheets ----------
@@ -655,11 +701,62 @@ def everything_page(room, versions):
 
 def check_everything(text, ids):
     """Every photograph exactly once on Everything."""
-    found = re.findall(r'class="ev-item" href="/photography/room/p/([^/]+)/"', text)
+    found = re.findall(r'class="ev-item" href="/photography/p/([^/]+)/"', text)
     counts = {i: found.count(i) for i in set(found) | set(ids)}
     wrong = sorted(f"{i} appears {n} times" for i, n in counts.items() if n != 1)
     if wrong:
         raise SystemExit("ERROR: Everything must show every photograph exactly once:\n  " + "\n  ".join(wrong))
+
+
+# ---------- older addresses ----------
+
+def redirect_page(old_url, new_url, versions):
+    """A page left at an old address: refresh straight to the new one.
+
+    GitHub Pages has no server redirects. Like the withdrawn Reflection
+    pages, it keeps its own canonical and is noindex, so it stays out of
+    the sitemap and search engines follow the refresh instead.
+    """
+    target = ORIGIN + new_url
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url={new_url}">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<title>This page has moved · Faisal Henar</title>
+<meta name="description" content="This page has moved to {target}">
+<link rel="canonical" href="{ORIGIN}{old_url}">
+<meta property="og:title" content="This page has moved · Faisal Henar">
+<meta property="og:description" content="This page has moved to {target}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{ORIGIN}{old_url}">
+<meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
+<link rel="stylesheet" href="/css/base.css?v={versions['base']}">
+<link rel="stylesheet" href="{ASSETS_URL}room.css?v={ROOM_CSS_VERSION}">
+</head>
+<body class="room">
+  <main id="main" class="room-main">
+    <div class="room-head">
+      <p class="room-line">This page has moved to <a href="{new_url}">{target}</a>.</p>
+    </div>
+  </main>
+</body>
+</html>
+"""
+
+
+def redirects(room):
+    """{old address: new address} for every page the room ever had elsewhere."""
+    moved = {OLD_INDEX_URL: EVERYTHING_URL, PREVIEW_URL: ROOM_URL,
+             PREVIEW_URL + "sheets/": SHEETS_URL, PREVIEW_URL + "everything/": EVERYTHING_URL}
+    for sheet in room.sheets:
+        moved[f"{PREVIEW_URL}sheets/{sheet['id']}/"] = sheet_url(sheet["id"])
+    for i in room.sheet_of:
+        moved[f"{PREVIEW_URL}p/{i}/"] = photo_url(i)
+    return moved
 
 
 # ---------- main ----------
@@ -672,39 +769,41 @@ def main():
     validate(photos, sheets, walls, meta)
     room = Room(photos, sheets, walls, meta)
 
-    folio = read(os.path.join(ROOT, "photography", "index.html"))
+    folio = read(os.path.join(ROOT, VERSION_SOURCE))
     base = re.search(r'css/base\.css\?v=(\d+)', folio)
     menu = re.search(r'js/menu\.js\?v=(\d+)', folio)
     if not base or not menu:
-        raise SystemExit("ERROR: could not read the base.css and menu.js versions from photography/index.html.")
+        raise SystemExit(f"ERROR: could not read the base.css and menu.js versions from {VERSION_SOURCE}.")
     versions = {"base": base.group(1), "menu": menu.group(1)}
 
     pages = {}
     if "wall" in BUILD:
-        pages[os.path.join(ROOM, "index.html")] = wall_page(room, versions)
+        pages[out_path(ROOM_URL)] = wall_page(room, versions)
     if "sheets-index" in BUILD:
-        pages[os.path.join(ROOM, "sheets", "index.html")] = sheets_index(room, versions)
+        pages[out_path(SHEETS_URL)] = sheets_index(room, versions)
     if "sheets" in BUILD:
         for sheet in sheets:
-            pages[os.path.join(ROOM, "sheets", sheet["id"], "index.html")] = sheet_page(room, sheet, versions)
+            pages[out_path(sheet_url(sheet["id"]))] = sheet_page(room, sheet, versions)
     if "photographs" in BUILD:
         for i in room.sheet_of:
-            pages[os.path.join(ROOM, "p", i, "index.html")] = photo_page(room, i, versions)
-
+            pages[out_path(photo_url(i))] = photo_page(room, i, versions)
     if "everything" in BUILD:
-        path = os.path.join(ROOM, "everything", "index.html")
+        path = out_path(EVERYTHING_URL)
         pages[path] = everything_page(room, versions)
         check_everything(pages[path], room.sheet_of)
+    moved = redirects(room) if "redirects" in BUILD else {}
+    for old, new in moved.items():
+        pages[out_path(old)] = redirect_page(old, new, versions)
 
-    check_pages(pages)
+    check_pages(pages, moved)
 
     written = 0
     for path, markup in pages.items():
         if not os.path.exists(path) or read(path) != markup:
             write(path, markup)
             written += 1
-    print("Photography room: %d sheets, %d prints on the walls, %d pages built, %d rewritten."
-          % (len(sheets), len(walls["bw"]) + len(walls["colour"]), len(pages), written))
+    print("Photography room: %d sheets, %d prints on the walls, %d pages and %d redirects built, %d rewritten."
+          % (len(sheets), len(walls["bw"]) + len(walls["colour"]), len(pages) - len(moved), len(moved), written))
 
 
 if __name__ == "__main__":
