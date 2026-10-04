@@ -38,7 +38,7 @@ BUILD_SHEETS = [
     "2026-09-04-dawn-to-the-churches",
 ]
 
-ROOM_CSS_VERSION = "1"
+ROOM_CSS_VERSION = "2"
 ROOM_JS_VERSION = "2"
 
 MAX_CIRCLED = 4
