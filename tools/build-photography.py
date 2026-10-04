@@ -39,7 +39,7 @@ BUILD_SHEETS = [
 ]
 
 ROOM_CSS_VERSION = "1"
-ROOM_JS_VERSION = "1"
+ROOM_JS_VERSION = "2"
 
 MAX_CIRCLED = 4
 MAX_WALL = 12
@@ -214,7 +214,7 @@ def head(title, description, url, versions):
 <link rel="preload" href="/photography/fonts/familjen-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/base.css?v={versions['base']}">
 <link rel="stylesheet" href="/photography/room/room.css?v={ROOM_CSS_VERSION}">
-<script>document.documentElement.classList.add('js');</script>
+<script src="/photography/room/room.js?v={ROOM_JS_VERSION}"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "68bb7041afa74c9ea4d36891d27ae977"}}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -258,7 +258,6 @@ def foot(versions):
     </noscript>
   </footer>
 
-  <script src="/photography/room/room.js?v={ROOM_JS_VERSION}"></script>
   <script src="/js/menu.js?v={versions['menu']}"></script>
 </body>
 </html>

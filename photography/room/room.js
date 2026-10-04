@@ -2,8 +2,14 @@
    work without it. The wall: enlarge one board, or switch walls on a phone.
    The sheet: circles that draw once in view, a loupe on fine pointers, and
    press-and-hold zoom on touch. Pages are written by
-   tools/build-photography.py; this file is written by hand. */
-(function () {
+   tools/build-photography.py; this file is written by hand.
+
+   Loaded synchronously in the <head>, so html.js is set before the body
+   is drawn and the no-JavaScript layout never flashes. It cannot be an
+   inline script: the site's Content-Security-Policy allows scripts from
+   'self' only. Everything else waits for the document. */
+document.documentElement.classList.add('js');
+document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   /* ---------- local preview ----------
@@ -197,4 +203,4 @@
   sheet.addEventListener('click', function (e) {
     if (swallowClick && e.target.closest('.frame-photo')) e.preventDefault();
   });
-})();
+});
