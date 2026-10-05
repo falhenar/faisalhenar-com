@@ -60,7 +60,7 @@ VERSION_SOURCE = "note.html"              # a hand-written page carrying base.cs
 # What gets built.
 BUILD = ["wall", "sheets-index", "sheets", "photographs", "everything", "redirects"]
 
-ROOM_CSS_VERSION = "6"
+ROOM_CSS_VERSION = "7"
 ROOM_JS_VERSION = "6"
 
 MAX_CIRCLED = 4
@@ -402,7 +402,9 @@ def head(title, description, url, versions, og_image=None, section="wall", total
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="hub-topline" id="top" tabindex="-1">
-    <a class="top-link" href="/">&larr; faisalhenar.com</a>
+    <a class="top-link" href="/">Faisal Henar / Paramaribo</a>
+    <div class="hub-topline-right">
+    <span class="section-label">II · Photography</span>
     <div class="menu" data-menu>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
       <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections">
@@ -413,6 +415,7 @@ def head(title, description, url, versions, og_image=None, section="wall", total
         <a href="/note.html">A note from me</a>
         <a href="/contact.html">Contact</a>
       </nav>
+    </div>
     </div>
   </header>
 """ + room_nav(section, total)
@@ -426,7 +429,10 @@ def foot(versions):
       <a href="/contact.html">Contact</a>
       <a href="/elsewhere.html">Elsewhere</a>
     </nav>
-    <span>© <span id="year"></span> Faisal Henar</span>
+    <div class="footer-meta">
+      <span>© <span id="year"></span> Faisal Henar</span>
+      <span>Built quietly, updated slowly</span>
+    </div>
     <noscript>
       <nav class="footer-nav" aria-label="Site sections">
         <a href="/">Home</a>

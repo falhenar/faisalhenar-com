@@ -68,6 +68,9 @@
 }
 
 :root{
+  /* The page column (October 2026). Title, intro and content all use it,
+     so they share one left edge; prose inside keeps its own measure. */
+  --col: 720px;
   --bg: #EDEEE7;
   --bg-raised: #E4E6DB;
   --fg: #2B2B27;
@@ -149,108 +152,14 @@ body{ line-height: 1.6; }
   margin: 0;
 }
 
-/* ---------- hub: room doors ---------- */
-.rooms-grid{
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 32px 56px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.room-card{
-  background: var(--bg);
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-.room-card:hover, .room-card:focus-visible{
-  background: var(--bg-raised);
-}
-.room-card .room-num{
-  align-self: flex-start;
-  font-size: 0.72rem;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-}
-.room-card .room-icon{
-  width: 96px;
-  height: auto;
-  margin: 6px 0 18px;
-  display: block;
-}
-.room-card .room-icon *{
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.room-card .room-icon .fill-dot{
-  fill: var(--accent);
-  stroke: none;
-}
-.room-card .room-card-title{
-  font-family: 'Lora', serif;
-  /* These became <h2> in September 2026 so the six rooms appear in the
-     document outline. The weight and margin are pinned because a heading
-     defaults to bold with margins of its own. Nothing changed visually. */
-  font-weight: 600;
-  margin: 0;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  min-height: calc(1.6em * 2);
-  color: var(--fg);
-}
-.room-card .room-card-dek{
-  font-size: 0.88rem;
-  color: var(--muted);
-  margin: 0;
-  max-width: 26ch;
-  flex-grow: 1;
-}
-.room-card .room-card-tag{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-}
-
 /* ---------- room subpages ---------- */
-/* quiet per-room mark, echoes the dharma wheel treatment on the hub,
-   just the inner symbol with no card border around it */
-.room-header-icon{
-  width: 44px;
-  height: auto;
-  margin: 10px auto 0;
-  display: block;
-}
-.room-header-icon *{
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.room-header-icon .fill-dot{
-  fill: var(--accent);
-  stroke: none;
-}
 .room-header{
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px 32px 20px;
-  border-bottom: 1px solid var(--line);
+  gap: 10px 16px;
+  padding: 20px 32px;
 }
 .room-header-right{
   display:flex;
@@ -266,18 +175,25 @@ body{ line-height: 1.6; }
   color: var(--muted);
 }
 .room-header .mark:hover{ color: var(--accent); }
+/* "I · Practice", the same mono label as above the hub's title */
 .room-header .section-label{
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--fg);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .back-link{
   display: block;
-  max-width: 720px;
+  max-width: var(--col);
   margin: 0 auto;
-  padding: 20px 32px 0;
+  padding: 44px 32px 0;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.06em;
@@ -285,25 +201,41 @@ body{ line-height: 1.6; }
   color: var(--muted);
 }
 .back-link:hover{ color: var(--accent); }
+/* Lora at 500, the weight of the door names on the hub: Lora 400 is not
+   loaded, and asking for it would draw 500 anyway. The room's door
+   drawing sits beside the name, small and still. */
 .room-title{
-  max-width: 720px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: var(--col);
   margin: 18px auto 6px;
   padding: 0 32px;
   font-family: 'Lora', serif;
-  font-weight: 600;
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
   color: var(--fg);
 }
+.room-title-icon{ width: 40px; height: 57px; flex: none; }
+.room-title-icon *{
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.room-title-icon .fill-dot{ fill: var(--accent); stroke: none; }
 .room-dek{
-  max-width: 620px;
+  max-width: var(--col);
   margin: 0 auto 40px;
   padding: 0 32px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .section{
-  max-width: 720px;
+  max-width: var(--col);
   margin: 0 auto;
   padding: 0 32px 56px;
 }
@@ -321,10 +253,10 @@ body{ line-height: 1.6; }
 
 .section-dek{
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 1rem;
   line-height: 1.6;
   margin: -6px 0 22px;
-  max-width: 52ch;
+  max-width: 62ch;
 }
 
 /* In-text links inside prose (entry notes, page intros): same treatment
@@ -380,7 +312,7 @@ body{ line-height: 1.6; }
   margin-bottom: 8px;
 }
 .entry .entry-note{
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--fg);
   opacity: 0.85;
   margin: 0 0 8px;
@@ -434,7 +366,7 @@ body{ line-height: 1.6; }
 .entry-bio[open] .entry-bio-more{ display: none; }
 .entry-bio[open] .entry-bio-less{ display: inline; }
 .entry-bio p{
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--fg);
   opacity: 0.85;
   max-width: 56ch;
@@ -447,7 +379,7 @@ body{ line-height: 1.6; }
   text-underline-offset: 2px;
 }
 .entry-bio-lead{
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--fg);
   opacity: 0.85;
   max-width: 56ch;
@@ -574,7 +506,7 @@ body{ line-height: 1.6; }
    says so. The classes are shared with the archive rather than
    duplicated, and only re-tuned here under body.reflection-page. */
 .reflection-page .reflection-note{
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.75;
   opacity: 1;
   /* One measure for the whole page, shared with the excerpt below, rather
@@ -741,6 +673,12 @@ body{ line-height: 1.6; }
 .footer-nav a:focus-visible{
   color: var(--accent);
 }
+.footer-meta{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
 
 /* ---------- quote of the moment ---------- */
 .quote-featured{
@@ -852,20 +790,22 @@ body{ line-height: 1.6; }
    stay at a narrow, intimate prose measure, the shelves widen out for a
    scalable bookcase. The reading-only rules further below stay scoped to
    body.reading-page. */
+.shelf-page{ --col: 860px; }
 .shelf-page .page-intro{
-  max-width: 620px;
+  max-width: var(--col);
   margin: 0 auto 44px;
   padding: 0 32px;
 }
 .shelf-page .page-intro p{
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  max-width: 62ch;
   margin: 0 0 14px;
 }
 .shelf-page .page-intro p:last-child{ margin-bottom: 0; }
 
 .shelf-page .page-contents{
-  max-width: 780px;
+  max-width: var(--col);
   margin: 0 auto 48px;
   padding: 0 32px;
 }
@@ -929,14 +869,14 @@ body{ line-height: 1.6; }
   margin: 0 0 8px;
 }
 .shelf-page .entry-note{
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--fg);
   opacity: 0.85;
   margin: 0 0 8px;
   max-width: 56ch;
 }
 
-.reading-page .reading-return{ max-width: 780px; scroll-margin-top: 2rem; }
+.reading-page .reading-return{ max-width: var(--col); scroll-margin-top: 2rem; }
 .reading-page .return-grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -953,7 +893,7 @@ body{ line-height: 1.6; }
    Practice pages: same face, size, colour and measure. Voice is carried
    by the writing, not by a change of typeface. */
 .reading-page .reading-reflection{
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--fg);
   opacity: 0.85;
   max-width: 56ch;
@@ -1016,7 +956,7 @@ body{ line-height: 1.6; }
 }
 
 .reading-page .reading-beginner{
-  max-width: 700px;
+  max-width: calc(var(--col) - 64px);
   margin: 0 auto 72px;
   padding: 28px 28px 30px;
   background: var(--bg-raised);
@@ -1046,7 +986,7 @@ body{ line-height: 1.6; }
 .reading-page .reading-path .entry-note{ max-width: 48ch; }
 
 .reading-page .reading-shelves-head{
-  max-width: 860px;
+  max-width: var(--col);
   margin: 0 auto 8px;
   padding: 44px 32px 0;
   border-top: 1px solid var(--line);
@@ -1054,7 +994,7 @@ body{ line-height: 1.6; }
 .reading-page .reading-shelves-head .section-label{ margin-bottom: 6px; }
 .reading-page .reading-shelves-head .section-dek{ margin: 0; }
 
-.shelf-page .shelf{ max-width: 860px; padding-top: 40px; padding-bottom: 48px; scroll-margin-top: 2rem; }
+.shelf-page .shelf{ max-width: var(--col); padding-top: 40px; padding-bottom: 48px; scroll-margin-top: 2rem; }
 .shelf-page .shelf + .shelf{
   padding-top: 56px;
   border-top: 1px solid var(--line);
@@ -1068,9 +1008,9 @@ body{ line-height: 1.6; }
 }
 .shelf-page .shelf-dek{
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 1rem;
   margin: 0 0 26px;
-  max-width: 56ch;
+  max-width: 62ch;
 }
 .shelf-page .shelf-books{
   display: grid;
@@ -1188,7 +1128,7 @@ body{ line-height: 1.6; }
 }
 
 @media (max-width: 640px){
-  .intro, .section, .rooms-grid{ padding-left: 20px; padding-right: 20px; }
+  .intro, .section{ padding-left: 20px; padding-right: 20px; }
   .room-header, .back-link, .room-title, .room-dek, .lang-note{ padding-left: 20px; padding-right: 20px; }
 
   /* the block has no side padding of its own to inherit, so it gets
@@ -1199,16 +1139,6 @@ body{ line-height: 1.6; }
 
   .sutta-of-day{ padding: 0 20px; margin: 40px auto 48px; }
   .sutta-of-day-text{ font-size: 1.05rem; }
-
-  .rooms-grid{ grid-template-columns: 1fr 1fr; }
-  .room-card{ padding: 18px 14px; gap: 8px; }
-  .room-card .room-icon{ width: 56px; margin: 4px 0 10px; }
-  .room-card .room-card-title{ font-size: 1rem; min-height: auto; }
-  /* The description used to be hidden here. It is the only thing that
-     says what a room holds, and most visitors arrive on a phone, so
-     hiding it on the smaller screen was the wrong way round. Kept
-     smaller instead. (September 2026) */
-  .room-card .room-card-dek{ font-size: 0.82rem; line-height: 1.5; }
 
   .shelf-page .page-intro,
   .reading-page .reading-shelves-head{ padding-left: 20px; padding-right: 20px; }
@@ -1230,7 +1160,7 @@ body{ line-height: 1.6; }
 }
 
 .reading-page .reading-updated{
-  max-width: 860px;
+  max-width: var(--col);
   margin: 56px auto 0;
   padding: 18px 32px 0;
   font-size: 0.68rem;
@@ -1250,7 +1180,7 @@ body{ line-height: 1.6; }
 .listening-page .shelf:first-of-type,
 .watching-page .shelf:first-of-type{ padding-top: 0; }
 .shelf-page .shelf-updated{
-  max-width: 860px;
+  max-width: var(--col);
   margin: 0 auto;
   padding: 0 32px 72px;
   font-size: 0.68rem;
@@ -1264,13 +1194,14 @@ body{ line-height: 1.6; }
 
 /* ---------- meditation room ---------- */
 .meditation-page .page-intro{
-  max-width: 620px;
+  max-width: var(--col);
   margin: 0 auto 44px;
   padding: 0 32px;
 }
 .meditation-page .page-intro p{
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  max-width: 62ch;
   margin: 0 0 14px;
 }
 .meditation-page .page-intro p:last-child{ margin-bottom: 0; }
@@ -1325,10 +1256,6 @@ body{ line-height: 1.6; }
   font-size: 0.62rem;
 }
 
-/* nederlands.html carries no room-header-icon (it's a gateway, not a room),
-   so .back-link needs its own top padding to replace the space the icon
-   block used to hold open under the header rule. */
-.nederlands-page .back-link{ padding-top: 44px; }
 
 /* ---------- instruction sheets (sitting / walking / mindful prostration) ----------
    Reuses .section, .section-label, .back-link and .room-title from the shared room
@@ -1361,15 +1288,17 @@ body{ line-height: 1.6; }
 }
 
 .sheet-page .section p{ max-width: 62ch; }
+.sheet-page .section > p{ font-size: 1.0625rem; }
 
 .sheet-page .page-intro{
-  max-width: 620px;
+  max-width: var(--col);
   margin: 0 auto 40px;
   padding: 0 32px;
 }
 .sheet-page .page-intro p{
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  max-width: 62ch;
   margin: 0 0 14px;
 }
 .sheet-page .page-intro p:last-child{ margin-bottom: 0; }
@@ -1447,7 +1376,6 @@ body{ line-height: 1.6; }
 
 @media print{
   .sheet-page .room-header,
-  .sheet-page .room-header-icon,
   .sheet-page .back-link,
   .sheet-page .lang-note,
   .sheet-page .sheet-meta,
@@ -1526,11 +1454,11 @@ body{ line-height: 1.6; }
 }
 
 .timer-page .timer-note{
-  max-width: 620px;
+  max-width: var(--col);
   margin: 0 auto 32px;
   padding: 0 32px;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .timer-tool{
@@ -1924,7 +1852,6 @@ body{ line-height: 1.6; }
 .top-link,
 .back-link,
 .lang-note a,
-.latest-reflection-more,
 .mark,
 .sutta-of-day-reflection,
 .sheet-meta a,
@@ -1935,7 +1862,6 @@ body{ line-height: 1.6; }
 .top-link::after,
 .back-link::after,
 .lang-note a::after,
-.latest-reflection-more::after,
 .mark::after,
 .sutta-of-day-reflection::after,
 .sheet-meta a::after,
@@ -2015,4 +1941,17 @@ body{ line-height: 1.6; }
 }
 @media (max-width: 640px){
   .practice-hub .drawn-rule{ margin: 0 20px; }
+}
+
+/* The Dutch hub has two doors, so they sit in the page column, two across. */
+.nederlands-page .drawn-doors{ width: min(calc(var(--col) - 64px), calc(100% - 64px)); grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 8px; }
+@media (max-width: 680px){
+  .nederlands-page .drawn-doors{ width: calc(100% - 40px); }
+}
+
+/* Phone gutter for the intros above, which sit later in this file than
+   the shared 640px block. */
+@media (max-width: 640px){
+  .meditation-page .page-intro,
+  .sheet-page .page-intro{ padding-left: 20px; padding-right: 20px; }
 }

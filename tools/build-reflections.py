@@ -191,14 +191,14 @@ NAV = """          <a href="../../">Home</a>
           <a href="../../note.html">A note from me</a>
           <a href="../../contact.html">Contact</a>"""
 
-ICON = """  <svg class="room-header-icon" viewBox="0 0 120 170" aria-hidden="true">
-    <rect x="16" y="12" width="88" height="146" rx="3"></rect>
-    <line x1="32" y1="50" x2="88" y2="50"></line>
-    <line x1="32" y1="66" x2="88" y2="66"></line>
-    <line x1="32" y1="82" x2="66" y2="82"></line>
-    <circle class="fill-dot" cx="32" cy="106" r="3"></circle>
-    <line x1="44" y1="106" x2="88" y2="106"></line>
-  </svg>"""
+# The room's door drawing, small and still, beside the title (October 2026).
+ICON = ('<svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true">'
+        '<rect x="16" y="12" width="88" height="146" rx="3"></rect>'
+        '<path d="M32 50 L88 50"></path>'
+        '<path d="M32 66 L88 66"></path>'
+        '<path d="M32 82 L66 82"></path>'
+        '<circle class="fill-dot" cx="32" cy="106" r="3"></circle>'
+        '<path d="M44 106 L88 106"></path></svg>')
 
 
 def nav_markup(previous, following, section_title):
@@ -293,9 +293,9 @@ def page_markup(entry, previous, following, section, css_version, base_version, 
     parts.append('  <a class="skip-link" href="#main">Skip to content</a>')
     parts.append("")
     parts.append('  <header class="room-header">')
-    parts.append('    <a class="mark" href="../../">Faisal Henar</a>')
+    parts.append('    <a class="mark" href="/">Faisal Henar / Paramaribo</a>')
     parts.append('    <div class="room-header-right">')
-    parts.append('      <span class="section-label">Practice</span>')
+    parts.append('      <span class="section-label">I · Practice</span>')
     parts.append('      <div class="menu" data-menu>')
     parts.append('        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>')
     parts.append('        <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections">')
@@ -305,11 +305,9 @@ def page_markup(entry, previous, following, section, css_version, base_version, 
     parts.append("    </div>")
     parts.append("  </header>")
     parts.append("")
-    parts.append(ICON)
-    parts.append("")
     parts.append('  <main id="main" tabindex="-1">')
     parts.append('  <a class="back-link" href="../reflections.html">&larr; Reflections</a>')
-    parts.append('  <h1 class="room-title">' + esc(entry["title"]) + "</h1>")
+    parts.append('  <h1 class="room-title"><span>' + esc(entry["title"]) + "</span>" + ICON + "</h1>")
     if sub:
         parts.append('  <p class="reflection-subtitle reflection-page-subtitle">' + sub + "</p>")
     meta = [esc(section["title"])]
@@ -336,7 +334,10 @@ def page_markup(entry, previous, following, section, css_version, base_version, 
     parts.append('      <a href="../../contact.html">Contact</a>')
     parts.append('      <a href="../../elsewhere.html">Elsewhere</a>')
     parts.append("    </nav>")
-    parts.append('    <span>&copy; <span id="year"></span> Faisal Henar</span>')
+    parts.append('    <div class="footer-meta">')
+    parts.append('      <span>&copy; <span id="year"></span> Faisal Henar</span>')
+    parts.append("      <span>Built quietly, updated slowly</span>")
+    parts.append("    </div>")
     parts.append("    <noscript>")
     parts.append('      <nav class="footer-nav" aria-label="Site sections">')
     parts.append('        <a href="../../">Home</a>')

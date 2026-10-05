@@ -85,6 +85,22 @@ body.room{
   color: var(--muted);
 }
 .top-link:hover{ color: var(--accent); }
+/* "II · Photography", the site's section label, as "I · Practice" is in
+   the Practice rooms (October 2026). */
+.hub-topline-right{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.hub-topline .section-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
 
 .site-footer{
   margin-top: 96px;
@@ -102,6 +118,12 @@ body.room{
 }
 .footer-nav a:hover,
 .footer-nav a:focus-visible{ color: var(--accent); }
+.footer-meta{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
 
 /* ---------- the room's own sections ----------
    The wall, Contact sheets, Everything: a row of pills under the site
