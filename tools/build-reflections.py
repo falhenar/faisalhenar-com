@@ -148,6 +148,10 @@ def source_label(url):
     return "Read on SuttaCentral" if re.match(r"^https://(?:www\.)?suttacentral\.net(?:/|$)", url, re.I) else "Read the source"
 
 
+# How a translator key in suttas-config.js is named under the excerpt.
+TRANSLATORS = {"sujato": "Bhikkhu Sujato"}
+
+
 def excerpt_markup(entry, indent):
     if not entry.get("excerpt"):
         return ""
@@ -159,6 +163,12 @@ def excerpt_markup(entry, indent):
     else:
         block = ('<a class="reflections-excerpt-link" href="' + esc(url) + '" target="_blank" rel="noopener">'
                  + quote + "</a>")
+    # The translator directly under the passage (October 2026), so the
+    # sutta's words and whose English they are read as one block, set
+    # apart from the reflection that follows.
+    if entry.get("translator"):
+        name = TRANSLATORS.get(entry["translator"], entry["translator"])
+        block += '\n<p class="reflections-excerpt-credit mono">Translated by ' + esc(name) + "</p>"
     return "\n".join(indent + line for line in block.split("\n")) + "\n"
 
 
@@ -408,7 +418,9 @@ def withdrawn_markup(slug, css_version, base_version, menu_version):
     ]) + "\n"
 
 
-def archive_markup(groups):
+def archive_markup(groups, latest=None):
+    """latest: the slug of the most recently published entry, which gets a
+    small "Latest" label in place; the order of the list is unchanged."""
     out = []
     for group in groups:
         out.append('    <section class="section">')
@@ -419,7 +431,9 @@ def archive_markup(groups):
             line = archive_reference(entry)
             out.append('        <li class="reflection-index-item">')
             out.append('          <a href="reflections/' + esc(entry["slug"]) + '.html">')
-            out.append('            <span class="reflection-index-title">' + esc(entry["title"]) + "</span>")
+            mark = (' <span class="reflection-index-latest mono">Latest</span>'
+                    if entry["slug"] == latest else "")
+            out.append('            <span class="reflection-index-title">' + esc(entry["title"]) + mark + "</span>")
             out.append('            <span class="reflection-index-meta mono">'
                        + (line + " &middot; " if line else "") + fmt_date(entry["added"]) + "</span>")
             out.append("          </a>")
@@ -532,7 +546,10 @@ def main():
             retired += 1
             print("  withdrawn: practice/reflections/%s now redirects to the archive" % name)
 
-    write(ARCHIVE, splice(archive_text, archive_markup(groups), "practice/reflections.html"))
+    # Same rule as the hub's "Latest:" line (render-latest-reflection.js):
+    # the newest `added` date, and on a tie the entry earlier in the config.
+    newest = min(published, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
+    write(ARCHIVE, splice(archive_text, archive_markup(groups, newest and newest.get("slug")), "practice/reflections.html"))
     write(SITEMAP, splice(read(SITEMAP), sitemap_markup(groups), "sitemap.xml"))
 
     total = sum(len(g["entries"]) for g in groups)

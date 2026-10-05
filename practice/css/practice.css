@@ -532,8 +532,34 @@ body{ line-height: 1.6; }
 /* The quotation and the note are held to one measure. An excerpt allowed to
    run the full column while the prose stops at 56ch reads as two columns of
    different widths stacked on each other. */
-.reflection-article .reflections-excerpt{ margin-top: 0; max-width: 34rem; }
+/* The sutta's words sit in a quieter block of their own, with the
+   translator directly beneath, so they never read as the reflection
+   (October 2026). */
+.reflection-article .reflections-excerpt{
+  margin: 0;
+  max-width: 34rem;
+  padding: 18px 22px;
+  background: var(--bg-raised);
+  font-size: 1rem;
+}
 .reflection-article .reflections-excerpt-link{ max-width: 34rem; }
+.reflections-excerpt-credit{
+  margin: 8px 0 30px;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.reflection-index-latest{
+  margin-left: 8px;
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  vertical-align: 2px;
+  white-space: nowrap;
+}
 .reflection-article .entry-link{
   display: inline-block;
   margin-top: 22px;
@@ -963,7 +989,11 @@ body{ line-height: 1.6; }
   border-left: 3px solid var(--accent);
   scroll-margin-top: 2rem;
 }
-.reading-page .reading-beginner .section-label{ border-bottom: none; padding-bottom: 0; margin-bottom: 8px; }
+/* The two opening sections use the shelves' serif heading (October 2026),
+   so every section on Reading has one heading style; "Main shelves" stays
+   a small label because it names the group below, not a section. */
+.reading-page .reading-return .section-dek,
+.reading-page .reading-beginner .section-dek{ margin: 0 0 22px; }
 .reading-page .reading-path{
   list-style: none;
   margin: 22px 0 0;
