@@ -164,9 +164,10 @@ Adding entries just lengthens the cycle. When the day's sutta is one you have
 written a reflection on, the block links through to it automatically, matched
 on `ref` against `suttas-config.js`, so the two lists cannot drift apart.
 
-**Latest Reflection** (the featured block on the Practice hub) is also derived
-from `suttas-config.js` by `practice/js/render-latest-reflection.js`. The same
-published-entry rule used by the archive selects the newest dated Reflection.
+**Latest Reflection** (the "Latest:" line inside the Reflections door on the
+Practice hub) is also derived from `suttas-config.js` by
+`practice/js/render-latest-reflection.js`. The same published-entry rule used
+by the archive selects the newest dated Reflection.
 
 **Reading shelf** (`practice/reading.html`): book entries live in
 `practice/data/reading.json` and are rendered by `practice/js/render-reading.js`

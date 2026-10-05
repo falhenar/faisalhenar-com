@@ -24,7 +24,7 @@ NUMBER = re.compile(r"-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?")
 UNSAFE_KEYS = {"__proto__", "prototype", "constructor"}
 
 DEPENDENCIES = (
-    {"id": "reflections", "label": "Reflections", "sources": ("practice/js/suttas-config.js",), "consumers": ("practice/reflections.html", "practice/js/render-reflections.js", "practice/index.html", "practice/js/render-latest-reflection.js", "practice/js/daily-sutta-config.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection widget", "daily-sutta matching")},
+    {"id": "reflections", "label": "Reflections", "sources": ("practice/js/suttas-config.js",), "consumers": ("practice/reflections.html", "practice/js/render-reflections.js", "practice/index.html", "practice/js/render-latest-reflection.js", "practice/js/daily-sutta-config.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
     {"id": "quotes", "label": "Quotes", "sources": ("practice/js/quotes-config.js",), "consumers": ("practice/index.html", "practice/js/render-quotes.js"), "effects": ("Practice quote",)},
     {"id": "daily-sutta", "label": "Daily Sutta", "sources": ("practice/js/daily-sutta-config.js", "practice/js/suttas-config.js"), "consumers": ("practice/index.html", "practice/js/render-daily-sutta.js"), "effects": ("daily rotation", "matching published Reflection link")},
     {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/render-reading.js"), "effects": ("Reading shelf",)},

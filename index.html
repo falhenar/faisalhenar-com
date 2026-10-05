@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="The personal site of Faisal Henar, in Paramaribo, Suriname. Two rooms: a Theravada Buddhist practice he keeps returning to, and photographs he has taken.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=1">
-<link rel="stylesheet" href="css/hub.css?v=7">
+<link rel="stylesheet" href="css/hub.css?v=8">
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -32,9 +32,8 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="top-line">
-    <span>Faisal Henar</span>
+    <a class="brand" href="/">Faisal Henar / Paramaribo</a>
     <div class="top-line-right">
-      <span>Paramaribo</span>
       <div class="menu" data-menu>
         <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu-panel" data-menu-btn>Menu</button>
         <nav class="menu-panel" id="site-menu-panel" data-menu-panel aria-label="Site sections">
@@ -49,56 +48,48 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <section class="hero">
-    <div class="eyebrow">faisalhenar.com</div>
-    <h1>A home for the different rooms of a life.</h1>
-    <p>A quiet corner online. This is a home for a Buddhist practice I keep returning to, and for photographs I've taken. Not promoted anywhere, just here for anyone who happens to find it.</p>
-  </section>
-
-  <div class="wander" aria-hidden="true">
-    <svg viewBox="0 0 900 60" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 40 30 C 200 5, 320 55, 450 30 S 700 5, 860 30" />
-    </svg>
-  </div>
-
-  <div class="rooms">
-    <a class="room door-practice" href="practice/">
-      <div class="room-num mono">I.</div>
-      <div class="room-illustration" aria-hidden="true">
-        <svg viewBox="0 0 120 170" fill="none" stroke="#4B5842" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 158 V54 C16 27 35 12 60 12 C85 12 104 27 104 54 V158 Z"/>
-          <line x1="32" y1="158" x2="32" y2="100"/>
-          <line x1="88" y1="158" x2="88" y2="100"/>
-          <circle cx="60" cy="70" r="17"/>
-          <line x1="60" y1="53" x2="60" y2="87"/>
-          <line x1="43" y1="70" x2="77" y2="70"/>
-          <line x1="47.98" y1="57.98" x2="72.02" y2="82.02"/>
-          <line x1="72.02" y1="57.98" x2="47.98" y2="82.02"/>
-          <circle cx="60" cy="70" r="2.2" fill="#4B5842" stroke="none"/>
-        </svg>
+  <main id="main" class="home" tabindex="-1">
+    <section class="letter">
+      <div class="letter-text">
+        <h1>A quiet<br>corner online.</h1>
+        <p class="letter-copy">This is a home for a Buddhist practice I keep returning to, and for photographs I've taken.</p>
+        <a class="textlink" href="note.html">A note from me</a>
       </div>
-      <h2 class="room-title">Practice</h2>
-      <p class="room-dek">Readings, talks, and places that have shaped a Buddhist practice.</p>
-      <div class="room-tag">Enter &rarr;</div>
-    </a>
+      <figure class="letter-photo">
+        <!-- Cloudflare image resizing, same URL pattern as photography/js/image-url.js.
+             /cdn-cgi/ only exists on the live domain, so on a localhost preview
+             this photograph does not load; check it live. -->
+        <img src="/cdn-cgi/image/width=1040,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg"
+             srcset="/cdn-cgi/image/width=320,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg 320w,
+                     /cdn-cgi/image/width=420,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg 420w,
+                     /cdn-cgi/image/width=560,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg 560w,
+                     /cdn-cgi/image/width=700,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg 700w,
+                     /cdn-cgi/image/width=860,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg 860w,
+                     /cdn-cgi/image/width=1040,fit=scale-down,format=auto/photography/photos/2026/fh-0087.jpg 1040w"
+             sizes="(max-width: 680px) 100vw, 480px" width="2560" height="1920" fetchpriority="high"
+             alt="Sandals and flip-flops left in rows on a doorstep, seen from above. A ginger and white cat sits among them, washing one paw.">
+        <figcaption><span>The doorstep</span><span>D'Ran · 13 June 2026</span></figcaption>
+      </figure>
+    </section>
 
-    <a class="room door-photography" href="photography/">
-      <div class="room-num mono">II.</div>
-      <div class="room-illustration" aria-hidden="true">
-        <svg viewBox="0 0 120 170" fill="none" stroke="#B8842B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="16" y="12" width="88" height="146" rx="3"/>
-          <rect x="28" y="26" width="64" height="52"/>
-          <rect x="28" y="90" width="64" height="52"/>
-          <circle cx="86" cy="90" r="6"/>
-          <circle cx="86" cy="90" r="1.6" fill="#B8842B"/>
-        </svg>
-      </div>
-      <h2 class="room-title">Photography</h2>
-      <p class="room-dek">Walks, contact sheets, and the photographs I'd pin on my own wall.</p>
-      <div class="room-tag">Enter &rarr;</div>
-    </a>
-  </div>
+    <nav class="rooms" aria-label="Rooms">
+      <section class="room room-practice">
+        <span class="drawn-rule" aria-hidden="true"></span>
+        <p class="room-num">I · Practice</p>
+        <h2><a href="practice/">Practice
+          <svg class="door-sign" viewBox="0 0 120 170" aria-hidden="true"><path pathLength="1" d="M16 158 V54 C16 27 35 12 60 12 C85 12 104 27 104 54 V158 Z"></path><circle pathLength="1" cx="60" cy="74" r="17"></circle><path pathLength="1" d="M60 57 L60 91"></path><path pathLength="1" d="M43 74 L77 74"></path></svg></a></h2>
+        <p>Readings, talks, and places that have shaped a Buddhist practice.</p>
+        <a class="textlink" href="practice/">Enter Practice →</a>
+      </section>
+      <section class="room room-photo">
+        <span class="drawn-rule" aria-hidden="true"></span>
+        <p class="room-num">II · Photography</p>
+        <h2><a href="photography/">Photography
+          <svg class="door-sign ph" viewBox="0 0 120 170" aria-hidden="true"><path pathLength="1" d="M16 158 V12 H104 V158 Z"></path><path pathLength="1" d="M38 52 H82 V88 H38 Z"></path><circle class="pin" cx="60" cy="48" r="4"></circle><path pathLength="1" d="M88 104 L88 112"></path></svg></a></h2>
+        <p>Walks, contact sheets, and the photographs I'd pin on my own wall.</p>
+        <a class="textlink" href="photography/">Enter Photography →</a>
+      </section>
+    </nav>
   </main>
 
   <footer class="site-footer">

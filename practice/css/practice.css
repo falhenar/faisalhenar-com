@@ -48,6 +48,25 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Instrument Serif, regular only: used for one thing in Practice, the h1 on
+   the hub (October 2026). Everything else here stays Lora. */
+@font-face{
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root{
   --bg: #EDEEE7;
   --bg-raised: #E4E6DB;
@@ -827,70 +846,6 @@ body{ line-height: 1.6; }
 }
 
 
-/* ---------- hub: latest reflection ----------
-   Sits between the quote block and the room grid. Deliberately unframed:
-   the quote above has a raised background and an accent rule, the grid
-   below is a bordered box, so a third frame here would read as clutter —
-   and an accent-ruled block directly under the quote would look like a
-   second quotation. Whitespace does the separating; the eyebrow does the
-   labelling. Width and left edge match the quote block's text above it. */
-.latest-reflection{
-  max-width: 620px;
-  margin: 0 auto 48px;
-  padding: 0 24px;
-}
-.latest-reflection[hidden]{ display: none; }
-
-.latest-reflection-eyebrow{
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 12px;
-}
-
-.latest-reflection-title{
-  font-family: 'Lora', serif;
-  font-weight: 600;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  color: var(--fg);
-  margin: 0 0 4px;
-}
-.latest-reflection-title a{
-  color: inherit;
-  text-decoration: none;
-}
-.latest-reflection-title a:hover,
-.latest-reflection-title a:focus-visible{ color: var(--accent); }
-
-.latest-reflection-sub{
-  font-size: 0.72rem;
-  line-height: 1.55;
-  color: var(--muted);
-  opacity: 0.8;
-  margin: 0 0 12px;
-}
-
-.latest-reflection-teaser{
-  font-size: 0.92rem;
-  line-height: 1.7;
-  color: var(--fg);
-  opacity: 0.85;
-  max-width: 56ch;
-  margin: 0 0 16px;
-}
-
-.latest-reflection-more{
-  display: inline-block;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  text-decoration: none;
-}
-.latest-reflection-more:hover{ text-decoration: underline; }
-
 /* ---------- shared shelf typography ----------
    Used by any shelf-style room (currently reading and listening), scoped
    to body.shelf-page. Two widths on purpose: the intro/contents sections
@@ -1240,9 +1195,6 @@ body{ line-height: 1.6; }
      the same 20px gutter the other hub blocks fall back to */
   .quote-featured{ margin: 0 20px 40px; padding: 24px 18px; }
 
-  /* falls back to the 20px gutter the intro and room grid use, rather than
-     the quote card's deeper inset — this block has no card to sit inside */
-  .latest-reflection{ padding: 0 20px; margin-bottom: 40px; }
   .quote-text{ font-size: 1.05rem; }
 
   .sutta-of-day{ padding: 0 20px; margin: 40px auto 48px; }
@@ -1995,4 +1947,72 @@ body{ line-height: 1.6; }
   top: 50%;
   transform: translateY(-50%);
   height: 24px;
+}
+
+
+/* ---------------------------------------------------------------
+   Practice hub: drawn doors (October 2026)
+
+   One kind of movement only: lines that draw themselves, then rest.
+   The doors draw once on arrival; the inline script on the hub adds
+   .settled once that is over, after which a door is drawn again only
+   while hovered or focused. Only the dot on the Meditation door keeps
+   moving: one slow breath every nine seconds. All of it off under
+   prefers-reduced-motion.
+
+   The h1 is the one place Practice uses Instrument Serif, the face of
+   the homepage headline. Room names and every room subpage stay Lora.
+   Lora here is 500, not 400: only 500-600 is loaded.
+   --------------------------------------------------------------- */
+.room-num{ margin: 0 0 14px; font: 11px/1.6 'IBM Plex Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.practice-hub h1{ font-family: 'Instrument Serif', Georgia, serif; font-style: normal; font-weight: 400; font-size: clamp(56px, 6.2vw, 84px); line-height: 1.02; letter-spacing: -.018em; }
+.practice-hub .drawn-rule{ max-width: 620px; margin: 0 auto; }
+.drawn-rule{ display: block; height: 1px; background: #C9CBBE; transform-origin: left; animation: drawrule 2.4s cubic-bezier(.4,0,.2,1) both; }
+@keyframes drawrule{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
+
+.drawn-doors{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(1080px, calc(100% - 64px)); margin: 0 auto 56px; border-top: 1px solid #D3D5C8; border-left: 1px solid #D3D5C8; }
+.rc{ border-right: 1px solid #D3D5C8; border-bottom: 1px solid #D3D5C8; padding: 36px 32px 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; min-height: 380px; color: var(--fg); text-decoration: none; transition: background .4s; }
+.rc:hover{ background: #F2F3EC; }
+.rc:focus-visible{ outline: 2px solid var(--accent); outline-offset: -4px; background: #F2F3EC; }
+.rc .ic{ width: 110px; height: 156px; display: block; flex-shrink: 0; }
+.rc .nm{ font: 500 27px/1.3 'Lora', Georgia, serif; margin: 0; transition: color .2s; }
+.rc:is(:hover, :focus-visible) .nm{ color: var(--accent); }
+.rc .dek{ font: 400 15px/1.55 'Inter', Arial, sans-serif; color: #45473F; margin: 0; }
+.rc .latest{ font: italic 500 15px/1.5 'Lora', Georgia, serif; color: var(--fg); margin: 0; }
+.rc .cta{ margin-top: auto; font: 400 12px/1.7 'IBM Plex Mono', monospace; color: var(--accent); min-height: 24px; }
+
+.ic *{ fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ic .dot{ fill: var(--accent); stroke: none; }
+@keyframes draw{ from{ stroke-dashoffset: 1; } to{ stroke-dashoffset: 0; } }
+@keyframes draw2{ from{ stroke-dashoffset: 1; } to{ stroke-dashoffset: 0; } }
+@keyframes breathe{ 0%, 100%{ transform: scale(1); opacity: .55; } 50%{ transform: scale(2.4); opacity: 1; } }
+.ic path, .ic rect, .ic circle:not(.dot){ animation: draw 2.4s cubic-bezier(.4,0,.2,1) both; }
+.rc:nth-child(2) .ic *{ animation-delay: .25s; }
+.rc:nth-child(3) .ic *{ animation-delay: .5s; }
+.rc:nth-child(4) .ic *{ animation-delay: .75s; }
+.rc:nth-child(5) .ic *{ animation-delay: 1s; }
+.rc:nth-child(6) .ic *{ animation-delay: 1.25s; }
+.breath{ transform-box: fill-box; transform-origin: center; animation: breathe 9s ease-in-out infinite; }
+/* after arrival the doors rest; they are drawn again only while hovered or focused */
+.settled .ic :not(.breath){ animation: none; }
+.settled .rc:is(:hover, :focus-visible) .ic path,
+.settled .rc:is(:hover, :focus-visible) .ic circle:not(.dot),
+.settled .rc:is(:hover, :focus-visible) .ic rect:not(.frame){ animation: draw2 1.6s cubic-bezier(.4,0,.2,1) both; }
+
+@media (prefers-reduced-motion: reduce){
+  .ic *, .breath, .drawn-rule{ animation: none !important; }
+}
+@media (max-width: 1000px){
+  .drawn-doors{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px){
+  .drawn-doors{ width: calc(100% - 40px); }
+  .rc{ padding: 22px 18px; min-height: 0; gap: 10px; }
+  .rc .ic{ width: 62px; height: 88px; }
+  .rc .nm{ font-size: 21px; }
+  .rc .dek{ font-size: 13px; }
+  .rc .latest{ font-size: 14px; }
+}
+@media (max-width: 640px){
+  .practice-hub .drawn-rule{ margin: 0 20px; }
 }
