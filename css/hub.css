@@ -129,6 +129,10 @@
 .room:hover .door-sign :not(.pin),
 .room:focus-within .door-sign :not(.pin){ animation: drawdoor 1.6s cubic-bezier(.4,0,.2,1) both; }
 @keyframes drawdoor{ from{ stroke-dashoffset: 1; } to{ stroke-dashoffset: 0; } }
+/* Touch devices: each door draws once as it scrolls into view
+   (/js/draw-on-view.js). Without that script the doors simply show drawn. */
+html.draw-on-view .door-sign :not(.pin){ stroke-dashoffset: 1; }
+html.draw-on-view .door-sign.drawn :not(.pin){ animation: drawdoor 1.6s cubic-bezier(.4,0,.2,1) both; }
 
 @media (prefers-reduced-motion: reduce){
   .drawn-rule, .door-sign *{ animation: none !important; }

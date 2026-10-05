@@ -201,14 +201,15 @@ NAV = """          <a href="../../">Home</a>
           <a href="../../note.html">A note from me</a>
           <a href="../../contact.html">Contact</a>"""
 
-# The room's door drawing, small and still, beside the title (October 2026).
+# The room's door drawing, small, beside the title (October 2026); it draws
+# once on arrival (practice.css), then stays still.
 ICON = ('<svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true">'
-        '<rect x="16" y="12" width="88" height="146" rx="3"></rect>'
-        '<path d="M32 50 L88 50"></path>'
-        '<path d="M32 66 L88 66"></path>'
-        '<path d="M32 82 L66 82"></path>'
+        '<rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect>'
+        '<path pathLength="1" d="M32 50 L88 50"></path>'
+        '<path pathLength="1" d="M32 66 L88 66"></path>'
+        '<path pathLength="1" d="M32 82 L66 82"></path>'
         '<circle class="fill-dot" cx="32" cy="106" r="3"></circle>'
-        '<path d="M44 106 L88 106"></path></svg>')
+        '<path pathLength="1" d="M44 106 L88 106"></path></svg>')
 
 
 def nav_markup(previous, following, section_title):

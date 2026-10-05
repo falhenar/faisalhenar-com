@@ -123,9 +123,18 @@ body{ line-height: 1.6; }
   stroke-width: 2.5;
 }
 .dharma-wheel .spoke{
+  fill: none;
   stroke: var(--accent);
   stroke-width: 1.6;
   stroke-linecap: round;
+}
+/* The wheel draws itself first on arrival (October 2026); the doors
+   below start once it is done (.after-wheel, further down). */
+.dharma-wheel .rim,
+.dharma-wheel .spoke{
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: draw 1.6s cubic-bezier(.4,0,.2,1) both;
 }
 .dharma-wheel .hub{
   fill: var(--accent);
@@ -224,8 +233,13 @@ body{ line-height: 1.6; }
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
 }
 .room-title-icon .fill-dot{ fill: var(--accent); stroke: none; }
+/* Draws itself once on arrival, as the hub's doors do, then stays still.
+   No hover redraw here. */
+.room-title-icon :not(.fill-dot){ animation: draw 2.4s cubic-bezier(.4,0,.2,1) both; }
 .room-dek{
   max-width: var(--col);
   margin: 0 auto 40px;
@@ -1948,6 +1962,14 @@ body{ line-height: 1.6; }
 .rc:nth-child(4) .ic *{ animation-delay: .75s; }
 .rc:nth-child(5) .ic *{ animation-delay: 1s; }
 .rc:nth-child(6) .ic *{ animation-delay: 1.25s; }
+/* On the English hub the wheel draws first (1.6s); the doors keep their
+   stagger, just after it. */
+.after-wheel .rc:nth-child(1) .ic *{ animation-delay: 1.6s; }
+.after-wheel .rc:nth-child(2) .ic *{ animation-delay: 1.85s; }
+.after-wheel .rc:nth-child(3) .ic *{ animation-delay: 2.1s; }
+.after-wheel .rc:nth-child(4) .ic *{ animation-delay: 2.35s; }
+.after-wheel .rc:nth-child(5) .ic *{ animation-delay: 2.6s; }
+.after-wheel .rc:nth-child(6) .ic *{ animation-delay: 2.85s; }
 .breath{ transform-box: fill-box; transform-origin: center; animation: breathe 9s ease-in-out infinite; }
 /* after arrival the doors rest; they are drawn again only while hovered or focused */
 .settled .ic :not(.breath){ animation: none; }
@@ -1955,8 +1977,19 @@ body{ line-height: 1.6; }
 .settled .rc:is(:hover, :focus-visible) .ic circle:not(.dot),
 .settled .rc:is(:hover, :focus-visible) .ic rect:not(.frame){ animation: draw2 1.6s cubic-bezier(.4,0,.2,1) both; }
 
+/* Touch devices: no arrival drawing, in CSS alone, so without JavaScript
+   the doors simply show drawn. With it, each door draws once as it
+   scrolls into view (/js/draw-on-view.js adds .draw-on-view to <html> and
+   .drawn to each drawing). */
+@media (hover: none){
+  .drawn-doors .ic :not(.breath){ animation: none; }
+}
+html.draw-on-view .ic :not(.dot){ animation: none; stroke-dashoffset: 1; }
+html.draw-on-view .ic.drawn :not(.dot){ animation: draw 2.4s cubic-bezier(.4,0,.2,1) both; }
+
 @media (prefers-reduced-motion: reduce){
-  .ic *, .breath, .drawn-rule{ animation: none !important; }
+  .ic *, .breath, .drawn-rule,
+  .dharma-wheel *, .room-title-icon *{ animation: none !important; }
 }
 @media (max-width: 1000px){
   .drawn-doors{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
