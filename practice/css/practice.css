@@ -804,19 +804,19 @@ body{ line-height: 1.6; }
 }
 .shelf-page .page-intro p:last-child{ margin-bottom: 0; }
 
-.shelf-page .page-contents{
+.page-contents{
   max-width: var(--col);
   margin: 0 auto 48px;
   padding: 0 32px;
 }
-.shelf-page .page-contents-label{
+.page-contents-label{
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 10px;
 }
-.shelf-page .page-contents ul{
+.page-contents ul{
   list-style: none;
   margin: 0;
   padding: 10px 0 0;
@@ -825,32 +825,32 @@ body{ line-height: 1.6; }
   flex-wrap: wrap;
   gap: 10px 20px;
 }
-.shelf-page .page-contents li{
+.page-contents li{
   padding-right: 20px;
   border-right: 1px solid var(--line);
 }
-.shelf-page .page-contents li:last-child{
+.page-contents li:last-child{
   padding-right: 0;
   border-right: none;
 }
-.shelf-page .page-contents a{
+.page-contents a{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.02em;
   color: var(--accent);
 }
-.shelf-page .page-contents a:hover{ color: var(--fg); }
-.shelf-page .page-contents a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
+.page-contents a:hover{ color: var(--fg); }
+.page-contents a:focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 600px){
-  .shelf-page .page-contents ul{ flex-direction: column; gap: 0; }
-  .shelf-page .page-contents li{
+  .page-contents ul{ flex-direction: column; gap: 0; }
+  .page-contents li{
     padding: 10px 0;
     border-right: none;
     border-bottom: 1px solid var(--line);
   }
-  .shelf-page .page-contents li:first-child{ padding-top: 0; }
-  .shelf-page .page-contents li:last-child{ padding-bottom: 0; border-bottom: none; }
+  .page-contents li:first-child{ padding-top: 0; }
+  .page-contents li:last-child{ padding-bottom: 0; border-bottom: none; }
 }
 
 /* the site's entry typography is scoped to .entry, which this page does
@@ -1152,7 +1152,7 @@ body{ line-height: 1.6; }
 
 .shelf-page .shelf-books--single{ grid-template-columns: 1fr; }
 
-.shelf-page .page-contents-n{
+.page-contents-n{
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.62rem;
   color: var(--muted);
@@ -1953,5 +1953,9 @@ body{ line-height: 1.6; }
    the shared 640px block. */
 @media (max-width: 640px){
   .meditation-page .page-intro,
-  .sheet-page .page-intro{ padding-left: 20px; padding-right: 20px; }
+  .sheet-page .page-intro,
+  .page-contents,
+  .sheet-page .sheet-meta,
+  .lang-note{ padding-left: 20px; padding-right: 20px; }
+  .intro .lang-note{ padding: 0; }
 }
