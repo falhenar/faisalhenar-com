@@ -1935,7 +1935,7 @@ body{ line-height: 1.6; }
    Lora here is 500, not 400: only 500-600 is loaded.
    --------------------------------------------------------------- */
 .room-num{ margin: 0 0 14px; font: 11px/1.6 'IBM Plex Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-.practice-hub h1{ font-family: 'Instrument Serif', Georgia, serif; font-style: normal; font-weight: 400; font-size: clamp(56px, 6.2vw, 84px); line-height: 1.02; letter-spacing: -.018em; }
+.practice-hub h1{ font-family: 'Instrument Serif', Georgia, serif; font-style: normal; font-weight: 400; font-size: clamp(56px, 6.2vw, 84px); line-height: 1.02; letter-spacing: normal; }
 .practice-hub .drawn-rule{ max-width: 620px; margin: 0 auto; }
 .drawn-rule{ display: block; height: 1px; background: #C9CBBE; transform-origin: left; animation: drawrule 2.4s cubic-bezier(.4,0,.2,1) both; }
 @keyframes drawrule{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }

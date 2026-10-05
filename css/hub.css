@@ -2,8 +2,10 @@
    faisalhenar.com — HUB (root homepage)
    Palette:  --bg #F7F0E1   --fg #241F1A   --muted #6F6656
              --line #E3D8BE    --accent #875F1E (brass/ochre)
-   Type:     Instrument Serif (headline, warm & personal)
-              Inter (body) / IBM Plex Mono (eyebrow, meta)
+   Type:     Instrument Serif announces (headline, room names)
+             Lora reads (hall text and its links)
+             IBM Plex Mono labels (eyebrow, caption, meta)
+             Inter (body on the other hub-styled pages)
    Signature: a single hand-drawn line wandering between the
               two "room" cards — different rooms, one walk home.
 --------------------------------------------------- */
@@ -45,6 +47,24 @@
   font-weight: 400;
   font-display: swap;
   src: url('/fonts/instrument-serif-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Lora, regular only: the reading text on the hall (October 2026).
+   Same variable files as Practice, which declares 500-600 for itself. */
+@font-face{
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/lora-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/lora-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -99,16 +119,19 @@
 
 /* ---------- home: a letter, with a photograph (October 2026) ----------
    One kind of movement only: lines that draw themselves, then rest.
-   Same easing everywhere. All of it off under prefers-reduced-motion. */
+   Same easing everywhere. All of it off under prefers-reduced-motion.
+   Type, October 2026: Instrument Serif announces, Lora reads, mono
+   labels. Everything here is scoped to .home, so the other pages that
+   load this file keep their own text and link styles. */
 .home{ max-width: 1080px; margin: 0 auto; padding: 0 40px; }
 .letter{ display: grid; grid-template-columns: 1.05fr 1fr; gap: 100px; align-items: center; margin: 70px 0 72px; }
-.letter h1{ font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(56px, 6.2vw, 84px); line-height: 1.04; letter-spacing: -.018em; margin: 0 0 25px; }
-.letter-copy{ font-family: 'Instrument Serif', Georgia, serif; font-size: 27px; line-height: 1.45; max-width: 29ch; margin: 0; }
+.letter h1{ font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(56px, 6.2vw, 84px); line-height: 1.04; letter-spacing: normal; margin: 0 0 25px; }
+.letter-copy{ font: 400 21px/1.6 'Lora', Georgia, serif; color: var(--fg); max-width: 33ch; margin: 0; text-wrap: pretty; }
 .letter-photo{ margin: 0; }
 .letter-photo img{ display: block; width: 100%; height: auto; border: 10px solid #FFFCF6; box-shadow: 0 2px 7px #241F1A18; box-sizing: border-box; }
 .letter-photo figcaption{ display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 18px; margin-top: 16px; font: 11px/1.7 'IBM Plex Mono', monospace; color: var(--muted); }
-.textlink{ display: inline-block; margin-top: 22px; font: 12px/1.8 'IBM Plex Mono', monospace; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #D9CFB9; min-height: 28px; }
-.textlink:hover{ text-decoration-color: currentColor; }
+.home .textlink{ display: inline-block; margin-top: 22px; font: 400 16px/1.8 'Lora', Georgia, serif; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #D9CFB9; min-height: 28px; }
+.home .textlink:hover{ text-decoration-color: currentColor; }
 
 .rooms{ display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
 .room-num{ margin: 24px 0 0; font: 11px/1.6 'IBM Plex Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
@@ -116,7 +139,7 @@
 .room h2 a{ display: flex; justify-content: space-between; align-items: center; color: inherit; text-decoration: none; }
 .room-practice h2 a:hover{ color: #4B5842; }
 .room-photo h2 a:hover{ color: var(--accent); }
-.room p:not(.room-num){ color: var(--muted); max-width: 36ch; margin: 0; }
+.room p:not(.room-num){ font: 400 17px/1.55 'Lora', Georgia, serif; color: var(--muted); max-width: 36ch; margin: 0; }
 
 .drawn-rule{ display: block; height: 1px; background: #D9CFB9; transform-origin: left; animation: drawrule 2.4s cubic-bezier(.4,0,.2,1) both; }
 .room-photo .drawn-rule{ animation-delay: .3s; }
@@ -144,7 +167,7 @@ html.draw-on-view .door-sign.drawn :not(.pin){ animation: drawdoor 1.6s cubic-be
   .home{ padding: 0 24px; }
   .letter{ display: flex; flex-direction: column; align-items: stretch; gap: 38px; margin: 40px 0; }
   .letter h1{ font-size: 64px; }
-  .letter-copy{ font-size: 26px; }
+  .letter-copy{ font-size: 19px; }
   .letter-photo{ max-width: 420px; }
   .rooms{ grid-template-columns: 1fr; gap: 35px; }
 }
