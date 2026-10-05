@@ -112,7 +112,7 @@ class WebsiteValidatorTests(unittest.TestCase):
 
     def test_required_dependency_relationships_are_declared(self):
         declarations = {item["id"]: item for item in validator.DEPENDENCIES}
-        self.assertEqual(set(declarations["reflections"]["effects"]), {"archive", "latest Reflection widget", "daily-sutta matching"})
+        self.assertEqual(set(declarations["reflections"]["effects"]), {"archive", "latest Reflection line", "daily-sutta matching"})
         self.assertEqual(set(declarations["photography"]["effects"]), {"Exhibition", "Index", "viewer", "image files"})
         self.assertIn("Reading shelf", declarations["reading"]["effects"])
 
