@@ -18,6 +18,9 @@ small scripts that turn them into the PNGs in
   Patrick Hand (bundled here, SIL Open Font License), which matches the
   hand-lettered look of the originals. Run it from this directory; it
   writes the `-nl.png` files straight into `practice/images/meditation/`.
+- `build_vi.py` makes the Vietnamese figures (`-vi.png`) the same way, reusing the
+  rectangles from `build_nl.py`. The wording follows the Vietnamese sheets: `phồng` / `xẹp`,
+  `quay lại`, `chạm`. Patrick Hand covers Vietnamese.
 - `find_text.py` locates the text blocks in a drawing, which is how the
   rectangles in `build_nl.py` were found. Useful if a drawing is ever
   replaced and the coordinates move.
