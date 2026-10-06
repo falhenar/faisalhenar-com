@@ -1,6 +1,6 @@
 # Fonts
 
-Self-hosted from Google Fonts (August 2026), subsetted to `latin` + `latin-ext` for Pali diacritics. Licensed under SIL Open Font License 1.1.
+Self-hosted from Google Fonts (August 2026), subsetted to `latin` + `latin-ext` for Pali diacritics. Inter, Lora and IBM Plex Mono also have a `vietnamese` subset (October 2026, for the Vietnamese practice pages). Its `unicode-range` means other pages never download it. Licensed under SIL Open Font License 1.1.
 
 | Family | Copyright | Upstream |
 |---|---|---|
