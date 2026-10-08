@@ -17,10 +17,15 @@ photography/           → the photography section
   css/, js/, photos/    → styling, logic, and your photo files
 
 practice/               → the Buddhism/practice section
-  index.html            → hub linking to the six rooms
-  reflections.html, reading.html, listening.html, watching.html,
-  places.html, meditation.html
-  css/, js/             → styling, and the configs the rooms render from
+  index.html            → the hub: a shelf of five objects and a notebook
+  reflections.html, meditation.html, reading.html, talks.html,
+  places.html           → the five rooms
+  listening.html, watching.html → redirects to talks.html (old addresses)
+  css/notebook.css      → the Practice stylesheet (practice.css is kept only
+                          for the Vietnamese sheets)
+  js/notebook/          → hub, rooms, sheets and step-by-step scripts
+  data/                 → reading.json, talks.json, crosslinks.json
+  js/                   → the configs (reflections, quotes, daily sutta)
 ```
 
 Each section (photography, practice) is self-contained — its own css/js/photos
@@ -151,12 +156,12 @@ An entry appears only when both `note` and `added` are filled. Structural page
 sections follow source order; chronological sections show the newest published
 entry first, using source order to break same-date ties.
 
-**Quotes** (the shuffled quote block on the Practice hub):
+**Quotes** (the line on the wall card on the Practice hub):
 `practice/js/quotes-config.js`. Each entry needs `text`, `author`, and a
 `source` that's actually checkable — no quote goes in without one. See the
 comment block at the top of that file for translator/sourcing notes.
 
-**Sutta of the day** (the dated block at the foot of the Practice hub):
+**Sutta of the day** (the Today page of the notebook on the Practice hub):
 `practice/js/daily-sutta-config.js`. One entry per sutta, each with `text`,
 `ref` and a SuttaCentral `url`. The entry shown is chosen from the calendar
 date, so everyone sees the same one on a given day and it changes at midnight.
@@ -164,15 +169,35 @@ Adding entries just lengthens the cycle. When the day's sutta is one you have
 written a reflection on, the block links through to it automatically, matched
 on `ref` against `suttas-config.js`, so the two lists cannot drift apart.
 
-**Latest Reflection** (the "Latest:" line inside the Reflections door on the
-Practice hub) is also derived from `suttas-config.js` by
-`practice/js/render-latest-reflection.js`. The same published-entry rule used
-by the archive selects the newest dated Reflection.
+**The Practice hub reads its rooms at runtime.** `practice/js/notebook/hub.js`
+fetches `reflections.html`, `meditation.html`, `places.html`, `reading.json`
+and `talks.json` and builds each room's spread (intro, featured item, contents
+and counts) from them, including the "Lately" line on Today. Nothing on the
+hub is a copy, so there is nothing to update there when a room changes. If a
+room cannot be read, its spread is left out and its contents line still
+links to the room.
 
-**Reading shelf** (`practice/reading.html`): book entries live in
-`practice/data/reading.json` and are rendered by `practice/js/render-reading.js`
-inside the page's fixed visual layout. Use Website Manager's Reading screen to
-add, edit, remove, or reorder books without editing the page markup.
+**Reading** (`practice/reading.html`): book entries live in
+`practice/data/reading.json` and are rendered into the room by
+`practice/js/notebook/render-room-data.js`. Use Website Manager's Reading
+screen to add, edit, remove, or reorder books, or edit the JSON by hand.
+
+**Talks** (`practice/talks.html`): one page fed by `practice/data/talks.json`,
+one entry per teacher or monastery with a Listen link, a Watch link, or both,
+rendered by the same `render-room-data.js`. Edit the JSON as data. Each entry
+keeps the old Listening and Watching ids it replaced in `aliases`, so old
+anchors still land on it. `listening.html` and `watching.html` are redirects
+to Talks that keep the anchor; `listening.json` and `watching.json` are no
+longer read by any page and are kept only until the post-launch cleanup.
+
+**Meditation, Places, the instruction sheets, the Sati Timer and the
+step-by-step pages** are plain HTML: edit the page itself. The Practice
+redesign of October 2026 was built by one-time generators in
+`practice-redesign/tools/` (outside this repository). They read the old
+layout and must not be run against the new pages.
+
+**Cross-links** ("Elsewhere in the notebook" in the rooms) live in
+`practice/data/crosslinks.json`.
 
 **Elsewhere** (`elsewhere.html`): a plain hand-edited page, no config.
 
@@ -213,8 +238,12 @@ your writing, so when it fails, fix the line yourself and push again.
   `practice/reflections/`. The essays are not edited there: the config is the
   source and the pages are output, so an edit made in a generated page is
   lost the next time the tool runs. Each published entry carries a frozen
-  `slug` that fixes its URL for good; `practice/js/render-reflections.js` now
-  does nothing but forward the old `reflections.html#r-<id>` links to it.
+  `slug` that fixes its URL for good. Its templates write the Reflections
+  room (`practice/reflections.html`, the list and panel between the
+  `BUILD:reflections` markers) and the pages in the redesigned layout. Old
+  `reflections.html#r-<id>` links open the item in the room, through each
+  item's `data-alias`. `practice/js/render-reflections.js` is no longer
+  loaded; it is kept until the post-launch cleanup.
 - `css/base.css` holds the parts that are the same everywhere: the two
   faces every section sets text in, the reset, the skip link and the menu.
   Every page loads it first, then its own section stylesheet. It styles

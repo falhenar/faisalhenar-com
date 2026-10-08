@@ -114,7 +114,8 @@ class WebsiteValidatorTests(unittest.TestCase):
         declarations = {item["id"]: item for item in validator.DEPENDENCIES}
         self.assertLessEqual({"archive", "latest Reflection line", "daily-sutta matching"}, set(declarations["reflections"]["effects"]))
         self.assertLessEqual({"wall", "contact sheets", "Everything", "photograph pages", "image files"}, set(declarations["photography"]["effects"]))
-        self.assertIn("Reading shelf", declarations["reading"]["effects"])
+        self.assertIn("Reading room", declarations["reading"]["effects"])
+        self.assertIn("Talks room", declarations["talks"]["effects"])
 
 
 

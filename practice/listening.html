@@ -9,11 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Listening · Practice · Faisal Henar</title>
 <meta name="description" content="Podcasts and narrated collections from the forest tradition and beyond.">
-<link rel="canonical" href="https://faisalhenar.com/practice/listening.html">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=talks.html">
+<link rel="canonical" href="https://faisalhenar.com/practice/talks.html">
 <meta property="og:title" content="Listening · Practice · Faisal Henar">
 <meta property="og:description" content="Podcasts and narrated collections from the forest tradition and beyond.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://faisalhenar.com/practice/listening.html">
+<meta property="og:url" content="https://faisalhenar.com/practice/talks.html">
 <meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,12 +24,14 @@
 <meta name="twitter:description" content="Podcasts and narrated collections from the forest tradition and beyond.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
+<script src="js/notebook/redirect-talks.js?v=1"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="listening-page shelf-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -49,52 +53,12 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1" data-shelf-src="data/listening.json">
-  <a class="back-link" href="./">&larr; Practice</a>
-  <h1 class="room-title"><span>Listening</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><circle class="fill-dot" cx="42" cy="85" r="3.5"></circle><path pathLength="1" d="M42 71 A14 14 0 0 1 42 99"></path><path pathLength="1" d="M42 61 A24 24 0 0 1 42 109"></path><path pathLength="1" d="M42 51 A34 34 0 0 1 42 119"></path></svg></h1>
-  <p class="room-dek">Podcasts and narrated collections I keep coming back to, most of them from the Thai forest tradition.</p>
-
-  <div class="page-intro">
-    <p>These are ongoing feeds rather than finished works, so the useful question is not which is best but what kind of listening each one is. A few are books read aloud, with a beginning and an end. Most are archives you dip into. The sections below are sorted that way.</p>
-    <p>If you want somewhere to start: <a href="#listen-thanissaro-evening">the evening talks from Metta Forest Monastery</a> are about twelve minutes each and ask little of you, and <a href="#listen-collected-teachings-ajahn-chah">the Ajahn Chah audiobook</a> will keep you occupied for months. Everything here is free. One entry carries advertising and says so.</p>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Practice</a></div>
+    <h1 class="nb-h1" style="margin-top: 18px">Listening</h1>
+    <p class="nb-intro" style="margin-top: 20px"><a href="talks.html">Talks &rarr;</a></p>
   </div>
-
-  <nav class="page-contents" aria-label="On this page">
-    <p class="page-contents-label mono">On this page</p>
-    <ul>
-      <li><a href="#read-aloud">Texts read aloud</a></li>
-      <li><a href="#monasteries">From the monasteries</a></li>
-      <li><a href="#teachers">Single teachers</a></li>
-      <li><a href="#insight">The insight tradition</a></li>
-    </ul>
-  </nav>
-
-  <section class="section shelf" id="read-aloud">
-    <h2 class="shelf-title">Texts read aloud</h2>
-    <p class="shelf-dek">Finite works, narrated. These have a first episode and a last one, so you can work through them the way you would a book.</p>
-    <div class="shelf-books" data-shelf-list="read-aloud"></div>
-  </section>
-
-  <section class="section shelf" id="monasteries">
-    <h2 class="shelf-title">From the monasteries</h2>
-    <p class="shelf-dek">Places rather than single voices. Talks given to whoever was sitting there that evening, recorded as they happened.</p>
-    <div class="shelf-books" data-shelf-list="monasteries"></div>
-  </section>
-
-  <section class="section shelf" id="teachers">
-    <h2 class="shelf-title">Single teachers</h2>
-    <p class="shelf-dek">One voice at length. The division from the section above is loose: these feeds come from monasteries too, they are just gathered under a teacher's name.</p>
-    <div class="shelf-books" data-shelf-list="teachers"></div>
-  </section>
-
-  <section class="section shelf" id="insight">
-    <h2 class="shelf-title">The insight tradition</h2>
-    <p class="shelf-dek">Outside the Thai forest lineage most of this page sits in. Both come by way of Mahasi Sayadaw and the Burmese satipaṭṭhāna teaching that reached the West through him.</p>
-    <div class="shelf-books" data-shelf-list="insight"></div>
-  </section>
-
-  <p class="shelf-updated mono">List last changed <time data-shelf-updated datetime="2026-08">August 2026</time>.</p>
-
   </main>
 
   <footer class="site-footer">
@@ -116,7 +80,7 @@
     </noscript>
   </footer>
 
-  <script src="js/render-shelf.js"></script>
+
   <script src="../js/menu.js?v=3"></script>
 </body>
 </html>

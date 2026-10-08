@@ -22,13 +22,14 @@
 <meta name="twitter:description" content="Nederlandstalige ingang tot meditatie-instructies en de gemeenschap rond deze beoefening.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <script src="../js/draw-on-view.js?v=1"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="meditation-page nederlands-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Direct naar de inhoud</a>
 
@@ -50,20 +51,23 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="./">&larr; Praktijk</a>
-  <h1 class="room-title">Nederlands</h1>
-  <p class="room-dek">Twee kamers voor Nederlandstalige lezers: meditatie-instructies en de gemeenschap rond deze beoefening.</p>
-
-  <div class="page-intro">
-    <p>Dit gedeelte van de site is voor Nederlandstalige lezers. Ik heb ruim twintig jaar in Nederland gewoond en woon nu in Suriname. Van deze specifieke traditie, de manier van mediteren zoals onderwezen door Ajahn Tong Sirimangalo en doorgegeven door Ajahn Poonsak, is weinig te vinden in het Nederlands. Hier staat bij elkaar wat er wel is.</p>
+  <main id="main" class="nb-main nb-letter-page" tabindex="-1">
+  <div class="nb-letter-top">
+    <div class="nb-topline"><a class="nb-back" href="./" hreflang="en" lang="en">&larr; Practice (English)</a><span>Nederlands</span></div>
   </div>
-
-  <section class="drawn-doors" aria-label="Kamers in het Nederlands">
-    <a class="rc" href="meditation-nl.html"><svg class="ic" viewBox="0 0 120 170" width="110" height="156" aria-hidden="true"><rect class="frame" pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><circle pathLength="1" cx="60" cy="58" r="9"></circle><path pathLength="1" d="M46 72 C40 84 38 100 38 116 C46 111 74 111 82 116 C82 100 80 84 74 72 C69 67 51 67 46 72 Z"></path><circle class="dot breath" cx="60" cy="99" r="2.5"></circle><path pathLength="1" d="M34 122 L86 122"></path></svg><h2 class="nm">Meditatie</h2><p class="dek">Instructies en hulpmiddelen ter ondersteuning van een meditatiebeoefening.</p><span class="cta">Verder &rarr;</span></a>
-    <a class="rc" href="places-nl.html"><svg class="ic" viewBox="0 0 120 170" width="110" height="156" aria-hidden="true"><rect class="frame" pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><rect pathLength="1" x="28" y="120" width="64" height="10" rx="1"></rect><rect pathLength="1" x="38" y="108" width="44" height="10" rx="1"></rect><path pathLength="1" d="M42 108 A18 24 0 0 1 78 108"></path><path pathLength="1" d="M60 84 L60 58"></path><circle class="dot" cx="60" cy="54" r="3"></circle></svg><h2 class="nm">Plekken &amp; gemeenschap</h2><p class="dek">Leraren, kloosters, en de gemeenschap eromheen.</p><span class="cta">Verder &rarr;</span></a>
-  </section>
-
+  <div class="nb-letter-wrap fade-in" style="--d: .2s">
+    <article class="nb-letter">
+      <div class="nb-letter-place">Paramaribo</div>
+      <h1 class="nb-letter-h1">Praktijk, in het Nederlands</h1>
+      <p>Dit gedeelte van de site is voor Nederlandstalige lezers. Ik heb ruim twintig jaar in Nederland gewoond en woon nu in Suriname. Van deze specifieke traditie, de manier van mediteren zoals onderwezen door Ajahn Tong Sirimangalo en doorgegeven door Ajahn Poonsak, is weinig te vinden in het Nederlands. Hier staat bij elkaar wat er wel is.</p>
+      <nav class="nb-letter-rooms" aria-label="Kamers in het Nederlands">
+        <a class="nb-letter-room" href="meditation-nl.html"><svg class="nb-art nb-art-letter ink" width="110" height="92" viewBox="0 0 120 100" stroke-width="1.6" aria-hidden="true" focusable="false" style="--d: .8s"><rect pathLength="1" x="6" y="94" width="108" height="6" rx="1"></rect><path pathLength="1" d="M14 94 C14 64 78 64 78 94 Z"></path><path class="open" pathLength="1" d="M18 82 Q46 76 74 82"></path><path pathLength="1" d="M86 80 L112 80 Q110 94 99 94 Q88 94 86 80 Z"></path><circle class="moss-dot" cx="99" cy="68" r="3"></circle></svg><span class="nb-letter-name">Meditatie</span><span class="nb-letter-sub">Drie instructievellen en de Sati Timer</span></a>
+        <a class="nb-letter-room" href="places-nl.html"><svg class="nb-art nb-art-letter ink" width="110" height="92" viewBox="0 0 120 100" stroke-width="1.6" aria-hidden="true" focusable="false" style="--d: 1.1s"><rect pathLength="1" x="28" y="90" width="64" height="10" rx="1"></rect><rect pathLength="1" x="38" y="78" width="44" height="10" rx="1"></rect><path pathLength="1" d="M42 78 A18 24 0 0 1 78 78 Z"></path><path class="open" pathLength="1" d="M60 54 L60 28"></path><circle class="moss" pathLength="1" cx="60" cy="24" r="3"></circle></svg><span class="nb-letter-name">Plekken &amp; gemeenschap</span><span class="nb-letter-sub">Leraren, kloosters, gemeenschap</span></a>
+      </nav>
+      <p class="nb-letter-close">De andere kamers, met reflecties, boeken en lezingen, zijn er voorlopig alleen in het Engels: <a href="./" hreflang="en" lang="en">Practice</a>.</p>
+      <div class="nb-letter-sign">Faisal</div>
+    </article>
+  </div>
   </main>
 
   <footer class="site-footer">
@@ -85,7 +89,7 @@
     </noscript>
   </footer>
 
+
   <script src="../js/menu.js?v=3"></script>
-  <script src="js/settle-doors.js?v=2"></script>
 </body>
 </html>

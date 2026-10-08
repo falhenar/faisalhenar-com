@@ -24,12 +24,13 @@ NUMBER = re.compile(r"-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?")
 UNSAFE_KEYS = {"__proto__", "prototype", "constructor"}
 
 DEPENDENCIES = (
-    {"id": "reflections", "label": "Reflections", "sources": ("practice/js/suttas-config.js",), "consumers": ("practice/reflections.html", "practice/js/render-reflections.js", "practice/index.html", "practice/js/render-latest-reflection.js", "practice/js/daily-sutta-config.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
+    {"id": "reflections", "label": "Reflections", "sources": ("practice/js/suttas-config.js",), "consumers": ("practice/reflections.html", "tools/build-reflections.py", "practice/index.html", "practice/js/notebook/hub.js", "practice/js/daily-sutta-config.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
     {"id": "quotes", "label": "Quotes", "sources": ("practice/js/quotes-config.js",), "consumers": ("practice/index.html", "practice/js/render-quotes.js"), "effects": ("Practice quote",)},
     {"id": "daily-sutta", "label": "Daily Sutta", "sources": ("practice/js/daily-sutta-config.js", "practice/js/suttas-config.js"), "consumers": ("practice/index.html", "practice/js/render-daily-sutta.js"), "effects": ("daily rotation", "matching published Reflection link")},
-    {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/render-reading.js"), "effects": ("Reading shelf",)},
-    {"id": "listening", "label": "Listening", "sources": ("practice/data/listening.json",), "consumers": ("practice/listening.html", "practice/js/render-shelf.js"), "effects": ("Listening shelf",)},
-    {"id": "watching", "label": "Watching", "sources": ("practice/data/watching.json",), "consumers": ("practice/watching.html", "practice/js/render-shelf.js"), "effects": ("Watching shelf",)},
+    {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js"), "effects": ("Reading room", "hub count")},
+    {"id": "talks", "label": "Talks", "sources": ("practice/data/talks.json",), "consumers": ("practice/talks.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js"), "effects": ("Talks room", "hub count")},
+    {"id": "listening", "label": "Listening", "sources": ("practice/data/listening.json",), "consumers": ("practice/data/talks.json",), "effects": ("merged into Talks",)},
+    {"id": "watching", "label": "Watching", "sources": ("practice/data/watching.json",), "consumers": ("practice/data/talks.json",), "effects": ("merged into Talks",)},
     {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/sheets/", "photography/everything/", "photography/p/", "photography/room-assets/", "photography/photos/"), "effects": ("wall", "contact sheets", "Everything", "photograph pages", "image files")},
     {"id": "language-pairs", "label": "English and Dutch pages", "sources": ("practice/data/nl-mirrors.json",), "consumers": ("practice/*-nl.html", "practice/*.html"), "effects": ("reciprocal hreflang", "translation drift review")},
 )
@@ -223,6 +224,13 @@ def page_url(relative):
 
 def rendered_ids(page):
     sources = {"practice/reading.html": ("practice/data/reading.json", "books"), "practice/listening.html": ("practice/data/listening.json", "items"), "practice/watching.html": ("practice/data/watching.json", "items")}
+    if page == "practice/talks.html":
+        # Talks (October 2026): every source, and the old Listening and
+        # Watching ids it replaced, which open the same source.
+        try:
+            data = json.loads((ROOT / "practice/data/talks.json").read_text(encoding="utf-8"))
+            return {i for s in data["sections"] for item in s["items"] for i in [item["id"], *item.get("aliases", [])]} | {s["id"] for s in data["sections"]}
+        except Exception: return set()
     source = sources.get(page)
     if not source: return set()
     try:
@@ -270,6 +278,13 @@ def validate_pages(issues):
         except Exception as exc: issues.append(issue("unreadable-file", "Pages", relative, str(exc))); continue
         parser = Page(); parser.feed(text); parser.close(); parsed[relative] = parser
         expected = page_url(relative); special = relative == "404.html"
+        # A redirect page (meta refresh, noindex) names the page it sends the
+        # reader to as its canonical: practice/listening.html and
+        # watching.html since the Talks room (October 2026).
+        refresh = [attrs.get("content", "") for tag, attrs in parser.attrs if tag == "meta" and attrs.get("http-equiv", "").lower() == "refresh"]
+        robots = " ".join(attrs.get("content", "") for tag, attrs in parser.attrs if tag == "meta" and attrs.get("name", "").lower() == "robots")
+        if refresh and "url=" in refresh[0] and "noindex" in robots and not re.match(r"\s*(?:/|[a-z]+:)", refresh[0].split("url=", 1)[1]):
+            expected = page_url(PurePosixPath(PurePosixPath(relative).parent, refresh[0].split("url=", 1)[1].strip()).as_posix())
         canonical = [attrs.get("href") for tag, attrs in parser.attrs if tag == "link" and attrs.get("rel", "").lower() == "canonical"]
         if not special and canonical != [expected]: issues.append(issue("canonical", "Metadata", relative, f"Canonical URL must be exactly {expected}."))
         # Every page loads css/base.css, and loads it before its section
@@ -397,10 +412,28 @@ def validate_data(issues, parsed_pages):
                 elif item["url"] and urlsplit(item["url"]).scheme not in {"http", "https"}: issues.append(issue("shelf-schema", shelf.title(), relative, "Shelf item URL must use HTTP or HTTPS.", (shelf,)))
                 if shelf == "reading" and (item.get("descriptionStyle") not in {"note", "reflection"} or ("wide" in item and not isinstance(item["wide"], bool))): issues.append(issue("shelf-schema", shelf.title(), relative, "Reading layout fields are invalid.", (shelf,)))
         counts[shelf] = total
-        page = (ROOT / f"practice/{shelf}.html").read_text(encoding="utf-8"); renderer_path = "practice/js/render-reading.js" if shelf == "reading" else "practice/js/render-shelf.js"; renderer = (ROOT / renderer_path).read_text(encoding="utf-8")
-        missing = [collection["id"] for collection in data["collections"] if f'data-{("reading" if shelf == "reading" else "shelf")}-list="{collection["id"]}"' not in page]
-        dynamic = shelf == "reading" and 'data-reading-teachings' in page and 'function readingTarget(collection)' in renderer
-        if missing and not dynamic: issues.append(issue("renderer-contract", shelf.title(), renderer_path, "Collections have no render target: " + ", ".join(missing) + ".", (shelf,)))
+        if shelf == "reading":
+            page = (ROOT / "practice/reading.html").read_text(encoding="utf-8")
+            missing = [collection["id"] for collection in data["collections"] if f'data-list="{collection["id"]}"' not in page]
+            if missing: issues.append(issue("renderer-contract", "Reading", "practice/reading.html", "Collections have no render target: " + ", ".join(missing) + ".", (shelf,)))
+        else:
+            merged = rendered_ids("practice/talks.html")
+            lost = sorted(i for i in ids if i not in merged)
+            if lost: issues.append(issue("renderer-contract", shelf.title(), "practice/data/talks.json", "Entries missing from Talks: " + ", ".join(lost) + ".", (shelf, "talks")))
+    talks = read_json("practice/data/talks.json", issues, "Talks"); seen = set(); total = 0
+    if not isinstance(talks, dict) or set(talks) != {"version", "updated", "sections"} or not isinstance(talks.get("sections"), list): issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", "Talks has an invalid top-level schema.", ("talks",)))
+    else:
+        for section in talks["sections"]:
+            if not isinstance(section, dict) or set(section) != {"id", "title", "intro", "items"} or not ID.fullmatch(str(section.get("id"))): issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", "Section has an invalid schema.", ("talks",))); continue
+            for item in section["items"]:
+                total += 1
+                if not isinstance(item, dict) or not {"id", "aliases", "title", "author", "description", "meta", "listen", "watch"}.issubset(item) or set(item) - {"id", "aliases", "title", "author", "description", "meta", "listen", "watch", "note"}: issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", "Source has unsupported or missing fields.", ("talks",))); continue
+                for i in [item["id"], *item["aliases"]]:
+                    if not ID.fullmatch(i) or i in seen: issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", f"Invalid or duplicate id {i!r}.", ("talks",)))
+                    seen.add(i)
+                links = [item[k] for k in ("listen", "watch") if item[k]]
+                if not links or any(urlsplit(u).scheme not in {"http", "https"} for u in links): issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", f"Source {item['id']} needs a listen or watch link over HTTP(S).", ("talks",)))
+        counts["talks"] = total
     configs = (("QUOTES", "practice/js/quotes-config.js", "Quotes"), ("DAILY_SUTTAS", "practice/js/daily-sutta-config.js", "Daily Sutta"), ("BOOKS", "practice/js/suttas-config.js", "Reflections"), ("SUTTAS", "practice/js/suttas-config.js", "Reflections"))
     values = {}
     for name, relative, area in configs:
@@ -451,8 +484,10 @@ def validate_data(issues, parsed_pages):
                 if links != [expected]: issues.append(issue("hreflang", "Language pairs", page, f"hreflang={language} must be declared exactly once and point to {expected}.", ("language-pairs",)))
     counts["language_pairs"] = len(pairs)
     contracts = (
-        ("reflections", "practice/reflections.html", ("js/suttas-config.js", "js/render-reflections.js"), "The Reflection archive must load its data and renderer."),
-        ("reflections", "practice/index.html", ("js/suttas-config.js", "js/render-latest-reflection.js"), "The Practice hub must load Reflection data and the latest-Reflection renderer."),
+        ("reflections", "practice/reflections.html", ("<!-- BUILD:reflections -->", "js/notebook/room.js"), "The Reflection archive must carry its generated list and the room script."),
+        ("reflections", "practice/index.html", ("js/suttas-config.js", "js/notebook/hub.js"), "The Practice hub must load Reflection data and the hub script."),
+        ("reading", "practice/reading.html", ("data/reading.json", "js/notebook/render-room-data.js", "js/notebook/room.js"), "The Reading room must load its data and renderers."),
+        ("talks", "practice/talks.html", ("data/talks.json", "js/notebook/render-room-data.js", "js/notebook/room.js"), "The Talks room must load its data and renderers."),
         ("daily-sutta", "practice/index.html", ("js/daily-sutta-config.js", "js/suttas-config.js", "js/render-daily-sutta.js"), "The Practice hub must load daily data, Reflection data, and the daily renderer."),
         ("photography", "photography/index.html", ("/photography/room-assets/room.css", "/photography/room-assets/room.js"), "The photography wall must load the room's stylesheet and script."),
     )

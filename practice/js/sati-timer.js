@@ -2,9 +2,10 @@
   Sati Timer — web companion.
 
   Ported from the real Android app's source (Session.kt, SessionController.kt,
-  TimerConfig.kt, Preset.kt, BellSound.kt, Enso.kt, DurationDial.kt), not
-  re-derived from scratch, so the timing behaviour and the ensō drawing
-  match the app rather than approximating it.
+  TimerConfig.kt, Preset.kt, BellSound.kt, DurationDial.kt), not
+  re-derived from scratch, so the timing behaviour matches the app rather
+  than approximating it. (The ensō drawing from Enso.kt was replaced in
+  October 2026 by the Practice notebook's plain dial ring and bell.)
 
   A session is planned once as a list of bell offsets from an anchor
   timestamp (Session.plan), then a small "pump" loop compares now to the
@@ -133,50 +134,6 @@
       a.volume = Math.max(0, Math.min(1, volume));
       a.play().catch(function () {});
     } catch (e) { /* audio unavailable; the sit still advances */ }
-  }
-
-  // ---------------- ensō (Enso.kt, ported unchanged) ----------------
-
-  var ENSO_START_DEG = -90, ENSO_SWEEP_DEG = 344, ENSO_SEGMENTS = 220;
-
-  function wobble(t) {
-    return Math.sin(t * 6.283 * 1.7 + 0.9) * 0.6 + Math.sin(t * 6.283 * 3.1 + 2.3) * 0.4;
-  }
-  function widthAt(t) {
-    var tc = Math.max(0, Math.min(1, t));
-    var body = Math.sin(Math.PI * (tc * 0.86 + 0.07));
-    return 0.34 + 0.78 * body;
-  }
-  function inkAt(t) {
-    var dry = Math.sin(t * 6.283 * 5.3 + 1.1) * 0.5 + 0.5;
-    var lateness = Math.max(0, Math.min(1, (t - 0.55) / 0.45));
-    return Math.max(0.25, Math.min(1, 1 - lateness * 0.55 * dry));
-  }
-  function pointOnEnso(cx, cy, radius, t, wobblePx) {
-    var angle = (ENSO_START_DEG + ENSO_SWEEP_DEG * t) * (Math.PI / 180);
-    var r = radius + wobble(t) * wobblePx;
-    return [cx + Math.cos(angle) * r, cy + Math.sin(angle) * r];
-  }
-  function drawEnso(ctx, cx, cy, radius, strokeWidth, color, progress, alpha, wobblePx) {
-    progress = progress === undefined ? 1 : Math.max(0, Math.min(1, progress));
-    alpha = alpha === undefined ? 1 : alpha;
-    wobblePx = wobblePx === undefined ? 3.5 : wobblePx;
-    var end = Math.round(ENSO_SEGMENTS * progress);
-    if (end <= 0) return;
-    ctx.lineCap = 'round';
-    for (var i = 0; i < end; i++) {
-      var t0 = i / ENSO_SEGMENTS, t1 = (i + 1) / ENSO_SEGMENTS;
-      var p0 = pointOnEnso(cx, cy, radius, t0, wobblePx);
-      var p1 = pointOnEnso(cx, cy, radius, t1, wobblePx);
-      ctx.globalAlpha = alpha * inkAt(t0);
-      ctx.lineWidth = strokeWidth * widthAt(t0);
-      ctx.strokeStyle = color;
-      ctx.beginPath();
-      ctx.moveTo(p0[0], p0[1]);
-      ctx.lineTo(p1[0], p1[1]);
-      ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
   }
 
   // ---------------- session engine (Session.kt / SessionController.kt) ----------------
@@ -408,7 +365,8 @@
       themeBtn: document.getElementById('timer-theme-btn'),
       sessionStage: document.getElementById('timer-session-stage'),
       sessionTime: document.getElementById('timer-session-time'),
-      sessionCanvas: document.getElementById('timer-session-canvas'),
+      sessionBar: document.getElementById('timer-session-bar'),
+      sessionRipple: document.querySelector('#timer-session .timer-ripple'),
       sessionHint: document.getElementById('timer-session-hint'),
       pauseBtn: document.getElementById('timer-pause-btn'),
       stopBtn: document.getElementById('timer-stop-btn'),
@@ -477,20 +435,21 @@
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, size, size);
       var cx = size / 2, cy = size / 2;
-      var radius = size / 2 - size * 0.09;
-      var stroke = size * 0.062;
+      // The Practice notebook's dial (October 2026, TimerDesktop board): a
+      // plain ring with the minutes drawn in moss from the top, 110 of 240
+      // in radius and a 3px line, in place of the app's ensō.
+      var radius = size * 110 / 240;
+      var stroke = size * 3 / 240;
       var style = getComputedStyle(root);
-      var track = style.getPropertyValue('--line').trim() || '#D9DACE';
+      var track = style.getPropertyValue('--line-2').trim() || '#DCDDD0';
       var accent = style.getPropertyValue('--accent').trim() || '#4B5842';
-      drawEnso(ctx, cx, cy, radius, stroke, track, 1);
-      drawEnso(ctx, cx, cy, radius, stroke, accent, sweep);
-
-      var knob = pointOnEnso(cx, cy, radius, sweep, 3.5);
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = style.getPropertyValue('--bg').trim() || '#EDEEE7';
-      ctx.beginPath(); ctx.arc(knob[0], knob[1], stroke * 0.78, 0, Math.PI * 2); ctx.fill();
-      ctx.lineWidth = size * 0.006; ctx.strokeStyle = accent;
-      ctx.beginPath(); ctx.arc(knob[0], knob[1], stroke * 0.78, 0, Math.PI * 2); ctx.stroke();
+      ctx.lineWidth = stroke;
+      ctx.strokeStyle = track;
+      ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = accent;
+      ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.arc(cx, cy, radius, -Math.PI / 2, -Math.PI / 2 + sweep * Math.PI * 2); ctx.stroke();
+      canvas.setAttribute('aria-valuenow', String(minutes));
     }
 
     function renderChips() {
@@ -762,23 +721,27 @@
       els.sessionHint.textContent = snap.isCountingDown ? T.startingIn : '';
       els.pauseBtn.textContent = snap.isPaused ? T.resume : T.pause;
 
-      var canvas = els.sessionCanvas;
-      var size = canvas.width = canvas.height = canvas.clientWidth * (window.devicePixelRatio || 1);
-      var ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, size, size);
-      var cx = size / 2, cy = size / 2, radius = size / 2 - size * 0.09, stroke = size * 0.05;
-      var style = getComputedStyle(document.querySelector('.timer-page'));
-      var track = style.getPropertyValue('--line').trim() || '#D9DACE';
-      var accent = style.getPropertyValue('--accent').trim() || '#4B5842';
-      drawEnso(ctx, cx, cy, radius, stroke, track, 1);
-      drawEnso(ctx, cx, cy, radius, stroke, accent, snap.progress);
+      // The sit (TimerSession board): a thin line that shortens as the stage
+      // runs, and one ripple from the bell at the start of each stage.
+      if (els.sessionBar) els.sessionBar.style.transform = 'scaleX(' + (1 - snap.progress).toFixed(4) + ')';
+      var stageKey = snap.isCountingDown ? 'count' : snap.completedRounds + ':' + snap.stageIndex;
+      if (stageKey !== lastStageKey) {
+        lastStageKey = stageKey;
+        if (!snap.isCountingDown && els.sessionRipple && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          els.sessionRipple.classList.remove('ripple');
+          void els.sessionRipple.getBoundingClientRect();
+          els.sessionRipple.classList.add('ripple');
+        }
+      }
     }
+    var lastStageKey = null;
 
     els.startBtn.addEventListener('click', function () {
       els.setup.hidden = true;
       els.complete.hidden = true;
       els.session.hidden = false;
       if (draft.keepScreenOn) requestWakeLock();
+      lastStageKey = null;
       engine.start(config());
     });
     els.pauseBtn.addEventListener('click', function () {

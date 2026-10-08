@@ -22,12 +22,13 @@
 <meta name="twitter:description" content="A slow read through a small set of suttas, published as I get to them.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body>
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -49,79 +50,128 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="./">&larr; Practice</a>
-  <h1 class="room-title"><span>Reflections</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><path pathLength="1" d="M32 50 L88 50"></path><path pathLength="1" d="M32 66 L88 66"></path><path pathLength="1" d="M32 82 L66 82"></path><circle class="fill-dot" cx="32" cy="106" r="3"></circle><path pathLength="1" d="M44 106 L88 106"></path></svg></h1>
-  <p class="room-dek">A slow read through the texts I keep returning to, published as I actually get to them rather than on a schedule.</p>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Practice</a><span>Room one of five &middot; p. 2</span></div>
+    <div class="nb-head">
+      <div class="nb-head-title"><svg class="nb-art nb-art-title ink" width="96" height="80" viewBox="0 0 120 100" stroke-width="1.9" aria-hidden="true" focusable="false" style="--d: .1s"><rect pathLength="1" x="30" y="24" width="54" height="76" rx="3"></rect><path class="open" pathLength="1" d="M38 24 L38 100"></path><rect class="open" pathLength="1" x="50" y="40" width="24" height="12"></rect><rect class="moss" pathLength="1" x="92" y="44" width="6" height="56" rx="3"></rect></svg><h1 class="nb-h1">Reflections</h1></div>
+      <p class="nb-intro fade-in" style="--d: .9s">A slow read through the texts I keep returning to, published as I actually get to them rather than on a schedule.</p>
+    </div>
 
-  <div id="reflections-list">
-    <!-- Written by tools/build-reflections.py from practice/js/suttas-config.js.
-         Everything between the markers is generated: edit the config and run
-         the tool, not this block. -->
+    <div class="nb-room fade-in" style="--d: 1.1s" data-room data-page="reflections.html" data-open="anxiety-due-to-change" data-crosslinks="data/crosslinks.json">
+      <div class="nb-list" id="reflections-list">
+        <!-- Written by tools/build-reflections.py from practice/js/suttas-config.js.
+             Everything between the markers is generated: edit the config and run
+             the tool, not this block. -->
 <!-- BUILD:reflections -->
-    <section class="section">
-      <h2 class="section-label">In the Buddha's Words</h2>
-      <p class="section-dek">Bhikkhu Bodhi's anthology (Wisdom Publications), used as a structural spine: Parts I through X, roughly foundational to advanced. Translations are Bhikkhu Sujato's via SuttaCentral, unless noted otherwise.</p>
-      <ol class="reflection-index">
-        <li class="reflection-index-item">
-          <a href="reflections/aging-and-death.html">
-            <span class="reflection-index-title">Aging and Death</span>
-            <span class="reflection-index-meta mono">SN 3.3 &middot; 30 July 2026</span>
-          </a>
-        </li>
-        <li class="reflection-index-item">
-          <a href="reflections/the-simile-of-the-mountain.html">
-            <span class="reflection-index-title">The Simile of the Mountain</span>
-            <span class="reflection-index-meta mono">SN 3.25 &middot; 2 August 2026</span>
-          </a>
-        </li>
-        <li class="reflection-index-item">
-          <a href="reflections/the-divine-messengers.html">
-            <span class="reflection-index-title">The Divine Messengers</span>
-            <span class="reflection-index-meta mono">AN 3.36 &middot; 9 August 2026</span>
-          </a>
-        </li>
-        <li class="reflection-index-item">
-          <a href="reflections/the-dart-of-painful-feeling.html">
-            <span class="reflection-index-title">The Dart of Painful Feeling</span>
-            <span class="reflection-index-meta mono">SN 36.6 &middot; 20 August 2026</span>
-          </a>
-        </li>
-        <li class="reflection-index-item">
-          <a href="reflections/the-vicissitudes-of-life.html">
-            <span class="reflection-index-title">The Vicissitudes of Life</span>
-            <span class="reflection-index-meta mono">AN 8.6 &middot; 31 August 2026</span>
-          </a>
-        </li>
-        <li class="reflection-index-item">
-          <a href="reflections/anxiety-due-to-change.html">
-            <span class="reflection-index-title">Anxiety Due to Change <span class="reflection-index-latest mono">Latest</span></span>
-            <span class="reflection-index-meta mono">SN 22.7 &middot; 16 September 2026</span>
-          </a>
-        </li>
-      </ol>
-    </section>
-    <section class="section">
-      <h2 class="section-label">Reflections on Suttas That Stay With Me</h2>
-      <p class="section-dek">Suttas outside the anthology above, encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.</p>
-      <ol class="reflection-index">
-        <li class="reflection-index-item">
-          <a href="reflections/taking-care-of-ourselves-we-take-care-of-others.html">
-            <span class="reflection-index-title">Taking Care of Ourselves, We Take Care of Others</span>
-            <span class="reflection-index-meta mono">SN 47.19 &middot; 19 August 2026</span>
-          </a>
-        </li>
-        <li class="reflection-index-item">
-          <a href="reflections/the-stories-we-build.html">
-            <span class="reflection-index-title">The Stories We Build</span>
-            <span class="reflection-index-meta mono">SN 5.10 &middot; 12 August 2026</span>
-          </a>
-        </li>
-      </ol>
-    </section>
+        <section class="nb-group" id="itbw">
+          <h2 class="nb-group-h">In the Buddha's Words</h2>
+          <p class="nb-group-d">Bhikkhu Bodhi's anthology (Wisdom Publications), used as a structural spine: Parts I through X, roughly foundational to advanced. Translations are Bhikkhu Sujato's via SuttaCentral, unless noted otherwise.</p>
+          <ul class="nb-rows">
+            <li class="nb-item" id="aging-and-death" data-alias="r-itbw-1-1-1">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-aging-and-death"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Aging and Death</span></span><span class="nb-row-r">SN 3.3<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-aging-and-death" hidden>
+                <div class="nb-d-where">30 July 2026</div>
+                <div class="nb-d-sec">In the Buddha's Words</div>
+                <h3 class="nb-d-t">Aging and Death</h3>
+                <div class="nb-d-by">SN 3.3 &middot; Jarāmaraṇasutta &middot; I.1(1)</div>
+                <p class="nb-d-text">We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous things, and let's aim for the good. How much time do I spend pursuing things I already know will not satisfy me very deeply, while neglecting things I genuinely consider important?</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/aging-and-death.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/sn3.3/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="the-simile-of-the-mountain" data-alias="r-itbw-1-1-2">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-the-simile-of-the-mountain"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">The Simile of the Mountain</span></span><span class="nb-row-r">SN 3.25<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-the-simile-of-the-mountain" hidden>
+                <div class="nb-d-where">2 August 2026</div>
+                <div class="nb-d-sec">In the Buddha's Words</div>
+                <h3 class="nb-d-t">The Simile of the Mountain</h3>
+                <div class="nb-d-by">SN 3.25 &middot; Pabbatūpamasutta &middot; I.1(2)</div>
+                <p class="nb-d-text">In our own way, we are all kings of our own little kingdoms. So often, we seem to believe that having the right friends, accumulating wealth, clinging to our possessions, or behaving as if we're forever youthful can shield ourselves for what is coming.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/the-simile-of-the-mountain.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/sn3.25/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="the-divine-messengers" data-alias="r-itbw-1-1-3">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-the-divine-messengers"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">The Divine Messengers</span></span><span class="nb-row-r">AN 3.36<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-the-divine-messengers" hidden>
+                <div class="nb-d-where">9 August 2026</div>
+                <div class="nb-d-sec">In the Buddha's Words</div>
+                <h3 class="nb-d-t">The Divine Messengers</h3>
+                <div class="nb-d-by">from AN 3.36 &middot; Devadūtasutta &middot; I.1(3)</div>
+                <p class="nb-d-text">From a young age I was drawn to American hip-hop. I was enchanted by the stories the artists told about sex, crime and life in poverty, but also by the social issues they seemed to shine a light on. Some of these artists I really looked up to, even though my own life looked nothing like theirs.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/the-divine-messengers.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/an3.36/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="the-dart-of-painful-feeling" data-alias="r-itbw-1-2-1">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-the-dart-of-painful-feeling"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">The Dart of Painful Feeling</span></span><span class="nb-row-r">SN 36.6<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-the-dart-of-painful-feeling" hidden>
+                <div class="nb-d-where">20 August 2026</div>
+                <div class="nb-d-sec">In the Buddha's Words</div>
+                <h3 class="nb-d-t">The Dart of Painful Feeling</h3>
+                <div class="nb-d-by">SN 36.6 &middot; Sallasutta &middot; I.2(1)</div>
+                <p class="nb-d-text">We will all experience suffering in our lives in one form or another. In that sense, getting struck by the &quot;first arrow&quot; is unavoidable. We age, we get sick and, at some point, we will all die. Along the way there will inevitably be painful and uncomfortable feelings.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/the-dart-of-painful-feeling.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/sn36.6/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="the-vicissitudes-of-life" data-alias="r-itbw-1-2-2">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-the-vicissitudes-of-life"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">The Vicissitudes of Life</span></span><span class="nb-row-r">AN 8.6<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-the-vicissitudes-of-life" hidden>
+                <div class="nb-d-where">31 August 2026</div>
+                <div class="nb-d-sec">In the Buddha's Words</div>
+                <h3 class="nb-d-t">The Vicissitudes of Life</h3>
+                <div class="nb-d-by">AN 8.6 &middot; I.2(2)</div>
+                <p class="nb-d-text">This sutta concerns the eight worldly conditions, sometimes called ‘the eight worldly winds’. The word wind immediately gives this image of being at risk to be swept away by it. And that is exactly what seems to happen to us when we get into contact with these eight worldly conditions of gain and loss, fame and disgrace, blame and praise, pleasure and pain.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/the-vicissitudes-of-life.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/an8.6/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="anxiety-due-to-change" data-alias="r-itbw-1-2-3">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-anxiety-due-to-change"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Anxiety Due to Change</span></span><span class="nb-row-r">Latest &middot; SN 22.7<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-anxiety-due-to-change" hidden>
+                <div class="nb-d-where">16 September 2026</div>
+                <div class="nb-d-sec">In the Buddha's Words</div>
+                <h3 class="nb-d-t">Anxiety Due to Change</h3>
+                <div class="nb-d-by">SN 22.7 &middot; I.2(3)</div>
+                <p class="nb-d-text">For years I had anxiety chasing me around. Scared of what my future might bring, or not bring. Afraid that something from my past would come back and bite me in the butt. Wondering if someone would like me or not.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/anxiety-due-to-change.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/sn22.7/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="nb-group" id="keepers">
+          <h2 class="nb-group-h">Reflections on Suttas That Stay With Me</h2>
+          <p class="nb-group-d">Suttas outside the anthology above, encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.</p>
+          <ul class="nb-rows">
+            <li class="nb-item" id="taking-care-of-ourselves-we-take-care-of-others" data-alias="r-keepers-2">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-taking-care-of-ourselves-we-take-care-of-others"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Taking Care of Ourselves, We Take Care of Others</span></span><span class="nb-row-r">SN 47.19<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-taking-care-of-ourselves-we-take-care-of-others" hidden>
+                <div class="nb-d-where">19 August 2026</div>
+                <div class="nb-d-sec">Reflections on Suttas That Stay With Me</div>
+                <h3 class="nb-d-t">Taking Care of Ourselves, We Take Care of Others</h3>
+                <div class="nb-d-by">SN 47.19 &middot; Sedakasutta</div>
+                <p class="nb-d-text">When my spouse and I were still in a so-called long distance relationship, we regularly talked about different suttas that piqued our interest. One of these suttas was the Sedakasutta. This sutta describes the story of how the pole acrobat Medakathālikā climbs up a bamboo pole standing above her teacher’s shoulders.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/taking-care-of-ourselves-we-take-care-of-others.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/sn47.19/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="the-stories-we-build" data-alias="r-keepers-1">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-the-stories-we-build"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">The Stories We Build</span></span><span class="nb-row-r">SN 5.10<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-the-stories-we-build" hidden>
+                <div class="nb-d-where">12 August 2026</div>
+                <div class="nb-d-sec">Reflections on Suttas That Stay With Me</div>
+                <h3 class="nb-d-t">The Stories We Build</h3>
+                <div class="nb-d-by">SN 5.10 &middot; Vajirāsutta</div>
+                <p class="nb-d-text">Who doesn't love to philosophize about life? Probably a lot of people don't. But for most of my life, I enjoyed it. Or maybe enjoyment is the wrong word to describe it, because at times I even took it too far.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="reflections/the-stories-we-build.html">Read the reflection</a><a class="nb-btn" href="https://suttacentral.net/sn5.10/en/sujato" target="_blank" rel="noopener">The sutta on SuttaCentral<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+          </ul>
+        </section>
 <!-- /BUILD:reflections -->
+      </div>
+
+      <aside class="nb-panel" aria-live="polite"><svg class="nb-art nb-art-panel" width="132" height="110" viewBox="0 0 120 100" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="30" y="24" width="54" height="76" rx="3"></rect><path class="open" d="M38 24 L38 100"></path><rect class="open" x="50" y="40" width="24" height="12"></rect><rect class="moss" x="92" y="44" width="6" height="56" rx="3" data-move="lean"></rect></svg><div class="nb-panel-body"></div></aside>
+    </div>
   </div>
 
+  <nav class="nb-chain" aria-label="Rooms"><div class="nb-chain-in"><a href="./">&larr; Today</a><span class="nb-chain-mid">Room last changed <time data-room-changed datetime="2026-09">September 2026</time></span><a href="meditation.html">Meditation &rarr;</a></div></nav>
   </main>
 
   <footer class="site-footer">
@@ -143,8 +193,8 @@
     </noscript>
   </footer>
 
-  <script src="js/suttas-config.js?v=6"></script>
-  <script src="js/render-reflections.js?v=12"></script>
+
   <script src="../js/menu.js?v=3"></script>
+  <script src="js/notebook/room.js?v=5"></script>
 </body>
 </html>

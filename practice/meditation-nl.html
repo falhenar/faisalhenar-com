@@ -25,12 +25,13 @@
 <meta name="twitter:description" content="Nederlandstalige meditatie-instructies en hulpmiddelen, in de traditie van Ajahn Tong Sirimangalo en Ajahn Poonsak.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="meditation-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Direct naar de inhoud</a>
 
@@ -52,90 +53,122 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="./">&larr; Praktijk</a>
-  <h1 class="room-title"><span>Meditatie</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><circle pathLength="1" cx="60" cy="58" r="9"></circle><path pathLength="1" d="M46 72 C40 84 38 100 38 116 C46 111 74 111 82 116 C82 100 80 84 74 72 C69 67 51 67 46 72 Z"></path><circle class="fill-dot" cx="60" cy="99" r="2.5"></circle><path pathLength="1" d="M34 122 L86 122"></path></svg></h1>
-  <p class="lang-note">Ook beschikbaar in het <a href="meditation.html">Engels</a></p>
-  <p class="room-dek">Instructies en hulpmiddelen voor meditatiebeoefening.</p>
-
-  <nav class="page-contents" aria-label="Op deze pagina">
-    <p class="page-contents-label mono">Op deze pagina</p>
-    <ul>
-      <li><a href="#instructies">Meditatie-instructies</a></li>
-      <li><a href="#apps">Meditatie-apps</a></li>
-      <li><a href="#leraar">Over leren met een leraar</a></li>
-    </ul>
-  </nav>
-
-  <section class="section" id="instructies">
-    <h2 class="section-label">Meditatie-instructies</h2>
-    <p class="section-dek">Geschreven door Yuttadhammo Bhikkhu, in de lijn van de formele instructies zoals onderwezen door Ajahn Poonsak in de traditie van Ajahn Tong Sirimangalo; de Nederlandse vertaling komt van <a href="https://sirimangalo.org/" target="_blank" rel="noopener">sirimangalo.org<span class="ext" aria-hidden="true">&#8239;↗</span></a>.</p>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://static.sirimangalo.org/howto/HTM_dutch.pdf" target="_blank" rel="noopener">Volledige handleiding<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Yuttadhammo Bhikkhu, sirimangalo.org</p>
-      <p class="entry-note">De volledige handleiding waaruit deze instructies zijn overgenomen, zoals onderwezen door Ajahn Tong Sirimangalo.</p>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Praktijk</a><span><a href="meditation.html" hreflang="en" lang="en">English</a></span></div>
+    <div class="nb-head">
+      <div class="nb-head-title"><svg class="nb-art nb-art-title ink" width="96" height="80" viewBox="0 0 120 100" stroke-width="1.9" aria-hidden="true" focusable="false" style="--d: .1s"><rect pathLength="1" x="6" y="94" width="108" height="6" rx="1"></rect><path pathLength="1" d="M14 94 C14 64 78 64 78 94 Z"></path><path class="open" pathLength="1" d="M18 82 Q46 76 74 82"></path><path pathLength="1" d="M86 80 L112 80 Q110 94 99 94 Q88 94 86 80 Z"></path><circle class="moss-dot" cx="99" cy="68" r="3"></circle></svg><h1 class="nb-h1">Meditatie</h1></div>
+      <p class="nb-intro fade-in" style="--d: .9s">Instructies en hulpmiddelen voor meditatiebeoefening.</p>
     </div>
 
-    <div class="entry">
-      <h3 class="entry-title"><a href="sitting-meditation-nl.html">Zittende meditatie</a></h3>
-      <p class="entry-by">Blad 1 van 3</p>
-      <p class="entry-note">Het waarnemen van het rijzen en vallen van de buik, en het noteren van alles wat de aandacht daarvan wegtrekt.</p>
+    <div class="nb-room fade-in" style="--d: 1.1s" data-room data-page="meditation-nl.html" data-open="sitting-meditation">
+      <div class="nb-list">
+
+        <section class="nb-group" id="instructies">
+          <h2 class="nb-group-h">Meditatie-instructies</h2>
+          <p class="nb-group-d">Geschreven door Yuttadhammo Bhikkhu, in de lijn van de formele instructies zoals onderwezen door Ajahn Poonsak in de traditie van Ajahn Tong Sirimangalo; de Nederlandse vertaling komt van <a href="https://sirimangalo.org/" target="_blank" rel="noopener">sirimangalo.org<span class="ext" aria-hidden="true">&#8239;↗</span></a>.</p>
+          <ul class="nb-rows">
+            <li class="nb-item" id="how-to-meditate">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-how-to-meditate"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Volledige handleiding</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-how-to-meditate" hidden>
+                <div class="nb-d-sec">Meditatie-instructies</div>
+                <h3 class="nb-d-t">Volledige handleiding</h3>
+                <div class="nb-d-by">Yuttadhammo Bhikkhu, sirimangalo.org</div>
+                <p class="nb-d-text">De volledige handleiding waaruit deze instructies zijn overgenomen, zoals onderwezen door Ajahn Tong Sirimangalo.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://static.sirimangalo.org/howto/HTM_dutch.pdf" target="_blank" rel="noopener">Volledige handleiding<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="sitting-meditation">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-sitting-meditation"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Zittende meditatie</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-sitting-meditation" hidden>
+                <div class="nb-d-sec">Meditatie-instructies</div>
+                <h3 class="nb-d-t">Zittende meditatie</h3>
+                <div class="nb-d-by">Blad 1 van 3</div>
+                <p class="nb-d-text">Het waarnemen van het rijzen en vallen van de buik, en het noteren van alles wat de aandacht daarvan wegtrekt.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="sitting-meditation-nl.html">Zittende meditatie</a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="walking-meditation">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-walking-meditation"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Lopende meditatie</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-walking-meditation" hidden>
+                <div class="nb-d-sec">Meditatie-instructies</div>
+                <h3 class="nb-d-t">Lopende meditatie</h3>
+                <div class="nb-d-by">Blad 2 van 3</div>
+                <p class="nb-d-text">Een kort recht pad, langzaam gelopen, met de notitie in de pas met de voet.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="walking-meditation-nl.html">Lopende meditatie</a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="mindful-prostration">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-mindful-prostration"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Aandachtige prostratie</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-mindful-prostration" hidden>
+                <div class="nb-d-sec">Meditatie-instructies</div>
+                <h3 class="nb-d-t">Aandachtige prostratie</h3>
+                <div class="nb-d-by">Blad 3 van 3</div>
+                <p class="nb-d-text">Drie prostraties, langzaam gemaakt, met elke beweging genoteerd. De oefening waarmee een sessie opent.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="mindful-prostration-nl.html">Aandachtige prostratie</a><a class="nb-btn" href="mindful-prostration-steps-nl.html">De volgorde stap voor stap</a></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="nb-group" id="apps">
+          <h2 class="nb-group-h">Meditatie-apps</h2>
+          <p class="nb-group-d">De apps hieronder zijn alleen in het Engels beschikbaar.</p>
+          <ul class="nb-rows">
+            <!-- Sati Timer: de build staat in GitHub Releases, niet in deze
+                 repository, zodat een nieuwe versie er geen drie megabyte aan
+                 geschiedenis bij zet. Bij 1.3: een release met tag sati-timer-1.3
+                 publiceren, dan de download-href en de grootte in de linkregel
+                 hieronder, de versie en de grootte in de alinea, en het bijbehorende
+                 blok in meditation.html bijwerken, in dezelfde commit. De naam van
+                 de app is geen link: die startte vroeger de download.
+                 De twee sati-timer-web-pagina's dragen de link ook. -->
+            <li class="nb-item" id="sati-timer">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-sati-timer"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Sati Timer</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-sati-timer" hidden>
+                <div class="nb-d-sec">Meditatie-apps</div>
+                <h3 class="nb-d-t">Sati Timer</h3>
+                <div class="nb-d-by">Faisal Henar</div>
+                <p class="nb-d-text">Een timer die ik zelf heb gebouwd voor de noteermethode die op deze pagina wordt beschreven, zoals onderwezen door Ajahn Tong Sirimangalo, volgens het meditatiehandboek van Yuttadhammo Bhikkhu. Hij doet de tijd en verder niets: een duur, een bel aan het begin en aan het eind, tussentijdse bellen, en fasen als je eerst wilt lopen en daarna zitten. Ook de drie instructiebladen van deze site zitten erin, plus elke dag een sutta om achteraf te lezen, allemaal offline. Geen account, geen bibliotheek, geen abonnement, en de app verzamelt niets.</p>
+                <p class="nb-d-text">Hij staat nog niet in de Play Store, dus dit is het installatiebestand dat je met de hand toevoegt. Android waarschuwt je dat je buiten de Play Store om installeert; die waarschuwing hoort er te zijn, en het is aan jou of je een bestand van mij vertrouwt. Android 7.0 of nieuwer. Versie 1.3, 3,8 MB, gedownload van GitHub, waar ook de broncode van deze site staat. Wat de app opslaat staat op de <a href="sati-timer-privacy.html">privacypagina</a> (in het Engels).</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://github.com/falhenar/faisalhenar-com/releases/download/sati-timer-1.3/sati-timer-1.3.apk">Downloaden voor Android (APK, 3,8 MB)<span class="ext" aria-hidden="true">&#8239;↗</span></a><a class="nb-btn" href="sati-timer-web-nl.html">Open de webtimer</a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="waking-up">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-waking-up"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Waking Up</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-waking-up" hidden>
+                <div class="nb-d-sec">Meditatie-apps</div>
+                <h3 class="nb-d-t">Waking Up</h3>
+                <div class="nb-d-by">Sam Harris</div>
+                <p class="nb-d-text">Een seculiere meditatie-app die begeleide beoefening combineert met gesprekken over mindfulness, filosofie en neurowetenschap. Dit was mijn eerste kennismaking met meditatie, en ik keer er nog vaak naar terug voor de gesprekken en de theoretische onderdelen. Veel tradities komen hier aan bod, wat het een goede, ietwat intellectuele manier maakt om een eerste indruk van verschillende beoefeningen te krijgen. De app wordt wel vanuit een uitdrukkelijk seculier standpunt onderwezen, anders dan het Theravada-kader van de rest van deze pagina. Het is een betaald abonnement; een gratis versie is beschikbaar via het <a href="https://www.wakingup.com/scholarship" target="_blank" rel="noopener">beurzenprogramma</a>.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.wakingup.com/" target="_blank" rel="noopener">Waking Up<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="insight-timer">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-insight-timer"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Insight Timer</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-insight-timer" hidden>
+                <div class="nb-d-sec">Meditatie-apps</div>
+                <h3 class="nb-d-t">Insight Timer</h3>
+                <div class="nb-d-by">Insight Timer</div>
+                <p class="nb-d-text">Een gratis meditatie-app die ik al jaren gebruik. De timer is volledig aan te passen naar wat jij prettig vindt. Zo kan je je eigen tijden en gong geluiden instellen. De app heeft ook een grote bibliotheek met begeleide sessies en lezingen die ik zelf niet echt heb verkend, maar voel je vrij dat wel te doen. De timer is gratis; een betaald abonnement ontgrendelt meer van de bibliotheek.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://insighttimer.com/" target="_blank" rel="noopener">Insight Timer<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="nb-prose" id="leraar">
+          <h2>Over leren met een leraar</h2>
+          <p>Ik heb veel gehad aan de leraren die ik op dit pad heb ontmoet, in het bijzonder de instructies die ik kreeg van Ajahn Poonsak in Wat Chom Tong, in de lijn van Ajahn Tong. Als je serieus je beoefening wilt verdiepen, raad ik aan <a href="places-nl.html">een leraar te zoeken</a> die je kan begeleiden. We leven in een tijd waarin informatie volop online beschikbaar is, wat oprecht nuttig is, maar het is niet te vergelijken met beoefenen onder een gevestigde leraar.</p>
+          <p>Dat gezegd hebbende, soms laten de omstandigheden het niet toe om met een leraar te beoefenen. In dat geval kunnen teksten en meditatie-apps een goede manier zijn om te leren, al vraagt dat wel om echte inzet en doorzettingsvermogen op eigen kracht. Het helpt ook om anderen te vinden die willen praten, delen en samen beoefenen. Als je ooit over de beoefening wilt praten, neem gerust contact op via <a href="../contact.html">de contactpagina</a>.</p>
+        </section>
+      </div>
+
+      <aside class="nb-panel" aria-live="polite"><svg class="nb-art nb-art-panel" width="132" height="110" viewBox="0 0 120 100" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="6" y="94" width="108" height="6" rx="1"></rect><path d="M14 94 C14 64 78 64 78 94 Z"></path><path class="open" d="M18 82 Q46 76 74 82"></path><path d="M86 80 L112 80 Q110 94 99 94 Q88 94 86 80 Z"></path><circle class="moss-dot" cx="99" cy="68" r="3"></circle><circle class="ripple-c" cx="99" cy="86" r="4" data-move="ripple"></circle></svg><div class="nb-panel-body"></div></aside>
     </div>
+  </div>
 
-    <div class="entry">
-      <h3 class="entry-title"><a href="walking-meditation-nl.html">Lopende meditatie</a></h3>
-      <p class="entry-by">Blad 2 van 3</p>
-      <p class="entry-note">Een kort recht pad, langzaam gelopen, met de notitie in de pas met de voet.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="mindful-prostration-nl.html">Aandachtige prostratie</a></h3>
-      <p class="entry-by">Blad 3 van 3</p>
-      <p class="entry-note">Drie prostraties, langzaam gemaakt, met elke beweging genoteerd. De oefening waarmee een sessie opent.</p>
-      <p class="entry-meta mono"><a href="mindful-prostration-steps-nl.html">De volgorde stap voor stap</a></p>
-    </div>
-  </section>
-
-  <section class="section" id="apps">
-    <h2 class="section-label">Meditatie-apps</h2>
-    <p class="section-dek">De apps hieronder zijn alleen in het Engels beschikbaar.</p>
-
-    <!-- Sati Timer: de build staat in GitHub Releases, niet in deze
-         repository, zodat een nieuwe versie er geen drie megabyte aan
-         geschiedenis bij zet. Bij 1.3: een release met tag sati-timer-1.3
-         publiceren, dan de download-href en de grootte in de linkregel
-         hieronder, de versie en de grootte in de alinea, en het bijbehorende
-         blok in meditation.html bijwerken, in dezelfde commit. De naam van
-         de app is geen link: die startte vroeger de download.
-         De twee sati-timer-web-pagina's dragen de link ook. -->
-    <div class="entry">
-      <h3 class="entry-title">Sati Timer</h3>
-      <p class="entry-by">Faisal Henar</p>
-      <p class="entry-note">Een timer die ik zelf heb gebouwd voor de noteermethode die op deze pagina wordt beschreven, zoals onderwezen door Ajahn Tong Sirimangalo, volgens het meditatiehandboek van Yuttadhammo Bhikkhu. Hij doet de tijd en verder niets: een duur, een bel aan het begin en aan het eind, tussentijdse bellen, en fasen als je eerst wilt lopen en daarna zitten. Ook de drie instructiebladen van deze site zitten erin, plus elke dag een sutta om achteraf te lezen, allemaal offline. Geen account, geen bibliotheek, geen abonnement, en de app verzamelt niets.</p>
-      <p class="entry-note">Hij staat nog niet in de Play Store, dus dit is het installatiebestand dat je met de hand toevoegt. Android waarschuwt je dat je buiten de Play Store om installeert; die waarschuwing hoort er te zijn, en het is aan jou of je een bestand van mij vertrouwt. Android 7.0 of nieuwer. Versie 1.3, 3,8 MB, gedownload van GitHub, waar ook de broncode van deze site staat. Wat de app opslaat staat op de <a href="sati-timer-privacy.html">privacypagina</a> (in het Engels).</p>
-      <p class="entry-meta mono"><a href="https://github.com/falhenar/faisalhenar-com/releases/download/sati-timer-1.3/sati-timer-1.3.apk">Downloaden voor Android (APK, 3,8 MB)<span class="ext" aria-hidden="true">&#8239;↗</span></a> · <a href="sati-timer-web-nl.html">Open de webtimer</a></p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.wakingup.com/" target="_blank" rel="noopener">Waking Up<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Sam Harris</p>
-      <p class="entry-note">Een seculiere meditatie-app die begeleide beoefening combineert met gesprekken over mindfulness, filosofie en neurowetenschap. Dit was mijn eerste kennismaking met meditatie, en ik keer er nog vaak naar terug voor de gesprekken en de theoretische onderdelen. Veel tradities komen hier aan bod, wat het een goede, ietwat intellectuele manier maakt om een eerste indruk van verschillende beoefeningen te krijgen. De app wordt wel vanuit een uitdrukkelijk seculier standpunt onderwezen, anders dan het Theravada-kader van de rest van deze pagina. Het is een betaald abonnement; een gratis versie is beschikbaar via het <a href="https://www.wakingup.com/scholarship" target="_blank" rel="noopener">beurzenprogramma</a>.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://insighttimer.com/" target="_blank" rel="noopener">Insight Timer<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Insight Timer</p>
-      <p class="entry-note">Een gratis meditatie-app die ik al jaren gebruik. De timer is volledig aan te passen naar wat jij prettig vindt. Zo kan je je eigen tijden en gong geluiden instellen. De app heeft ook een grote bibliotheek met begeleide sessies en lezingen die ik zelf niet echt heb verkend, maar voel je vrij dat wel te doen. De timer is gratis; een betaald abonnement ontgrendelt meer van de bibliotheek.</p>
-    </div>
-  </section>
-
-  <section class="section" id="leraar">
-    <h2 class="section-label">Over leren met een leraar</h2>
-    <p>Ik heb veel gehad aan de leraren die ik op dit pad heb ontmoet, in het bijzonder de instructies die ik kreeg van Ajahn Poonsak in Wat Chom Tong, in de lijn van Ajahn Tong. Als je serieus je beoefening wilt verdiepen, raad ik aan <a href="places-nl.html">een leraar te zoeken</a> die je kan begeleiden. We leven in een tijd waarin informatie volop online beschikbaar is, wat oprecht nuttig is, maar het is niet te vergelijken met beoefenen onder een gevestigde leraar.</p>
-    <p>Dat gezegd hebbende, soms laten de omstandigheden het niet toe om met een leraar te beoefenen. In dat geval kunnen teksten en meditatie-apps een goede manier zijn om te leren, al vraagt dat wel om echte inzet en doorzettingsvermogen op eigen kracht. Het helpt ook om anderen te vinden die willen praten, delen en samen beoefenen. Als je ooit over de beoefening wilt praten, neem gerust contact op via <a href="../contact.html">de contactpagina</a>.</p>
-  </section>
-
+  <nav class="nb-chain" aria-label="Kamers"><div class="nb-chain-in"><a href="nederlands.html">&larr; Nederlands</a><a href="places-nl.html">Plekken &amp; gemeenschap &rarr;</a></div></nav>
   </main>
 
   <footer class="site-footer">
@@ -157,6 +190,8 @@
     </noscript>
   </footer>
 
+
   <script src="../js/menu.js?v=3"></script>
+  <script src="js/notebook/room.js?v=5"></script>
 </body>
 </html>

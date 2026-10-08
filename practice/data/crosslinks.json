@@ -1,0 +1,357 @@
+{
+ "meditation.html#how-to-meditate": [
+  {
+   "href": "talks.html#watch-yuttadhammo",
+   "t": "Yuttadhammo Bhikkhu",
+   "room": "Talks"
+  },
+  {
+   "href": "reading.html#meditation-the-only-way-path-to-nibbana",
+   "t": "The Only Way: Path to Nibbana",
+   "room": "Reading"
+  }
+ ],
+ "meditation.html#sitting-meditation": [
+  {
+   "href": "reading.html#return-practical-insight",
+   "t": "Practical Insight Meditation: Basic and Progressive Stages",
+   "room": "Reading"
+  }
+ ],
+ "meditation.html#sati-timer": [
+  {
+   "href": "./#today",
+   "t": "Sutta of the day",
+   "room": "Today"
+  }
+ ],
+ "places.html#ajahn-tong-sirimangalo": [
+  {
+   "href": "reading.html#meditation-the-only-way-path-to-nibbana",
+   "t": "The Only Way: Path to Nibbana",
+   "room": "Reading"
+  },
+  {
+   "href": "meditation.html#how-to-meditate",
+   "t": "How to Meditate",
+   "room": "Meditation"
+  }
+ ],
+ "places.html#ajahn-poonsak-suwadhano": [
+  {
+   "href": "meditation.html#instructions",
+   "t": "Meditation instructions",
+   "room": "Meditation"
+  }
+ ],
+ "places.html#wat-chom-tong": [
+  {
+   "href": "meditation.html#how-to-meditate",
+   "t": "How to Meditate",
+   "room": "Meditation"
+  },
+  {
+   "href": "reading.html#meditation-the-only-way-path-to-nibbana",
+   "t": "The Only Way: Path to Nibbana",
+   "room": "Reading"
+  }
+ ],
+ "places.html#mosteiro-suddhavari": [
+  {
+   "href": "reading.html#return-bodhinyana",
+   "t": "Bodhinyana",
+   "room": "Reading"
+  }
+ ],
+ "places.html#vipassana-suriname": [
+  {
+   "href": "reading.html#return-four-noble-truths",
+   "t": "The Four Noble Truths",
+   "room": "Reading"
+  }
+ ],
+ "places.html#boeddhisme-in-suriname": [
+  {
+   "href": "../note.html",
+   "t": "A note from me",
+   "room": "Site"
+  }
+ ],
+ "places.html#sirimangalo-international": [
+  {
+   "href": "talks.html#watch-yuttadhammo",
+   "t": "Yuttadhammo Bhikkhu",
+   "room": "Talks"
+  },
+  {
+   "href": "meditation.html#how-to-meditate",
+   "t": "How to Meditate",
+   "room": "Meditation"
+  }
+ ],
+ "places.html#forest-sangha": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  },
+  {
+   "href": "talks.html#watch-cittaviveka",
+   "t": "Cittaviveka, Chithurst Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "places.html#dhammadipa": [
+  {
+   "href": "talks.html#listen-sayar-myat",
+   "t": "Mindfulness Insight Meditation: Buddhist Teachings",
+   "room": "Talks"
+  }
+ ],
+ "reflections.html#aging-and-death": [
+  {
+   "href": "reading.html#early-in-the-buddha-s-words",
+   "t": "In the Buddha's Words",
+   "room": "Reading"
+  },
+  {
+   "href": "talks.html#watch-bhikkhu-bodhi-teaching-as-it-is",
+   "t": "The Buddha's Teaching As It Is",
+   "room": "Talks"
+  }
+ ],
+ "reflections.html#anxiety-due-to-change": [
+  {
+   "href": "meditation.html#sitting-meditation",
+   "t": "Sitting meditation",
+   "room": "Meditation"
+  }
+ ],
+ "talks.html#listen-collected-teachings-ajahn-chah": [
+  {
+   "href": "reading.html#return-bodhinyana",
+   "t": "Bodhinyana",
+   "room": "Reading"
+  },
+  {
+   "href": "reading.html#talk-1-food-for-the-heart",
+   "t": "Food for the Heart",
+   "room": "Reading"
+  }
+ ],
+ "talks.html#listen-amaravati": [
+  {
+   "href": "reading.html#return-four-noble-truths",
+   "t": "The Four Noble Truths",
+   "room": "Reading"
+  }
+ ],
+ "talks.html#watch-wat-marp-jan": [
+  {
+   "href": "reading.html#talk-4-seeking-buddho",
+   "t": "Seeking Buddho",
+   "room": "Reading"
+  }
+ ],
+ "talks.html#listen-thanissaro-evening": [
+  {
+   "href": "reading.html#meditation-keeping-the-breath-in-mind",
+   "t": "Keeping the Breath in Mind",
+   "room": "Reading"
+  }
+ ],
+ "talks.html#watch-yuttadhammo": [
+  {
+   "href": "meditation.html#how-to-meditate",
+   "t": "How to Meditate",
+   "room": "Meditation"
+  },
+  {
+   "href": "places.html#sirimangalo-international",
+   "t": "Sirimangalo International",
+   "room": "Places & Community"
+  }
+ ],
+ "talks.html#listen-sayar-myat": [
+  {
+   "href": "places.html#dhammadipa",
+   "t": "Dhammadipa",
+   "room": "Places & Community"
+  }
+ ],
+ "talks.html#watch-bhikkhu-bodhi-teaching-as-it-is": [
+  {
+   "href": "reading.html#early-in-the-buddha-s-words",
+   "t": "In the Buddha's Words",
+   "room": "Reading"
+  },
+  {
+   "href": "reflections.html#itbw",
+   "t": "In the Buddha's Words",
+   "room": "Reflections"
+  }
+ ],
+ "reading.html#return-four-noble-truths": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#begin-the-four-noble-truths": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#return-bodhinyana": [
+  {
+   "href": "places.html#mosteiro-suddhavari",
+   "t": "Mosteiro Suddhavāri",
+   "room": "Places & Community"
+  },
+  {
+   "href": "talks.html#listen-collected-teachings-ajahn-chah",
+   "t": "The Collected Teachings of Ajahn Chah: Audiobook",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-1-bodhinyana": [
+  {
+   "href": "places.html#mosteiro-suddhavari",
+   "t": "Mosteiro Suddhavāri",
+   "room": "Places & Community"
+  },
+  {
+   "href": "talks.html#listen-collected-teachings-ajahn-chah",
+   "t": "The Collected Teachings of Ajahn Chah: Audiobook",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#return-practical-insight": [
+  {
+   "href": "meditation.html#sitting-meditation",
+   "t": "Sitting meditation",
+   "room": "Meditation"
+  }
+ ],
+ "reading.html#meditation-the-only-way-path-to-nibbana": [
+  {
+   "href": "places.html#wat-chom-tong",
+   "t": "Wat Chom Tong",
+   "room": "Places & Community"
+  },
+  {
+   "href": "meditation.html#how-to-meditate",
+   "t": "How to Meditate",
+   "room": "Meditation"
+  }
+ ],
+ "reading.html#meditation-on-meditation": [
+  {
+   "href": "talks.html#listen-collected-teachings-ajahn-chah",
+   "t": "The Collected Teachings of Ajahn Chah: Audiobook",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#meditation-keeping-the-breath-in-mind": [
+  {
+   "href": "talks.html#listen-thanissaro-evening",
+   "t": "Evening talks by Thanissaro Bhikkhu",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#meditation-mindfulness-the-path-to-the-deathless": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-1-everything-is-teaching-us": [
+  {
+   "href": "talks.html#listen-collected-teachings-ajahn-chah",
+   "t": "The Collected Teachings of Ajahn Chah: Audiobook",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-1-food-for-the-heart": [
+  {
+   "href": "talks.html#listen-collected-teachings-ajahn-chah",
+   "t": "The Collected Teachings of Ajahn Chah: Audiobook",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-1-a-taste-of-freedom": [
+  {
+   "href": "talks.html#listen-collected-teachings-ajahn-chah",
+   "t": "The Collected Teachings of Ajahn Chah: Audiobook",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-2-the-way-it-is": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-2-intuitive-awareness": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-2-now-is-the-knowing": [
+  {
+   "href": "talks.html#listen-amaravati",
+   "t": "Amaravati Buddhist Monastery",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#talk-4-seeking-buddho": [
+  {
+   "href": "talks.html#watch-wat-marp-jan",
+   "t": "Wat Marp Jan",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#early-in-the-buddha-s-words": [
+  {
+   "href": "reflections.html#itbw",
+   "t": "In the Buddha's Words",
+   "room": "Reflections"
+  },
+  {
+   "href": "talks.html#watch-bhikkhu-bodhi-teaching-as-it-is",
+   "t": "The Buddha's Teaching As It Is",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#early-the-middle-length-discourses-of-the-buddha": [
+  {
+   "href": "reflections.html#itbw",
+   "t": "In the Buddha's Words",
+   "room": "Reflections"
+  },
+  {
+   "href": "talks.html#watch-bhikkhu-bodhi-teaching-as-it-is",
+   "t": "The Buddha's Teaching As It Is",
+   "room": "Talks"
+  }
+ ],
+ "reading.html#early-the-connected-discourses-of-the-buddha": [
+  {
+   "href": "reflections.html#itbw",
+   "t": "In the Buddha's Words",
+   "room": "Reflections"
+  },
+  {
+   "href": "talks.html#watch-bhikkhu-bodhi-teaching-as-it-is",
+   "t": "The Buddha's Teaching As It Is",
+   "room": "Talks"
+  }
+ ]
+}

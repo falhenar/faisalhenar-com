@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "updated": {
+    "datetime": "2026-10",
+    "label": "October 2026"
+  },
+  "sections": [
+    {
+      "id": "read-aloud",
+      "title": "Texts read aloud",
+      "intro": "Finite works, narrated. A first episode and a last one, so you can work through them the way you would a book.",
+      "items": [
+        {
+          "id": "listen-collected-teachings-ajahn-chah",
+          "aliases": [],
+          "title": "The Collected Teachings of Ajahn Chah: Audiobook",
+          "author": "Read by Ajahn Amaro, Amaravati Buddhist Monastery",
+          "description": "The complete collection of Ajahn Chah's talks in English, read in full during the winter of 2012. Two of the printed volumes, [Bodhinyana](reading.html#return-bodhinyana) and [Everything Is Teaching Us](reading.html#talk-1-everything-is-teaching-us), are on the reading shelf.",
+          "meta": "Free · Amaravati Monastery · [in podcast apps](https://pod.link/aHR0cHM6Ly9mZWVkcy5hbWFyYXZhdGkub3JnL3Nlcmllcy90aGUtY29sbGVjdGVkLXRlYWNoaW5ncy1vZi1hamFobi1jaGFoL2ZlZWQv)",
+          "listen": "https://amaravati.org/series/the-collected-teachings-of-ajahn-chah/",
+          "watch": null
+        },
+        {
+          "id": "listen-forest-path",
+          "aliases": [],
+          "title": "The Forest Path Podcast",
+          "author": "Sol Hanna, Everyday Dhamma Network",
+          "description": "Narrated translations of forest tradition teachers, much of it material that exists in English as text but rarely as audio. A good companion to the [Lives shelf](reading.html#lives).",
+          "meta": "Free · about 20 minutes · [in podcast apps](https://pod.link/aHR0cHM6Ly9mZWVkcy5jYXN0b3MuY29tLzczcW4z)",
+          "listen": "https://everydaydhamma.net/podcast/forest-path-podcast",
+          "watch": null
+        },
+        {
+          "id": "listen-wisdom-of-the-masters",
+          "aliases": [],
+          "title": "Wisdom of the Masters",
+          "author": "Samaneri Jayasara",
+          "description": "Readings from teachers across several traditions: Buddhist, Advaita, Christian mystical, Sufi. Narrated slowly, closer to a contemplative recording than a talk. The widest net on this page and the least Theravada.",
+          "meta": "Free · [in podcast apps](https://pod.link/aHR0cHM6Ly9hbmNob3IuZm0vcy80OWE1NDE5OC9wb2RjYXN0L3Jzcw)",
+          "listen": "https://www.youtube.com/@wisdomofthemasters",
+          "watch": null
+        }
+      ]
+    },
+    {
+      "id": "monasteries",
+      "title": "From the monasteries",
+      "intro": "Places rather than single voices. Talks given to whoever was sitting there that evening.",
+      "items": [
+        {
+          "id": "watch-abhayagiri",
+          "aliases": [
+            "listen-abhayagiri"
+          ],
+          "title": "Abhayagiri Buddhist Monastery",
+          "author": "Ajahn Pasanno and the sangha, Redwood Valley, California",
+          "description": "Talks from the resident sangha and visiting teachers, recorded much as they were given. The video and audio archives do not overlap completely, so it is worth checking both.",
+          "meta": "Thai forest, California · talks",
+          "listen": "https://www.abhayagiri.org/talks",
+          "watch": "https://www.youtube.com/@AbhayagiriBuddhistMonastery"
+        },
+        {
+          "id": "listen-amaravati",
+          "aliases": [
+            "watch-amaravati"
+          ],
+          "title": "Amaravati Buddhist Monastery",
+          "author": "Amaravati Buddhist Monastery, Hertfordshire, England",
+          "description": "Dhamma talks from the monastery Ajahn Sumedho founded in 1984. The audio library also holds separate collections of his talks and of recorded readings, so the library page is the better door than any single feed. His books are on the [reading shelf](reading.html#teachings-talks).",
+          "meta": "Free · about 40 minutes · [in podcast apps](https://pod.link/336829720)",
+          "listen": "https://amaravati.org/dhamma-audio-library/",
+          "watch": "https://www.youtube.com/@amaravatibuddhistmonastery"
+        },
+        {
+          "id": "listen-ratanagiri",
+          "aliases": [],
+          "title": "Aruna Ratanagiri",
+          "author": "Ajahn Munindo and the sangha, Northumberland, England",
+          "description": "Talks from Ajahn Munindo, unhurried even by the standards of this page. The monastery publishes its own feed; the Apple listing that circulates elsewhere points at a dead address and stopped updating in 2025.",
+          "meta": "Free · Aruna Ratanagiri · [in podcast apps](https://pod.link/aHR0cHM6Ly93d3cucmF0YW5hZ2lyaS5vcmcudWsvdGVhY2hpbmdzLWx1YW5nLXBvci1tdW5pbmRvLWF1ZGlvP2Zvcm1hdD1yc3M)",
+          "listen": "https://www.ratanagiri.org.uk/teachings-luang-por-munindo-audio",
+          "watch": null
+        },
+        {
+          "id": "watch-cittaviveka",
+          "aliases": [],
+          "title": "Cittaviveka, Chithurst Buddhist Monastery",
+          "author": "The sangha at Chithurst, West Sussex, England",
+          "description": "The first of the English forest monasteries, established in 1979. Quieter and less frequently posted than Amaravati, which suits it.",
+          "meta": "Thai forest, England · talks",
+          "listen": null,
+          "watch": "https://www.youtube.com/@cittaviveka"
+        },
+        {
+          "id": "listen-clear-mountain",
+          "aliases": [
+            "watch-clear-mountain"
+          ],
+          "title": "Clear Mountain Monastery",
+          "author": "Clear Mountain Monastery, greater Seattle",
+          "description": "Talks and question sessions from an aspiring forest monastery, recorded while the community is still being established. That gives it a different texture from the older places above: more questions, fewer settled answers.",
+          "meta": "Free · 15 to 90 minutes · [in podcast apps](https://pod.link/1560755363)",
+          "listen": "https://www.clearmountainmonastery.org/",
+          "watch": "https://www.youtube.com/@ClearMountainMonastery"
+        },
+        {
+          "id": "watch-wat-marp-jan",
+          "aliases": [
+            "listen-ajahn-anan"
+          ],
+          "title": "Wat Marp Jan",
+          "author": "Ajahn Anan Akiñcano and the sangha, Rayong, Thailand",
+          "description": "A forest monastery founded by a disciple of Ajahn Chah. Some material is in Thai without translation, so this is the one entry here where you may have to hunt.",
+          "meta": "Thai forest, Thailand · talks, some untranslated",
+          "listen": "https://watmarpjan.org/en/",
+          "watch": "https://www.youtube.com/@watmarpjan"
+        }
+      ]
+    },
+    {
+      "id": "teachers",
+      "title": "Single teachers",
+      "intro": "One voice at length.",
+      "items": [
+        {
+          "id": "listen-thanissaro-evening",
+          "aliases": [],
+          "title": "Evening talks by Thanissaro Bhikkhu",
+          "author": "Metta Forest Monastery, California",
+          "description": "Evening talks given before the sit, on mindfulness, concentration and the shape of the path. Most run about twelve minutes, which makes them the easiest thing on this page to fit into a day.",
+          "meta": "Free · about 12 minutes · [in podcast apps](https://pod.link/1569745165)",
+          "listen": "https://www.dhammatalks.org/audio/evening/",
+          "watch": null,
+          "note": "If you want somewhere to start: about twelve minutes each, and they ask little of you."
+        },
+        {
+          "id": "listen-ajahn-brahm",
+          "aliases": [
+            "watch-bswa"
+          ],
+          "title": "Ajahn Brahm",
+          "author": "Ajahn Brahm, remastered by Everyday Dhamma Network",
+          "description": "Older talks cleaned up and reissued rather than new recordings. The register is warmer and funnier than most of this page, carried by stories, which some people find is exactly the way in and others do not.",
+          "meta": "Free · about an hour · [in podcast apps](https://pod.link/1651126858)",
+          "listen": "https://everydaydhamma.net/podcast/ajahn-brahm-podcast",
+          "watch": "https://www.youtube.com/@BuddhistSocietyWA"
+        },
+        {
+          "id": "watch-yuttadhammo",
+          "aliases": [],
+          "title": "Yuttadhammo Bhikkhu",
+          "author": "Bhante Yuttadhammo, Sirimangalo International",
+          "description": "Practice instruction and live question sessions in the Mahasi method as taught in the Ajahn Tong lineage, which is the tradition behind [The Only Way](reading.html#meditation-the-only-way-path-to-nibbana) on the reading shelf and the centre at [Wat Chom Tong](places.html#wat-chom-tong). He answers ordinary questions directly, which is rarer than it should be.",
+          "meta": "Mahasi, Ajahn Tong lineage · instruction and questions · [sirimangalo.org](https://sirimangalo.org/)",
+          "listen": null,
+          "watch": "https://www.youtube.com/@yuttadhammo"
+        },
+        {
+          "id": "watch-ajahn-achalo",
+          "aliases": [],
+          "title": "Ajahn Achalo Bhikkhu",
+          "author": "Ajahn Achalo, Anandagiri Forest Monastery, Thailand",
+          "description": "Step-by-step guided meditations alongside sutta readings and talks. Built as a plain, usable resource rather than a polished production, which is the reason to use it.",
+          "meta": "Thai forest · guided sits and talks",
+          "listen": null,
+          "watch": "https://www.youtube.com/@AjahnAchalo"
+        },
+        {
+          "id": "watch-ajahn-sona",
+          "aliases": [],
+          "title": "Ajahn Sona",
+          "author": "Ajahn Sona, Birken Forest Buddhist Monastery, British Columbia",
+          "description": "Long-form talks that take their time and assume you will too. Among the most carefully argued teaching coming out of the Western forest sangha.",
+          "meta": "Thai forest, Canada · long-form talks",
+          "listen": null,
+          "watch": "https://www.youtube.com/@AjahnSona"
+        }
+      ]
+    },
+    {
+      "id": "insight",
+      "title": "The insight tradition",
+      "intro": "Outside the Thai forest lineage. Both come by way of Mahasi Sayadaw.",
+      "items": [
+        {
+          "id": "listen-insight-hour",
+          "aliases": [],
+          "title": "Insight Hour with Joseph Goldstein",
+          "author": "Joseph Goldstein, Be Here Now Network",
+          "description": "A long series working through the Satipaṭṭhāna Sutta passage by passage, with retreat talks alongside it. Worth knowing before you start: unlike everything else here it is a commercial production and carries advertising.",
+          "meta": "Free with ads · about an hour · [in podcast apps](https://pod.link/1017103666)",
+          "listen": "https://beherenownetwork.com/category/insight-hour-with-joseph-goldstein/",
+          "watch": null
+        },
+        {
+          "id": "listen-sayar-myat",
+          "aliases": [],
+          "title": "Mindfulness Insight Meditation: Buddhist Teachings",
+          "author": "Sayar Myat, Satipatthana Meditation Society of Canada",
+          "description": "Talks and practice instruction in satipaṭṭhāna vipassanā following Mahasi Sayadaw's method, with more time given to instruction than most of this page.",
+          "meta": "Free · about 30 minutes · [in podcast apps](https://pod.link/aHR0cHM6Ly9yc3MuYnV6enNwcm91dC5jb20vMTg1NzYzNC5yc3M)",
+          "listen": "https://satipatthana.ca/",
+          "watch": null
+        }
+      ]
+    },
+    {
+      "id": "first-look",
+      "title": "A first look",
+      "intro": "What I would send someone who asked a question and meant it.",
+      "items": [
+        {
+          "id": "watch-buddha-speaks",
+          "aliases": [],
+          "title": "Buddha Speaks",
+          "author": "Anonymous channel, plain-English explainers",
+          "description": "Short explanations of core teachings, kept simple without being vague. A good place to send someone just starting out, and not a deep well for anyone else.",
+          "meta": "Non-sectarian · short explainers",
+          "listen": null,
+          "watch": "https://www.youtube.com/@buddha_speaks"
+        },
+        {
+          "id": "watch-tergar",
+          "aliases": [],
+          "title": "Tergar Meditation Community",
+          "author": "Yongey Mingyur Rinpoche",
+          "description": "Meditation instruction built around the Joy of Living curriculum. Tibetan in lineage, taught in plain and often funny language that leans on modern science as much as on tradition. The most structured way in on this page.",
+          "meta": "Tibetan, Karma Kagyu · guided course · [tergar.org](https://tergar.org/)",
+          "listen": null,
+          "watch": "https://www.youtube.com/@TergarMeditationCommunity"
+        }
+      ]
+    },
+    {
+      "id": "study",
+      "title": "Study, and other traditions",
+      "intro": "Working through the texts themselves, and two voices from further afield.",
+      "items": [
+        {
+          "id": "watch-bhikkhu-bodhi-teaching-as-it-is",
+          "aliases": [],
+          "title": "The Buddha's Teaching As It Is",
+          "author": "Bhikkhu Bodhi, Washington Buddhist Vihara, 1979",
+          "description": "Ten lectures on the fundamentals of early Buddhism, given nearly fifty years ago and still the clearest sustained account I know of. His anthology [In the Buddha's Words](reading.html#early-in-the-buddha-s-words) is on the reading shelf.",
+          "meta": "Early Buddhism · ten lectures · re-uploaded archive; [audio at Bodhi Monastery](https://bodhimonastery.org/online-dharma-lectures)",
+          "listen": null,
+          "watch": "https://www.youtube.com/playlist?list=PLlLsJKuLUkUoXxZWJcMNVbavrowbBY7p0"
+        },
+        {
+          "id": "watch-sujato-metta",
+          "aliases": [],
+          "title": "Metta Meditation, Santi Forest Monastery 2007",
+          "author": "Bhante Sujato, ten talks, uploaded by Samita ASBL",
+          "description": "Ten talks from a rains retreat in New South Wales, working through metta practice in more detail than almost anything else available. The translations used across [Reflections](reflections.html) are Bhante Sujato's.",
+          "meta": "Thai forest · ten talks · re-uploaded archive, not an official channel",
+          "listen": null,
+          "watch": "https://www.youtube.com/playlist?list=PLTcGMzIEhlsa0maPxIduPyYSNonn0_umT"
+        },
+        {
+          "id": "watch-dougs-dharma",
+          "aliases": [],
+          "title": "Doug's Dharma",
+          "author": "Doug Smith, early Buddhism with a secular framing",
+          "description": "Short videos relating early Buddhist teaching to ordinary life, from a scholarly angle rather than a devotional one. Useful for the same reason it is limited: it stays outside the practice looking in.",
+          "meta": "Early Buddhism, secular framing · short videos",
+          "listen": null,
+          "watch": "https://www.youtube.com/@DougsDharma"
+        },
+        {
+          "id": "watch-james-low",
+          "aliases": [],
+          "title": "James Low",
+          "author": "James Low, Dzogchen in the Nyingma tradition",
+          "description": "A different tradition from the rest of this page, and the least introductory thing on it. Recorded seminars rather than talks, worth the time regardless of lineage.",
+          "meta": "Tibetan, Dzogchen · recorded seminars · [simplybeing.co.uk](https://www.simplybeing.co.uk/)",
+          "listen": null,
+          "watch": "https://www.youtube.com/@jameslow"
+        }
+      ]
+    }
+  ]
+}

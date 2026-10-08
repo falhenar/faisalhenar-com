@@ -21,12 +21,13 @@
 <meta name="twitter:title" content="Reading · Practice · Faisal Henar">
 <meta name="twitter:description" content="A personal, changeable shelf of Buddhist books, most of them free to read online.">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="reading-page shelf-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -48,96 +49,87 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="./">&larr; Practice</a>
-  <h1 class="room-title"><span>Reading</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><path pathLength="1" d="M60 71 C48 65 34 65 24 71 V99 C34 93 48 93 60 99 C72 93 86 93 96 99 V71 C86 65 72 65 60 71 Z"></path><path pathLength="1" d="M60 71 L60 99"></path></svg></h1>
-  <p class="room-dek">A shelf of books that have stayed with me, and a few I would hand someone just starting out.</p>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Practice</a><span>Room three of five &middot; p. 6</span></div>
+    <div class="nb-head">
+      <div class="nb-head-title"><svg class="nb-art nb-art-title ink" width="96" height="80" viewBox="0 0 120 100" stroke-width="1.9" aria-hidden="true" focusable="false" style="--d: .1s"><rect pathLength="1" x="14" y="80" width="74" height="20"></rect><rect pathLength="1" x="20" y="62" width="64" height="18"></rect><rect pathLength="1" x="12" y="46" width="70" height="16"></rect><rect pathLength="1" x="94" y="26" width="16" height="74"></rect><rect class="moss" pathLength="1" x="94" y="40" width="16" height="6"></rect></svg><h1 class="nb-h1">Reading</h1></div>
+      <p class="nb-intro fade-in" style="--d: .9s">A shelf of books that have stayed with me, and a few I would hand someone just starting out.</p>
+    </div>
 
-  <div class="page-intro">
-    <p>This is a personal shelf, not a bibliography or a curriculum. It holds books I would feel comfortable putting in someone else's hands, chosen slowly and changed as I keep reading. A book listed here isn't always an unqualified endorsement: some I would recommend without hesitation, some come with a caveat worth knowing, and a few are here mainly because they mattered to me at a particular time.</p>
-    <p>Most of these books are free to read online. Where a book has to be bought, the entry says so.</p>
+    <div class="nb-room fade-in" style="--d: 1.1s; margin-top: 48px" data-room data-rendered-by="render-room-data" data-src="data/reading.json" data-kind="reading" data-page="reading.html" data-open-group="return" data-open="return-four-noble-truths" data-crosslinks="data/crosslinks.json" data-error="The reading shelf could not be loaded. Please try again later.">
+      <div class="nb-list">
+
+        <section class="nb-acc" id="return">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-return"><span class="nb-acc-top"><span class="nb-acc-t">Books I return to</span><span class="nb-acc-n"><span data-count></span> &middot; <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek"></span></button></h2>
+          <div class="nb-acc-body" id="b-return" hidden>
+            <p class="nb-group-d">Books I've actually reopened, not just liked once and put back on the shelf.</p>
+            <ul class="nb-rows" data-list="return"></ul>
+          </div>
+        </section>
+
+        <section class="nb-acc" id="begin">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-begin"><span class="nb-acc-top"><span class="nb-acc-t">New to Buddhist reading?</span><span class="nb-acc-n"><span data-count></span> &middot; <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek"></span></button></h2>
+          <div class="nb-acc-body" id="b-begin" hidden>
+            <p class="nb-group-d">A possible way in, not a required one. Three books, in a gentle order.</p>
+            <ul class="nb-rows" data-list="begin"></ul>
+          </div>
+        </section>
+
+        <section class="nb-acc" id="meditation-practice">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-meditation-practice"><span class="nb-acc-top"><span class="nb-acc-t">Meditation &amp; Practice</span><span class="nb-acc-n"><span data-count></span> &middot; <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek"></span></button></h2>
+          <div class="nb-acc-body" id="b-meditation-practice" hidden>
+            <p class="nb-group-d">Books to sit with, not just read once. <a href="#return-practical-insight">Practical Insight Meditation</a> belongs here too.</p>
+            <ul class="nb-rows" data-list="meditation-practice"></ul>
+          </div>
+        </section>
+
+        <section class="nb-acc" id="lives">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-lives"><span class="nb-acc-top"><span class="nb-acc-t">Lives</span><span class="nb-acc-n"><span data-count></span> &middot; <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek"></span></button></h2>
+          <div class="nb-acc-body" id="b-lives" hidden>
+            <p class="nb-group-d">I have always been drawn to biographies, and that did not change when I came to Buddhist practice. I find encouragement in seeing the effort other people have made, and in the lives they have offered as a guiding light for others. I am especially grateful to Ajaan Dick S&#299;laratano and to the translators who have made these stories available to us.</p>
+            <ul class="nb-rows" data-list="lives"></ul>
+          </div>
+        </section>
+
+        <section class="nb-acc" id="teachings-talks">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-teachings-talks"><span class="nb-acc-top"><span class="nb-acc-t">Teachings &amp; Talks</span><span class="nb-acc-n"><span data-count></span> &middot; <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek"></span></button></h2>
+          <div class="nb-acc-body" id="b-teachings-talks" hidden>
+            <p class="nb-group-d">Grouped by teacher. Talks and collected teachings, all free to read online.</p>
+            <h3 class="nb-sub-h">Ajahn Chah</h3>
+            <p class="nb-sub-d"><a href="#return-bodhinyana">Bodhinyana</a> is with the books I return to.</p>
+            <ul class="nb-rows" data-list="teachings-1" data-sub="Ajahn Chah"></ul>
+            <h3 class="nb-sub-h">Ajahn Sumedho</h3>
+            <ul class="nb-rows" data-list="teachings-2" data-sub="Ajahn Sumedho"></ul>
+            <h3 class="nb-sub-h">Ajaan Mah&#257; Boowa</h3>
+            <ul class="nb-rows" data-list="teachings-3" data-sub="Ajaan Mahā Boowa"></ul>
+            <h3 class="nb-sub-h">Ajahn Anan Aki&ntilde;cano</h3>
+            <ul class="nb-rows" data-list="teachings-4" data-sub="Ajahn Anan Akiñcano"></ul>
+          </div>
+        </section>
+
+        <section class="nb-acc" id="early-texts">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-early-texts"><span class="nb-acc-top"><span class="nb-acc-t">Early Buddhist Texts</span><span class="nb-acc-n"><span data-count></span> &middot; <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek"></span></button></h2>
+          <div class="nb-acc-body" id="b-early-texts" hidden>
+            <p class="nb-group-d">Translations and anthologies leading toward the early discourses: a modern anthology, two complete Nik&#257;yas, and one sutta with commentary. The three Wisdom volumes are the main books on this page you have to buy.</p>
+            <ul class="nb-rows" data-list="early-texts"></ul>
+          </div>
+        </section>
+
+        <div class="nb-reading-note">
+          <div class="nb-prose">
+            <p>This is a personal shelf, not a bibliography or a curriculum. It holds books I would feel comfortable putting in someone else's hands, chosen slowly and changed as I keep reading. A book listed here isn't always an unqualified endorsement: some I would recommend without hesitation, some come with a caveat worth knowing, and a few are here mainly because they mattered to me at a particular time.</p>
+            <p>Most of these books are free to read online. Where a book has to be bought, the entry says so.</p>
+            <p class="nb-quiet">Grouped loosely by what each book offers. The divisions are for browsing, not firm boundaries.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="nb-panel" aria-live="polite"><svg class="nb-art nb-art-panel" width="132" height="110" viewBox="0 0 120 100" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="14" y="80" width="74" height="20"></rect><rect x="20" y="62" width="64" height="18"></rect><rect x="12" y="46" width="70" height="16"></rect><g data-move="lean"><rect x="94" y="26" width="16" height="74"></rect><rect class="moss" x="94" y="40" width="16" height="6"></rect></g></svg><div class="nb-panel-body"></div></aside>
+    </div>
   </div>
 
-  <nav class="page-contents" aria-label="On this page">
-    <p class="page-contents-label mono">On this page</p>
-    <ul>
-      <li><a href="#return">Books I return to</a> <span class="page-contents-n" data-reading-count="return">0</span></li>
-      <li><a href="#begin">New to Buddhist reading?</a> <span class="page-contents-n" data-reading-count="begin">0</span></li>
-      <li><a href="#meditation-practice">Meditation &amp; Practice</a> <span class="page-contents-n" data-reading-count="meditation-practice">0</span></li>
-      <li><a href="#lives">Lives</a> <span class="page-contents-n" data-reading-count="lives">0</span></li>
-      <li><a href="#teachings-talks">Teachings &amp; Talks</a> <span class="page-contents-n" data-reading-count="teachings-talks">0</span></li>
-      <li><a href="#early-texts">Early Buddhist Texts</a> <span class="page-contents-n" data-reading-count="early-texts">0</span></li>
-    </ul>
-  </nav>
-
-  <section class="section reading-return" id="return">
-    <h2 class="shelf-title">Books I return to</h2>
-    <p class="section-dek">Books I've actually reopened, not just liked once and put back on the shelf.</p>
-
-    <div class="return-grid" data-reading-list="return"></div>
-  </section>
-
-  <section class="section reading-beginner" id="begin">
-    <h2 class="shelf-title">New to Buddhist reading?</h2>
-    <p class="section-dek">A possible way in, not a required one. Three books, in a gentle order.</p>
-
-    <ol class="reading-path" data-reading-list="begin"></ol>
-  </section>
-
-  <div class="reading-shelves-head">
-    <p class="section-label">Main shelves</p>
-    <p class="section-dek">Grouped loosely by what each book offers. The divisions are for browsing, not firm boundaries.</p>
-  </div>
-
-  <section class="section shelf" id="meditation-practice">
-    <h2 class="shelf-title">Meditation &amp; Practice</h2>
-    <p class="shelf-dek">Books to sit with, not just read once. <a href="#return-practical-insight">Practical Insight Meditation</a> belongs here too.</p>
-
-    <div class="shelf-books shelf-books--single" data-reading-list="meditation-practice"></div>
-  </section>
-
-  <section class="section shelf" id="lives">
-    <h2 class="shelf-title">Lives</h2>
-    <p class="reading-reflection reading-shelf-intro">I have always been drawn to biographies, and that did not change when I came to Buddhist practice. I find encouragement in seeing the effort other people have made, and in the lives they have offered as a guiding light for others. I am especially grateful to Ajaan Dick S&#299;laratano and to the translators who have made these stories available to us.</p>
-
-    <div class="shelf-books" data-reading-list="lives"></div>
-  </section>
-
-  <section class="section shelf" id="teachings-talks">
-    <h2 class="shelf-title">Teachings &amp; Talks</h2>
-    <p class="shelf-dek">Grouped by teacher. Talks and collected teachings, all free to read online.</p>
-
-    <div class="teacher-group">
-      <h3 class="teacher-name">Ajahn Chah</h3>
-      <p class="teacher-note"><a href="#return-bodhinyana">Bodhinyana</a> is with the books I return to.</p>
-      <div class="shelf-books" data-reading-list="teachings-1"></div>
-    </div>
-
-    <div class="teacher-group">
-      <h3 class="teacher-name">Ajahn Sumedho</h3>
-      <div class="shelf-books" data-reading-list="teachings-2"></div>
-    </div>
-
-    <div class="teacher-group">
-      <h3 class="teacher-name">Ajaan Mah&#257; Boowa</h3>
-      <div class="shelf-books" data-reading-list="teachings-3"></div>
-    </div>
-
-    <div class="teacher-group">
-      <h3 class="teacher-name">Ajahn Anan Aki&ntilde;cano</h3>
-      <div class="shelf-books" data-reading-list="teachings-4"></div>
-    </div>
-  </section>
-
-  <section class="section shelf" id="early-texts">
-    <h2 class="shelf-title">Early Buddhist Texts</h2>
-    <p class="shelf-dek">Translations and anthologies leading toward the early discourses: a modern anthology, two complete Nik&#257;yas, and one sutta with commentary. The three Wisdom volumes are the main books on this page you have to buy.</p>
-
-    <div class="shelf-books" data-reading-list="early-texts"></div>
-  </section>
-
-  <p class="reading-updated mono">Shelf last changed <time data-reading-updated datetime="2026-08">August 2026</time>.</p>
-
+  <nav class="nb-chain" aria-label="Rooms"><div class="nb-chain-in"><a href="meditation.html">&larr; Meditation</a><span class="nb-chain-mid">Room last changed <time data-updated datetime="2026-08">August 2026</time></span><a href="talks.html">Talks &rarr;</a></div></nav>
   </main>
 
   <footer class="site-footer">
@@ -159,7 +151,9 @@
     </noscript>
   </footer>
 
-  <script src="js/render-reading.js"></script>
+
   <script src="../js/menu.js?v=3"></script>
+  <script src="js/notebook/room.js?v=5"></script>
+  <script src="js/notebook/render-room-data.js?v=5"></script>
 </body>
 </html>

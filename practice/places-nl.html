@@ -134,12 +134,13 @@
 }
 </script>
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="meditation-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Direct naar de inhoud</a>
 
@@ -161,144 +162,223 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="./">&larr; Praktijk</a>
-  <h1 class="room-title"><span>Plekken &amp; gemeenschap</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><rect pathLength="1" x="28" y="120" width="64" height="10" rx="1"></rect><rect pathLength="1" x="38" y="108" width="44" height="10" rx="1"></rect><path pathLength="1" d="M42 108 A18 24 0 0 1 78 108"></path><path pathLength="1" d="M60 84 L60 58"></path><circle class="fill-dot" cx="60" cy="54" r="3"></circle></svg></h1>
-  <p class="lang-note">Ook beschikbaar in het <a href="places.html">Engels</a></p>
-  <p class="room-dek">De leraren, kloosters en gemeenschap die deze beoefening hebben gevormd.</p>
-
-  <nav class="page-contents" aria-label="Op deze pagina">
-    <p class="page-contents-label mono">Op deze pagina</p>
-    <ul>
-      <li><a href="#leraren">Leraren</a></li>
-      <li><a href="#plaatsen">Plaatsen waar ik heb geoefend</a></li>
-      <li><a href="#waar-ik-begon">Waar ik begon</a></li>
-      <li><a href="#gemeenschap">Gemeenschap</a></li>
-      <li><a href="#dezelfde-traditie">In dezelfde traditie</a></li>
-      <li><a href="#ook-goed-om-te-weten">Ook goed om te weten</a></li>
-    </ul>
-  </nav>
-
-  <section class="section" id="leraren">
-    <h2 class="section-label">Leraren</h2>
-
-    <div class="entry">
-      <h3 class="entry-title">Ajahn Tong Sirimangalo</h3>
-      <p class="entry-by">Voormalig abt, Wat Chom Tong, Chiang Mai</p>
-      <details class="entry-bio">
-        <summary>Lees een korte biografie</summary>
-        <p>Ajahn Tong Sirimangalo werd geboren in 1923 en werd op zijn elfde als novice gewijd; tien jaar later volgde zijn volledige wijding. In de jaren vijftig werd hij door de noordelijke Thaise Sangha naar Wat Mahathat in Bangkok gestuurd om de vier grondslagen van mindfulness te bestuderen, gevolgd door twee jaar onderwijzen en beoefenen in Birma naast de eerwaarde Mahasi Sayadaw. Hij groeide uit tot een gerespecteerd meditatieleraar in Thailand en gaf vanaf begin jaren tachtig Vipassana-cursussen in Europa en Amerika. Het grootste deel van zijn leven en onderwijs vond plaats in Wat Phradhatu Sri Chom Tong, een bekend meditatieklooster bij Chiang Mai, waar hij als abt de leiding had.</p>
-      </details>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Praktijk</a><span><a href="places.html" hreflang="en" lang="en">English</a></span></div>
+    <div class="nb-head">
+      <div class="nb-head-title"><svg class="nb-art nb-art-title ink" width="96" height="80" viewBox="0 0 120 100" stroke-width="1.9" aria-hidden="true" focusable="false" style="--d: .1s"><rect pathLength="1" x="28" y="90" width="64" height="10" rx="1"></rect><rect pathLength="1" x="38" y="78" width="44" height="10" rx="1"></rect><path pathLength="1" d="M42 78 A18 24 0 0 1 78 78 Z"></path><path class="open" pathLength="1" d="M60 54 L60 28"></path><circle class="moss" pathLength="1" cx="60" cy="24" r="3"></circle></svg><h1 class="nb-h1">Plekken &amp; gemeenschap</h1></div>
+      <p class="nb-intro fade-in" style="--d: .9s">De leraren, kloosters en gemeenschap die deze beoefening hebben gevormd.</p>
     </div>
 
-    <div class="entry">
-      <h3 class="entry-title">Ajahn Poonsak Suwadhano</h3>
-      <p class="entry-by">Die ik als mijn belangrijkste leraar beschouw</p>
-      <p class="entry-note">Een leerling van Ajahn Tong Sirimangalo. Ajahn Poonsak onderwees mij tijdens een veertigdaagse retraite in Wat Chom Tong in 2023. Zijn onderwijsstijl is geduldig en onthaast: aandachtig voor waar ik me werkelijk in mijn beoefening bevond, in plaats van een vast programma. Moge welke verdienste ik ook maak in mijn beoefening aan hem worden opgedragen.</p>
+    <div class="nb-room fade-in" style="--d: 1.1s; margin-top: 48px" data-room data-page="places-nl.html" data-open-group="plaatsen" data-open="wat-chom-tong">
+      <div class="nb-list nb-phone-flat">
+        <section class="nb-acc" id="leraren">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-leraren"><span class="nb-acc-top"><span class="nb-acc-t">Leraren</span><span class="nb-acc-n">2 · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Ajahn Tong Sirimangalo, Ajahn Poonsak Suwadhano</span></button></h2>
+          <div class="nb-acc-body" id="b-leraren" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="ajahn-tong-sirimangalo">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-ajahn-tong-sirimangalo"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Ajahn Tong Sirimangalo</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-ajahn-tong-sirimangalo" hidden>
+                <div class="nb-d-sec">Leraren</div>
+                <h3 class="nb-d-t">Ajahn Tong Sirimangalo</h3>
+                <div class="nb-d-by">Voormalig abt, Wat Chom Tong, Chiang Mai</div>
+                <p class="nb-d-text">Ajahn Tong Sirimangalo werd geboren in 1923 en werd op zijn elfde als novice gewijd; tien jaar later volgde zijn volledige wijding. In de jaren vijftig werd hij door de noordelijke Thaise Sangha naar Wat Mahathat in Bangkok gestuurd om de vier grondslagen van mindfulness te bestuderen, gevolgd door twee jaar onderwijzen en beoefenen in Birma naast de eerwaarde Mahasi Sayadaw. Hij groeide uit tot een gerespecteerd meditatieleraar in Thailand en gaf vanaf begin jaren tachtig Vipassana-cursussen in Europa en Amerika. Het grootste deel van zijn leven en onderwijs vond plaats in Wat Phradhatu Sri Chom Tong, een bekend meditatieklooster bij Chiang Mai, waar hij als abt de leiding had.</p>
+                <div class="nb-d-links"></div>
+              </div>
+            </li>
+            <li class="nb-item" id="ajahn-poonsak-suwadhano">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-ajahn-poonsak-suwadhano"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Ajahn Poonsak Suwadhano</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-ajahn-poonsak-suwadhano" hidden>
+                <div class="nb-d-sec">Leraren</div>
+                <h3 class="nb-d-t">Ajahn Poonsak Suwadhano</h3>
+                <div class="nb-d-by">Die ik als mijn belangrijkste leraar beschouw</div>
+                <p class="nb-d-text">Een leerling van Ajahn Tong Sirimangalo. Ajahn Poonsak onderwees mij tijdens een veertigdaagse retraite in Wat Chom Tong in 2023. Zijn onderwijsstijl is geduldig en onthaast: aandachtig voor waar ik me werkelijk in mijn beoefening bevond, in plaats van een vast programma. Moge welke verdienste ik ook maak in mijn beoefening aan hem worden opgedragen.</p>
+                <div class="nb-d-links"></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="plaatsen">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-plaatsen"><span class="nb-acc-top"><span class="nb-acc-t">Plaatsen waar ik heb geoefend</span><span class="nb-acc-n">3 · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Wat Chom Tong, Casa de Meditación Vipassana, Mosteiro Suddhavāri</span></button></h2>
+          <div class="nb-acc-body" id="b-plaatsen" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="wat-chom-tong">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-wat-chom-tong"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Wat Chom Tong</span></span><span class="nb-row-r">Thailand<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-wat-chom-tong" hidden>
+                <div class="nb-d-where">Chiang Mai, Thailand</div>
+                <div class="nb-d-sec">Plaatsen waar ik heb geoefend</div>
+                <h3 class="nb-d-t">Wat Chom Tong</h3>
+                <div class="nb-d-by">Ajahn Tong Sirimangalo's traditie</div>
+                <p class="nb-d-text">Opgericht in 1991, onderwijst de vier grondslagen van mindfulness door middel van zitten, lopen en prostratie. Voormalige verblijfplaats van Ajahn Tong Sirimangalo als abt, en van Ajahn Poonsak Suwadhano, die ik als mijn belangrijkste leraar beschouw. Hier zat ik mijn langste retraite tot nu toe, en het veranderde de koers van mijn leven: kijkend naar waar ik een paar jaar geleden stond, is het verschil dag en nacht. De meditatie-instructies op deze site volgen dezelfde methode, onderwezen door Yuttadhammo Bhikkhu.</p>
+                <p class="nb-d-note">Thaise en internationale studenten · Geen vaste kosten: dana aan het einde van je verblijf</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.watchomtong.com/" target="_blank" rel="noopener">Wat Chom Tong<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="casa-de-meditacion-vipassana">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-casa-de-meditacion-vipassana"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Casa de Meditación Vipassana</span></span><span class="nb-row-r">Mexico<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-casa-de-meditacion-vipassana" hidden>
+                <div class="nb-d-where">Mexico-Stad, Mexico</div>
+                <div class="nb-d-sec">Plaatsen waar ik heb geoefend</div>
+                <h3 class="nb-d-t">Casa de Meditación Vipassana</h3>
+                <div class="nb-d-by">Ajahn Tong-traditie</div>
+                <p class="nb-d-text">Theravada-meditatie in de noordelijke Thaise traditie, opgericht door een leerling van Ajahn Tong Sirimangalo. Anders dan de meeste centra in deze traditie werken retraites hier met een vast tarief in plaats van pure dana, omdat de groep geen eigen vaste ruimte heeft en er voor elke retraite een huurt. Leraren van Wat Chom Tong komen regelmatig langs; in 2024 kreeg ik de kans om opnieuw met Ajahn Poonsak te beoefenen, toen hij overkwam vanuit Thailand.</p>
+                <p class="nb-d-note">Retraites van 3 tot 20 dagen, fysiek en online · Vast tarief voor verblijf, maaltijden en parkeren; vervoer niet inbegrepen</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://vipassana.mx" target="_blank" rel="noopener">Casa de Meditación Vipassana<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="mosteiro-suddhavari">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-mosteiro-suddhavari"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Mosteiro Suddhavāri</span></span><span class="nb-row-r">Brazilië<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-mosteiro-suddhavari" hidden>
+                <div class="nb-d-where">Brazilië</div>
+                <div class="nb-d-sec">Plaatsen waar ik heb geoefend</div>
+                <h3 class="nb-d-t">Mosteiro Suddhavāri</h3>
+                <div class="nb-d-by">Theravada Forest Tradition</div>
+                <p class="nb-d-text">Verbonden aan de Sociedade Budista do Brasil, biedt onderricht, chanten en meditatiebegeleiding aan. Opgenomen lezingen, een digitale bibliotheek, en verblijf voor bezoekers. Ik verbleef hier tien dagen in 2025 en leerde veel over het meenemen van mindfulness in het dagelijks leven, dankzij Ajahn Mudito en iedereen die het klooster ondersteunt.</p>
+                <p class="nb-d-note">Kosteloos, ook het verblijf · Gedragen door giften</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://suddhavari.org/" target="_blank" rel="noopener">Mosteiro Suddhavāri<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="waar-ik-begon">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-waar-ik-begon"><span class="nb-acc-top"><span class="nb-acc-t">Waar ik begon</span><span class="nb-acc-n">1 · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Vipassana Suriname</span></button></h2>
+          <div class="nb-acc-body" id="b-waar-ik-begon" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="vipassana-suriname">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-vipassana-suriname"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Vipassana Suriname</span></span><span class="nb-row-r">Suriname<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-vipassana-suriname" hidden>
+                <div class="nb-d-where">Suriname</div>
+                <div class="nb-d-sec">Waar ik begon</div>
+                <h3 class="nb-d-t">Vipassana Suriname</h3>
+                <div class="nb-d-by">S.N. Goenka-traditie</div>
+                <p class="nb-d-text">Lokale beoefenaars die Vipassana-cursussen organiseren in de traditie van S.N. Goenka, meestal op een tijdelijke retraiteplek in plaats van een vaste locatie. Hier deed ik mijn eerste retraite, en ik ben dankbaar voor die kans, al verschillen de techniek en structuur enigszins van de traditie waarin ik nu beoefen. Ze hebben ook een <a href="https://www.facebook.com/VipassanaParamaribo" target="_blank" rel="noopener">Facebookpagina</a>.</p>
+                <p class="nb-d-note">Tiendaagse cursussen, ongeveer om het jaar · Geen kosten: een gift na afloop, als je kunt</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://sr.dhamma.org/" target="_blank" rel="noopener">Vipassana Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="gemeenschap">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-gemeenschap"><span class="nb-acc-top"><span class="nb-acc-t">Gemeenschap</span><span class="nb-acc-n">1 · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Boeddhisme in Suriname</span></button></h2>
+          <div class="nb-acc-body" id="b-gemeenschap" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="boeddhisme-in-suriname">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-boeddhisme-in-suriname"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Boeddhisme in Suriname</span></span><span class="nb-row-r">Suriname<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-boeddhisme-in-suriname" hidden>
+                <div class="nb-d-where">Suriname</div>
+                <div class="nb-d-sec">Gemeenschap</div>
+                <h3 class="nb-d-t">Boeddhisme in Suriname</h3>
+                <div class="nb-d-by">Facebookgroep</div>
+                <p class="nb-d-text">Een kleine pagina die ik onderhoud voor boeddhistische beoefenaars in Suriname. Meer hierover op <a href="../note.html">mijn notitiepagina</a>.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.facebook.com/61578371413970/" target="_blank" rel="noopener">Boeddhisme in Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="dezelfde-traditie">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-dezelfde-traditie"><span class="nb-acc-top"><span class="nb-acc-t">In dezelfde traditie</span><span class="nb-acc-n">5 · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Sirimangalo International, Santi Dhamma, Wat Chomtong Germany, …</span></button></h2>
+          <div class="nb-acc-body" id="b-dezelfde-traditie" hidden>
+            <p class="nb-group-d">Het onderricht van Ajahn Tong Sirimangalo verspreidde zich ver voorbij Wat Chom Tong. Deze plekken dragen dezelfde methode elders in de wereld. Ik heb bij geen van deze zelf beoefend.</p>
+            <ul class="nb-rows">
+            <li class="nb-item" id="sirimangalo-international">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-sirimangalo-international"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Sirimangalo International</span></span><span class="nb-row-r">Sri Lanka<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-sirimangalo-international" hidden>
+                <div class="nb-d-where">Ratnapura, Sri Lanka</div>
+                <div class="nb-d-sec">In dezelfde traditie</div>
+                <h3 class="nb-d-t">Sirimangalo International</h3>
+                <div class="nb-d-by">Ajahn Tong-traditie</div>
+                <p class="nb-d-text">Opgericht door Yuttadhammo Bhikkhu, wiens instructies te vinden zijn op zijn site. Het meditatiecentrum bevindt zich in Ratnapura, Sri Lanka.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://sirimangalo.org/" target="_blank" rel="noopener">Sirimangalo International<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="santi-dhamma">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-santi-dhamma"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Santi Dhamma</span></span><span class="nb-row-r">Nederland<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-santi-dhamma" hidden>
+                <div class="nb-d-where">Nederland</div>
+                <div class="nb-d-sec">In dezelfde traditie</div>
+                <h3 class="nb-d-t">Santi Dhamma</h3>
+                <div class="nb-d-by">Ajahn Tong-traditie</div>
+                <p class="nb-d-text">Een Vipassana-centrum, opgericht in 2015, dat cursussen en retraites verzorgt in de traditie van Ajahn Tong Sirimangalo. Er is nog geen vaste locatie, dus bijeenkomsten vinden plaats op gehuurde locaties. Meld je aan voor hun <a href="https://santi-dhamma.nl/contact-nl/" target="_blank" rel="noopener">nieuwsbrief</a> om op de hoogte te blijven van aankomende activiteiten.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://santi-dhamma.nl/" target="_blank" rel="noopener">Santi Dhamma<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="wat-chomtong-germany">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-wat-chomtong-germany"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Wat Chomtong Germany</span></span><span class="nb-row-r">Duitsland<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-wat-chomtong-germany" hidden>
+                <div class="nb-d-where">Morshausen, Duitsland</div>
+                <div class="nb-d-sec">In dezelfde traditie</div>
+                <h3 class="nb-d-t">Wat Chomtong Germany</h3>
+                <div class="nb-d-by">Ajahn Tong-traditie</div>
+                <p class="nb-d-text">Een kloosterfiliaal gebouwd als eerbetoon aan Ajahn Tong Sirimangalo, bemand door monniken uit Thailand.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.watchomtong.com/deu" target="_blank" rel="noopener">Wat Chomtong Germany<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="buddhavipassana-meditation-centre">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-buddhavipassana-meditation-centre"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Buddhavipassana Meditation Centre</span></span><span class="nb-row-r">Canada<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-buddhavipassana-meditation-centre" hidden>
+                <div class="nb-d-where">Toronto, Canada</div>
+                <div class="nb-d-sec">In dezelfde traditie</div>
+                <h3 class="nb-d-t">Buddhavipassana Meditation Centre</h3>
+                <div class="nb-d-by">Ajahn Tong-traditie</div>
+                <p class="nb-d-text">Organiseert een basiscursus van 15 dagen en retraites van 10 dagen, gegeven door Alex en Miriam Young.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://buddhavipassana.ca/" target="_blank" rel="noopener">Buddhavipassana Meditation Centre<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="santidhamma-vipassana-meditation-center-of-argentina">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-santidhamma-vipassana-meditation-center-of-argentina"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Santidhamma Vipassana Meditation Center of Argentina</span></span><span class="nb-row-r">Argentinië<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-santidhamma-vipassana-meditation-center-of-argentina" hidden>
+                <div class="nb-d-where">Buenos Aires, Argentinië</div>
+                <div class="nb-d-sec">In dezelfde traditie</div>
+                <h3 class="nb-d-t">Santidhamma Vipassana Meditation Center of Argentina</h3>
+                <div class="nb-d-by">Ajahn Tong-traditie</div>
+                <p class="nb-d-text">Onderdeel van het Spaanstalige Anumodana-netwerk, met cursussen en zitsessies in dezelfde traditie.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.vipassanabuenosaires.com/" target="_blank" rel="noopener">Santidhamma Vipassana Meditation Center of Argentina<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+            <p class="nb-quiet">Northern Vipassana, de internationale afdeling van Wat Chom Tong, houdt een uitgebreidere lijst bij van kloosters wereldwijd: <a href="https://northernvipassana.org/en/branches/" target="_blank" rel="noopener">zie de overzichtspagina<span class="ext" aria-hidden="true">&#8239;↗</span></a>.</p>
+          </div>
+        </section>
+        <section class="nb-acc" id="ook-goed-om-te-weten">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-ook-goed-om-te-weten"><span class="nb-acc-top"><span class="nb-acc-t">Ook goed om te weten</span><span class="nb-acc-n">2 · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Forest Sangha, Dhammadipa</span></button></h2>
+          <div class="nb-acc-body" id="b-ook-goed-om-te-weten" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="forest-sangha">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-forest-sangha"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Forest Sangha</span></span><span class="nb-row-r">wereldwijd netwerk<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-forest-sangha" hidden>
+                <div class="nb-d-where">wereldwijd netwerk</div>
+                <div class="nb-d-sec">Ook goed om te weten</div>
+                <h3 class="nb-d-t">Forest Sangha</h3>
+                <div class="nb-d-by">Ajahn Chahs traditie</div>
+                <p class="nb-d-text">Een portaal naar de kloosters die zijn voortgekomen uit de onderwijstraditie van Ajahn Chah, met lezingen, publicaties en links naar afzonderlijke kloosters wereldwijd. Enkele daarvan, waaronder <a href="talks.html#watch-amaravati">Amaravati</a> en <a href="talks.html#watch-cittaviveka">Cittaviveka</a>, worden afzonderlijk behandeld op Talks.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.forestsangha.org/" target="_blank" rel="noopener">Forest Sangha<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="dhammadipa">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-dhammadipa"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Dhammadipa</span></span><span class="nb-row-r">Nederland<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-dhammadipa" hidden>
+                <div class="nb-d-where">Amsterdam, Nederland</div>
+                <div class="nb-d-sec">Ook goed om te weten</div>
+                <h3 class="nb-d-t">Dhammadipa</h3>
+                <div class="nb-d-by">Mahasi Sayadaw-traditie</div>
+                <p class="nb-d-text">Biedt cursussen, zitgroepen en stadsretraites aan in de vipassana-traditie. Toegankelijk voor zowel nieuwkomers als ervaren beoefenaars. Dezelfde methode als <a href="talks.html#listen-sayar-myat">Sayar Myat</a> op Talks.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.dhammadipa.nl/" target="_blank" rel="noopener">Dhammadipa<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <aside class="nb-panel" aria-live="polite"><svg class="nb-art nb-art-panel" width="132" height="110" viewBox="0 0 120 100" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="28" y="90" width="64" height="10" rx="1"></rect><rect x="38" y="78" width="44" height="10" rx="1"></rect><path d="M42 78 A18 24 0 0 1 78 78 Z"></path><path class="open" d="M60 54 L60 28"></path><circle class="moss" cx="60" cy="24" r="3" data-move="glint"></circle></svg><div class="nb-panel-body"></div></aside>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="plaatsen">
-    <h2 class="section-label">Plaatsen waar ik heb geoefend</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.watchomtong.com/" target="_blank" rel="noopener">Wat Chom Tong<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong Sirimangalo's traditie · Chiang Mai, Thailand</p>
-      <p class="entry-note">Opgericht in 1991, onderwijst de vier grondslagen van mindfulness door middel van zitten, lopen en prostratie. Voormalige verblijfplaats van Ajahn Tong Sirimangalo als abt, en van Ajahn Poonsak Suwadhano, die ik als mijn belangrijkste leraar beschouw. Hier zat ik mijn langste retraite tot nu toe, en het veranderde de koers van mijn leven: kijkend naar waar ik een paar jaar geleden stond, is het verschil dag en nacht. De meditatie-instructies op deze site volgen dezelfde methode, onderwezen door Yuttadhammo Bhikkhu.</p>
-      <p class="entry-meta mono">Thaise en internationale studenten · Geen vaste kosten: dana aan het einde van je verblijf</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://vipassana.mx" target="_blank" rel="noopener">Casa de Meditación Vipassana<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong-traditie · Mexico-Stad, Mexico</p>
-      <p class="entry-note">Theravada-meditatie in de noordelijke Thaise traditie, opgericht door een leerling van Ajahn Tong Sirimangalo. Anders dan de meeste centra in deze traditie werken retraites hier met een vast tarief in plaats van pure dana, omdat de groep geen eigen vaste ruimte heeft en er voor elke retraite een huurt. Leraren van Wat Chom Tong komen regelmatig langs; in 2024 kreeg ik de kans om opnieuw met Ajahn Poonsak te beoefenen, toen hij overkwam vanuit Thailand.</p>
-      <p class="entry-meta mono">Retraites van 3 tot 20 dagen, fysiek en online · Vast tarief voor verblijf, maaltijden en parkeren; vervoer niet inbegrepen</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://suddhavari.org/" target="_blank" rel="noopener">Mosteiro Suddhavāri<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Theravada Forest Tradition · Brazilië</p>
-      <p class="entry-note">Verbonden aan de Sociedade Budista do Brasil, biedt onderricht, chanten en meditatiebegeleiding aan. Opgenomen lezingen, een digitale bibliotheek, en verblijf voor bezoekers. Ik verbleef hier tien dagen in 2025 en leerde veel over het meenemen van mindfulness in het dagelijks leven, dankzij Ajahn Mudito en iedereen die het klooster ondersteunt.</p>
-      <p class="entry-meta mono">Kosteloos, ook het verblijf · Gedragen door giften</p>
-    </div>
-  </section>
-
-  <section class="section" id="waar-ik-begon">
-    <h2 class="section-label">Waar ik begon</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://sr.dhamma.org/" target="_blank" rel="noopener">Vipassana Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">S.N. Goenka-traditie · Suriname</p>
-      <p class="entry-note">Lokale beoefenaars die Vipassana-cursussen organiseren in de traditie van S.N. Goenka, meestal op een tijdelijke retraiteplek in plaats van een vaste locatie. Hier deed ik mijn eerste retraite, en ik ben dankbaar voor die kans, al verschillen de techniek en structuur enigszins van de traditie waarin ik nu beoefen. Ze hebben ook een <a href="https://www.facebook.com/VipassanaParamaribo" target="_blank" rel="noopener">Facebookpagina</a>.</p>
-      <p class="entry-meta mono">Tiendaagse cursussen, ongeveer om het jaar · Geen kosten: een gift na afloop, als je kunt</p>
-    </div>
-  </section>
-
-  <section class="section" id="gemeenschap">
-    <h2 class="section-label">Gemeenschap</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.facebook.com/61578371413970/" target="_blank" rel="noopener">Boeddhisme in Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Facebookgroep · Suriname</p>
-      <p class="entry-note">Een kleine pagina die ik onderhoud voor boeddhistische beoefenaars in Suriname. Meer hierover op <a href="../note.html">mijn notitiepagina</a>.</p>
-    </div>
-
-    <p class="quiet-note">Als je vragen hebt over iets wat je hier bent tegengekomen, <a href="../contact.html">neem gerust contact op</a>.</p>
-  </section>
-
-  <section class="section" id="dezelfde-traditie">
-    <h2 class="section-label">In dezelfde traditie</h2>
-    <p>Het onderricht van Ajahn Tong Sirimangalo verspreidde zich ver voorbij Wat Chom Tong. Deze plekken dragen dezelfde methode elders in de wereld. Ik heb bij geen van deze zelf beoefend.</p>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://sirimangalo.org/" target="_blank" rel="noopener">Sirimangalo International<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong-traditie · Ratnapura, Sri Lanka</p>
-      <p class="entry-note">Opgericht door Yuttadhammo Bhikkhu, wiens instructies te vinden zijn op zijn site. Het meditatiecentrum bevindt zich in Ratnapura, Sri Lanka.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://santi-dhamma.nl/" target="_blank" rel="noopener">Santi Dhamma<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong-traditie · Nederland</p>
-      <p class="entry-note">Een Vipassana-centrum, opgericht in 2015, dat cursussen en retraites verzorgt in de traditie van Ajahn Tong Sirimangalo. Er is nog geen vaste locatie, dus bijeenkomsten vinden plaats op gehuurde locaties. Meld je aan voor hun <a href="https://santi-dhamma.nl/contact-nl/" target="_blank" rel="noopener">nieuwsbrief</a> om op de hoogte te blijven van aankomende activiteiten.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.watchomtong.com/deu" target="_blank" rel="noopener">Wat Chomtong Germany<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong-traditie · Morshausen, Duitsland</p>
-      <p class="entry-note">Een kloosterfiliaal gebouwd als eerbetoon aan Ajahn Tong Sirimangalo, bemand door monniken uit Thailand.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://buddhavipassana.ca/" target="_blank" rel="noopener">Buddhavipassana Meditation Centre<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong-traditie · Toronto, Canada</p>
-      <p class="entry-note">Organiseert een basiscursus van 15 dagen en retraites van 10 dagen, gegeven door Alex en Miriam Young.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.vipassanabuenosaires.com/" target="_blank" rel="noopener">Santidhamma Vipassana Meditation Center of Argentina<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong-traditie · Buenos Aires, Argentinië</p>
-      <p class="entry-note">Onderdeel van het Spaanstalige Anumodana-netwerk, met cursussen en zitsessies in dezelfde traditie.</p>
-    </div>
-
-    <p class="quiet-note">Northern Vipassana, de internationale afdeling van Wat Chom Tong, houdt een uitgebreidere lijst bij van kloosters wereldwijd: <a href="https://northernvipassana.org/en/branches/" target="_blank" rel="noopener">zie de overzichtspagina<span class="ext" aria-hidden="true">&#8239;↗</span></a>.</p>
-  </section>
-
-  <section class="section" id="ook-goed-om-te-weten">
-    <h2 class="section-label">Ook goed om te weten</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.forestsangha.org/" target="_blank" rel="noopener">Forest Sangha<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Chahs traditie · wereldwijd netwerk</p>
-      <p class="entry-note">Een portaal naar de kloosters die zijn voortgekomen uit de onderwijstraditie van Ajahn Chah, met lezingen, publicaties en links naar afzonderlijke kloosters wereldwijd. Enkele daarvan, waaronder <a href="watching.html#watch-amaravati">Amaravati</a> en <a href="watching.html#watch-cittaviveka">Cittaviveka</a>, worden afzonderlijk behandeld op Watching.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.dhammadipa.nl/" target="_blank" rel="noopener">Dhammadipa<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Mahasi Sayadaw-traditie · Amsterdam, Nederland</p>
-      <p class="entry-note">Biedt cursussen, zitgroepen en stadsretraites aan in de vipassana-traditie. Toegankelijk voor zowel nieuwkomers als ervaren beoefenaars. Dezelfde methode als <a href="listening.html#listen-sayar-myat">Sayar Myat</a> op de Listening-pagina.</p>
-    </div>
-  </section>
-
+  <nav class="nb-chain" aria-label="Kamers"><div class="nb-chain-in"><a href="meditation-nl.html">&larr; Meditatie</a><a href="nederlands.html">Nederlands &rarr;</a></div><p class="nb-chain-extra">Als je vragen hebt over iets wat je hier bent tegengekomen, <a href="../contact.html">neem gerust contact op</a>.</p></nav>
   </main>
 
   <footer class="site-footer">
@@ -320,6 +400,8 @@
     </noscript>
   </footer>
 
+
   <script src="../js/menu.js?v=3"></script>
+  <script src="js/notebook/room.js?v=5"></script>
 </body>
 </html>

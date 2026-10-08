@@ -47,7 +47,8 @@ panels on sheet 2 carry. The drawings themselves are untouched. The noting
 word is set as HTML text on the page instead, which is what lets one set of
 images serve both the English and the Dutch page.
 
-`../build-prostration-steps.py` writes the two step-by-step pages from
-`../prostration-steps-data.py`, where the noting word and the description of
-each position live in both languages. Edit the wording there, not in the
-HTML, and rerun it.
+The two step-by-step pages (`practice/mindful-prostration-steps.html` and
+`-nl.html`) are kept as pages, not generated: the noting word and the
+description of each position are edited in the HTML itself, in both
+languages. (The old builder, `build-prostration-steps.py`, and its data
+file were retired with the Practice redesign in October 2026.)

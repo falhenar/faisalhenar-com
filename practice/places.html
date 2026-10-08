@@ -134,12 +134,13 @@
 }
 </script>
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="meditation-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -161,145 +162,223 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="./">&larr; Practice</a>
-  <h1 class="room-title"><span>Places &amp; Community</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><rect pathLength="1" x="28" y="120" width="64" height="10" rx="1"></rect><rect pathLength="1" x="38" y="108" width="44" height="10" rx="1"></rect><path pathLength="1" d="M42 108 A18 24 0 0 1 78 108"></path><path pathLength="1" d="M60 84 L60 58"></path><circle class="fill-dot" cx="60" cy="54" r="3"></circle></svg></h1>
-  <p class="lang-note">Also available in <a href="places-nl.html">Dutch</a></p>
-  <p class="room-dek">The teachers, monasteries, and community that have shaped this practice.</p>
-
-  <nav class="page-contents" aria-label="On this page">
-    <p class="page-contents-label mono">On this page</p>
-    <ul>
-      <li><a href="#teachers">Teachers</a></li>
-      <li><a href="#places-practiced">Places I've Practiced</a></li>
-      <li><a href="#where-i-started">Where I Started</a></li>
-      <li><a href="#community">Community</a></li>
-      <li><a href="#same-lineage">In the Same Lineage</a></li>
-      <li><a href="#also-worth-knowing">Also Worth Knowing About</a></li>
-    </ul>
-  </nav>
-
-  <section class="section" id="teachers">
-    <h2 class="section-label">Teachers</h2>
-
-    <div class="entry">
-      <h3 class="entry-title">Ajahn Tong Sirimangalo</h3>
-      <p class="entry-by">Former abbot, Wat Chom Tong, Chiang Mai</p>
-      <details class="entry-bio">
-        <summary>Read a short bio</summary>
-        <p>Ajahn Tong Sirimangalo was born in 1923 and ordained as a novice in 1934, receiving full ordination a decade later. In the 1950s he was sent by the Northern Thai Sangha to Wat Mahathat in Bangkok to study the four foundations of mindfulness, followed by two years teaching and practicing in Burma alongside the Venerable Mahasi Sayadaw. He went on to become a widely respected meditation teacher in Thailand, leading Vipassana courses across Europe and America from the early 1980s onward. Most of his life and teaching was based at Wat Phradhatu Sri Chom Tong, a large, well-known meditation monastery near Chiang Mai, which he headed as abbot and which includes an international center for foreign practitioners.</p>
-      </details>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Practice</a><span>Room five of five &middot; p. 10 &middot; <a href="places-nl.html" hreflang="nl" lang="nl">Nederlands</a></span></div>
+    <div class="nb-head">
+      <div class="nb-head-title"><svg class="nb-art nb-art-title ink" width="96" height="80" viewBox="0 0 120 100" stroke-width="1.9" aria-hidden="true" focusable="false" style="--d: .1s"><rect pathLength="1" x="28" y="90" width="64" height="10" rx="1"></rect><rect pathLength="1" x="38" y="78" width="44" height="10" rx="1"></rect><path pathLength="1" d="M42 78 A18 24 0 0 1 78 78 Z"></path><path class="open" pathLength="1" d="M60 54 L60 28"></path><circle class="moss" pathLength="1" cx="60" cy="24" r="3"></circle></svg><h1 class="nb-h1">Places &amp; Community</h1></div>
+      <p class="nb-intro fade-in" style="--d: .9s">The teachers, monasteries, and community that have shaped this practice.</p>
     </div>
 
-    <div class="entry">
-      <h3 class="entry-title">Ajahn Poonsak Suwadhano</h3>
-      <p class="entry-by">Whom I consider my primary teacher</p>
-      <p class="entry-note">A disciple of Ajahn Tong Sirimangalo, Ajahn Poonsak taught me during a 40-day retreat at Wat Chom Tong in 2023. His teaching style is patient and unhurried: attentive to where I actually was in my practice, rather than a fixed curriculum. May whatever merit I make in my practice be dedicated to him.</p>
+    <div class="nb-room fade-in" style="--d: 1.1s; margin-top: 48px" data-room data-page="places.html" data-open-group="places-practiced" data-open="wat-chom-tong" data-crosslinks="data/crosslinks.json">
+      <div class="nb-list nb-phone-flat">
+        <section class="nb-acc" id="teachers">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-teachers"><span class="nb-acc-top"><span class="nb-acc-t">Teachers</span><span class="nb-acc-n">2 entries · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Ajahn Tong Sirimangalo, Ajahn Poonsak Suwadhano</span></button></h2>
+          <div class="nb-acc-body" id="b-teachers" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="ajahn-tong-sirimangalo">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-ajahn-tong-sirimangalo"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Ajahn Tong Sirimangalo</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-ajahn-tong-sirimangalo" hidden>
+                <div class="nb-d-sec">Teachers</div>
+                <h3 class="nb-d-t">Ajahn Tong Sirimangalo</h3>
+                <div class="nb-d-by">Former abbot, Wat Chom Tong, Chiang Mai</div>
+                <p class="nb-d-text">Ajahn Tong Sirimangalo was born in 1923 and ordained as a novice in 1934, receiving full ordination a decade later. In the 1950s he was sent by the Northern Thai Sangha to Wat Mahathat in Bangkok to study the four foundations of mindfulness, followed by two years teaching and practicing in Burma alongside the Venerable Mahasi Sayadaw. He went on to become a widely respected meditation teacher in Thailand, leading Vipassana courses across Europe and America from the early 1980s onward. Most of his life and teaching was based at Wat Phradhatu Sri Chom Tong, a large, well-known meditation monastery near Chiang Mai, which he headed as abbot and which includes an international center for foreign practitioners.</p>
+                <div class="nb-d-links"></div>
+              </div>
+            </li>
+            <li class="nb-item" id="ajahn-poonsak-suwadhano">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-ajahn-poonsak-suwadhano"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Ajahn Poonsak Suwadhano</span></span><span class="nb-row-r"><span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-ajahn-poonsak-suwadhano" hidden>
+                <div class="nb-d-sec">Teachers</div>
+                <h3 class="nb-d-t">Ajahn Poonsak Suwadhano</h3>
+                <div class="nb-d-by">Whom I consider my primary teacher</div>
+                <p class="nb-d-text">A disciple of Ajahn Tong Sirimangalo, Ajahn Poonsak taught me during a 40-day retreat at Wat Chom Tong in 2023. His teaching style is patient and unhurried: attentive to where I actually was in my practice, rather than a fixed curriculum. May whatever merit I make in my practice be dedicated to him.</p>
+                <div class="nb-d-links"></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="places-practiced">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-places-practiced"><span class="nb-acc-top"><span class="nb-acc-t">Places I've Practiced</span><span class="nb-acc-n">3 entries · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Wat Chom Tong, Casa de Meditación Vipassana, Mosteiro Suddhavāri</span></button></h2>
+          <div class="nb-acc-body" id="b-places-practiced" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="wat-chom-tong">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-wat-chom-tong"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Wat Chom Tong</span></span><span class="nb-row-r">Thailand<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-wat-chom-tong" hidden>
+                <div class="nb-d-where">Chiang Mai, Thailand</div>
+                <div class="nb-d-sec">Places I've Practiced</div>
+                <h3 class="nb-d-t">Wat Chom Tong</h3>
+                <div class="nb-d-by">Ajahn Tong Sirimangalo's lineage</div>
+                <p class="nb-d-text">Founded in 1991, teaching the four foundations of mindfulness through sitting, walking, and prostration practice. Home to Ajahn Tong Sirimangalo as the late abbot, and to Ajahn Poonsak Suwadhano, whom I consider my primary teacher. This is where I sat my longest retreat so far, and it changed the course of my life: looking back at where I was a few years ago, the difference is night and day. The <a href="meditation.html">meditation instructions</a> on this site follow that same method, taught by <a href="talks.html#watch-yuttadhammo">Yuttadhammo Bhikkhu</a>.</p>
+                <p class="nb-d-note">Thai and international students · No set fee: dana at the end of your stay</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.watchomtong.com/" target="_blank" rel="noopener">Wat Chom Tong<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="casa-de-meditacion-vipassana">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-casa-de-meditacion-vipassana"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Casa de Meditación Vipassana</span></span><span class="nb-row-r">Mexico<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-casa-de-meditacion-vipassana" hidden>
+                <div class="nb-d-where">Mexico City, Mexico</div>
+                <div class="nb-d-sec">Places I've Practiced</div>
+                <h3 class="nb-d-t">Casa de Meditación Vipassana</h3>
+                <div class="nb-d-by">Ajahn Tong lineage</div>
+                <p class="nb-d-text">Theravada meditation in the northern Thai lineage, founded by a student of Ajahn Tong Sirimangalo. Unlike most centers in this lineage, retreats here carry a set fee rather than pure donation, since the group doesn't have a permanent space of its own and rents one for each retreat. Teachers from Wat Chom Tong visit regularly; in 2024 I had the chance to practice with Ajahn Poonsak again, when he came over from Thailand.</p>
+                <p class="nb-d-note">Retreats of 3 to 20 days, in person and online · Set fee for lodging, meals and parking; transport not included</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://vipassana.mx" target="_blank" rel="noopener">Casa de Meditación Vipassana<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="mosteiro-suddhavari">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-mosteiro-suddhavari"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Mosteiro Suddhavāri</span></span><span class="nb-row-r">Brazil<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-mosteiro-suddhavari" hidden>
+                <div class="nb-d-where">Brazil</div>
+                <div class="nb-d-sec">Places I've Practiced</div>
+                <h3 class="nb-d-t">Mosteiro Suddhavāri</h3>
+                <div class="nb-d-by">Theravada Forest Tradition</div>
+                <p class="nb-d-text">Connected to the Sociedade Budista do Brasil, offering teachings, chanting, and meditation guidance. Recorded talks, a digital library, and accommodation for visitors. I stayed here for ten days in 2025 and learned a great deal about carrying mindfulness into daily activities, thanks to Ajahn Mudito and everyone who supports the monastery.</p>
+                <p class="nb-d-note">Free, including lodging · Sustained by donation</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://suddhavari.org/" target="_blank" rel="noopener">Mosteiro Suddhavāri<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="where-i-started">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-where-i-started"><span class="nb-acc-top"><span class="nb-acc-t">Where I Started</span><span class="nb-acc-n">1 entry · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Vipassana Suriname</span></button></h2>
+          <div class="nb-acc-body" id="b-where-i-started" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="vipassana-suriname">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-vipassana-suriname"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Vipassana Suriname</span></span><span class="nb-row-r">Suriname<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-vipassana-suriname" hidden>
+                <div class="nb-d-where">Suriname</div>
+                <div class="nb-d-sec">Where I Started</div>
+                <h3 class="nb-d-t">Vipassana Suriname</h3>
+                <div class="nb-d-by">S.N. Goenka tradition</div>
+                <p class="nb-d-text">Local practitioners who organize Vipassana courses in the S.N. Goenka tradition, usually at a temporary retreat site rather than a permanent center. This is where I did my first retreat, and I'm grateful for that opportunity, though the technique and structure differ somewhat from the tradition I practice in now. They also run a <a href="https://www.facebook.com/VipassanaParamaribo" target="_blank" rel="noopener">Facebook page</a>.</p>
+                <p class="nb-d-note">Ten-day courses, roughly every other year · No fee: donation after the course, if you are able</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://sr.dhamma.org/" target="_blank" rel="noopener">Vipassana Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="community">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-community"><span class="nb-acc-top"><span class="nb-acc-t">Community</span><span class="nb-acc-n">1 entry · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Boeddhisme in Suriname</span></button></h2>
+          <div class="nb-acc-body" id="b-community" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="boeddhisme-in-suriname">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-boeddhisme-in-suriname"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Boeddhisme in Suriname</span></span><span class="nb-row-r">Suriname<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-boeddhisme-in-suriname" hidden>
+                <div class="nb-d-where">Suriname</div>
+                <div class="nb-d-sec">Community</div>
+                <h3 class="nb-d-t">Boeddhisme in Suriname</h3>
+                <div class="nb-d-by">Facebook group</div>
+                <p class="nb-d-text">A small community I help run for Buddhist practitioners in Suriname. More on why on <a href="../note.html">my note page</a>.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.facebook.com/61578371413970/" target="_blank" rel="noopener">Boeddhisme in Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+        <section class="nb-acc" id="same-lineage">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-same-lineage"><span class="nb-acc-top"><span class="nb-acc-t">In the Same Lineage</span><span class="nb-acc-n">5 entries · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Sirimangalo International, Santi Dhamma, Wat Chomtong Germany, …</span></button></h2>
+          <div class="nb-acc-body" id="b-same-lineage" hidden>
+            <p class="nb-group-d">Ajahn Tong Sirimangalo's teaching spread well beyond Wat Chom Tong. These carry the same method elsewhere in the world. I haven't practiced at any of them myself.</p>
+            <ul class="nb-rows">
+            <li class="nb-item" id="sirimangalo-international">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-sirimangalo-international"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Sirimangalo International</span></span><span class="nb-row-r">Sri Lanka<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-sirimangalo-international" hidden>
+                <div class="nb-d-where">Ratnapura, Sri Lanka</div>
+                <div class="nb-d-sec">In the Same Lineage</div>
+                <h3 class="nb-d-t">Sirimangalo International</h3>
+                <div class="nb-d-by">Ajahn Tong lineage</div>
+                <p class="nb-d-text">Founded by Yuttadhammo Bhikkhu, whose instructions can be found on his site. The meditation centre is in Ratnapura, Sri Lanka.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://sirimangalo.org/" target="_blank" rel="noopener">Sirimangalo International<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="santi-dhamma">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-santi-dhamma"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Santi Dhamma</span></span><span class="nb-row-r">Netherlands<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-santi-dhamma" hidden>
+                <div class="nb-d-where">Netherlands</div>
+                <div class="nb-d-sec">In the Same Lineage</div>
+                <h3 class="nb-d-t">Santi Dhamma</h3>
+                <div class="nb-d-by">Ajahn Tong lineage</div>
+                <p class="nb-d-text">A Vipassana centre founded in 2015, running courses and retreats in the tradition of Ajahn Tong Sirimangalo. There isn't a permanent centre yet, so sessions are held at rented locations. Sign up for their <a href="https://santi-dhamma.nl/contact-nl/" target="_blank" rel="noopener">newsletter</a> to hear about upcoming events.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://santi-dhamma.nl/" target="_blank" rel="noopener">Santi Dhamma<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="wat-chomtong-germany">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-wat-chomtong-germany"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Wat Chomtong Germany</span></span><span class="nb-row-r">Germany<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-wat-chomtong-germany" hidden>
+                <div class="nb-d-where">Morshausen, Germany</div>
+                <div class="nb-d-sec">In the Same Lineage</div>
+                <h3 class="nb-d-t">Wat Chomtong Germany</h3>
+                <div class="nb-d-by">Ajahn Tong lineage</div>
+                <p class="nb-d-text">A monastery branch built as a memorial to Ajahn Tong Sirimangalo, staffed by monks from Thailand.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.watchomtong.com/deu" target="_blank" rel="noopener">Wat Chomtong Germany<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="buddhavipassana-meditation-centre">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-buddhavipassana-meditation-centre"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Buddhavipassana Meditation Centre</span></span><span class="nb-row-r">Canada<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-buddhavipassana-meditation-centre" hidden>
+                <div class="nb-d-where">Toronto, Canada</div>
+                <div class="nb-d-sec">In the Same Lineage</div>
+                <h3 class="nb-d-t">Buddhavipassana Meditation Centre</h3>
+                <div class="nb-d-by">Ajahn Tong lineage</div>
+                <p class="nb-d-text">Runs a 15-day basic course and 10-day retreats, taught by Alex and Miriam Young.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://buddhavipassana.ca/" target="_blank" rel="noopener">Buddhavipassana Meditation Centre<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="santidhamma-vipassana-meditation-center-of-argentina">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-santidhamma-vipassana-meditation-center-of-argentina"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Santidhamma Vipassana Meditation Center of Argentina</span></span><span class="nb-row-r">Argentina<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-santidhamma-vipassana-meditation-center-of-argentina" hidden>
+                <div class="nb-d-where">Buenos Aires, Argentina</div>
+                <div class="nb-d-sec">In the Same Lineage</div>
+                <h3 class="nb-d-t">Santidhamma Vipassana Meditation Center of Argentina</h3>
+                <div class="nb-d-by">Ajahn Tong lineage</div>
+                <p class="nb-d-text">Part of the Spanish-speaking Anumodana network, offering courses and sits in the same tradition.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.vipassanabuenosaires.com/" target="_blank" rel="noopener">Santidhamma Vipassana Meditation Center of Argentina<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+            <p class="nb-quiet">Northern Vipassana, the international department at Wat Chom Tong, keeps a fuller list of branches worldwide: <a href="https://northernvipassana.org/en/branches/" target="_blank" rel="noopener">see the branches page<span class="ext" aria-hidden="true">&#8239;↗</span></a>.</p>
+          </div>
+        </section>
+        <section class="nb-acc" id="also-worth-knowing">
+          <h2 class="nb-acc-h"><button class="nb-acc-btn" type="button" aria-expanded="false" aria-controls="b-also-worth-knowing"><span class="nb-acc-top"><span class="nb-acc-t">Also Worth Knowing About</span><span class="nb-acc-n">2 entries · <span class="nb-acc-sign">+</span></span></span><span class="nb-acc-peek">Forest Sangha, Dhammadipa</span></button></h2>
+          <div class="nb-acc-body" id="b-also-worth-knowing" hidden>
+            <ul class="nb-rows">
+            <li class="nb-item" id="forest-sangha">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-forest-sangha"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Forest Sangha</span></span><span class="nb-row-r">worldwide network<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-forest-sangha" hidden>
+                <div class="nb-d-where">worldwide network</div>
+                <div class="nb-d-sec">Also Worth Knowing About</div>
+                <h3 class="nb-d-t">Forest Sangha</h3>
+                <div class="nb-d-by">Ajahn Chah's lineage</div>
+                <p class="nb-d-text">A portal to the branch monasteries that grew out of Ajahn Chah's teaching lineage, with talks, publications, and links to individual monasteries across the world. A few of them, including <a href="talks.html#watch-amaravati">Amaravati</a> and <a href="talks.html#watch-cittaviveka">Cittaviveka</a>, are covered individually on Talks.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.forestsangha.org/" target="_blank" rel="noopener">Forest Sangha<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            <li class="nb-item" id="dhammadipa">
+              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-dhammadipa"><span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">Dhammadipa</span></span><span class="nb-row-r">Netherlands<span class="nb-sign" aria-hidden="true">+</span></span></button>
+              <div class="nb-detail" id="d-dhammadipa" hidden>
+                <div class="nb-d-where">Amsterdam, Netherlands</div>
+                <div class="nb-d-sec">Also Worth Knowing About</div>
+                <h3 class="nb-d-t">Dhammadipa</h3>
+                <div class="nb-d-by">Mahasi Sayadaw lineage</div>
+                <p class="nb-d-text">Offers courses, sitting groups, and city retreats in the vipassana tradition. Open to newcomers as well as experienced practitioners. Same method as <a href="talks.html#listen-sayar-myat">Sayar Myat</a> on Talks.</p>
+                <div class="nb-d-links"><a class="nb-btn" href="https://www.dhammadipa.nl/" target="_blank" rel="noopener">Dhammadipa<span class="ext" aria-hidden="true">&#8239;↗</span></a></div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <aside class="nb-panel" aria-live="polite"><svg class="nb-art nb-art-panel" width="132" height="110" viewBox="0 0 120 100" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="28" y="90" width="64" height="10" rx="1"></rect><rect x="38" y="78" width="44" height="10" rx="1"></rect><path d="M42 78 A18 24 0 0 1 78 78 Z"></path><path class="open" d="M60 54 L60 28"></path><circle class="moss" cx="60" cy="24" r="3" data-move="glint"></circle></svg><div class="nb-panel-body"></div></aside>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="places-practiced">
-    <h2 class="section-label">Places I've Practiced</h2>
-
-    <!-- Wat Chom Tong stays first, always — add any new monasteries/places below it, not above. -->
-    <div class="entry" id="wat-chom-tong">
-      <h3 class="entry-title"><a href="https://www.watchomtong.com/" target="_blank" rel="noopener">Wat Chom Tong<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong Sirimangalo's lineage · Chiang Mai, Thailand</p>
-      <p class="entry-note">Founded in 1991, teaching the four foundations of mindfulness through sitting, walking, and prostration practice. Home to Ajahn Tong Sirimangalo as the late abbot, and to Ajahn Poonsak Suwadhano, whom I consider my primary teacher. This is where I sat my longest retreat so far, and it changed the course of my life: looking back at where I was a few years ago, the difference is night and day. The <a href="meditation.html">meditation instructions</a> on this site follow that same method, taught by <a href="watching.html#watch-yuttadhammo">Yuttadhammo Bhikkhu</a>.</p>
-      <p class="entry-meta mono">Thai and international students · No set fee: dana at the end of your stay</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://vipassana.mx" target="_blank" rel="noopener">Casa de Meditación Vipassana<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong lineage · Mexico City, Mexico</p>
-      <p class="entry-note">Theravada meditation in the northern Thai lineage, founded by a student of Ajahn Tong Sirimangalo. Unlike most centers in this lineage, retreats here carry a set fee rather than pure donation, since the group doesn't have a permanent space of its own and rents one for each retreat. Teachers from Wat Chom Tong visit regularly; in 2024 I had the chance to practice with Ajahn Poonsak again, when he came over from Thailand.</p>
-      <p class="entry-meta mono">Retreats of 3 to 20 days, in person and online · Set fee for lodging, meals and parking; transport not included</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://suddhavari.org/" target="_blank" rel="noopener">Mosteiro Suddhavāri<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Theravada Forest Tradition · Brazil</p>
-      <p class="entry-note">Connected to the Sociedade Budista do Brasil, offering teachings, chanting, and meditation guidance. Recorded talks, a digital library, and accommodation for visitors. I stayed here for ten days in 2025 and learned a great deal about carrying mindfulness into daily activities, thanks to Ajahn Mudito and everyone who supports the monastery.</p>
-      <p class="entry-meta mono">Free, including lodging · Sustained by donation</p>
-    </div>
-  </section>
-
-  <section class="section" id="where-i-started">
-    <h2 class="section-label">Where I Started</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://sr.dhamma.org/" target="_blank" rel="noopener">Vipassana Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">S.N. Goenka tradition · Suriname</p>
-      <p class="entry-note">Local practitioners who organize Vipassana courses in the S.N. Goenka tradition, usually at a temporary retreat site rather than a permanent center. This is where I did my first retreat, and I'm grateful for that opportunity, though the technique and structure differ somewhat from the tradition I practice in now. They also run a <a href="https://www.facebook.com/VipassanaParamaribo" target="_blank" rel="noopener">Facebook page</a>.</p>
-      <p class="entry-meta mono">Ten-day courses, roughly every other year · No fee: donation after the course, if you are able</p>
-    </div>
-  </section>
-
-  <section class="section" id="community">
-    <h2 class="section-label">Community</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.facebook.com/61578371413970/" target="_blank" rel="noopener">Boeddhisme in Suriname<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Facebook group · Suriname</p>
-      <p class="entry-note">A small community I help run for Buddhist practitioners in Suriname. More on why on <a href="../note.html">my note page</a>.</p>
-    </div>
-
-    <p class="quiet-note">If any of this is useful to talk through directly, <a href="../contact.html">get in touch</a>.</p>
-  </section>
-
-  <section class="section" id="same-lineage">
-    <h2 class="section-label">In the Same Lineage</h2>
-    <p>Ajahn Tong Sirimangalo's teaching spread well beyond Wat Chom Tong. These carry the same method elsewhere in the world. I haven't practiced at any of them myself.</p>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://sirimangalo.org/" target="_blank" rel="noopener">Sirimangalo International<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong lineage · Ratnapura, Sri Lanka</p>
-      <p class="entry-note">Founded by Yuttadhammo Bhikkhu, whose instructions can be found on his site. The meditation centre is in Ratnapura, Sri Lanka.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://santi-dhamma.nl/" target="_blank" rel="noopener">Santi Dhamma<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong lineage · Netherlands</p>
-      <p class="entry-note">A Vipassana centre founded in 2015, running courses and retreats in the tradition of Ajahn Tong Sirimangalo. There isn't a permanent centre yet, so sessions are held at rented locations. Sign up for their <a href="https://santi-dhamma.nl/contact-nl/" target="_blank" rel="noopener">newsletter</a> to hear about upcoming events.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.watchomtong.com/deu" target="_blank" rel="noopener">Wat Chomtong Germany<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong lineage · Morshausen, Germany</p>
-      <p class="entry-note">A monastery branch built as a memorial to Ajahn Tong Sirimangalo, staffed by monks from Thailand.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://buddhavipassana.ca/" target="_blank" rel="noopener">Buddhavipassana Meditation Centre<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong lineage · Toronto, Canada</p>
-      <p class="entry-note">Runs a 15-day basic course and 10-day retreats, taught by Alex and Miriam Young.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.vipassanabuenosaires.com/" target="_blank" rel="noopener">Santidhamma Vipassana Meditation Center of Argentina<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Tong lineage · Buenos Aires, Argentina</p>
-      <p class="entry-note">Part of the Spanish-speaking Anumodana network, offering courses and sits in the same tradition.</p>
-    </div>
-
-    <p class="quiet-note">Northern Vipassana, the international department at Wat Chom Tong, keeps a fuller list of branches worldwide: <a href="https://northernvipassana.org/en/branches/" target="_blank" rel="noopener">see the branches page<span class="ext" aria-hidden="true">&#8239;↗</span></a>.</p>
-  </section>
-
-  <section class="section" id="also-worth-knowing">
-    <h2 class="section-label">Also Worth Knowing About</h2>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.forestsangha.org/" target="_blank" rel="noopener">Forest Sangha<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Ajahn Chah's lineage · worldwide network</p>
-      <p class="entry-note">A portal to the branch monasteries that grew out of Ajahn Chah's teaching lineage, with talks, publications, and links to individual monasteries across the world. A few of them, including <a href="watching.html#watch-amaravati">Amaravati</a> and <a href="watching.html#watch-cittaviveka">Cittaviveka</a>, are covered individually on Watching.</p>
-    </div>
-
-    <div class="entry">
-      <h3 class="entry-title"><a href="https://www.dhammadipa.nl/" target="_blank" rel="noopener">Dhammadipa<span class="ext" aria-hidden="true">&#8239;↗</span></a></h3>
-      <p class="entry-by">Mahasi Sayadaw lineage · Amsterdam, Netherlands</p>
-      <p class="entry-note">Offers courses, sitting groups, and city retreats in the vipassana tradition. Open to newcomers as well as experienced practitioners. Same method as <a href="listening.html#listen-sayar-myat">Sayar Myat</a> on the Listening shelf.</p>
-    </div>
-  </section>
-
+  <nav class="nb-chain" aria-label="Rooms"><div class="nb-chain-in"><a href="talks.html">&larr; Talks</a><span class="nb-chain-mid">Room last changed October 2026</span><a href="./">Back to Today &rarr;</a></div><p class="nb-chain-extra">If any of this is useful to talk through directly, <a href="../contact.html">get in touch</a>.</p></nav>
   </main>
 
   <footer class="site-footer">
@@ -321,6 +400,8 @@
     </noscript>
   </footer>
 
+
   <script src="../js/menu.js?v=3"></script>
+  <script src="js/notebook/room.js?v=5"></script>
 </body>
 </html>

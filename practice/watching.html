@@ -9,11 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Watching · Practice · Faisal Henar</title>
 <meta name="description" content="Buddhist channels and recorded talks, arranged from a first look to sitting in.">
-<link rel="canonical" href="https://faisalhenar.com/practice/watching.html">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=talks.html">
+<link rel="canonical" href="https://faisalhenar.com/practice/talks.html">
 <meta property="og:title" content="Watching · Practice · Faisal Henar">
 <meta property="og:description" content="Buddhist channels and recorded talks, arranged from a first look to sitting in.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://faisalhenar.com/practice/watching.html">
+<meta property="og:url" content="https://faisalhenar.com/practice/talks.html">
 <meta property="og:image" content="https://faisalhenar.com/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,12 +24,14 @@
 <meta name="twitter:description" content="Buddhist channels and recorded talks, arranged from a first look to sitting in.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
+<script src="js/notebook/redirect-talks.js?v=1"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="watching-page shelf-page">
+<body class="nb-page">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -49,52 +53,12 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1" data-shelf-src="data/watching.json">
-  <a class="back-link" href="./">&larr; Practice</a>
-  <h1 class="room-title"><span>Watching</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><rect pathLength="1" x="32" y="69" width="56" height="32" rx="2"></rect><path pathLength="1" d="M49 73 L49 97 L71 85 Z"></path></svg></h1>
-  <p class="room-dek">Buddhist channels and recorded talks, arranged from a first look to sitting in.</p>
-
-  <div class="page-intro">
-    <p>Video earns its place when there is something to see: a hand position, a face working through a question, the ordinary business of a monastery. Where that is not true, the same teacher is usually better on <a href="listening.html">Listening</a>, and several of these appear in both rooms.</p>
-    <p>The sections run from a first look to the least introductory. That ordering is about how much is asked of you, not about lineage, so a Tibetan curriculum sits near the top and a forest monastery near the bottom. Everything here is on YouTube and carries its advertising. Where a teacher or monastery keeps the same material on its own site, the entry says so.</p>
+  <main id="main" class="nb-main" tabindex="-1">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="./">&larr; Practice</a></div>
+    <h1 class="nb-h1" style="margin-top: 18px">Watching</h1>
+    <p class="nb-intro" style="margin-top: 20px"><a href="talks.html">Talks &rarr;</a></p>
   </div>
-
-  <nav class="page-contents" aria-label="On this page">
-    <p class="page-contents-label mono">On this page</p>
-    <ul>
-      <li><a href="#starting-out">Starting out</a></li>
-      <li><a href="#practising">Something to practise with</a></li>
-      <li><a href="#sitting-in">Sitting in</a></li>
-      <li><a href="#study">Study</a></li>
-    </ul>
-  </nav>
-
-  <section class="section shelf" id="starting-out">
-    <h2 class="shelf-title">Starting out</h2>
-    <p class="shelf-dek">Explanations and plain-language introductions. What I would send someone who asked a question and meant it.</p>
-    <div class="shelf-books" data-shelf-list="starting-out"></div>
-  </section>
-
-  <section class="section shelf" id="practising">
-    <h2 class="shelf-title">Something to practise with</h2>
-    <p class="shelf-dek">Instruction and guided sitting: things to follow along with rather than listen to.</p>
-    <div class="shelf-books" data-shelf-list="practising"></div>
-  </section>
-
-  <section class="section shelf" id="sitting-in">
-    <h2 class="shelf-title">Sitting in</h2>
-    <p class="shelf-dek">Talks and seminars recorded as they happened, mostly for the people in the room. Less about being taught than about being present while someone else is.</p>
-    <div class="shelf-books" data-shelf-list="sitting-in"></div>
-  </section>
-
-  <section class="section shelf" id="study">
-    <h2 class="shelf-title">Study</h2>
-    <p class="shelf-dek">Working through the texts themselves rather than around them. Both entries here are archive uploads rather than official channels, which is worth knowing before you rely on them.</p>
-    <div class="shelf-books" data-shelf-list="study"></div>
-  </section>
-
-  <p class="shelf-updated mono">List last changed <time data-shelf-updated datetime="2026-08">August 2026</time>.</p>
-
   </main>
 
   <footer class="site-footer">
@@ -116,7 +80,7 @@
     </noscript>
   </footer>
 
-  <script src="js/render-shelf.js"></script>
+
   <script src="../js/menu.js?v=3"></script>
 </body>
 </html>

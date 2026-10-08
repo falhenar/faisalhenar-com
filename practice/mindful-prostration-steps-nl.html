@@ -25,12 +25,13 @@
 <meta name="twitter:description" content="Elke houding in een aandachtige prostratie, van knielen tot staan, met het genoteerde woord bij elke beweging.">
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="css/practice.css?v=60">
+<link rel="stylesheet" href="css/notebook.css?v=5">
+<script src="js/notebook/draw.js?v=5"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
-<body class="meditation-page sheet-page">
+<body class="nb-page nb-sheet-page">
 
   <a class="skip-link" href="#main">Direct naar de inhoud</a>
 
@@ -52,210 +53,91 @@
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-  <a class="back-link" href="mindful-prostration-nl.html">&larr; Aandachtige prostratie</a>
-  <h1 class="room-title"><span>De prostratie, stap voor stap</span><svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true"><rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect><circle pathLength="1" cx="60" cy="58" r="9"></circle><path pathLength="1" d="M46 72 C40 84 38 100 38 116 C46 111 74 111 82 116 C82 100 80 84 74 72 C69 67 51 67 46 72 Z"></path><circle class="fill-dot" cx="60" cy="99" r="2.5"></circle><path pathLength="1" d="M34 122 L86 122"></path></svg></h1>
-  <p class="lang-note">Ook beschikbaar in het <a href="mindful-prostration-steps.html">Engels</a></p>
-  <p class="room-dek">Elke houding in een prostratie, van knielen tot staan, met het woord dat bij elke beweging wordt genoteerd.</p>
-  <p class="sheet-meta mono">Bij blad 3 &middot; <a href="mindful-prostration-steps-nl.pdf">Download PDF</a> &middot; <a href="mindful-prostration-steps.pdf">Download PDF (Engels)</a></p>
-
-  <div class="page-intro">
-    <p>Dit is dezelfde volgorde als op het <a href="mindful-prostration-nl.html">blad over aandachtige prostratie</a>, houding voor houding getoond. Het blad legt uit waar de oefening voor dient en hoe u noteert; deze pagina is om de vorm van een beweging na te kijken wanneer woorden tekortschieten.</p>
-    <p>Het woord onder elke tekening is de notitie die stil wordt gezegd terwijl de beweging wordt gemaakt, een keer bij het begin, een keer in het midden, een keer bij het eind. De nummers volgen de volgorde van het eerste knielen tot het weer opstaan.</p>
+  <main id="main" class="nb-main nb-sheet nb-steps" tabindex="-1" data-twin="mindful-prostration-steps.html" data-of="van">
+  <div class="nb-wrap">
+    <div class="nb-topline"><a class="nb-back" href="mindful-prostration-nl.html">&larr; Aandachtige prostratie</a><span>Bij blad 3</span></div>
+    <div class="nb-head nb-sheet-head">
+      <div class="nb-head-title"><svg class="nb-art nb-art-title nb-art-sheet ink" width="92" height="77" viewBox="0 0 120 100" stroke-width="1.9" aria-hidden="true" focusable="false" style="--d: .1s"><rect pathLength="1" x="6" y="94" width="108" height="6" rx="1"></rect><path pathLength="1" d="M14 94 C14 64 78 64 78 94 Z"></path><path class="open" pathLength="1" d="M18 82 Q46 76 74 82"></path><path pathLength="1" d="M86 80 L112 80 Q110 94 99 94 Q88 94 86 80 Z"></path><circle class="moss-dot" cx="99" cy="68" r="3"></circle></svg><h1 class="nb-h1 nb-steps-h1">De prostratie, stap voor stap</h1></div>
+      <p class="nb-sheet-lead fade-in" style="--d: .6s">Elke houding in een prostratie, van knielen tot staan, met het woord dat bij elke beweging wordt genoteerd.</p>
+    </div>
+    <div class="nb-st-intro"><p>Dit is dezelfde volgorde als op het <a href="mindful-prostration-nl.html">blad over aandachtige prostratie</a>, houding voor houding getoond. Het blad legt uit waar de oefening voor dient en hoe u noteert; deze pagina is om de vorm van een beweging na te kijken wanneer woorden tekortschieten.</p><p>Het woord onder elke tekening is de notitie die stil wordt gezegd terwijl de beweging wordt gemaakt, een keer bij het begin, een keer in het midden, een keer bij het eind. De nummers volgen de volgorde van het eerste knielen tot het weer opstaan.</p></div>
+    <div class="nb-st-bar">
+      <span class="nb-lgs nb-views" role="group" aria-label="Weergave" hidden><button class="nb-vw" type="button" data-view="one" aria-pressed="true">Een voor een</button><button class="nb-vw" type="button" data-view="all" aria-pressed="false">Alle houdingen</button></span>
+      <span class="nb-st-tools"><span class="nb-lgs" role="group" aria-label="Taal"><button class="nb-lg" type="button" lang="en" data-lang="en" aria-pressed="false">English</button><button class="nb-lg" type="button" lang="nl" data-lang="nl" aria-pressed="true">Nederlands</button></span><a class="nb-act" href="mindful-prostration-steps-nl.pdf">Download PDF</a></span>
+    </div>
+    <div class="nb-st-one" hidden>
+      <div class="nb-st-jumps" role="group" aria-label="De prostratie, stap voor stap"></div>
+      <div class="nb-st-ticks" aria-hidden="true"></div>
+      <div class="nb-st-stage" aria-live="polite"></div>
+      <div class="nb-st-nav"><button class="nb-st-btn" type="button" data-step="-1">&larr; Vorige</button><button class="nb-st-btn" type="button" data-step="1">Volgende &rarr;</button></div>
+    </div>
+    <div class="nb-st-all">
+      <section class="nb-st-sec" id="sec-1" data-sec="Knielen">
+        <h2 class="nb-st-h">Knielen</h2>
+        <ol class="nb-st-grid">
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="0"><span class="step-num" aria-hidden="true">A</span><img src="images/prostration/kneel-a.svg" alt="Knielend met de tenen onder u, terugzittend op de hielen" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tenen onder u</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="1"><span class="step-num" aria-hidden="true">B</span><img src="images/prostration/kneel-b.svg" alt="Knielend met de bovenkant van de voeten plat op de vloer, erop zittend" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">of zittend op de voeten</span></button></li>
+        </ol>
+        <p class="nb-st-note">Beide houdingen zijn correct. Kies de houding die uw knieën en enkels toelaten.</p>
+      </section>
+      <section class="nb-st-sec" id="sec-2" data-sec="Naar beneden">
+        <h2 class="nb-st-h">Naar beneden</h2>
+        <ol class="nb-st-grid">
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="2"><span class="step-num" aria-hidden="true">1</span><img src="images/prostration/step-01.svg" alt="Rechtop knielend, beide handen met de palm omlaag op de dijen" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zitten</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="3"><span class="step-num" aria-hidden="true">2</span><img src="images/prostration/step-02.svg" alt="De rechterhand een kwartslag gedraaid, op haar rand op de dij" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">draaien</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="4"><span class="step-num" aria-hidden="true">3</span><img src="images/prostration/step-03.svg" alt="De rechterhand rijst van de dij naar de borst, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tillen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="5"><span class="step-num" aria-hidden="true">4</span><img src="images/prostration/step-04.svg" alt="De rechterhand bij de borst, de duim raakt aan" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="6"><span class="step-num" aria-hidden="true">5</span><img src="images/prostration/step-05.svg" alt="De linkerhand op haar rand gedraaid op de dij" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">draaien</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="7"><span class="step-num" aria-hidden="true">6</span><img src="images/prostration/step-06.svg" alt="De linkerhand rijst naar de rechter bij de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tillen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="8"><span class="step-num" aria-hidden="true">7</span><img src="images/prostration/step-07.svg" alt="Beide handpalmen tegen elkaar bij de borst, duimen raken aan" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="9"><span class="step-num" aria-hidden="true">8</span><img src="images/prostration/step-08.svg" alt="Beide handen rijzen samen van de borst naar het voorhoofd" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tillen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="10"><span class="step-num" aria-hidden="true">9</span><img src="images/prostration/step-09.svg" alt="De duimnagels raken het voorhoofd, handpalmen tegen elkaar" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="11"><span class="step-num" aria-hidden="true">10</span><img src="images/prostration/step-10.svg" alt="Beide handen zakken van het voorhoofd terug naar de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zakken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="12"><span class="step-num" aria-hidden="true">11</span><img src="images/prostration/step-11.svg" alt="Beide handpalmen weer tegen elkaar bij de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="13"><span class="step-num" aria-hidden="true">12</span><img src="images/prostration/step-12.svg" alt="De rug buigt voorover tot ongeveer vijfenveertig graden, handen bij de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">buigen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="14"><span class="step-num" aria-hidden="true">13</span><img src="images/prostration/step-13.svg" alt="De rechterhand zakt naar de vloer voor de knieën, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zakken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="15"><span class="step-num" aria-hidden="true">14</span><img src="images/prostration/step-14.svg" alt="De rand van de rechterpink raakt de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="16"><span class="step-num" aria-hidden="true">15</span><img src="images/prostration/step-15.svg" alt="De rechterhand draait plat, palm omlaag op de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">bedekken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="17"><span class="step-num" aria-hidden="true">16</span><img src="images/prostration/step-16.svg" alt="De linkerhand zakt naar de vloer naast de rechter" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zakken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="18"><span class="step-num" aria-hidden="true">17</span><img src="images/prostration/step-17.svg" alt="De rand van de linkerpink raakt de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="19"><span class="step-num" aria-hidden="true">18</span><img src="images/prostration/step-18.svg" alt="De linkerhand draait plat, palm omlaag naast de rechter" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">bedekken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="20"><span class="step-num" aria-hidden="true">19</span><img src="images/prostration/step-19.svg" alt="De rug buigt verder, het voorhoofd komt omlaag naar de duimen" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">buigen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="21"><span class="step-num" aria-hidden="true">20</span><img src="images/prostration/step-20.svg" alt="Het voorhoofd rust op de duimen, beide handpalmen plat op de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+        </ol>
+      </section>
+      <section class="nb-st-sec" id="sec-3" data-sec="Omhoog komen">
+        <h2 class="nb-st-h">Omhoog komen</h2>
+        <ol class="nb-st-grid">
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="22"><span class="step-num" aria-hidden="true">21</span><img src="images/prostration/step-21.svg" alt="De rug richt op tot de armen recht zijn, handen nog op de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">oprichten</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="23"><span class="step-num" aria-hidden="true">22</span><img src="images/prostration/step-22.svg" alt="De rechterhand draait op haar rand op de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">draaien</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="24"><span class="step-num" aria-hidden="true">23</span><img src="images/prostration/step-23.svg" alt="De rechterhand rijst van de vloer naar de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tillen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="25"><span class="step-num" aria-hidden="true">24</span><img src="images/prostration/step-24.svg" alt="De rechterhand bij de borst, de duim raakt aan" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="26"><span class="step-num" aria-hidden="true">25</span><img src="images/prostration/step-25.svg" alt="De linkerhand draait op haar rand op de vloer" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">draaien</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="27"><span class="step-num" aria-hidden="true">26</span><img src="images/prostration/step-26.svg" alt="De linkerhand rijst van de vloer terwijl de rug zich opricht" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tillen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="28"><span class="step-num" aria-hidden="true">27</span><img src="images/prostration/step-27.svg" alt="Beide handpalmen tegen elkaar bij de borst, weer rechtop knielend" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="29"><span class="step-num" aria-hidden="true">28</span><img src="images/prostration/step-28.svg" alt="Beide handen rijzen van de borst naar het voorhoofd" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">tillen</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="30"><span class="step-num" aria-hidden="true">29</span><img src="images/prostration/step-29.svg" alt="De duimnagels raken het voorhoofd" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="31"><span class="step-num" aria-hidden="true">30</span><img src="images/prostration/step-30.svg" alt="Beide handen zakken van het voorhoofd naar de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zakken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="32"><span class="step-num" aria-hidden="true">31</span><img src="images/prostration/step-31.svg" alt="Beide handpalmen tegen elkaar bij de borst" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+        </ol>
+        <p class="nb-st-note">Herhaal 12 tot 31 nog twee keer, zodat er in totaal drie prostraties zijn, en ga dan verder met 32.</p>
+      </section>
+      <section class="nb-st-sec" id="sec-4" data-sec="Afsluiten">
+        <h2 class="nb-st-h">Afsluiten</h2>
+        <ol class="nb-st-grid">
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="33"><span class="step-num" aria-hidden="true">32</span><img src="images/prostration/step-32.svg" alt="De rechterhand zakt van de borst naar de dij" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zakken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="34"><span class="step-num" aria-hidden="true">33</span><img src="images/prostration/step-33.svg" alt="De rechterhand raakt de dij, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="35"><span class="step-num" aria-hidden="true">34</span><img src="images/prostration/step-34.svg" alt="Van voren gezien: de rechterhand plat, palm omlaag op de dij" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">bedekken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="36"><span class="step-num" aria-hidden="true">35</span><img src="images/prostration/step-35.svg" alt="De linkerhand zakt naar de andere dij" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zakken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="37"><span class="step-num" aria-hidden="true">36</span><img src="images/prostration/step-36.svg" alt="De linkerhand raakt de dij, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">aanraken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="38"><span class="step-num" aria-hidden="true">37</span><img src="images/prostration/step-37.svg" alt="Van voren gezien: beide handen plat, palmen omlaag op de dijen" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">bedekken</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="39"><span class="step-num" aria-hidden="true">38</span><img src="images/prostration/step-38.svg" alt="Stil knielend, beide handen met de palm omlaag op de dijen" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">zitten</span></button></li>
+          <li class="nb-st-plate"><button class="nb-st-pick" type="button" data-i="40"><span class="step-num" aria-hidden="true">39</span><img src="images/prostration/step-39.svg" alt="Vanuit knielen omhoog komen naar staan" width="352" height="294" loading="lazy" decoding="async"><span class="step-word">staan</span></button></li>
+        </ol>
+      </section>
+    </div>
+    <p class="nb-credit nb-st-credit">Deze instructies volgen de meditatiehandleiding van Yuttadhammo Bhikkhu. De techniek is de stijl van inzichtmeditatie zoals onderwezen door Ajahn Tong Sirimangalo, waarbij de ervaring stil en in eenvoudige taal wordt genoteerd zoals ze zich voordoet. De tekeningen op deze pagina zijn van het team van <a href="https://www.sirimangalo.org/">sirimangalo.org</a> en worden gebruikt met hun toestemming.</p>
   </div>
-
-  <section class="section">
-    <h2 class="section-label">Knielen</h2>
-    <ul class="step-set">
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">A</span><img src="images/prostration/kneel-a.svg" alt="Knielend met de tenen onder u, terugzittend op de hielen" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tenen onder u</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">B</span><img src="images/prostration/kneel-b.svg" alt="Knielend met de bovenkant van de voeten plat op de vloer, erop zittend" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">of zittend op de voeten</span>
-      </li>
-    </ul>
-    <p class="step-note">Beide houdingen zijn correct. Kies de houding die uw knieën en enkels toelaten.</p>
-  </section>
-
-  <section class="section">
-    <h2 class="section-label">Naar beneden</h2>
-    <ul class="step-set">
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">1</span><img src="images/prostration/step-01.svg" alt="Rechtop knielend, beide handen met de palm omlaag op de dijen" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zitten</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">2</span><img src="images/prostration/step-02.svg" alt="De rechterhand een kwartslag gedraaid, op haar rand op de dij" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">draaien</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">3</span><img src="images/prostration/step-03.svg" alt="De rechterhand rijst van de dij naar de borst, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tillen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">4</span><img src="images/prostration/step-04.svg" alt="De rechterhand bij de borst, de duim raakt aan" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">5</span><img src="images/prostration/step-05.svg" alt="De linkerhand op haar rand gedraaid op de dij" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">draaien</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">6</span><img src="images/prostration/step-06.svg" alt="De linkerhand rijst naar de rechter bij de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tillen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">7</span><img src="images/prostration/step-07.svg" alt="Beide handpalmen tegen elkaar bij de borst, duimen raken aan" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">8</span><img src="images/prostration/step-08.svg" alt="Beide handen rijzen samen van de borst naar het voorhoofd" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tillen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">9</span><img src="images/prostration/step-09.svg" alt="De duimnagels raken het voorhoofd, handpalmen tegen elkaar" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">10</span><img src="images/prostration/step-10.svg" alt="Beide handen zakken van het voorhoofd terug naar de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zakken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">11</span><img src="images/prostration/step-11.svg" alt="Beide handpalmen weer tegen elkaar bij de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">12</span><img src="images/prostration/step-12.svg" alt="De rug buigt voorover tot ongeveer vijfenveertig graden, handen bij de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">buigen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">13</span><img src="images/prostration/step-13.svg" alt="De rechterhand zakt naar de vloer voor de knieën, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zakken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">14</span><img src="images/prostration/step-14.svg" alt="De rand van de rechterpink raakt de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">15</span><img src="images/prostration/step-15.svg" alt="De rechterhand draait plat, palm omlaag op de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">bedekken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">16</span><img src="images/prostration/step-16.svg" alt="De linkerhand zakt naar de vloer naast de rechter" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zakken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">17</span><img src="images/prostration/step-17.svg" alt="De rand van de linkerpink raakt de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">18</span><img src="images/prostration/step-18.svg" alt="De linkerhand draait plat, palm omlaag naast de rechter" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">bedekken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">19</span><img src="images/prostration/step-19.svg" alt="De rug buigt verder, het voorhoofd komt omlaag naar de duimen" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">buigen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">20</span><img src="images/prostration/step-20.svg" alt="Het voorhoofd rust op de duimen, beide handpalmen plat op de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-    </ul>
-  </section>
-
-  <section class="section">
-    <h2 class="section-label">Omhoog komen</h2>
-    <ul class="step-set">
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">21</span><img src="images/prostration/step-21.svg" alt="De rug richt op tot de armen recht zijn, handen nog op de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">oprichten</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">22</span><img src="images/prostration/step-22.svg" alt="De rechterhand draait op haar rand op de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">draaien</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">23</span><img src="images/prostration/step-23.svg" alt="De rechterhand rijst van de vloer naar de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tillen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">24</span><img src="images/prostration/step-24.svg" alt="De rechterhand bij de borst, de duim raakt aan" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">25</span><img src="images/prostration/step-25.svg" alt="De linkerhand draait op haar rand op de vloer" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">draaien</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">26</span><img src="images/prostration/step-26.svg" alt="De linkerhand rijst van de vloer terwijl de rug zich opricht" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tillen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">27</span><img src="images/prostration/step-27.svg" alt="Beide handpalmen tegen elkaar bij de borst, weer rechtop knielend" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">28</span><img src="images/prostration/step-28.svg" alt="Beide handen rijzen van de borst naar het voorhoofd" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">tillen</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">29</span><img src="images/prostration/step-29.svg" alt="De duimnagels raken het voorhoofd" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">30</span><img src="images/prostration/step-30.svg" alt="Beide handen zakken van het voorhoofd naar de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zakken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">31</span><img src="images/prostration/step-31.svg" alt="Beide handpalmen tegen elkaar bij de borst" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-    </ul>
-    <p class="step-note">Herhaal 12 tot 31 nog twee keer, zodat er in totaal drie prostraties zijn, en ga dan verder met 32.</p>
-  </section>
-
-  <section class="section">
-    <h2 class="section-label">Afsluiten</h2>
-    <ul class="step-set">
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">32</span><img src="images/prostration/step-32.svg" alt="De rechterhand zakt van de borst naar de dij" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zakken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">33</span><img src="images/prostration/step-33.svg" alt="De rechterhand raakt de dij, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">34</span><img src="images/prostration/step-34.svg" alt="Van voren gezien: de rechterhand plat, palm omlaag op de dij" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">bedekken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">35</span><img src="images/prostration/step-35.svg" alt="De linkerhand zakt naar de andere dij" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zakken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">36</span><img src="images/prostration/step-36.svg" alt="De linkerhand raakt de dij, rechtop gehouden" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">aanraken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">37</span><img src="images/prostration/step-37.svg" alt="Van voren gezien: beide handen plat, palmen omlaag op de dijen" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">bedekken</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">38</span><img src="images/prostration/step-38.svg" alt="Stil knielend, beide handen met de palm omlaag op de dijen" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">zitten</span>
-      </li>
-      <li class="step-plate">
-        <span class="step-num" aria-hidden="true">39</span><img src="images/prostration/step-39.svg" alt="Vanuit knielen omhoog komen naar staan" width="352" height="294" loading="lazy" decoding="async">
-        <span class="step-word">staan</span>
-      </li>
-    </ul>
-  </section>
-
-  <p class="sheet-credit">Deze instructies volgen de meditatiehandleiding van Yuttadhammo Bhikkhu. De techniek is de stijl van inzichtmeditatie zoals onderwezen door Ajahn Tong Sirimangalo, waarbij de ervaring stil en in eenvoudige taal wordt genoteerd zoals ze zich voordoet. De tekeningen op deze pagina zijn van het team van <a href="https://www.sirimangalo.org/">sirimangalo.org</a> en worden gebruikt met hun toestemming.</p>
-
   </main>
 
   <footer class="site-footer">
@@ -277,6 +159,9 @@
     </noscript>
   </footer>
 
+
   <script src="../js/menu.js?v=3"></script>
+  <script src="js/notebook/sheet.js?v=5"></script>
+  <script src="js/notebook/steps.js?v=5"></script>
 </body>
 </html>

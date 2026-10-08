@@ -41,6 +41,9 @@ _spec.loader.exec_module(_validator)
 declaration = _validator.declaration
 
 CONFIG = os.path.join(ROOT, "practice", "js", "suttas-config.js")
+# "Elsewhere in the notebook": the same data the room pages read.
+CROSSLINKS_PATH = os.path.join(ROOT, "practice", "data", "crosslinks.json")
+CROSSLINKS = {}
 ARCHIVE = os.path.join(ROOT, "practice", "reflections.html")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 
@@ -201,44 +204,74 @@ NAV = """          <a href="../../">Home</a>
           <a href="../../note.html">A note from me</a>
           <a href="../../contact.html">Contact</a>"""
 
-# The room's door drawing, small, beside the title (October 2026); it draws
-# once on arrival (practice.css), then stays still.
-ICON = ('<svg class="room-title-icon" viewBox="0 0 120 170" aria-hidden="true">'
-        '<rect pathLength="1" x="16" y="12" width="88" height="146" rx="3"></rect>'
-        '<path pathLength="1" d="M32 50 L88 50"></path>'
-        '<path pathLength="1" d="M32 66 L88 66"></path>'
-        '<path pathLength="1" d="M32 82 L66 82"></path>'
-        '<circle class="fill-dot" cx="32" cy="106" r="3"></circle>'
-        '<path pathLength="1" d="M44 106 L88 106"></path></svg>')
+# The Reflections notebook, small, above the title (October 2026): the same
+# drawing as on the Practice hub's shelf. It inks itself in on arrival
+# (notebook.css), then stays still.
+ICON = ('<svg class="nb-art nb-art-small ink" width="60" height="50" viewBox="0 0 120 100" stroke-width="2.2" '
+        'aria-hidden="true" focusable="false" style="--d: .1s">'
+        '<rect pathLength="1" x="30" y="24" width="54" height="76" rx="3"></rect>'
+        '<path class="open" pathLength="1" d="M38 24 L38 100"></path>'
+        '<rect class="open" pathLength="1" x="50" y="40" width="24" height="12"></rect>'
+        '<rect class="moss" pathLength="1" x="92" y="44" width="6" height="56" rx="3"></rect></svg>')
+
+NUMBERS = ["None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+           "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen",
+           "Nineteen", "Twenty"]
 
 
-def nav_markup(previous, following, section_title):
-    """Previous and next inside the same section.
+def in_words(n):
+    return NUMBERS[n] if n < len(NUMBERS) else str(n)
 
-    Deliberately within the section and not across the whole archive: the
-    anthology section has a reading order and the other one does not, and
-    walking a reader out of one into the other would imply a sequence that
-    was never there.
-    """
+
+def sentences(text):
+    return [s for s in re.split(r"(?<=[.!?])\s+(?=[A-Z“\"'‘])", text.strip()) if s]
+
+
+def opening(entry, at_least=200):
+    """The opening of the note, in whole sentences and word for word: what
+    the Reflections room shows in its panel before the reader goes on to the
+    page. Never the sutta passage: that belongs to the page itself."""
+    first = re.split(r"\n\s*\n", entry["note"].strip())[0]
+    text = html.unescape(strip_tags(first))
+    out = []
+    for sentence in sentences(text):
+        out.append(sentence)
+        if len(" ".join(out)) >= at_least:
+            break
+    return " ".join(out)
+
+
+def also_markup(key, indent, base=""):
+    """Elsewhere in the notebook, from practice/data/crosslinks.json."""
+    links = CROSSLINKS.get(key) or []
+    if not links:
+        return ""
+    rows = [indent + '<div class="nb-also">', indent + '  <h2 class="nb-also-h">Elsewhere in the notebook</h2>']
+    for link in links:
+        href = link["href"]
+        if base and not re.match(r"^(?:[a-z]+:|/|#)", href):
+            href = base + href
+        rows.append(indent + '  <a href="' + esc(href) + '"><span class="nb-also-t">' + esc(link["t"])
+                    + '</span><span class="nb-also-r">' + esc(link["room"]) + "</span></a>")
+    rows.append(indent + "</div>")
+    return "\n".join(rows) + "\n"
+
+
+def nav_markup(previous, total):
+    """Before it in the book (the anthology only, where there is one), and
+    the archive with the count of published Reflections."""
     rows = []
     if previous:
-        rows.append('      <a class="reflection-step reflection-step-prev" rel="prev" href="' + esc(previous["slug"]) + '.html">'
-                    '<span class="reflection-step-label mono">Previous</span>'
-                    '<span class="reflection-step-title">' + esc(previous["title"]) + "</span></a>")
-    if following:
-        rows.append('      <a class="reflection-step reflection-step-next" rel="next" href="' + esc(following["slug"]) + '.html">'
-                    '<span class="reflection-step-label mono">Next</span>'
-                    '<span class="reflection-step-title">' + esc(following["title"]) + "</span></a>")
-    inner = "\n".join(rows)
-    return ('    <nav class="reflection-nav" aria-label="' + esc(section_title) + '">\n'
-            + (inner + "\n" if inner else "")
-            + '      <a class="reflection-step reflection-step-all" href="../reflections.html">'
-              '<span class="reflection-step-label mono">All</span>'
-              '<span class="reflection-step-title">Reflections</span></a>\n'
-            + "    </nav>\n")
+        rows.append('      <a class="nb-ref-step" rel="prev" href="' + esc(previous["slug"]) + '.html">'
+                    '<span class="nb-ref-step-l">&larr; Before it in the book</span>'
+                    '<span class="nb-ref-step-t">' + esc(previous["title"]) + "</span></a>")
+    rows.append('      <a class="nb-ref-step nb-ref-step-all" href="../reflections.html">'
+                '<span class="nb-ref-step-l">All reflections &rarr;</span>'
+                '<span class="nb-ref-step-t">' + in_words(total) + " so far</span></a>")
+    return ('    <nav class="nb-ref-nav" aria-label="More reflections">\n' + "\n".join(rows) + "\n    </nav>\n")
 
 
-def page_markup(entry, previous, following, section, css_version, base_version, menu_version):
+def page_markup(entry, previous, total, section, css_version, base_version, menu_version, draw_version="1"):
     url = ORIGIN + "/practice/reflections/" + entry["slug"] + ".html"
     title = esc(entry["title"]) + " &middot; Reflections &middot; Faisal Henar"
     desc = esc(description(entry))
@@ -291,7 +324,8 @@ def page_markup(entry, previous, following, section, css_version, base_version, 
     # base.css first, then the section's own: the shared chrome is drawn by
     # the first and re-tuned by the second, so the order is load-bearing.
     parts.append('<link rel="stylesheet" href="/css/base.css?v=' + base_version + '">')
-    parts.append('<link rel="stylesheet" href="../css/practice.css?v=' + css_version + '">')
+    parts.append('<link rel="stylesheet" href="../css/notebook.css?v=' + css_version + '">')
+    parts.append('<script src="../js/notebook/draw.js?v=' + draw_version + '"></script>')
     parts.append('<script type="application/ld+json">')
     parts.extend(ld)
     parts.append("</script>")
@@ -299,7 +333,7 @@ def page_markup(entry, previous, following, section, css_version, base_version, 
     parts.append("<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"68bb7041afa74c9ea4d36891d27ae977\"}'></script>")
     parts.append("<!-- End Cloudflare Web Analytics -->")
     parts.append("</head>")
-    parts.append('<body class="reflection-page">')
+    parts.append('<body class="nb-page nb-reflection-page">')
     parts.append("")
     parts.append('  <a class="skip-link" href="#main">Skip to content</a>')
     parts.append("")
@@ -316,27 +350,34 @@ def page_markup(entry, previous, following, section, css_version, base_version, 
     parts.append("    </div>")
     parts.append("  </header>")
     parts.append("")
-    parts.append('  <main id="main" tabindex="-1">')
-    parts.append('  <a class="back-link" href="../reflections.html">&larr; Reflections</a>')
-    parts.append('  <h1 class="room-title"><span>' + esc(entry["title"]) + "</span>" + ICON + "</h1>")
-    if sub:
-        parts.append('  <p class="reflection-subtitle reflection-page-subtitle">' + sub + "</p>")
-    meta = [esc(section["title"])]
-    if struct:
-        meta.append(struct)
-    meta.append(fmt_date(entry["added"]))
-    parts.append('  <p class="reflection-structural reflection-page-meta mono">' + " &middot; ".join(meta) + "</p>")
-    parts.append("")
-    parts.append('    <article class="section reflection-article">')
-    body = excerpt_markup(entry, "      ") + note_markup(entry, "      ")
-    parts.append(body.rstrip("\n"))
-    if url_source:
-        parts.append('      <a class="entry-link" href="' + esc(url_source) + '" target="_blank" rel="noopener">'
-                     + source_label(url_source) + " &rarr;</a>")
-    parts.append("    </article>")
-    parts.append("")
-    parts.append(nav_markup(previous, following, section["title"]).rstrip("\n"))
-    parts.append("")
+    parts.append('  <main id="main" class="nb-main" tabindex="-1">')
+    parts.append('  <article class="nb-ref">')
+    top = esc(section["title"]) + (" &middot; " + struct if struct else "")
+    parts.append('    <div class="nb-topline"><a class="nb-back" href="../reflections.html">&larr; Reflections</a><span>' + top + "</span></div>")
+    parts.append("    " + ICON)
+    parts.append('    <h1 class="nb-ref-h1">' + esc(entry["title"]) + "</h1>")
+    parts.append('    <div class="nb-ref-meta fade-in" style="--d: .7s">' + (sub + " &middot; " if sub else "") + fmt_date(entry["added"]) + "</div>")
+    if entry.get("excerpt"):
+        lines = [line.strip() for line in entry["excerpt"].split("\n") if line.strip()]
+        parts.append('    <figure class="nb-ref-passage fade-in" style="--d: .9s">')
+        parts.append('      <blockquote class="reflections-excerpt">' + "<br>\n".join(lines) + "</blockquote>")
+        credit = []
+        if entry.get("translator"):
+            credit.append("Translated by " + esc(TRANSLATORS.get(entry["translator"], entry["translator"])))
+        if url_source:
+            label = "read the whole sutta" if source_label(url_source) == "Read on SuttaCentral" else "read the source"
+            credit.append('<a href="' + esc(url_source) + '" target="_blank" rel="noopener">' + label + '<span aria-hidden="true">&#8239;↗</span></a>')
+        if credit:
+            parts.append('      <figcaption class="nb-ref-credit">' + " &middot; ".join(credit) + "</figcaption>")
+        parts.append("    </figure>")
+    parts.append('    <div class="nb-ref-note fade-in" style="--d: 1.1s">')
+    parts.append(note_markup(entry, "      ").rstrip("\n"))
+    parts.append("    </div>")
+    also = also_markup("reflections.html#" + entry["slug"], "    ", "../")
+    if also:
+        parts.append(also.rstrip("\n"))
+    parts.append(nav_markup(previous, total).rstrip("\n"))
+    parts.append("  </article>")
     parts.append("  </main>")
     parts.append("")
     parts.append('  <footer class="site-footer">')
@@ -403,7 +444,7 @@ def withdrawn_markup(slug, css_version, base_version, menu_version):
         '<meta property="og:image:width" content="1200">',
         '<meta property="og:image:height" content="630">',
         '<link rel="stylesheet" href="/css/base.css?v=' + base_version + '">',
-        '<link rel="stylesheet" href="../css/practice.css?v=' + css_version + '">',
+        '<link rel="stylesheet" href="../css/notebook.css?v=' + css_version + '">',
         "</head>",
         '<body class="reflection-page">',
         "",
@@ -420,27 +461,47 @@ def withdrawn_markup(slug, css_version, base_version, menu_version):
 
 
 def archive_markup(groups, latest=None):
-    """latest: the slug of the most recently published entry, which gets a
-    small "Latest" label in place; the order of the list is unchanged."""
+    """The Reflections room (October 2026): a list on the left, the chosen
+    Reflection in a panel on the right, opening in place on a phone. Each
+    item carries its reference line, date, the opening of the note and the
+    two links; never the sutta passage, which stays on the page itself.
+
+    latest: the slug of the most recently published entry, which gets a
+    small "Latest" label in place; the order of the list is unchanged. The
+    old #r-<id> anchors of the accordion archive open the same item."""
     out = []
     for group in groups:
-        out.append('    <section class="section">')
-        out.append('      <h2 class="section-label">' + esc(group["section"]["title"]) + "</h2>")
-        out.append('      <p class="section-dek">' + group["section"]["note"] + "</p>")
-        out.append('      <ol class="reflection-index">')
+        key = group["key"]
+        out.append('        <section class="nb-group" id="' + esc(key) + '">')
+        out.append('          <h2 class="nb-group-h">' + esc(group["section"]["title"]) + "</h2>")
+        out.append('          <p class="nb-group-d">' + group["section"]["note"] + "</p>")
+        out.append('          <ul class="nb-rows">')
         for entry in group["entries"]:
+            slug = esc(entry["slug"])
             line = archive_reference(entry)
-            out.append('        <li class="reflection-index-item">')
-            out.append('          <a href="reflections/' + esc(entry["slug"]) + '.html">')
-            mark = (' <span class="reflection-index-latest mono">Latest</span>'
-                    if entry["slug"] == latest else "")
-            out.append('            <span class="reflection-index-title">' + esc(entry["title"]) + mark + "</span>")
-            out.append('            <span class="reflection-index-meta mono">'
-                       + (line + " &middot; " if line else "") + fmt_date(entry["added"]) + "</span>")
-            out.append("          </a>")
-            out.append("        </li>")
-        out.append("      </ol>")
-        out.append("    </section>")
+            mark = ("Latest &middot; " if entry["slug"] == latest else "") + line
+            out.append('            <li class="nb-item" id="' + slug + '" data-alias="r-' + esc(entry["id"]) + '">')
+            out.append('              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-' + slug + '">'
+                       '<span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">' + esc(entry["title"]) + "</span></span>"
+                       '<span class="nb-row-r">' + mark + '<span class="nb-sign" aria-hidden="true">+</span></span></button>')
+            out.append('              <div class="nb-detail" id="d-' + slug + '" hidden>')
+            out.append('                <div class="nb-d-where">' + fmt_date(entry["added"]) + "</div>")
+            out.append('                <div class="nb-d-sec">' + esc(group["section"]["title"]) + "</div>")
+            out.append('                <h3 class="nb-d-t">' + esc(entry["title"]) + "</h3>")
+            by = [b for b in (subtitle(entry), structural(entry)) if b]
+            if by:
+                out.append('                <div class="nb-d-by">' + " &middot; ".join(by) + "</div>")
+            out.append('                <p class="nb-d-text">' + esc(opening(entry)) + "</p>")
+            links = ['<a class="nb-btn" href="reflections/' + slug + '.html">Read the reflection</a>']
+            url = source_url(entry)
+            if url and source_label(url) == "Read on SuttaCentral":
+                links.append('<a class="nb-btn" href="' + esc(url) + '" target="_blank" rel="noopener">The sutta on SuttaCentral'
+                             '<span class="ext" aria-hidden="true">&#8239;↗</span></a>')
+            out.append('                <div class="nb-d-links">' + "".join(links) + "</div>")
+            out.append("              </div>")
+            out.append("            </li>")
+        out.append("          </ul>")
+        out.append("        </section>")
     return "\n".join(out)
 
 
@@ -514,12 +575,21 @@ def main():
     # page, or validate-site.py reports the stylesheet at two versions. They
     # are read from the archive page rather than written here, so bumping a
     # version is still one edit followed by a run of this tool.
-    css_version = re.search(r'css/practice\.css\?v=(\d+)', archive_text)
+    css_version = re.search(r'css/notebook\.css\?v=(\d+)', archive_text)
     base_version = re.search(r'css/base\.css\?v=(\d+)', archive_text)
     menu_version = re.search(r'js/menu\.js\?v=(\d+)', archive_text)
     if not css_version or not base_version or not menu_version:
         raise SystemExit("ERROR: could not read the asset versions from practice/reflections.html.")
     css_version, base_version, menu_version = css_version.group(1), base_version.group(1), menu_version.group(1)
+    draw_version = re.search(r'js/notebook/draw\.js\?v=(\d+)', archive_text)
+    draw_version = draw_version.group(1) if draw_version else "1"
+    global CROSSLINKS
+    try:
+        import json
+        with open(CROSSLINKS_PATH, encoding="utf-8") as handle:
+            CROSSLINKS = json.load(handle)
+    except FileNotFoundError:
+        CROSSLINKS = {}
 
     groups = page_order(books, published)
 
@@ -532,7 +602,8 @@ def main():
             following = entries[position + 1] if position + 1 < len(entries) else None
             name = entry["slug"] + ".html"
             wanted.add(name)
-            markup = page_markup(entry, previous, following, group["section"], css_version, base_version, menu_version)
+            markup = page_markup(entry, previous if group["section"].get("order") == "structural" else None,
+                                 sum(len(g["entries"]) for g in groups), group["section"], css_version, base_version, menu_version, draw_version)
             path = os.path.join(OUT_DIR, name)
             if not os.path.exists(path) or read(path) != markup:
                 write(path, markup)
@@ -550,7 +621,16 @@ def main():
     # Same rule as the hub's "Latest:" line (render-latest-reflection.js):
     # the newest `added` date, and on a tie the entry earlier in the config.
     newest = min(published, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
-    write(ARCHIVE, splice(archive_text, archive_markup(groups, newest and newest.get("slug")), "practice/reflections.html"))
+    archive_text = splice(archive_text, archive_markup(groups, newest and newest.get("slug")), "practice/reflections.html")
+    if newest:
+        # The room opens on the newest Reflection, and its footer says when
+        # the room last changed: both follow the config, not the markup.
+        archive_text = re.sub(r'(<div class="nb-room[^>]*?) data-open="[^"]*"',
+                              lambda m: m.group(1) + ' data-open="' + newest["slug"] + '"', archive_text)
+        month = datetime.date.fromisoformat(newest["added"]).strftime("%B %Y")
+        archive_text = re.sub(r'(<time data-room-changed datetime=")[^"]*(">)[^<]*(</time>)',
+                              lambda m: m.group(1) + newest["added"][:7] + m.group(2) + month + m.group(3), archive_text)
+    write(ARCHIVE, archive_text)
     write(SITEMAP, splice(read(SITEMAP), sitemap_markup(groups), "sitemap.xml"))
 
     total = sum(len(g["entries"]) for g in groups)
