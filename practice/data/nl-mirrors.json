@@ -35,6 +35,11 @@
       "source": "practice/sati-timer-web.html",
       "mirror": "practice/sati-timer-web-nl.html",
       "synced_to": "e713dd427df031e899d16692339b0a119cdd47a2"
+    },
+    {
+      "source": "note.html",
+      "mirror": "note-nl.html",
+      "synced_to": "cb1b00ea00fb988cc9219102722e75c8de399316"
     }
   ]
 }

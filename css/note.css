@@ -64,6 +64,25 @@
   color: var(--accent);
 }
 
+/* Language switch on note.html / note-nl.html. Same look as the
+   English / Nederlands switch on the meditation sheets (.nb-lg in
+   practice/css/notebook.css), but plain links between the two pages. */
+.note-lgs{ display: inline-flex; margin: 0 0 40px; }
+.note-lg{
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--fg);
+  border: 1px solid var(--fg);
+  text-decoration: none;
+}
+.note-lg + .note-lg{ border-left: 0; }
+.note-lg:hover{ background: var(--bg-raised); }
+.note-lg[aria-current="page"]{ background: var(--fg); color: var(--bg); }
+
 @media (max-width: 640px){
   .note-top, .note{ padding-left: 20px; padding-right: 20px; }
 }
