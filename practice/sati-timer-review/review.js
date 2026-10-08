@@ -112,6 +112,77 @@ function chapRefs(c) {
   return c.refs && c.refs.length ? `<div class="chrefs">${c.refs.map(([l, u]) => ext(u, l)).join('')}</div>` : '';
 }
 
+/* ---------- screenshots ---------- */
+// Every item carries the app screen it appears on (item.shot = {s: name, b: [x, y, w, h] | null},
+// in the 600 px wide image). The card shows a window onto that screen with the text marked;
+// a tap opens the whole screen.
+function shotPreview(it) {
+  const sh = it.shot, meta = sh && DATA.shots && DATA.shots[sh.s];
+  if (!meta) return '';
+  const lead = it.kind === 'term' ? 'Ví dụ trong ứng dụng' : 'Trên màn hình';
+  return `<figure class="shot" data-act="zoom" data-id="${esc(it.id)}">
+    <div class="shot-win" data-h="${meta.h}" data-box="${sh.b ? sh.b.join(',') : ''}">
+      <img src="shots/${esc(sh.s)}.webp" alt="${esc(meta.label)}" width="${meta.w}" height="${meta.h}" loading="lazy">
+      ${sh.b ? '<i class="hl"></i>' : ''}
+    </div>
+    <figcaption><span>${lead}: ${esc(meta.label)}${meta.mock ? ' (hình minh họa)' : ''}</span><span class="zoom">Phóng to</span></figcaption>
+  </figure>`;
+}
+function layoutShots() {
+  document.querySelectorAll('.shot-win').forEach(win => {
+    const img = win.querySelector('img'), hl = win.querySelector('.hl');
+    const W = win.clientWidth, k = W / 600, ih = +win.dataset.h * k;
+    const H = Math.min(ih, Math.round(W * 0.62));
+    win.style.height = H + 'px';
+    const b = win.dataset.box ? win.dataset.box.split(',').map(Number) : null;
+    let ty = 0;
+    if (b) ty = Math.max(H - ih, Math.min(0, H / 2 - (b[1] + b[3] / 2) * k));
+    img.style.transform = `translateY(${ty}px)`;
+    if (hl && b) Object.assign(hl.style, { left: (b[0] * k - 5) + 'px', top: (b[1] * k + ty - 4) + 'px', width: (b[2] * k + 10) + 'px', height: (b[3] * k + 8) + 'px' });
+  });
+}
+window.addEventListener('resize', layoutShots);
+
+/** Full screen, scrolled to the marked text. boxes: list of [x, y, w, h]. */
+function openViewer(name, boxes) {
+  const meta = DATA.shots[name];
+  const el = document.createElement('div');
+  el.className = 'viewer';
+  el.innerHTML = `<div class="viewer-bar"><span>${esc(meta.label)}${meta.mock ? ' (hình minh họa)' : ''}</span><button class="iconbtn" data-close="1" aria-label="Đóng">✕</button></div>
+    <div class="viewer-scroll"><div class="viewer-page"><img src="shots/${esc(name)}.webp" alt="${esc(meta.label)}">${boxes.map(() => '<i class="hl"></i>').join('')}</div></div>`;
+  document.body.appendChild(el);
+  document.body.style.overflow = 'hidden';
+  const page = el.querySelector('.viewer-page'), sc = el.querySelector('.viewer-scroll');
+  const place = () => {
+    const k = page.clientWidth / 600;
+    el.querySelectorAll('.viewer-page .hl').forEach((hl, i) => {
+      const b = boxes[i];
+      Object.assign(hl.style, { left: (b[0] * k - 5) + 'px', top: (b[1] * k - 4) + 'px', width: (b[2] * k + 10) + 'px', height: (b[3] * k + 8) + 'px' });
+    });
+    if (boxes.length) sc.scrollTop = Math.max(0, boxes[0][1] * k - sc.clientHeight / 2.5);
+  };
+  const img = el.querySelector('img');
+  if (img.complete) place(); else img.addEventListener('load', place);
+  const close = () => { el.remove(); document.body.style.overflow = ''; };
+  el.addEventListener('click', ev => { if (ev.target.closest('[data-close]')) close(); });
+  document.addEventListener('keydown', function esc_(ev) { if (ev.key === 'Escape') { close(); document.removeEventListener('keydown', esc_); } });
+}
+
+/* ---------- the tour ---------- */
+function vTour() {
+  const t = DATA.tour, i = S.tourPos || 0, step = t[i], meta = DATA.shots[step.s];
+  const last = i === t.length - 1;
+  return `<div class="wrap fade tour">
+    <div class="tour-top"><span class="small muted">Giới thiệu ứng dụng · ${i + 1} / ${t.length}</span>
+      <button class="link" data-act="tourend">Bỏ qua</button></div>
+    <div class="phone"><img src="shots/tour-${esc(step.s)}.webp" alt="${esc(meta.label)}"></div>
+    <p class="tour-text">${esc(step.text)}</p>
+    <div class="dots">${t.map((_, j) => `<i class="${j === i ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="row"><button class="btn ghost" data-act="tourprev" ${i === 0 ? 'disabled' : ''}>‹ Trước</button>
+      <button class="btn" data-act="${last ? 'tourend' : 'tournext'}">${last ? 'Bắt đầu xem lại' : 'Tiếp ›'}</button></div>
+  </div>`;
+}
+
 /* ---------- views ---------- */
 function topbar(title, opts = {}) {
   const pct = opts.pct == null ? null : Math.round(opts.pct * 100);
@@ -136,7 +207,9 @@ function render() {
   else if (S.view === 'quick') app.innerHTML = vQuick();
   else if (S.view === 'card') app.innerHTML = vCard();
   else if (S.view === 'chapdone') app.innerHTML = vChapDone();
+  else if (S.view === 'tour') app.innerHTML = vTour();
   setSave(S.saveState);
+  layoutShots();
   window.scrollTo(0, 0);
   const f = $('[autofocus]'); if (f) f.focus();
 }
@@ -172,6 +245,9 @@ function vList() {
   const all = work().reduce((n, c) => n + c.items.length, 0), done = work().reduce((n, c) => n + doneIn(c), 0);
   return topbar('Các phần', { pct: done / all }) + `<div class="wrap fade">
     <p class="muted" style="margin-top:16px">${S.name ? 'Xin chào ' + esc(S.name) + '. ' : ''}Chọn một phần để bắt đầu. Làm theo thứ tự nào cũng được, nhưng phần đầu tiên nên xem trước.</p>
+    ${DATA.tour ? `<button class="card chap tourcard" data-act="tour"><div style="display:flex;gap:14px;align-items:center">
+      <img src="shots/tour-home.webp" alt="" width="54" height="117"><div><h3>Giới thiệu ứng dụng</h3>
+      <div class="muted small">Xem nhanh các màn hình của Sati Timer, khoảng 2 phút.</div></div></div></button>` : ''}
     ${CHAPS.map((c, i) => {
       const d = doneIn(c), t = c.items.length, full = d === t;
       return `<button class="card chap ${full ? 'done' : ''}" data-act="open" data-ch="${i}">
@@ -194,7 +270,8 @@ function vQuick() {
       <p class="muted small">Đây là những chữ ngắn như tên nút. Chạm vào chữ nào cần sửa. Những chữ còn lại sẽ được ghi là ổn.</p>
       ${c.quick.map((i, n) => {
         const f = flagged[i.id];
-        const head = n === 0 || c.quick[n - 1].where !== i.where ? `<div class="qhead">${esc(i.where)}</div>` : '';
+        const head = n === 0 || c.quick[n - 1].where !== i.where
+          ? `<div class="qhead"><span>${esc(i.where)}</span>${i.shot ? `<button class="link qsee" data-act="zoomgroup" data-where="${esc(i.where)}">Xem màn hình</button>` : ''}</div>` : '';
         return head + `<div class="q ${f ? 'flag' : ''}" data-act="qflag" data-id="${esc(i.id)}">
           <div class="mark">${f ? ICON.pen : ICON.check}</div>
           <div class="t"><div class="qv">${rich(i.vi)}</div>
@@ -244,6 +321,7 @@ function vCard() {
       ${it.img ? `<img class="fig" src="../images/${esc(it.img)}" alt="" loading="lazy">` : ''}
       ${it.pali ? `<div class="pali">${esc(it.pali)}</div>` : ''}
       ${isFinal ? '' : `<div class="vi ${long ? 'long' : ''}">${rich(it.vi)}</div>
+      ${shotPreview(it)}
       <button class="en-toggle" data-act="en">${S.showEn ? 'Ẩn tiếng Anh' : 'Xem câu gốc tiếng Anh'}</button>
       ${S.showEn ? `<div class="en">${rich(it.en)}</div>` : ''}
       ${it.note ? `<div class="note"><b>Ghi chú:</b> ${rich(it.note)}</div>` : ''}`}
@@ -281,6 +359,7 @@ function openMenu() {
     <h2>Tùy chọn</h2>
     <label class="f">Cỡ chữ</label>
     <div class="sizes">${[[0.9, 'Nhỏ'], [1, 'Vừa'], [1.15, 'Lớn'], [1.3, 'Rất lớn']].map(([v, l]) => `<button data-fs="${v}" class="${S.fs == v ? 'on' : ''}">${l}</button>`).join('')}</div>
+    <div class="row" style="margin-top:16px"><button class="btn ghost" data-act="tour">Xem lại phần giới thiệu ứng dụng</button></div>
     <label class="f">Tài liệu tham khảo</label>
     ${refList()}
     <label class="f">Tiếp tục trên máy khác</label>
@@ -298,6 +377,7 @@ function openMenu() {
       el.querySelectorAll('[data-fs]').forEach(x => x.classList.toggle('on', x === b)); }
     if (b.dataset.copy) { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(() => { b.textContent = 'Đã sao chép'; }); }
     if (b.dataset.act === 'welcome') { el.remove(); S.view = 'welcome'; render(); }
+    if (b.dataset.act === 'tour') { el.remove(); }
   });
 }
 
@@ -331,7 +411,23 @@ document.addEventListener('click', ev => {
   const act = b.dataset.act, c = CHAPS[S.chap];
   if (act === 'start') {
     S.name = ($('#name').value || '').trim(); store.set('name', S.name);
-    S.view = 'list'; render(); return;
+    if (DATA.tour && !store.get('tourSeen', false)) { S.tourPos = 0; S.view = 'tour'; }
+    else S.view = 'list';
+    render(); return;
+  }
+  if (act === 'tour') { S.tourPos = 0; S.view = 'tour'; render(); return; }
+  if (act === 'tournext') { S.tourPos++; render(); return; }
+  if (act === 'tourprev') { S.tourPos = Math.max(0, S.tourPos - 1); render(); return; }
+  if (act === 'tourend') { store.set('tourSeen', true); S.view = 'list'; render(); return; }
+  if (act === 'zoom') {
+    const it = ITEMS[b.dataset.id]; if (it && it.shot) openViewer(it.shot.s, it.shot.b ? [it.shot.b] : []);
+    return;
+  }
+  if (act === 'zoomgroup') {
+    const group = c.quick.filter(q => q.where === b.dataset.where && q.shot);
+    const name = group[0].shot.s;
+    openViewer(name, group.filter(q => q.shot.s === name && q.shot.b).map(q => q.shot.b));
+    return;
   }
   if (act === 'menu') return openMenu();
   if (act === 'list') { S.view = 'list'; S.editing = null; render(); return; }

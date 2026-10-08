@@ -394,7 +394,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Cách gọi trong chùa và khóa thiền cho một lượt thực hành.",
 "quick": false,
-"v": "dcd4365a"
+"v": "dcd4365a",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+37,
+997,
+527,
+53
+]
+}
 },
 {
 "id": "term:meditation-timer",
@@ -405,7 +414,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Ứng dụng Làng Mai (Plum Village) dùng từ này.",
 "quick": false,
-"v": "ac6b9b26"
+"v": "ac6b9b26",
+"shot": {
+"s": "about",
+"b": [
+31,
+199,
+539,
+215
+]
+}
 },
 {
 "id": "term:mindfulness-bell",
@@ -416,7 +434,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Thuật ngữ quen thuộc của Làng Mai.",
 "quick": false,
-"v": "5a459310"
+"v": "5a459310",
+"shot": {
+"s": "mindful_off",
+"b": [
+110,
+36,
+308,
+39
+]
+}
 },
 {
 "id": "term:preset",
@@ -427,7 +454,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Không có từ tương đương gọn; nghĩa là cài đặt đã lưu sẵn để dùng lại.",
 "quick": false,
-"v": "6db046df"
+"v": "6db046df",
+"shot": {
+"s": "presets",
+"b": [
+85,
+27,
+301,
+43
+]
+}
 },
 {
 "id": "term:stage",
@@ -438,7 +474,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Một phần của thời thiền, ví dụ 10 phút kinh hành rồi 10 phút ngồi.",
 "quick": false,
-"v": "640ec861"
+"v": "640ec861",
+"shot": {
+"s": "home",
+"b": [
+224,
+608,
+152,
+37
+]
+}
 },
 {
 "id": "term:interval-bell",
@@ -449,7 +494,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Chuông reo đều đặn trong lúc thiền.",
 "quick": false,
-"v": "f0647e8e"
+"v": "f0647e8e",
+"shot": {
+"s": "home",
+"b": [
+55,
+923,
+173,
+32
+]
+}
 },
 {
 "id": "term:noting-to-note",
@@ -460,7 +514,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "“Niệm” cho chữ thầm ghi nhận, “ghi nhận” cho hành động nói chung. Theo sách.",
 "quick": false,
-"v": "cb102d13"
+"v": "cb102d13",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2001,
+539,
+178
+]
+}
 },
 {
 "id": "term:rising-falling",
@@ -471,7 +534,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 2.",
 "quick": false,
-"v": "e228ca68"
+"v": "e228ca68",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+168,
+539,
+68
+]
+}
 },
 {
 "id": "term:walking-meditation",
@@ -482,7 +554,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 3.",
 "quick": false,
-"v": "a9454abe"
+"v": "a9454abe",
+"shot": {
+"s": "presets",
+"b": [
+49,
+116,
+263,
+37
+]
+}
 },
 {
 "id": "term:stepping-right-left",
@@ -493,7 +574,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 3: niệm ba phần.",
 "quick": false,
-"v": "98e0448d"
+"v": "98e0448d",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+2520,
+539,
+325
+]
+}
 },
 {
 "id": "term:turning-walking",
@@ -504,7 +594,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 3.",
 "quick": false,
-"v": "328e0d9a"
+"v": "328e0d9a",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+1377,
+539,
+215
+]
+}
 },
 {
 "id": "term:mindful-prostration",
@@ -515,7 +614,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 5.",
 "quick": false,
-"v": "261681e0"
+"v": "261681e0",
+"shot": {
+"s": "instructions",
+"b": [
+55,
+1267,
+269,
+32
+]
+}
 },
 {
 "id": "term:turning-raising-touching-lowering-bending-covering-prostration",
@@ -526,7 +634,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 5.",
 "quick": false,
-"v": "9a2406e0"
+"v": "9a2406e0",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+1732,
+539,
+325
+]
+}
 },
 {
 "id": "term:raising-the-back-coming-up",
@@ -537,7 +654,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Sách dùng “ngước lên” khi nâng lưng; tiếng Anh dùng lại “raising”.",
 "quick": false,
-"v": "85cad4d1"
+"v": "85cad4d1",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+2966,
+340,
+22
+]
+}
 },
 {
 "id": "term:thinking-pain-happy-calm",
@@ -548,7 +674,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 1 và 2.",
 "quick": false,
-"v": "8fcb3ee0"
+"v": "8fcb3ee0",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2750,
+99,
+37
+]
+}
 },
 {
 "id": "term:distracted-doubting-confused",
@@ -559,7 +694,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách, chương 1 và 2.",
 "quick": false,
-"v": "46845d6d"
+"v": "46845d6d",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3525,
+539,
+178
+]
+}
 },
 {
 "id": "term:meditator",
@@ -570,7 +714,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Theo sách.",
 "quick": false,
-"v": "27c7c9ee"
+"v": "27c7c9ee",
+"shot": {
+"s": "sheet_walking",
+"b": [
+55,
+4725,
+490,
+156
+]
+}
 },
 {
 "id": "term:bhikkhu-yuttadhammo",
@@ -581,7 +734,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Cách viết Nam tông (không phải “Tỳ kheo”).",
 "quick": false,
-"v": "9baede47"
+"v": "9baede47",
+"shot": {
+"s": "instructions",
+"b": [
+31,
+110,
+539,
+188
+]
+}
 },
 {
 "id": "term:ajahn-tong-sirimangalo",
@@ -592,7 +754,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Danh xưng “Ngài” như trong sách (sách viết “Ajaan”).",
 "quick": false,
-"v": "41431e1b"
+"v": "41431e1b",
+"shot": {
+"s": "instructions",
+"b": [
+31,
+110,
+539,
+188
+]
+}
 },
 {
 "id": "term:you-address",
@@ -603,7 +774,16 @@
 "where": "Từ ngữ dùng nhiều lần trong ứng dụng",
 "note": "Thân thiện, trung tính, thông dụng trong ứng dụng. Sách dùng cả “bạn” và “ta”.",
 "quick": false,
-"v": "e8f04322"
+"v": "e8f04322",
+"shot": {
+"s": "sheet_volume",
+"b": [
+37,
+1054,
+527,
+53
+]
+}
 },
 {
 "id": "str:cd_instructions",
@@ -614,7 +794,16 @@
 "where": "Biểu tượng ở thanh trên cùng màn hình chính. Không hiện chữ; máy đọc to cho người khiếm thị.",
 "note": "",
 "quick": true,
-"v": "e7c42639"
+"v": "e7c42639",
+"shot": {
+"s": "home",
+"b": [
+295,
+49,
+37,
+37
+]
+}
 },
 {
 "id": "str:cd_daily_reading",
@@ -625,7 +814,16 @@
 "where": "Biểu tượng ở thanh trên cùng màn hình chính. Không hiện chữ; máy đọc to cho người khiếm thị.",
 "note": "",
 "quick": true,
-"v": "44e79b14"
+"v": "44e79b14",
+"shot": {
+"s": "home",
+"b": [
+368,
+49,
+37,
+37
+]
+}
 },
 {
 "id": "str:cd_presets",
@@ -636,7 +834,16 @@
 "where": "Biểu tượng ở thanh trên cùng màn hình chính. Không hiện chữ; máy đọc to cho người khiếm thị.",
 "note": "“Preset” trong tiếng Anh không có từ tương đương gọn; ở đây dùng “mẫu hẹn giờ” xuyên suốt ứng dụng.",
 "quick": false,
-"v": "fe43c758"
+"v": "fe43c758",
+"shot": {
+"s": "home",
+"b": [
+441,
+49,
+37,
+37
+]
+}
 },
 {
 "id": "str:action_start",
@@ -647,7 +854,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": true,
-"v": "95c3f9f5"
+"v": "95c3f9f5",
+"shot": {
+"s": "home",
+"b": [
+241,
+717,
+119,
+39
+]
+}
 },
 {
 "id": "str:label_countdown_to_start",
@@ -658,7 +874,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": false,
-"v": "4e7d3c45"
+"v": "4e7d3c45",
+"shot": {
+"s": "home",
+"b": [
+55,
+836,
+312,
+32
+]
+}
 },
 {
 "id": "str:label_off",
@@ -669,7 +894,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": true,
-"v": "e149b2f3"
+"v": "e149b2f3",
+"shot": {
+"s": "home",
+"b": [
+472,
+841,
+34,
+22
+]
+}
 },
 {
 "id": "str:fmt_seconds",
@@ -680,7 +914,16 @@
 "where": "Màn hình chính",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "0d6894a6"
+"v": "0d6894a6",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+183,
+1104,
+60,
+28
+]
+}
 },
 {
 "id": "str:label_interval_bell",
@@ -691,7 +934,16 @@
 "where": "Màn hình chính",
 "note": "Chuông reo đều đặn trong lúc thiền, ví dụ mỗi 5 phút.",
 "quick": false,
-"v": "8d35ce2c"
+"v": "8d35ce2c",
+"shot": {
+"s": "home",
+"b": [
+55,
+923,
+173,
+32
+]
+}
 },
 {
 "id": "str:fmt_every_min",
@@ -702,7 +954,16 @@
 "where": "Màn hình chính",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "8763dac5"
+"v": "8763dac5",
+"shot": {
+"s": "presets",
+"b": [
+49,
+292,
+331,
+64
+]
+}
 },
 {
 "id": "str:label_bells",
@@ -713,7 +974,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": true,
-"v": "fa65c207"
+"v": "fa65c207",
+"shot": {
+"s": "home",
+"b": [
+55,
+1010,
+83,
+32
+]
+}
 },
 {
 "id": "str:label_volume",
@@ -724,7 +994,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": true,
-"v": "9318dc01"
+"v": "9318dc01",
+"shot": {
+"s": "home",
+"b": [
+55,
+1097,
+103,
+32
+]
+}
 },
 {
 "id": "str:fmt_percent",
@@ -735,7 +1014,16 @@
 "where": "Màn hình chính",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "313ffb4c"
+"v": "313ffb4c",
+"shot": {
+"s": "home",
+"b": [
+472,
+1102,
+34,
+22
+]
+}
 },
 {
 "id": "str:action_repeat_until_stopped",
@@ -746,7 +1034,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": false,
-"v": "9f27df36"
+"v": "9f27df36",
+"shot": {
+"s": "home",
+"b": [
+37,
+1201,
+262,
+32
+]
+}
 },
 {
 "id": "str:action_save_preset",
@@ -757,7 +1054,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": false,
-"v": "47874347"
+"v": "47874347",
+"shot": {
+"s": "home_full",
+"b": [
+190,
+1424,
+259,
+37
+]
+}
 },
 {
 "id": "str:action_about_licences",
@@ -768,7 +1074,16 @@
 "where": "Màn hình chính",
 "note": "",
 "quick": true,
-"v": "8b37940b"
+"v": "8b37940b",
+"shot": {
+"s": "home_full",
+"b": [
+203,
+1503,
+194,
+26
+]
+}
 },
 {
 "id": "str:label_min",
@@ -779,7 +1094,16 @@
 "where": "Vòng tròn chọn thời lượng trên màn hình chính",
 "note": "Viết hoa, nằm dưới con số trên vòng tròn.",
 "quick": false,
-"v": "579c0423"
+"v": "579c0423",
+"shot": {
+"s": "home",
+"b": [
+278,
+341,
+44,
+22
+]
+}
 },
 {
 "id": "str:label_second_hour",
@@ -790,7 +1114,11 @@
 "where": "Vòng tròn chọn thời lượng trên màn hình chính",
 "note": "Hiện khi vòng tròn đã qua 60 phút.",
 "quick": false,
-"v": "018cfe2f"
+"v": "018cfe2f",
+"shot": {
+"s": "home",
+"b": null
+}
 },
 {
 "id": "str:cd_dial_session_length",
@@ -801,7 +1129,16 @@
 "where": "Vòng tròn chọn thời lượng trên màn hình chính",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "c776b493"
+"v": "c776b493",
+"shot": {
+"s": "home",
+"b": [
+120,
+116,
+360,
+360
+]
+}
 },
 {
 "id": "str:countdown_sheet_body",
@@ -812,7 +1149,16 @@
 "where": "Các bảng cài đặt mở ra từ màn hình chính (đếm ngược, chuông giữa giờ, âm lượng)",
 "note": "",
 "quick": false,
-"v": "1defba1f"
+"v": "1defba1f",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+37,
+997,
+527,
+53
+]
+}
 },
 {
 "id": "str:fmt_min",
@@ -823,7 +1169,16 @@
 "where": "Các bảng cài đặt mở ra từ màn hình chính (đếm ngược, chuông giữa giờ, âm lượng)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "608298a3"
+"v": "608298a3",
+"shot": {
+"s": "sheet_interval",
+"b": [
+176,
+1104,
+64,
+28
+]
+}
 },
 {
 "id": "str:interval_sheet_body",
@@ -834,7 +1189,16 @@
 "where": "Các bảng cài đặt mở ra từ màn hình chính (đếm ngược, chuông giữa giờ, âm lượng)",
 "note": "",
 "quick": false,
-"v": "58b1d242"
+"v": "58b1d242",
+"shot": {
+"s": "sheet_interval",
+"b": [
+37,
+997,
+527,
+53
+]
+}
 },
 {
 "id": "str:label_bell_volume",
@@ -845,7 +1209,16 @@
 "where": "Các bảng cài đặt mở ra từ màn hình chính (đếm ngược, chuông giữa giờ, âm lượng)",
 "note": "",
 "quick": true,
-"v": "976a3de4"
+"v": "976a3de4",
+"shot": {
+"s": "sheet_volume",
+"b": [
+37,
+1007,
+271,
+39
+]
+}
 },
 {
 "id": "str:volume_sheet_body",
@@ -856,7 +1229,16 @@
 "where": "Các bảng cài đặt mở ra từ màn hình chính (đếm ngược, chuông giữa giờ, âm lượng)",
 "note": "",
 "quick": false,
-"v": "94b9b56f"
+"v": "94b9b56f",
+"shot": {
+"s": "sheet_volume",
+"b": [
+37,
+1054,
+527,
+53
+]
+}
 },
 {
 "id": "str:fmt_percent_of_phone",
@@ -867,7 +1249,16 @@
 "where": "Các bảng cài đặt mở ra từ màn hình chính (đếm ngược, chuông giữa giờ, âm lượng)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "5a022230"
+"v": "5a022230",
+"shot": {
+"s": "sheet_volume",
+"b": [
+37,
+1138,
+252,
+22
+]
+}
 },
 {
 "id": "str:label_starting_bell",
@@ -878,7 +1269,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "bd56134a"
+"v": "bd56134a",
+"shot": {
+"s": "sheet_bells",
+"b": [
+61,
+838,
+172,
+32
+]
+}
 },
 {
 "id": "str:label_between_stages",
@@ -889,7 +1289,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "ba0ea553"
+"v": "ba0ea553",
+"shot": {
+"s": "sheet_bells",
+"b": [
+61,
+1270,
+197,
+31
+]
+}
 },
 {
 "id": "str:fmt_transitions",
@@ -900,7 +1309,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "Số lần chuyển giữa các giai đoạn. Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "2aed3b02"
+"v": "2aed3b02",
+"shot": {
+"s": "sheet_bells",
+"b": [
+407,
+1275,
+132,
+22
+]
+}
 },
 {
 "id": "str:label_ending_bell",
@@ -911,7 +1329,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "51d30233"
+"v": "51d30233",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+61,
+1291,
+177,
+10
+]
+}
 },
 {
 "id": "str:action_hear_it",
@@ -922,7 +1349,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "21341d98"
+"v": "21341d98",
+"shot": {
+"s": "sheet_volume",
+"b": [
+508,
+1185,
+37,
+37
+]
+}
 },
 {
 "id": "str:fmt_hear_label",
@@ -933,7 +1369,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "51d302a1"
+"v": "51d302a1",
+"shot": {
+"s": "sheet_bells",
+"b": [
+484,
+930,
+37,
+37
+]
+}
 },
 {
 "id": "str:action_add_stage",
@@ -944,7 +1389,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "cc01920f"
+"v": "cc01920f",
+"shot": {
+"s": "home",
+"b": [
+224,
+608,
+152,
+37
+]
+}
 },
 {
 "id": "str:fmt_stage_chip",
@@ -955,7 +1409,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "f3a4fb8d"
+"v": "f3a4fb8d",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+168,
+612,
+108,
+28
+]
+}
 },
 {
 "id": "str:fmt_total_min",
@@ -966,7 +1429,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "f71b109c"
+"v": "f71b109c",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+84,
+695,
+132,
+22
+]
+}
 },
 {
 "id": "str:action_add",
@@ -977,7 +1449,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "cc88682f"
+"v": "cc88682f",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+253,
+687,
+56,
+37
+]
+}
 },
 {
 "id": "str:fmt_remove_stage",
@@ -988,7 +1469,16 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "888e5ccf"
+"v": "888e5ccf",
+"shot": {
+"s": "sheet_countdown",
+"b": [
+346,
+687,
+152,
+37
+]
+}
 },
 {
 "id": "str:bell_summary_silent",
@@ -999,7 +1489,11 @@
 "where": "Bảng chọn chuông và các giai đoạn",
 "note": "",
 "quick": true,
-"v": "3a3422b5"
+"v": "3a3422b5",
+"shot": {
+"s": "sheet_bells_menu",
+"b": null
+}
 },
 {
 "id": "str:bell_bowl_low_long",
@@ -1010,7 +1504,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "6f50e27c"
+"v": "6f50e27c",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+-191,
+185,
+37
+]
+}
 },
 {
 "id": "str:bell_bowl_low_short",
@@ -1021,7 +1524,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "69b64e26"
+"v": "69b64e26",
+"shot": {
+"s": "home",
+"b": [
+177,
+1015,
+329,
+22
+]
+}
 },
 {
 "id": "str:bell_bowl_long",
@@ -1032,7 +1544,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "“Chuông xoay” là tên thường gọi của chuông xoay Tây Tạng (singing bowl).",
 "quick": false,
-"v": "b56305c3"
+"v": "b56305c3",
+"shot": {
+"s": "sheet_bells",
+"b": [
+61,
+906,
+389,
+85
+]
+}
 },
 {
 "id": "str:bell_bowl_short",
@@ -1043,7 +1564,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "b56305c3"
+"v": "b56305c3",
+"shot": {
+"s": "sheet_bells",
+"b": [
+61,
+906,
+389,
+85
+]
+}
 },
 {
 "id": "str:bell_bowl_small_long",
@@ -1054,7 +1584,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "5d7b1f0f"
+"v": "5d7b1f0f",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+-45,
+175,
+37
+]
+}
 },
 {
 "id": "str:bell_bowl_small_short",
@@ -1065,7 +1604,11 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "75c52388"
+"v": "75c52388",
+"shot": {
+"s": "sheet_bells_menu",
+"b": null
+}
 },
 {
 "id": "str:bell_temple_long",
@@ -1076,7 +1619,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "9222944b"
+"v": "9222944b",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+28,
+129,
+37
+]
+}
 },
 {
 "id": "str:bell_temple_short",
@@ -1087,7 +1639,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "9222944b"
+"v": "9222944b",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+28,
+129,
+37
+]
+}
 },
 {
 "id": "str:bell_bell_small_long",
@@ -1098,7 +1659,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "b07ea741"
+"v": "b07ea741",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+102,
+125,
+37
+]
+}
 },
 {
 "id": "str:bell_bell_small_short",
@@ -1109,7 +1679,11 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "ed2b8788"
+"v": "ed2b8788",
+"shot": {
+"s": "sheet_bells_menu",
+"b": null
+}
 },
 {
 "id": "str:bell_rin_long",
@@ -1120,7 +1694,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "Rin là loại chuông bát của Nhật. Giữ tên gốc như bản tiếng Hà Lan và Tây Ban Nha. Có thể thay bằng “chuông gia trì” nếu quý vị thấy hợp hơn.",
 "quick": false,
-"v": "b304a9fb"
+"v": "b304a9fb",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+175,
+113,
+37
+]
+}
 },
 {
 "id": "str:bell_rin_short",
@@ -1131,7 +1714,11 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "5ba4d95f"
+"v": "5ba4d95f",
+"shot": {
+"s": "sheet_bells_menu",
+"b": null
+}
 },
 {
 "id": "str:bell_tingsha_long",
@@ -1142,7 +1729,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "Tingsha là hai chiếc chập chõa nhỏ của Tây Tạng. Giữ tên gốc.",
 "quick": false,
-"v": "81317f21"
+"v": "81317f21",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+248,
+78,
+37
+]
+}
 },
 {
 "id": "str:bell_tingsha_short",
@@ -1153,7 +1749,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "81317f21"
+"v": "81317f21",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+248,
+78,
+37
+]
+}
 },
 {
 "id": "str:bell_short_bell_long",
@@ -1164,7 +1769,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "3127f6e7"
+"v": "3127f6e7",
+"shot": {
+"s": "sheet_bells",
+"b": [
+61,
+1111,
+389,
+85
+]
+}
 },
 {
 "id": "str:bell_short_bell_short",
@@ -1175,7 +1789,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "c181dabc"
+"v": "c181dabc",
+"shot": {
+"s": "mindful_off",
+"b": [
+55,
+1364,
+208,
+26
+]
+}
 },
 {
 "id": "str:bell_short_tingsha_long",
@@ -1186,7 +1809,16 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "e688f0b4"
+"v": "e688f0b4",
+"shot": {
+"s": "sheet_bells_menu",
+"b": [
+-43,
+395,
+138,
+37
+]
+}
 },
 {
 "id": "str:bell_short_tingsha_short",
@@ -1197,7 +1829,11 @@
 "where": "Tên các tiếng chuông. Bản dài hiện trong danh sách chọn, bản ngắn trên dòng tóm tắt.",
 "note": "",
 "quick": true,
-"v": "b88aa807"
+"v": "b88aa807",
+"shot": {
+"s": "sheet_bells_menu",
+"b": null
+}
 },
 {
 "id": "str:dialog_length_minutes_title",
@@ -1208,7 +1844,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "",
 "quick": true,
-"v": "30183870"
+"v": "30183870",
+"shot": {
+"s": "dialog_minutes",
+"b": [
+37,
+37,
+300,
+49
+]
+}
 },
 {
 "id": "str:fmt_min_range",
@@ -1219,7 +1864,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "350e1489"
+"v": "350e1489",
+"shot": {
+"s": "dialog_minutes",
+"b": [
+37,
+208,
+162,
+26
+]
+}
 },
 {
 "id": "str:action_set",
@@ -1230,7 +1884,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "",
 "quick": true,
-"v": "c3a11b3d"
+"v": "c3a11b3d",
+"shot": {
+"s": "dialog_minutes",
+"b": [
+403,
+289,
+35,
+37
+]
+}
 },
 {
 "id": "str:action_cancel",
@@ -1241,7 +1904,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "",
 "quick": true,
-"v": "34ca764c"
+"v": "34ca764c",
+"shot": {
+"s": "dialog_minutes",
+"b": [
+299,
+289,
+40,
+37
+]
+}
 },
 {
 "id": "str:dialog_save_preset_title",
@@ -1252,7 +1924,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "",
 "quick": true,
-"v": "e3e9a0c9"
+"v": "e3e9a0c9",
+"shot": {
+"s": "dialog_save_preset",
+"b": [
+37,
+37,
+151,
+49
+]
+}
 },
 {
 "id": "str:label_preset_name",
@@ -1263,7 +1944,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "",
 "quick": true,
-"v": "974f5015"
+"v": "974f5015",
+"shot": {
+"s": "dialog_save_preset",
+"b": [
+61,
+147,
+93,
+37
+]
+}
 },
 {
 "id": "str:action_save",
@@ -1274,7 +1964,16 @@
 "where": "Hộp thoại nhỏ (nhập số phút, lưu mẫu)",
 "note": "",
 "quick": true,
-"v": "a306970e"
+"v": "a306970e",
+"shot": {
+"s": "dialog_save_preset",
+"b": [
+402,
+263,
+37,
+37
+]
+}
 },
 {
 "id": "str:presets_title",
@@ -1285,7 +1984,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "",
 "quick": true,
-"v": "0cd16e3e"
+"v": "0cd16e3e",
+"shot": {
+"s": "presets",
+"b": [
+85,
+27,
+301,
+43
+]
+}
 },
 {
 "id": "str:cd_back",
@@ -1296,7 +2004,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "",
 "quick": true,
-"v": "8a09e03d"
+"v": "8a09e03d",
+"shot": {
+"s": "presets",
+"b": [
+24,
+31,
+37,
+37
+]
+}
 },
 {
 "id": "str:presets_empty",
@@ -1307,7 +2024,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "",
 "quick": false,
-"v": "50688c31"
+"v": "50688c31",
+"shot": {
+"s": "presets_empty",
+"b": [
+104,
+663,
+392,
+73
+]
+}
 },
 {
 "id": "str:fmt_stages_total",
@@ -1318,7 +2044,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "b8925f3a"
+"v": "b8925f3a",
+"shot": {
+"s": "presets",
+"b": [
+49,
+153,
+331,
+64
+]
+}
 },
 {
 "id": "str:fmt_duration_min",
@@ -1329,7 +2064,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "608298a3"
+"v": "608298a3",
+"shot": {
+"s": "sheet_interval",
+"b": [
+176,
+1104,
+64,
+28
+]
+}
 },
 {
 "id": "str:fmt_countdown_suffix",
@@ -1340,7 +2084,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "bfb68f23"
+"v": "bfb68f23",
+"shot": {
+"s": "presets",
+"b": [
+49,
+153,
+331,
+64
+]
+}
 },
 {
 "id": "str:fmt_interval_suffix",
@@ -1351,7 +2104,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "3cb81740"
+"v": "3cb81740",
+"shot": {
+"s": "presets",
+"b": [
+49,
+292,
+331,
+64
+]
+}
 },
 {
 "id": "str:suffix_repeating",
@@ -1362,7 +2124,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "",
 "quick": true,
-"v": "2cb5be8b"
+"v": "2cb5be8b",
+"shot": {
+"s": "presets",
+"b": [
+49,
+431,
+331,
+64
+]
+}
 },
 {
 "id": "str:action_duplicate",
@@ -1373,7 +2144,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "Tạo một bản sao của mẫu hẹn giờ.",
 "quick": false,
-"v": "4b2cc8f9"
+"v": "4b2cc8f9",
+"shot": {
+"s": "presets",
+"b": [
+423,
+134,
+37,
+37
+]
+}
 },
 {
 "id": "str:action_delete",
@@ -1384,7 +2164,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "",
 "quick": true,
-"v": "aa1d94fc"
+"v": "aa1d94fc",
+"shot": {
+"s": "presets",
+"b": [
+496,
+134,
+37,
+37
+]
+}
 },
 {
 "id": "str:preset_seed_walking_sitting",
@@ -1395,7 +2184,16 @@
 "where": "Màn hình “Mẫu hẹn giờ của tôi”",
 "note": "",
 "quick": false,
-"v": "65df77fa"
+"v": "65df77fa",
+"shot": {
+"s": "presets",
+"b": [
+49,
+116,
+263,
+37
+]
+}
 },
 {
 "id": "str:session_starting_in",
@@ -1406,7 +2204,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "1e320d3e"
+"v": "1e320d3e",
+"shot": {
+"s": "session_countdown",
+"b": [
+240,
+517,
+121,
+22
+]
+}
 },
 {
 "id": "str:session_starting_in_seconds",
@@ -1417,7 +2224,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "4b4775d0"
+"v": "4b4775d0",
+"shot": {
+"s": "session_countdown",
+"b": [
+84,
+358,
+432,
+432
+]
+}
 },
 {
 "id": "str:session_minutes_left",
@@ -1428,7 +2244,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "59f9ef2e"
+"v": "59f9ef2e",
+"shot": {
+"s": "session",
+"b": [
+84,
+336,
+432,
+432
+]
+}
 },
 {
 "id": "str:session_paused_minutes_left",
@@ -1439,7 +2264,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "82685d00"
+"v": "82685d00",
+"shot": {
+"s": "session_paused",
+"b": [
+84,
+347,
+432,
+432
+]
+}
 },
 {
 "id": "str:session_reveal_hint",
@@ -1450,7 +2284,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "09420a1b"
+"v": "09420a1b",
+"shot": {
+"s": "session",
+"b": [
+218,
+821,
+165,
+22
+]
+}
 },
 {
 "id": "str:cd_show_the_time",
@@ -1461,7 +2304,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "4d59f27a"
+"v": "4d59f27a",
+"shot": {
+"s": "session",
+"b": [
+218,
+821,
+165,
+22
+]
+}
 },
 {
 "id": "str:action_pause",
@@ -1472,7 +2324,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "b8d3bf31"
+"v": "b8d3bf31",
+"shot": {
+"s": "session",
+"b": [
+177,
+910,
+97,
+37
+]
+}
 },
 {
 "id": "str:action_resume",
@@ -1483,7 +2344,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "5d92d092"
+"v": "5d92d092",
+"shot": {
+"s": "session_paused",
+"b": [
+185,
+899,
+80,
+37
+]
+}
 },
 {
 "id": "str:action_stop",
@@ -1494,7 +2364,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "7832a700"
+"v": "7832a700",
+"shot": {
+"s": "session",
+"b": [
+372,
+910,
+52,
+37
+]
+}
 },
 {
 "id": "str:session_keep_screen_on",
@@ -1505,7 +2384,16 @@
 "where": "Màn hình trong khi đang thiền",
 "note": "",
 "quick": true,
-"v": "b5b6ff18"
+"v": "b5b6ff18",
+"shot": {
+"s": "home",
+"b": [
+37,
+1274,
+254,
+26
+]
+}
 },
 {
 "id": "str:channel_session",
@@ -1516,7 +2404,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "“Thời thiền” được dùng xuyên suốt cho một buổi/lượt thiền.",
 "quick": false,
-"v": "1c29cb62"
+"v": "1c29cb62",
+"shot": {
+"s": "notif_channels",
+"b": [
+31,
+124,
+117,
+37
+]
+}
 },
 {
 "id": "str:channel_session_desc",
@@ -1527,7 +2424,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "",
 "quick": false,
-"v": "3db7845a"
+"v": "3db7845a",
+"shot": {
+"s": "notif_channels",
+"b": [
+31,
+161,
+478,
+37
+]
+}
 },
 {
 "id": "str:channel_bell",
@@ -1538,7 +2444,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "",
 "quick": true,
-"v": "fa65c207"
+"v": "fa65c207",
+"shot": {
+"s": "home",
+"b": [
+55,
+1010,
+83,
+32
+]
+}
 },
 {
 "id": "str:channel_bell_desc",
@@ -1549,7 +2464,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "",
 "quick": false,
-"v": "9f1c0770"
+"v": "9f1c0770",
+"shot": {
+"s": "notif_channels",
+"b": [
+31,
+272,
+369,
+37
+]
+}
 },
 {
 "id": "str:notif_starting",
@@ -1560,7 +2484,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "",
 "quick": true,
-"v": "edafdeda"
+"v": "edafdeda",
+"shot": {
+"s": "notif_session",
+"b": [
+43,
+147,
+112,
+37
+]
+}
 },
 {
 "id": "str:notif_sitting",
@@ -1571,7 +2504,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "Dùng “thiền” chung vì thời thiền có thể là kinh hành.",
 "quick": false,
-"v": "cf85dab5"
+"v": "cf85dab5",
+"shot": {
+"s": "notif_session",
+"b": [
+43,
+333,
+103,
+37
+]
+}
 },
 {
 "id": "str:notif_bell",
@@ -1582,7 +2524,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "“Ngân” để chỉ tiếng chuông đang vang, khác với chuông báo thức “reo”.",
 "quick": false,
-"v": "d4360514"
+"v": "d4360514",
+"shot": {
+"s": "notif_session",
+"b": [
+43,
+892,
+177,
+37
+]
+}
 },
 {
 "id": "str:notif_paused",
@@ -1593,7 +2544,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "59649d1e"
+"v": "59649d1e",
+"shot": {
+"s": "notif_session",
+"b": [
+43,
+705,
+226,
+37
+]
+}
 },
 {
 "id": "str:notif_stage",
@@ -1604,7 +2564,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "5bb667dc"
+"v": "5bb667dc",
+"shot": {
+"s": "session",
+"b": [
+218,
+799,
+165,
+22
+]
+}
 },
 {
 "id": "str:notif_round",
@@ -1615,7 +2584,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "7f150760"
+"v": "7f150760",
+"shot": {
+"s": "notif_session",
+"b": [
+43,
+519,
+222,
+37
+]
+}
 },
 {
 "id": "str:end_channel_name",
@@ -1626,7 +2604,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "",
 "quick": true,
-"v": "c18ff0ce"
+"v": "c18ff0ce",
+"shot": {
+"s": "notif_channels",
+"b": [
+31,
+459,
+214,
+37
+]
+}
 },
 {
 "id": "str:end_channel_desc",
@@ -1637,7 +2624,16 @@
 "where": "Thông báo của điện thoại trong khi thiền, và tên kênh thông báo trong cài đặt Android",
 "note": "",
 "quick": false,
-"v": "e4a06009"
+"v": "e4a06009",
+"shot": {
+"s": "notif_channels",
+"b": [
+31,
+495,
+392,
+37
+]
+}
 },
 {
 "id": "str:completion_title",
@@ -1648,7 +2644,16 @@
 "where": "Màn hình kết thúc thời thiền. Câu Pāli hiện ở trên, câu tiếng Việt là lời dịch bên dưới.",
 "note": "",
 "quick": true,
-"v": "4bda5f15"
+"v": "4bda5f15",
+"shot": {
+"s": "completion",
+"b": [
+130,
+427,
+341,
+46
+]
+}
 },
 {
 "id": "str:dedication_happy",
@@ -1660,7 +2665,16 @@
 "note": "Lời dịch câu Pāli “Sabbe sattā sukhitā hontu”.",
 "quick": false,
 "pali": "Sabbe sattā sukhitā hontu",
-"v": "87b61ab2"
+"v": "87b61ab2",
+"shot": {
+"s": "completion",
+"b": [
+83,
+565,
+434,
+32
+]
+}
 },
 {
 "id": "str:dedication_enmity",
@@ -1672,7 +2686,11 @@
 "note": "Lời dịch câu Pāli “Sabbe sattā averā hontu”.",
 "quick": false,
 "pali": "Sabbe sattā averā hontu",
-"v": "9ccede19"
+"v": "9ccede19",
+"shot": {
+"s": "completion",
+"b": null
+}
 },
 {
 "id": "str:dedication_merit",
@@ -1684,7 +2702,11 @@
 "note": "Lời dịch câu Pāli “Idaṃ me puññaṃ āsavakkhayāvahaṃ hotu”. “Lậu hoặc” = āsava.",
 "quick": false,
 "pali": "Idaṃ me puññaṃ āsavakkhayāvahaṃ hotu",
-"v": "4dc052c6"
+"v": "4dc052c6",
+"shot": {
+"s": "completion",
+"b": null
+}
 },
 {
 "id": "str:dedication_relatives",
@@ -1696,7 +2718,11 @@
 "note": "Lời dịch câu Pāli “Idaṃ no ñātīnaṃ hotu, sukhitā hontu ñātayo”.",
 "quick": false,
 "pali": "Idaṃ no ñātīnaṃ hotu, sukhitā hontu ñātayo",
-"v": "828f88e7"
+"v": "828f88e7",
+"shot": {
+"s": "completion",
+"b": null
+}
 },
 {
 "id": "str:action_done",
@@ -1707,7 +2733,16 @@
 "where": "Màn hình kết thúc thời thiền. Câu Pāli hiện ở trên, câu tiếng Việt là lời dịch bên dưới.",
 "note": "",
 "quick": true,
-"v": "c20f4492"
+"v": "c20f4492",
+"shot": {
+"s": "dialog_wake",
+"b": [
+494,
+550,
+51,
+37
+]
+}
 },
 {
 "id": "str:session_wake_at_end",
@@ -1718,7 +2753,16 @@
 "where": "Tùy chọn bật sáng màn hình khi thời thiền kết thúc, và hộp thoại xin quyền",
 "note": "",
 "quick": false,
-"v": "004a0d06"
+"v": "004a0d06",
+"shot": {
+"s": "home_full",
+"b": [
+37,
+1348,
+334,
+32
+]
+}
 },
 {
 "id": "str:wake_dialog_title",
@@ -1729,7 +2773,16 @@
 "where": "Tùy chọn bật sáng màn hình khi thời thiền kết thúc, và hộp thoại xin quyền",
 "note": "",
 "quick": true,
-"v": "05100f17"
+"v": "05100f17",
+"shot": {
+"s": "dialog_wake",
+"b": [
+37,
+37,
+328,
+49
+]
+}
 },
 {
 "id": "str:wake_dialog_permission",
@@ -1740,7 +2793,16 @@
 "where": "Tùy chọn bật sáng màn hình khi thời thiền kết thúc, và hộp thoại xin quyền",
 "note": "",
 "quick": false,
-"v": "e7a0aaa6"
+"v": "e7a0aaa6",
+"shot": {
+"s": "dialog_wake",
+"b": [
+37,
+110,
+527,
+96
+]
+}
 },
 {
 "id": "str:wake_dialog_xiaomi",
@@ -1751,7 +2813,16 @@
 "where": "Tùy chọn bật sáng màn hình khi thời thiền kết thúc, và hộp thoại xin quyền",
 "note": "Tên các mục cài đặt nên khớp với điện thoại Xiaomi bằng tiếng Việt. Nếu quý vị có máy Xiaomi, xin đối chiếu.",
 "quick": false,
-"v": "ee0578a3"
+"v": "ee0578a3",
+"shot": {
+"s": "dialog_wake",
+"b": [
+37,
+221,
+527,
+96
+]
+}
 },
 {
 "id": "str:action_open_permission",
@@ -1762,7 +2833,16 @@
 "where": "Tùy chọn bật sáng màn hình khi thời thiền kết thúc, và hộp thoại xin quyền",
 "note": "",
 "quick": true,
-"v": "66b3fd3d"
+"v": "66b3fd3d",
+"shot": {
+"s": "dialog_wake",
+"b": [
+73,
+354,
+95,
+32
+]
+}
 },
 {
 "id": "str:action_open_xiaomi",
@@ -1773,7 +2853,16 @@
 "where": "Tùy chọn bật sáng màn hình khi thời thiền kết thúc, và hộp thoại xin quyền",
 "note": "",
 "quick": true,
-"v": "34337370"
+"v": "34337370",
+"shot": {
+"s": "dialog_wake",
+"b": [
+73,
+442,
+183,
+32
+]
+}
 },
 {
 "id": "str:mindful_title",
@@ -1784,7 +2873,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "Thuật ngữ quen thuộc từ truyền thống Làng Mai.",
 "quick": false,
-"v": "02478659"
+"v": "02478659",
+"shot": {
+"s": "mindful_on",
+"b": [
+110,
+36,
+308,
+39
+]
+}
 },
 {
 "id": "str:mindful_switch",
@@ -1795,7 +2893,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "a588fdd6"
+"v": "a588fdd6",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+134,
+163,
+32
+]
+}
 },
 {
 "id": "str:mindful_switch_on",
@@ -1806,7 +2913,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "31bc80da"
+"v": "31bc80da",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+166,
+392,
+53
+]
+}
 },
 {
 "id": "str:mindful_switch_off",
@@ -1817,7 +2933,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "e149b2f3"
+"v": "e149b2f3",
+"shot": {
+"s": "notif_mindful",
+"b": [
+89,
+1185,
+26,
+37
+]
+}
 },
 {
 "id": "str:fmt_mindful_paused_row",
@@ -1828,7 +2953,11 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "1457be90"
+"v": "1457be90",
+"shot": {
+"s": "mindful_on",
+"b": null
+}
 },
 {
 "id": "str:mindful_label_when",
@@ -1839,7 +2968,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "ade69756"
+"v": "ade69756",
+"shot": {
+"s": "mindful_on",
+"b": [
+31,
+277,
+77,
+22
+]
+}
 },
 {
 "id": "str:mindful_every",
@@ -1850,7 +2988,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "Đi cùng với các nút chọn bên dưới: “giờ”, “2 giờ”, “45 phút”.",
 "quick": false,
-"v": "312b6889"
+"v": "312b6889",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+339,
+129,
+32
+]
+}
 },
 {
 "id": "str:mindful_every_hour",
@@ -1861,7 +3008,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "20a055b9"
+"v": "20a055b9",
+"shot": {
+"s": "mindful_on",
+"b": [
+356,
+409,
+31,
+28
+]
+}
 },
 {
 "id": "str:mindful_every_2h",
@@ -1872,7 +3028,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "4599b216"
+"v": "4599b216",
+"shot": {
+"s": "mindful_on",
+"b": [
+218,
+488,
+49,
+28
+]
+}
 },
 {
 "id": "str:fmt_mindful_every_min",
@@ -1883,7 +3048,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "6dc375fc"
+"v": "6dc375fc",
+"shot": {
+"s": "mindful_on",
+"b": [
+79,
+409,
+77,
+28
+]
+}
 },
 {
 "id": "str:mindful_unexpected",
@@ -1894,7 +3068,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "5ae13239"
+"v": "5ae13239",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+554,
+83,
+32
+]
+}
 },
 {
 "id": "str:mindful_unexpected_desc",
@@ -1905,7 +3088,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "3c796bb7"
+"v": "3c796bb7",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+585,
+392,
+53
+]
+}
 },
 {
 "id": "str:mindful_from",
@@ -1916,7 +3108,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "7fa869bd"
+"v": "7fa869bd",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+713,
+276,
+32
+]
+}
 },
 {
 "id": "str:mindful_until",
@@ -1927,7 +3128,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "fedda79f"
+"v": "fedda79f",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+780,
+276,
+32
+]
+}
 },
 {
 "id": "str:mindful_label_today",
@@ -1938,7 +3148,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "07d37c5b"
+"v": "07d37c5b",
+"shot": {
+"s": "mindful_on",
+"b": [
+31,
+968,
+143,
+22
+]
+}
 },
 {
 "id": "str:fmt_mindful_example",
@@ -1949,7 +3168,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "24e50bf6"
+"v": "24e50bf6",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+1105,
+386,
+53
+]
+}
 },
 {
 "id": "str:mindful_shuffle",
@@ -1960,7 +3188,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "359afa9a"
+"v": "359afa9a",
+"shot": {
+"s": "mindful_on",
+"b": [
+459,
+1113,
+68,
+37
+]
+}
 },
 {
 "id": "str:mindful_label_how",
@@ -1971,7 +3208,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "abc0c67c"
+"v": "abc0c67c",
+"shot": {
+"s": "mindful_on",
+"b": [
+31,
+1226,
+143,
+22
+]
+}
 },
 {
 "id": "str:mindful_mode_sound",
@@ -1982,7 +3228,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "ad942430"
+"v": "ad942430",
+"shot": {
+"s": "mindful_on",
+"b": [
+150,
+1306,
+96,
+37
+]
+}
 },
 {
 "id": "str:mindful_mode_sound_desc",
@@ -1993,7 +3248,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "30fbf096"
+"v": "30fbf096",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+1376,
+208,
+26
+]
+}
 },
 {
 "id": "str:mindful_mode_taps",
@@ -2004,7 +3268,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "Tiếng Anh dùng “taps” (gõ nhẹ); tiếng Việt dùng “rung” cho tự nhiên.",
 "quick": false,
-"v": "695337cb"
+"v": "695337cb",
+"shot": {
+"s": "mindful_on",
+"b": [
+396,
+1306,
+52,
+37
+]
+}
 },
 {
 "id": "str:mindful_mode_taps_desc",
@@ -2015,7 +3288,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "3bee354f"
+"v": "3bee354f",
+"shot": {
+"s": "mindful_taps",
+"b": [
+55,
+1376,
+155,
+26
+]
+}
 },
 {
 "id": "str:mindful_also_tap",
@@ -2026,7 +3308,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "fe7afb6e"
+"v": "fe7afb6e",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+1593,
+164,
+32
+]
+}
 },
 {
 "id": "str:mindful_also_tap_desc",
@@ -2037,7 +3328,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "7404fcac"
+"v": "7404fcac",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+1625,
+275,
+26
+]
+}
 },
 {
 "id": "str:mindful_try",
@@ -2048,7 +3348,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "ba1a6266"
+"v": "ba1a6266",
+"shot": {
+"s": "mindful_on",
+"b": [
+128,
+1692,
+90,
+37
+]
+}
 },
 {
 "id": "str:mindful_try_hint_muted",
@@ -2059,7 +3368,11 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "a4d16335"
+"v": "a4d16335",
+"shot": {
+"s": "mindful_on",
+"b": null
+}
 },
 {
 "id": "str:mindful_note_sound",
@@ -2070,7 +3383,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "73f0883a"
+"v": "73f0883a",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+1762,
+490,
+53
+]
+}
 },
 {
 "id": "str:mindful_note_taps",
@@ -2081,7 +3403,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "c5e4fd44"
+"v": "c5e4fd44",
+"shot": {
+"s": "mindful_taps",
+"b": [
+55,
+1506,
+490,
+53
+]
+}
 },
 {
 "id": "str:mindful_label_quiet",
@@ -2092,7 +3423,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": true,
-"v": "a8801190"
+"v": "a8801190",
+"shot": {
+"s": "mindful_on",
+"b": [
+31,
+1874,
+132,
+22
+]
+}
 },
 {
 "id": "str:mindful_quiet_body",
@@ -2103,7 +3443,16 @@
 "where": "Màn hình Chuông chánh niệm (chuông nhắc dừng lại vài lần trong ngày)",
 "note": "",
 "quick": false,
-"v": "5933e013"
+"v": "5933e013",
+"shot": {
+"s": "mindful_on",
+"b": [
+55,
+1935,
+490,
+156
+]
+}
 },
 {
 "id": "str:mindful_channel_name",
@@ -2114,7 +3463,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "02478659"
+"v": "02478659",
+"shot": {
+"s": "mindful_on",
+"b": [
+110,
+36,
+308,
+39
+]
+}
 },
 {
 "id": "str:mindful_channel_desc",
@@ -2125,7 +3483,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": false,
-"v": "be222e36"
+"v": "be222e36",
+"shot": {
+"s": "notif_channels",
+"b": [
+31,
+384,
+390,
+37
+]
+}
 },
 {
 "id": "str:notif_mindful_on",
@@ -2136,7 +3503,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": false,
-"v": "69c2a3d4"
+"v": "69c2a3d4",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+110,
+306,
+37
+]
+}
 },
 {
 "id": "str:fmt_notif_mindful_unexpected",
@@ -2147,7 +3523,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "504873bd"
+"v": "504873bd",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+147,
+444,
+37
+]
+}
 },
 {
 "id": "str:fmt_notif_mindful_regular",
@@ -2158,7 +3543,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "a3585ad7"
+"v": "a3585ad7",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+385,
+343,
+37
+]
+}
 },
 {
 "id": "str:mindful_how_sound",
@@ -2169,7 +3563,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "10df5762"
+"v": "10df5762",
+"shot": {
+"s": "mindful_on",
+"b": [
+150,
+1306,
+96,
+37
+]
+}
 },
 {
 "id": "str:mindful_how_taps",
@@ -2180,7 +3583,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "ae499f82"
+"v": "ae499f82",
+"shot": {
+"s": "mindful_on",
+"b": [
+396,
+1306,
+52,
+37
+]
+}
 },
 {
 "id": "str:notif_mindful_paused",
@@ -2191,7 +3603,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": false,
-"v": "a2a1001a"
+"v": "a2a1001a",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+586,
+372,
+37
+]
+}
 },
 {
 "id": "str:fmt_notif_mindful_paused_until",
@@ -2202,7 +3623,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "26778a8b"
+"v": "26778a8b",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+623,
+100,
+37
+]
+}
 },
 {
 "id": "str:action_pause_2h",
@@ -2213,7 +3643,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "676ebbb2"
+"v": "676ebbb2",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+198,
+148,
+37
+]
+}
 },
 {
 "id": "str:action_pause_today",
@@ -2224,7 +3663,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "f770de32"
+"v": "f770de32",
+"shot": {
+"s": "notif_mindful",
+"b": [
+218,
+198,
+184,
+37
+]
+}
 },
 {
 "id": "str:action_resume_now",
@@ -2235,7 +3683,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "f7ff4e8f"
+"v": "f7ff4e8f",
+"shot": {
+"s": "notif_mindful",
+"b": [
+43,
+675,
+130,
+37
+]
+}
 },
 {
 "id": "str:tile_state_sound",
@@ -2246,7 +3703,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "ad942430"
+"v": "ad942430",
+"shot": {
+"s": "mindful_on",
+"b": [
+150,
+1306,
+96,
+37
+]
+}
 },
 {
 "id": "str:tile_state_taps",
@@ -2257,7 +3723,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "Chữ rất ngắn trên ô cài đặt nhanh.",
 "quick": false,
-"v": "695337cb"
+"v": "695337cb",
+"shot": {
+"s": "mindful_on",
+"b": [
+396,
+1306,
+52,
+37
+]
+}
 },
 {
 "id": "str:tile_state_paused",
@@ -2268,7 +3743,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "b8d3bf31"
+"v": "b8d3bf31",
+"shot": {
+"s": "notif_mindful",
+"b": [
+89,
+1072,
+80,
+37
+]
+}
 },
 {
 "id": "str:tile_state_off",
@@ -2279,7 +3763,16 @@
 "where": "Thông báo của Chuông chánh niệm, và ô cài đặt nhanh (kéo thanh thông báo xuống)",
 "note": "",
 "quick": true,
-"v": "e149b2f3"
+"v": "e149b2f3",
+"shot": {
+"s": "notif_mindful",
+"b": [
+89,
+1185,
+26,
+37
+]
+}
 },
 {
 "id": "str:reading_title",
@@ -2290,7 +3783,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "44e79b14"
+"v": "44e79b14",
+"shot": {
+"s": "reading",
+"b": [
+110,
+36,
+281,
+39
+]
+}
 },
 {
 "id": "str:label_today",
@@ -2301,7 +3803,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "0048b6a4"
+"v": "0048b6a4",
+"shot": {
+"s": "reading",
+"b": [
+31,
+110,
+77,
+22
+]
+}
 },
 {
 "id": "str:reading_nothing_today",
@@ -2312,7 +3823,11 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": false,
-"v": "c932bcb8"
+"v": "c932bcb8",
+"shot": {
+"s": "reading",
+"b": null
+}
 },
 {
 "id": "str:suffix_translator",
@@ -2323,7 +3838,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "Đứng sau tên bài kinh, trước tên người dịch: “… · dịch: Sujato”.",
 "quick": false,
-"v": "3eba6812"
+"v": "3eba6812",
+"shot": {
+"s": "reading",
+"b": [
+58,
+481,
+482,
+22
+]
+}
 },
 {
 "id": "str:action_continue",
@@ -2334,7 +3858,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "fa8fe52f"
+"v": "fa8fe52f",
+"shot": {
+"s": "reading_saved",
+"b": [
+31,
+799,
+88,
+22
+]
+}
 },
 {
 "id": "str:action_read_in_place",
@@ -2345,7 +3878,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "Mở bài kinh ngay tại đoạn đang đọc.",
 "quick": false,
-"v": "9985def9"
+"v": "9985def9",
+"shot": {
+"s": "reading",
+"b": [
+58,
+536,
+275,
+37
+]
+}
 },
 {
 "id": "str:fmt_segment_ref",
@@ -2356,7 +3898,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "b082eb52"
+"v": "b082eb52",
+"shot": {
+"s": "reading_saved",
+"b": [
+55,
+892,
+41,
+26
+]
+}
 },
 {
 "id": "str:label_the_texts",
@@ -2367,7 +3918,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "a69622fe"
+"v": "a69622fe",
+"shot": {
+"s": "reading",
+"b": [
+31,
+652,
+132,
+22
+]
+}
 },
 {
 "id": "str:fmt_ref_note",
@@ -2378,7 +3938,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "Mã bài kinh và ghi chú ngắn. Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "d46db851"
+"v": "d46db851",
+"shot": {
+"s": "reading",
+"b": [
+58,
+481,
+482,
+22
+]
+}
 },
 {
 "id": "str:label_saved_passages",
@@ -2389,7 +3958,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "ebdbb07b"
+"v": "ebdbb07b",
+"shot": {
+"s": "reading_saved",
+"b": [
+31,
+1566,
+176,
+22
+]
+}
 },
 {
 "id": "str:fmt_saved_count",
@@ -2400,7 +3978,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "a59cbc8d"
+"v": "a59cbc8d",
+"shot": {
+"s": "reading_saved",
+"b": [
+55,
+1625,
+90,
+32
+]
+}
 },
 {
 "id": "str:bookmarks_empty",
@@ -2411,7 +3998,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": false,
-"v": "6a113741"
+"v": "6a113741",
+"shot": {
+"s": "bookmarks_empty",
+"b": [
+31,
+110,
+501,
+28
+]
+}
 },
 {
 "id": "str:action_remove",
@@ -2422,7 +4018,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "15ec2c1b"
+"v": "15ec2c1b",
+"shot": {
+"s": "bookmarks",
+"b": [
+487,
+199,
+27,
+37
+]
+}
 },
 {
 "id": "str:action_more_at_suttacentral",
@@ -2433,7 +4038,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": false,
-"v": "a7bb5dcc"
+"v": "a7bb5dcc",
+"shot": {
+"s": "reading",
+"b": [
+49,
+1261,
+295,
+37
+]
+}
 },
 {
 "id": "str:label_pali",
@@ -2444,7 +4058,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "94b2406e"
+"v": "94b2406e",
+"shot": {
+"s": "reader",
+"b": [
+79,
+121,
+38,
+28
+]
+}
 },
 {
 "id": "str:action_on_suttacentral",
@@ -2455,7 +4078,16 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": true,
-"v": "03cfd706"
+"v": "03cfd706",
+"shot": {
+"s": "reader",
+"b": [
+377,
+116,
+175,
+37
+]
+}
 },
 {
 "id": "str:sutta_not_bundled",
@@ -2466,7 +4098,11 @@
 "where": "Màn hình Bài đọc hằng ngày. Bản thân kinh văn vẫn là tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch.",
 "note": "",
 "quick": false,
-"v": "1635957c"
+"v": "1635957c",
+"shot": {
+"s": "reader",
+"b": null
+}
 },
 {
 "id": "str:shelf_mn10_title",
@@ -2477,7 +4113,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "",
 "quick": true,
-"v": "95bd7cf9"
+"v": "95bd7cf9",
+"shot": {
+"s": "reading",
+"b": [
+55,
+711,
+204,
+32
+]
+}
 },
 {
 "id": "str:shelf_mn10_note",
@@ -2488,7 +4133,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "Theo cách gọi trong sách “Thiền như thế nào”.",
 "quick": false,
-"v": "17f4a288"
+"v": "17f4a288",
+"shot": {
+"s": "reading",
+"b": [
+55,
+746,
+298,
+26
+]
+}
 },
 {
 "id": "str:shelf_mn118_title",
@@ -2499,7 +4153,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "",
 "quick": true,
-"v": "f9547887"
+"v": "f9547887",
+"shot": {
+"s": "reading",
+"b": [
+55,
+816,
+201,
+32
+]
+}
 },
 {
 "id": "str:shelf_mn118_note",
@@ -2510,7 +4173,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "",
 "quick": true,
-"v": "e187d5de"
+"v": "e187d5de",
+"shot": {
+"s": "reading",
+"b": [
+55,
+850,
+196,
+26
+]
+}
 },
 {
 "id": "str:shelf_mn119_title",
@@ -2521,7 +4193,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "",
 "quick": true,
-"v": "8cb8219b"
+"v": "8cb8219b",
+"shot": {
+"s": "reading",
+"b": [
+55,
+921,
+205,
+32
+]
+}
 },
 {
 "id": "str:shelf_mn119_note",
@@ -2532,7 +4213,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "",
 "quick": true,
-"v": "28de3911"
+"v": "28de3911",
+"shot": {
+"s": "reading",
+"b": [
+55,
+955,
+175,
+26
+]
+}
 },
 {
 "id": "str:shelf_sn5611_title",
@@ -2543,7 +4233,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "Tên tiếng Việt quen thuộc của SN 56.11.",
 "quick": false,
-"v": "16b44748"
+"v": "16b44748",
+"shot": {
+"s": "reading",
+"b": [
+55,
+1025,
+256,
+32
+]
+}
 },
 {
 "id": "str:shelf_sn5611_note",
@@ -2554,7 +4253,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "",
 "quick": true,
-"v": "36b8da5c"
+"v": "36b8da5c",
+"shot": {
+"s": "reading",
+"b": [
+55,
+1060,
+253,
+26
+]
+}
 },
 {
 "id": "str:shelf_sn452_title",
@@ -2565,7 +4273,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "SN 45.2. “Phạm hạnh” = brahmacariya.",
 "quick": false,
-"v": "93c8235c"
+"v": "93c8235c",
+"shot": {
+"s": "reading",
+"b": [
+55,
+1130,
+314,
+32
+]
+}
 },
 {
 "id": "str:shelf_sn452_note",
@@ -2576,7 +4293,16 @@
 "where": "Kệ sách: năm bài kinh nền tảng (tên và ghi chú ngắn)",
 "note": "“Bạn lành” = kalyāṇamitta.",
 "quick": false,
-"v": "ab21825b"
+"v": "ab21825b",
+"shot": {
+"s": "reading",
+"b": [
+55,
+1165,
+164,
+26
+]
+}
 },
 {
 "id": "str:about_title",
@@ -2587,7 +4313,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": true,
-"v": "f4272d6e"
+"v": "f4272d6e",
+"shot": {
+"s": "about",
+"b": [
+110,
+36,
+148,
+39
+]
+}
 },
 {
 "id": "str:fmt_version",
@@ -2598,7 +4333,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "32b005ef"
+"v": "32b005ef",
+"shot": {
+"s": "about",
+"b": [
+31,
+162,
+143,
+22
+]
+}
 },
 {
 "id": "str:about_description",
@@ -2609,7 +4353,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "Danh xưng “Tỳ khưu” và “Ngài” theo sách “Thiền như thế nào”.",
 "quick": false,
-"v": "6f010d7f"
+"v": "6f010d7f",
+"shot": {
+"s": "about",
+"b": [
+31,
+199,
+539,
+215
+]
+}
 },
 {
 "id": "str:label_language",
@@ -2620,7 +4373,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": true,
-"v": "65074a85"
+"v": "65074a85",
+"shot": {
+"s": "about",
+"b": [
+31,
+542,
+88,
+22
+]
+}
 },
 {
 "id": "str:language_system_default",
@@ -2631,7 +4393,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "fb196c28"
+"v": "fb196c28",
+"shot": {
+"s": "about",
+"b": [
+31,
+579,
+539,
+85
+]
+}
 },
 {
 "id": "str:credit_bells_label",
@@ -2642,7 +4413,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": true,
-"v": "fa65c207"
+"v": "fa65c207",
+"shot": {
+"s": "about",
+"b": [
+31,
+704,
+66,
+22
+]
+}
 },
 {
 "id": "str:credit_bells_body",
@@ -2653,7 +4433,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "1d05c0e3"
+"v": "1d05c0e3",
+"shot": {
+"s": "about",
+"b": [
+31,
+741,
+539,
+124
+]
+}
 },
 {
 "id": "str:credit_sutta_label",
@@ -2664,7 +4453,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": true,
-"v": "51df3208"
+"v": "51df3208",
+"shot": {
+"s": "about",
+"b": [
+31,
+905,
+88,
+22
+]
+}
 },
 {
 "id": "str:credit_sutta_body",
@@ -2675,7 +4473,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "42f63710"
+"v": "42f63710",
+"shot": {
+"s": "about",
+"b": [
+31,
+942,
+539,
+92
+]
+}
 },
 {
 "id": "str:credit_instructions_label",
@@ -2686,7 +4493,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "8969d2e8"
+"v": "8969d2e8",
+"shot": {
+"s": "about",
+"b": [
+31,
+1148,
+285,
+22
+]
+}
 },
 {
 "id": "str:credit_instructions_body",
@@ -2697,7 +4513,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "Câu thứ hai chỉ có trong bản tiếng Việt.",
 "quick": false,
-"v": "e96723c0"
+"v": "e96723c0",
+"shot": {
+"s": "about",
+"b": [
+31,
+1185,
+539,
+92
+]
+}
 },
 {
 "id": "str:credit_typefaces_label",
@@ -2708,7 +4533,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": true,
-"v": "409e6270"
+"v": "409e6270",
+"shot": {
+"s": "about",
+"b": [
+31,
+1317,
+99,
+22
+]
+}
 },
 {
 "id": "str:credit_typefaces_body",
@@ -2719,7 +4553,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "574e5b0d"
+"v": "574e5b0d",
+"shot": {
+"s": "about",
+"b": [
+31,
+1354,
+539,
+92
+]
+}
 },
 {
 "id": "str:credit_opensource_label",
@@ -2730,7 +4573,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": true,
-"v": "299e6d4e"
+"v": "299e6d4e",
+"shot": {
+"s": "about",
+"b": [
+31,
+1485,
+121,
+22
+]
+}
 },
 {
 "id": "str:credit_opensource_body",
@@ -2741,7 +4593,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "8a97b627"
+"v": "8a97b627",
+"shot": {
+"s": "about",
+"b": [
+31,
+1523,
+539,
+92
+]
+}
 },
 {
 "id": "str:credit_apache_link",
@@ -2752,7 +4613,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "896eb2a8"
+"v": "896eb2a8",
+"shot": {
+"s": "about",
+"b": [
+31,
+1633,
+260,
+37
+]
+}
 },
 {
 "id": "str:privacy_body",
@@ -2763,7 +4633,16 @@
 "where": "Màn hình Giới thiệu & giấy phép",
 "note": "",
 "quick": false,
-"v": "ac9627c3"
+"v": "ac9627c3",
+"shot": {
+"s": "about",
+"b": [
+55,
+2272,
+490,
+124
+]
+}
 },
 {
 "id": "str:battery_title",
@@ -2774,7 +4653,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": true,
-"v": "4e56c1bf"
+"v": "4e56c1bf",
+"shot": {
+"s": "about",
+"b": [
+31,
+1728,
+219,
+22
+]
+}
 },
 {
 "id": "str:battery_card_body",
@@ -2785,7 +4673,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": false,
-"v": "07d8e348"
+"v": "07d8e348",
+"shot": {
+"s": "home_battery_tall",
+"b": [
+55,
+186,
+490,
+124
+]
+}
 },
 {
 "id": "str:battery_body",
@@ -2796,7 +4693,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": false,
-"v": "cc2c07a7"
+"v": "cc2c07a7",
+"shot": {
+"s": "about",
+"b": [
+31,
+1765,
+539,
+220
+]
+}
 },
 {
 "id": "str:battery_step_battery",
@@ -2807,7 +4713,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "Tên mục cài đặt nên khớp với điện thoại Xiaomi bằng tiếng Việt.",
 "quick": false,
-"v": "45daa8b5"
+"v": "45daa8b5",
+"shot": {
+"s": "about",
+"b": [
+31,
+2001,
+516,
+28
+]
+}
 },
 {
 "id": "str:battery_step_autostart",
@@ -2818,7 +4733,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "Tên mục cài đặt nên khớp với điện thoại Xiaomi bằng tiếng Việt.",
 "quick": false,
-"v": "b2f1e60e"
+"v": "b2f1e60e",
+"shot": {
+"s": "about",
+"b": [
+31,
+2035,
+323,
+28
+]
+}
 },
 {
 "id": "str:battery_footnote",
@@ -2829,7 +4753,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": false,
-"v": "0b6a6103"
+"v": "0b6a6103",
+"shot": {
+"s": "about",
+"b": [
+31,
+2078,
+539,
+53
+]
+}
 },
 {
 "id": "str:battery_open_settings",
@@ -2840,7 +4773,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": true,
-"v": "1c69a381"
+"v": "1c69a381",
+"shot": {
+"s": "about",
+"b": [
+31,
+2150,
+198,
+37
+]
+}
 },
 {
 "id": "str:battery_read_more",
@@ -2851,7 +4793,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": true,
-"v": "89541d2c"
+"v": "89541d2c",
+"shot": {
+"s": "home_battery_tall",
+"b": [
+315,
+341,
+95,
+37
+]
+}
 },
 {
 "id": "str:battery_dismiss",
@@ -2862,7 +4813,16 @@
 "where": "Thẻ hướng dẫn khi chuông không reo (một số điện thoại tự tắt ứng dụng chạy nền)",
 "note": "",
 "quick": true,
-"v": "d2b73ab2"
+"v": "d2b73ab2",
+"shot": {
+"s": "home_battery_tall",
+"b": [
+474,
+341,
+52,
+37
+]
+}
 },
 {
 "id": "str:instructions_title",
@@ -2873,7 +4833,16 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "",
 "quick": false,
-"v": "e7c42639"
+"v": "e7c42639",
+"shot": {
+"s": "home",
+"b": [
+295,
+49,
+37,
+37
+]
+}
 },
 {
 "id": "str:instructions_intro_any",
@@ -2884,7 +4853,16 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "",
 "quick": false,
-"v": "62b68a09"
+"v": "62b68a09",
+"shot": {
+"s": "instructions",
+"b": [
+31,
+317,
+539,
+124
+]
+}
 },
 {
 "id": "str:instructions_intro_stages",
@@ -2895,7 +4873,16 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "Phần tô màu là ví dụ; ứng dụng tự điền.",
 "quick": false,
-"v": "919e5935"
+"v": "919e5935",
+"shot": {
+"s": "instructions",
+"b": [
+31,
+459,
+539,
+156
+]
+}
 },
 {
 "id": "str:instructions_intro_teacher",
@@ -2906,7 +4893,16 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "Câu này cần nhẹ nhàng, không gây lo lắng. Xin xem kỹ giọng văn.",
 "quick": false,
-"v": "07509c69"
+"v": "07509c69",
+"shot": {
+"s": "instructions",
+"b": [
+31,
+634,
+539,
+188
+]
+}
 },
 {
 "id": "str:instructions_intro_close",
@@ -2917,7 +4913,16 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "",
 "quick": false,
-"v": "a940ceb5"
+"v": "a940ceb5",
+"shot": {
+"s": "instructions",
+"b": [
+31,
+840,
+539,
+92
+]
+}
 },
 {
 "id": "str:instructions_load_error",
@@ -2928,7 +4933,11 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "",
 "quick": false,
-"v": "b3d8730e"
+"v": "b3d8730e",
+"shot": {
+"s": "instructions",
+"b": null
+}
 },
 {
 "id": "str:action_read_on_site",
@@ -2939,7 +4948,16 @@
 "where": "Đầu trang Hướng dẫn, phía trên danh sách ba bài",
 "note": "Trang web này bằng tiếng Anh, nên có ghi “(tiếng Anh)”.",
 "quick": false,
-"v": "dc0096d4"
+"v": "dc0096d4",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+49,
+4559,
+502,
+73
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:01",
@@ -2950,7 +4968,16 @@
 "where": "Tên bài hướng dẫn",
 "note": "",
 "quick": false,
-"v": "077f1dd7"
+"v": "077f1dd7",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+110,
+191,
+46
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:02",
@@ -2961,7 +4988,16 @@
 "where": "Ngồi thiền · câu giới thiệu dưới tên bài",
 "note": "",
 "quick": false,
-"v": "2c8b0445"
+"v": "2c8b0445",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+168,
+539,
+68
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:03",
@@ -2972,7 +5008,16 @@
 "where": "Ngồi thiền · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "7d0a864c"
+"v": "7d0a864c",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+279,
+66,
+22
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:04",
@@ -2983,7 +5028,16 @@
 "where": "Ngồi thiền · Tư thế",
 "note": "",
 "quick": false,
-"v": "87a7f171"
+"v": "87a7f171",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+316,
+539,
+178
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:05",
@@ -2994,7 +5048,16 @@
 "where": "Ngồi thiền · Tư thế",
 "note": "",
 "quick": false,
-"v": "3398381e"
+"v": "3398381e",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+512,
+539,
+178
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:06",
@@ -3006,7 +5069,16 @@
 "img": "meditation/sit-posture-vi.png",
 "note": "",
 "quick": false,
-"v": "3f9bc460"
+"v": "3f9bc460",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+55,
+733,
+490,
+392
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:07",
@@ -3018,7 +5090,16 @@
 "img": "meditation/sit-chair.png",
 "note": "",
 "quick": false,
-"v": "3a93af76"
+"v": "3a93af76",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+55,
+1262,
+490,
+416
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:08",
@@ -3029,7 +5110,16 @@
 "where": "Ngồi thiền · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "b45c0822"
+"v": "b45c0822",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+1804,
+154,
+22
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:09",
@@ -3040,7 +5130,16 @@
 "where": "Ngồi thiền · Cách thực hành",
 "note": "",
 "quick": false,
-"v": "95d2c2ea"
+"v": "95d2c2ea",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+1841,
+539,
+141
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:10",
@@ -3051,7 +5150,16 @@
 "where": "Ngồi thiền · Cách thực hành",
 "note": "",
 "quick": false,
-"v": "fe7f7380"
+"v": "fe7f7380",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2001,
+539,
+178
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:11",
@@ -3062,7 +5170,16 @@
 "where": "Ngồi thiền · Cách thực hành",
 "note": "",
 "quick": false,
-"v": "a14ef607"
+"v": "a14ef607",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2197,
+539,
+105
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:12",
@@ -3073,7 +5190,16 @@
 "where": "Ngồi thiền · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "74aab5fe"
+"v": "74aab5fe",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2363,
+394,
+22
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:13",
@@ -3084,7 +5210,16 @@
 "where": "Ngồi thiền · Khi có điều gì khác thu hút sự chú ý",
 "note": "",
 "quick": false,
-"v": "ebf0aeb1"
+"v": "ebf0aeb1",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2401,
+539,
+325
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:14",
@@ -3095,7 +5230,16 @@
 "where": "Ngồi thiền · tiêu đề nhỏ trong phần “Khi có điều gì khác thu hút sự chú ý”",
 "note": "",
 "quick": false,
-"v": "b91d502d"
+"v": "b91d502d",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2750,
+99,
+37
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:15",
@@ -3106,7 +5250,16 @@
 "where": "Ngồi thiền · Khi có điều gì khác thu hút sự chú ý",
 "note": "",
 "quick": false,
-"v": "b2fe1d37"
+"v": "b2fe1d37",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2795,
+539,
+141
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:16",
@@ -3117,7 +5270,16 @@
 "where": "Ngồi thiền · tiêu đề nhỏ trong phần “Khi có điều gì khác thu hút sự chú ý”",
 "note": "",
 "quick": false,
-"v": "77575b16"
+"v": "77575b16",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+2961,
+58,
+37
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:17",
@@ -3128,7 +5290,16 @@
 "where": "Ngồi thiền · Khi có điều gì khác thu hút sự chú ý",
 "note": "",
 "quick": false,
-"v": "fe1e996c"
+"v": "fe1e996c",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3007,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:18",
@@ -3139,7 +5310,16 @@
 "where": "Ngồi thiền · tiêu đề nhỏ trong phần “Khi có điều gì khác thu hút sự chú ý”",
 "note": "",
 "quick": false,
-"v": "584ddc9c"
+"v": "584ddc9c",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3246,
+295,
+37
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:19",
@@ -3150,7 +5330,16 @@
 "where": "Ngồi thiền · Khi có điều gì khác thu hút sự chú ý",
 "note": "",
 "quick": false,
-"v": "99a9e6df"
+"v": "99a9e6df",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3292,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:20",
@@ -3161,7 +5350,16 @@
 "where": "Ngồi thiền · Khi có điều gì khác thu hút sự chú ý",
 "note": "",
 "quick": false,
-"v": "35ac8e33"
+"v": "35ac8e33",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3525,
+539,
+178
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:21",
@@ -3172,7 +5370,16 @@
 "where": "Ngồi thiền · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "b5b99d0f"
+"v": "b5b99d0f",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3764,
+77,
+22
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:22",
@@ -3183,7 +5390,16 @@
 "where": "Ngồi thiền · Bao lâu",
 "note": "",
 "quick": false,
-"v": "aa8afc37"
+"v": "aa8afc37",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+3802,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:23",
@@ -3194,7 +5410,16 @@
 "where": "Ngồi thiền · khung ghi chú (dòng đầu là tiêu đề)",
 "note": "",
 "quick": false,
-"v": "b5900bd5"
+"v": "b5900bd5",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+55,
+4059,
+490,
+173
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:24",
@@ -3205,7 +5430,16 @@
 "where": "Ngồi thiền · dòng ghi nguồn ở cuối bài",
 "note": "",
 "quick": false,
-"v": "9ca21a3c"
+"v": "9ca21a3c",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+31,
+4325,
+539,
+136
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:25",
@@ -3216,7 +5450,16 @@
 "where": "Ngồi thiền · liên kết ở cuối bài, mở sách “Thiền như thế nào”",
 "note": "Chỉ có trong bản tiếng Việt.",
 "quick": false,
-"v": "f983bcfb"
+"v": "f983bcfb",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+49,
+4492,
+493,
+37
+]
+}
 },
 {
 "id": "sheet:sitting-meditation:26",
@@ -3227,7 +5470,16 @@
 "where": "Ngồi thiền · số thứ tự bài",
 "quick": false,
 "note": "",
-"v": "b6f269ae"
+"v": "b6f269ae",
+"shot": {
+"s": "sheet_sitting",
+"b": [
+110,
+36,
+113,
+39
+]
+}
 },
 {
 "id": "sheet:walking-meditation:01",
@@ -3238,7 +5490,16 @@
 "where": "Tên bài hướng dẫn",
 "note": "",
 "quick": false,
-"v": "87b1da45"
+"v": "87b1da45",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+110,
+188,
+46
+]
+}
 },
 {
 "id": "sheet:walking-meditation:02",
@@ -3249,7 +5510,16 @@
 "where": "Kinh hành · câu giới thiệu dưới tên bài",
 "note": "",
 "quick": false,
-"v": "a3cf3566"
+"v": "a3cf3566",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+168,
+539,
+68
+]
+}
 },
 {
 "id": "sheet:walking-meditation:03",
@@ -3260,7 +5530,16 @@
 "where": "Kinh hành · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "7d0a864c"
+"v": "7d0a864c",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+279,
+66,
+22
+]
+}
 },
 {
 "id": "sheet:walking-meditation:04",
@@ -3271,7 +5550,16 @@
 "where": "Kinh hành · Tư thế",
 "note": "",
 "quick": false,
-"v": "0ff7e976"
+"v": "0ff7e976",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+316,
+539,
+178
+]
+}
 },
 {
 "id": "sheet:walking-meditation:05",
@@ -3282,7 +5570,16 @@
 "where": "Kinh hành · Tư thế",
 "note": "",
 "quick": false,
-"v": "21a3aae2"
+"v": "21a3aae2",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+512,
+539,
+141
+]
+}
 },
 {
 "id": "sheet:walking-meditation:06",
@@ -3294,7 +5591,16 @@
 "img": "meditation/walk-stand-vi.png",
 "note": "",
 "quick": false,
-"v": "4f172bd1"
+"v": "4f172bd1",
+"shot": {
+"s": "sheet_walking",
+"b": [
+55,
+697,
+490,
+489
+]
+}
 },
 {
 "id": "sheet:walking-meditation:07",
@@ -3305,7 +5611,16 @@
 "where": "Kinh hành · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "7ab992de"
+"v": "7ab992de",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+1339,
+88,
+22
+]
+}
 },
 {
 "id": "sheet:walking-meditation:08",
@@ -3316,7 +5631,16 @@
 "where": "Kinh hành · Đường đi",
 "note": "",
 "quick": false,
-"v": "ada1044e"
+"v": "ada1044e",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+1377,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:walking-meditation:09",
@@ -3328,7 +5652,16 @@
 "img": "meditation/walk-path-vi.png",
 "note": "",
 "quick": false,
-"v": "fd03e09b"
+"v": "fd03e09b",
+"shot": {
+"s": "sheet_walking",
+"b": [
+55,
+1634,
+490,
+489
+]
+}
 },
 {
 "id": "sheet:walking-meditation:10",
@@ -3339,7 +5672,16 @@
 "where": "Kinh hành · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "b91c865e"
+"v": "b91c865e",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+2249,
+99,
+22
+]
+}
 },
 {
 "id": "sheet:walking-meditation:11",
@@ -3350,7 +5692,16 @@
 "where": "Kinh hành · Bước chân",
 "note": "",
 "quick": false,
-"v": "21a25dea"
+"v": "21a25dea",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+2287,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:walking-meditation:12",
@@ -3361,7 +5712,16 @@
 "where": "Kinh hành · Bước chân",
 "note": "",
 "quick": false,
-"v": "f0aab241"
+"v": "f0aab241",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+2520,
+539,
+325
+]
+}
 },
 {
 "id": "sheet:walking-meditation:13",
@@ -3373,7 +5733,16 @@
 "img": "meditation/walk-feet-vi.png",
 "note": "",
 "quick": false,
-"v": "8bb99e57"
+"v": "8bb99e57",
+"shot": {
+"s": "sheet_walking",
+"b": [
+55,
+2887,
+490,
+311
+]
+}
 },
 {
 "id": "sheet:walking-meditation:14",
@@ -3384,7 +5753,16 @@
 "where": "Kinh hành · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "49e1507e"
+"v": "49e1507e",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+3353,
+231,
+22
+]
+}
 },
 {
 "id": "sheet:walking-meditation:15",
@@ -3395,7 +5773,16 @@
 "where": "Kinh hành · Quay lại ở cuối đường",
 "note": "",
 "quick": false,
-"v": "2b37bf19"
+"v": "2b37bf19",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+3390,
+539,
+361
+]
+}
 },
 {
 "id": "sheet:walking-meditation:16",
@@ -3406,7 +5793,16 @@
 "where": "Kinh hành · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "29767be8"
+"v": "29767be8",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+3812,
+197,
+22
+]
+}
 },
 {
 "id": "sheet:walking-meditation:17",
@@ -3417,7 +5813,16 @@
 "where": "Kinh hành · Khi tâm lang thang",
 "note": "",
 "quick": false,
-"v": "a9970938"
+"v": "a9970938",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+3849,
+539,
+325
+]
+}
 },
 {
 "id": "sheet:walking-meditation:18",
@@ -3428,7 +5833,16 @@
 "where": "Kinh hành · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "2b4e79dd"
+"v": "2b4e79dd",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+4235,
+231,
+22
+]
+}
 },
 {
 "id": "sheet:walking-meditation:19",
@@ -3439,7 +5853,16 @@
 "where": "Kinh hành · Bao lâu, và đặt ở đâu",
 "note": "",
 "quick": false,
-"v": "af1df933"
+"v": "af1df933",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+4272,
+539,
+361
+]
+}
 },
 {
 "id": "sheet:walking-meditation:20",
@@ -3450,7 +5873,16 @@
 "where": "Kinh hành · khung ghi chú (dòng đầu là tiêu đề)",
 "note": "",
 "quick": false,
-"v": "f920d649"
+"v": "f920d649",
+"shot": {
+"s": "sheet_walking",
+"b": [
+55,
+4676,
+490,
+205
+]
+}
 },
 {
 "id": "sheet:walking-meditation:21",
@@ -3461,7 +5893,16 @@
 "where": "Kinh hành · dòng ghi nguồn ở cuối bài",
 "note": "",
 "quick": false,
-"v": "9ca21a3c"
+"v": "9ca21a3c",
+"shot": {
+"s": "sheet_walking",
+"b": [
+31,
+4975,
+539,
+136
+]
+}
 },
 {
 "id": "sheet:walking-meditation:22",
@@ -3472,7 +5913,16 @@
 "where": "Kinh hành · liên kết ở cuối bài, mở sách “Thiền như thế nào”",
 "note": "Chỉ có trong bản tiếng Việt.",
 "quick": false,
-"v": "f983bcfb"
+"v": "f983bcfb",
+"shot": {
+"s": "sheet_walking",
+"b": [
+49,
+5141,
+493,
+37
+]
+}
 },
 {
 "id": "sheet:walking-meditation:23",
@@ -3483,7 +5933,16 @@
 "where": "Kinh hành · số thứ tự bài",
 "quick": false,
 "note": "",
-"v": "d21969f2"
+"v": "d21969f2",
+"shot": {
+"s": "sheet_walking",
+"b": [
+110,
+36,
+121,
+39
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:01",
@@ -3494,7 +5953,16 @@
 "where": "Tên bài hướng dẫn",
 "note": "",
 "quick": false,
-"v": "e7c2fd19"
+"v": "e7c2fd19",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+110,
+461,
+46
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:02",
@@ -3505,7 +5973,16 @@
 "where": "Bái lạy trong chánh niệm · câu giới thiệu dưới tên bài",
 "note": "",
 "quick": false,
-"v": "19251053"
+"v": "19251053",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+168,
+539,
+105
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:03",
@@ -3516,7 +5993,16 @@
 "where": "Bái lạy trong chánh niệm · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "8c32e1b5"
+"v": "8c32e1b5",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+316,
+187,
+22
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:04",
@@ -3527,7 +6013,16 @@
 "where": "Bái lạy trong chánh niệm · Trước khi bắt đầu",
 "note": "",
 "quick": false,
-"v": "e1377abc"
+"v": "e1377abc",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+353,
+539,
+178
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:05",
@@ -3539,7 +6034,16 @@
 "img": "meditation/pros-kneel-vi.png",
 "note": "",
 "quick": false,
-"v": "1bd82f3e"
+"v": "1bd82f3e",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+55,
+574,
+490,
+345
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:06",
@@ -3550,7 +6054,16 @@
 "where": "Bái lạy trong chánh niệm · Trước khi bắt đầu",
 "note": "",
 "quick": false,
-"v": "61c59192"
+"v": "61c59192",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+1030,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:07",
@@ -3562,7 +6075,16 @@
 "img": "meditation/pros-three-vi.png",
 "note": "",
 "quick": false,
-"v": "5b449785"
+"v": "5b449785",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+55,
+1287,
+490,
+254
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:08",
@@ -3573,7 +6095,16 @@
 "where": "Bái lạy trong chánh niệm · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "6189c392"
+"v": "6189c392",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+1695,
+99,
+22
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:09",
@@ -3584,7 +6115,16 @@
 "where": "Bái lạy trong chánh niệm · Lạy xuống",
 "note": "",
 "quick": false,
-"v": "ecb9374a"
+"v": "ecb9374a",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+1732,
+539,
+325
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:10",
@@ -3595,7 +6135,16 @@
 "where": "Bái lạy trong chánh niệm · Lạy xuống",
 "note": "",
 "quick": false,
-"v": "5f90e85b"
+"v": "5f90e85b",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+2075,
+539,
+288
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:11",
@@ -3607,7 +6156,16 @@
 "img": "meditation/pros-floor-vi.png",
 "note": "",
 "quick": false,
-"v": "6942bb0a"
+"v": "6942bb0a",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+55,
+2406,
+490,
+406
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:12",
@@ -3618,7 +6176,16 @@
 "where": "Bái lạy trong chánh niệm · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "c4bcb83d"
+"v": "c4bcb83d",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+2966,
+340,
+22
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:13",
@@ -3629,7 +6196,16 @@
 "where": "Bái lạy trong chánh niệm · Ngước lên, và lần lạy tiếp theo",
 "note": "",
 "quick": false,
-"v": "be0b9d8c"
+"v": "be0b9d8c",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+3004,
+539,
+251
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:14",
@@ -3640,7 +6216,16 @@
 "where": "Bái lạy trong chánh niệm · Ngước lên, và lần lạy tiếp theo",
 "note": "",
 "quick": false,
-"v": "236fe98b"
+"v": "236fe98b",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+3273,
+539,
+68
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:15",
@@ -3651,7 +6236,16 @@
 "where": "Bái lạy trong chánh niệm · tiêu đề phần",
 "note": "",
 "quick": false,
-"v": "9c1ae4f5"
+"v": "9c1ae4f5",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+3403,
+88,
+22
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:16",
@@ -3662,7 +6256,16 @@
 "where": "Bái lạy trong chánh niệm · Kết thúc",
 "note": "",
 "quick": false,
-"v": "54a2a6e5"
+"v": "54a2a6e5",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+3440,
+539,
+325
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:17",
@@ -3673,7 +6276,16 @@
 "where": "Bái lạy trong chánh niệm · Kết thúc",
 "note": "",
 "quick": false,
-"v": "70ff3486"
+"v": "70ff3486",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+3783,
+539,
+215
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:18",
@@ -3684,7 +6296,16 @@
 "where": "Bái lạy trong chánh niệm · khung ghi chú (dòng đầu là tiêu đề)",
 "note": "",
 "quick": false,
-"v": "26e30fb0"
+"v": "26e30fb0",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+55,
+4040,
+490,
+237
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:19",
@@ -3695,7 +6316,16 @@
 "where": "Bái lạy trong chánh niệm · dòng ghi nguồn ở cuối bài",
 "note": "",
 "quick": false,
-"v": "9ca21a3c"
+"v": "9ca21a3c",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+31,
+4370,
+539,
+136
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:20",
@@ -3706,7 +6336,16 @@
 "where": "Bái lạy trong chánh niệm · liên kết ở cuối bài, mở sách “Thiền như thế nào”",
 "note": "Chỉ có trong bản tiếng Việt.",
 "quick": false,
-"v": "f983bcfb"
+"v": "f983bcfb",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+49,
+4537,
+493,
+37
+]
+}
 },
 {
 "id": "sheet:mindful-prostration:21",
@@ -3717,7 +6356,16 @@
 "where": "Bái lạy trong chánh niệm · số thứ tự bài",
 "quick": false,
 "note": "",
-"v": "705d96b9"
+"v": "705d96b9",
+"shot": {
+"s": "sheet_prostration",
+"b": [
+110,
+36,
+122,
+39
+]
+}
 },
 {
 "id": "steps:kneel-a",
@@ -4426,6 +7074,280 @@
 "note": "",
 "quick": false,
 "v": "4bf9b985"
+}
+],
+"shots": {
+"home": {
+"w": 600,
+"h": 1301,
+"label": "Màn hình chính",
+"mock": false
+},
+"home_full": {
+"w": 600,
+"h": 1557,
+"label": "Màn hình chính (toàn bộ)",
+"mock": false
+},
+"sheet_countdown": {
+"w": 600,
+"h": 1258,
+"label": "Bảng “Đếm ngược”",
+"mock": false
+},
+"sheet_interval": {
+"w": 600,
+"h": 1258,
+"label": "Bảng “Chuông giữa giờ”",
+"mock": false
+},
+"sheet_bells": {
+"w": 600,
+"h": 1301,
+"label": "Bảng “Chuông”",
+"mock": false
+},
+"sheet_bells_menu": {
+"w": 600,
+"h": 1301,
+"label": "Danh sách tiếng chuông",
+"mock": false
+},
+"sheet_bells_stages": {
+"w": 600,
+"h": 1985,
+"label": "Bảng “Chuông” khi có nhiều giai đoạn",
+"mock": false
+},
+"sheet_volume": {
+"w": 600,
+"h": 1267,
+"label": "Bảng “Âm lượng”",
+"mock": false
+},
+"home_stages": {
+"w": 600,
+"h": 1636,
+"label": "Màn hình chính với hai giai đoạn",
+"mock": false
+},
+"dialog_minutes": {
+"w": 600,
+"h": 1557,
+"label": "Hộp thoại nhập số phút",
+"mock": false
+},
+"dialog_save_preset": {
+"w": 600,
+"h": 1557,
+"label": "Hộp thoại lưu mẫu",
+"mock": false
+},
+"dialog_wake": {
+"w": 600,
+"h": 1636,
+"label": "Hộp thoại bật sáng màn hình",
+"mock": false
+},
+"presets": {
+"w": 600,
+"h": 545,
+"label": "Mẫu hẹn giờ của tôi",
+"mock": false
+},
+"presets_empty": {
+"w": 600,
+"h": 761,
+"label": "Mẫu hẹn giờ (chưa có mẫu nào)",
+"mock": false
+},
+"session": {
+"w": 600,
+"h": 989,
+"label": "Trong khi thiền",
+"mock": false
+},
+"session_time": {
+"w": 600,
+"h": 977,
+"label": "Trong khi thiền, sau khi chạm để xem giờ",
+"mock": false
+},
+"session_countdown": {
+"w": 600,
+"h": 966,
+"label": "Đếm ngược trước khi bắt đầu",
+"mock": false
+},
+"session_paused": {
+"w": 600,
+"h": 977,
+"label": "Thời thiền đang tạm dừng",
+"mock": false
+},
+"completion": {
+"w": 600,
+"h": 786,
+"label": "Màn hình kết thúc",
+"mock": false
+},
+"notif_session": {
+"w": 600,
+"h": 983,
+"label": "Thông báo trong khi thiền",
+"mock": true
+},
+"notif_channels": {
+"w": 600,
+"h": 581,
+"label": "Cài đặt thông báo của Android",
+"mock": true
+},
+"mindful_off": {
+"w": 600,
+"h": 2134,
+"label": "Chuông chánh niệm (đang tắt)",
+"mock": false
+},
+"mindful_on": {
+"w": 600,
+"h": 2146,
+"label": "Chuông chánh niệm (đang bật)",
+"mock": false
+},
+"mindful_taps": {
+"w": 600,
+"h": 1890,
+"label": "Chuông chánh niệm, chế độ rung",
+"mock": false
+},
+"notif_mindful": {
+"w": 600,
+"h": 1264,
+"label": "Thông báo và ô cài đặt nhanh của Chuông chánh niệm",
+"mock": true
+},
+"reading": {
+"w": 600,
+"h": 1322,
+"label": "Bài đọc hằng ngày",
+"mock": false
+},
+"reading_saved": {
+"w": 600,
+"h": 1816,
+"label": "Bài đọc hằng ngày, khi đã lưu vài đoạn",
+"mock": false
+},
+"reader": {
+"w": 600,
+"h": 3664,
+"label": "Đọc một bài kinh",
+"mock": false
+},
+"bookmarks": {
+"w": 600,
+"h": 532,
+"label": "Đoạn kinh đã lưu",
+"mock": false
+},
+"bookmarks_empty": {
+"w": 600,
+"h": 166,
+"label": "Đoạn kinh đã lưu (chưa có)",
+"mock": false
+},
+"instructions": {
+"w": 600,
+"h": 1436,
+"label": "Hướng dẫn",
+"mock": false
+},
+"sheet_sitting": {
+"w": 600,
+"h": 4654,
+"label": "Bài hướng dẫn Ngồi thiền",
+"mock": false
+},
+"sheet_walking": {
+"w": 600,
+"h": 5303,
+"label": "Bài hướng dẫn Kinh hành",
+"mock": false
+},
+"sheet_prostration": {
+"w": 600,
+"h": 4699,
+"label": "Bài hướng dẫn Bái lạy",
+"mock": false
+},
+"about": {
+"w": 600,
+"h": 2450,
+"label": "Giới thiệu & giấy phép",
+"mock": false
+},
+"home_battery_tall": {
+"w": 600,
+"h": 1874,
+"label": "Màn hình chính trên điện thoại Xiaomi",
+"mock": false
+},
+"onboarding": {
+"w": 600,
+"h": 1019,
+"label": "Chọn ngôn ngữ, lần mở đầu tiên",
+"mock": false
+}
+},
+"tour": [
+{
+"s": "home",
+"text": "Màn hình chính. Chọn thời lượng trên vòng tròn hoặc các nút số, rồi nhấn Bắt đầu."
+},
+{
+"s": "sheet_bells",
+"text": "Chạm vào một dòng để mở bảng cài đặt, ví dụ chọn tiếng chuông bắt đầu, giữa giờ và kết thúc."
+},
+{
+"s": "home_stages",
+"text": "Có thể chia thời thiền thành nhiều giai đoạn, ví dụ mười phút kinh hành rồi mười phút ngồi thiền."
+},
+{
+"s": "session",
+"text": "Trong khi thiền, màn hình chỉ hiện vòng tròn. Chạm vào màn hình để xem giờ."
+},
+{
+"s": "completion",
+"text": "Khi kết thúc, chuông ngân hết rồi hiện một câu hồi hướng bằng tiếng Pāli, kèm lời dịch."
+},
+{
+"s": "presets",
+"text": "Những cài đặt hay dùng có thể lưu thành mẫu hẹn giờ."
+},
+{
+"s": "instructions",
+"text": "Phần Hướng dẫn: lời mở đầu và ba bài Ngồi thiền, Kinh hành, Bái lạy."
+},
+{
+"s": "sheet_sitting",
+"text": "Một bài hướng dẫn. Chữ màu vàng là chữ niệm."
+},
+{
+"s": "reading",
+"text": "Bài đọc hằng ngày: mỗi ngày một đoạn kinh. Kinh văn là bản tiếng Anh kèm tiếng Pāli; chỉ phần chữ xung quanh được dịch."
+},
+{
+"s": "mindful_on",
+"text": "Chuông chánh niệm: vài tiếng chuông nhẹ trong ngày, nhắc dừng lại một chút."
+},
+{
+"s": "notif_session",
+"text": "Ngoài ứng dụng, điện thoại hiện thông báo. Đây là hình minh họa, không phải ảnh chụp."
+},
+{
+"s": "about",
+"text": "Trang Giới thiệu & giấy phép."
 }
 ]
 }

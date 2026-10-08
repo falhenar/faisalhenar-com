@@ -126,6 +126,30 @@ ul.how li{margin:.45em 0}
 .sizes button.on{border-color:var(--river);color:var(--river);font-weight:600}
 .copy{word-break:break-all;font-size:.85em;background:var(--paper);border-radius:10px;padding:10px;border:1px solid var(--mist)}
 .center{text-align:center}
+.shot{margin:16px 0 0;cursor:zoom-in}
+.shot-win{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--mist);background:#F4F6F0}
+.shot-win img{display:block;width:100%;height:auto;will-change:transform}
+.hl{position:absolute;border:3px solid var(--ochre);border-radius:8px;box-shadow:0 0 0 9999px rgba(27,36,31,.18);pointer-events:none}
+.viewer-page .hl{box-shadow:none;background:rgba(192,138,46,.12)}
+.shot figcaption{display:flex;justify-content:space-between;gap:10px;font-size:.78em;color:var(--ink-soft);margin-top:6px}
+.shot .zoom{color:var(--river);font-weight:600;white-space:nowrap}
+.viewer{position:fixed;inset:0;z-index:30;background:rgba(15,20,18,.92);display:flex;flex-direction:column}
+.viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#E8EBE3;padding:calc(6px + env(safe-area-inset-top)) 8px 6px 16px;font-weight:600;font-size:.92em}
+.viewer-bar .iconbtn{color:#E8EBE3;font-size:1.2em}
+.viewer-scroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 12px calc(24px + env(safe-area-inset-bottom))}
+.viewer-page{position:relative;max-width:480px;margin:0 auto}
+.viewer-page img{display:block;width:100%;height:auto;border-radius:16px}
+.qhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.qsee{padding:4px 0;font-size:1em;white-space:nowrap}
+.tour{padding-top:calc(18px + env(safe-area-inset-top));text-align:center}
+.tour-top{display:flex;justify-content:space-between;align-items:center}
+.phone{margin:8px auto 0;width:min(270px, calc(54vh * 0.4613 + 16px));border-radius:30px;padding:8px;background:#1B241F;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.phone img{display:block;width:100%;height:auto;border-radius:23px}
+.tour-text{font-size:1.08em;line-height:1.6;margin:18px 4px 10px;min-height:5.2em}
+.dots{display:flex;justify-content:center;gap:6px;margin-bottom:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--mist)}
+.dots i.on{background:var(--ochre)}
+.tourcard img{border-radius:8px;border:1px solid var(--mist);flex:none}
 .hidden{display:none!important}
 .refs{list-style:none;padding:0;margin:8px 0 0}
 .refs li{padding:10px 0;border-bottom:1px solid var(--mist)}
@@ -142,7 +166,7 @@ ul.how li{margin:.45em 0}
 <body>
 <div id="demo" class="banner hidden">Chế độ thử: câu trả lời chỉ được lưu trên máy này.</div>
 <div id="app"><div class="wrap"><p class="muted" style="padding-top:40px">Đang tải…</p></div></div>
-<script src="review.js?v=1"></script>
+<script src="review.js?v=2"></script>
 
 </body>
 </html>
