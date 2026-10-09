@@ -23,8 +23,9 @@
 <meta name="twitter:image" content="https://faisalhenar.com/images/og-image.png">
 <link rel="preload" href="/photography/fonts/familjen-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/base.css?v=2">
-<link rel="stylesheet" href="/photography/room-assets/room.css?v=7">
-<script src="/photography/room-assets/room.js?v=6"></script>
+<link rel="stylesheet" href="/photography/room-assets/room.css?v=9">
+<style>@media (prefers-reduced-motion: no-preference){ @view-transition{ navigation: auto; } }</style>
+<script src="/photography/room-assets/room.js?v=8"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "68bb7041afa74c9ea4d36891d27ae977"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -50,39 +51,59 @@
     </div>
     </div>
   </header>
-  <nav class="room-nav" aria-label="Photography room">
-    <a href="/photography/">The wall</a>
-    <a href="/photography/sheets/" aria-current="page">Contact sheets</a>
-    <a href="/photography/everything/">Everything <span class="room-nav-n">110</span></a>
-  </nav>
 
   <main id="main" tabindex="-1" class="room-main">
-    <div class="room-head">
-      <h1>Sài Gòn, 30 June</h1>
-      <p class="sheet-meta">Sài Gòn · 09:06 to 17:28 · 4 frames</p>
+    <div class="room-head room-head--sheet">
+      <div class="room-top">
+        <a class="room-back" href="/photography/sheets/">← All contact sheets</a>
+        <nav class="room-nav" aria-label="Photography room"><a href="/photography/">The wall</a><span class="room-nav-dot" aria-hidden="true">·</span><a href="/photography/sheets/" aria-current="page">Contact sheets</a><span class="room-nav-dot" aria-hidden="true">·</span><a href="/photography/everything/">Everything <span class="room-nav-n">110</span></a></nav>
+      </div>
+      <div class="sheet-head">
+        <div>
+          <h1>Sài Gòn, 30 June</h1>
+          <p class="sheet-meta">Sài Gòn · 09:06 to 17:28 · 4 frames</p>
+        </div>
+      </div>
     </div>
 
+    <div class="walk-line" aria-hidden="true">
+      <span class="walk-axis"></span>
+      <span class="walk-hour" style="--x:0.00%">09:00</span><span class="walk-hour" style="--x:22.22%">11:00</span><span class="walk-hour" style="--x:44.44%">13:00</span><span class="walk-hour" style="--x:66.67%">15:00</span><span class="walk-hour" style="--x:88.89%">17:00</span>
+      <span class="walk-tick" style="--x:1.11%" data-tick="1"><span class="walk-time">09:06</span></span><span class="walk-tick" style="--x:91.30%" data-tick="2"><span class="walk-time">17:13</span></span><span class="walk-tick" style="--x:92.96%" data-tick="3"><span class="walk-time">17:22</span></span><span class="walk-tick" style="--x:94.07%" data-tick="4"><span class="walk-time">17:28</span></span>
+    </div>
     <div class="sheet" data-sheet>
       <p class="sheet-edge" aria-hidden="true">faisalhenar.com ▸ Sài Gòn, 30 June ▸ 4 frames</p>
       <div class="sheet-grid" data-v-list data-v-context="Sài Gòn, 30 June">
-        <figure class="frame" id="frame-1">
+        <figure class="frame" id="frame-1" data-frame="1">
           <a class="frame-photo" href="/photography/p/fh-0025/" data-v-src="/photography/photos/2026/fh-0025.jpg" data-v-w="2560" data-v-h="1920" data-v-title="Frame 1, Sài Gòn, 30 June" data-v-desc="A lottery seller waits in a folding chair behind his rack of tickets, his motorbike parked against a graffitied wall." data-v-meta="Sài Gòn · 30 June 2026, 09:06" data-v-from="From Sài Gòn, 30 June, frame 1" data-v-from-href="/photography/sheets/2026-06-30-sai-gon/#frame-1" data-v-wall="" data-v-wall-href="" aria-describedby="frame-1-cap"><img src="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/2026/fh-0025.jpg" srcset="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/2026/fh-0025.jpg 400w, /cdn-cgi/image/width=800,fit=scale-down,format=auto/photography/photos/2026/fh-0025.jpg 800w, /cdn-cgi/image/width=1200,fit=scale-down,format=auto/photography/photos/2026/fh-0025.jpg 1200w" sizes="(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw" data-orig="/photography/photos/2026/fh-0025.jpg" width="2560" height="1920" alt="A lottery seller waits in a folding chair behind his rack of tickets, his motorbike parked against a graffitied wall." loading="lazy" decoding="async"></a>
-          <figcaption class="frame-cap" id="frame-1-cap"><span class="sr-only">Frame 1</span><span aria-hidden="true">1 ▸ 1A</span></figcaption>
+          <figcaption class="frame-cap" id="frame-1-cap"><span class="sr-only">Frame 1, 09:06</span><span aria-hidden="true">1 ▸ 1A</span><span class="frame-time" aria-hidden="true"> · 09:06</span></figcaption>
         </figure>
-        <figure class="frame" id="frame-2">
+        <figure class="frame" id="frame-2" data-frame="2">
           <a class="frame-photo" href="/photography/p/vn-07/" data-v-src="/photography/photos/first-roll/P6301905.jpg" data-v-w="1350" data-v-h="1800" data-v-title="Frame 2, Sài Gòn, 30 June" data-v-desc="Black and white photograph of two women with their hair in buns, standing close together in low light." data-v-meta="Sài Gòn · 30 June 2026, 17:13" data-v-from="From Sài Gòn, 30 June, frame 2" data-v-from-href="/photography/sheets/2026-06-30-sai-gon/#frame-2" data-v-wall="" data-v-wall-href="" aria-describedby="frame-2-cap"><img src="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/first-roll/P6301905.jpg" srcset="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/first-roll/P6301905.jpg 400w, /cdn-cgi/image/width=800,fit=scale-down,format=auto/photography/photos/first-roll/P6301905.jpg 800w, /cdn-cgi/image/width=1200,fit=scale-down,format=auto/photography/photos/first-roll/P6301905.jpg 1200w" sizes="(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw" data-orig="/photography/photos/first-roll/P6301905.jpg" width="1350" height="1800" alt="Black and white photograph of two women with their hair in buns, standing close together in low light." loading="lazy" decoding="async"></a>
-          <figcaption class="frame-cap" id="frame-2-cap"><span class="sr-only">Frame 2</span><span aria-hidden="true">2 ▸ 2A</span></figcaption>
+          <figcaption class="frame-cap" id="frame-2-cap"><span class="sr-only">Frame 2, 17:13</span><span aria-hidden="true">2 ▸ 2A</span><span class="frame-time" aria-hidden="true"> · 17:13</span></figcaption>
         </figure>
-        <figure class="frame" id="frame-3">
+        <figure class="frame" id="frame-3" data-frame="3">
           <a class="frame-photo" href="/photography/p/vn-08/" data-v-src="/photography/photos/first-roll/P6301922.jpg" data-v-w="1800" data-v-h="1350" data-v-title="Frame 3, Sài Gòn, 30 June" data-v-desc="Black and white photograph of four men sitting outside a shop, one wearing a painted mask, another making a hand gesture." data-v-meta="Sài Gòn · 30 June 2026, 17:22" data-v-from="From Sài Gòn, 30 June, frame 3" data-v-from-href="/photography/sheets/2026-06-30-sai-gon/#frame-3" data-v-wall="" data-v-wall-href="" aria-describedby="frame-3-cap"><img src="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/first-roll/P6301922.jpg" srcset="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/first-roll/P6301922.jpg 400w, /cdn-cgi/image/width=800,fit=scale-down,format=auto/photography/photos/first-roll/P6301922.jpg 800w, /cdn-cgi/image/width=1200,fit=scale-down,format=auto/photography/photos/first-roll/P6301922.jpg 1200w" sizes="(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw" data-orig="/photography/photos/first-roll/P6301922.jpg" width="1800" height="1350" alt="Black and white photograph of four men sitting outside a shop, one wearing a painted mask, another making a hand gesture." loading="lazy" decoding="async"></a>
-          <figcaption class="frame-cap" id="frame-3-cap"><span class="sr-only">Frame 3</span><span aria-hidden="true">3 ▸ 3A</span></figcaption>
+          <figcaption class="frame-cap" id="frame-3-cap"><span class="sr-only">Frame 3, 17:22</span><span aria-hidden="true">3 ▸ 3A</span><span class="frame-time" aria-hidden="true"> · 17:22</span></figcaption>
         </figure>
-        <figure class="frame" id="frame-4">
+        <figure class="frame" id="frame-4" data-frame="4">
           <a class="frame-photo" href="/photography/p/fh-0026/" data-v-src="/photography/photos/2026/fh-0026.jpg" data-v-w="2560" data-v-h="1920" data-v-title="Frame 4, Sài Gòn, 30 June" data-v-desc="A white dog stands on the seat of a scooter outside a shop while two darker dogs wait behind it and the shopkeeper reaches up to his shelves." data-v-meta="Sài Gòn · 30 June 2026, 17:28" data-v-from="From Sài Gòn, 30 June, frame 4" data-v-from-href="/photography/sheets/2026-06-30-sai-gon/#frame-4" data-v-wall="" data-v-wall-href="" aria-describedby="frame-4-cap"><img src="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/2026/fh-0026.jpg" srcset="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/2026/fh-0026.jpg 400w, /cdn-cgi/image/width=800,fit=scale-down,format=auto/photography/photos/2026/fh-0026.jpg 800w, /cdn-cgi/image/width=1200,fit=scale-down,format=auto/photography/photos/2026/fh-0026.jpg 1200w" sizes="(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw" data-orig="/photography/photos/2026/fh-0026.jpg" width="2560" height="1920" alt="A white dog stands on the seat of a scooter outside a shop while two darker dogs wait behind it and the shopkeeper reaches up to his shelves." loading="lazy" decoding="async"></a>
-          <figcaption class="frame-cap" id="frame-4-cap"><span class="sr-only">Frame 4</span><span aria-hidden="true">4 ▸ 4A</span></figcaption>
+          <figcaption class="frame-cap" id="frame-4-cap"><span class="sr-only">Frame 4, 17:28</span><span aria-hidden="true">4 ▸ 4A</span><span class="frame-time" aria-hidden="true"> · 17:28</span></figcaption>
         </figure>
       </div>
     </div>
+
+    <nav class="binder" aria-label="Other sheets">
+      <a class="binder-link binder-link--earlier" href="/photography/sheets/2026-06-27-my-tho/" data-binder="earlier">
+        <span class="binder-edge" aria-hidden="true"><img src="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/2026/fh-0090.jpg" srcset="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/2026/fh-0090.jpg 400w" sizes="60px" data-orig="/photography/photos/2026/fh-0090.jpg" width="2560" height="1920" alt="Market vendor sitting between carrots, sweet potato&#x27;s and other goods organized in different baskets around here" loading="lazy" decoding="async"></span>
+        <span class="binder-text"><span class="binder-way">← Earlier sheet</span> <span class="binder-title">Mỹ Tho, the last mornings</span></span>
+      </a>
+      <a class="binder-link binder-link--later" href="/photography/sheets/2026-07-23-morning/" data-binder="later">
+        <span class="binder-edge" aria-hidden="true"><img src="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/suriname-streets/P7231561.jpg" srcset="/cdn-cgi/image/width=400,fit=scale-down,format=auto/photography/photos/suriname-streets/P7231561.jpg 400w" sizes="60px" data-orig="/photography/photos/suriname-streets/P7231561.jpg" width="1440" height="1080" alt="Black and white photograph of a woman under a large black umbrella on a sunlit street." loading="lazy" decoding="async"></span>
+        <span class="binder-text"><span class="binder-way">Later sheet →</span> <span class="binder-title">23 July, morning</span></span>
+      </a>
+    </nav>
+    <p class="swipe-hint" data-swipe-hint hidden>Swipe for the next sheet</p>
   </main>
 
   <footer class="site-footer">

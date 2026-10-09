@@ -60,25 +60,27 @@ VERSION_SOURCE = "note.html"              # a hand-written page carrying base.cs
 # What gets built.
 BUILD = ["wall", "sheets-index", "sheets", "photographs", "everything", "redirects"]
 
-ROOM_CSS_VERSION = "7"
-ROOM_JS_VERSION = "6"
+ROOM_CSS_VERSION = "9"
+ROOM_JS_VERSION = "8"
 
 MAX_CIRCLED = 4
 MAX_WALL = 12
 WALL_SEEDS = {"bw": 1, "colour": 4}
 WALL_NAMES = {"bw": "Black and white", "colour": "Colour"}
 WALL_LABELS = {"bw": "black and white", "colour": "colour"}
-MARK_WORDS = {"bw": "wall", "colour": "colour"}
+MARK_WORDS = {"bw": "b/w", "colour": "colour"}
 FASTENERS = ["pin-red", "pin-blue", "pin-yellow", "two-pins", "clip", "tape-corners", "tape-top"]
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 IMAGE_WIDTHS = (400, 800, 1200)
 EVERYTHING_WIDTHS = (300, 600)
-ROW_HEIGHT = {"computer": 200, "phone": 120}
+ROW_HEIGHT = {"computer": 130, "phone": 72}
 COUNTRIES = ("Suriname", "Vietnam")
 PAGE_WIDTHS = (800, 1200, 2000)
 OG_WIDTH = 1200
 BOARD_WIDTH = 1312
+BOARD_HEAD = 270          # board pixels above the first row: the wall's name and, on black and white, the index card
+TABLE_FRAMES = 8          # frames drawn on the latest sheet on the work table
 
 
 def read(path):
@@ -125,16 +127,17 @@ def loop_path(seed, passes=1, overshoot=0.3, wob=0.035, cx=50, cy=40, rx=47, ry=
 
 def jitter_spans(text, seed):
     """Handwriting wobble: one inline-block span per letter."""
-    r = random.Random(seed); out = []
-    for ch in text:
-        if ch == " ": out.append(" "); continue
-        out.append(f'<span style="display:inline-block;transform:rotate({r.uniform(-6,6):.1f}deg) translateY({r.uniform(-1.6,1.6):.1f}px)">{esc(ch)}</span>')
-    return "".join(out)
+    r = random.Random(seed); words = []
+    for word in text.split(" "):
+        letters = "".join(f'<span style="display:inline-block;transform:rotate({r.uniform(-6,6):.1f}deg) translateY({r.uniform(-1.6,1.6):.1f}px)">{esc(ch)}</span>' for ch in word)
+        # a word never breaks between its letters
+        words.append(f'<span style="white-space:nowrap">{letters}</span>' if len(word) > 1 else letters)
+    return " ".join(words)
 
 
-def board_layout(items, seed, portrait, cw=305):
+def board_layout(items, seed, portrait, cw=305, top=60):
     """items: ids in wall order; portrait: ids taller than wide. Returns (positions, board_height)."""
-    r = random.Random(seed); pos = []; y = 60; rowh = 0
+    r = random.Random(seed); pos = []; y = top; rowh = 0
     for n, i in enumerate(items):
         c = n % 4
         if c == 0 and n: y += rowh + 80; rowh = 0
@@ -355,16 +358,16 @@ def check_pages(pages, redirects):
 # ---------- shared page parts ----------
 
 def room_nav(section, total):
-    """The room's own row of sections, under the site header."""
+    """The room's own row of sections: plain text, the current one underlined."""
     items = [("wall", "The wall", ROOM_URL, ""), ("sheets", "Contact sheets", SHEETS_URL, ""),
              ("everything", "Everything", EVERYTHING_URL, f' <span class="room-nav-n">{total}</span>')]
-    links = "".join(
-        f'\n    <a href="{href}"' + (' aria-current="page"' if key == section else '') + f'>{label}{extra}</a>'
+    links = '<span class="room-nav-dot" aria-hidden="true">·</span>'.join(
+        f'<a href="{href}"' + (' aria-current="page"' if key == section else '') + f'>{label}{extra}</a>'
         for key, label, href, extra in items)
-    return f'  <nav class="room-nav" aria-label="Photography room">{links}\n  </nav>\n'
+    return f'<nav class="room-nav" aria-label="Photography room">{links}</nav>'
 
 
-def head(title, description, url, versions, og_image=None, section="wall", total=0):
+def head(title, description, url, versions, og_image=None, extra_head=""):
     og = og_image or ("https://faisalhenar.com/images/og-image.png", 1200, 630)
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -391,7 +394,7 @@ def head(title, description, url, versions, og_image=None, section="wall", total
 <meta name="twitter:image" content="{og[0]}">
 <link rel="preload" href="/photography/fonts/familjen-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/base.css?v={versions['base']}">
-<link rel="stylesheet" href="{ASSETS_URL}room.css?v={ROOM_CSS_VERSION}">
+<link rel="stylesheet" href="{ASSETS_URL}room.css?v={ROOM_CSS_VERSION}">{extra_head}
 <script src="{ASSETS_URL}room.js?v={ROOM_JS_VERSION}"></script>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "68bb7041afa74c9ea4d36891d27ae977"}}'></script>
@@ -418,7 +421,7 @@ def head(title, description, url, versions, og_image=None, section="wall", total
     </div>
     </div>
   </header>
-""" + room_nav(section, total)
+"""
 
 
 def foot(versions):
@@ -452,6 +455,40 @@ def crumbs(*links):
     return '<p class="room-crumb">' + " · ".join(f'<a href="{href}">{esc(text)}</a>' for text, href in links) + "</p>"
 
 
+def title_row(h1, section, total):
+    """The page's h1 and the room's sections on one line (under it on a phone)."""
+    return f"""    <div class="room-title">
+      <h1>{h1}</h1>
+      {room_nav(section, total)}
+    </div>"""
+
+
+def wall_mark(room, i, cls="wall-mark"):
+    """'b/w 11' or 'colour 5' in grease pencil, for a frame that hangs on a wall."""
+    if i not in room.wall_of: return ""
+    tone, place, _ = room.wall_of[i]
+    return f'<span class="{cls}" aria-hidden="true">{jitter_spans(f"{MARK_WORDS[tone]} {place}", seed_of(i) + 3)}</span>'
+
+
+def on_wall(room, sheet):
+    return sum(1 for i in sheet["frames"] if i in room.wall_of)
+
+
+def mini_sheet(room, sheet, limit=None, draw=False, sizes="90px"):
+    """A contact sheet drawn small: its edge line, its frames, circles and wall marks."""
+    frames = sheet["frames"][:limit] if limit else sheet["frames"]
+    cells = []
+    for k, i in enumerate(frames, 1):
+        circled = i in sheet["circled"]
+        ring = circle_svg(i, "" if draw else " circle--small") if circled else ""
+        cls = "mini-frame" + (" frame--circled" if circled and draw else "") + (" is-marked" if i in room.wall_of else "")
+        cells.append(f'<span class="{cls}">{img_tag(room.photos[i], sizes, 400, (400,))}'
+                     f'<span class="mini-no">{k} ▸ {k}A</span>{ring}{wall_mark(room, i, "mini-mark")}</span>')
+    n = len(sheet["frames"])
+    return (f'<span class="mini-edge">faisalhenar.com ▸ {esc(sheet["title"])} ▸ {n} frame{"" if n == 1 else "s"}</span>'
+            f'<span class="mini-grid" style="--cols:{len(frames) if len(frames) <= 5 else math.ceil(len(frames) / 2)}">{"".join(cells)}</span>')
+
+
 # ---------- the wall ----------
 
 def fastener(photo_id):
@@ -459,36 +496,41 @@ def fastener(photo_id):
     return f'<span class="fastener fastener--{kind}" aria-hidden="true"></span>'
 
 
-def wall_section(room, tone):
+def wall_height(room, tone):
     prints = room.walls[tone]; photos = room.photos
     portrait = {p["id"] for p in prints if photos[p["id"]]["h"] > photos[p["id"]]["w"]}
-    positions, height = board_layout([p["id"] for p in prints], WALL_SEEDS[tone], portrait)
+    return board_layout([p["id"] for p in prints], WALL_SEEDS[tone], portrait, top=60 + BOARD_HEAD)[1] + 50
+
+
+def wall_section(room, tone, card=""):
+    prints = room.walls[tone]; photos = room.photos
+    portrait = {p["id"] for p in prints if photos[p["id"]]["h"] > photos[p["id"]]["w"]}
+    positions, height = board_layout([p["id"] for p in prints], WALL_SEEDS[tone], portrait, top=60 + BOARD_HEAD)
     other = "colour" if tone == "bw" else "bw"
     figures, items = [], []
     for n, (p, pos) in enumerate(zip(prints, positions), 1):
         i = p["id"]; photo = photos[i]
         shape = "portrait" if i in portrait else "landscape"
         from_link = f'<a href="{room.from_href(i)}">{esc(room.sheet_of[i]["title"])}, frame {room.frame_no(i)}</a>'
-        figures.append(f"""          <figure class="print print--{shape}" style="--x:{pos['x']};--y:{pos['y']};--w:{pos['w']};--rot:{pos['rot']}deg">
-            <a class="print-photo" href="{photo_url(i)}" {room.viewer_attrs(i)}>{img_tag(photo, "(max-width: 760px) calc(100vw - 48px), 24vw")}</a>
+        figures.append(f"""          <figure class="print print--{shape}" style="--x:{pos['x']};--y:{pos['y']};--w:{pos['w']};--rot:{pos['rot']}deg;--i:{n - 1}">
+            <a class="print-photo" href="{photo_url(i)}" {room.viewer_attrs(i)}>{img_tag(photo, "(max-width: 999px) 42vw, 22vw")}</a>
             {fastener(i)}
             <span class="pencil" aria-hidden="true">{jitter_spans(str(n), seed_of(i) + 1)}</span>
             <figcaption class="print-cap"><span class="print-title">{esc(p['title'])}</span> <span class="print-from">from {from_link}</span></figcaption>
           </figure>""")
         items.append(f'          <li><span class="list-n">{n}</span> <span class="list-title">{esc(p["title"])}</span> <span class="list-from">from {from_link}</span></li>')
     return f"""    <section class="wall wall--{tone}" id="wall-{tone}" data-wall="{tone}" aria-labelledby="wall-{tone}-title">
-      <div class="wall-head">
-        <h2 id="wall-{tone}-title">{WALL_NAMES[tone]} <span class="wall-count">{len(prints)} prints</span></h2>
-        <button class="wall-enlarge js-only" type="button" data-enlarge="{tone}" aria-controls="wall-{tone}">Click to enlarge</button>
-      </div>
       <div class="wall-tools js-only" role="group" aria-label="Walls">
         <button type="button" data-show="both">Both walls</button>
         <button type="button" data-enlarge="{other}">{WALL_NAMES[other]} wall</button>
       </div>
       <div class="board-frame">
-        <div class="board" style="--h:{height}" data-board="{tone}" data-v-list data-v-context="{WALL_NAMES[tone]} wall">
+        <div class="board" style="--h:{height + 50};--hmax:{max(wall_height(room, t) for t in ('bw', 'colour'))}" data-board="{tone}" data-v-list data-v-context="{WALL_NAMES[tone]} wall">
+          <div class="wall-head">
+            <h2 id="wall-{tone}-title">{WALL_NAMES[tone]} <span class="wall-count">{len(prints)} prints</span></h2>
+          </div>{card}
 {chr(10).join(figures)}
-          <span class="board-label" aria-hidden="true">{jitter_spans(WALL_LABELS[tone], seed_of(tone) + 5)}</span>
+          <button class="wall-enlarge js-only" type="button" data-enlarge="{tone}" aria-controls="wall-{tone}">Enlarge</button>
         </div>
       </div>
       <ol class="wall-list">
@@ -497,29 +539,74 @@ def wall_section(room, tone):
     </section>"""
 
 
+def work_table(room):
+    """Three things on a ledge under the walls: the latest sheet, the stack of sheets, the print box."""
+    latest = next(s for s in room.sheets if s["kind"] != "loose")
+    n, k = len(latest["frames"]), on_wall(room, latest)
+    note = latest["line"] or (f"{n} frames, {k} on the wall" if k else f"{n} frames")
+    stack_cells = "".join(
+        f'<span class="stack-cell">{img_tag(room.photos[i], "60px", 400, (400,))}</span>' for i in latest["frames"][:4])
+    stack_cells += '<span class="stack-cell"></span>' * (8 - min(4, n))
+    total = len(room.sheet_of)
+    return f"""    <div class="work-table">
+      <a class="table-obj table-obj--latest" href="{sheet_url(latest['id'])}">
+        <span class="table-thing" aria-hidden="true">
+          <span class="table-sheet">{mini_sheet(room, latest, TABLE_FRAMES, sizes="70px")}<span class="table-note"><span class="table-clip"></span>{jitter_spans(note, seed_of(latest['id']) + 9)}</span></span>
+        </span>
+        <span class="table-ledge" aria-hidden="true"></span>
+        <span class="table-label">Latest sheet</span>
+        <span class="table-line">{esc(latest['title'])} →</span>
+      </a>
+      <a class="table-obj table-obj--stack" href="{SHEETS_URL}">
+        <span class="table-thing" aria-hidden="true">
+          <span class="stack">
+            <span class="stack-sheet"></span><span class="stack-sheet"></span><span class="stack-sheet"></span>
+            <span class="stack-sheet stack-top"><span class="mini-edge">{esc(latest['title'])}</span><span class="stack-grid">{stack_cells}</span></span>
+          </span>
+        </span>
+        <span class="table-ledge" aria-hidden="true"></span>
+        <span class="table-label">Contact sheets</span>
+        <span class="table-line">{len(room.sheets)} sheets, newest on top →</span>
+      </a>
+      <a class="table-obj table-obj--box" href="{EVERYTHING_URL}">
+        <span class="table-thing" aria-hidden="true">
+          <span class="box">
+            <span class="box-print"></span><span class="box-print"></span><span class="box-print"></span>
+            <span class="box-body"><span class="box-card"><span class="box-card-word">everything</span><span class="box-card-n">{total}</span></span></span>
+          </span>
+        </span>
+        <span class="table-ledge" aria-hidden="true"></span>
+        <span class="table-label">Everything</span>
+        <span class="table-line">every photograph I kept →</span>
+      </a>
+    </div>"""
+
+
 def wall_page(room, versions):
-    latest = room.sheets[0]
     description = "Walks, contact sheets, and the photographs I'd pin on my own wall."
+    card = """
+          <div class="index-card"><span class="index-pin" aria-hidden="true"></span><p class="room-line">Two walls: one in black and white, one in colour. Each photograph was circled on a contact sheet first.</p></div>"""
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
-    <div class="room-head">
-      <h1>The wall</h1>
-      <p class="room-line">Two walls: one in black and white, one in colour. Each photograph was circled on a contact sheet first.</p>
-      <p class="room-latest">Latest sheet: <a href="{sheet_url(latest['id'])}">{esc(latest['title'])}</a> · <a href="{SHEETS_URL}">All contact sheets</a></p>
+    <div class="room-head room-head--wall">
+{title_row("The wall", "wall", len(room.sheet_of))}
     </div>
 
-    <div class="wall-switch js-only" role="group" aria-label="Choose a wall">
-      <button type="button" data-pick="bw" aria-pressed="true">Black and white</button>
-      <button type="button" data-pick="colour" aria-pressed="false">Colour</button>
-    </div>
-
-    <div class="walls" data-walls data-pick="bw">
-{wall_section(room, "bw")}
+    <div class="walls-stage">
+      <div class="wall-switch js-only" role="group" aria-label="Choose a wall">
+        <button type="button" data-pick="bw" aria-pressed="true">black and white</button>
+        <button type="button" data-pick="colour" aria-pressed="false">colour</button>
+      </div>
+      <div class="walls" data-walls>
+{wall_section(room, "bw", card)}
 {wall_section(room, "colour")}
+      </div>
     </div>
+
+{work_table(room)}
   </main>
 """
-    return head("Photography", description, ROOM_URL, versions, section="wall", total=len(room.sheet_of)) + body + foot(versions)
+    return head("Photography", description, ROOM_URL, versions) + body + foot(versions)
 
 
 # ---------- the contact sheets ----------
@@ -540,73 +627,174 @@ def sheet_meta_line(room, sheet, with_times=True):
     return " · ".join(esc(p) for p in parts)
 
 
+def walk_line(room, sheet):
+    """The ruler of frame times for a walk or a day taken on one date, or None.
+
+    Returns (markup, {frame number: 'HH:MM'})."""
+    if sheet["kind"] not in ("walk", "day"): return None
+    stamps = [room.meta[i]["captured"] or "" for i in sheet["frames"]]
+    if not all(re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d", s) for s in stamps): return None
+    if len({s[:10] for s in stamps}) != 1: return None
+    mins = [int(s[11:13]) * 60 + int(s[14:16]) for s in stamps]
+    h0, h1 = min(mins) // 60, max(mins) // 60 + 1
+    every = 2 if h1 - h0 > 6 else 1
+    span = (h1 - h0) * 60
+    x = lambda m: f"{(m - h0 * 60) / span * 100:.2f}%"
+    marks = [f'<span class="walk-hour" style="--x:{x(h * 60)}">{h:02d}:00</span>' for h in range(h0, h1 + 1, every)]
+    ticks = [f'<span class="walk-tick{" walk-tick--circled" if i in sheet["circled"] else ""}" style="--x:{x(m)}" data-tick="{k}"><span class="walk-time">{m // 60:02d}:{m % 60:02d}</span></span>'
+             for k, (i, m) in enumerate(zip(sheet["frames"], mins), 1)]
+    markup = f"""
+    <div class="walk-line" aria-hidden="true">
+      <span class="walk-axis"></span>
+      {"".join(marks)}
+      {"".join(ticks)}
+    </div>"""
+    return markup, {k: s[11:] for k, s in enumerate(stamps, 1)}
+
+
+def note_card(text, cls=""):
+    return f'<div class="note-card{cls}"><span class="note-clip" aria-hidden="true"></span><p>{esc(text)}</p></div>'
+
+
+def binder(room, sheet):
+    """Links to the sheets either side, each with the edge of that sheet peeking in."""
+    at = room.sheets.index(sheet)
+    earlier = room.sheets[at + 1] if at + 1 < len(room.sheets) else None
+    later = room.sheets[at - 1] if at > 0 else None
+    links = []
+    for other, way, word in ((earlier, "earlier", "← Earlier sheet"), (later, "later", "Later sheet →")):
+        if not other: continue
+        thumb = (other["circled"] or other["frames"])[0]
+        links.append(f"""      <a class="binder-link binder-link--{way}" href="{sheet_url(other['id'])}" data-binder="{way}">
+        <span class="binder-edge" aria-hidden="true">{img_tag(room.photos[thumb], "60px", 400, (400,))}</span>
+        <span class="binder-text"><span class="binder-way">{word}</span> <span class="binder-title">{esc(other['title'])}</span></span>
+      </a>""")
+    return f"""    <nav class="binder" aria-label="Other sheets">
+{chr(10).join(links)}
+    </nav>
+    <p class="swipe-hint" data-swipe-hint hidden>Swipe for the next sheet</p>"""
+
+
 def sheet_page(room, sheet, versions):
     n = len(sheet["frames"])
+    ruler = walk_line(room, sheet)
+    times = ruler[1] if ruler else {}
     frames = []
     for k, i in enumerate(sheet["frames"], 1):
         photo = room.photos[i]
         circled = i in sheet["circled"]
         extra = ""
         if circled: extra += "\n          " + circle_svg(i)
-        if i in room.wall_of:
-            tone, place, _ = room.wall_of[i]
-            extra += f'\n          <span class="wall-mark" aria-hidden="true">{jitter_spans(f"{MARK_WORDS[tone]} {place}", seed_of(i) + 3)}</span>'
-        label = f"Frame {k}" + (", circled" if circled else "")
+        if i in room.wall_of: extra += "\n          " + wall_mark(room, i)
+        label = f"Frame {k}" + (f", {times[k]}" if k in times else "") + (", circled" if circled else "")
         if i in room.wall_of: label += f", place {room.wall_of[i][1]} on the {WALL_LABELS[room.wall_of[i][0]]} wall"
         place = f'<span class="frame-place">{esc(room.meta[i]["place"])}</span>' if sheet["kind"] == "loose" and room.meta[i]["place"] else ""
-        frames.append(f"""        <figure class="frame{' frame--circled' if circled else ''}" id="frame-{k}">
+        clock = f'<span class="frame-time" aria-hidden="true"> · {times[k]}</span>' if k in times else ""
+        frames.append(f"""        <figure class="frame{' frame--circled' if circled else ''}{' is-marked' if i in room.wall_of else ''}" id="frame-{k}" data-frame="{k}">
           <a class="frame-photo" href="{photo_url(i)}" {room.viewer_attrs(i)} aria-describedby="frame-{k}-cap">{img_tag(photo, "(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw", 400)}</a>
-          <figcaption class="frame-cap" id="frame-{k}-cap"><span class="sr-only">{esc(label)}</span><span aria-hidden="true">{k} ▸ {k}A</span>{place}</figcaption>{extra}
+          <figcaption class="frame-cap" id="frame-{k}-cap"><span class="sr-only">{esc(label)}</span><span aria-hidden="true">{k} ▸ {k}A</span>{clock}{place}</figcaption>{extra}
         </figure>""")
-    line = f'\n      <p class="room-line">{esc(sheet["line"])}</p>' if sheet["line"] else ""
+    k_wall = on_wall(room, sheet)
+    red = f' · <span class="on-wall">{k_wall} on the wall</span>' if k_wall else ""
+    card = "\n      " + note_card(sheet["line"]) if sheet["line"] else ""
     description = f"A contact sheet of photographs by Faisal Henar: {sheet['title']}, {n} frames."
+    transition = '\n<style>@media (prefers-reduced-motion: no-preference){ @view-transition{ navigation: auto; } }</style>'
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
-    <div class="room-head">
-      <h1>{esc(sheet['title'])}</h1>
-      <p class="sheet-meta">{sheet_meta_line(room, sheet)}</p>{line}
+    <div class="room-head room-head--sheet">
+      <div class="room-top">
+        <a class="room-back" href="{SHEETS_URL}">← All contact sheets</a>
+        {room_nav("sheets", len(room.sheet_of))}
+      </div>
+      <div class="sheet-head">
+        <div>
+          <h1>{esc(sheet['title'])}</h1>
+          <p class="sheet-meta">{sheet_meta_line(room, sheet)}{red}</p>
+        </div>{card}
+      </div>
     </div>
-
+{ruler[0] if ruler else ""}
     <div class="sheet" data-sheet>
       <p class="sheet-edge" aria-hidden="true">faisalhenar.com ▸ {esc(sheet['title'])} ▸ {n} frames</p>
       <div class="sheet-grid" data-v-list data-v-context="{esc(sheet['title'])}">
 {chr(10).join(frames)}
       </div>
     </div>
+
+{binder(room, sheet)}
   </main>
 """
-    return head(sheet["title"], description, sheet_url(sheet["id"]), versions, section="sheets", total=len(room.sheet_of)) + body + foot(versions)
+    return head(sheet["title"], description, sheet_url(sheet["id"]), versions, extra_head=transition) + body + foot(versions)
+
+
+def sheet_country(room, sheet):
+    countries = {room.meta[i]["country"] for i in sheet["frames"]}
+    return countries.pop() if len(countries) == 1 and sheet["kind"] != "loose" else None
+
+
+def sheet_days(room, sheet):
+    return sorted(room.meta[i]["captured"][:10] for i in sheet["frames"])
+
+
+def trip_dividers(room):
+    """{index of a sheet: divider markup} where the country changes and the new run holds two or more sheets."""
+    out, k = {}, 0
+    sheets = room.sheets
+    while k < len(sheets):
+        country = sheet_country(room, sheets[k])
+        end = k
+        while end + 1 < len(sheets) and country and sheet_country(room, sheets[end + 1]) == country: end += 1
+        if country and k > 0 and end > k and sheet_country(room, sheets[k - 1]) != country:
+            days = sorted(d for s in sheets[k:end + 1] for d in sheet_days(room, s))
+            months = sorted({d[:7] for d in days})
+            names = [MONTHS[int(m[5:]) - 1] for m in months]
+            when = names[0] if len(names) == 1 else (" and ".join(names) if len(names) == 2 else f"{names[0]} to {names[-1]}")
+            out[k] = (f'<div class="trip-divider"><span class="trip-name">{esc(country)}, {when}</span>'
+                      f'<span class="trip-rule" aria-hidden="true"></span>'
+                      f'<span class="trip-meta">{end - k + 1} sheets · {fmt_range(days[0], days[-1])}</span></div>')
+        k = end + 1
+    return out
 
 
 def sheets_index(room, versions):
     entries = []
-    for sheet in room.sheets:
-        picks = sheet["circled"] or sheet["frames"][:3]
-        thumbs = []
-        for i in picks:
-            ring = circle_svg(i, " circle--small") if sheet["circled"] else ""
-            thumbs.append(f'          <span class="strip-frame">{img_tag(room.photos[i], "120px", 400, (400,))}{ring}</span>')
-        entries.append(f"""      <li class="sheet-entry">
-        <h2><a href="{sheet_url(sheet['id'])}">{esc(sheet['title'])}</a></h2>
-        <p class="sheet-meta">{sheet_meta_line(room, sheet, with_times=False)}</p>
-        <a class="sheet-strip" href="{sheet_url(sheet['id'])}" tabindex="-1" aria-hidden="true">
-{chr(10).join(thumbs)}
-        </a>
+    dividers = trip_dividers(room)
+    month_seen = set()
+    for at, sheet in enumerate(room.sheets):
+        month = ""
+        if sheet["kind"] != "loose":
+            newest = sheet_days(room, sheet)[-1]
+            if newest[:7] not in month_seen:
+                month_seen.add(newest[:7])
+                month = (f'<p class="sheet-month">{MONTHS[int(newest[5:7]) - 1]}'
+                         f' <span class="sheet-year">{newest[:4]}</span></p>')
+        k = on_wall(room, sheet)
+        hand = ""
+        if sheet["line"] or k:
+            hand = '\n          <p class="sheet-hand">' + (esc(sheet["line"]) + " " if sheet["line"] else "") + (f'<span class="on-wall">{k} on the wall</span>' if k else "") + "</p>"
+        tilt = (0.3 + random.Random(seed_of(sheet["id"])).random() * 0.4) * (-1 if at % 2 == 0 else 1)
+        entries.append(f"""      <li class="sheet-entry" style="--tilt:{tilt:.2f}deg">{dividers.get(at, "")}
+        <div class="sheet-margin">{month}</div>
+        <a class="sheet-mini" href="{sheet_url(sheet['id'])}" tabindex="-1" aria-hidden="true">{mini_sheet(room, sheet, draw=True)}</a>
+        <div class="sheet-note">
+          <h2><a href="{sheet_url(sheet['id'])}">{esc(sheet['title'])}</a></h2>
+          <p class="sheet-meta">{sheet_meta_line(room, sheet, with_times=False)}</p>{hand}
+        </div>
       </li>""")
     description = "Every contact sheet in Faisal Henar's photography room: each walk, day and trip, newest first."
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
-      <h1>Contact sheets</h1>
+{title_row("Contact sheets", "sheets", len(room.sheet_of))}
       <p class="room-line">Every walk, day and trip, newest first. Circled frames are the ones that made it onto a wall.</p>
     </div>
 
-    <ol class="sheet-list">
+    <ol class="sheet-list" data-sheets>
 {chr(10).join(entries)}
     </ol>
   </main>
 """
-    return head("Contact sheets", description, SHEETS_URL, versions, section="sheets", total=len(room.sheet_of)) + body + foot(versions)
+    return head("Contact sheets", description, SHEETS_URL, versions) + body + foot(versions)
 
 
 # ---------- a page per photograph ----------
@@ -627,7 +815,10 @@ def photo_page(room, i, versions):
     og = (f"{ORIGIN}{cf_image(photo, OG_WIDTH)}", OG_WIDTH, og_h)
     body = f"""
   <main id="main" tabindex="-1" class="room-main photo-main">
-    {crumbs((sheet["title"], sheet_url(sheet["id"])))}
+    <div class="room-top">
+      {crumbs((sheet["title"], sheet_url(sheet["id"])))}
+      {room_nav("sheets", len(room.sheet_of))}
+    </div>
     <figure class="photo">
       <div class="photo-frame">{img_tag(photo, "(max-width: 760px) 100vw, 90vw", 1200, PAGE_WIDTHS, lazy=False)}</div>
       <figcaption class="photo-cap">
@@ -641,7 +832,7 @@ def photo_page(room, i, versions):
     </nav>
   </main>
 """
-    return head(room.heading(i), photo["alt"], photo_url(i), versions, og, section="sheets", total=len(room.sheet_of)) + body + foot(versions)
+    return head(room.heading(i), photo["alt"], photo_url(i), versions, og) + body + foot(versions)
 
 
 # ---------- everything ----------
@@ -660,13 +851,19 @@ def everything_page(room, versions):
         items = []
         for i in ids:
             p = room.photos[i]; r = p["w"] / p["h"]
-            sizes = f'(max-width: 760px) {round(r * ROW_HEIGHT["phone"])}px, {round(r * ROW_HEIGHT["computer"])}px'
+            tilt = random.Random(seed_of(i) + 11).uniform(-0.9, 0.9)
+            sizes = f'(max-width: 760px) {round(r * ROW_HEIGHT["phone"] * 1.25)}px, {round(r * ROW_HEIGHT["computer"] * 1.25)}px'
             items.append(
-                f'          <a class="ev-item" href="{photo_url(i)}" style="--r:{r:.4f}" '
+                f'          <a class="ev-item" href="{photo_url(i)}" style="--r:{r:.4f};--tilt:{tilt:.2f}deg" '
                 f'data-place="{room.meta[i]["country"].lower()}" data-tone="{room.meta[i]["tone"]}" {room.viewer_attrs(i)}>'
-                f'{img_tag(p, sizes, 300, EVERYTHING_WIDTHS)}</a>')
+                f'{img_tag(p, sizes, 300, EVERYTHING_WIDTHS)}'
+                f'<span class="ev-cap" aria-hidden="true">{esc(room.heading(i))}</span></a>')
+        count = len(ids)
         sections.append(f"""      <section class="ev-month" aria-labelledby="month-{key}" data-month>
-        <h2 class="ev-month-head" id="month-{key}">{MONTHS[int(m) - 1]} {y}</h2>
+        <div class="ev-month-row">
+          <h2 class="ev-month-head" id="month-{key}">{MONTHS[int(m) - 1]} {y}</h2>
+          <span class="ev-month-n" data-month-count>{count} print{"" if count == 1 else "s"}</span>
+        </div>
         <div class="ev-grid">
 {chr(10).join(items)}
         </div>
@@ -687,8 +884,9 @@ def everything_page(room, versions):
     body = f"""
   <main id="main" tabindex="-1" class="room-main">
     <div class="room-head">
-      <h1>Everything</h1>
+{title_row("Everything", "everything", total)}
       <p class="room-line">Every photograph I kept, newest first.</p>
+      <p class="ev-look"><a href="{photo_url(order[0])}" data-look>Look through them one by one</a></p>
     </div>
 
     <div class="filters js-only" data-filters>
@@ -697,12 +895,15 @@ def everything_page(room, versions):
       <p class="filter-count" aria-live="polite">Showing <span data-count>{total}</span> of {total}</p>
     </div>
 
-    <div class="everything" data-everything data-v-list data-v-context="Everything">
+    <div class="ev-box">
+      <div class="everything" data-everything data-v-list data-v-context="Everything">
 {chr(10).join(sections)}
+      </div>
+      <span class="ev-box-label" aria-hidden="true">{jitter_spans(f"everything · {total}", seed_of("everything"))}</span>
     </div>
   </main>
 """
-    return head("Everything", description, EVERYTHING_URL, versions, section="everything", total=total) + body + foot(versions)
+    return head("Everything", description, EVERYTHING_URL, versions) + body + foot(versions)
 
 
 def check_everything(text, ids):

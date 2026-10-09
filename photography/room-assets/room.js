@@ -1,7 +1,9 @@
 /* Photography room: the small things JavaScript adds to pages that already
-   work without it. The wall: enlarge one board, or switch walls on a phone.
-   The sheet: circles that draw once in view, a loupe on fine pointers, and
-   press-and-hold zoom on touch. Everything: the place and tone filters,
+   work without it. The wall: the prints pin themselves in once a session,
+   enlarge one board, or swipe between the walls on a phone. The sheets:
+   circles that draw once in view. The sheet: the walk line answering the
+   frames, a loupe on fine pointers, press-and-hold zoom on touch, and a
+   swipe to the sheet either side. Everything: the place and tone filters,
    kept in the address. Everywhere: the viewer, which opens a print, frame
    or photograph over the page and steps through what is visible. Pages are
    written by tools/build-photography.py; this file is written by hand.
@@ -11,6 +13,24 @@
    inline script: the site's Content-Security-Policy allows scripts from
    'self' only. Everything else waits for the document. */
 document.documentElement.classList.add('js');
+
+// The wall's arrival plays once per browser session. The class goes on now,
+// before the body is drawn; the wall marks it seen once it is there.
+try {
+  if (!window.sessionStorage.getItem('room-arrived')) document.documentElement.classList.add('arrive');
+} catch (err) { /* no storage: no arrival, the prints simply hang */ }
+
+// Sheet to sheet: the new page learns from the old which way the reader
+// went (a swipe or a binder link), so the view transition slides that way.
+window.addEventListener('pagereveal', function (e) {
+  var way = null;
+  try {
+    way = window.sessionStorage.getItem('room-sheet-way');
+    window.sessionStorage.removeItem('room-sheet-way');
+  } catch (err) { /* no storage: the browser's own cross-fade */ }
+  if (e.viewTransition && (way === 'earlier' || way === 'later')) e.viewTransition.types.add('to-' + way);
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
@@ -36,7 +56,32 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- the wall ---------- */
   var walls = document.querySelector('[data-walls]');
   if (walls) {
-    var phone = window.matchMedia('(max-width: 760px)');
+    try { window.sessionStorage.setItem('room-arrived', '1'); } catch (err) { /* see above */ }
+
+    // Arrival: each print pins in at its turn in wall order (85ms apart,
+    // the colour wall 40ms behind), but not before its photograph is there,
+    // or 1.5s have passed. A slow print simply joins later. Under reduced
+    // motion a print just appears once loaded.
+    if (document.documentElement.classList.contains('arrive')) {
+      var t0 = Date.now(), WAIT = 1500;
+      walls.querySelectorAll('.print').forEach(function (print) {
+        var img = print.querySelector('img');
+        var turn = 120 + (+print.style.getPropertyValue('--i') || 0) * 85 + (print.closest('.wall--colour') ? 40 : 0);
+        var pinned = false;
+        var pin = function () {
+          if (pinned) return;
+          pinned = true;
+          setTimeout(function () { print.classList.add('is-pinned'); }, reduce ? 0 : Math.max(0, turn - (Date.now() - t0)));
+        };
+        if (!img || (img.complete && img.naturalWidth)) pin();
+        else {
+          img.addEventListener('load', pin);
+          img.addEventListener('error', pin);
+          setTimeout(pin, WAIT);
+        }
+      });
+    }
+    var phone = window.matchMedia('(max-width: 999px)');
     var sections = walls.querySelectorAll('[data-wall]');
 
     var setInert = function () {
@@ -78,35 +123,76 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
+    // Phone and tablet: the two walls sit in one row that snaps, one to a
+    // screen. A label scrolls to its wall; the wall in view presses its label.
     var switcher = document.querySelectorAll('[data-pick]');
+    var press = function (tone) {
+      switcher.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-pick') === tone)); });
+    };
     switcher.forEach(function (btn) {
-      if (btn === walls) return;
       btn.addEventListener('click', function () {
-        var tone = btn.getAttribute('data-pick');
-        walls.setAttribute('data-pick', tone);
-        switcher.forEach(function (b) {
-          if (b !== walls) b.setAttribute('aria-pressed', String(b === btn));
-        });
+        var target = walls.querySelector('[data-wall="' + btn.getAttribute('data-pick') + '"]');
+        press(btn.getAttribute('data-pick'));
+        walls.scrollTo({ left: target.offsetLeft - walls.offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
       });
     });
+    if ('IntersectionObserver' in window) {
+      var inView = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && phone.matches) press(en.target.getAttribute('data-wall'));
+        });
+      }, { root: walls, threshold: 0.6 });
+      sections.forEach(function (s) { inView.observe(s); });
+    }
 
     if (phone.addEventListener) phone.addEventListener('change', setInert);
+  }
+
+  /* ---------- circles ----------
+     On a sheet and on the list of sheets, circles draw once, the first
+     time they are seen. */
+  var circled = document.querySelectorAll('.frame--circled');
+  if (reduce || !('IntersectionObserver' in window)) {
+    circled.forEach(function (f) { f.classList.add('is-drawn'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-drawn'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    circled.forEach(function (f) { io.observe(f); });
   }
 
   /* ---------- the sheet ---------- */
   var sheet = document.querySelector('[data-sheet]');
   if (sheet) {
-    // Circles draw once, the first time they are seen.
-    var circled = sheet.querySelectorAll('.frame--circled');
-    if (reduce || !('IntersectionObserver' in window)) {
-      circled.forEach(function (f) { f.classList.add('is-drawn'); });
-    } else {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add('is-drawn'); io.unobserve(en.target); }
-        });
-      }, { threshold: 0.6 });
-      circled.forEach(function (f) { io.observe(f); });
+    // The walk line: a frame lights its tick, a tick lights its frame.
+    var ticks = document.querySelectorAll('[data-tick]');
+    if (ticks.length) {
+      var lit = null;
+      var light = function (k, withFrame) {
+        if (lit !== null) {
+          document.querySelectorAll('[data-tick="' + lit + '"], [data-frame="' + lit + '"]').forEach(function (n) { n.classList.remove('is-lit'); });
+        }
+        lit = k;
+        if (k === null) return;
+        var lights = document.querySelectorAll('[data-tick="' + k + '"]' + (withFrame ? ', [data-frame="' + k + '"]' : ''));
+        lights.forEach(function (n) { n.classList.add('is-lit'); });
+      };
+      var fromFrame = function (e) {
+        var f = e.target.closest && e.target.closest('[data-frame]');
+        light(f ? f.getAttribute('data-frame') : null, false);
+      };
+      sheet.addEventListener('mouseover', fromFrame);
+      sheet.addEventListener('mouseleave', function () { light(null); });
+      sheet.addEventListener('focusin', fromFrame);
+      sheet.addEventListener('focusout', function () { light(null); });
+      var ruler = ticks[0].parentNode;
+      ruler.addEventListener('mouseover', function (e) {
+        var t = e.target.closest('[data-tick]');
+        light(t ? t.getAttribute('data-tick') : null, true);
+      });
+      ruler.addEventListener('mouseleave', function () { light(null); });
     }
 
     // Where the photograph actually sits inside its letterboxed frame.
@@ -167,9 +253,11 @@ document.addEventListener('DOMContentLoaded', function () {
       img.style.setProperty('--zy', (y * 100) + '%');
     };
 
+    var zoomEnded = 0;
     var endZoom = function () {
       clearTimeout(timer); timer = null;
       if (!zoomed) return;
+      zoomEnded = Date.now();
       zoomed.classList.remove('is-zoomed');
       sheet.classList.remove('is-zooming');
       zoomed = null;
@@ -183,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var t = e.touches[0];
       start = { x: t.clientX, y: t.clientY };
       timer = setTimeout(function () {
+        zoomedAt = Date.now();
         zoomed = link.closest('.frame');
         origin(link, t);
         zoomed.classList.add('is-zoomed');
@@ -210,6 +299,92 @@ document.addEventListener('DOMContentLoaded', function () {
     sheet.addEventListener('click', function (e) {
       if (swallowClick && e.target.closest('.frame-photo')) e.preventDefault();
     });
+
+    /* Swipe between sheets (phones and tablets). A horizontal swipe on the
+       page goes to the earlier sheet (right) or the later one (left), with
+       the viewer's thresholds. Not from the screen edges (the iPhone's back
+       gesture), not with two fingers, not during or just after a
+       press-and-hold zoom, not on a long press of a link, a form control
+       or anything that scrolls sideways, and not while pinch-zoomed. The
+       binder links stay the main way. */
+    var binderLinks = document.querySelectorAll('[data-binder]');
+    var remember = function (way) {
+      try { window.sessionStorage.setItem('room-sheet-way', way); } catch (err) { /* a plain load */ }
+    };
+    binderLinks.forEach(function (a) {
+      a.addEventListener('click', function () { remember(a.getAttribute('data-binder')); });
+    });
+    // A swipe may start on a frame: the frames are most of the sheet. It
+    // only stops being a swipe when the finger rested long enough to become
+    // a press (the zoom's hold timer fired, or it stayed within SLOP for
+    // LONG ms before moving). Earlier the whole gesture's length counted,
+    // so any unhurried swipe across the frames was dropped.
+    var EDGE = 24, LONG = 500;
+    var swipe = null, zoomedAt = 0;
+    var scrollsSideways = function (node) {
+      for (; node && node !== document.body; node = node.parentElement) {
+        var ox = window.getComputedStyle(node).overflowX;
+        if ((ox === 'auto' || ox === 'scroll') && node.scrollWidth > node.clientWidth) return true;
+      }
+      return false;
+    };
+    document.addEventListener('touchstart', function (e) {
+      swipe = null;
+      var t = e.touches[0];
+      var why = e.touches.length !== 1 ? 'two fingers'
+        : viewer && !viewer.hidden ? 'viewer is open'
+        : t.clientX < EDGE || t.clientX > window.innerWidth - EDGE ? 'started at the screen edge'
+        : window.visualViewport && window.visualViewport.scale > 1.01 ? 'page is pinch-zoomed'
+        : e.target.closest('input, select, textarea, button, [contenteditable]') ? 'started on a control'
+        : scrollsSideways(e.target) ? 'started on something that scrolls sideways'
+        : Date.now() - zoomEnded < 400 ? 'just after a zoom' : '';
+      if (why) return;
+      swipe = { x: t.clientX, y: t.clientY, lx: t.clientX, ly: t.clientY, at: Date.now(), link: !!e.target.closest('a'), moved: false, why: '' };
+    }, { passive: true });
+    document.addEventListener('touchmove', function (e) {
+      if (!swipe) return;
+      if (e.touches.length !== 1) { swipe.why = 'two fingers'; return; }
+      var t = e.touches[0];
+      swipe.lx = t.clientX; swipe.ly = t.clientY;
+      if (!swipe.moved && (Math.abs(t.clientX - swipe.x) > SLOP || Math.abs(t.clientY - swipe.y) > SLOP)) {
+        swipe.moved = true;
+        if (swipe.link && Date.now() - swipe.at >= LONG) swipe.why = 'long press on a link';
+      }
+    }, { passive: true });
+    var endSwipe = function (e, how) {
+      var s = swipe; swipe = null;
+      if (!s) return;
+      var c = e.changedTouches && e.changedTouches[0];
+      var x = c ? c.clientX : s.lx, y = c ? c.clientY : s.ly;
+      if (how === 'touchcancel') { x = s.lx; y = s.ly; }
+      var dx = x - s.x, dy = y - s.y;
+      var why = (zoomedAt >= s.at ? 'became a press-and-hold zoom' : '') || s.why
+        || (viewer && !viewer.hidden ? 'viewer is open' : '')
+        || (!(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) ? 'not a horizontal swipe' : '');
+      var link = !why && document.querySelector('[data-binder="' + (dx > 0 ? 'earlier' : 'later') + '"]');
+      if (!why && !link) why = 'no ' + (dx > 0 ? 'earlier' : 'later') + ' sheet';
+      if (why) return;
+      remember(link.getAttribute('data-binder'));
+      window.location.href = link.href;
+    };
+    document.addEventListener('touchend', function (e) { endSwipe(e, 'touchend'); });
+    // A browser that takes the gesture over sends touchcancel instead of
+    // touchend; the last position seen still tells which way it went.
+    document.addEventListener('touchcancel', function (e) { endSwipe(e, 'touchcancel'); });
+
+    // The hint shows on touch screens, on the first SWIPE_TIMES sheets seen
+    // in this browser. Storage can be missing or blocked; then it shows.
+    var SWIPE_TIMES = 3, SWIPE_KEY = 'room-sheet-visits';
+    var hint = document.querySelector('[data-swipe-hint]');
+    if (hint && binderLinks.length && window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      try {
+        var visits = parseInt(window.localStorage.getItem(SWIPE_KEY), 10) || 0;
+        window.localStorage.setItem(SWIPE_KEY, String(visits + 1));
+        hint.hidden = visits >= SWIPE_TIMES;
+      } catch (err) {
+        hint.hidden = false;
+      }
+    }
   }
 
   /* ---------- everything ----------
@@ -242,7 +417,12 @@ document.addEventListener('DOMContentLoaded', function () {
         a.hidden = !show;
         if (show) shown += 1;
       });
-      months.forEach(function (m) { m.hidden = !m.querySelector('.ev-item:not([hidden])'); });
+      months.forEach(function (m) {
+        var n = m.querySelectorAll('.ev-item:not([hidden])').length;
+        m.hidden = !n;
+        var c = m.querySelector('[data-month-count]');
+        if (c) c.textContent = n + (n === 1 ? ' print' : ' prints');
+      });
       count.textContent = shown;
       buttons.forEach(function (b) {
         b.setAttribute('aria-pressed', String(state[b.getAttribute('data-filter')] === b.getAttribute('data-value')));
@@ -275,6 +455,9 @@ document.addEventListener('DOMContentLoaded', function () {
      entry is added on opening, so the back button closes the viewer. */
   var viewer = null, ui = {}, items = [], index = 0, opener = null, pushed = false;
   var touchX = null, touchY = null;
+  var full = false, idleTimer = null;
+  var ICON_ENTER = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 7V2h5M13 2h5v5M18 13v5h-5M7 18H2v-5"/></svg>';
+  var ICON_EXIT = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7 2v5H2M18 7h-5V2M13 18v-5h5M2 13h5v5"/></svg>';
 
   var el = function (tag, cls, parent, text) {
     var node = document.createElement(tag);
@@ -293,6 +476,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var bar = el('div', 'viewer-bar', viewer);
     ui.context = el('p', 'viewer-context', bar);
     ui.count = el('p', 'viewer-count', bar);
+    ui.full = el('button', 'viewer-full', bar);
+    ui.full.type = 'button';
+    ui.full.innerHTML = ICON_ENTER;
+    ui.full.setAttribute('aria-label', 'Full screen');
     ui.close = el('button', 'viewer-close', bar, '×');
     ui.close.type = 'button';
     ui.close.setAttribute('aria-label', 'Close the viewer');
@@ -314,11 +501,18 @@ document.addEventListener('DOMContentLoaded', function () {
     ui.wall = el('a', 'viewer-wall', el('p', '', cap));
     ui.hint = el('p', 'viewer-hint', viewer,
       window.matchMedia('(hover: hover) and (pointer: fine)').matches
-        ? '← → to browse · Esc to close' : 'Swipe to browse');
+        ? '← → to browse · F full screen · Esc to close' : 'Swipe to browse');
     ui.hint.hidden = true;
     viewer.setAttribute('aria-labelledby', 'viewer-title');
 
     ui.close.addEventListener('click', close);
+    ui.full.addEventListener('click', toggleFull);
+    ['mousemove', 'touchstart', 'keydown'].forEach(function (type) {
+      viewer.addEventListener(type, wake, { passive: true });
+    });
+    ['fullscreenchange', 'webkitfullscreenchange'].forEach(function (type) {
+      document.addEventListener(type, function () { setFull(!!fullElement()); });
+    });
     ui.prev.addEventListener('click', function () { step(-1); });
     ui.next.addEventListener('click', function () { step(1); });
     ui.img.addEventListener('load', function () { ui.img.classList.remove('is-loading'); });
@@ -336,10 +530,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
 
-  // The smallest Cloudflare width that fills the stage on this screen.
+  // The smallest Cloudflare width that fills the stage on this screen (in
+  // full screen, the whole screen).
   var widthFor = function (w, h) {
     var dpr = window.devicePixelRatio || 1;
-    var need = Math.min(window.innerWidth, window.innerHeight * 0.8 * w / h) * dpr;
+    var need = Math.min(window.innerWidth, window.innerHeight * (full ? 1 : 0.8) * w / h) * dpr;
     var ladder = [800, 1200, 1600, 2000];
     for (var i = 0; i < ladder.length; i += 1) if (ladder[i] >= need) return ladder[i];
     return 2000;
@@ -385,6 +580,48 @@ document.addEventListener('DOMContentLoaded', function () {
     if (n >= 0 && n < items.length) show(n);
   };
 
+  /* Full screen: the photograph alone on black, the controls fading out
+     after IDLE ms without movement, touch or key. The Fullscreen API where
+     there is one; elsewhere (iPhone) the same look inside the window. */
+  var IDLE = 2000;
+  var fullElement = function () { return document.fullscreenElement || document.webkitFullscreenElement || null; };
+  var canFull = function () {
+    return !!(viewer && (viewer.requestFullscreen || viewer.webkitRequestFullscreen) &&
+      (document.fullscreenEnabled || document.webkitFullscreenEnabled));
+  };
+  var wake = function () {
+    if (!viewer) return;
+    viewer.classList.remove('is-idle');
+    clearTimeout(idleTimer);
+    if (full) idleTimer = setTimeout(function () { viewer.classList.add('is-idle'); }, IDLE);
+  };
+  var setFull = function (on) {
+    if (!viewer || full === on) return;
+    full = on;
+    viewer.classList.toggle('is-full', on);
+    ui.full.innerHTML = on ? ICON_EXIT : ICON_ENTER;
+    ui.full.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen');
+    wake();
+    if (items[index]) ui.img.src = srcFor(items[index]);
+  };
+  function toggleFull() {
+    if (full) { leaveFull(); return; }
+    if (canFull()) {
+      var go = viewer.requestFullscreen ? viewer.requestFullscreen() : viewer.webkitRequestFullscreen();
+      if (go && go.catch) go.catch(function () { setFull(true); });
+    } else {
+      setFull(true);
+    }
+  }
+  function leaveFull() {
+    if (fullElement()) {
+      var out = document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen();
+      if (out && out.catch) out.catch(function () { setFull(false); });
+    } else {
+      setFull(false);
+    }
+  }
+
   // The hint shows the first HINT_TIMES times the viewer opens in this
   // browser. Storage can be missing or blocked; then it simply shows.
   var HINT_TIMES = 3, HINT_KEY = 'room-viewer-opens';
@@ -416,6 +653,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   var finish = function () {
+    if (full) leaveFull();
     viewer.hidden = true;
     document.body.classList.remove('viewer-open');
     if (opener) opener.focus({ preventScroll: false });
@@ -434,6 +672,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    // "Look through them one by one": the viewer, from the first photograph
+    // on show (Everything's filters hide the rest). Without JavaScript the
+    // link is that photograph's own page.
+    var look = e.target.closest('[data-look]');
+    if (look) {
+      var first = Array.prototype.find.call(document.querySelectorAll('[data-everything] a[data-v-src]'),
+        function (a) { return !a.closest('[hidden]'); });
+      if (!first) return;
+      e.preventDefault();
+      open(first);
+      opener = look;
+      return;
+    }
     var link = e.target.closest('a[data-v-src]');
     if (!link || !link.closest('[data-v-list]')) return;
     e.preventDefault();
@@ -458,7 +709,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('keydown', function (e) {
     if (!viewer || viewer.hidden) return;
-    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (e.key === 'Escape') { e.preventDefault(); if (full) leaveFull(); else close(); return; }
+    if ((e.key === 'f' || e.key === 'F') && !e.altKey && !e.ctrlKey && !e.metaKey) { e.preventDefault(); toggleFull(); return; }
     if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); return; }
     if (e.key === 'ArrowRight') { e.preventDefault(); step(1); return; }
     if (e.key === 'Tab') {
