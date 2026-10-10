@@ -988,5 +988,59 @@
     "color": false,
     "alt": "Black and white photograph of four men sitting outside a shop, one wearing a painted mask, another making a hand gesture.",
     "added": "2026-07-28"
+  },
+  {
+    "id": "fh-0094",
+    "src": "photos/2026/fh-0094.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Two women at the Kwatta market entry. One is adjusting her hair and Brazil baseball hat while the other looks over her shoulder into the distance.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0095",
+    "src": "photos/2026/fh-0095.jpg",
+    "w": 2560,
+    "h": 2060,
+    "color": false,
+    "alt": "Man with cap talking to someone out of view while a lady in a dotted blouse walks be giving it all a glance.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0096",
+    "src": "photos/2026/fh-0096.jpg",
+    "w": 2560,
+    "h": 1921,
+    "color": true,
+    "alt": "Man in blue shirt looking straight into the camera at the Kwatta market.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0097",
+    "src": "photos/2026/fh-0097.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Lady selling mango's at the Kwatta market holding a knife to cut one and hand out a taster.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0098",
+    "src": "photos/2026/fh-0098.jpg",
+    "w": 2560,
+    "h": 1921,
+    "color": false,
+    "alt": "Man at the Sunday market on the Grote Combeweg, enjoying his cigarette, smelling stem of leaves from a fresh herbal plant.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0099",
+    "src": "photos/2026/fh-0099.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "The torso of a lady coming from the Sunday market wearing a white shirt with a striped shirt underneath that.",
+    "added": "2026-10-10"
   }
 ]
