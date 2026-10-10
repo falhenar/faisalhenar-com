@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://faisalhenar.com/</loc>
@@ -12,7 +11,7 @@
     <loc>https://faisalhenar.com/practice/reflections.html</loc>
     <lastmod>2026-09-22</lastmod>
   </url>
-<!-- BUILD:reflections -->
+
   <url>
     <loc>https://faisalhenar.com/practice/reflections/aging-and-death.html</loc>
     <lastmod>2026-07-30</lastmod>
@@ -49,7 +48,7 @@
     <loc>https://faisalhenar.com/practice/reflections/the-stories-we-build.html</loc>
     <lastmod>2026-08-12</lastmod>
   </url>
-<!-- /BUILD:reflections -->
+
   <url>
     <loc>https://faisalhenar.com/practice/reading.html</loc>
     <lastmod>2026-09-22</lastmod>
@@ -668,7 +667,7 @@
   <url>
     <loc>https://faisalhenar.com/photography/p/fh-0099/</loc>
   </url>
-  <url>
-    <loc>https://faisalhenar.com/photography/sheets/sheet-aeb5ed3356514938ae957a8bece1e39e/</loc>
+    <url>
+    <loc>https://faisalhenar.com/photography/sheets/2026-09-september-markets/</loc>
   </url>
 </urlset>

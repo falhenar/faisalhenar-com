@@ -187,8 +187,29 @@ def out_path(url):
     return os.path.join(ROOT, *url.strip("/").split("/"), "index.html")
 
 
+SHEET_ADDRESSES_VERSION = 1
+_SHEET_ADDRESSES = {}
+
+
+def configure_sheet_addresses(sheets):
+    used = {}
+    _SHEET_ADDRESSES.clear()
+    for sheet in sheets:
+        address = sheet.get("address", sheet["id"])
+        previous = sheet.get("previous_addresses", [])
+        if not isinstance(previous, list) or any(not isinstance(x, str) for x in previous):
+            raise SystemExit("ERROR: invalid previous sheet addresses.")
+        for name in {sheet["id"], address, *previous}:
+            if not isinstance(name, str) or len(name) > 100 or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name) or name == "index":
+                raise SystemExit("ERROR: invalid sheet address.")
+            if name in used and used[name] != sheet["id"]:
+                raise SystemExit("ERROR: colliding sheet addresses.")
+            used[name] = sheet["id"]
+        _SHEET_ADDRESSES[sheet["id"]] = address
+
+
 def sheet_url(sheet_id):
-    return f"{SHEETS_URL}{sheet_id}/"
+    return f"{SHEETS_URL}{_SHEET_ADDRESSES.get(sheet_id, sheet_id)}/"
 
 
 def fmt_day(date, year=True):
@@ -961,6 +982,12 @@ def redirects(room):
              PREVIEW_URL + "sheets/": SHEETS_URL, PREVIEW_URL + "everything/": EVERYTHING_URL}
     for sheet in room.sheets:
         moved[f"{PREVIEW_URL}sheets/{sheet['id']}/"] = sheet_url(sheet["id"])
+        current = sheet.get("address", sheet["id"])
+        for old in {sheet["id"], *sheet.get("previous_addresses", [])}:
+            if old != current:
+                moved[f"{SHEETS_URL}{old}/"] = sheet_url(sheet["id"])
+            moved[f"{PREVIEW_URL}sheets/{old}/"] = sheet_url(sheet["id"])
+        moved[f"{PREVIEW_URL}sheets/{current}/"] = sheet_url(sheet["id"])
     for i in room.sheet_of:
         moved[f"{PREVIEW_URL}p/{i}/"] = photo_url(i)
     return moved
@@ -971,6 +998,7 @@ def redirects(room):
 def main():
     photos = {p["id"]: p for p in load("photos.json")}
     sheets = load("sheets.json")["sheets"]
+    configure_sheet_addresses(sheets)
     walls = load("walls.json")
     meta = load("photo-meta.json")
     validate(photos, sheets, walls, meta)
