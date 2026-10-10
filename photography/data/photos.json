@@ -1069,5 +1069,41 @@
     "color": false,
     "alt": "Black and white photo of a girl at McDonald's staring up while another lady looks past her",
     "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0104",
+    "src": "photos/2026/fh-0104.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "A photo from the back of three people. The two on the outside in with brown and orange tints, while the older lady in the middle wears a colorful dress.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0105",
+    "src": "photos/2026/fh-0105.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "A lady walking through the Kwatta market carrying a bag of sweet potatoes on her headm A man on the right with a black backpack.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0106",
+    "src": "photos/2026/fh-0106.jpg",
+    "w": 2560,
+    "h": 1921,
+    "color": false,
+    "alt": "Black and white photo of a lady with a white fancy hat, with investigating eyes looking into the distance.",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0107",
+    "src": "photos/2026/fh-0107.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Black and white photo of a lady, using one hand to adjust her headscarf while the sun is glancing her from the leftside.",
+    "added": "2026-10-10"
   }
 ]
