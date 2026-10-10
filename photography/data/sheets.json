@@ -1,6 +1,22 @@
 {
  "sheets": [
   {
+   "id": "sheet-a0b69533f14b4760973c68f222eef6d7",
+   "address": "2026-09-30-mcdonalds",
+   "title": "30 September, Visit to McDonald's",
+   "line": "",
+   "kind": "day",
+   "places": [
+    "McDonald's Spanhoek"
+   ],
+   "frames": [
+    "fh-0101",
+    "fh-0102",
+    "fh-0103"
+   ],
+   "circled": []
+  },
+  {
    "id": "sheet-aeb5ed3356514938ae957a8bece1e39e",
    "title": "More September markets, 20th & 30th",
    "line": "",
