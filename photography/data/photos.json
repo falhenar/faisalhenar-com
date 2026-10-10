@@ -1042,5 +1042,32 @@
     "color": false,
     "alt": "The torso of a lady coming from the Sunday market wearing a white shirt with a striped shirt underneath that.",
     "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0101",
+    "src": "photos/2026/fh-0101.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Blurry photo of lady walking away from the counter with her McDonald's meal including a Happy Meal box",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0102",
+    "src": "photos/2026/fh-0102.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Three young folks making their order at the McDonald's ordering wall",
+    "added": "2026-10-10"
+  },
+  {
+    "id": "fh-0103",
+    "src": "photos/2026/fh-0103.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Black and white photo of a girl at McDonald's staring up while another lady looks past her",
+    "added": "2026-10-10"
   }
 ]
