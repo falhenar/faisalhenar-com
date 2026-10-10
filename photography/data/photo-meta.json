@@ -831,5 +831,33 @@
   "country": "Suriname",
   "captured": "2026-09-30T15:07:54",
   "notes": []
+ },
+ "fh-0104": {
+  "tone": "colour",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-10-04T07:59:02",
+  "notes": []
+ },
+ "fh-0105": {
+  "tone": "colour",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-10-04T10:42:09",
+  "notes": []
+ },
+ "fh-0106": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-10-04T10:54:45",
+  "notes": []
+ },
+ "fh-0107": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-10-04T11:05:30",
+  "notes": []
  }
 }

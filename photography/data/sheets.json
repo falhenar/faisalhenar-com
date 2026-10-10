@@ -1,6 +1,23 @@
 {
  "sheets": [
   {
+   "id": "sheet-9a271564b5514ac4a9bd73f8005170f6",
+   "address": "2026-10-04-kwattamarket",
+   "title": "Another visit to the Kwatta Market, 4 October",
+   "line": "",
+   "kind": "day",
+   "places": [
+    "Kwatta market"
+   ],
+   "frames": [
+    "fh-0104",
+    "fh-0105",
+    "fh-0106",
+    "fh-0107"
+   ],
+   "circled": []
+  },
+  {
    "id": "sheet-a0b69533f14b4760973c68f222eef6d7",
    "address": "2026-09-30-mcdonalds",
    "title": "30 September, Visit to McDonald's",
