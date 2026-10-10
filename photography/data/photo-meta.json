@@ -768,5 +768,47 @@
   "country": "Vietnam",
   "captured": "2026-06-25T14:44",
   "notes": []
+ },
+ "fh-0094": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-09-30T09:59:47",
+  "notes": []
+ },
+ "fh-0095": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-09-30T10:05:38",
+  "notes": []
+ },
+ "fh-0096": {
+  "tone": "colour",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-09-30T10:16:16",
+  "notes": []
+ },
+ "fh-0097": {
+  "tone": "colour",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-09-30T10:18:46",
+  "notes": []
+ },
+ "fh-0098": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-09-20T12:49:17",
+  "notes": []
+ },
+ "fh-0099": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-09-20T12:50:24",
+  "notes": []
  }
 }
