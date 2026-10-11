@@ -10,12 +10,15 @@
     "Kwatta market"
    ],
    "frames": [
+    "fh-0108",
     "fh-0104",
     "fh-0105",
     "fh-0106",
     "fh-0107"
    ],
-   "circled": []
+   "circled": [
+    "fh-0108"
+   ]
   },
   {
    "id": "sheet-a0b69533f14b4760973c68f222eef6d7",
@@ -31,7 +34,9 @@
     "fh-0102",
     "fh-0103"
    ],
-   "circled": []
+   "circled": [
+    "fh-0103"
+   ]
   },
   {
    "id": "sheet-aeb5ed3356514938ae957a8bece1e39e",
@@ -50,7 +55,9 @@
     "fh-0098",
     "fh-0099"
    ],
-   "circled": [],
+   "circled": [
+    "fh-0094"
+   ],
    "address": "2026-09-september-markets",
    "previous_addresses": [
     "sheet-aeb5ed3356514938ae957a8bece1e39e"

@@ -859,5 +859,12 @@
   "country": "Suriname",
   "captured": "2026-10-04T11:05:30",
   "notes": []
+ },
+ "fh-0108": {
+  "tone": "bw",
+  "place": "Paramaribo",
+  "country": "Suriname",
+  "captured": "2026-10-04T07:49:43",
+  "notes": []
  }
 }
