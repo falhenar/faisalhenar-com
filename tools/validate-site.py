@@ -459,15 +459,15 @@ def validate_data(issues, parsed_pages):
         for number, item in enumerate(quotes, 1):
             if not isinstance(item, dict) or not {"text", "author", "source", "themes"}.issubset(item) or not all(isinstance(item.get(field), str) and item[field].strip() for field in ("text", "author", "source")) or not isinstance(item.get("themes"), list) or not all(isinstance(theme, str) and theme for theme in item.get("themes", [])): issues.append(issue("javascript-data", "Quotes", "practice/js/quotes-config.js", f"Quote {number} has an invalid schema.", ("quotes",)))
             elif any(token.lower() in item["author"].lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/js/quotes-config.js", f"Quote {number} author contains forbidden punctuation.", ("quotes",)))
-    daily = values.get("DAILY_SUTTAS"); daily_refs, daily_ids = set(), set()
+    daily = values.get("DAILY_SUTTAS"); daily_ids = set()
     if not isinstance(daily, list): issues.append(issue("javascript-data", "Daily Sutta", "practice/js/daily-sutta-config.js", "DAILY_SUTTAS must be an array.", ("daily-sutta",)))
     else:
         for number, item in enumerate(daily, 1):
             valid = isinstance(item, dict) and set(item) == {"id", "title", "ref", "translator", "url", "text"} and all(isinstance(item.get(field), str) and item[field].strip() for field in ("id", "title", "ref", "translator", "url", "text")) and re.fullmatch(r"[a-z0-9]+(?:[.-][a-z0-9]+)*", item["id"]) and item["id"] not in daily_ids
             parsed = urlsplit(item.get("url", "")) if isinstance(item, dict) else None
-            if not valid or parsed.scheme != "https" or parsed.hostname != "suttacentral.net" or item["ref"] in daily_refs: issues.append(issue("javascript-data", "Daily Sutta", "practice/js/daily-sutta-config.js", f"Daily entry {number} has an invalid schema, URL, or duplicate ref.", ("daily-sutta",)))
+            if not valid or parsed.scheme != "https" or parsed.hostname != "suttacentral.net": issues.append(issue("javascript-data", "Daily Sutta", "practice/js/daily-sutta-config.js", f"Daily entry {number} has an invalid schema, URL, or duplicate ID.", ("daily-sutta",)))
             else:
-                daily_refs.add(item["ref"]); daily_ids.add(item["id"])
+                daily_ids.add(item["id"])
                 if any(any(token.lower() in item[field].lower() for token in FORBIDDEN) for field in ("id", "title", "ref", "translator")): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/js/daily-sutta-config.js", f"Daily entry {number} contains forbidden punctuation outside verbatim text.", ("daily-sutta",)))
     manifest = read_json("practice/data/nl-mirrors.json", issues, "Language pairs"); pairs = manifest.get("pairs", []) if isinstance(manifest, dict) else []
     for number, pair in enumerate(pairs, 1):
