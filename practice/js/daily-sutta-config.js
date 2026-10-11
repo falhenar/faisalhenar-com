@@ -114,14 +114,6 @@ const DAILY_SUTTAS = [
     text: "The Realized One, the perfected one, the fully awakened Buddha directly knows earth as earth. Having directly known earth as earth, he does not conceive it to be earth, he does not conceive it in earth, he does not conceive it as earth, he does not conceive that ‘earth is mine’, he does not approve earth. Because the Realized One has completely understood it to the end, I say."
   },
   {
-    id: "mn2",
-    title: "All the Defilements",
-    ref: "MN 2",
-    translator: "sujato",
-    url: "https://suttacentral.net/mn2/en/sujato",
-    text: "I say that the ending of defilements is for one who knows and sees, not for one who does not know or see. For one who knows and sees what? Rational application of mind and irrational application of mind. When you apply the mind irrationally, defilements arise, and once arisen they grow. When you apply the mind rationally, defilements don’t arise, and those that have already arisen are given up."
-  },
-  {
     id: "mn4",
     title: "Fear and Dread",
     ref: "MN 4",
@@ -792,6 +784,22 @@ const DAILY_SUTTAS = [
     translator: "sujato",
     url: "https://suttacentral.net/sn45.2/en/sujato",
     text: "Not so, Ānanda! Not so, Ānanda! Good friends, companions, and associates are the whole of the spiritual life."
+  },
+  {
+    id: "curator-65709ff0-96f2-41d1-810e-0fea23118c7b",
+    title: "All the Defilements",
+    ref: "MN 2",
+    translator: "sujato",
+    url: "https://suttacentral.net/mn2/en/sujato",
+    text: "“Mendicants, I say that the ending of defilements is for one who knows and sees, not for one who does not know or see. For one who knows and sees what? Rational application of mind and irrational application of mind. When you apply the mind irrationally, defilements arise, and once arisen they grow. When you apply the mind rationally, defilements don’t arise, and those that have already arisen are given up. Some defilements should be given up by seeing, some by restraint, some by using, some by enduring, some by avoiding, some by dispelling, and some by developing. "
+  },
+  {
+    id: "curator-9dd238d8-0c12-4774-8a03-8c183231f5d4",
+    title: "Mindfulness Meditation",
+    ref: "MN 10",
+    translator: "sujato",
+    url: "https://suttacentral.net/mn10/en/sujato",
+    text: "And how does a mendicant meditate observing an aspect of feelings? It’s when a mendicant who feels a pleasant feeling knows: ‘I feel a pleasant feeling.’ When they feel a painful feeling, they know: ‘I feel a painful feeling.’ When they feel a neutral feeling, they know: ‘I feel a neutral feeling.’ "
   }
 ];
 
