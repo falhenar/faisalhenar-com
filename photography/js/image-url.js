@@ -37,7 +37,7 @@ function cfImage(path, width) {
     return resolved.href;
   }
   var abs = resolved.pathname; // e.g. /photography/photos/first-roll/foo.jpg
-  return '/cdn-cgi/image/width=' + width + ',fit=scale-down,format=auto/' + abs.replace(/^\//, '');
+  return '/cdn-cgi/image/width=' + width + ',fit=scale-down,format=auto/' + abs.replace(/^\//, '') + resolved.search;
 }
 
 /*

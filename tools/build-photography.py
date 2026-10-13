@@ -159,12 +159,46 @@ def circle_svg(photo_id, extra_class=""):
 
 # ---------- images: the same Cloudflare URLs as photography/js/image-url.js ----------
 
+PHOTO_DELIVERY_VERSION = 1
+_PHOTO_REVISIONS = {}
+
+
+def content_revision(photo):
+    src = photo["src"]
+    if src not in _PHOTO_REVISIONS:
+        path = os.path.realpath(os.path.join(ROOT, "photography", src))
+        image_root = os.path.realpath(os.path.join(ROOT, "photography", "photos"))
+        if os.path.commonpath([path, image_root]) != image_root:
+            raise SystemExit("ERROR: unsafe photograph source for content revision.")
+        with open(path, "rb") as image:
+            _PHOTO_REVISIONS[src] = hashlib.file_digest(image, "sha256").hexdigest() if hasattr(hashlib, "file_digest") else hashlib.sha256(image.read()).hexdigest()
+    return _PHOTO_REVISIONS[src]
+
+
 def original(photo):
-    return "/photography/" + photo["src"]
+    return "/photography/" + photo["src"] + "?rev=" + content_revision(photo)
 
 
 def cf_image(photo, width):
-    return f"/cdn-cgi/image/width={width},fit=scale-down,format=auto/photography/{photo['src']}"
+    return f"/cdn-cgi/image/width={width},fit=scale-down,format=auto/{original(photo).lstrip('/')}"
+
+
+def revised_homepage(photos):
+    path = os.path.join(ROOT, "index.html")
+    markup = read(path)
+    for photo in photos.values():
+        pattern = r"(/(?:cdn-cgi/image/[^/\"\s]+/)?photography/" + re.escape(photo["src"]) + r")(?=[?\"\s])(?:\?rev=[0-9a-f]{64})?"
+        if re.search(pattern, markup):
+            revision = content_revision(photo)
+            markup = re.sub(pattern, lambda match: match.group(1) + "?rev=" + revision, markup)
+            def dimensions(match):
+                tag = match.group(0)
+                if "/photography/" + photo["src"] not in tag:
+                    return tag
+                tag = re.sub(r'\bwidth="[0-9]+"', lambda _: 'width="' + str(photo["w"]) + '"', tag)
+                return re.sub(r'\bheight="[0-9]+"', lambda _: 'height="' + str(photo["h"]) + '"', tag)
+            markup = re.sub(r"<img\b[^>]+>", dimensions, markup)
+    return path, markup
 
 
 def img_tag(photo, sizes, src_width=800, widths=IMAGE_WIDTHS, lazy=True):
@@ -1031,6 +1065,9 @@ def main():
         pages[out_path(old)] = redirect_page(old, new, versions)
 
     check_pages(pages, moved)
+
+    home_path, home_markup = revised_homepage(photos)
+    pages[home_path] = home_markup
 
     written = 0
     for path, markup in pages.items():
