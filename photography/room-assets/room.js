@@ -1,9 +1,8 @@
 /* Photography room: the small things JavaScript adds to pages that already
    work without it. The wall: the prints pin themselves in once a session,
    enlarge one board, or swipe between the walls on a phone. The sheets:
-   circles that draw once in view. The sheet: the walk line answering the
-   frames, a loupe on fine pointers, press-and-hold zoom on touch, and a
-   swipe to the sheet either side. Everything: the place and tone filters,
+   circles that draw once in view. The sheet: a loupe on fine pointers,
+   press-and-hold zoom on touch, and a swipe to the sheet either side. Everything: the place and tone filters,
    kept in the address. Everywhere: the viewer, which opens a print, frame
    or photograph over the page and steps through what is visible. Pages are
    written by tools/build-photography.py; this file is written by hand.
@@ -166,35 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- the sheet ---------- */
   var sheet = document.querySelector('[data-sheet]');
   if (sheet) {
-    // The walk line: a frame lights its tick, a tick lights its frame.
-    var ticks = document.querySelectorAll('[data-tick]');
-    if (ticks.length) {
-      var lit = null;
-      var light = function (k, withFrame) {
-        if (lit !== null) {
-          document.querySelectorAll('[data-tick="' + lit + '"], [data-frame="' + lit + '"]').forEach(function (n) { n.classList.remove('is-lit'); });
-        }
-        lit = k;
-        if (k === null) return;
-        var lights = document.querySelectorAll('[data-tick="' + k + '"]' + (withFrame ? ', [data-frame="' + k + '"]' : ''));
-        lights.forEach(function (n) { n.classList.add('is-lit'); });
-      };
-      var fromFrame = function (e) {
-        var f = e.target.closest && e.target.closest('[data-frame]');
-        light(f ? f.getAttribute('data-frame') : null, false);
-      };
-      sheet.addEventListener('mouseover', fromFrame);
-      sheet.addEventListener('mouseleave', function () { light(null); });
-      sheet.addEventListener('focusin', fromFrame);
-      sheet.addEventListener('focusout', function () { light(null); });
-      var ruler = ticks[0].parentNode;
-      ruler.addEventListener('mouseover', function (e) {
-        var t = e.target.closest('[data-tick]');
-        light(t ? t.getAttribute('data-tick') : null, true);
-      });
-      ruler.addEventListener('mouseleave', function () { light(null); });
-    }
-
     // Where the photograph actually sits inside its letterboxed frame.
     var imageRect = function (img) {
       var box = img.getBoundingClientRect();
@@ -390,14 +360,19 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- everything ----------
      Place and tone filters. They combine, they live in the address
      (?place=vietnam&tone=bw) so a filtered view can be shared and reloaded,
-     and they tell the viewer what to call the list it steps through. */
+     and they tell the viewer what to call the list it steps through. The
+     places are read from the buttons the build wrote, one per country. */
   var every = document.querySelector('[data-everything]');
   var filters = document.querySelector('[data-filters]');
   if (every && filters) {
     var NAMES = {
-      place: { all: '', suriname: 'Suriname', vietnam: 'Vietnam' },
+      place: { all: '' },
       tone: { all: '', bw: 'black and white', colour: 'colour' }
     };
+    filters.querySelectorAll('[data-filter="place"]').forEach(function (b) {
+      var v = b.getAttribute('data-value');
+      if (v !== 'all') NAMES.place[v] = b.textContent.trim();
+    });
     var state = { place: 'all', tone: 'all' };
     var params = new URLSearchParams(window.location.search);
     Object.keys(state).forEach(function (key) {

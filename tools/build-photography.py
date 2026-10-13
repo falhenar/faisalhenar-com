@@ -42,7 +42,7 @@ and Index scripts in photography/js/.
 
 Run from the repository root:  python3 tools/build-photography.py
 """
-import hashlib, html, json, math, os, random, re
+import hashlib, html, json, math, os, random, re, unicodedata
 from urllib.parse import urljoin, urlsplit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -60,8 +60,8 @@ VERSION_SOURCE = "note.html"              # a hand-written page carrying base.cs
 # What gets built.
 BUILD = ["wall", "sheets-index", "sheets", "photographs", "everything", "redirects"]
 
-ROOM_CSS_VERSION = "9"
-ROOM_JS_VERSION = "8"
+ROOM_CSS_VERSION = "10"
+ROOM_JS_VERSION = "9"
 
 MAX_CIRCLED = 4
 MAX_WALL = 12
@@ -75,12 +75,17 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July",
 IMAGE_WIDTHS = (400, 800, 1200)
 EVERYTHING_WIDTHS = (300, 600)
 ROW_HEIGHT = {"computer": 130, "phone": 72}
-COUNTRIES = ("Suriname", "Vietnam")
 PAGE_WIDTHS = (800, 1200, 2000)
 OG_WIDTH = 1200
 BOARD_WIDTH = 1312
 BOARD_HEAD = 270          # board pixels above the first row: the wall's name and, on black and white, the index card
 TABLE_FRAMES = 8          # frames drawn on the latest sheet on the work table
+
+
+def place_slug(name):
+    """The address form of a country: Suriname -> suriname, Côte d'Ivoire -> cote-d-ivoire."""
+    plain = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"[^a-z0-9]+", "-", plain.lower()).strip("-")
 
 
 def read(path):
@@ -330,7 +335,9 @@ def validate(photos, sheets, walls, meta):
         if len(sheet["circled"]) > MAX_CIRCLED: problems.append(f"Sheet {sheet['id']} has {len(sheet['circled'])} circled; at most {MAX_CIRCLED}.")
     for i in meta:
         if i not in seen: problems.append(f"{i} is in photo-meta.json but on no sheet.")
-        if meta[i].get("country") not in COUNTRIES: problems.append(f"{i} has no country (one of {', '.join(COUNTRIES)}) in photo-meta.json.")
+        country = meta[i].get("country")
+        if not isinstance(country, str) or not country.strip(): problems.append(f"{i} has no country in photo-meta.json.")
+        elif not place_slug(country): problems.append(f"{i} has a country with no letters or digits in photo-meta.json.")
         if not meta[i].get("captured"): problems.append(f"{i} has no capture time, so it cannot be placed on Everything.")
     circled = {i for s in sheets for i in s["circled"]}
     for tone in ("bw", "colour"):
@@ -682,29 +689,13 @@ def sheet_meta_line(room, sheet, with_times=True):
     return " · ".join(esc(p) for p in parts)
 
 
-def walk_line(room, sheet):
-    """The ruler of frame times for a walk or a day taken on one date, or None.
-
-    Returns (markup, {frame number: 'HH:MM'})."""
-    if sheet["kind"] not in ("walk", "day"): return None
+def frame_times(room, sheet):
+    """{frame number: 'HH:MM'} for a walk or a day taken on one date, else {}."""
+    if sheet["kind"] not in ("walk", "day"): return {}
     stamps = [room.meta[i]["captured"] or "" for i in sheet["frames"]]
-    if not all(re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d", s) for s in stamps): return None
-    if len({s[:10] for s in stamps}) != 1: return None
-    mins = [int(s[11:13]) * 60 + int(s[14:16]) for s in stamps]
-    h0, h1 = min(mins) // 60, max(mins) // 60 + 1
-    every = 2 if h1 - h0 > 6 else 1
-    span = (h1 - h0) * 60
-    x = lambda m: f"{(m - h0 * 60) / span * 100:.2f}%"
-    marks = [f'<span class="walk-hour" style="--x:{x(h * 60)}">{h:02d}:00</span>' for h in range(h0, h1 + 1, every)]
-    ticks = [f'<span class="walk-tick{" walk-tick--circled" if i in sheet["circled"] else ""}" style="--x:{x(m)}" data-tick="{k}"><span class="walk-time">{m // 60:02d}:{m % 60:02d}</span></span>'
-             for k, (i, m) in enumerate(zip(sheet["frames"], mins), 1)]
-    markup = f"""
-    <div class="walk-line" aria-hidden="true">
-      <span class="walk-axis"></span>
-      {"".join(marks)}
-      {"".join(ticks)}
-    </div>"""
-    return markup, {k: s[11:] for k, s in enumerate(stamps, 1)}
+    if not all(re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d", s) for s in stamps): return {}
+    if len({s[:10] for s in stamps}) != 1: return {}
+    return {k: s[11:] for k, s in enumerate(stamps, 1)}
 
 
 def note_card(text, cls=""):
@@ -732,8 +723,7 @@ def binder(room, sheet):
 
 def sheet_page(room, sheet, versions):
     n = len(sheet["frames"])
-    ruler = walk_line(room, sheet)
-    times = ruler[1] if ruler else {}
+    times = frame_times(room, sheet)
     frames = []
     for k, i in enumerate(sheet["frames"], 1):
         photo = room.photos[i]
@@ -768,7 +758,6 @@ def sheet_page(room, sheet, versions):
         </div>{card}
       </div>
     </div>
-{ruler[0] if ruler else ""}
     <div class="sheet" data-sheet>
       <p class="sheet-edge" aria-hidden="true">faisalhenar.com ▸ {esc(sheet['title'])} ▸ {n} frames</p>
       <div class="sheet-grid" data-v-list data-v-context="{esc(sheet['title'])}">
@@ -910,7 +899,7 @@ def everything_page(room, versions):
             sizes = f'(max-width: 760px) {round(r * ROW_HEIGHT["phone"] * 1.25)}px, {round(r * ROW_HEIGHT["computer"] * 1.25)}px'
             items.append(
                 f'          <a class="ev-item" href="{photo_url(i)}" style="--r:{r:.4f};--tilt:{tilt:.2f}deg" '
-                f'data-place="{room.meta[i]["country"].lower()}" data-tone="{room.meta[i]["tone"]}" {room.viewer_attrs(i)}>'
+                f'data-place="{place_slug(room.meta[i]["country"])}" data-tone="{room.meta[i]["tone"]}" {room.viewer_attrs(i)}>'
                 f'{img_tag(p, sizes, 300, EVERYTHING_WIDTHS)}'
                 f'<span class="ev-cap" aria-hidden="true">{esc(room.heading(i))}</span></a>')
         count = len(ids)
@@ -933,7 +922,8 @@ def everything_page(room, versions):
         </div>"""
 
     total = len(order)
-    places = [("all", "All")] + [(c.lower(), c) for c in COUNTRIES]
+    countries = sorted({room.meta[i]["country"] for i in room.meta}, key=str.casefold)
+    places = [("all", "All")] + [(place_slug(c), esc(c)) for c in countries]
     tones = [("all", "All"), ("bw", "Black and white"), ("colour", "Colour")]
     description = "Every photograph in Faisal Henar's photography room, newest first, by place and by black and white or colour."
     body = f"""

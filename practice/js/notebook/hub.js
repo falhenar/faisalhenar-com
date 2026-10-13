@@ -187,6 +187,12 @@
     var a = $('.nb-d-links a[href^="reflections/"]', x.li);
     return a ? a.getAttribute('href') : 'reflections.html#' + x.id;
   }
+  // A meditation item with a sheet goes straight to it, from its "Read the
+  // sheet" link in the room; anything else goes to its item in the room.
+  function medHref(x) {
+    var a = $$('.nb-d-links a', x.li).filter(function (b) { return /^Read the sheet$/.test(txt(b)); })[0];
+    return a ? a.getAttribute('href') : 'meditation.html#' + x.id;
+  }
   function find(sentencesOf, re) {
     var s = sentences(sentencesOf);
     for (var i = 0; i < s.length; i++) if (re.test(s[i])) return s[i];
@@ -227,7 +233,7 @@
         var list = items(doc);
         var sheets = list.filter(function (x) { return /^sheet/.test(x.tag); }).length;
         var timer = list.filter(function (x) { return x.id === 'sati-timer'; })[0];
-        var rows = list.map(function (x) { return { t: x.t, n: x.tag, href: 'meditation.html#' + x.id }; });
+        var rows = list.map(function (x) { return { t: x.t, n: x.tag, href: medHref(x) }; });
         var prose = $('.nb-prose', doc);
         if (prose) rows.push({ t: txt($('h2', prose)), n: 'note', href: 'meditation.html#' + prose.id });
         return {

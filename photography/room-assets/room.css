@@ -842,54 +842,7 @@ html.arrive .walls .print:not(.is-pinned){ opacity: 0; }
 .note-card p{ margin: 0; font-family: var(--hand); font-size: 24px; line-height: 24px; color: var(--card-ink); }
 .note-clip{ left: 30px; top: -9px; height: 28px; }
 
-/* the walk line: one tick per frame at the time it was taken */
-.walk-line{ position: relative; height: 82px; margin: 0 0 22px; }
-.walk-axis{ position: absolute; left: 0; right: 0; top: 50px; height: 1px; background: #4a4842; }
-.walk-hour{
-  position: absolute;
-  top: 60px;
-  left: var(--x);
-  transform: translateX(-50%);
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text-3);
-}
-.walk-hour::before{
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -10px;
-  width: 1px;
-  height: 7px;
-  background: #4a4842;
-}
-.walk-tick{
-  position: absolute;
-  left: var(--x);
-  bottom: calc(100% - 50px);
-  width: 2px;
-  height: 14px;
-  margin-left: -1px;
-  background: var(--text-2);
-  transition: height 0.2s ease, background-color 0.2s ease;
-}
-.walk-tick--circled{ height: 22px; background: var(--grease); }
-.walk-tick.is-lit{ height: 30px; background: var(--frame-no); z-index: 1; }
-.walk-time{
-  display: none;
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  margin-bottom: 3px;
-  transform: translateX(-50%);
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--frame-no);
-  white-space: nowrap;
-}
-.walk-tick.is-lit .walk-time{ display: block; }
 .frame-time{ color: var(--text-3); }
-.frame.is-lit .frame-photo{ outline: 2px solid var(--frame-no); outline-offset: 2px; }
 
 .sheet{
   background: var(--sheet);
@@ -1008,8 +961,6 @@ html.js .frame--circled.is-drawn .circle path + path{ animation-delay: 0.08s; }
   .sheet-head h1{ font-size: 1.65rem; line-height: 1.15; }
   .note-card{ width: auto; align-self: stretch; margin: 6px 6px 0; transform: rotate(1.2deg); }
   .note-card p{ font-size: 22px; line-height: 22px; }
-  .walk-line{ margin-top: 0; }
-  .walk-hour{ font-size: 9px; }
 }
 @media (max-width: 559px){
   .sheet{ padding: 16px 14px 26px; }
@@ -1561,7 +1512,7 @@ html:not(.js) .ev-box{ margin-top: 16px; }
   html.js .frame--circled.is-drawn .circle path{ stroke-dashoffset: 0; animation: none; }
   html.js .frame--circled .circle{ visibility: visible; }
   .print, .print-photo, html.js .walls, html.js .wall, .table-thing, .sheet-mini,
-  .ev-item, .ev-cap, .walk-tick, .filter-group button,
+  .ev-item, .ev-cap, .filter-group button,
   .viewer.is-full .viewer-bar, .viewer.is-full .viewer-step{ transition: none !important; }
   .frame:target .frame-photo{ animation: none; outline: 3px solid var(--frame-no); outline-offset: 4px; }
   .viewer-img, .viewer-img.is-loading{ transition: none; opacity: 1; }
