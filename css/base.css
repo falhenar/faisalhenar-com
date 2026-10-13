@@ -250,3 +250,15 @@ a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
    light header, not in the dark viewer, so the heavier weight reads the
    same there as everywhere else.
    --------------------------------------------------------------- */
+
+/* Footer tagline ("Built quietly, updated slowly"), which links to the
+   colophon. The only link in .footer-meta on every page. Two classes
+   deep so section footers (".site-footer a" in notebook.css) cannot
+   strip the underline. October 2026. */
+.site-footer .footer-meta a{
+  text-decoration: underline dotted 1px;
+  text-underline-offset: 3px;
+  color: var(--muted);
+}
+.site-footer .footer-meta a:hover{ color: var(--accent); }
+.site-footer .footer-meta a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }

@@ -86,3 +86,13 @@
 @media (max-width: 640px){
   .note-top, .note{ padding-left: 20px; padding-right: 20px; }
 }
+
+/* Closing line on colophon.html / colophon-nl.html: date and the way back. */
+.note-meta{
+  margin: 48px 0 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.note-meta a{ border-bottom: 1px solid currentColor; }
+.note-meta a:hover{ color: var(--accent); }

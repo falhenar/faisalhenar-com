@@ -496,7 +496,7 @@ def foot(versions):
     </nav>
     <div class="footer-meta">
       <span>© <span id="year"></span> Faisal Henar</span>
-      <span>Built quietly, updated slowly</span>
+      <a href="/colophon.html">Built quietly, updated slowly</a>
     </div>
     <noscript>
       <nav class="footer-nav" aria-label="Site sections">

@@ -388,7 +388,7 @@ def page_markup(entry, previous, total, section, css_version, base_version, menu
     parts.append("    </nav>")
     parts.append('    <div class="footer-meta">')
     parts.append('      <span>&copy; <span id="year"></span> Faisal Henar</span>')
-    parts.append("      <span>Built quietly, updated slowly</span>")
+    parts.append('      <a href="/colophon.html">Built quietly, updated slowly</a>')
     parts.append("    </div>")
     parts.append("    <noscript>")
     parts.append('      <nav class="footer-nav" aria-label="Site sections">')
