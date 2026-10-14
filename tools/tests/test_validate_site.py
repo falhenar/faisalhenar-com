@@ -194,5 +194,61 @@ class BaseStylesheetTests(unittest.TestCase):
             '<link rel="stylesheet" href="css/practice.css?v=1">'), [])
 
 
+class ReflectionPageStateTests(unittest.TestCase):
+    """Listed, unlisted and no-longer-published Reflection pages stay distinct."""
+
+    ARTICLE = "<p>The article.</p>"
+    NOINDEX = '<meta name="robots" content="noindex, follow">'
+    REDIRECT = NOINDEX + '<meta http-equiv="refresh" content="0; url=../reflections.html">'
+    SUTTAS = [{"id": "a", "slug": "alpha", "note": "Note.", "added": "2026-01-01"},
+              {"id": "b", "slug": "beta", "note": "Note.", "added": "2026-02-01"},
+              {"id": "c", "slug": "gamma", "note": "", "added": ""}]
+
+    def issues(self, pages, archived, unlisted=None):
+        original = validator.ROOT
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            (validator.ROOT / "practice" / "js").mkdir(parents=True)
+            config = "const SUTTAS = [];\n"
+            if unlisted is not None:
+                config += "const MANAGER_WITHDRAWN_REFLECTIONS = " + json.dumps(unlisted) + ";\n"
+            (validator.ROOT / "practice" / "js" / "suttas-config.js").write_text(config, encoding="utf-8")
+            (validator.ROOT / "practice" / "reflections.html").write_text(
+                "".join(f'<a href="reflections/{slug}.html">' for slug in archived), encoding="utf-8")
+            parsed = {}
+            for slug, markup in pages.items():
+                page = validator.Page(); page.feed(markup); page.close()
+                parsed[f"practice/reflections/{slug}.html"] = page
+            issues = []
+            try:
+                validator.validate_reflection_pages(issues, self.SUTTAS, parsed)
+            finally:
+                validator.ROOT = original
+        return sorted(item["path"] for item in issues)
+
+    def test_all_three_states_pass_when_built(self):
+        pages = {"alpha": self.ARTICLE, "beta": self.NOINDEX + self.ARTICLE, "gamma": self.REDIRECT}
+        self.assertEqual(self.issues(pages, ["alpha"], unlisted=["b"]), [])
+
+    def test_no_declaration_means_every_published_page_is_listed(self):
+        self.assertEqual(self.issues({"alpha": self.ARTICLE, "beta": self.ARTICLE}, ["alpha", "beta"]), [])
+
+    def test_a_stale_build_is_reported_page_by_page(self):
+        # beta is unlisted in the config but the pages and archive were not rebuilt.
+        self.assertEqual(self.issues({"alpha": self.ARTICLE, "beta": self.ARTICLE}, ["alpha", "beta"], unlisted=["b"]),
+                         ["practice/reflections/beta.html"])
+        # An unlisted article must not be a redirect: that is unpublishing.
+        self.assertEqual(self.issues({"alpha": self.ARTICLE, "beta": self.REDIRECT}, ["alpha"], unlisted=["b"]),
+                         ["practice/reflections/beta.html"])
+        # A listed article must not carry noindex, and a missing page is reported.
+        self.assertEqual(self.issues({"alpha": self.NOINDEX + self.ARTICLE}, ["alpha"]),
+                         ["practice/reflections/alpha.html", "practice/reflections/beta.html"])
+
+    def test_an_invalid_declaration_is_reported(self):
+        for unlisted in (["b", "b"], ["nope"], [1]):
+            with self.subTest(unlisted=unlisted):
+                self.assertEqual(self.issues({}, [], unlisted=unlisted), ["practice/js/suttas-config.js"])
+
+
 if __name__ == "__main__":
     unittest.main()

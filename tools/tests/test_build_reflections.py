@@ -1,9 +1,16 @@
+import contextlib
 import importlib.util
+import io
+import json
 from pathlib import Path
+import re
+import shutil
+import tempfile
 import unittest
 
 
 TOOLS = Path(__file__).resolve().parents[1]
+REPO = TOOLS.parent
 
 _spec = importlib.util.spec_from_file_location("reflection_builder", TOOLS / "build-reflections.py")
 builder = importlib.util.module_from_spec(_spec)
@@ -152,6 +159,224 @@ class WithdrawnPageTests(unittest.TestCase):
             with self.subTest(required=required):
                 self.assertIn(required, page)
         self.assertIn("/practice/reflections/some-reflection.html", page)
+
+
+class BuildRunTests(unittest.TestCase):
+    """Whole builds, run against temporary copies, never the real tree."""
+
+    PATHS = ("CONFIG", "ARCHIVE", "SITEMAP", "OUT_DIR", "CROSSLINKS_PATH")
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / "practice" / "reflections").mkdir(parents=True)
+        (self.root / "practice" / "js").mkdir()
+        (self.root / "practice" / "data").mkdir()
+        shutil.copy(REPO / "practice" / "reflections.html", self.root / "practice" / "reflections.html")
+        shutil.copy(REPO / "sitemap.xml", self.root / "sitemap.xml")
+        self.saved = {name: getattr(builder, name) for name in self.PATHS}
+        builder.CONFIG = str(self.root / "practice" / "js" / "suttas-config.js")
+        builder.ARCHIVE = str(self.root / "practice" / "reflections.html")
+        builder.SITEMAP = str(self.root / "sitemap.xml")
+        builder.OUT_DIR = str(self.root / "practice" / "reflections")
+        builder.CROSSLINKS_PATH = str(self.root / "practice" / "data" / "crosslinks.json")
+
+    def tearDown(self):
+        for name, value in self.saved.items():
+            setattr(builder, name, value)
+        self.tmp.cleanup()
+
+    def build(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            builder.main()
+
+    def snapshot(self):
+        return {p.relative_to(self.root).as_posix(): p.read_bytes()
+                for p in sorted(self.root.rglob("*")) if p.is_file()}
+
+    def text(self, relative):
+        return (self.root / relative).read_text(encoding="utf-8")
+
+
+class CurrentSiteTests(BuildRunTests):
+    def test_a_copy_of_the_real_site_rebuilds_byte_for_byte(self):
+        """No declaration in the live config: the output is what is committed."""
+        shutil.copy(REPO / "practice" / "js" / "suttas-config.js", builder.CONFIG)
+        shutil.copy(REPO / "practice" / "data" / "crosslinks.json", builder.CROSSLINKS_PATH)
+        for page in (REPO / "practice" / "reflections").glob("*.html"):
+            shutil.copy(page, Path(builder.OUT_DIR) / page.name)
+        before = self.snapshot()
+        self.build()
+        self.assertEqual(before, self.snapshot())
+
+
+class UnlistingTests(BuildRunTests):
+    """Unlisting keeps the article at its address and takes it out of discovery.
+
+    It is not withdrawal: an entry that stops being published (empty note or
+    no date) still turns into a redirect to the archive.
+    """
+
+    ROBOTS = '<meta name="robots" content="noindex, follow">'
+    BOOKS = {"spine": {"title": "Spine", "note": "In order.", "order": "structural"},
+             "kept": {"title": "Kept", "note": "By date.", "order": "chronological"}}
+
+    def setUp(self):
+        super().setUp()
+        self.suttas = [
+            {"id": "s1", "book": "spine", "title": "One", "slug": "one", "ref": "SN 1.1", "note": "First note.", "added": "2026-01-01"},
+            {"id": "s2", "book": "spine", "title": "Two", "slug": "two", "ref": "SN 1.2", "note": "Second note.", "added": "2026-02-01"},
+            {"id": "s3", "book": "spine", "title": "Three", "slug": "three", "ref": "SN 1.3", "note": "Third note.", "added": "2026-03-01"},
+            {"id": "k1", "book": "kept", "title": "Kept", "slug": "kept", "ref": "AN 4.4", "note": "Kept note.", "added": "2026-04-01"},
+            {"id": "q1", "book": "kept", "title": "Queued", "ref": "AN 5.5", "note": "", "added": ""},
+        ]
+
+    def configure(self, unlisted=None, raw=None):
+        text = ("const BOOKS = " + json.dumps(self.BOOKS, indent=2) + ";\n\n"
+                + "const SUTTAS = [\n" + ",\n".join(
+                    "  {\n" + "".join("    %s: %s,\n" % (k, json.dumps(v)) for k, v in entry.items()) + "  }"
+                    for entry in self.suttas) + "\n];\n")
+        if raw is not None:
+            text += "\n" + raw + "\n"
+        elif unlisted is not None:
+            text += "\nconst MANAGER_WITHDRAWN_REFLECTIONS = " + json.dumps(unlisted) + ";\n"
+        Path(builder.CONFIG).write_text(text, encoding="utf-8", newline="\n")
+
+    def page(self, slug):
+        return self.text("practice/reflections/%s.html" % slug)
+
+    def test_no_declaration_and_an_empty_one_build_the_same_site(self):
+        self.configure()
+        self.build()
+        before = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
+        self.configure(unlisted=[])
+        self.build()
+        after = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
+        self.assertEqual(before, after)
+
+    def test_an_unlisted_article_stays_whole_at_its_address_and_leaves_discovery(self):
+        self.configure(unlisted=["s2"])
+        self.build()
+        page = self.page("two")
+        self.assertEqual(page.count('name="robots"'), 1)
+        self.assertIn(self.ROBOTS, page)
+        self.assertIn("Second note.", page)
+        self.assertNotIn('http-equiv="refresh"', page)
+        self.assertIn('<link rel="canonical" href="https://faisalhenar.com/practice/reflections/two.html">', page)
+        archive, sitemap = self.text("practice/reflections.html"), self.text("sitemap.xml")
+        self.assertNotIn("reflections/two.html", archive)
+        self.assertNotIn('id="two"', archive)
+        self.assertNotIn("/practice/reflections/two.html", sitemap)
+        for listed in ("one", "three", "kept"):
+            with self.subTest(listed=listed):
+                self.assertNotIn('name="robots"', self.page(listed))
+                self.assertIn("reflections/%s.html" % listed, archive)
+                self.assertIn("/practice/reflections/%s.html" % listed, sitemap)
+                self.assertIn("Three so far", self.page(listed))
+        # The previous link steps over it, from listed and unlisted pages alike.
+        self.assertIn('rel="prev" href="one.html"', self.page("three"))
+        self.assertIn('rel="prev" href="one.html"', page)
+        self.assertNotIn("two.html", self.page("three"))
+
+    def test_unlisting_the_newest_and_then_everything_leaves_no_stale_state(self):
+        self.configure(unlisted=["k1"])
+        self.build()
+        archive = self.text("practice/reflections.html")
+        self.assertIn('data-open="three"', archive)
+        self.assertEqual(archive.count("Latest &middot;"), 1)
+        self.assertIn('id="three"', archive.split("Latest &middot;")[0].rsplit("<li", 1)[1])
+        self.assertIn('datetime="2026-03">March 2026</time>', archive)
+
+        self.configure(unlisted=["s1", "s2", "s3", "k1"])
+        self.build()
+        archive, sitemap = self.text("practice/reflections.html"), self.text("sitemap.xml")
+        self.assertIn('data-open=""', archive)
+        self.assertNotIn("nb-item", archive)
+        self.assertNotIn("Latest &middot;", archive)
+        self.assertNotIn("/practice/reflections/", sitemap)
+        for slug in ("one", "two", "three", "kept"):
+            with self.subTest(slug=slug):
+                self.assertIn(self.ROBOTS, self.page(slug))
+                self.assertNotIn('rel="prev"', self.page(slug))
+                self.assertIn("None so far", self.page(slug))
+
+    def test_relisting_restores_the_site_byte_for_byte(self):
+        self.configure()
+        self.build()
+        before = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
+        self.configure(unlisted=["s2", "k1"])
+        self.build()
+        self.configure(unlisted=[])
+        self.build()
+        after = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
+        self.assertEqual(before, after)
+
+    def test_a_retitled_relisted_article_keeps_its_address(self):
+        self.configure(unlisted=["s2"])
+        self.build()
+        self.suttas[1]["title"] = "Two, Renamed"
+        self.configure(unlisted=[])
+        self.build()
+        page = self.page("two")
+        self.assertIn("Two, Renamed", page)
+        self.assertNotIn('name="robots"', page)
+        self.assertIn("reflections/two.html", self.text("practice/reflections.html"))
+        self.assertIn("/practice/reflections/two.html", self.text("sitemap.xml"))
+        self.assertFalse((Path(builder.OUT_DIR) / "two-renamed.html").exists())
+
+    def test_losing_eligibility_still_redirects_and_is_not_unlisting(self):
+        self.configure()
+        self.build()
+        self.suttas[1]["note"] = ""
+        for unlisted in (None, ["s2"]):
+            with self.subTest(unlisted=unlisted):
+                self.configure(unlisted=unlisted)
+                self.build()
+                page = self.page("two")
+                self.assertIn('http-equiv="refresh"', page)
+                self.assertNotIn("Second note.", page)
+                self.assertEqual(page, builder.withdrawn_markup("two", *self.versions()))
+
+    def versions(self):
+        archive = self.text("practice/reflections.html")
+        return tuple(re.search(pattern, archive).group(1) for pattern in
+                     (r"css/notebook\.css\?v=(\d+)", r"css/base\.css\?v=(\d+)", r"js/menu\.js\?v=(\d+)"))
+
+    def test_an_invalid_declaration_is_refused_by_name(self):
+        cases = {
+            "const MANAGER_WITHDRAWN_REFLECTIONS = [\"s2\";": "could not be read",
+            "const MANAGER_WITHDRAWN_REFLECTIONS = {\"s2\": true};": "array of Reflection id strings",
+            "const MANAGER_WITHDRAWN_REFLECTIONS = [2];": "array of Reflection id strings",
+            "const MANAGER_WITHDRAWN_REFLECTIONS = [\"s2\", \"s2\"];": "more than once: s2",
+            "const MANAGER_WITHDRAWN_REFLECTIONS = [\"nope\"];": "no Reflection with that id: nope",
+        }
+        for raw, message in cases.items():
+            with self.subTest(raw=raw):
+                self.configure(raw=raw)
+                before = self.snapshot()
+                with self.assertRaises(SystemExit) as caught:
+                    self.build()
+                self.assertIn("MANAGER_WITHDRAWN_REFLECTIONS", str(caught.exception))
+                self.assertIn(message, str(caught.exception))
+                self.assertEqual(before, self.snapshot())
+
+    def test_a_second_build_changes_no_bytes(self):
+        self.suttas.append({"id": "k2", "book": "kept", "title": "Fresh One", "ref": "AN 6.6", "note": "New.", "added": "2026-05-01"})
+        self.configure(unlisted=["s2"])
+        self.build()
+        first = self.snapshot()
+        self.assertIn('slug: "fresh-one"', self.text("practice/js/suttas-config.js"))
+        self.build()
+        self.assertEqual(first, self.snapshot())
+
+    def test_no_next_link_is_generated(self):
+        self.configure(unlisted=["s2"])
+        self.build()
+        for page in Path(builder.OUT_DIR).glob("*.html"):
+            with self.subTest(page=page.name):
+                text = page.read_text(encoding="utf-8")
+                self.assertNotIn('rel="next"', text)
+                self.assertNotIn("Next", text)
 
 
 class QuotationExemptionTests(unittest.TestCase):

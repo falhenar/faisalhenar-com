@@ -80,9 +80,12 @@
 
   // `slug` is required as well as published: a Reflection only has a page
   // once tools/build-reflections.py has run, and a link to a page that does
-  // not exist is worse than no link.
+  // not exist is worse than no link. An unlisted Reflection keeps its page
+  // but is not pointed to from here either.
+  var unlisted = (typeof MANAGER_WITHDRAWN_REFLECTIONS !== 'undefined' && Array.isArray(MANAGER_WITHDRAWN_REFLECTIONS))
+    ? MANAGER_WITHDRAWN_REFLECTIONS : [];
   var match = reflections.filter(function(s){
-    return s && s.slug && s.note && s.note.trim().length > 0 && s.added && normRef(s.ref) === todaysRef;
+    return s && s.slug && s.note && s.note.trim().length > 0 && s.added && unlisted.indexOf(s.id) < 0 && normRef(s.ref) === todaysRef;
   })[0];
   if (!match) return;
 

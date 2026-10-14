@@ -358,6 +358,39 @@ def validate_pages(issues):
     return pages, parsed, versions
 
 
+def validate_reflection_pages(issues, suttas, parsed_pages):
+    """Every page under practice/reflections/ is in exactly one of three states.
+
+    Listed: a published entry, a full article, in the archive (and so, by the
+    noindex rule, in the sitemap). Unlisted: a published entry named in
+    MANAGER_WITHDRAWN_REFLECTIONS, still a full article at its URL but noindex
+    and absent from the archive. No longer published: a noindex redirect to
+    the archive. A page in the wrong state means the builder has not been run
+    since the config changed.
+    """
+    relative = "practice/js/suttas-config.js"; area = ("reflections",)
+    try:
+        config = (ROOT / relative).read_text(encoding="utf-8"); archive = (ROOT / "practice/reflections.html").read_text(encoding="utf-8")
+        hidden = declaration(config, "MANAGER_WITHDRAWN_REFLECTIONS") if re.search(r"\bconst\s+MANAGER_WITHDRAWN_REFLECTIONS\b", config) else []
+    except Exception as exc: issues.append(issue("javascript-data", "Reflections", relative, str(exc), area)); return
+    ids = [item.get("id") for item in suttas if isinstance(item, dict)]
+    if not isinstance(hidden, list) or not all(isinstance(i, str) for i in hidden) or len(set(hidden)) != len(hidden) or set(hidden) - set(ids):
+        issues.append(issue("reflection-schema", "Reflections", relative, "MANAGER_WITHDRAWN_REFLECTIONS must list distinct ids of existing Reflections.", area)); return
+    published = {item["slug"]: item["id"] for item in suttas if isinstance(item, dict) and isinstance(item.get("slug"), str) and isinstance(item.get("note"), str) and item["note"].strip() and item.get("added")}
+    pages = {PurePosixPath(page).stem for page in parsed_pages if PurePosixPath(page).parent.as_posix() == "practice/reflections"}
+    for slug in sorted(pages | set(published)):
+        page = f"practice/reflections/{slug}.html"; parser = parsed_pages.get(page)
+        if parser is None: issues.append(issue("reflection-page", "Reflections", page, "Published Reflection has no page. Run tools/build-reflections.py.", area)); continue
+        metas = [attrs for tag, attrs in parser.attrs if tag == "meta"]
+        noindex = any(attrs.get("name", "").lower() == "robots" and "noindex" in attrs.get("content", "").lower() for attrs in metas)
+        redirect = any(attrs.get("http-equiv", "").lower() == "refresh" for attrs in metas)
+        listed = f'href="reflections/{slug}.html"' in archive
+        if slug not in published: ok = redirect and noindex and not listed
+        elif published[slug] in hidden: ok = noindex and not redirect and not listed
+        else: ok = not noindex and not redirect and listed
+        if not ok: issues.append(issue("reflection-page", "Reflections", page, "Reflection page does not match its listed, unlisted or unpublished state. Run tools/build-reflections.py.", area))
+
+
 def validate_data(issues, parsed_pages):
     counts = {}
     photos = read_json("photography/data/photos.json", issues, "Photography")
@@ -453,6 +486,7 @@ def validate_data(issues, parsed_pages):
         reflection_ids.add(item["id"])
         for field, value in item.items():
                 if field != "excerpt" and isinstance(value, str) and any(token.lower() in value.lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/js/suttas-config.js", f"Reflection {number} field {field} contains forbidden punctuation.", ("reflections",))); break
+    if isinstance(values.get("SUTTAS"), list): validate_reflection_pages(issues, values["SUTTAS"], parsed_pages)
     quotes = values.get("QUOTES")
     if not isinstance(quotes, list): issues.append(issue("javascript-data", "Quotes", "practice/js/quotes-config.js", "QUOTES must be an array.", ("quotes",)))
     else:

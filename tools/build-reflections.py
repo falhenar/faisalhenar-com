@@ -17,6 +17,15 @@ and lays the same words out as pages.
 A Reflection is published when `note` is non-empty and `added` holds a date.
 Queued entries are ignored and get no page.
 
+UNLISTED is not the same as unpublished. The optional declaration
+`const MANAGER_WITHDRAWN_REFLECTIONS = ["<id>", ...];` in suttas-config.js,
+written by the Website Manager, names published Reflections to take out of
+discovery. Each keeps its whole page at its permanent URL, gains
+`<meta name="robots" content="noindex, follow">`, and leaves the archive, the
+sitemap and every generated "before it" link. Take the id out again and it is
+listed again at the same URL. An entry that stops being published (empty note
+or no date) is different: its page becomes a redirect to the archive.
+
 SLUGS ARE FROZEN. The first time an entry is published this tool works a slug
 out from its title and writes it back into suttas-config.js as a `slug` field.
 After that the slug is read, never recomputed, so editing a title later does
@@ -271,7 +280,7 @@ def nav_markup(previous, total):
     return ('    <nav class="nb-ref-nav" aria-label="More reflections">\n' + "\n".join(rows) + "\n    </nav>\n")
 
 
-def page_markup(entry, previous, total, section, css_version, base_version, menu_version, draw_version="1"):
+def page_markup(entry, previous, total, section, css_version, base_version, menu_version, draw_version="1", unlisted=False):
     url = ORIGIN + "/practice/reflections/" + entry["slug"] + ".html"
     title = esc(entry["title"]) + " &middot; Reflections &middot; Faisal Henar"
     desc = esc(description(entry))
@@ -302,6 +311,8 @@ def page_markup(entry, previous, total, section, css_version, base_version, menu
     parts.append("<head>")
     parts.append('<meta charset="UTF-8">')
     parts.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
+    if unlisted:
+        parts.append('<meta name="robots" content="noindex, follow">')
     parts.append('<link rel="icon" href="/favicon.ico" sizes="any">')
     parts.append('<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">')
     parts.append('<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">')
@@ -556,13 +567,40 @@ def freeze_slugs(text, published):
     return text, added
 
 
+UNLISTED = "MANAGER_WITHDRAWN_REFLECTIONS"
+
+
+def unlisted_ids(config_text, suttas):
+    """The ids in the optional unlisting declaration; none if it is absent."""
+    if not re.search(r"\bconst\s+%s\b" % UNLISTED, config_text):
+        return set()
+    try:
+        ids = declaration(config_text, UNLISTED)
+    except ValueError as exc:
+        raise SystemExit("ERROR: %s in suttas-config.js could not be read (%s). It must be a single "
+                         'array of Reflection ids, for example: const %s = ["itbw-1-2-3"];' % (UNLISTED, exc, UNLISTED))
+    if not isinstance(ids, list) or not all(isinstance(i, str) for i in ids):
+        raise SystemExit("ERROR: %s in suttas-config.js must be an array of Reflection id strings." % UNLISTED)
+    twice = sorted({i for i in ids if ids.count(i) > 1})
+    if twice:
+        raise SystemExit("ERROR: %s in suttas-config.js names an id more than once: %s."
+                         % (UNLISTED, ", ".join(twice)))
+    unknown = sorted(set(ids) - {e.get("id") for e in suttas})
+    if unknown:
+        raise SystemExit("ERROR: %s in suttas-config.js names no Reflection with that id: %s. "
+                         "Use the entry's id, not its slug." % (UNLISTED, ", ".join(unknown)))
+    return set(ids)
+
+
 def main():
     config_text = read(CONFIG)
     books = declaration(config_text, "BOOKS")
     suttas = declaration(config_text, "SUTTAS")
     for index, entry in enumerate(suttas):
         entry["_index"] = index
+    hidden = unlisted_ids(config_text, suttas)
     published = [e for e in suttas if (e.get("note") or "").strip() and e.get("added")]
+    listed = [e for e in published if e["id"] not in hidden]
 
     config_text, minted = freeze_slugs(config_text, published)
     if minted:
@@ -591,23 +629,28 @@ def main():
     except FileNotFoundError:
         CROSSLINKS = {}
 
+    # Every published entry gets its page, unlisted or not; only the listed
+    # ones are counted, linked to from a neighbour, or shown in the archive.
     groups = page_order(books, published)
+    listed_groups = page_order(books, listed)
+    total = len(listed)
 
     os.makedirs(OUT_DIR, exist_ok=True)
     written, wanted = 0, set()
     for group in groups:
-        entries = group["entries"]
-        for position, entry in enumerate(entries):
-            previous = entries[position - 1] if position > 0 else None
-            following = entries[position + 1] if position + 1 < len(entries) else None
+        in_order = group["section"].get("order") == "structural"
+        previous = None
+        for entry in group["entries"]:
             name = entry["slug"] + ".html"
             wanted.add(name)
-            markup = page_markup(entry, previous if group["section"].get("order") == "structural" else None,
-                                 sum(len(g["entries"]) for g in groups), group["section"], css_version, base_version, menu_version, draw_version)
+            markup = page_markup(entry, previous if in_order else None, total, group["section"],
+                                 css_version, base_version, menu_version, draw_version, entry["id"] in hidden)
             path = os.path.join(OUT_DIR, name)
             if not os.path.exists(path) or read(path) != markup:
                 write(path, markup)
                 written += 1
+            if entry["id"] not in hidden:
+                previous = entry
 
     retired = 0
     for name in sorted(n for n in os.listdir(OUT_DIR) if n.endswith(".html") and n not in wanted):
@@ -620,23 +663,23 @@ def main():
 
     # Same rule as the hub's "Latest:" line (render-latest-reflection.js):
     # the newest `added` date, and on a tie the entry earlier in the config.
-    newest = min(published, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
-    archive_text = splice(archive_text, archive_markup(groups, newest and newest.get("slug")), "practice/reflections.html")
+    newest = min(listed, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
+    archive_text = splice(archive_text, archive_markup(listed_groups, newest and newest.get("slug")), "practice/reflections.html")
+    # The room opens on the newest Reflection, and its footer says when
+    # the room last changed: both follow the config, not the markup. With
+    # nothing listed the room opens on nothing and the date is left alone.
+    archive_text = re.sub(r'(<div class="nb-room[^>]*?) data-open="[^"]*"',
+                          lambda m: m.group(1) + ' data-open="' + (newest["slug"] if newest else "") + '"', archive_text)
     if newest:
-        # The room opens on the newest Reflection, and its footer says when
-        # the room last changed: both follow the config, not the markup.
-        archive_text = re.sub(r'(<div class="nb-room[^>]*?) data-open="[^"]*"',
-                              lambda m: m.group(1) + ' data-open="' + newest["slug"] + '"', archive_text)
         month = datetime.date.fromisoformat(newest["added"]).strftime("%B %Y")
         archive_text = re.sub(r'(<time data-room-changed datetime=")[^"]*(">)[^<]*(</time>)',
                               lambda m: m.group(1) + newest["added"][:7] + m.group(2) + month + m.group(3), archive_text)
     write(ARCHIVE, archive_text)
-    write(SITEMAP, splice(read(SITEMAP), sitemap_markup(groups), "sitemap.xml"))
+    write(SITEMAP, splice(read(SITEMAP), sitemap_markup(listed_groups), "sitemap.xml"))
 
-    total = sum(len(g["entries"]) for g in groups)
-    print("Reflections: %d published, %d page%s rewritten%s, archive and sitemap updated."
-          % (total, written, "" if written == 1 else "s",
-             ", %d withdrawn" % retired if retired else ""))
+    print("Reflections: %d published%s, %d page%s rewritten%s, archive and sitemap updated."
+          % (len(published), ", %d unlisted" % (len(published) - total) if total < len(published) else "",
+             written, "" if written == 1 else "s", ", %d withdrawn" % retired if retired else ""))
 
 
 if __name__ == "__main__":
