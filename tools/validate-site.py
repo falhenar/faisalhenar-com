@@ -9,6 +9,7 @@ from collections import defaultdict
 from datetime import date
 from html.parser import HTMLParser
 import json
+import posixpath
 from pathlib import Path, PurePosixPath
 import re
 import sys
@@ -192,15 +193,23 @@ def validate_pages(issues):
         except Exception as exc: issues.append(issue("unreadable-file", "Pages", relative, str(exc))); continue
         parser = Page(); parser.feed(text); parser.close(); parsed[relative] = parser
         expected = page_url(relative); special = relative == "404.html"
-        # A redirect page (meta refresh, noindex) names the page it sends the
-        # reader to as its canonical: practice/listening.html and
-        # watching.html since the Talks room (October 2026).
+        # A redirect page (meta refresh, noindex) names as its canonical either
+        # the page it sends the reader to (practice/listening.html and
+        # watching.html since the Talks room, October 2026) or its own address
+        # (a withdrawn Reflection, like the photography room's redirects).
+        # The target is normalised: "../reflections.html" from
+        # practice/reflections/ is practice/reflections.html (October 2026;
+        # before that no withdrawn Reflection could pass).
+        accepted = {expected}
         refresh = [attrs.get("content", "") for tag, attrs in parser.attrs if tag == "meta" and attrs.get("http-equiv", "").lower() == "refresh"]
         robots = " ".join(attrs.get("content", "") for tag, attrs in parser.attrs if tag == "meta" and attrs.get("name", "").lower() == "robots")
         if refresh and "url=" in refresh[0] and "noindex" in robots and not re.match(r"\s*(?:/|[a-z]+:)", refresh[0].split("url=", 1)[1]):
-            expected = page_url(PurePosixPath(PurePosixPath(relative).parent, refresh[0].split("url=", 1)[1].strip()).as_posix())
+            target = posixpath.normpath(PurePosixPath(PurePosixPath(relative).parent, refresh[0].split("url=", 1)[1].strip()).as_posix())
+            expected = page_url(target)
+            accepted.add(expected)
         canonical = [attrs.get("href") for tag, attrs in parser.attrs if tag == "link" and attrs.get("rel", "").lower() == "canonical"]
-        if not special and canonical != [expected]: issues.append(issue("canonical", "Metadata", relative, f"Canonical URL must be exactly {expected}."))
+        if not special and (len(canonical) != 1 or canonical[0] not in accepted): issues.append(issue("canonical", "Metadata", relative, f"Canonical URL must be exactly {expected}."))
+        expected = canonical[0] if len(canonical) == 1 and canonical[0] in accepted else expected
         # Every page loads css/base.css, and loads it before its section
         # stylesheet: base draws the shared chrome and the section file
         # re-tunes it, so the order decides which one wins. A page that

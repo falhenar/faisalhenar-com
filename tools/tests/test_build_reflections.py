@@ -181,6 +181,22 @@ class WithdrawnPageTests(unittest.TestCase):
                 self.assertIn(required, page)
         self.assertIn("/practice/reflections/some-reflection.html", page)
 
+    def test_the_site_validator_accepts_it(self):
+        """Until October 2026 the validator joined "../reflections.html" to the
+        folder without normalising it, so no withdrawn page could pass."""
+        original = validator.ROOT
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            (validator.ROOT / "practice" / "reflections").mkdir(parents=True)
+            (validator.ROOT / "practice" / "reflections" / "some-reflection.html").write_text(self.markup(), encoding="utf-8")
+            (validator.ROOT / "sitemap.xml").write_text('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>', encoding="utf-8")
+            issues = []
+            try:
+                validator.validate_pages(issues)
+            finally:
+                validator.ROOT = original
+        self.assertEqual([i for i in issues if i["code"] in ("canonical", "open-graph")], [])
+
 
 class BuildRunTests(unittest.TestCase):
     """Whole builds, run against temporary copies, never the real tree."""
