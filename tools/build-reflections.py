@@ -187,8 +187,7 @@ def excerpt_markup(entry, indent):
 def note_markup(entry, indent):
     paragraphs = [p.strip() for p in re.split(r"\n\s*\n", entry["note"]) if p.strip()]
     # The note deliberately carries HTML: some entries have an inline link to
-    # SuttaCentral inside the prose. It is written raw here for the same
-    # reason render-reflections.js wrote it raw.
+    # SuttaCentral inside the prose, so it is written raw, not escaped.
     return "".join(indent + '<p class="reflection-note">' + p + "</p>\n" for p in paragraphs)
 
 

@@ -204,9 +204,8 @@ your writing, so when it fails, fix the line yourself and push again.
   room (`practice/reflections.html`, the list and panel between the
   `BUILD:reflections` markers) and the pages in the redesigned layout. Old
   `reflections.html#r-<id>` links open the item in the room, through each
-  item's `data-alias`. `practice/js/render-reflections.js` is no longer
-  loaded; it is kept until the Website Manager's compatibility check on it
-  is settled.
+  item's `data-alias`. The old client-side renderer,
+  `practice/js/render-reflections.js`, was removed in October 2026.
 - `css/base.css` holds the parts that are the same everywhere: the two
   faces every section sets text in, the reset, the skip link and the menu.
   Every page loads it first, then its own section stylesheet. It styles
