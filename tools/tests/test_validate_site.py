@@ -194,6 +194,54 @@ class BaseStylesheetTests(unittest.TestCase):
             '<link rel="stylesheet" href="css/practice.css?v=1">'), [])
 
 
+class TalksRedirectTests(unittest.TestCase):
+    """Listening and Watching are gone as rooms; their addresses must still reach Talks."""
+
+    REDIRECT = ('<meta name="robots" content="noindex, follow">'
+                '<meta http-equiv="refresh" content="0; url=talks.html">'
+                '<script src="js/notebook/redirect-talks.js?v=1"></script>')
+    SCRIPT = "var hash = window.location.hash.slice(1); window.location.replace('talks.html' + (hash ? '#' + hash : ''));"
+
+    def issues(self, listening, watching, script):
+        original = validator.ROOT
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            (validator.ROOT / "practice" / "js" / "notebook").mkdir(parents=True)
+            (validator.ROOT / "practice" / "listening.html").write_text(listening, encoding="utf-8")
+            (validator.ROOT / "practice" / "watching.html").write_text(watching, encoding="utf-8")
+            (validator.ROOT / "practice" / "js" / "notebook" / "redirect-talks.js").write_text(script, encoding="utf-8")
+            issues = []
+            try:
+                validator.validate_data(issues, {})
+            finally:
+                validator.ROOT = original
+        names = {"practice/listening.html", "practice/watching.html", "practice/js/notebook/redirect-talks.js"}
+        return sorted(item["path"] for item in issues if item["path"] in names)
+
+    def test_both_redirects_pass(self):
+        self.assertEqual(self.issues(self.REDIRECT, self.REDIRECT, self.SCRIPT), [])
+
+    def test_a_page_that_stops_redirecting_or_drops_the_anchor_is_reported(self):
+        no_script = self.REDIRECT.replace("js/notebook/redirect-talks.js", "js/other.js")
+        self.assertEqual(self.issues("<p>Listening is back</p>", no_script, self.SCRIPT),
+                         ["practice/listening.html", "practice/watching.html"])
+        self.assertEqual(self.issues(self.REDIRECT, self.REDIRECT, "window.location.replace('talks.html');"),
+                         ["practice/js/notebook/redirect-talks.js"])
+
+    def test_anchors_on_the_old_pages_are_checked_against_talks(self):
+        original = validator.ROOT
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            (validator.ROOT / "practice" / "data").mkdir(parents=True)
+            (validator.ROOT / "practice" / "data" / "talks.json").write_text(json.dumps(
+                {"sections": [{"id": "teachers", "items": [{"id": "ajahn-brahm", "aliases": ["listen-ajahn-brahm"]}]}]}), encoding="utf-8")
+            try:
+                ids = validator.rendered_ids("practice/listening.html")
+            finally:
+                validator.ROOT = original
+        self.assertEqual(ids, {"teachers", "ajahn-brahm", "listen-ajahn-brahm"})
+
+
 class ReflectionPageStateTests(unittest.TestCase):
     """Listed, unlisted and no-longer-published Reflection pages stay distinct."""
 

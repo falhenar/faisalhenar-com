@@ -661,8 +661,8 @@ def main():
             retired += 1
             print("  withdrawn: practice/reflections/%s now redirects to the archive" % name)
 
-    # Same rule as the hub's "Latest:" line (render-latest-reflection.js):
-    # the newest `added` date, and on a tie the entry earlier in the config.
+    # The newest listed Reflection: the latest `added` date, and on a tie the
+    # entry earlier in the config.
     newest = min(listed, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
     archive_text = splice(archive_text, archive_markup(listed_groups, newest and newest.get("slug")), "practice/reflections.html")
     # The room opens on the newest Reflection, and its footer says when

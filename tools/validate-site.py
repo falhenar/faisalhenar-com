@@ -28,9 +28,7 @@ DEPENDENCIES = (
     {"id": "quotes", "label": "Quotes", "sources": ("practice/js/quotes-config.js",), "consumers": ("practice/index.html", "practice/js/render-quotes.js"), "effects": ("Practice quote",)},
     {"id": "daily-sutta", "label": "Daily Sutta", "sources": ("practice/js/daily-sutta-config.js", "practice/js/suttas-config.js"), "consumers": ("practice/index.html", "practice/js/render-daily-sutta.js"), "effects": ("daily rotation", "matching published Reflection link")},
     {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js"), "effects": ("Reading room", "hub count")},
-    {"id": "talks", "label": "Talks", "sources": ("practice/data/talks.json",), "consumers": ("practice/talks.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js"), "effects": ("Talks room", "hub count")},
-    {"id": "listening", "label": "Listening", "sources": ("practice/data/listening.json",), "consumers": ("practice/data/talks.json",), "effects": ("merged into Talks",)},
-    {"id": "watching", "label": "Watching", "sources": ("practice/data/watching.json",), "consumers": ("practice/data/talks.json",), "effects": ("merged into Talks",)},
+    {"id": "talks", "label": "Talks", "sources": ("practice/data/talks.json",), "consumers": ("practice/talks.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js", "practice/listening.html", "practice/watching.html", "practice/js/notebook/redirect-talks.js"), "effects": ("Talks room", "hub count", "old Listening and Watching links")},
     {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/sheets/", "photography/everything/", "photography/p/", "photography/room-assets/", "photography/photos/"), "effects": ("wall", "contact sheets", "Everything", "photograph pages", "image files")},
     {"id": "language-pairs", "label": "English and Dutch pages", "sources": ("practice/data/nl-mirrors.json",), "consumers": ("practice/*-nl.html", "practice/*.html"), "effects": ("reciprocal hreflang", "translation drift review")},
 )
@@ -223,10 +221,11 @@ def page_url(relative):
 
 
 def rendered_ids(page):
-    sources = {"practice/reading.html": ("practice/data/reading.json", "books"), "practice/listening.html": ("practice/data/listening.json", "items"), "practice/watching.html": ("practice/data/watching.json", "items")}
-    if page == "practice/talks.html":
+    sources = {"practice/reading.html": ("practice/data/reading.json", "books")}
+    if page in {"practice/talks.html", "practice/listening.html", "practice/watching.html"}:
         # Talks (October 2026): every source, and the old Listening and
-        # Watching ids it replaced, which open the same source.
+        # Watching ids it replaced, which open the same source. The two old
+        # pages are redirects that carry the anchor on to Talks.
         try:
             data = json.loads((ROOT / "practice/data/talks.json").read_text(encoding="utf-8"))
             return {i for s in data["sections"] for item in s["items"] for i in [item["id"], *item.get("aliases", [])]} | {s["id"] for s in data["sections"]}
@@ -426,7 +425,7 @@ def validate_data(issues, parsed_pages):
         if len(ids) == 1 and (row.get("width", "full") not in {"full", "narrow"} or "weight" in row): issues.append(issue("photography-schema", "Photography", "photography/data/exhibition.json", f"Row {number} has invalid single-photo layout fields.", ("photography",)))
         if len(ids) == 2 and ("width" in row or ("weight" in row and row["weight"] not in ([1, 1], [1.25, 1], [1, 1.25]))): issues.append(issue("photography-schema", "Photography", "photography/data/exhibition.json", f"Row {number} has invalid pair layout fields.", ("photography",)))
     counts.update({"photos": len(photos), "exhibition_rows": len(exhibition), "exhibition_photos": len(used)})
-    for shelf, key in (("reading", "books"), ("listening", "items"), ("watching", "items")):
+    for shelf, key in (("reading", "books"),):
         relative = f"practice/data/{shelf}.json"; data = read_json(relative, issues, shelf.title())
         if not isinstance(data, dict) or set(data) != {"version", "updated", "collections"} or data.get("version") != 1 or not isinstance(data.get("collections"), list): issues.append(issue("shelf-schema", shelf.title(), relative, "Shelf has an invalid top-level schema.", (shelf,))); continue
         ids = set(); total = 0
@@ -449,10 +448,6 @@ def validate_data(issues, parsed_pages):
             page = (ROOT / "practice/reading.html").read_text(encoding="utf-8")
             missing = [collection["id"] for collection in data["collections"] if f'data-list="{collection["id"]}"' not in page]
             if missing: issues.append(issue("renderer-contract", "Reading", "practice/reading.html", "Collections have no render target: " + ", ".join(missing) + ".", (shelf,)))
-        else:
-            merged = rendered_ids("practice/talks.html")
-            lost = sorted(i for i in ids if i not in merged)
-            if lost: issues.append(issue("renderer-contract", shelf.title(), "practice/data/talks.json", "Entries missing from Talks: " + ", ".join(lost) + ".", (shelf, "talks")))
     talks = read_json("practice/data/talks.json", issues, "Talks"); seen = set(); total = 0
     if not isinstance(talks, dict) or set(talks) != {"version", "updated", "sections"} or not isinstance(talks.get("sections"), list): issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", "Talks has an invalid top-level schema.", ("talks",)))
     else:
@@ -522,6 +517,11 @@ def validate_data(issues, parsed_pages):
         ("reflections", "practice/index.html", ("js/suttas-config.js", "js/notebook/hub.js"), "The Practice hub must load Reflection data and the hub script."),
         ("reading", "practice/reading.html", ("data/reading.json", "js/notebook/render-room-data.js", "js/notebook/room.js"), "The Reading room must load its data and renderers."),
         ("talks", "practice/talks.html", ("data/talks.json", "js/notebook/render-room-data.js", "js/notebook/room.js"), "The Talks room must load its data and renderers."),
+        # Old links to the retired Listening and Watching pages must still
+        # reach Talks, with their anchor (redirect-talks.js) or without it.
+        ("talks", "practice/listening.html", ('name="robots" content="noindex', 'http-equiv="refresh" content="0; url=talks.html"', "js/notebook/redirect-talks.js"), "Listening must stay a redirect to Talks that keeps the anchor."),
+        ("talks", "practice/watching.html", ('name="robots" content="noindex', 'http-equiv="refresh" content="0; url=talks.html"', "js/notebook/redirect-talks.js"), "Watching must stay a redirect to Talks that keeps the anchor."),
+        ("talks", "practice/js/notebook/redirect-talks.js", ("window.location.hash", "location.replace('talks.html'"), "The Talks redirect must carry the anchor on to talks.html."),
         ("daily-sutta", "practice/index.html", ("js/daily-sutta-config.js", "js/suttas-config.js", "js/render-daily-sutta.js"), "The Practice hub must load daily data, Reflection data, and the daily renderer."),
         ("photography", "photography/index.html", ("/photography/room-assets/room.css", "/photography/room-assets/room.js"), "The photography wall must load the room's stylesheet and script."),
     )

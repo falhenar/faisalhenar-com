@@ -149,9 +149,8 @@ one entry per teacher or monastery with a Listen link, a Watch link, or both,
 rendered by the same `render-room-data.js`. Edit the JSON as data. Each entry
 keeps the old Listening and Watching ids it replaced in `aliases`, so old
 anchors still land on it. `listening.html` and `watching.html` are redirects
-to Talks that keep the anchor. `listening.json` and `watching.json` are no
-longer read by any page. They stay in the repository only because the
-Website Manager still reads them; remove them once it no longer does.
+to Talks that keep the anchor; the old Listening and Watching data files
+are gone (October 2026).
 
 **Meditation, Places, the instruction sheets, the Sati Timer and the
 step-by-step pages** are plain HTML: edit the page itself. The Practice
