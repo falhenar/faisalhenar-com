@@ -1,0 +1,25 @@
+{
+  "description": "The two walls of the room, black and white and colour, each in the order visitors see, at most twelve prints. A print must be circled on its sheet and its tone (photo-meta.json) must match the wall. title is the print's name on the wall.",
+  "type": "object",
+  "required": ["bw", "colour"],
+  "additionalProperties": false,
+  "properties": {
+    "bw": {"$ref": "#/$defs/wall"},
+    "colour": {"$ref": "#/$defs/wall"}
+  },
+  "$defs": {
+    "wall": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["id", "title"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "title": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@
   The shelf of five objects and the notebook that opens on today.
 
   Today is written in index.html and filled by the live widgets:
-  render-daily-sutta.js (sutta of the day) and render-quotes.js (the line on
-  the wall card). This file adds today's date, the "Lately" line and the five
+  render-daily-sutta.js (sutta of the day, from data/daily-sutta.json) and
+  render-quotes.js (the line on the wall card, from data/quotes.json). This file adds today's date, the "Lately" line and the five
   room spreads, and turns the pages.
 
   Each room's spread is built from that room's own data, never from a copy:
@@ -63,29 +63,15 @@
   if (!book) return;
   var halfL = $('[data-half="l"]', book), halfR = $('[data-half="r"]', book);
 
-  // ---- today: the date, the sutta's link and translator ----
+  // ---- today: the date ----
+  // The sutta's link and translator at the foot of the page are written by
+  // render-daily-sutta.js itself, once it has read the day's entry.
 
   var now = new Date();
   var dateEl = $('#nb-date');
   if (dateEl) {
     dateEl.textContent = now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).replace(',', '');
   }
-  (function () {
-    var link = $('#sutta-of-day-link'), more = $('#nb-sutta-more'), tr = $('#nb-sutta-tr');
-    if (!document.getElementById('sutta-of-day')) {
-      // render-daily-sutta.js removes the block when there is nothing to show
-      if (more) more.parentNode.hidden = true;
-      return;
-    }
-    if (more && link) more.href = link.href;
-    // The same entry render-daily-sutta.js chose: index by local calendar day.
-    var pool = (typeof DAILY_SUTTAS !== 'undefined' && Array.isArray(DAILY_SUTTAS))
-      ? DAILY_SUTTAS.filter(function (s) { return s && s.text && s.url; }) : [];
-    if (!pool.length || !tr) return;
-    var day = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
-    var s = pool[((day % pool.length) + pool.length) % pool.length];
-    if (!s.translator || s.translator === 'sujato') tr.textContent = 'tr. Bhikkhu Sujato';
-  })();
 
   // ---- spreads ----
 

@@ -29,6 +29,13 @@ WHAT IT DOES
   false alarm (e.g. a typo fix that doesn't apply in Dutch) -- the point
   is that a human looks and decides, instead of drift going unnoticed.
 
+PLACES & COMMUNITY IS NOT A MIRROR ANY MORE (October 2026)
+  practice/places.html and places-nl.html are written from one file,
+  practice/data/places.json, with English and Dutch side by side. Each
+  entry carries "dutch": "checked" or "to-check"; an English change made
+  in the Website Manager sets it to "to-check". This tool lists those
+  entries instead of tracking the pair by commit.
+
 AFTER YOU PORT CHANGES OVER
   Update that pair's "synced_to" in practice/data/nl-mirrors.json to the
   current HEAD sha, in the same commit as the Dutch-side edit. That is
@@ -48,6 +55,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "practice" / "data" / "nl-mirrors.json"
+PLACES = ROOT / "practice" / "data" / "places.json"
 
 
 def git(*args):
@@ -127,6 +135,15 @@ def check_pair(pair, show_diff):
     return "\n".join(lines)
 
 
+def places_to_check():
+    """Places entries whose Dutch has not been checked against the English."""
+    try:
+        data = json.loads(PLACES.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    return [e["name"] for g in data.get("groups", []) for e in g.get("entries", []) if e.get("dutch") != "checked"]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -136,9 +153,16 @@ def main():
     args = parser.parse_args()
 
     pairs = load_manifest()
+    places = places_to_check()
+    if places:
+        print(f"Places & Community: {len(places)} entr{'y' if len(places) == 1 else 'ies'} with Dutch still to check "
+              f"against the English ({PLACES.relative_to(ROOT)}):")
+        for name in places:
+            print(f"  {name}")
+        print()
     if not pairs:
         print("No mirror pairs listed in the manifest.")
-        return 0
+        return 1 if places else 0
 
     stale_reports = []
     problems = []
@@ -175,7 +199,7 @@ def main():
         return 2
 
     print(f"All {len(pairs)} Dutch mirror(s) are in sync with their English source.")
-    return 0
+    return 1 if places else 0
 
 
 if __name__ == "__main__":

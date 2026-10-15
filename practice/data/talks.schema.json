@@ -1,0 +1,50 @@
+{
+  "description": "The Talks room (practice/talks.html, rendered by practice/js/notebook/render-room-data.js). One entry per teacher or monastery, with a Listen link, a Watch link, or both (the other is null). aliases keep the ids of the old Listening and Watching entries, so old links still land on the entry; an id or alias is never given to anything else.",
+  "type": "object",
+  "required": ["version", "updated", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "updated": {
+      "type": "object",
+      "required": ["datetime", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "datetime": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$"},
+        "label": {"type": "string", "minLength": 1}
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "intro", "items"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "title": {"type": "string", "minLength": 1},
+          "intro": {"type": "string"},
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "aliases", "title", "author", "description", "meta", "listen", "watch"],
+              "additionalProperties": false,
+              "properties": {
+                "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+                "aliases": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}},
+                "title": {"type": "string", "minLength": 1},
+                "author": {"type": "string"},
+                "description": {"type": "string"},
+                "meta": {"type": "string"},
+                "listen": {"type": ["string", "null"], "pattern": "^https?://."},
+                "watch": {"type": ["string", "null"], "pattern": "^https?://."},
+                "note": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

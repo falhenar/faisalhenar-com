@@ -7,49 +7,57 @@ page. Nothing could be linked to with a preview, nothing could be found by
 someone searching for the sutta, and the page itself rendered a few hundred
 characters of visible text. The writing was there; the page was hiding it.
 
-This tool changes none of the writing. It reads practice/js/suttas-config.js
+This tool changes none of the writing. Since October 2026 it reads the
+Reflections from plain files in practice/data/reflections/ (see
+tools/sitedata.py for their format):
+
+  <id>.md          one per published Reflection: its details at the top,
+                   FH's text below
+  sections.json    the page sections, the source order of every entry
+                   ("sequence"), and the unlisted ones
+  queue.json       passages of the book not yet written: details, no text
+
 and lays the same words out as pages.
 
   practice/reflections/<slug>.html   one per published Reflection
   practice/reflections.html          the archive, between its BUILD markers
   sitemap.xml                        the Reflection pages, between its markers
+  practice/data/reflections/published.json
+                                     the listed Reflections (id, slug, ref),
+                                     read by the Practice hub to link the
+                                     sutta of the day to its Reflection
 
-A Reflection is published when `note` is non-empty and `added` holds a date.
-Queued entries are ignored and get no page.
+A Reflection is published when its file exists, its text is not empty and
+`added` holds a date. Queued passages get no page.
 
-UNLISTED is not the same as unpublished. The optional declaration
-`const MANAGER_WITHDRAWN_REFLECTIONS = ["<id>", ...];` in suttas-config.js,
-written by the Website Manager, names published Reflections to take out of
+UNLISTED is not the same as unpublished. sections.json "unlisted", written
+by the Website Manager, names published Reflections to take out of
 discovery. Each keeps its whole page at its permanent URL, gains
 `<meta name="robots" content="noindex, follow">`, and leaves the archive, the
 sitemap and every generated "before it" link. Take the id out again and it is
-listed again at the same URL. An entry that stops being published (empty note
-or no date) is different: its page becomes a redirect to the archive.
+listed again at the same URL. A Reflection whose file is removed is
+different: its page becomes a redirect to the archive.
 
 SLUGS ARE FROZEN. The first time an entry is published this tool works a slug
-out from its title and writes it back into suttas-config.js as a `slug` field.
-After that the slug is read, never recomputed, so editing a title later does
-not move a page that people may already have linked to. To move a page on
-purpose, change the slug by hand and leave a redirect behind.
+out from its title and writes it back into its file as `slug`. After that the
+slug is read, never recomputed, so editing a title later does not move a page
+that people may already have linked to. To move a page on purpose, change the
+slug by hand and leave a redirect behind.
 
 Run from the repository root:  python3 tools/build-reflections.py
 Then run tools/validate-site.py, which checks the result.
 """
-import datetime, html, importlib.util, os, re, sys, unicodedata
+import datetime, html, os, re, sys, unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 ORIGIN = "https://faisalhenar.com"
 OUT_DIR = os.path.join(ROOT, "practice", "reflections")
 
-# The JavaScript data reader already written for the validator. It parses a
-# strict data literal and executes nothing.
-_spec = importlib.util.spec_from_file_location("site_validator", os.path.join(HERE, "validate-site.py"))
-_validator = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_validator)
-declaration = _validator.declaration
+sys.path.insert(0, HERE)
+import sitedata  # noqa: E402
 
-CONFIG = os.path.join(ROOT, "practice", "js", "suttas-config.js")
+DATA_DIR = os.path.join(ROOT, "practice", "data", "reflections")
 # "Elsewhere in the notebook": the same data the room pages read.
 CROSSLINKS_PATH = os.path.join(ROOT, "practice", "data", "crosslinks.json")
 CROSSLINKS = {}
@@ -105,7 +113,9 @@ def description(entry):
     The note is the only honest summary available: anything else would be a
     sentence written about the writing rather than the writing itself.
     """
-    text = html.unescape(strip_tags(entry["note"]))
+    if entry.get("summary"):
+        return entry["summary"]
+    text = sitedata.plain_text(entry["note"])
     if len(text) <= 155:
         return text
     cut = text[:155]
@@ -160,7 +170,7 @@ def source_label(url):
     return "Read on SuttaCentral" if re.match(r"^https://(?:www\.)?suttacentral\.net(?:/|$)", url, re.I) else "Read the source"
 
 
-# How a translator key in suttas-config.js is named under the excerpt.
+# How a translator key in a Reflection's details is named under the excerpt.
 TRANSLATORS = {"sujato": "Bhikkhu Sujato"}
 
 
@@ -185,10 +195,15 @@ def excerpt_markup(entry, indent):
 
 
 def note_markup(entry, indent):
-    paragraphs = [p.strip() for p in re.split(r"\n\s*\n", entry["note"]) if p.strip()]
-    # The note deliberately carries HTML: some entries have an inline link to
-    # SuttaCentral inside the prose, so it is written raw, not escaped.
-    return "".join(indent + '<p class="reflection-note">' + p + "</p>\n" for p in paragraphs)
+    """FH's text, from the writing desk's Markdown (tools/sitedata.py): a
+    paragraph per blank-line break, a "> " paragraph as a quotation."""
+    out = []
+    for kind, markup in sitedata.render_text(entry["note"]):
+        if kind == "quote":
+            out.append(indent + '<blockquote class="reflections-excerpt">' + markup + "</blockquote>\n")
+        else:
+            out.append(indent + '<p class="reflection-note">' + markup + "</p>\n")
+    return "".join(out)
 
 
 def page_order(books, published):
@@ -240,7 +255,7 @@ def opening(entry, at_least=200):
     the Reflections room shows in its panel before the reader goes on to the
     page. Never the sutta passage: that belongs to the page itself."""
     first = re.split(r"\n\s*\n", entry["note"].strip())[0]
-    text = html.unescape(strip_tags(first))
+    text = sitedata.plain_text(first)
     out = []
     for sentence in sentences(text):
         out.append(sentence)
@@ -534,8 +549,8 @@ def sitemap_markup(groups):
     return "\n".join(rows)
 
 
-def freeze_slugs(text, published):
-    """Give any newly published entry a slug, once, and write it into the config."""
+def freeze_slugs(published):
+    """Give any newly published entry a slug, once, and write it into its file."""
     added = []
     for entry in published:
         if entry.get("slug"):
@@ -545,67 +560,84 @@ def freeze_slugs(text, published):
         if not slug:
             raise SystemExit(
                 "ERROR: %s has a title with no letters or digits in it, so no slug can be "
-                "worked out. Give it a slug by hand in suttas-config.js." % entry["id"]
+                "worked out. Give it a slug by hand in its file." % entry["id"]
             )
         if slug in taken:
             # Deliberately not "-2". A URL is permanent and a person should
             # choose it, not inherit a number from whichever entry happened to
-            # be published first. The Website Manager refuses the same way, so
-            # the two agree; see SPEC-reflection-publishing.md in that project.
+            # be published first. The Website Manager refuses the same way.
             raise SystemExit(
                 "ERROR: %s and %s would both be published at /practice/reflections/%s.html.\n"
-                "Give one of them a slug by hand in suttas-config.js, then run this again."
+                "Give one of them a slug by hand in its file, then run this again."
                 % (taken[slug], entry["id"], slug)
             )
         entry["slug"] = slug
-        needle = '    id: "%s",\n' % entry["id"]
-        if text.count(needle) != 1:
-            raise SystemExit("ERROR: could not find a single id line for %r in suttas-config.js." % entry["id"])
-        text = text.replace(needle, needle + '    slug: "%s",\n' % slug)
+        details, body = sitedata.parse_reflection(read(entry["_path"]))
+        details["slug"] = slug
+        write(entry["_path"], sitedata.dump_reflection(details, body))
         added.append((entry["id"], slug))
-    return text, added
+    return added
 
 
-UNLISTED = "MANAGER_WITHDRAWN_REFLECTIONS"
+def load(root=None):
+    """(sections, entries, unlisted ids) from practice/data/reflections/.
 
-
-def unlisted_ids(config_text, suttas):
-    """The ids in the optional unlisting declaration; none if it is absent."""
-    if not re.search(r"\bconst\s+%s\b" % UNLISTED, config_text):
-        return set()
-    try:
-        ids = declaration(config_text, UNLISTED)
-    except ValueError as exc:
-        raise SystemExit("ERROR: %s in suttas-config.js could not be read (%s). It must be a single "
-                         'array of Reflection ids, for example: const %s = ["itbw-1-2-3"];' % (UNLISTED, exc, UNLISTED))
-    if not isinstance(ids, list) or not all(isinstance(i, str) for i in ids):
-        raise SystemExit("ERROR: %s in suttas-config.js must be an array of Reflection id strings." % UNLISTED)
-    twice = sorted({i for i in ids if ids.count(i) > 1})
-    if twice:
-        raise SystemExit("ERROR: %s in suttas-config.js names an id more than once: %s."
-                         % (UNLISTED, ", ".join(twice)))
-    unknown = sorted(set(ids) - {e.get("id") for e in suttas})
-    if unknown:
-        raise SystemExit("ERROR: %s in suttas-config.js names no Reflection with that id: %s. "
-                         "Use the entry's id, not its slug." % (UNLISTED, ", ".join(unknown)))
-    return set(ids)
+    Entries are the published Reflections and the queued passages, in
+    source order (sections.json "sequence"), each a dict with the old
+    field names: the details, `note` (the text) and `added`."""
+    folder = os.path.join(root, "practice", "data", "reflections") if root else DATA_DIR
+    problems = []
+    sections = sitedata.read_json(os.path.join(folder, "sections.json"))
+    queue = sitedata.read_json(os.path.join(folder, "queue.json"))
+    problems += ["sections.json: " + p for p in sitedata.check_file(os.path.join(folder, "sections.json"), sections)]
+    problems += ["queue.json: " + p for p in sitedata.check_file(os.path.join(folder, "queue.json"), queue)]
+    if problems:
+        raise SystemExit("ERROR: the Reflections data does not hold together:\n  " + "\n  ".join(problems))
+    schema = sitedata.load_schema(os.path.join(folder, "reflection.schema.json"))
+    books = {s["id"]: {"title": s["title"], "note": s["note"], "order": s["order"]} for s in sections["sections"]}
+    entries = {}
+    for name in sorted(os.listdir(folder)):
+        if not name.endswith(".md"):
+            continue
+        path = os.path.join(folder, name)
+        try:
+            details, body = sitedata.parse_reflection(read(path))
+        except ValueError as exc:
+            problems.append("%s: %s." % (name, exc)); continue
+        problems += ["%s: %s" % (name, p) for p in sitedata.check(details, schema)]
+        if details.get("id") != name[:-3]:
+            problems.append("%s: its id must be %r, the name of the file." % (name, name[:-3]))
+        entries[details.get("id")] = dict(details, note=body, _path=path)
+    for passage in queue["passages"]:
+        if passage["id"] in entries:
+            problems.append("%s is both published and in queue.json." % passage["id"])
+        entries[passage["id"]] = dict(passage, note="", added=None)
+    order = sections["sequence"]
+    for key in sorted(set(entries) - set(order)):
+        problems.append("%s is not in the sequence in sections.json." % key)
+    for key in sorted(set(order) - set(entries)):
+        problems.append("sections.json lists %s in its sequence, but there is no such Reflection or passage." % key)
+    for key, entry in entries.items():
+        if entry.get("book") not in books:
+            problems.append("%s names the section %r, which sections.json does not have." % (key, entry.get("book")))
+    for key in sections["unlisted"]:
+        if key not in entries or not entries[key]["note"].strip():
+            problems.append("sections.json unlists %s, which is not a published Reflection." % key)
+    if problems:
+        raise SystemExit("ERROR: the Reflections data does not hold together:\n  " + "\n  ".join(problems))
+    suttas = [entries[key] for key in order]
+    for index, entry in enumerate(suttas):
+        entry["_index"] = index
+    return books, suttas, set(sections["unlisted"])
 
 
 def main():
-    config_text = read(CONFIG)
-    books = declaration(config_text, "BOOKS")
-    suttas = declaration(config_text, "SUTTAS")
-    for index, entry in enumerate(suttas):
-        entry["_index"] = index
-    hidden = unlisted_ids(config_text, suttas)
+    books, suttas, hidden = load()
     published = [e for e in suttas if (e.get("note") or "").strip() and e.get("added")]
     listed = [e for e in published if e["id"] not in hidden]
 
-    config_text, minted = freeze_slugs(config_text, published)
-    if minted:
-        write(CONFIG, config_text)
-        for entry_id, slug in minted:
-            print("  slug frozen: %s -> %s" % (entry_id, slug))
+    for entry_id, slug in freeze_slugs(published):
+        print("  slug frozen: %s -> %s" % (entry_id, slug))
 
     archive_text = read(ARCHIVE)
     # The generated pages have to carry the same ?v= as every hand-written
@@ -661,11 +693,11 @@ def main():
             print("  withdrawn: practice/reflections/%s now redirects to the archive" % name)
 
     # The newest listed Reflection: the latest `added` date, and on a tie the
-    # entry earlier in the config.
+    # entry earlier in the source order.
     newest = min(listed, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
     archive_text = splice(archive_text, archive_markup(listed_groups, newest and newest.get("slug")), "practice/reflections.html")
     # The room opens on the newest Reflection, and its footer says when
-    # the room last changed: both follow the config, not the markup. With
+    # the room last changed: both follow the data, not the markup. With
     # nothing listed the room opens on nothing and the date is left alone.
     archive_text = re.sub(r'(<div class="nb-room[^>]*?) data-open="[^"]*"',
                           lambda m: m.group(1) + ' data-open="' + (newest["slug"] if newest else "") + '"', archive_text)
@@ -675,6 +707,11 @@ def main():
                               lambda m: m.group(1) + newest["added"][:7] + m.group(2) + month + m.group(3), archive_text)
     write(ARCHIVE, archive_text)
     write(SITEMAP, splice(read(SITEMAP), sitemap_markup(listed_groups), "sitemap.xml"))
+    index = {"version": 1, "reflections": [{"id": e["id"], "slug": e["slug"], "ref": e.get("ref", "")}
+                                             for g in listed_groups for e in g["entries"]]}
+    published_path = os.path.join(DATA_DIR, "published.json")
+    if not os.path.exists(published_path) or read(published_path) != sitedata.dump_json(index):
+        sitedata.write_json(published_path, index)
 
     print("Reflections: %d published%s, %d page%s rewritten%s, archive and sitemap updated."
           % (len(published), ", %d unlisted" % (len(published) - total) if total < len(published) else "",

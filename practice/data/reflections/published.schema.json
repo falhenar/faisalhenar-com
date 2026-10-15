@@ -1,0 +1,18 @@
+{
+  "description": "Written by tools/build-reflections.py, never by hand: the listed Reflections, so the Practice hub can link the sutta of the day to a Reflection on it.",
+  "type": "object",
+  "required": ["version", "reflections"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "reflections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "slug", "ref"],
+        "additionalProperties": false,
+        "properties": {"id": {"type": "string"}, "slug": {"type": "string"}, "ref": {"type": "string"}}
+      }
+    }
+  }
+}

@@ -141,13 +141,11 @@
 
 
   <script src="../js/menu.js?v=3"></script>
-  <script src="js/quotes-config.js?v=2"></script>
-  <script src="js/render-quotes.js?v=1"></script>
-  <script src="js/daily-sutta-config.js?v=1"></script>
-  <!-- suttas-config is the source of truth for which suttas have a published
-       reflection; render-daily-sutta reads it to decide whether to link one. -->
-  <script src="js/suttas-config.js?v=6"></script>
-  <script src="js/render-daily-sutta.js?v=5"></script>
-  <script src="js/notebook/hub.js?v=6"></script>
+  <!-- The quote and the sutta of the day read their data as JSON
+       (data/quotes.json, data/daily-sutta.json, and
+       data/reflections/published.json for the link to a Reflection). -->
+  <script src="js/render-quotes.js?v=2"></script>
+  <script src="js/render-daily-sutta.js?v=6"></script>
+  <script src="js/notebook/hub.js?v=7"></script>
 </body>
 </html>

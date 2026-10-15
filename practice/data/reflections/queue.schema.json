@@ -1,0 +1,34 @@
+{
+  "description": "Passages of the book (or other sources) waiting for a Reflection, in no particular order here; their place comes from sections.json sequence. Details only, never text: a draft lives in the Website Manager's private folder until it is published.",
+  "type": "object",
+  "required": ["version", "passages"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "passages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "book", "title"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "book": {"type": "string", "minLength": 1},
+          "part": {"type": "string"},
+          "section": {"type": "string"},
+          "label": {"type": "string"},
+          "title": {"type": "string", "minLength": 1},
+          "ref": {"type": "string"},
+          "suttaTitle": {"type": "string"},
+          "translator": {"type": "string"},
+          "url": {"type": "string", "format": "https"},
+          "sourceTitle": {"type": "string"},
+          "sourceAuthor": {"type": "string"},
+          "sourceLocation": {"type": "string"},
+          "sourceUrl": {"type": "string", "format": "https"},
+          "excerpt": {"type": "string"}
+        }
+      }
+    }
+  }
+}

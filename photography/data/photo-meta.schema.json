@@ -1,0 +1,17 @@
+{
+  "description": "What the room knows about each photograph on a sheet, by id: tone (which wall it can hang on, how Everything filters), place and country, and the local capture time (YYYY-MM-DDTHH:MM, sometimes with :SS, read from the camera). alt, if given, overrides photos.json until the same edit reaches it. Every photograph on a sheet has an entry; a photograph on no sheet has none.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["tone", "place", "country", "captured", "notes"],
+    "additionalProperties": false,
+    "properties": {
+      "tone": {"enum": ["bw", "colour"]},
+      "place": {"type": "string"},
+      "country": {"type": "string", "minLength": 1},
+      "captured": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(?::[0-9]{2})?$"},
+      "notes": {"type": "array", "items": {"type": "string"}},
+      "alt": {"type": "string", "minLength": 1}
+    }
+  }
+}

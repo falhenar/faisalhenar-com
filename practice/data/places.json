@@ -1,0 +1,401 @@
+{
+  "version": 1,
+  "open": "wat-chom-tong",
+  "groups": [
+    {
+      "en": {
+        "id": "teachers",
+        "title": "Teachers"
+      },
+      "nl": {
+        "id": "leraren",
+        "title": "Leraren"
+      },
+      "entries": [
+        {
+          "id": "ajahn-tong-sirimangalo",
+          "name": "Ajahn Tong Sirimangalo",
+          "dutch": "checked",
+          "en": {
+            "by": "Former abbot, Wat Chom Tong, Chiang Mai",
+            "text": "Ajahn Tong Sirimangalo was born in 1923 and ordained as a novice in 1934, receiving full ordination a decade later. In the 1950s he was sent by the Northern Thai Sangha to Wat Mahathat in Bangkok to study the four foundations of mindfulness, followed by two years teaching and practicing in Burma alongside the Venerable Mahasi Sayadaw. He went on to become a widely respected meditation teacher in Thailand, leading Vipassana courses across Europe and America from the early 1980s onward. Most of his life and teaching was based at Wat Phradhatu Sri Chom Tong, a large, well-known meditation monastery near Chiang Mai, which he headed as abbot and which includes an international center for foreign practitioners."
+          },
+          "nl": {
+            "by": "Voormalig abt, Wat Chom Tong, Chiang Mai",
+            "text": "Ajahn Tong Sirimangalo werd geboren in 1923 en werd op zijn elfde als novice gewijd; tien jaar later volgde zijn volledige wijding. In de jaren vijftig werd hij door de noordelijke Thaise Sangha naar Wat Mahathat in Bangkok gestuurd om de vier grondslagen van mindfulness te bestuderen, gevolgd door twee jaar onderwijzen en beoefenen in Birma naast de eerwaarde Mahasi Sayadaw. Hij groeide uit tot een gerespecteerd meditatieleraar in Thailand en gaf vanaf begin jaren tachtig Vipassana-cursussen in Europa en Amerika. Het grootste deel van zijn leven en onderwijs vond plaats in Wat Phradhatu Sri Chom Tong, een bekend meditatieklooster bij Chiang Mai, waar hij als abt de leiding had."
+          },
+          "search": {
+            "type": "Person",
+            "alternateName": "Phra Dhammamangalajaan",
+            "birthDate": "1923-09-21",
+            "deathDate": "2019-12-13",
+            "sameAs": [
+              "https://www.wikidata.org/wiki/Q25542325",
+              "https://sirimangalo.org/bio/"
+            ],
+            "jobTitle": {
+              "en": "Meditation teacher, former abbot of Wat Chom Tong",
+              "nl": "Meditatieleraar, voormalig abt van Wat Chom Tong"
+            }
+          }
+        },
+        {
+          "id": "ajahn-poonsak-suwadhano",
+          "name": "Ajahn Poonsak Suwadhano",
+          "dutch": "checked",
+          "en": {
+            "by": "Whom I consider my primary teacher",
+            "text": "A disciple of Ajahn Tong Sirimangalo, Ajahn Poonsak taught me during a 40-day retreat at Wat Chom Tong in 2023. His teaching style is patient and unhurried: attentive to where I actually was in my practice, rather than a fixed curriculum. May whatever merit I make in my practice be dedicated to him."
+          },
+          "nl": {
+            "by": "Die ik als mijn belangrijkste leraar beschouw",
+            "text": "Een leerling van Ajahn Tong Sirimangalo. Ajahn Poonsak onderwees mij tijdens een veertigdaagse retraite in Wat Chom Tong in 2023. Zijn onderwijsstijl is geduldig en onthaast: aandachtig voor waar ik me werkelijk in mijn beoefening bevond, in plaats van een vast programma. Moge welke verdienste ik ook maak in mijn beoefening aan hem worden opgedragen."
+          }
+        }
+      ]
+    },
+    {
+      "en": {
+        "id": "places-practiced",
+        "title": "Places I've Practiced"
+      },
+      "nl": {
+        "id": "plaatsen",
+        "title": "Plaatsen waar ik heb geoefend"
+      },
+      "entries": [
+        {
+          "id": "wat-chom-tong",
+          "name": "Wat Chom Tong",
+          "link": "https://www.watchomtong.com/",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong Sirimangalo's lineage",
+            "where": "Chiang Mai, Thailand",
+            "text": "Founded in 1991, teaching the four foundations of mindfulness through sitting, walking, and prostration practice. Home to Ajahn Tong Sirimangalo as the late abbot, and to Ajahn Poonsak Suwadhano, whom I consider my primary teacher. This is where I sat my longest retreat so far, and it changed the course of my life: looking back at where I was a few years ago, the difference is night and day. The [meditation instructions](meditation.html) on this site follow that same method, taught by [Yuttadhammo Bhikkhu](talks.html#watch-yuttadhammo).",
+            "note": "Thai and international students · No set fee: dana at the end of your stay"
+          },
+          "nl": {
+            "by": "Ajahn Tong Sirimangalo's traditie",
+            "where": "Chiang Mai, Thailand",
+            "text": "Opgericht in 1991, onderwijst de vier grondslagen van mindfulness door middel van zitten, lopen en prostratie. Voormalige verblijfplaats van Ajahn Tong Sirimangalo als abt, en van Ajahn Poonsak Suwadhano, die ik als mijn belangrijkste leraar beschouw. Hier zat ik mijn langste retraite tot nu toe, en het veranderde de koers van mijn leven: kijkend naar waar ik een paar jaar geleden stond, is het verschil dag en nacht. De meditatie-instructies op deze site volgen dezelfde methode, onderwezen door Yuttadhammo Bhikkhu.",
+            "note": "Thaise en internationale studenten · Geen vaste kosten: dana aan het einde van je verblijf"
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://www.watchomtong.com/",
+            "locality": "Chiang Mai",
+            "country": "TH",
+            "description": {
+              "en": "Founded in 1991, teaching the four foundations of mindfulness through sitting, walking, and prostration practice. Courses open to both Thai and international students, with no set fee: you give dana, a donation, at the end of your stay, whatever your means allow.",
+              "nl": "Opgericht in 1991, onderwijst de vier grondslagen van mindfulness door middel van zitten, lopen en prostratie. Cursussen zijn open voor zowel Thaise als internationale studenten, zonder vaste kosten: aan het einde van je verblijf geef je dana, een gift, naar wat je vermogen toelaat."
+            }
+          }
+        },
+        {
+          "id": "casa-de-meditacion-vipassana",
+          "name": "Casa de Meditación Vipassana",
+          "link": "https://vipassana.mx",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong lineage",
+            "where": "Mexico City, Mexico",
+            "text": "Theravada meditation in the northern Thai lineage, founded by a student of Ajahn Tong Sirimangalo. Unlike most centers in this lineage, retreats here carry a set fee rather than pure donation, since the group doesn't have a permanent space of its own and rents one for each retreat. Teachers from Wat Chom Tong visit regularly; in 2024 I had the chance to practice with Ajahn Poonsak again, when he came over from Thailand.",
+            "note": "Retreats of 3 to 20 days, in person and online · Set fee for lodging, meals and parking; transport not included"
+          },
+          "nl": {
+            "by": "Ajahn Tong-traditie",
+            "where": "Mexico-Stad, Mexico",
+            "text": "Theravada-meditatie in de noordelijke Thaise traditie, opgericht door een leerling van Ajahn Tong Sirimangalo. Anders dan de meeste centra in deze traditie werken retraites hier met een vast tarief in plaats van pure dana, omdat de groep geen eigen vaste ruimte heeft en er voor elke retraite een huurt. Leraren van Wat Chom Tong komen regelmatig langs; in 2024 kreeg ik de kans om opnieuw met Ajahn Poonsak te beoefenen, toen hij overkwam vanuit Thailand.",
+            "note": "Retraites van 3 tot 20 dagen, fysiek en online · Vast tarief voor verblijf, maaltijden en parkeren; vervoer niet inbegrepen"
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://vipassana.mx",
+            "locality": "Mexico City",
+            "country": "MX",
+            "description": {
+              "en": "Theravada meditation in the northern Thai lineage, founded by a student of Ajahn Tong Sirimangalo. Workshops, group sits, and silent retreats from 3 to 20 days, in person and online.",
+              "nl": "Theravada-meditatie in de noordelijke Thaise traditie, opgericht door een leerling van Ajahn Tong Sirimangalo. Workshops, groepszittingen en stille retraites van 3 tot 20 dagen, zowel fysiek als online."
+            }
+          }
+        },
+        {
+          "id": "mosteiro-suddhavari",
+          "name": "Mosteiro Suddhavāri",
+          "link": "https://suddhavari.org/",
+          "dutch": "checked",
+          "en": {
+            "by": "Theravada Forest Tradition",
+            "where": "Brazil",
+            "text": "Connected to the Sociedade Budista do Brasil, offering teachings, chanting, and meditation guidance. Recorded talks, a digital library, and accommodation for visitors. I stayed here for ten days in 2025 and learned a great deal about carrying mindfulness into daily activities, thanks to Ajahn Mudito and everyone who supports the monastery.",
+            "note": "Free, including lodging · Sustained by donation"
+          },
+          "nl": {
+            "by": "Theravada Forest Tradition",
+            "where": "Brazilië",
+            "text": "Verbonden aan de Sociedade Budista do Brasil, biedt onderricht, chanten en meditatiebegeleiding aan. Opgenomen lezingen, een digitale bibliotheek, en verblijf voor bezoekers. Ik verbleef hier tien dagen in 2025 en leerde veel over het meenemen van mindfulness in het dagelijks leven, dankzij Ajahn Mudito en iedereen die het klooster ondersteunt.",
+            "note": "Kosteloos, ook het verblijf · Gedragen door giften"
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://suddhavari.org/",
+            "country": "BR",
+            "description": {
+              "en": "Connected to the Sociedade Budista do Brasil, offering teachings, chanting, and meditation guidance in the Theravada Forest Tradition. Everything here, including lodging, is free of charge, sustained entirely by voluntary donation.",
+              "nl": "Verbonden aan de Sociedade Budista do Brasil, biedt onderricht, chanten en meditatiebegeleiding aan in de Theravada Forest Tradition. Alles hier, inclusief verblijf, is volledig kosteloos en wordt geheel ondersteund door vrijwillige giften."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "en": {
+        "id": "where-i-started",
+        "title": "Where I Started"
+      },
+      "nl": {
+        "id": "waar-ik-begon",
+        "title": "Waar ik begon"
+      },
+      "entries": [
+        {
+          "id": "vipassana-suriname",
+          "name": "Vipassana Suriname",
+          "link": "https://sr.dhamma.org/",
+          "dutch": "checked",
+          "en": {
+            "by": "S.N. Goenka tradition",
+            "where": "Suriname",
+            "text": "Local practitioners who organize Vipassana courses in the S.N. Goenka tradition, usually at a temporary retreat site rather than a permanent center. This is where I did my first retreat, and I'm grateful for that opportunity, though the technique and structure differ somewhat from the tradition I practice in now. They also run a [Facebook page](https://www.facebook.com/VipassanaParamaribo).",
+            "note": "Ten-day courses, roughly every other year · No fee: donation after the course, if you are able"
+          },
+          "nl": {
+            "by": "S.N. Goenka-traditie",
+            "where": "Suriname",
+            "text": "Lokale beoefenaars die Vipassana-cursussen organiseren in de traditie van S.N. Goenka, meestal op een tijdelijke retraiteplek in plaats van een vaste locatie. Hier deed ik mijn eerste retraite, en ik ben dankbaar voor die kans, al verschillen de techniek en structuur enigszins van de traditie waarin ik nu beoefen. Ze hebben ook een [Facebookpagina](https://www.facebook.com/VipassanaParamaribo).",
+            "note": "Tiendaagse cursussen, ongeveer om het jaar · Geen kosten: een gift na afloop, als je kunt"
+          }
+        }
+      ]
+    },
+    {
+      "en": {
+        "id": "community",
+        "title": "Community"
+      },
+      "nl": {
+        "id": "gemeenschap",
+        "title": "Gemeenschap"
+      },
+      "entries": [
+        {
+          "id": "boeddhisme-in-suriname",
+          "name": "Boeddhisme in Suriname",
+          "link": "https://www.facebook.com/61578371413970/",
+          "dutch": "checked",
+          "en": {
+            "by": "Facebook group",
+            "where": "Suriname",
+            "text": "A small community I help run for Buddhist practitioners in Suriname. More on why on [my note page](../note.html)."
+          },
+          "nl": {
+            "by": "Facebookgroep",
+            "where": "Suriname",
+            "text": "Een kleine pagina die ik onderhoud voor boeddhistische beoefenaars in Suriname. Meer hierover op [mijn notitiepagina](../note.html)."
+          }
+        }
+      ]
+    },
+    {
+      "en": {
+        "id": "same-lineage",
+        "title": "In the Same Lineage",
+        "intro_html": "Ajahn Tong Sirimangalo's teaching spread well beyond Wat Chom Tong. These carry the same method elsewhere in the world. I haven't practiced at any of them myself.",
+        "after_html": "Northern Vipassana, the international department at Wat Chom Tong, keeps a fuller list of branches worldwide: <a href=\"https://northernvipassana.org/en/branches/\" target=\"_blank\" rel=\"noopener\">see the branches page<span class=\"ext\" aria-hidden=\"true\">&#8239;↗</span></a>."
+      },
+      "nl": {
+        "id": "dezelfde-traditie",
+        "title": "In dezelfde traditie",
+        "intro_html": "Het onderricht van Ajahn Tong Sirimangalo verspreidde zich ver voorbij Wat Chom Tong. Deze plekken dragen dezelfde methode elders in de wereld. Ik heb bij geen van deze zelf beoefend.",
+        "after_html": "Northern Vipassana, de internationale afdeling van Wat Chom Tong, houdt een uitgebreidere lijst bij van kloosters wereldwijd: <a href=\"https://northernvipassana.org/en/branches/\" target=\"_blank\" rel=\"noopener\">zie de overzichtspagina<span class=\"ext\" aria-hidden=\"true\">&#8239;↗</span></a>."
+      },
+      "entries": [
+        {
+          "id": "sirimangalo-international",
+          "name": "Sirimangalo International",
+          "link": "https://sirimangalo.org/",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong lineage",
+            "where": "Ratnapura, Sri Lanka",
+            "text": "Founded by Yuttadhammo Bhikkhu, whose instructions can be found on his site. The meditation centre is in Ratnapura, Sri Lanka."
+          },
+          "nl": {
+            "by": "Ajahn Tong-traditie",
+            "where": "Ratnapura, Sri Lanka",
+            "text": "Opgericht door Yuttadhammo Bhikkhu, wiens instructies te vinden zijn op zijn site. Het meditatiecentrum bevindt zich in Ratnapura, Sri Lanka."
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://sirimangalo.org/",
+            "founder": "Yuttadhammo Bhikkhu",
+            "locality": "Ratnapura",
+            "country": "LK",
+            "description": {
+              "en": "Founded by Yuttadhammo Bhikkhu, in the Ajahn Tong lineage.",
+              "nl": "Opgericht door Yuttadhammo Bhikkhu, in de Ajahn Tong-traditie."
+            }
+          }
+        },
+        {
+          "id": "santi-dhamma",
+          "name": "Santi Dhamma",
+          "link": "https://santi-dhamma.nl/",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong lineage",
+            "where": "Netherlands",
+            "text": "A Vipassana centre founded in 2015, running courses and retreats in the tradition of Ajahn Tong Sirimangalo. There isn't a permanent centre yet, so sessions are held at rented locations. Sign up for their [newsletter](https://santi-dhamma.nl/contact-nl/) to hear about upcoming events."
+          },
+          "nl": {
+            "by": "Ajahn Tong-traditie",
+            "where": "Nederland",
+            "text": "Een Vipassana-centrum, opgericht in 2015, dat cursussen en retraites verzorgt in de traditie van Ajahn Tong Sirimangalo. Er is nog geen vaste locatie, dus bijeenkomsten vinden plaats op gehuurde locaties. Meld je aan voor hun [nieuwsbrief](https://santi-dhamma.nl/contact-nl/) om op de hoogte te blijven van aankomende activiteiten."
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://santi-dhamma.nl/",
+            "country": "NL",
+            "description": {
+              "en": "A Vipassana centre founded in 2015, in the Ajahn Tong lineage.",
+              "nl": "Een Vipassana-centrum opgericht in 2015, in de Ajahn Tong-traditie."
+            }
+          }
+        },
+        {
+          "id": "wat-chomtong-germany",
+          "name": "Wat Chomtong Germany",
+          "link": "https://www.watchomtong.com/deu",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong lineage",
+            "where": "Morshausen, Germany",
+            "text": "A monastery branch built as a memorial to Ajahn Tong Sirimangalo, staffed by monks from Thailand."
+          },
+          "nl": {
+            "by": "Ajahn Tong-traditie",
+            "where": "Morshausen, Duitsland",
+            "text": "Een kloosterfiliaal gebouwd als eerbetoon aan Ajahn Tong Sirimangalo, bemand door monniken uit Thailand."
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://www.watchomtong.com/deu",
+            "locality": "Morshausen",
+            "country": "DE",
+            "description": {
+              "en": "A monastery branch built as a memorial to Ajahn Tong Sirimangalo, staffed by monks from Thailand.",
+              "nl": "Een kloosterfiliaal gebouwd als eerbetoon aan Ajahn Tong Sirimangalo, bemand door monniken uit Thailand."
+            }
+          }
+        },
+        {
+          "id": "buddhavipassana-meditation-centre",
+          "name": "Buddhavipassana Meditation Centre",
+          "link": "https://buddhavipassana.ca/",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong lineage",
+            "where": "Toronto, Canada",
+            "text": "Runs a 15-day basic course and 10-day retreats, taught by Alex and Miriam Young."
+          },
+          "nl": {
+            "by": "Ajahn Tong-traditie",
+            "where": "Toronto, Canada",
+            "text": "Organiseert een basiscursus van 15 dagen en retraites van 10 dagen, gegeven door Alex en Miriam Young."
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://buddhavipassana.ca/",
+            "locality": "Toronto",
+            "country": "CA",
+            "description": {
+              "en": "Runs a 15-day basic course and 10-day retreats, taught by Alex and Miriam Young, in the Ajahn Tong lineage.",
+              "nl": "Organiseert een basiscursus van 15 dagen en retraites van 10 dagen, gegeven door Alex en Miriam Young, in de Ajahn Tong-traditie."
+            }
+          }
+        },
+        {
+          "id": "santidhamma-vipassana-meditation-center-of-argentina",
+          "name": "Santidhamma Vipassana Meditation Center of Argentina",
+          "link": "https://www.vipassanabuenosaires.com/",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Tong lineage",
+            "where": "Buenos Aires, Argentina",
+            "text": "Part of the Spanish-speaking Anumodana network, offering courses and sits in the same tradition."
+          },
+          "nl": {
+            "by": "Ajahn Tong-traditie",
+            "where": "Buenos Aires, Argentinië",
+            "text": "Onderdeel van het Spaanstalige Anumodana-netwerk, met cursussen en zitsessies in dezelfde traditie."
+          },
+          "search": {
+            "type": "Organization",
+            "url": "https://www.vipassanabuenosaires.com/",
+            "locality": "Buenos Aires",
+            "country": "AR",
+            "description": {
+              "en": "Part of the Spanish-speaking Anumodana network, offering courses and sits in the Ajahn Tong lineage.",
+              "nl": "Onderdeel van het Spaanstalige Anumodana-netwerk, met cursussen en zitsessies in dezelfde traditie."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "en": {
+        "id": "also-worth-knowing",
+        "title": "Also Worth Knowing About"
+      },
+      "nl": {
+        "id": "ook-goed-om-te-weten",
+        "title": "Ook goed om te weten"
+      },
+      "entries": [
+        {
+          "id": "forest-sangha",
+          "name": "Forest Sangha",
+          "link": "https://www.forestsangha.org/",
+          "dutch": "checked",
+          "en": {
+            "by": "Ajahn Chah's lineage",
+            "where": "worldwide network",
+            "text": "A portal to the branch monasteries that grew out of Ajahn Chah's teaching lineage, with talks, publications, and links to individual monasteries across the world. A few of them, including [Amaravati](talks.html#watch-amaravati) and [Cittaviveka](talks.html#watch-cittaviveka), are covered individually on Talks."
+          },
+          "nl": {
+            "by": "Ajahn Chahs traditie",
+            "where": "wereldwijd netwerk",
+            "text": "Een portaal naar de kloosters die zijn voortgekomen uit de onderwijstraditie van Ajahn Chah, met lezingen, publicaties en links naar afzonderlijke kloosters wereldwijd. Enkele daarvan, waaronder [Amaravati](talks.html#watch-amaravati) en [Cittaviveka](talks.html#watch-cittaviveka), worden afzonderlijk behandeld op Talks."
+          }
+        },
+        {
+          "id": "dhammadipa",
+          "name": "Dhammadipa",
+          "link": "https://www.dhammadipa.nl/",
+          "dutch": "checked",
+          "en": {
+            "by": "Mahasi Sayadaw lineage",
+            "where": "Amsterdam, Netherlands",
+            "text": "Offers courses, sitting groups, and city retreats in the vipassana tradition. Open to newcomers as well as experienced practitioners. Same method as [Sayar Myat](talks.html#listen-sayar-myat) on Talks."
+          },
+          "nl": {
+            "by": "Mahasi Sayadaw-traditie",
+            "where": "Amsterdam, Nederland",
+            "text": "Biedt cursussen, zitgroepen en stadsretraites aan in de vipassana-traditie. Toegankelijk voor zowel nieuwkomers als ervaren beoefenaars. Dezelfde methode als [Sayar Myat](talks.html#listen-sayar-myat) op Talks."
+          }
+        }
+      ]
+    }
+  ]
+}

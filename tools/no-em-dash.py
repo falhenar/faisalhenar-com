@@ -7,7 +7,10 @@ WHAT IT LOOKS AT
     * HTML  the text between tags, plus the attributes that render or get
             indexed: <title>, meta content, alt, title, aria-label,
             placeholder.
-    * JS    string literals in the content config files and the renderers.
+    * JS    string literals in the renderers and other scripts.
+    * Data  string values in the content files under practice/data/ (JSON)
+            and the Reflections (practice/data/reflections/*.md: the details
+            at the top and the whole text below). Schemas are skipped.
   It ignores code, CSS, HTML comments, <script> and <style> blocks, and JS
   comments. An em dash in a comment hurts nobody.
 
@@ -40,16 +43,21 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # Configuration
 # ---------------------------------------------------------------------------
 
-INCLUDE_GLOBS = ["**/*.html", "**/*.js"]
+INCLUDE_GLOBS = ["**/*.html", "**/*.js", "practice/data/**/*.json", "practice/data/**/*.md"]
 
 SKIP_DIRS = {".git", ".github", "fonts", "images", "tools", "node_modules"}
 
 # Fields holding verbatim quotation. Punctuation there belongs to the source,
 # not to you. Paths are relative to the repo root.
 QUOTE_FIELDS = {
-    "practice/js/quotes-config.js": {"text", "source"},
-    "practice/js/daily-sutta-config.js": {"text"},
-    "practice/js/suttas-config.js": {"excerpt"},
+    "practice/data/quotes.json": {"text", "source"},
+    "practice/data/daily-sutta.json": {"text"},
+    "practice/data/reflections/*.md": {"excerpt"},
+}
+
+# Fields in the data files that no visitor reads: notes kept with the data.
+PRIVATE_FIELDS = {
+    "practice/data/quotes.json": {"sourcing", "comment", "verification"},
 }
 
 # Attribute values a visitor or a search engine reads.
@@ -157,6 +165,55 @@ def html_regions(text):
         yield from emit(pos, len(masked), "text")
 
 
+JSON_STRING_RE = re.compile(r'"((?:\\.|[^"\\])*)"')
+# The key a string value belongs to: the nearest "key": before it, also
+# when the value is one item in a list of strings ("themes": ["a", "b"]).
+JSON_KEY_RE = re.compile(r'"([^"\\]+)"\s*:\s*(?:\[\s*(?:"(?:\\.|[^"\\])*"\s*,\s*)*)?$')
+
+
+def _fields(rel, table):
+    for pattern, fields in table.items():
+        if pathlib.PurePosixPath(rel).match(pattern):
+            return fields
+    return set()
+
+
+def json_regions(text, rel, start=0, end=None):
+    """String values (not keys) in JSON text, with the key they belong to."""
+    skip = _fields(rel, QUOTE_FIELDS) | _fields(rel, PRIVATE_FIELDS)
+    end = len(text) if end is None else end
+    for m in JSON_STRING_RE.finditer(text, start, end):
+        if re.match(r"\s*:", text[m.end():m.end() + 8]):
+            continue  # a key
+        key_match = JSON_KEY_RE.search(text[max(start, m.start() - 4000): m.start()])
+        key = key_match.group(1) if key_match else None
+        if key in skip:
+            continue
+        yield m.start(1), m.end(1), (f"{key} field" if key else "string")
+
+
+def md_regions(text, rel):
+    """A Reflection: the details at the top read as JSON values, then the
+    whole text below the second --- line."""
+    if not text.startswith("---\n"):
+        yield 0, len(text), "text"
+        return
+    close = text.find("\n---\n", 3)
+    if close < 0:
+        yield 0, len(text), "text"
+        return
+    skip = _fields(rel, QUOTE_FIELDS)
+    for line in re.finditer(r"^([A-Za-z][A-Za-z0-9_]*): (.*)$", text[:close], re.M):
+        if line.group(1) in skip:
+            continue
+        for s, e, _label in json_regions(text, rel, line.start(2), line.end(2)):
+            yield s, e, f"{line.group(1)} field"
+    # The text, except a quotation inside it ("> " lines), which is not ours.
+    for line in re.finditer(r"^(?!>).*$", text[close + 5:], re.M):
+        if line.group(0).strip():
+            yield close + 5 + line.start(), close + 5 + line.end(), "text"
+
+
 def js_regions(text, rel):
     exempt = QUOTE_FIELDS.get(rel, set())
     masked, blind = _blank(text, JS_BLIND)
@@ -252,8 +309,14 @@ def scan_file(path, fix):
     rel = path.relative_to(ROOT).as_posix()
     original = path.read_text(encoding="utf-8")
     text = original
-    regions = list(html_regions(text) if path.suffix == ".html"
-                   else js_regions(text, rel))
+    if path.suffix == ".html":
+        regions = list(html_regions(text))
+    elif path.suffix == ".json":
+        regions = list(json_regions(text, rel))
+    elif path.suffix == ".md":
+        regions = list(md_regions(text, rel))
+    else:
+        regions = list(js_regions(text, rel))
 
     findings, edits = [], []
     for start, end, label in regions:
@@ -325,9 +388,10 @@ def iter_files():
     for pattern in INCLUDE_GLOBS:
         for path in sorted(ROOT.glob(pattern)):
             parts = path.relative_to(ROOT).parts[:-1]
-            if any(part in SKIP_DIRS for part in parts):
+            if any(part in SKIP_DIRS for part in parts) or path.name.endswith(".schema.json"):
                 continue
-            candidates.append(path)
+            if path not in candidates:
+                candidates.append(path)
 
     ignored = git_ignored(candidates)
     for path in candidates:

@@ -1,0 +1,26 @@
+{
+  "description": "The Reflections room's page sections, the source order of every Reflection and queued passage (sequence), and the published Reflections taken out of discovery (unlisted: the page stays at its address with noindex, out of the archive, the sitemap and the hub). Read by tools/build-reflections.py.",
+  "type": "object",
+  "required": ["version", "sections", "sequence", "unlisted"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "note", "order"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "title": {"type": "string", "minLength": 1},
+          "note": {"type": "string"},
+          "order": {"enum": ["structural", "chronological"]}
+        }
+      }
+    },
+    "sequence": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}},
+    "unlisted": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+  }
+}

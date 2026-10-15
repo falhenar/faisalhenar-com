@@ -9,7 +9,8 @@ boards all come from seeded randomness keyed on the photograph's id.
 
 Reads (never writes):
   photography/data/photos.json       the master collection: src, w, h, alt
-  photography/data/sheets.json       contact sheets, newest first
+  photography/data/sheets.json       contact sheets, newest first, and the
+                                     addresses retired from the room
   photography/data/walls.json        the two walls, in hanging order
   photography/data/photo-meta.json   tone, place, local capture time, and
                                      an "alt" that overrides photos.json
@@ -23,6 +24,18 @@ Writes (see BUILD):
   photography/everything/index.html         every photograph, newest first
   redirect pages at the older addresses: photography/index/ (the old Index)
   and everything under photography/room/ (where the room was previewed)
+  sitemap.xml, between its BUILD:photography markers: every page above
+  that is not a redirect
+
+A "between walks" sheet (kind "between") holds the single photographs of
+one month that belong to no walk; each frame shows its own place, as on the
+old "loose" sheet it replaced.
+
+Retired addresses (sheets.json "retired") are pages that once existed and
+must keep working: a removed sheet's address forwards to the contact
+sheets, a removed photograph's page to the sheet it was on (or to the
+contact sheets, if that sheet is gone too). An id in "retired" is never
+given to another photograph or sheet.
 
 photography/room-assets/room.css and room.js are written by hand, not by
 this tool.
@@ -320,9 +333,15 @@ class Room:
 
 # ---------- validation of the data ----------
 
-def validate(photos, sheets, walls, meta):
+def validate(photos, sheets, walls, meta, retired=None):
     problems = []
     seen = {}
+    retired = retired or {"sheets": {}, "photos": {}}
+    addresses = {name for s in sheets for name in {s["id"], s.get("address", s["id"]), *s.get("previous_addresses", [])}}
+    for address in retired.get("sheets", {}):
+        if address in addresses: problems.append(f"The retired sheet address {address} is still used by a sheet.")
+    for i in retired.get("photos", {}):
+        if i in photos: problems.append(f"{i} is retired but still in photos.json.")
     for sheet in sheets:
         for i in sheet["frames"]:
             if i in seen: problems.append(f"{i} is on two sheets: {seen[i]} and {sheet['id']}.")
@@ -603,7 +622,7 @@ def wall_section(room, tone, card=""):
 
 def work_table(room):
     """Three things on a ledge under the walls: the latest sheet, the stack of sheets, the print box."""
-    latest = next(s for s in room.sheets if s["kind"] != "loose")
+    latest = next(s for s in room.sheets if s["kind"] not in ("loose", "between"))
     n, k = len(latest["frames"]), on_wall(room, latest)
     note = latest["line"] or (f"{n} frames, {k} on the wall" if k else f"{n} frames")
     stack_cells = "".join(
@@ -733,7 +752,7 @@ def sheet_page(room, sheet, versions):
         if i in room.wall_of: extra += "\n          " + wall_mark(room, i)
         label = f"Frame {k}" + (f", {times[k]}" if k in times else "") + (", circled" if circled else "")
         if i in room.wall_of: label += f", place {room.wall_of[i][1]} on the {WALL_LABELS[room.wall_of[i][0]]} wall"
-        place = f'<span class="frame-place">{esc(room.meta[i]["place"])}</span>' if sheet["kind"] == "loose" and room.meta[i]["place"] else ""
+        place = f'<span class="frame-place">{esc(room.meta[i]["place"])}</span>' if sheet["kind"] in ("loose", "between") and room.meta[i]["place"] else ""
         clock = f'<span class="frame-time" aria-hidden="true"> · {times[k]}</span>' if k in times else ""
         frames.append(f"""        <figure class="frame{' frame--circled' if circled else ''}{' is-marked' if i in room.wall_of else ''}" id="frame-{k}" data-frame="{k}">
           <a class="frame-photo" href="{photo_url(i)}" {room.viewer_attrs(i)} aria-describedby="frame-{k}-cap">{img_tag(photo, "(max-width: 559px) 45vw, (max-width: 999px) 30vw, 19vw", 400)}</a>
@@ -1000,10 +1019,19 @@ def redirect_page(old_url, new_url, versions):
 """
 
 
-def redirects(room):
+def redirects(room, retired=None):
     """{old address: new address} for every page the room ever had elsewhere."""
     moved = {OLD_INDEX_URL: EVERYTHING_URL, PREVIEW_URL: ROOM_URL,
              PREVIEW_URL + "sheets/": SHEETS_URL, PREVIEW_URL + "everything/": EVERYTHING_URL}
+    retired = retired or {}
+    live = {s["id"] for s in room.sheets}
+    for address in retired.get("sheets", {}):
+        moved[f"{SHEETS_URL}{address}/"] = SHEETS_URL
+        moved[f"{PREVIEW_URL}sheets/{address}/"] = SHEETS_URL
+    for i, sheet_id in retired.get("photos", {}).items():
+        target = sheet_url(sheet_id) if sheet_id in live else SHEETS_URL
+        moved[photo_url(i)] = target
+        moved[f"{PREVIEW_URL}p/{i}/"] = target
     for sheet in room.sheets:
         moved[f"{PREVIEW_URL}sheets/{sheet['id']}/"] = sheet_url(sheet["id"])
         current = sheet.get("address", sheet["id"])
@@ -1017,15 +1045,49 @@ def redirects(room):
     return moved
 
 
+# ---------- the sitemap ----------
+
+SITEMAP = os.path.join(ROOT, "sitemap.xml")
+SITEMAP_MARKS = ("<!-- BUILD:photography -->", "<!-- /BUILD:photography -->")
+
+
+def sitemap_block(room):
+    """The room's entries in sitemap.xml: the wall, the contact sheets, each
+    sheet, Everything, and a page per photograph. A sheet's date is the
+    newest `added` among its frames; the room's, the newest of all."""
+    def url(loc, lastmod=None):
+        rows = ["  <url>", f"    <loc>{ORIGIN}{loc}</loc>"]
+        if lastmod: rows.append(f"    <lastmod>{lastmod}</lastmod>")
+        return rows + ["  </url>"]
+    newest = max(room.photos[i]["added"] for i in room.sheet_of)
+    rows = url(ROOM_URL, newest) + url(SHEETS_URL, newest)
+    for sheet in room.sheets:
+        rows += url(sheet_url(sheet["id"]), max(room.photos[i]["added"] for i in sheet["frames"]))
+    rows += url(EVERYTHING_URL, newest)
+    for i in room.photos:
+        if i in room.sheet_of: rows += url(photo_url(i), room.photos[i]["added"])
+    return "\n".join(rows)
+
+
+def revised_sitemap(room):
+    text = read(SITEMAP)
+    start, end = text.find(SITEMAP_MARKS[0]), text.find(SITEMAP_MARKS[1])
+    if start < 0 or end < start:
+        raise SystemExit("ERROR: sitemap.xml has no BUILD:photography markers.")
+    return text[:start + len(SITEMAP_MARKS[0])] + "\n" + sitemap_block(room) + "\n" + text[end:]
+
+
 # ---------- main ----------
 
 def main():
     photos = {p["id"]: p for p in load("photos.json")}
-    sheets = load("sheets.json")["sheets"]
+    sheet_data = load("sheets.json")
+    sheets = sheet_data["sheets"]
+    retired = sheet_data.get("retired", {"sheets": {}, "photos": {}})
     configure_sheet_addresses(sheets)
     walls = load("walls.json")
     meta = load("photo-meta.json")
-    validate(photos, sheets, walls, meta)
+    validate(photos, sheets, walls, meta, retired)
     room = Room(photos, sheets, walls, meta)
 
     folio = read(os.path.join(ROOT, VERSION_SOURCE))
@@ -1050,7 +1112,7 @@ def main():
         path = out_path(EVERYTHING_URL)
         pages[path] = everything_page(room, versions)
         check_everything(pages[path], room.sheet_of)
-    moved = redirects(room) if "redirects" in BUILD else {}
+    moved = redirects(room, retired) if "redirects" in BUILD else {}
     for old, new in moved.items():
         pages[out_path(old)] = redirect_page(old, new, versions)
 
@@ -1058,6 +1120,7 @@ def main():
 
     home_path, home_markup = revised_homepage(photos)
     pages[home_path] = home_markup
+    pages[SITEMAP] = revised_sitemap(room)
 
     written = 0
     for path, markup in pages.items():

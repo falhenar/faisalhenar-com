@@ -1,8 +1,8 @@
 /*
   RENDER: QUOTE OF THE MOMENT
   ----------------------------
-  Reads QUOTES from quotes-config.js and renders one into #quote-featured
-  on practice/index.html.
+  Reads practice/data/quotes.json and renders one quote into
+  #quote-featured on practice/index.html.
 
   Order is a shuffled cycle, not an independent coin-flip per load: the
   list is shuffled once, then walked one quote per page load, so every
@@ -11,9 +11,9 @@
   Changing the length of the list starts a fresh cycle, and a new cycle
   never opens with the quote that closed the previous one.
 
-  If localStorage is unavailable — private browsing, file:// in some
-  browsers, storage switched off — it falls back to a plain random pick.
-  If the config is missing or empty the whole block is removed, so the
+  If localStorage is unavailable (private browsing, file:// in some
+  browsers, storage switched off) it falls back to a plain random pick.
+  If the data is missing or empty the whole block is removed, so the
   page never shows an empty frame.
 */
 (function(){
@@ -26,18 +26,15 @@
   var srcEl  = document.getElementById('quote-source');
   if (!block || !textEl || !attrEl || !srcEl) return;
 
-  // typeof, not window.QUOTES: `const QUOTES` in the config is a global
-  // lexical binding and never lands on window. Guarded at all because a
-  // bare reference to a config that failed to load throws, which would
-  // take the rest of this script down with it.
-  var pool = (typeof QUOTES !== 'undefined' && Array.isArray(QUOTES))
-    ? QUOTES.filter(function(q){ return q && q.text; })
-    : [];
+  var pool = [];
 
-  if (pool.length === 0) {
-    block.remove();
-    return;
-  }
+  fetch('data/quotes.json', { cache: 'no-cache' }).then(function(r){
+    if (!r.ok) throw new Error('quotes');
+    return r.json();
+  }).then(function(data){
+    pool = (data && Array.isArray(data.quotes) ? data.quotes : []).filter(function(q){ return q && q.text; });
+    show();
+  }).catch(function(){ block.remove(); });
 
   function readState(){
     try {
@@ -94,10 +91,16 @@
   // characters (translator, volume, talk date), which is unreadable in the
   // uppercase treatment the author name gets. Same split the room pages use
   // between .entry-source and .entry-by.
-  var quote = pool[nextIndex()];
-  textEl.textContent = quote.text;
-  attrEl.textContent = quote.author || '';
-  srcEl.textContent  = quote.source || '';
-  if (!quote.source) srcEl.hidden = true;
+  function show(){
+    if (pool.length === 0) {
+      block.remove();
+      return;
+    }
+    var quote = pool[nextIndex()];
+    textEl.textContent = quote.text;
+    attrEl.textContent = quote.author || '';
+    srcEl.textContent  = quote.source || '';
+    if (!quote.source) srcEl.hidden = true;
+  }
 
 })();

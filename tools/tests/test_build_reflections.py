@@ -16,12 +16,31 @@ _spec = importlib.util.spec_from_file_location("reflection_builder", TOOLS / "bu
 builder = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(builder)
 
+_sspec = importlib.util.spec_from_file_location("sitedata_for_tests", TOOLS / "sitedata.py")
+sitedata = importlib.util.module_from_spec(_sspec)
+_sspec.loader.exec_module(sitedata)
+
 _vspec = importlib.util.spec_from_file_location("website_validator_for_builder", TOOLS / "validate-site.py")
 validator = importlib.util.module_from_spec(_vspec)
 _vspec.loader.exec_module(validator)
 
 
 class SlugTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def files(self, *entries):
+        """Reflection files in a temporary folder; each entry gets its _path."""
+        for entry in entries:
+            path = Path(self.tmp.name) / (entry["id"] + ".md")
+            details = {k: v for k, v in entry.items() if k not in ("note", "_path")}
+            path.write_text(sitedata.dump_reflection(details, entry.get("note", "Text.")), encoding="utf-8", newline="\n")
+            entry["_path"] = str(path)
+        return list(entries)
+
     def test_slugs_are_lowercase_words_joined_by_hyphens(self):
         self.assertEqual(builder.slugify("The Simile of the Mountain"), "the-simile-of-the-mountain")
         self.assertEqual(builder.slugify("Taking Care of Ourselves, We Take Care of Others"),
@@ -33,43 +52,41 @@ class SlugTests(unittest.TestCase):
 
     def test_a_frozen_slug_is_never_recomputed(self):
         """The point of freezing: a retitled Reflection keeps its URL."""
-        text = '  {\n    id: "x-1",\n    title: "Old Title",\n  },\n'
-        published = [{"id": "x-1", "title": "A Completely New Title", "slug": "old-title"}]
-        after, minted = builder.freeze_slugs(text, published)
-        self.assertEqual(minted, [])
-        self.assertEqual(after, text)
+        published = self.files({"id": "x-1", "title": "A Completely New Title", "slug": "old-title"})
+        before = Path(published[0]["_path"]).read_text(encoding="utf-8")
+        self.assertEqual(builder.freeze_slugs(published), [])
+        self.assertEqual(Path(published[0]["_path"]).read_text(encoding="utf-8"), before)
         self.assertEqual(published[0]["slug"], "old-title")
 
-    def test_a_new_slug_is_written_into_the_config_once(self):
-        text = '  {\n    id: "x-1",\n    title: "Aging and Death",\n  },\n'
-        published = [{"id": "x-1", "title": "Aging and Death"}]
-        after, minted = builder.freeze_slugs(text, published)
-        self.assertEqual(minted, [("x-1", "aging-and-death")])
-        self.assertIn('    slug: "aging-and-death",\n', after)
-        self.assertEqual(after.count('slug: "aging-and-death"'), 1)
+    def test_a_new_slug_is_written_into_its_file_once(self):
+        published = self.files({"id": "x-1", "title": "Aging and Death", "note": "Kept *exactly*.\n"})
+        self.assertEqual(builder.freeze_slugs(published), [("x-1", "aging-and-death")])
+        details, body = sitedata.parse_reflection(Path(published[0]["_path"]).read_text(encoding="utf-8"))
+        self.assertEqual(details["slug"], "aging-and-death")
+        self.assertEqual(body, "Kept *exactly*.\n")
 
     def test_two_entries_that_would_share_a_url_are_refused_by_name(self):
         """A URL is permanent, so a person chooses it rather than inheriting a number."""
-        text = '  {\n    id: "a",\n    title: "Same",\n  },\n  {\n    id: "b",\n    title: "Same",\n  },\n'
-        published = [{"id": "a", "title": "Same"}, {"id": "b", "title": "Same"}]
+        published = self.files({"id": "a", "title": "Same"}, {"id": "b", "title": "Same"})
         with self.assertRaises(SystemExit) as caught:
-            builder.freeze_slugs(text, published)
+            builder.freeze_slugs(published)
         message = str(caught.exception)
         self.assertIn("a", message)
         self.assertIn("b", message)
         self.assertIn("same.html", message)
 
     def test_a_title_with_nothing_sluggable_is_refused(self):
-        text = '  {\n    id: "a",\n    title: "...",\n  },\n'
         with self.assertRaises(SystemExit):
-            builder.freeze_slugs(text, [{"id": "a", "title": "..."}])
+            builder.freeze_slugs(self.files({"id": "a", "title": "..."}))
 
 
 class DescriptionTests(unittest.TestCase):
     def test_markup_is_stripped_and_the_text_is_cut_at_a_word(self):
-        note = "<p>A note with <a href=\"#\">a link</a> inside it.</p> " + "word " * 60
+        note = "A note with [a link](https://suttacentral.net/) and *italics* inside it.\n\n" + "word " * 60
         result = builder.description({"note": note})
         self.assertNotIn("<", result)
+        self.assertNotIn("*", result)
+        self.assertIn("a link and italics", result)
         self.assertTrue(result.endswith("..."))
         self.assertLessEqual(len(result), 158)
         self.assertNotIn("wor...", result)
@@ -78,17 +95,21 @@ class DescriptionTests(unittest.TestCase):
         result = builder.description({"note": "Short enough to stand on its own."})
         self.assertEqual(result, "Short enough to stand on its own.")
 
+    def test_a_summary_written_for_search_replaces_the_opening(self):
+        result = builder.description({"note": "The text itself.", "summary": "A summary FH wrote."})
+        self.assertEqual(result, "A summary FH wrote.")
+
 
 class ArchiveReferenceTests(unittest.TestCase):
     """The contents column answers which text, and nothing else."""
 
     def test_the_pali_title_stays_on_the_page_not_in_the_list(self):
-        entry = {"ref": "SN 3.3", "suttaTitle": "Jar\u0101mara\u1e47asutta"}
+        entry = {"ref": "SN 3.3", "suttaTitle": "Jarāmaraṇasutta"}
         self.assertEqual(builder.archive_reference(entry), "SN 3.3")
-        self.assertEqual(builder.subtitle(entry), "SN 3.3 &middot; Jar\u0101mara\u1e47asutta")
+        self.assertEqual(builder.subtitle(entry), "SN 3.3 &middot; Jarāmaraṇasutta")
 
     def test_the_excerpt_qualifier_is_dropped_in_the_list_and_kept_on_the_page(self):
-        entry = {"ref": "from AN 3.36", "suttaTitle": "Devad\u016btasutta"}
+        entry = {"ref": "from AN 3.36", "suttaTitle": "Devadūtasutta"}
         self.assertEqual(builder.archive_reference(entry), "AN 3.36")
         self.assertTrue(builder.subtitle(entry).startswith("from AN 3.36"))
 
@@ -164,22 +185,27 @@ class WithdrawnPageTests(unittest.TestCase):
 class BuildRunTests(unittest.TestCase):
     """Whole builds, run against temporary copies, never the real tree."""
 
-    PATHS = ("CONFIG", "ARCHIVE", "SITEMAP", "OUT_DIR", "CROSSLINKS_PATH")
+    PATHS = ("DATA_DIR", "ARCHIVE", "SITEMAP", "OUT_DIR", "CROSSLINKS_PATH")
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
         (self.root / "practice" / "reflections").mkdir(parents=True)
-        (self.root / "practice" / "js").mkdir()
-        (self.root / "practice" / "data").mkdir()
+        self.data.mkdir(parents=True)
         shutil.copy(REPO / "practice" / "reflections.html", self.root / "practice" / "reflections.html")
         shutil.copy(REPO / "sitemap.xml", self.root / "sitemap.xml")
+        for schema in (REPO / "practice" / "data" / "reflections").glob("*.schema.json"):
+            shutil.copy(schema, self.data / schema.name)
         self.saved = {name: getattr(builder, name) for name in self.PATHS}
-        builder.CONFIG = str(self.root / "practice" / "js" / "suttas-config.js")
+        builder.DATA_DIR = str(self.data)
         builder.ARCHIVE = str(self.root / "practice" / "reflections.html")
         builder.SITEMAP = str(self.root / "sitemap.xml")
         builder.OUT_DIR = str(self.root / "practice" / "reflections")
         builder.CROSSLINKS_PATH = str(self.root / "practice" / "data" / "crosslinks.json")
+
+    @property
+    def data(self):
+        return self.root / "practice" / "data" / "reflections"
 
     def tearDown(self):
         for name, value in self.saved.items():
@@ -190,9 +216,10 @@ class BuildRunTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             builder.main()
 
-    def snapshot(self):
+    def snapshot(self, data=True):
         return {p.relative_to(self.root).as_posix(): p.read_bytes()
-                for p in sorted(self.root.rglob("*")) if p.is_file()}
+                for p in sorted(self.root.rglob("*")) if p.is_file()
+                and (data or "practice/data/reflections/" not in p.relative_to(self.root).as_posix())}
 
     def text(self, relative):
         return (self.root / relative).read_text(encoding="utf-8")
@@ -200,8 +227,8 @@ class BuildRunTests(unittest.TestCase):
 
 class CurrentSiteTests(BuildRunTests):
     def test_a_copy_of_the_real_site_rebuilds_byte_for_byte(self):
-        """No declaration in the live config: the output is what is committed."""
-        shutil.copy(REPO / "practice" / "js" / "suttas-config.js", builder.CONFIG)
+        for path in (REPO / "practice" / "data" / "reflections").glob("*"):
+            shutil.copy(path, self.data / path.name)
         shutil.copy(REPO / "practice" / "data" / "crosslinks.json", builder.CROSSLINKS_PATH)
         for page in (REPO / "practice" / "reflections").glob("*.html"):
             shutil.copy(page, Path(builder.OUT_DIR) / page.name)
@@ -213,13 +240,13 @@ class CurrentSiteTests(BuildRunTests):
 class UnlistingTests(BuildRunTests):
     """Unlisting keeps the article at its address and takes it out of discovery.
 
-    It is not withdrawal: an entry that stops being published (empty note or
-    no date) still turns into a redirect to the archive.
+    It is not withdrawal: a Reflection whose file is removed still turns into
+    a redirect to the archive.
     """
 
     ROBOTS = '<meta name="robots" content="noindex, follow">'
-    BOOKS = {"spine": {"title": "Spine", "note": "In order.", "order": "structural"},
-             "kept": {"title": "Kept", "note": "By date.", "order": "chronological"}}
+    SECTIONS = [{"id": "spine", "title": "Spine", "note": "In order.", "order": "structural"},
+                {"id": "kept", "title": "Kept", "note": "By date.", "order": "chronological"}]
 
     def setUp(self):
         super().setUp()
@@ -231,28 +258,24 @@ class UnlistingTests(BuildRunTests):
             {"id": "q1", "book": "kept", "title": "Queued", "ref": "AN 5.5", "note": "", "added": ""},
         ]
 
-    def configure(self, unlisted=None, raw=None):
-        text = ("const BOOKS = " + json.dumps(self.BOOKS, indent=2) + ";\n\n"
-                + "const SUTTAS = [\n" + ",\n".join(
-                    "  {\n" + "".join("    %s: %s,\n" % (k, json.dumps(v)) for k, v in entry.items()) + "  }"
-                    for entry in self.suttas) + "\n];\n")
-        if raw is not None:
-            text += "\n" + raw + "\n"
-        elif unlisted is not None:
-            text += "\nconst MANAGER_WITHDRAWN_REFLECTIONS = " + json.dumps(unlisted) + ";\n"
-        Path(builder.CONFIG).write_text(text, encoding="utf-8", newline="\n")
+    def configure(self, unlisted=None):
+        for old in self.data.glob("*.md"):
+            old.unlink()
+        queue = []
+        for entry in self.suttas:
+            if entry["note"] and entry["added"]:
+                details = {k: v for k, v in entry.items() if k != "note"}
+                (self.data / (entry["id"] + ".md")).write_text(
+                    sitedata.dump_reflection(details, entry["note"]), encoding="utf-8", newline="\n")
+            else:
+                queue.append({k: v for k, v in entry.items() if k not in ("note", "added", "slug")})
+        sitedata.write_json(str(self.data / "sections.json"), {
+            "version": 1, "sections": self.SECTIONS, "sequence": [e["id"] for e in self.suttas],
+            "unlisted": unlisted or []})
+        sitedata.write_json(str(self.data / "queue.json"), {"version": 1, "passages": queue})
 
     def page(self, slug):
         return self.text("practice/reflections/%s.html" % slug)
-
-    def test_no_declaration_and_an_empty_one_build_the_same_site(self):
-        self.configure()
-        self.build()
-        before = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
-        self.configure(unlisted=[])
-        self.build()
-        after = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
-        self.assertEqual(before, after)
 
     def test_an_unlisted_article_stays_whole_at_its_address_and_leaves_discovery(self):
         self.configure(unlisted=["s2"])
@@ -267,6 +290,8 @@ class UnlistingTests(BuildRunTests):
         self.assertNotIn("reflections/two.html", archive)
         self.assertNotIn('id="two"', archive)
         self.assertNotIn("/practice/reflections/two.html", sitemap)
+        index = json.loads(self.text("practice/data/reflections/published.json"))
+        self.assertEqual(sorted(r["id"] for r in index["reflections"]), ["k1", "s1", "s3"])
         for listed in ("one", "three", "kept"):
             with self.subTest(listed=listed):
                 self.assertNotIn('name="robots"', self.page(listed))
@@ -303,13 +328,12 @@ class UnlistingTests(BuildRunTests):
     def test_relisting_restores_the_site_byte_for_byte(self):
         self.configure()
         self.build()
-        before = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
+        before = self.snapshot(data=False)
         self.configure(unlisted=["s2", "k1"])
         self.build()
         self.configure(unlisted=[])
         self.build()
-        after = {k: v for k, v in self.snapshot().items() if not k.endswith("suttas-config.js")}
-        self.assertEqual(before, after)
+        self.assertEqual(before, self.snapshot(data=False))
 
     def test_a_retitled_relisted_article_keeps_its_address(self):
         self.configure(unlisted=["s2"])
@@ -324,48 +348,48 @@ class UnlistingTests(BuildRunTests):
         self.assertIn("/practice/reflections/two.html", self.text("sitemap.xml"))
         self.assertFalse((Path(builder.OUT_DIR) / "two-renamed.html").exists())
 
-    def test_losing_eligibility_still_redirects_and_is_not_unlisting(self):
+    def test_removing_the_file_redirects_and_is_not_unlisting(self):
         self.configure()
         self.build()
         self.suttas[1]["note"] = ""
-        for unlisted in (None, ["s2"]):
-            with self.subTest(unlisted=unlisted):
-                self.configure(unlisted=unlisted)
-                self.build()
-                page = self.page("two")
-                self.assertIn('http-equiv="refresh"', page)
-                self.assertNotIn("Second note.", page)
-                self.assertEqual(page, builder.withdrawn_markup("two", *self.versions()))
+        self.configure()
+        self.build()
+        page = self.page("two")
+        self.assertIn('http-equiv="refresh"', page)
+        self.assertNotIn("Second note.", page)
+        self.assertEqual(page, builder.withdrawn_markup("two", *self.versions()))
 
     def versions(self):
         archive = self.text("practice/reflections.html")
         return tuple(re.search(pattern, archive).group(1) for pattern in
                      (r"css/notebook\.css\?v=(\d+)", r"css/base\.css\?v=(\d+)", r"js/menu\.js\?v=(\d+)"))
 
-    def test_an_invalid_declaration_is_refused_by_name(self):
-        cases = {
-            "const MANAGER_WITHDRAWN_REFLECTIONS = [\"s2\";": "could not be read",
-            "const MANAGER_WITHDRAWN_REFLECTIONS = {\"s2\": true};": "array of Reflection id strings",
-            "const MANAGER_WITHDRAWN_REFLECTIONS = [2];": "array of Reflection id strings",
-            "const MANAGER_WITHDRAWN_REFLECTIONS = [\"s2\", \"s2\"];": "more than once: s2",
-            "const MANAGER_WITHDRAWN_REFLECTIONS = [\"nope\"];": "no Reflection with that id: nope",
-        }
-        for raw, message in cases.items():
-            with self.subTest(raw=raw):
-                self.configure(raw=raw)
+    def test_an_invalid_unlisting_is_refused_by_name(self):
+        cases = {("s2", "s2"): "twice", ("nope",): "unlists nope", ("q1",): "unlists q1"}
+        for unlisted, message in cases.items():
+            with self.subTest(unlisted=unlisted):
+                self.configure(unlisted=list(unlisted))
                 before = self.snapshot()
                 with self.assertRaises(SystemExit) as caught:
                     self.build()
-                self.assertIn("MANAGER_WITHDRAWN_REFLECTIONS", str(caught.exception))
                 self.assertIn(message, str(caught.exception))
                 self.assertEqual(before, self.snapshot())
+
+    def test_a_reflection_missing_from_the_sequence_is_refused(self):
+        self.configure()
+        sections = json.loads(self.text("practice/data/reflections/sections.json"))
+        sections["sequence"].remove("k1")
+        sitedata.write_json(str(self.data / "sections.json"), sections)
+        with self.assertRaises(SystemExit) as caught:
+            self.build()
+        self.assertIn("k1 is not in the sequence", str(caught.exception))
 
     def test_a_second_build_changes_no_bytes(self):
         self.suttas.append({"id": "k2", "book": "kept", "title": "Fresh One", "ref": "AN 6.6", "note": "New.", "added": "2026-05-01"})
         self.configure(unlisted=["s2"])
         self.build()
         first = self.snapshot()
-        self.assertIn('slug: "fresh-one"', self.text("practice/js/suttas-config.js"))
+        self.assertIn('slug: "fresh-one"', self.text("practice/data/reflections/k2.md"))
         self.build()
         self.assertEqual(first, self.snapshot())
 
@@ -379,11 +403,36 @@ class UnlistingTests(BuildRunTests):
                 self.assertNotIn("Next", text)
 
 
+class MarkdownTests(unittest.TestCase):
+    """The writing desk's three marks, and nothing else, become HTML."""
+
+    def test_italic_link_and_quote(self):
+        out = sitedata.render_text("A *word* and [a page](https://suttacentral.net/sn1.1) and [here](../note.html).\n\n> Quoted.")
+        self.assertEqual(out[0], ("p", 'A <em>word</em> and <a href="https://suttacentral.net/sn1.1" target="_blank" rel="noopener">a page</a> and <a href="../note.html">here</a>.'))
+        self.assertEqual(out[1], ("quote", "Quoted."))
+
+    def test_a_single_line_break_stays_inside_its_paragraph(self):
+        self.assertEqual(len(sitedata.render_text("One line\nand the next.")), 1)
+
+    def test_markup_typed_as_text_is_shown_as_text(self):
+        self.assertEqual(sitedata.render_text("1 < 2 & <b>bold</b>")[0][1], "1 &lt; 2 &amp; &lt;b&gt;bold&lt;/b&gt;")
+
+    def test_the_file_round_trips(self):
+        details = {"id": "x", "title": "A \"title\"", "excerpt": "Line one\nline two", "added": "2026-01-01"}
+        body = "Text,  with odd  spacing.\n\nAnd a trailing space. \n"
+        self.assertEqual(sitedata.parse_reflection(sitedata.dump_reflection(details, body)), (details, body))
+
+    def test_a_quote_paragraph_is_written_as_a_quotation_on_the_page(self):
+        markup = builder.note_markup({"note": "Mine.\n\n> Theirs."}, "")
+        self.assertIn('<p class="reflection-note">Mine.</p>', markup)
+        self.assertIn('<blockquote class="reflections-excerpt">Theirs.</blockquote>', markup)
+
+
 class QuotationExemptionTests(unittest.TestCase):
     """STYLE.md exempts verbatim quotation from the punctuation rule.
 
     A generated Reflection page renders the `excerpt` field, which is already
-    exempt in the config, into a blockquote. If the page check did not follow
+    exempt in the data, into a blockquote. If the page check did not follow
     the exemption, publishing a translation that uses an em dash would fail
     the build and the only fix would be to misquote it.
     """
@@ -402,7 +451,7 @@ class QuotationExemptionTests(unittest.TestCase):
         self.assertTrue(any(token in value for value in text for token in validator.FORBIDDEN))
 
     def test_the_exemption_closes_with_the_blockquote(self):
-        text = self.visible('<blockquote>quoted\u2014fine</blockquote><p>Ours\u2014and wrong.</p>')
+        text = self.visible('<blockquote>quoted—fine</blockquote><p>Ours—and wrong.</p>')
         self.assertTrue(any(token in value for value in text for token in validator.FORBIDDEN))
 
 

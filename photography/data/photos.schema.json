@@ -1,0 +1,18 @@
+{
+  "description": "The master collection of photographs. Each has a stable id that never changes and is never given to another photograph, even after it is removed (sheets.json 'retired'). src is the web copy under photography/ (sRGB JPEG, about 2560 px on the long edge); w and h are its real size; alt is approved alt text; added is the date it reached the site. color is kept for the old folio scripts; the room reads tone from photo-meta.json. The file order decides no public order.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "src", "w", "h", "color", "alt", "added"],
+    "additionalProperties": false,
+    "properties": {
+      "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+      "src": {"type": "string", "pattern": "^photos/[A-Za-z0-9_./-]+\\.jpe?g$"},
+      "w": {"type": "integer"},
+      "h": {"type": "integer"},
+      "color": {"type": "boolean"},
+      "alt": {"type": "string", "minLength": 1, "pattern": "\\S"},
+      "added": {"type": "string", "format": "date"}
+    }
+  }
+}

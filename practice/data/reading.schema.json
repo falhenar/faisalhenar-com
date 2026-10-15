@@ -1,0 +1,49 @@
+{
+  "description": "The Reading room (practice/reading.html, rendered by practice/js/notebook/render-room-data.js). Shelves in the order they appear; each book once. descriptionStyle: 'note' for a short note about the book, 'reflection' for a personal reflection. meta is the small print. Every collection id must have a matching data-list target on the page; tools/validate-site.py checks that too.",
+  "type": "object",
+  "required": ["version", "updated", "collections"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "updated": {
+      "type": "object",
+      "required": ["datetime", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "datetime": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$"},
+        "label": {"type": "string", "minLength": 1}
+      }
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "kind", "books"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "title": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "title", "author", "url", "description", "meta", "descriptionStyle"],
+              "additionalProperties": false,
+              "properties": {
+                "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+                "title": {"type": "string", "minLength": 1, "pattern": "\\S"},
+                "author": {"type": "string", "minLength": 1, "pattern": "\\S"},
+                "url": {"type": "string", "pattern": "^(https?://.+)?$"},
+                "description": {"type": "string"},
+                "meta": {"type": "string"},
+                "descriptionStyle": {"enum": ["note", "reflection"]},
+                "wide": {"type": "boolean"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

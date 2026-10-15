@@ -25,12 +25,6 @@ class WebsiteValidatorTests(unittest.TestCase):
         self.assertTrue(report["valid"], report["issues"])
         self.assertEqual(before, after)
 
-    def test_javascript_data_is_parsed_without_execution(self):
-        with self.assertRaisesRegex(ValueError, "Unsupported value"):
-            validator.declaration("const ITEMS = process.exit(1);", "ITEMS")
-        with self.assertRaisesRegex(ValueError, "Unsafe"):
-            validator.declaration('const ITEMS = {__proto__: {polluted: true}};', "ITEMS")
-
     def test_malformed_json_is_reported_not_raised(self):
         original = validator.ROOT
         with tempfile.TemporaryDirectory() as temporary:
@@ -43,10 +37,6 @@ class WebsiteValidatorTests(unittest.TestCase):
                 validator.ROOT = original
         self.assertIsNone(result)
         self.assertEqual(issues[0]["code"], "malformed-json")
-
-    def test_malformed_javascript_data_raises(self):
-        with self.assertRaises(ValueError):
-            validator.declaration("const ITEMS = [1, 2,", "ITEMS")
 
     def test_local_path_cannot_leave_site_root(self):
         original = validator.ROOT
@@ -116,6 +106,12 @@ class WebsiteValidatorTests(unittest.TestCase):
         self.assertLessEqual({"wall", "contact sheets", "Everything", "photograph pages", "image files"}, set(declarations["photography"]["effects"]))
         self.assertIn("Reading room", declarations["reading"]["effects"])
         self.assertIn("Talks room", declarations["talks"]["effects"])
+        self.assertIn("structured data", declarations["places"]["effects"])
+
+    def test_every_data_file_has_a_schema_beside_it(self):
+        for relative, _area, _dependency in validator.SCHEMA_FILES:
+            with self.subTest(relative=relative):
+                self.assertTrue((validator.ROOT / relative.replace(".json", ".schema.json")).is_file())
 
 
 
@@ -249,18 +245,13 @@ class ReflectionPageStateTests(unittest.TestCase):
     NOINDEX = '<meta name="robots" content="noindex, follow">'
     REDIRECT = NOINDEX + '<meta http-equiv="refresh" content="0; url=../reflections.html">'
     SUTTAS = [{"id": "a", "slug": "alpha", "note": "Note.", "added": "2026-01-01"},
-              {"id": "b", "slug": "beta", "note": "Note.", "added": "2026-02-01"},
-              {"id": "c", "slug": "gamma", "note": "", "added": ""}]
+              {"id": "b", "slug": "beta", "note": "Note.", "added": "2026-02-01"}]
 
-    def issues(self, pages, archived, unlisted=None):
+    def issues(self, pages, archived, unlisted=()):
         original = validator.ROOT
         with tempfile.TemporaryDirectory() as temporary:
             validator.ROOT = Path(temporary)
-            (validator.ROOT / "practice" / "js").mkdir(parents=True)
-            config = "const SUTTAS = [];\n"
-            if unlisted is not None:
-                config += "const MANAGER_WITHDRAWN_REFLECTIONS = " + json.dumps(unlisted) + ";\n"
-            (validator.ROOT / "practice" / "js" / "suttas-config.js").write_text(config, encoding="utf-8")
+            (validator.ROOT / "practice").mkdir(parents=True)
             (validator.ROOT / "practice" / "reflections.html").write_text(
                 "".join(f'<a href="reflections/{slug}.html">' for slug in archived), encoding="utf-8")
             parsed = {}
@@ -269,7 +260,7 @@ class ReflectionPageStateTests(unittest.TestCase):
                 parsed[f"practice/reflections/{slug}.html"] = page
             issues = []
             try:
-                validator.validate_reflection_pages(issues, self.SUTTAS, parsed)
+                validator.validate_reflection_pages(issues, self.SUTTAS, list(unlisted), parsed)
             finally:
                 validator.ROOT = original
         return sorted(item["path"] for item in issues)
@@ -278,11 +269,11 @@ class ReflectionPageStateTests(unittest.TestCase):
         pages = {"alpha": self.ARTICLE, "beta": self.NOINDEX + self.ARTICLE, "gamma": self.REDIRECT}
         self.assertEqual(self.issues(pages, ["alpha"], unlisted=["b"]), [])
 
-    def test_no_declaration_means_every_published_page_is_listed(self):
+    def test_nothing_unlisted_means_every_published_page_is_listed(self):
         self.assertEqual(self.issues({"alpha": self.ARTICLE, "beta": self.ARTICLE}, ["alpha", "beta"]), [])
 
     def test_a_stale_build_is_reported_page_by_page(self):
-        # beta is unlisted in the config but the pages and archive were not rebuilt.
+        # beta is unlisted in the data but the pages and archive were not rebuilt.
         self.assertEqual(self.issues({"alpha": self.ARTICLE, "beta": self.ARTICLE}, ["alpha", "beta"], unlisted=["b"]),
                          ["practice/reflections/beta.html"])
         # An unlisted article must not be a redirect: that is unpublishing.
@@ -292,10 +283,73 @@ class ReflectionPageStateTests(unittest.TestCase):
         self.assertEqual(self.issues({"alpha": self.NOINDEX + self.ARTICLE}, ["alpha"]),
                          ["practice/reflections/alpha.html", "practice/reflections/beta.html"])
 
-    def test_an_invalid_declaration_is_reported(self):
-        for unlisted in (["b", "b"], ["nope"], [1]):
-            with self.subTest(unlisted=unlisted):
-                self.assertEqual(self.issues({}, [], unlisted=unlisted), ["practice/js/suttas-config.js"])
+
+class ReflectionDataTests(unittest.TestCase):
+    """The Reflection files themselves: details, text, sections."""
+
+    def issues(self, files, unlisted=()):
+        original = validator.ROOT
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            folder = validator.ROOT / "practice" / "data" / "reflections"
+            folder.mkdir(parents=True)
+            schema = original / "practice" / "data" / "reflections" / "reflection.schema.json"
+            (folder / "reflection.schema.json").write_text(schema.read_text(encoding="utf-8"), encoding="utf-8")
+            (folder / "sections.json").write_text(json.dumps({
+                "version": 1, "sections": [{"id": "s", "title": "S", "note": "", "order": "chronological"}],
+                "sequence": [name[:-3] for name in files], "unlisted": list(unlisted)}), encoding="utf-8")
+            for name, text in files.items():
+                (folder / name).write_text(text, encoding="utf-8")
+            issues = []
+            try:
+                validator.read_reflections(issues, validator._load_sitedata())
+            finally:
+                validator.ROOT = original
+        return sorted((item["path"], item["code"]) for item in issues)
+
+    GOOD = '---\nid: "a"\nbook: "s"\ntitle: "A"\nadded: "2026-01-01"\n---\nText.\n'
+
+    def test_a_good_file_passes(self):
+        self.assertEqual(self.issues({"a.md": self.GOOD}), [])
+
+    def test_a_broken_file_is_reported_by_name(self):
+        self.assertEqual(self.issues({"a.md": "no details"}), [("practice/data/reflections/a.md", "reflection-schema")])
+        self.assertIn(("practice/data/reflections/a.md", "reflection-schema"),
+                      self.issues({"a.md": self.GOOD.replace('added: "2026-01-01"', 'added: "1 January"')}))
+
+    def test_an_em_dash_in_the_text_is_caught_and_in_the_excerpt_is_not(self):
+        dashed = self.GOOD.replace("Text.", "Text \u2014 here.")
+        self.assertIn(("practice/data/reflections/a.md", "visible-copy-punctuation"), self.issues({"a.md": dashed}))
+        quoted = self.GOOD.replace('title: "A"', 'title: "A"\nexcerpt: "old\u2014"')
+        self.assertEqual(self.issues({"a.md": quoted}), [])
+
+    def test_unlisting_something_unpublished_is_reported(self):
+        self.assertEqual(self.issues({"a.md": self.GOOD}, unlisted=["nope"]),
+                         [("practice/data/reflections/sections.json", "reflection-schema")])
+
+
+class SchemaTests(unittest.TestCase):
+    """The schema reader shared by the validator, the builders and the Website Manager."""
+
+    def setUp(self):
+        self.sitedata = validator._load_sitedata()
+
+    def test_problems_are_named_in_plain_words(self):
+        schema = {"type": "object", "required": ["text"], "additionalProperties": False,
+                  "properties": {"text": {"type": "string", "minLength": 1}, "themes": {"type": "array", "uniqueItems": True}}}
+        self.assertEqual(self.sitedata.check({"text": "x"}, schema), [])
+        problems = self.sitedata.check({"themes": ["a", "a"], "extra": 1}, schema)
+        self.assertEqual(len(problems), 3)
+        self.assertTrue(any("missing 'text'" in p for p in problems))
+        self.assertTrue(any("twice" in p for p in problems))
+        self.assertTrue(any("not allowed" in p for p in problems))
+
+    def test_refs_dates_and_links(self):
+        schema = {"$defs": {"d": {"type": "string", "format": "date"}}, "type": "array", "items": {"$ref": "#/$defs/d"}}
+        self.assertEqual(self.sitedata.check(["2026-01-31"], schema), [])
+        self.assertEqual(len(self.sitedata.check(["2026-02-31", "31 January"], schema)), 2)
+        self.assertEqual(self.sitedata.check("https://faisalhenar.com/", {"format": "https"}), [])
+        self.assertEqual(len(self.sitedata.check("http://faisalhenar.com/", {"format": "https"})), 1)
 
 
 if __name__ == "__main__":

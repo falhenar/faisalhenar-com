@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "passages": [
+    {
+      "id": "itbw-1-3-2",
+      "book": "itbw",
+      "part": "I",
+      "section": "A World in Turmoil",
+      "label": "I.3(2)",
+      "title": "Why Do Beings Live in Hate?",
+      "ref": "from DN 21",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/dn21/en/sujato#sc51--59"
+    },
+    {
+      "id": "itbw-1-3-3",
+      "book": "itbw",
+      "part": "I",
+      "section": "A World in Turmoil",
+      "label": "I.3(3)",
+      "title": "The Dark Chain of Causation",
+      "ref": "from DN 15",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/dn15/en/sujato#sc17"
+    },
+    {
+      "id": "itbw-1-3-4",
+      "book": "itbw",
+      "part": "I",
+      "section": "A World in Turmoil",
+      "label": "I.3(4)",
+      "title": "The Roots of Violence and Oppression",
+      "ref": "from AN 3.69",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an3.69/en/sujato#sc2--4"
+    },
+    {
+      "id": "itbw-1-4-1",
+      "book": "itbw",
+      "part": "I",
+      "section": "Without Discoverable Beginning",
+      "label": "I.4(1)",
+      "title": "Grass and Sticks",
+      "ref": "SN 15.1",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn15.1/en/sujato"
+    },
+    {
+      "id": "itbw-1-4-2",
+      "book": "itbw",
+      "part": "I",
+      "section": "Without Discoverable Beginning",
+      "label": "I.4(2)",
+      "title": "Balls of Clay",
+      "ref": "SN 15.2",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn15.2/en/sujato"
+    },
+    {
+      "id": "itbw-1-4-3",
+      "book": "itbw",
+      "part": "I",
+      "section": "Without Discoverable Beginning",
+      "label": "I.4(3)",
+      "title": "The Mountain",
+      "ref": "SN 15.5",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn15.5/en/sujato"
+    },
+    {
+      "id": "itbw-1-4-4",
+      "book": "itbw",
+      "part": "I",
+      "section": "Without Discoverable Beginning",
+      "label": "I.4(4)",
+      "title": "The River Ganges",
+      "ref": "SN 15.8",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn15.8/en/sujato"
+    },
+    {
+      "id": "itbw-1-4-5",
+      "book": "itbw",
+      "part": "I",
+      "section": "Without Discoverable Beginning",
+      "label": "I.4(5)",
+      "title": "Dog on a Leash",
+      "ref": "SN 22.99",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn22.99/en/sujato"
+    }
+  ]
+}

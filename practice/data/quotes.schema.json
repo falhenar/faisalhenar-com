@@ -1,0 +1,26 @@
+{
+  "description": "The quote on the wall card of the Practice hub: one per visit, walked in a shuffled cycle (practice/js/render-quotes.js). Every quote needs a source someone can check: no source, no quote. text is verbatim from the source. verification is the link the wording was checked against; comment is a note kept with it. sourcing holds the notes on translators and sources for the whole collection.",
+  "type": "object",
+  "required": ["version", "sourcing", "quotes"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "sourcing": {"type": "array", "items": {"type": "string"}},
+    "quotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "author", "source", "themes"],
+        "additionalProperties": false,
+        "properties": {
+          "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+          "author": {"type": "string", "minLength": 1, "pattern": "\\S"},
+          "source": {"type": "string", "minLength": 1, "pattern": "\\S"},
+          "themes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z]+(?:-[a-z]+)*$"}},
+          "verification": {"type": "string", "pattern": "^https?://"},
+          "comment": {"type": "string"}
+        }
+      }
+    }
+  }
+}

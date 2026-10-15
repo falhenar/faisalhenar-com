@@ -1,0 +1,27 @@
+{
+  "description": "The details at the top of a Reflection's file, practice/data/reflections/<id>.md. The text below them is FH's, in the writing desk's Markdown (tools/sitedata.py). slug fixes the page's address for good and is written by tools/build-reflections.py the first time. summary, if given, replaces the opening of the text in search results and shared links. origin names the Curator passage a Reflection began from.",
+  "type": "object",
+  "required": ["id", "book", "title", "added"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "book": {"type": "string", "minLength": 1},
+    "part": {"type": "string"},
+    "section": {"type": "string"},
+    "label": {"type": "string"},
+    "title": {"type": "string", "minLength": 1},
+    "ref": {"type": "string"},
+    "suttaTitle": {"type": "string"},
+    "translator": {"type": "string"},
+    "url": {"type": "string", "format": "https"},
+    "sourceTitle": {"type": "string"},
+    "sourceAuthor": {"type": "string"},
+    "sourceLocation": {"type": "string"},
+    "sourceUrl": {"type": "string", "format": "https"},
+    "excerpt": {"type": "string"},
+    "added": {"type": "string", "format": "date"},
+    "summary": {"type": "string", "minLength": 1, "maxLength": 300},
+    "origin": {"type": "string", "pattern": "^curator:[0-9a-f-]{36}$"}
+  }
+}

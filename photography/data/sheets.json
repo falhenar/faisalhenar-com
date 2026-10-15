@@ -149,6 +149,19 @@
    ]
   },
   {
+   "id": "between-walks-2026-08",
+   "title": "Between walks, August 2026",
+   "line": "",
+   "kind": "between",
+   "places": [
+    "Paramaribo"
+   ],
+   "frames": [
+    "fh-0007"
+   ],
+   "circled": []
+  },
+  {
    "id": "2026-08-09-ingi-dei",
    "title": "9 August, Ingi dei",
    "line": "",
@@ -248,6 +261,23 @@
     "fh-0090",
     "fh-0091",
     "vn-04"
+   ]
+  },
+  {
+   "id": "between-walks-2026-06",
+   "title": "Between walks, June 2026",
+   "line": "",
+   "kind": "between",
+   "places": [
+    "Khánh Sơn",
+    "Cam Ranh"
+   ],
+   "frames": [
+    "vn-02",
+    "vc-05"
+   ],
+   "circled": [
+    "vc-05"
    ]
   },
   {
@@ -374,25 +404,12 @@
    "circled": [
     "fh-0040"
    ]
-  },
-  {
-   "id": "loose",
-   "title": "Loose frames",
-   "line": "",
-   "kind": "loose",
-   "places": [
-    "Paramaribo",
-    "Khánh Sơn",
-    "Cam Ranh"
-   ],
-   "frames": [
-    "fh-0007",
-    "vn-02",
-    "vc-05"
-   ],
-   "circled": [
-    "vc-05"
-   ]
   }
- ]
+ ],
+ "retired": {
+  "sheets": {
+   "loose": "split into one between-walks sheet per month, October 2026"
+  },
+  "photos": {}
+ }
 }

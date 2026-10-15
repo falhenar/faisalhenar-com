@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 from collections import defaultdict
 from datetime import date
 from html.parser import HTMLParser
@@ -19,19 +20,46 @@ ROOT = Path(__file__).resolve().parent.parent
 ORIGIN = "https://faisalhenar.com"
 FORBIDDEN = ("\u2014", "\u2015", "&mdash;", "&#8212;", "&#x2014;")
 ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-IDENTIFIER = re.compile(r"[A-Za-z_$][A-Za-z0-9_$]*")
-NUMBER = re.compile(r"-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?")
-UNSAFE_KEYS = {"__proto__", "prototype", "constructor"}
 
 DEPENDENCIES = (
-    {"id": "reflections", "label": "Reflections", "sources": ("practice/js/suttas-config.js",), "consumers": ("practice/reflections.html", "tools/build-reflections.py", "practice/index.html", "practice/js/notebook/hub.js", "practice/js/daily-sutta-config.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
-    {"id": "quotes", "label": "Quotes", "sources": ("practice/js/quotes-config.js",), "consumers": ("practice/index.html", "practice/js/render-quotes.js"), "effects": ("Practice quote",)},
-    {"id": "daily-sutta", "label": "Daily Sutta", "sources": ("practice/js/daily-sutta-config.js", "practice/js/suttas-config.js"), "consumers": ("practice/index.html", "practice/js/render-daily-sutta.js"), "effects": ("daily rotation", "matching published Reflection link")},
+    {"id": "reflections", "label": "Reflections", "sources": ("practice/data/reflections/",), "consumers": ("practice/reflections.html", "practice/reflections/", "tools/build-reflections.py", "tools/sitedata.py", "practice/index.html", "practice/js/notebook/hub.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
+    {"id": "quotes", "label": "Quotes", "sources": ("practice/data/quotes.json",), "consumers": ("practice/index.html", "practice/js/render-quotes.js"), "effects": ("Practice quote",)},
+    {"id": "daily-sutta", "label": "Daily Sutta", "sources": ("practice/data/daily-sutta.json", "practice/data/reflections/published.json"), "consumers": ("practice/index.html", "practice/js/render-daily-sutta.js"), "effects": ("daily rotation", "matching published Reflection link")},
     {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js"), "effects": ("Reading room", "hub count")},
     {"id": "talks", "label": "Talks", "sources": ("practice/data/talks.json",), "consumers": ("practice/talks.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js", "practice/listening.html", "practice/watching.html", "practice/js/notebook/redirect-talks.js"), "effects": ("Talks room", "hub count", "old Listening and Watching links")},
-    {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/sheets/", "photography/everything/", "photography/p/", "photography/room-assets/", "photography/photos/"), "effects": ("wall", "contact sheets", "Everything", "photograph pages", "image files")},
-    {"id": "language-pairs", "label": "English and Dutch pages", "sources": ("practice/data/nl-mirrors.json",), "consumers": ("practice/*-nl.html", "practice/*.html"), "effects": ("reciprocal hreflang", "translation drift review")},
+    {"id": "places", "label": "Places & Community", "sources": ("practice/data/places.json",), "consumers": ("practice/places.html", "practice/places-nl.html", "tools/build-places.py", "practice/js/notebook/hub.js"), "effects": ("Places room in English and Dutch", "structured data", "hub spread")},
+    {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/sheets.json", "photography/data/walls.json", "photography/data/photo-meta.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/sheets/", "photography/everything/", "photography/p/", "photography/room-assets/", "photography/photos/", "tools/build-photography.py"), "effects": ("wall", "contact sheets", "Everything", "photograph pages", "image files")},
+    {"id": "language-pairs", "label": "English and Dutch pages", "sources": ("practice/data/nl-mirrors.json", "practice/data/places.json"), "consumers": ("practice/*-nl.html", "practice/*.html"), "effects": ("reciprocal hreflang", "translation drift review")},
 )
+
+# Data files checked against the schema beside them (<name>.schema.json),
+# with the dependency each belongs to. tools/sitedata.py reads the schemas;
+# the Website Manager reads the same ones, so the two can never disagree.
+SCHEMA_FILES = (
+    ("practice/data/daily-sutta.json", "Daily Sutta", "daily-sutta"),
+    ("practice/data/quotes.json", "Quotes", "quotes"),
+    ("practice/data/places.json", "Places & Community", "places"),
+    ("practice/data/reading.json", "Reading", "reading"),
+    ("practice/data/talks.json", "Talks", "talks"),
+    ("practice/data/reflections/sections.json", "Reflections", "reflections"),
+    ("practice/data/reflections/queue.json", "Reflections", "reflections"),
+    ("practice/data/reflections/published.json", "Reflections", "reflections"),
+    ("photography/data/photos.json", "Photography", "photography"),
+    ("photography/data/sheets.json", "Photography", "photography"),
+    ("photography/data/walls.json", "Photography", "photography"),
+    ("photography/data/photo-meta.json", "Photography", "photography"),
+)
+
+# English pages whose Dutch mirror is written from data rather than kept by
+# hand, so they are not in nl-mirrors.json; their hreflang is still checked.
+GENERATED_PAIRS = ({"source": "practice/places.html", "mirror": "practice/places-nl.html"},)
+
+
+def _load_sitedata():
+    spec = importlib.util.spec_from_file_location("sitedata_for_validator", Path(__file__).resolve().parent / "sitedata.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def issue(code, area, path, message, dependencies=()):
@@ -69,119 +97,6 @@ class Page(HTMLParser):
     def handle_data(self, data):
         if self.ld: self.ld_parts.append(data)
         elif not self.hidden and data.strip(): self.visible.append(data)
-
-
-class DataParser:
-    """Parse a strict JavaScript data literal. No JavaScript is executed."""
-    def __init__(self, text, at): self.text, self.at, self.depth = text, at, 0
-    def fail(self, message): raise ValueError(f"{message} at character {self.at}")
-    def skip(self):
-        while self.at < len(self.text):
-            if self.text[self.at].isspace(): self.at += 1; continue
-            if self.text.startswith("//", self.at):
-                end = self.text.find("\n", self.at + 2); self.at = len(self.text) if end < 0 else end + 1; continue
-            if self.text.startswith("/*", self.at):
-                end = self.text.find("*/", self.at + 2)
-                if end < 0: self.fail("Unclosed comment")
-                self.at = end + 2; continue
-            break
-    def string(self):
-        start = self.at; self.at += 1; escaped = False
-        while self.at < len(self.text):
-            char = self.text[self.at]; self.at += 1
-            if escaped: escaped = False
-            elif char == "\\": escaped = True
-            elif char == '"': return json.loads(self.text[start:self.at])
-            elif char in "\r\n": self.fail("Unescaped line break")
-        self.fail("Unclosed string")
-    def value(self):
-        self.skip()
-        if self.at >= len(self.text): self.fail("Expected value")
-        char = self.text[self.at]
-        if char == '"': return self.string()
-        if char == "[": return self.array()
-        if char == "{": return self.object()
-        for literal, value in (("true", True), ("false", False), ("null", None)):
-            if self.text.startswith(literal, self.at): self.at += len(literal); return value
-        match = NUMBER.match(self.text, self.at)
-        if match:
-            self.at = match.end(); raw = match.group(0); return float(raw) if any(c in raw for c in ".eE") else int(raw)
-        self.fail("Unsupported value")
-    def enter(self):
-        self.depth += 1
-        if self.depth > 50: self.fail("Data nested too deeply")
-    def array(self):
-        self.enter(); output = []; self.at += 1; self.skip()
-        while self.at < len(self.text) and self.text[self.at] != "]":
-            output.append(self.value()); self.skip()
-            if self.text[self.at] == "]": break
-            if self.text[self.at] != ",": self.fail("Expected comma")
-            self.at += 1; self.skip()
-        if self.at >= len(self.text): self.fail("Unclosed array")
-        self.at += 1; self.depth -= 1; return output
-    def object(self):
-        self.enter(); output = {}; self.at += 1; self.skip()
-        while self.at < len(self.text) and self.text[self.at] != "}":
-            if self.text[self.at] == '"': key = self.string()
-            else:
-                match = IDENTIFIER.match(self.text, self.at)
-                if not match: self.fail("Expected property")
-                key = match.group(0); self.at = match.end()
-            if key in UNSAFE_KEYS or key in output: self.fail("Unsafe or duplicate property")
-            self.skip()
-            if self.at >= len(self.text) or self.text[self.at] != ":": self.fail("Expected colon")
-            self.at += 1; output[key] = self.value(); self.skip()
-            if self.text[self.at] == "}": break
-            if self.text[self.at] != ",": self.fail("Expected comma")
-            self.at += 1; self.skip()
-        if self.at >= len(self.text): self.fail("Unclosed object")
-        self.at += 1; self.depth -= 1; return output
-
-
-def declaration(text, name):
-    pattern = re.compile(rf"\bconst\s+{re.escape(name)}\s*=\s*")
-    matches, at = [], 0
-    while at < len(text):
-        if text.startswith("//", at):
-            end = text.find("\n", at + 2); at = len(text) if end < 0 else end + 1; continue
-        if text.startswith("/*", at):
-            end = text.find("*/", at + 2)
-            if end < 0: raise ValueError("Unclosed comment")
-            at = end + 2; continue
-        if text[at] in "'\"`":
-            quote = text[at]; at += 1; escaped = False
-            while at < len(text):
-                char = text[at]; at += 1
-                if escaped: escaped = False
-                elif char == "\\": escaped = True
-                elif char == quote: break
-            continue
-        match = pattern.match(text, at)
-        if match: matches.append(match.end()); at = match.end(); continue
-        at += 1
-    if len(matches) != 1: raise ValueError(f"Expected one const {name} declaration")
-    parser = DataParser(text, matches[0]); value = parser.value(); parser.skip()
-    if parser.at >= len(text) or text[parser.at] != ";": raise ValueError(f"{name} must end after one data value")
-    return value
-
-
-def javascript_strings(text):
-    """Yield string literal text while skipping JavaScript comments."""
-    at = 0
-    while at < len(text):
-        if text.startswith("//", at):
-            end = text.find("\n", at + 2); at = len(text) if end < 0 else end + 1; continue
-        if text.startswith("/*", at):
-            end = text.find("*/", at + 2); at = len(text) if end < 0 else end + 2; continue
-        if text[at] not in "'\"`": at += 1; continue
-        quote = text[at]; at += 1; output = []; escaped = False
-        while at < len(text):
-            char = text[at]; at += 1
-            if escaped: output.append(char); escaped = False
-            elif char == "\\": escaped = True
-            elif char == quote: break
-            else: output.append(char)
-        yield "".join(output)
 
 
 def read_json(relative, issues, area):
@@ -357,25 +272,57 @@ def validate_pages(issues):
     return pages, parsed, versions
 
 
-def validate_reflection_pages(issues, suttas, parsed_pages):
+def read_reflections(issues, sitedata):
+    """(published entries, unlisted ids) from practice/data/reflections/, or
+    None if the files cannot be read. Each entry is its details plus `note`,
+    the text."""
+    folder, area = "practice/data/reflections", ("reflections",)
+    try:
+        sections = json.loads((ROOT / folder / "sections.json").read_text(encoding="utf-8"))
+        schema = json.loads((ROOT / folder / "reflection.schema.json").read_text(encoding="utf-8"))
+    except Exception as exc:
+        issues.append(issue("reflection-schema", "Reflections", folder, f"The Reflections data could not be read: {exc}", area)); return None
+    entries = []
+    for path in sorted((ROOT / folder).glob("*.md")):
+        relative = path.relative_to(ROOT).as_posix()
+        try: details, body = sitedata.parse_reflection(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc: issues.append(issue("reflection-schema", "Reflections", relative, f"Not a Reflection file: {exc}.", area)); continue
+        for problem in sitedata.check(details, schema): issues.append(issue("reflection-schema", "Reflections", relative, problem, area))
+        if details.get("id") != path.stem: issues.append(issue("reflection-schema", "Reflections", relative, "The id must be the name of the file.", area))
+        if not body.strip(): issues.append(issue("reflection-schema", "Reflections", relative, "A published Reflection needs its text.", area))
+        for key, value in details.items():
+            if key != "excerpt" and isinstance(value, str) and any(token.lower() in value.lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", relative, f"The {key} contains forbidden punctuation.", area)); break
+        own = "\n".join(line for line in body.split("\n") if not line.startswith(">"))  # a "> " quotation is not ours
+        if any(token.lower() in own.lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", relative, "The text contains forbidden punctuation.", area))
+        entries.append(dict(details, note=body))
+    sequence = sections.get("sequence", []) if isinstance(sections, dict) else []
+    sections_ids = {s.get("id") for s in sections.get("sections", [])} if isinstance(sections, dict) else set()
+    for entry in entries:
+        if entry.get("id") not in sequence: issues.append(issue("reflection-schema", "Reflections", f"{folder}/sections.json", f"{entry.get('id')} is not in the sequence.", area))
+        if entry.get("book") not in sections_ids: issues.append(issue("reflection-schema", "Reflections", f"{folder}/{entry.get('id')}.md", f"Unknown section {entry.get('book')!r}.", area))
+    hidden = sections.get("unlisted", []) if isinstance(sections, dict) else []
+    if not isinstance(hidden, list) or set(hidden) - {e.get("id") for e in entries}:
+        issues.append(issue("reflection-schema", "Reflections", f"{folder}/sections.json", "unlisted must name published Reflections only.", area)); hidden = []
+    return entries, hidden
+
+
+def validate_reflection_pages(issues, suttas, hidden, parsed_pages):
     """Every page under practice/reflections/ is in exactly one of three states.
 
     Listed: a published entry, a full article, in the archive (and so, by the
     noindex rule, in the sitemap). Unlisted: a published entry named in
-    MANAGER_WITHDRAWN_REFLECTIONS, still a full article at its URL but noindex
+    sections.json "unlisted", still a full article at its URL but noindex
     and absent from the archive. No longer published: a noindex redirect to
     the archive. A page in the wrong state means the builder has not been run
-    since the config changed.
+    since the data changed.
     """
-    relative = "practice/js/suttas-config.js"; area = ("reflections",)
-    try:
-        config = (ROOT / relative).read_text(encoding="utf-8"); archive = (ROOT / "practice/reflections.html").read_text(encoding="utf-8")
-        hidden = declaration(config, "MANAGER_WITHDRAWN_REFLECTIONS") if re.search(r"\bconst\s+MANAGER_WITHDRAWN_REFLECTIONS\b", config) else []
-    except Exception as exc: issues.append(issue("javascript-data", "Reflections", relative, str(exc), area)); return
-    ids = [item.get("id") for item in suttas if isinstance(item, dict)]
-    if not isinstance(hidden, list) or not all(isinstance(i, str) for i in hidden) or len(set(hidden)) != len(hidden) or set(hidden) - set(ids):
-        issues.append(issue("reflection-schema", "Reflections", relative, "MANAGER_WITHDRAWN_REFLECTIONS must list distinct ids of existing Reflections.", area)); return
+    area = ("reflections",)
+    try: archive = (ROOT / "practice/reflections.html").read_text(encoding="utf-8")
+    except OSError as exc: issues.append(issue("reflection-page", "Reflections", "practice/reflections.html", str(exc), area)); return
     published = {item["slug"]: item["id"] for item in suttas if isinstance(item, dict) and isinstance(item.get("slug"), str) and isinstance(item.get("note"), str) and item["note"].strip() and item.get("added")}
+    for item in suttas:
+        if isinstance(item, dict) and item.get("note", "").strip() and not isinstance(item.get("slug"), str):
+            issues.append(issue("reflection-page", "Reflections", f"practice/data/reflections/{item.get('id')}.md", "A published Reflection has no slug yet. Run tools/build-reflections.py.", area))
     pages = {PurePosixPath(page).stem for page in parsed_pages if PurePosixPath(page).parent.as_posix() == "practice/reflections"}
     for slug in sorted(pages | set(published)):
         page = f"practice/reflections/{slug}.html"; parser = parsed_pages.get(page)
@@ -462,45 +409,66 @@ def validate_data(issues, parsed_pages):
                 links = [item[k] for k in ("listen", "watch") if item[k]]
                 if not links or any(urlsplit(u).scheme not in {"http", "https"} for u in links): issues.append(issue("shelf-schema", "Talks", "practice/data/talks.json", f"Source {item['id']} needs a listen or watch link over HTTP(S).", ("talks",)))
         counts["talks"] = total
-    configs = (("QUOTES", "practice/js/quotes-config.js", "Quotes"), ("DAILY_SUTTAS", "practice/js/daily-sutta-config.js", "Daily Sutta"), ("BOOKS", "practice/js/suttas-config.js", "Reflections"), ("SUTTAS", "practice/js/suttas-config.js", "Reflections"))
+    # The content files, each against the schema beside it.
+    try: sitedata = _load_sitedata()
+    except Exception as exc:
+        issues.append(issue("validator-runtime", "Data", "tools/sitedata.py", f"The data reader could not load: {exc}")); return counts
     values = {}
-    for name, relative, area in configs:
-        try: values[name] = declaration((ROOT / relative).read_text(encoding="utf-8"), name)
-        except Exception as exc: issues.append(issue("javascript-data", area, relative, str(exc), ("reflections" if name in {"BOOKS", "SUTTAS"} else "daily-sutta" if name == "DAILY_SUTTAS" else "quotes",)))
-    if isinstance(values.get("QUOTES"), list): counts["quotes"] = len(values["QUOTES"])
-    if isinstance(values.get("DAILY_SUTTAS"), list): counts["daily_suttas"] = len(values["DAILY_SUTTAS"])
-    if isinstance(values.get("SUTTAS"), list): counts["reflections"] = len(values["SUTTAS"])
-    books = values.get("BOOKS", {}); reflection_ids = set()
-    if not isinstance(books, dict): issues.append(issue("reflection-schema", "Reflections", "practice/js/suttas-config.js", "BOOKS must be an object.", ("reflections",)))
-    else:
-        for section_id, section in books.items():
-            if not ID.fullmatch(section_id) or not isinstance(section, dict) or set(section) != {"title", "note", "order"} or section.get("order") not in {"structural", "chronological"} or not isinstance(section.get("title"), str) or not section["title"].strip(): issues.append(issue("reflection-schema", "Reflections", "practice/js/suttas-config.js", f"Section {section_id!r} has an invalid schema.", ("reflections",)))
-    for number, item in enumerate(values.get("SUTTAS", []) if isinstance(values.get("SUTTAS"), list) else [], 1):
-        if not isinstance(item, dict) or not all(key in item for key in ("id", "book", "title", "note", "added")): issues.append(issue("reflection-schema", "Reflections", "practice/js/suttas-config.js", f"Reflection {number} has an invalid schema.", ("reflections",))); continue
-        if item["id"] in reflection_ids or item["book"] not in books: issues.append(issue("reflection-schema", "Reflections", "practice/js/suttas-config.js", f"Reflection {number} has a duplicate id or unknown section.", ("reflections",)))
-        reflection_ids.add(item["id"])
-        for field, value in item.items():
-                if field != "excerpt" and isinstance(value, str) and any(token.lower() in value.lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/js/suttas-config.js", f"Reflection {number} field {field} contains forbidden punctuation.", ("reflections",))); break
-    if isinstance(values.get("SUTTAS"), list): validate_reflection_pages(issues, values["SUTTAS"], parsed_pages)
-    quotes = values.get("QUOTES")
-    if not isinstance(quotes, list): issues.append(issue("javascript-data", "Quotes", "practice/js/quotes-config.js", "QUOTES must be an array.", ("quotes",)))
-    else:
-        for number, item in enumerate(quotes, 1):
-            if not isinstance(item, dict) or not {"text", "author", "source", "themes"}.issubset(item) or not all(isinstance(item.get(field), str) and item[field].strip() for field in ("text", "author", "source")) or not isinstance(item.get("themes"), list) or not all(isinstance(theme, str) and theme for theme in item.get("themes", [])): issues.append(issue("javascript-data", "Quotes", "practice/js/quotes-config.js", f"Quote {number} has an invalid schema.", ("quotes",)))
-            elif any(token.lower() in item["author"].lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/js/quotes-config.js", f"Quote {number} author contains forbidden punctuation.", ("quotes",)))
-    daily = values.get("DAILY_SUTTAS"); daily_ids = set()
-    if not isinstance(daily, list): issues.append(issue("javascript-data", "Daily Sutta", "practice/js/daily-sutta-config.js", "DAILY_SUTTAS must be an array.", ("daily-sutta",)))
-    else:
-        for number, item in enumerate(daily, 1):
-            valid = isinstance(item, dict) and set(item) == {"id", "title", "ref", "translator", "url", "text"} and all(isinstance(item.get(field), str) and item[field].strip() for field in ("id", "title", "ref", "translator", "url", "text")) and re.fullmatch(r"[a-z0-9]+(?:[.-][a-z0-9]+)*", item["id"]) and item["id"] not in daily_ids
-            parsed = urlsplit(item.get("url", "")) if isinstance(item, dict) else None
-            if not valid or parsed.scheme != "https" or parsed.hostname != "suttacentral.net": issues.append(issue("javascript-data", "Daily Sutta", "practice/js/daily-sutta-config.js", f"Daily entry {number} has an invalid schema, URL, or duplicate ID.", ("daily-sutta",)))
-            else:
-                daily_ids.add(item["id"])
-                if any(any(token.lower() in item[field].lower() for token in FORBIDDEN) for field in ("id", "title", "ref", "translator")): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/js/daily-sutta-config.js", f"Daily entry {number} contains forbidden punctuation outside verbatim text.", ("daily-sutta",)))
+    for relative, area, dependency in SCHEMA_FILES:
+        value = read_json(relative, issues, area)
+        if value is None: continue
+        values[relative] = value
+        try: schema = json.loads((ROOT / sitedata.schema_path(relative)).read_text(encoding="utf-8"))
+        except Exception as exc:
+            issues.append(issue("schema", area, sitedata.schema_path(relative), f"The schema could not be read: {exc}", (dependency,))); continue
+        for problem in sitedata.check(value, schema)[:20]:
+            issues.append(issue("schema", area, relative, problem, (dependency,)))
+    # Reflections: the Markdown files, then their pages.
+    reflections = read_reflections(issues, sitedata)
+    if reflections is not None:
+        entries, hidden = reflections
+        counts["reflections"] = len(entries)
+        validate_reflection_pages(issues, entries, hidden, parsed_pages)
+        listed = values.get("practice/data/reflections/published.json")
+        if isinstance(listed, dict):
+            named = {(r.get("id"), r.get("slug")) for r in listed.get("reflections", []) if isinstance(r, dict)}
+            wanted = {(e.get("id"), e.get("slug")) for e in entries if e.get("id") not in hidden}
+            if named != wanted: issues.append(issue("reflection-page", "Reflections", "practice/data/reflections/published.json", "The list of published Reflections is out of date. Run tools/build-reflections.py.", ("reflections", "daily-sutta")))
+    queue = values.get("practice/data/reflections/queue.json")
+    if isinstance(queue, dict): counts["reflections_queued"] = len(queue.get("passages", []))
+    # Quotes and the Daily Sutta: what the schema cannot say.
+    quotes = values.get("practice/data/quotes.json")
+    if isinstance(quotes, dict) and isinstance(quotes.get("quotes"), list):
+        counts["quotes"] = len(quotes["quotes"])
+        for number, item in enumerate(quotes["quotes"], 1):
+            if isinstance(item, dict) and isinstance(item.get("author"), str) and any(token.lower() in item["author"].lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/data/quotes.json", f"Quote {number} author contains forbidden punctuation.", ("quotes",)))
+    daily = values.get("practice/data/daily-sutta.json")
+    if isinstance(daily, dict) and isinstance(daily.get("entries"), list):
+        ids = [item.get("id") for item in daily["entries"] if isinstance(item, dict)]
+        for twice in sorted({i for i in ids if ids.count(i) > 1}): issues.append(issue("schema", "Daily Sutta", "practice/data/daily-sutta.json", f"The id {twice!r} is used twice.", ("daily-sutta",)))
+        rotation = [item for item in daily["entries"] if isinstance(item, dict) and item.get("rotation") == "in_rotation"]
+        counts["daily_suttas"] = len(daily["entries"]); counts["daily_suttas_in_rotation"] = len(rotation)
+        for number, item in enumerate(daily["entries"], 1):
+            if not isinstance(item, dict): continue
+            if any(isinstance(item.get(field), str) and any(token.lower() in item[field].lower() for token in FORBIDDEN) for field in ("id", "title", "ref", "translator")): issues.append(issue("visible-copy-punctuation", "Visible copy", "practice/data/daily-sutta.json", f"Daily entry {number} contains forbidden punctuation outside verbatim text.", ("daily-sutta",)))
+            if (item.get("origin") == "curator") != ("selection_id" in item): issues.append(issue("schema", "Daily Sutta", "practice/data/daily-sutta.json", f"Daily entry {number}: a Curator entry, and only a Curator entry, carries its selection_id.", ("daily-sutta",)))
+    # Places: the pages must be what tools/build-places.py writes from the data.
+    places = values.get("practice/data/places.json")
+    if isinstance(places, dict) and not [p for p in issues if p["path"] == "practice/data/places.json"]:
+        counts["places"] = sum(len(g.get("entries", [])) for g in places.get("groups", []))
+        try:
+            spec = importlib.util.spec_from_file_location("places_builder_for_validator", Path(__file__).resolve().parent / "build-places.py")
+            builder = importlib.util.module_from_spec(spec); spec.loader.exec_module(builder)
+            texts = {"en": (ROOT / "practice/places.html").read_text(encoding="utf-8"), "nl": (ROOT / "practice/places-nl.html").read_text(encoding="utf-8")}
+            built = builder.build(places, texts)
+            for lang, page in (("en", "practice/places.html"), ("nl", "practice/places-nl.html")):
+                if built[lang] != texts[lang]: issues.append(issue("places-page", "Places & Community", page, "The page does not match practice/data/places.json. Run tools/build-places.py.", ("places",)))
+        except SystemExit as exc: issues.append(issue("places-page", "Places & Community", "practice/places.html", str(exc), ("places",)))
+        except Exception as exc: issues.append(issue("validator-runtime", "Places & Community", "tools/build-places.py", f"The Places check could not run: {exc}", ("places",)))
     manifest = read_json("practice/data/nl-mirrors.json", issues, "Language pairs"); pairs = manifest.get("pairs", []) if isinstance(manifest, dict) else []
-    for number, pair in enumerate(pairs, 1):
-        if not isinstance(pair, dict) or set(pair) != {"source", "mirror", "synced_to"} or not re.fullmatch(r"[0-9a-f]{40}", str(pair.get("synced_to", ""))): issues.append(issue("language-manifest", "Language pairs", "practice/data/nl-mirrors.json", f"Pair {number} has an invalid schema.", ("language-pairs",))); continue
+    for number, pair in enumerate([*pairs, *GENERATED_PAIRS], 1):
+        if number > len(pairs) and not (ROOT / pair["source"]).exists(): continue
+        if number <= len(pairs) and (not isinstance(pair, dict) or set(pair) != {"source", "mirror", "synced_to"} or not re.fullmatch(r"[0-9a-f]{40}", str(pair.get("synced_to", "")))): issues.append(issue("language-manifest", "Language pairs", "practice/data/nl-mirrors.json", f"Pair {number} has an invalid schema.", ("language-pairs",))); continue
         # Every page in a language set must declare the whole set, including
         # itself, plus an x-default. Google treats a set without a
         # self-reference as incomplete and may ignore it. Checking the
@@ -511,10 +479,14 @@ def validate_data(issues, parsed_pages):
                 expected = page_url(other)
                 links = [] if parser is None else [attrs.get("href") for tag, attrs in parser.attrs if tag == "link" and attrs.get("rel", "").lower() == "alternate" and attrs.get("hreflang", "").lower() == language]
                 if links != [expected]: issues.append(issue("hreflang", "Language pairs", page, f"hreflang={language} must be declared exactly once and point to {expected}.", ("language-pairs",)))
-    counts["language_pairs"] = len(pairs)
+    counts["language_pairs"] = len(pairs) + len(GENERATED_PAIRS)
     contracts = (
         ("reflections", "practice/reflections.html", ("<!-- BUILD:reflections -->", "js/notebook/room.js"), "The Reflection archive must carry its generated list and the room script."),
-        ("reflections", "practice/index.html", ("js/suttas-config.js", "js/notebook/hub.js"), "The Practice hub must load Reflection data and the hub script."),
+        ("reflections", "practice/index.html", ("js/render-daily-sutta.js", "js/notebook/hub.js"), "The Practice hub must load the daily renderer, which links to Reflections, and the hub script."),
+        ("quotes", "practice/index.html", ("js/render-quotes.js",), "The Practice hub must load the quote renderer."),
+        ("quotes", "practice/js/render-quotes.js", ("data/quotes.json",), "The quote renderer must read practice/data/quotes.json."),
+        ("places", "practice/places.html", ("<!-- BUILD:places -->", "<!-- /BUILD:places -->", "<!-- BUILD:places-ld -->", "<!-- /BUILD:places-ld -->", "js/notebook/room.js"), "The Places page must carry its generated list, its structured data and the room script."),
+        ("places", "practice/places-nl.html", ("<!-- BUILD:places -->", "<!-- /BUILD:places -->", "<!-- BUILD:places-ld -->", "<!-- /BUILD:places-ld -->", "js/notebook/room.js"), "The Dutch Places page must carry its generated list, its structured data and the room script."),
         ("reading", "practice/reading.html", ("data/reading.json", "js/notebook/render-room-data.js", "js/notebook/room.js"), "The Reading room must load its data and renderers."),
         ("talks", "practice/talks.html", ("data/talks.json", "js/notebook/render-room-data.js", "js/notebook/room.js"), "The Talks room must load its data and renderers."),
         # Old links to the retired Listening and Watching pages must still
@@ -522,7 +494,7 @@ def validate_data(issues, parsed_pages):
         ("talks", "practice/listening.html", ('name="robots" content="noindex', 'http-equiv="refresh" content="0; url=talks.html"', "js/notebook/redirect-talks.js"), "Listening must stay a redirect to Talks that keeps the anchor."),
         ("talks", "practice/watching.html", ('name="robots" content="noindex', 'http-equiv="refresh" content="0; url=talks.html"', "js/notebook/redirect-talks.js"), "Watching must stay a redirect to Talks that keeps the anchor."),
         ("talks", "practice/js/notebook/redirect-talks.js", ("window.location.hash", "location.replace('talks.html'"), "The Talks redirect must carry the anchor on to talks.html."),
-        ("daily-sutta", "practice/index.html", ("js/daily-sutta-config.js", "js/suttas-config.js", "js/render-daily-sutta.js"), "The Practice hub must load daily data, Reflection data, and the daily renderer."),
+        ("daily-sutta", "practice/index.html", ("js/render-daily-sutta.js",), "The Practice hub must load the daily renderer."),
         ("photography", "photography/index.html", ("/photography/room-assets/room.css", "/photography/room-assets/room.js"), "The photography wall must load the room's stylesheet and script."),
     )
     for dependency, relative, markers, message in contracts:
@@ -531,7 +503,7 @@ def validate_data(issues, parsed_pages):
         if any(marker not in text for marker in markers): issues.append(issue("renderer-contract", dependency.replace("-", " ").title(), relative, message, (dependency,)))
     try: daily_renderer = (ROOT / "practice/js/render-daily-sutta.js").read_text(encoding="utf-8")
     except OSError: daily_renderer = ""
-    if not all(marker in daily_renderer for marker in ("DAILY_SUTTAS", "SUTTAS", "normRef(s.ref) === todaysRef")): issues.append(issue("renderer-contract", "Daily Sutta", "practice/js/render-daily-sutta.js", "Daily-sutta Reflection matching is missing or incomplete.", ("daily-sutta", "reflections")))
+    if not all(marker in daily_renderer for marker in ("data/daily-sutta.json", "data/reflections/published.json", "'resting'", "normRef(s.ref) === todaysRef")): issues.append(issue("renderer-contract", "Daily Sutta", "practice/js/render-daily-sutta.js", "Daily-sutta Reflection matching is missing or incomplete.", ("daily-sutta", "reflections")))
     return counts
 
 
@@ -553,7 +525,7 @@ def validate():
     issues.sort(key=lambda item: (item["area"].lower(), item["path"].lower(), item["code"], item["message"]))
     groups = defaultdict(list)
     for item in issues: groups[item["area"]].append(item)
-    inventory = {"pages": len(pages), "data_files": len(list((ROOT / "practice/data").glob("*.json"))) + len(list((ROOT / "photography/data").glob("*.json"))), "renderers": len(list(ROOT.glob("**/js/render-*.js"))), "images": len([path for path in ROOT.glob("**/*") if path.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".avif"}]), "pdfs": len(list(ROOT.glob("**/*.pdf"))), "shared_assets": len(versions), **counts}
+    inventory = {"pages": len(pages), "data_files": len([p for folder in ("practice/data", "practice/data/reflections", "photography/data") for p in (ROOT / folder).glob("*") if p.suffix in {".json", ".md"} and not p.name.endswith(".schema.json")]), "renderers": len(list(ROOT.glob("**/js/render-*.js"))), "images": len([path for path in ROOT.glob("**/*") if path.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".avif"}]), "pdfs": len(list(ROOT.glob("**/*.pdf"))), "shared_assets": len(versions), **counts}
     return {"valid": not issues, "issues": issues, "groups": dict(groups), "inventory": inventory, "dependencies": dependencies}
 
 

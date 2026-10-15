@@ -1,0 +1,84 @@
+{
+  "description": "Places & Community (practice/places.html and practice/places-nl.html, written by tools/build-places.py). Every entry once, English and Dutch side by side. 'dutch' says whether the Dutch has been checked against the English; an English change makes it 'to-check'. 'search' is what search engines read about the entry (JSON-LD); an entry without it is left out of the structured data. 'text' is the writing desk's Markdown; 'intro_html' and 'after_html' on a group are HTML.",
+  "type": "object",
+  "required": ["version", "open", "groups"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const": 1},
+    "open": {"type": "string", "description": "The id of the entry the room opens on."},
+    "groups": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/group"}}
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "line": {"type": "string", "pattern": "^[^\\n]*$"},
+    "groupWords": {
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "title": {"type": "string", "minLength": 1},
+        "intro_html": {"type": "string"},
+        "after_html": {"type": "string"}
+      }
+    },
+    "group": {
+      "type": "object",
+      "required": ["en", "nl", "entries"],
+      "additionalProperties": false,
+      "properties": {
+        "en": {"$ref": "#/$defs/groupWords"},
+        "nl": {"$ref": "#/$defs/groupWords"},
+        "entries": {"type": "array", "items": {"$ref": "#/$defs/entry"}}
+      }
+    },
+    "words": {
+      "type": "object",
+      "required": ["by", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "by": {"$ref": "#/$defs/line"},
+        "where": {"$ref": "#/$defs/line"},
+        "text": {"type": "string", "minLength": 1},
+        "note": {"$ref": "#/$defs/line"}
+      }
+    },
+    "both": {
+      "type": "object",
+      "required": ["en", "nl"],
+      "additionalProperties": false,
+      "properties": {"en": {"type": "string"}, "nl": {"type": "string"}}
+    },
+    "entry": {
+      "type": "object",
+      "required": ["id", "name", "dutch", "en", "nl"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "name": {"type": "string", "minLength": 1},
+        "link": {"type": "string", "format": "https"},
+        "dutch": {"enum": ["checked", "to-check"]},
+        "en": {"$ref": "#/$defs/words"},
+        "nl": {"$ref": "#/$defs/words"},
+        "search": {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": {"enum": ["Person", "Organization"]},
+            "alternateName": {"type": "string"},
+            "jobTitle": {"$ref": "#/$defs/both"},
+            "birthDate": {"type": "string", "format": "date"},
+            "deathDate": {"type": "string", "format": "date"},
+            "sameAs": {"type": "array", "items": {"type": "string", "format": "https"}},
+            "url": {"type": "string", "format": "https"},
+            "founder": {"type": "string"},
+            "locality": {"type": "string"},
+            "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+            "description": {"$ref": "#/$defs/both"}
+          }
+        }
+      }
+    }
+  }
+}

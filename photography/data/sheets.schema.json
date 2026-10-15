@@ -1,0 +1,40 @@
+{
+  "description": "The contact sheets, newest first: the order here is the order on the site. Each lists its frames (photos.json ids, each on exactly one sheet) and the circled ones, at most four; only a circled frame can hang on a wall. kind: a walk, a day in one place, a trip or a series, or 'between' for the single photographs of one month that belong to no walk. address, if given, is the sheet's page (/photography/sheets/<address>/); previous_addresses forward to it. retired holds addresses that must keep working after a sheet or a photograph was removed: a sheet address forwards to the contact sheets, a photograph to the sheet it was on. Read by tools/build-photography.py.",
+  "type": "object",
+  "required": ["sheets"],
+  "additionalProperties": false,
+  "properties": {
+    "sheets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "line", "kind", "places", "frames", "circled"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"$ref": "#/$defs/address"},
+          "address": {"$ref": "#/$defs/address"},
+          "previous_addresses": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/address"}},
+          "title": {"type": "string", "minLength": 1},
+          "line": {"type": "string"},
+          "kind": {"enum": ["walk", "day", "trip", "series", "between"]},
+          "places": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "frames": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/photo"}},
+          "circled": {"type": "array", "maxItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/photo"}}
+        }
+      }
+    },
+    "retired": {
+      "type": "object",
+      "required": ["sheets", "photos"],
+      "additionalProperties": false,
+      "properties": {
+        "sheets": {"type": "object", "additionalProperties": {"type": ["string", "null"]}},
+        "photos": {"type": "object", "additionalProperties": {"type": ["string", "null"]}}
+      }
+    }
+  },
+  "$defs": {
+    "address": {"type": "string", "maxLength": 100, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "photo": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}
+  }
+}
