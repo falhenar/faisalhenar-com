@@ -1,0 +1,17 @@
+{
+  "description": "\"Elsewhere in the notebook\": for an entry (page#id), the links shown with it to related entries in other rooms (practice/js/notebook/room.js; tools/build-reflections.py for Reflections). href is relative to practice/, t is the link text, room the room's name.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "required": ["href", "t", "room"],
+      "additionalProperties": false,
+      "properties": {
+        "href": {"type": "string", "minLength": 1},
+        "t": {"type": "string", "minLength": 1},
+        "room": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

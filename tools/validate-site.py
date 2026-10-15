@@ -30,6 +30,7 @@ DEPENDENCIES = (
     {"id": "talks", "label": "Talks", "sources": ("practice/data/talks.json",), "consumers": ("practice/talks.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js", "practice/listening.html", "practice/watching.html", "practice/js/notebook/redirect-talks.js"), "effects": ("Talks room", "hub count", "old Listening and Watching links")},
     {"id": "places", "label": "Places & Community", "sources": ("practice/data/places.json",), "consumers": ("practice/places.html", "practice/places-nl.html", "tools/build-places.py", "practice/js/notebook/hub.js"), "effects": ("Places room in English and Dutch", "structured data", "hub spread")},
     {"id": "photography", "label": "Photography", "sources": ("photography/data/photos.json", "photography/data/sheets.json", "photography/data/walls.json", "photography/data/photo-meta.json", "photography/data/exhibition.json"), "consumers": ("photography/index.html", "photography/sheets/", "photography/everything/", "photography/p/", "photography/room-assets/", "photography/photos/", "tools/build-photography.py"), "effects": ("wall", "contact sheets", "Everything", "photograph pages", "image files")},
+    {"id": "crosslinks", "label": "Elsewhere in the notebook", "sources": ("practice/data/crosslinks.json",), "consumers": ("practice/js/notebook/room.js", "tools/build-reflections.py"), "effects": ("links between the rooms",)},
     {"id": "language-pairs", "label": "English and Dutch pages", "sources": ("practice/data/nl-mirrors.json", "practice/data/places.json"), "consumers": ("practice/*-nl.html", "practice/*.html"), "effects": ("reciprocal hreflang", "translation drift review")},
 )
 
@@ -42,6 +43,7 @@ SCHEMA_FILES = (
     ("practice/data/places.json", "Places & Community", "places"),
     ("practice/data/reading.json", "Reading", "reading"),
     ("practice/data/talks.json", "Talks", "talks"),
+    ("practice/data/crosslinks.json", "Elsewhere in the notebook", "crosslinks"),
     ("practice/data/reflections/sections.json", "Reflections", "reflections"),
     ("practice/data/reflections/queue.json", "Reflections", "reflections"),
     ("practice/data/reflections/published.json", "Reflections", "reflections"),
