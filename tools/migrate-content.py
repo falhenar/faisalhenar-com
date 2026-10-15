@@ -554,7 +554,7 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July", "Augus
 
 def between_walks_title(month):
     """The title of the sheet for the single photographs of one month."""
-    return "Between walks, %s %s" % (MONTHS[int(month[5:]) - 1], month[:4])
+    return "%s %s, between walks" % (MONTHS[int(month[5:]) - 1], month[:4])
 
 
 def migrate_loose(plan):
