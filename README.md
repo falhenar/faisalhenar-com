@@ -20,13 +20,16 @@ photography/           → the photography room (pages generated, see section 3)
 practice/               → the Buddhism/practice section
   index.html            → the hub: a shelf of five objects and a notebook
   reflections.html, meditation.html, reading.html, talks.html,
-  places.html           → the five rooms
+  places.html           → the five rooms (places.html and places-nl.html are
+                          generated from data/places.json)
   listening.html, watching.html → redirects to talks.html (old addresses)
   css/notebook.css      → the Practice stylesheet (practice.css is kept only
                           for the Vietnamese sheets)
   js/notebook/          → hub, rooms, sheets and step-by-step scripts
-  data/                 → reading.json, talks.json, crosslinks.json
-  js/                   → the configs (reflections, quotes, daily sutta)
+  data/                 → the content: reflections/, daily-sutta.json,
+                          quotes.json, reading.json, talks.json, places.json,
+                          crosslinks.json, each with a *.schema.json beside it
+  js/                   → the renderers that read that data
 ```
 
 Each section (photography, practice) is self-contained — its own css/js/photos
@@ -72,23 +75,33 @@ All in `photography/data/`. The builder reads them and never writes them.
   every photograph on a sheet, and an `alt` that overrides `photos.json`
   until the same edit reaches it.
 
+Each has a schema beside it (`*.schema.json`), which the validator and the
+Website Manager both read. `sheets.json` also holds `retired`: addresses of
+removed photographs and sheets, which the builder keeps as forwarding pages.
+An id in `retired` is never used again. Single photographs that are not part
+of a walk go on a monthly "between walks" sheet (`between-walks-YYYY-MM`,
+titled "June 2026, between walks"). The old "loose" sheet was split into two
+of these, and its address forwards to the contact sheets.
+
 A photograph appears in the room only once it is on a sheet. The builder
 stops with a list of problems if the files do not hold together: a frame on
 two sheets, a sheet frame missing from `photos.json` or `photo-meta.json`, a
 print that is not circled, a wall over twelve.
 
-`exhibition.json` is the curated sequence of the old folio. No page reads it
-any more. It stays, and `tools/validate-site.py` still checks it, because the
-Website Manager still reads and writes it. Its future is a separate decision.
+`exhibition.json` is the curated sequence of the old folio. No page reads it,
+and the Website Manager no longer uses it either. It stays, and
+`tools/validate-site.py` still checks it, until FH decides about removing it.
 
 ### Who does what
 
-The private Website Manager (`C:\Dev\PhotographyManager`) publishes
-photographs. It prepares the web JPEG (sRGB, about 2560px on the long edge),
-edits `photos.json` and the room data in its Desk, runs this repository's own
-`tools/build-photography.py`, validates, commits, pushes and checks the live
-site. It must keep running the repository's builder rather than a copy of
-its own.
+FH publishes with the private Website Manager
+(`C:\Dev\faisalhenar.com\website-manager`, beside this repository, live
+since 16 October 2026). It makes the web JPEG (sRGB, about 2560px on the long
+edge, quality 86, no metadata), edits the four data files, runs this
+repository's own `tools/build-photography.py` and the checks, commits, pushes
+with `push-site.sh` and checks the live site. It never carries a copy of the
+builder, the templates, `room.css` or `room.js`. The old manager
+(`C:\Dev\PhotographyManager`) is retired and must not be used.
 
 The room's templates live in the builder, and its stylesheet and script in
 `photography/room-assets/room.css` and `room.js`. Their `?v=` numbers are
@@ -106,30 +119,49 @@ owned by `ROOM_CSS_VERSION` and `ROOM_JS_VERSION` in the builder: change
 4. Run `python3 tools/build-photography.py`, then `tools/validate-site.py`,
    and check the pages on localhost.
 
-## 4. Adding reflections and quotes
+## 4. Practice content
 
-Same idea as albums — one config file each, no code to touch.
+FH adds and edits Practice content with the Website Manager. Every collection
+is a plain data file with a schema beside it, so it can also be edited by
+hand. Before a hand edit, check the manager has nothing waiting to publish
+(its top bar says "Nothing waiting to publish"): the manager refuses to
+publish over changes it did not make, so commit and push hand edits before FH
+publishes again.
 
-**Reflections** (the Practice → Reflections room):
-`practice/js/suttas-config.js`. Its legacy `BOOKS` object defines the visible
-page sections, and `SUTTAS` holds the source-ordered Reflection queue. A
-Reflection may include a sutta or other source, but source fields are optional.
-An entry appears only when both `note` and `added` are filled. Structural page
-sections follow source order; chronological sections show the newest published
-entry first, using source order to break same-date ties.
+**Reflections** (the Practice → Reflections room): one Markdown file per
+published Reflection, `practice/data/reflections/<id>.md`. The details sit
+between `---` lines at the top, one `key: <JSON value>` per line (schema:
+`reflection.schema.json`); FH's text follows, using only `*italic*`,
+`[text](url)` and `> ` quotes. `sections.json` holds the page sections (the
+book and "Reflections on Suttas That Stay With Me"), the order of every
+Reflection (`sequence`) and the unlisted ones (`unlisted`: the page stays at
+its address with noindex, out of the archive, sitemap and previous links).
+Book passages not yet written are in `queue.json`, without text. Drafts are
+private and live in the manager, never here. Run
+`tools/build-reflections.py` after any change; it also writes
+`published.json`, which the hub reads for the link from the sutta of the day.
+Deleting a Reflection's file turns its page into a redirect to the room.
 
 **Quotes** (the line on the wall card on the Practice hub):
-`practice/js/quotes-config.js`. Each entry needs `text`, `author`, and a
-`source` that's actually checkable — no quote goes in without one. See the
-comment block at the top of that file for translator/sourcing notes.
+`practice/data/quotes.json`. Each entry needs `text`, `author`, and a
+`source` that's actually checkable; no quote goes in without one. Optional:
+`themes`, `verification` (where it was checked) and `comment`. The file's
+`sourcing` list carries the translator and sourcing notes.
 
 **Sutta of the day** (the Today page of the notebook on the Practice hub):
-`practice/js/daily-sutta-config.js`. One entry per sutta, each with `text`,
-`ref` and a SuttaCentral `url`. The entry shown is chosen from the calendar
-date, so everyone sees the same one on a given day and it changes at midnight.
-Adding entries just lengthens the cycle. When the day's sutta is one you have
-written a reflection on, the block links through to it automatically, matched
-on `ref` against `suttas-config.js`, so the two lists cannot drift apart.
+`practice/data/daily-sutta.json`. One entry per sutta with `id`, `title`,
+`ref`, `translator`, `url`, `text`, `origin` (`older` or `curator`) and
+`rotation` (`in_rotation` or `resting`); entries from the Sati Sutta Curator
+also carry `selection_id`, `sutta_id` and `segment_ids`. The entry shown is
+chosen in the browser from the calendar date among those in rotation, so
+everyone sees the same one on a given day. When the day's sutta has a
+published Reflection, the block links to it, matched on `ref` through
+`reflections/published.json`.
+
+The manager tells the Curator what is in the pool (`pool.json` in the
+Curator's handoff folder) at start-up and whenever the Daily Sutta changes.
+After a hand edit to `daily-sutta.json`, restart the manager so the Curator
+does not show the pool as stale.
 
 **The Practice hub reads its rooms at runtime.** `practice/js/notebook/hub.js`
 fetches `reflections.html`, `meditation.html`, `places.html`, `reading.json`
@@ -141,8 +173,10 @@ links to the room.
 
 **Reading** (`practice/reading.html`): book entries live in
 `practice/data/reading.json` and are rendered into the room by
-`practice/js/notebook/render-room-data.js`. Use Website Manager's Reading
-screen to add, edit, remove, or reorder books, or edit the JSON by hand.
+`practice/js/notebook/render-room-data.js`. The Website Manager adds, edits,
+removes and reorders books within shelves. Shelves themselves (their
+headings, introductions and order) are page structure and stay with Claude
+Code.
 
 **Talks** (`practice/talks.html`): one page fed by `practice/data/talks.json`,
 one entry per teacher or monastery with a Listen link, a Watch link, or both,
@@ -152,8 +186,15 @@ anchors still land on it. `listening.html` and `watching.html` are redirects
 to Talks that keep the anchor; the old Listening and Watching data files
 are gone (October 2026).
 
-**Meditation, Places, the instruction sheets, the Sati Timer and the
-step-by-step pages** are plain HTML: edit the page itself. The Practice
+**Places & Community** (`practice/places.html` and `places-nl.html`): both
+pages are generated by `tools/build-places.py` from
+`practice/data/places.json`, which holds every entry once with English and
+Dutch side by side and a Dutch-checked marker. The builder writes only
+between the `BUILD:places` and `BUILD:places-ld` markers (the entries and
+their structured data); the head, introduction and footer stay hand-written.
+
+**Meditation, the instruction sheets, the Sati Timer and the step-by-step
+pages** are plain HTML: edit the page itself. The Practice
 redesign of October 2026 was built by one-time generators in
 `practice-redesign/tools/` (outside this repository). They read the old
 layout and must not be run against the new pages.
@@ -196,8 +237,8 @@ your writing, so when it fails, fix the line yourself and push again.
   in one commit. Keeping the binary out means the repository does not grow
   by three megabytes per release.
 - Reflections are static pages, one per published entry, written by
-  `tools/build-reflections.py` from `practice/js/suttas-config.js` into
-  `practice/reflections/`. The essays are not edited there: the config is the
+  `tools/build-reflections.py` from `practice/data/reflections/` into
+  `practice/reflections/`. The essays are not edited there: the data is the
   source and the pages are output, so an edit made in a generated page is
   lost the next time the tool runs. Each published entry carries a frozen
   `slug` that fixes its URL for good. Its templates write the Reflections
@@ -233,7 +274,9 @@ your writing, so when it fails, fix the line yourself and push again.
 There's no build step, so changes go live immediately. Before pushing:
 
 1. If a Reflection was added, edited or published, run
-   `python3 tools/build-reflections.py`. It writes the page for each
+   `python3 tools/build-reflections.py`; if Places changed,
+   `python3 tools/build-places.py`; if photography data changed,
+   `python3 tools/build-photography.py`. It writes the page for each
    published Reflection into `practice/reflections/`, rebuilds the archive
    list on `practice/reflections.html`, and updates the Reflection entries in
    `sitemap.xml`. Nothing else needs it; running it when nothing changed is
@@ -243,8 +286,9 @@ There's no build step, so changes go live immediately. Before pushing:
    pages.
 3. Run `python3 tools/validate-site.py` (Windows: `python` or `py`). It
    performs the same read-only
-   whole-site validation used by Website Manager and GitHub Actions, including
-   Photography data, public links and assets, metadata, language pairs,
+   whole-site validation used by the Website Manager and GitHub Actions, including
+   every data file against its schema, Photography data, public links and assets, metadata, language pairs,
    structured data, cache versions, and declared renderer dependencies. It
    will catch a Reflection page that step 1 should have rebuilt and did not.
-4. Commit and push.
+4. Commit and push with `push-site.sh` (one level up), which runs the same
+   checks first.
