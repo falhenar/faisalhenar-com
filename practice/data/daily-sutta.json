@@ -1117,6 +1117,82 @@
         "sn47.19:3.4",
         "sn47.19:3.5"
       ]
+    },
+    {
+      "id": "curator-2f3a8816-d64c-451d-b99d-8e5ad5f2ef63",
+      "title": "The Simile of the Cloth",
+      "ref": "MN 7",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/mn7/en/sujato",
+      "text": "“Suppose, mendicants, there was a cloth that was dirty and soiled. No matter what dye the dyer applied—whether blue or yellow or red or magenta—it would look poorly dyed and impure in color. Why is that? Because of the impurity of the cloth. In the same way, when the mind is corrupt, a bad destiny is to be expected. Suppose there was a cloth that was pure and clean. No matter what dye the dyer applied—whether blue or yellow or red or magenta—it would look well dyed and pure in color. Why is that? Because of the purity of the cloth. In the same way, when the mind isn’t corrupt, a good destiny is to be expected. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "mn7",
+      "selection_id": "2f3a8816-d64c-451d-b99d-8e5ad5f2ef63",
+      "segment_ids": [
+        "mn7:2.1",
+        "mn7:2.2",
+        "mn7:2.3",
+        "mn7:2.4",
+        "mn7:2.5",
+        "mn7:2.6",
+        "mn7:2.7",
+        "mn7:2.8",
+        "mn7:2.9",
+        "mn7:2.10"
+      ]
+    },
+    {
+      "id": "curator-31efd466-41b6-4304-a8b6-4d69837dd013",
+      "title": "With the Kālāmas of Kesamutta",
+      "ref": "AN 3.65",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an3.65/en/sujato",
+      "text": "‘Please, don’t go by oral transmission, don’t go by lineage, don’t go by testament, don’t go by canonical authority, don’t rely on logic, don’t rely on inference, don’t go by reasoned train of thought, don’t go by the acceptance of a view after deliberation, don’t go by the appearance of competence, and don’t think “The ascetic is our respected teacher.” But when you know for yourselves: “These things are unskillful, blameworthy, criticized by sensible people, and when you undertake them, they lead to harm and suffering”, then you should give them up.’ ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "an3.65",
+      "selection_id": "31efd466-41b6-4304-a8b6-4d69837dd013",
+      "segment_ids": [
+        "an3.65:25.2",
+        "an3.65:25.3",
+        "an3.65:25.4",
+        "an3.65:25.5"
+      ]
+    },
+    {
+      "id": "curator-48426478-d49e-4a85-af58-7745098b8f82",
+      "title": "Unlearned",
+      "ref": "SN 12.61",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn12.61/en/sujato",
+      "text": "But that which is called ‘mind’ and also ‘sentience’ and also ‘consciousness’ arises as one thing and ceases as another all day and all night. It’s like a monkey moving through the forest. It grabs hold of one branch, lets it go, and grabs another; then it lets that go and grabs yet another. In the same way, that which is called ‘mind’ and also ‘sentience’ and also ‘consciousness’ arises as one thing and ceases as another all day and all night. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "sn12.61",
+      "selection_id": "48426478-d49e-4a85-af58-7745098b8f82",
+      "segment_ids": [
+        "sn12.61:4.1",
+        "sn12.61:4.2",
+        "sn12.61:4.3"
+      ]
+    },
+    {
+      "id": "curator-fcd417d1-a30a-49f3-b0c3-fc5a214ffad8",
+      "title": "With the Kālāmas of Kesamutta",
+      "ref": "AN 3.65",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an3.65/en/sujato",
+      "text": "Please, Kālāmas, don’t go by oral transmission, don’t go by lineage, don’t go by testament, don’t go by canonical authority, don’t rely on logic, don’t rely on inference, don’t go by reasoned train of thought, don’t go by the acceptance of a view after deliberation, don’t go by the appearance of competence, and don’t think ‘The ascetic is our respected teacher.’ But when you know for yourselves: ‘These things are skillful, blameless, praised by sensible people, and when you undertake them, they lead to welfare and happiness’, then you should acquire them and keep them. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "an3.65",
+      "selection_id": "fcd417d1-a30a-49f3-b0c3-fc5a214ffad8",
+      "segment_ids": [
+        "an3.65:26.1",
+        "an3.65:26.2",
+        "an3.65:26.3"
+      ]
     }
   ]
 }
