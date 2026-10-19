@@ -97,7 +97,7 @@ def plates(s):
         else:
             word, alt = D.STEPS[int(img[5:])]
         return m.group(1) + html.escape(alt) + m.group(4) + html.escape(word, quote=False) + m.group(6)
-    return re.sub(r'(<img src="images/prostration/((step-\d\d)|kneel-[ab])\.svg" alt=")[^"]*("[^>]*>\s*<span class="step-word">)([^<]*)(</span>)',
+    return re.sub(r'(<img src="images/prostration/((step-\d\d)|kneel-[ab])\.png" alt=")[^"]*("[^>]*>\s*<span class="step-word">)([^<]*)(</span>)',
                   rep, s)
 
 

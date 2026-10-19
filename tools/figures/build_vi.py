@@ -39,12 +39,19 @@ VI = {
 }
 
 SRC = os.path.join(HERE, 'sources')
+
+def src_of(name):
+    # Redrawn figures are supplied as PNG; the older ones are JPEG.
+    png = os.path.join(SRC, name + '.png')
+    return png if os.path.exists(png) else os.path.join(SRC, name + '.jpg')
+
 OUT = os.path.join(HERE, '..', '..', 'practice', 'images', 'meditation')
-TARGET = {'walk-feet': 1034, 'walk-path': 690, 'walk-stand': 598}
+TARGET = {'walk-feet': 1034, 'walk-path': 690}
+PAD_TO_EN = {'sit-posture', 'walk-stand'}   # see build_nl.py
 TMP = tempfile.mkdtemp(prefix='vi-figures-')
 
 for name, specs in S.items():
-    orig = Image.open(os.path.join(SRC, name + '.jpg')).convert('RGB')
+    orig = Image.open(src_of(name)).convert('RGB')
     im = orig.copy()
     for sp in specs:
         sp = dict(sp, nl=VI[sp['en']])   # draw_caption writes spec['nl']
@@ -55,6 +62,10 @@ for name, specs in S.items():
     proc.process(tmp, out)
     if name in TARGET:
         png = Image.open(out)
-        f = TARGET[name] / proc.process(os.path.join(SRC, name + '.jpg'), os.path.join(TMP, 'en.png'))[0]
+        f = TARGET[name] / proc.process(src_of(name), os.path.join(TMP, 'en.png'))[0]
         png.resize((round(png.width * f), round(png.height * f)), Image.LANCZOS).save(out)
+    if name in PAD_TO_EN:
+        en = proc.process(src_of(name), os.path.join(TMP, 'en.png'))
+        png = Image.open(out); canvas = Image.new('LA', en, (0, 0))
+        canvas.paste(png, (0, 0)); canvas.save(out)
     print('  ->', os.path.basename(out), Image.open(out).size)

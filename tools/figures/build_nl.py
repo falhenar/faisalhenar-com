@@ -10,11 +10,14 @@ S = {
    dict(clear=(1305,592,1712,675), en='comes down here', nl='komt hier neer', lx=1315, maxw=390),
  ],
  'sit-posture': [
-   dict(clear=(575,525,740,585), en='rising', nl='rijzen', maxw=200, cx=647),
-   dict(clear=(575,692,745,768), en='falling', nl='vallen', maxw=200, size=44, cx=647),
+   # Redrawn 2026-10-19 (sources/sit-posture.png); labels sit right of the figure.
+   dict(clear=(930,620,1080,684), en='rising', nl='rijzen', maxw=180, size=56, cx=1000),
+   dict(clear=(930,878,1095,955), en='falling', nl='vallen', maxw=180, size=56, cx=1000),
  ],
  'walk-stand': [
-   dict(clear=(600,1110,1140,1205), en='about 2 m ahead', nl='ongeveer 2 m vooruit', maxw=520),
+   # Redrawn 2026-10-19 (sources/walk-stand.png). The label sits at the right
+   # edge, so the translation is right-aligned and grows to the left.
+   dict(clear=(600,1400,975,1462), en='about 2 m ahead', nl='ongeveer 2 m vooruit', maxw=560, rx=957),
  ],
  'walk-feet': [
    dict(clear=(60,900,800,1010), en='side by side, almost touching', nl='naast elkaar, bijna rakend', maxw=780),
@@ -25,27 +28,28 @@ S = {
    dict(clear=(780,190,1110,272), en='turn and', nl='keren en', lx=793, maxw=340),
    dict(clear=(780,272,1110,350), en='walk back', nl='teruglopen', lx=793, maxw=340),
  ],
- 'pros-kneel': [
-   dict(clear=(100,640,520,715), en='toes tucked under', nl='tenen onder u', maxw=470),
-   dict(clear=(600,640,1080,720), en='or sitting on the feet', nl='of zittend op de voeten', maxw=470),
- ],
- 'pros-three': [
-   dict(clear=(30,865,500,960), en='palms at the chest', nl='handpalmen bij de borst', maxw=500),
-   dict(clear=(510,865,1060,960), en='thumbs at the forehead', nl='duimen bij het voorhoofd', maxw=560),
-   dict(clear=(1080,865,1660,960), en='forehead to the thumbs', nl='voorhoofd op de duimen', maxw=590),
- ],
+ # pros-kneel and pros-three are now composed from FH's redrawn plates, with
+ # their labels in every language, by build-prostration-figures.py.
 }
 
 import os
 HERE=os.path.dirname(os.path.abspath(__file__))
 SRC=os.path.join(HERE,'sources')
+def src_of(name):
+    # Redrawn figures are supplied as PNG; the older ones are JPEG.
+    png=os.path.join(SRC,name+'.png')
+    return png if os.path.exists(png) else os.path.join(SRC,name+'.jpg')
 OUT=os.path.join(HERE,'..','..','practice','images','meditation')
 # The English figures come straight from the sources; only pros-floor is
 # rebuilt here, the others already match byte for byte.
-TARGET={'walk-feet':1034,'walk-path':690,'walk-stand':598}
+TARGET={'walk-feet':1034,'walk-path':690}
+# The translated word can be narrower than the English one, which would trim
+# the PNG tighter and draw the figure larger on the page. Pad these on the
+# right to the English PNG's size so all languages show at the same scale.
+PAD_TO_EN={'sit-posture','walk-stand'}
 
 for name, specs in S.items():
-    orig = Image.open(os.path.join(SRC,name+'.jpg')).convert('RGB')
+    orig = Image.open(src_of(name)).convert('RGB')
     im = orig.copy()
     for sp in specs:
         print(name, '|', sp['nl'], draw_caption(im, orig, sp))
@@ -55,6 +59,10 @@ for name, specs in S.items():
     proc.process(tmp, out)
     if name in TARGET:
         # match the English PNG's pixel dimensions
-        png=Image.open(out); f=TARGET[name]/proc.process(os.path.join(SRC,name+'.jpg'),'/tmp/en.png')[0]
+        png=Image.open(out); f=TARGET[name]/proc.process(src_of(name),'/tmp/en.png')[0]
         png.resize((round(png.width*f),round(png.height*f)), Image.LANCZOS).save(out)
+    if name in PAD_TO_EN:
+        en=proc.process(src_of(name),'/tmp/en.png')
+        png=Image.open(out); canvas=Image.new('LA', en, (0,0))
+        canvas.paste(png,(0,0)); canvas.save(out)
     print('  ->', out, Image.open(out).size)

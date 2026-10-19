@@ -34,6 +34,7 @@ def draw_caption(im, orig, spec):
     h=bb[3]-bb[1]
     y=(t+b)/2 - h/2 - bb[1]
     if 'lx' in spec: x=spec['lx']-bb[0]
+    elif 'rx' in spec: x=spec['rx']-w-bb[0]   # right-aligned: grows leftward
     elif 'cx' in spec: x=spec['cx'] - w/2 - bb[0]
     else: x=(l+r)/2 - w/2 - bb[0]
     d.text((x,y), spec['nl'], font=f, fill=(0,0,0))

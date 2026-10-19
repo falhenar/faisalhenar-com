@@ -789,6 +789,11 @@ main.nb-main:focus{ outline: none; }
   [data-sheet="sitting"] .nb-sub{ float: left; margin: 0 .3em 0 0; font-size: 11.8px; line-height: 1.55; }
   [data-sheet="sitting"] .nb-sub::after{ content: "."; }
   [data-sheet="sitting"] .nb-gloss-list{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; }
+  /* the step-by-step page always prints the whole sequence, without its
+     screen controls, whichever view the reader had open */
+  .nb-st-bar, .nb-st-one{ display: none !important; }
+  .nb-st-all{ display: block !important; }
+  .nb-st-h{ break-after: avoid; }
 }
 
 /* ---------- the prostration, step by step (StepsDesktop, StepsPhone) ---------- */
