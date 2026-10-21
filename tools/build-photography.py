@@ -477,9 +477,7 @@ def head(title, description, url, versions, og_image=None, extra_head=""):
 <link rel="stylesheet" href="/css/base.css?v={versions['base']}">
 <link rel="stylesheet" href="{ASSETS_URL}room.css?v={ROOM_CSS_VERSION}">{extra_head}
 <script src="{ASSETS_URL}room.js?v={ROOM_JS_VERSION}"></script>
-<!-- Cloudflare Web Analytics -->
-<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "68bb7041afa74c9ea4d36891d27ae977"}}'></script>
-<!-- End Cloudflare Web Analytics -->
+<script data-goatcounter="https://falhenar.goatcounter.com/count" async src="/js/count.js"></script>
 </head>
 <body class="room">
 
