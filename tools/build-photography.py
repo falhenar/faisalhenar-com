@@ -25,7 +25,9 @@ Writes (see BUILD):
   redirect pages at the older addresses: photography/index/ (the old Index)
   and everything under photography/room/ (where the room was previewed)
   sitemap.xml, between its BUILD:photography markers: every page above
-  that is not a redirect
+  that is not a redirect, except the photograph pages. Those are public and
+  linked from their contact sheet, but are deliberately left out of the
+  sitemap so it lists only the pages we ask search engines to read first.
 
 A "between walks" sheet (kind "between") holds the single photographs of
 one month that belong to no walk; each frame shows its own place, as on the
@@ -1051,8 +1053,10 @@ SITEMAP_MARKS = ("<!-- BUILD:photography -->", "<!-- /BUILD:photography -->")
 
 def sitemap_block(room):
     """The room's entries in sitemap.xml: the wall, the contact sheets, each
-    sheet, Everything, and a page per photograph. A sheet's date is the
-    newest `added` among its frames; the room's, the newest of all."""
+    sheet and Everything. The photograph pages are public and linked from
+    their contact sheet, but are deliberately left out so the sitemap lists
+    only the pages we ask search engines to read first. A sheet's date is
+    the newest `added` among its frames; the room's, the newest of all."""
     def url(loc, lastmod=None):
         rows = ["  <url>", f"    <loc>{ORIGIN}{loc}</loc>"]
         if lastmod: rows.append(f"    <lastmod>{lastmod}</lastmod>")
@@ -1062,8 +1066,6 @@ def sitemap_block(room):
     for sheet in room.sheets:
         rows += url(sheet_url(sheet["id"]), max(room.photos[i]["added"] for i in sheet["frames"]))
     rows += url(EVERYTHING_URL, newest)
-    for i in room.photos:
-        if i in room.sheet_of: rows += url(photo_url(i), room.photos[i]["added"])
     return "\n".join(rows)
 
 

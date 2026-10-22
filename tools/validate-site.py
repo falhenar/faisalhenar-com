@@ -56,6 +56,9 @@ SCHEMA_FILES = (
 # English pages whose Dutch mirror is written from data rather than kept by
 # hand, so they are not in nl-mirrors.json; their hreflang is still checked.
 GENERATED_PAIRS = ({"source": "practice/places.html", "mirror": "practice/places-nl.html"},)
+# Photograph pages are public and indexable but deliberately not in the
+# sitemap; the contact sheets link to them.
+UNLISTED_PREFIXES = ("photography/p/",)
 
 
 def _load_sitedata():
@@ -276,7 +279,8 @@ def validate_pages(issues):
                    if any(tag == "meta" and attrs.get("name", "").lower() == "robots"
                           and "noindex" in attrs.get("content", "").lower()
                           for tag, attrs in parser.attrs)}
-        expected = {page_url(page) for page in pages if page != "404.html" and page not in noindex}
+        expected = {page_url(page) for page in pages
+                    if page != "404.html" and page not in noindex and not page.startswith(UNLISTED_PREFIXES)}
         for url in sorted(expected - actual): issues.append(issue("sitemap", "Sitemap", "sitemap.xml", f"Missing public page: {url}."))
         for url in sorted(actual - expected): issues.append(issue("sitemap", "Sitemap", "sitemap.xml", f"Unknown public page: {url}."))
     except Exception as exc: issues.append(issue("sitemap", "Sitemap", "sitemap.xml", str(exc)))

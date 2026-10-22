@@ -140,6 +140,26 @@ class NoindexSitemapTests(unittest.TestCase):
         self.assertFalse(self.noindex_pages('<meta name="robots" content="follow">'))
 
 
+class UnlistedSitemapTests(unittest.TestCase):
+    """Photograph pages are public and indexable but left out of the sitemap.
+
+    The exception is meant to be narrow: only pages under photography/p/,
+    never the contact sheets or any other page.
+    """
+
+    def unlisted(self, page):
+        return page.startswith(validator.UNLISTED_PREFIXES)
+
+    def test_a_photograph_page_is_unlisted(self):
+        self.assertTrue(self.unlisted("photography/p/fh-0010/index.html"))
+
+    def test_other_pages_are_not(self):
+        for page in ("practice/meditation.html", "photography/sheets/between-walks-2026-06/index.html",
+                     "photography/index.html", "photography/everything/index.html", "index.html"):
+            with self.subTest(page=page):
+                self.assertFalse(self.unlisted(page))
+
+
 class BaseStylesheetTests(unittest.TestCase):
     """Every page loads css/base.css, and loads it first.
 

@@ -74,11 +74,11 @@ class RoomTests(unittest.TestCase):
         table = builder.work_table(room)
         self.assertNotIn(between["title"], table)
 
-    def test_the_sitemap_lists_every_page_once(self):
+    def test_the_sitemap_lists_every_page_once_but_no_photograph(self):
         room = self.room()
         block = builder.sitemap_block(room)
         self.assertEqual(block.count("<loc>https://faisalhenar.com/photography/sheets/"), len(self.sheets) + 1)
-        self.assertEqual(block.count("<loc>https://faisalhenar.com/photography/p/"), len(room.sheet_of))
+        self.assertEqual(block.count("<loc>https://faisalhenar.com/photography/p/"), 0)
         sitemap = (REPO / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn(block, sitemap)
 
