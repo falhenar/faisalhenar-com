@@ -12,6 +12,7 @@ translator: "sujato"
 url: "https://suttacentral.net/an3.36/en/sujato"
 excerpt: "‘My man, because you were negligent, you didn’t do good by way of body, speech, and mind. Well, they’ll definitely punish you to fit your negligence. That bad deed wasn’t done by your mother, father, brother, or sister. It wasn’t done by friends and colleagues, by relatives and kin, by the deities, or by ascetics and brahmins. That bad deed was done by you alone, and you alone will experience the result.’"
 added: "2026-08-09"
+summary: "Reflecting on AN 3.36: how the deaths of rappers I admired, growing older, and a visit to Wat Chom Tong slowly turned aging and death into a reason to practise."
 ---
 From a young age I was drawn to American hip-hop. I was enchanted by the stories the artists told about sex, crime and life in poverty, but also by the social issues they seemed to shine a light on. Some of these artists I really looked up to, even though my own life looked nothing like theirs.
 

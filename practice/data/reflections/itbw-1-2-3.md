@@ -11,6 +11,7 @@ translator: "sujato"
 url: "https://suttacentral.net/sn22.7/en/sujato"
 excerpt: "Anxieties, born of latching on to the perishing of consciousness and originating in accordance with natural principles, don’t occupy their mind. So they don’t become frightened, worried, concerned, or anxious because of grasping. That’s how not grasping leads to freedom from anxiety."
 added: "2026-09-16"
+summary: "Reflecting on SN 22.7: how observing my own anxious moments slowly showed me that much of the agitation comes from holding certain mind states too tightly."
 ---
 For years I had anxiety chasing me around. Scared of what my future might bring, or not bring. Afraid that something from my past would come back and bite me in the butt. Wondering if someone would like me or not. Worrying that something bad might happen today, tomorrow or even years ahead.
 

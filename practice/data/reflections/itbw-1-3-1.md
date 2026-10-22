@@ -11,6 +11,7 @@ translator: "sujato"
 url: "https://suttacentral.net/an2.37/en/sujato"
 excerpt: "What is the cause, worthy Kaccāna, what is the reason why aristocrats fight with aristocrats, brahmins fight with brahmins, and householders fight with householders?”\n\n“It is because of their insistence on sensual desire, their shackles, avarice, and attachment, that aristocrats fight with aristocrats, brahmins fight with brahmins, and householders fight with householders."
 added: "2026-10-10"
+summary: "Reflecting on AN 2.37: what causes people to fight with one another, and how that is connected to views we might have to let go of."
 ---
 In Bhikkhu Bodhi’s In the Buddha’s Words, this sutta is given the English title ‘The Origin of Conflict’. In it, a follower of the Buddha is asked: what is the cause of people fighting with one another?
 I already find the way the question is posed interesting. It is not about who started the fight or who is responsible. Instead, it asks what conditions cause the fighting in the first place.

@@ -12,6 +12,7 @@ translator: "sujato"
 url: "https://suttacentral.net/sn36.6/en/sujato"
 excerpt: "When an unlearned ordinary person experiences painful physical feelings they sorrow and wail and lament, beating their breast and falling into confusion. They experience two feelings: physical and mental.\n\nIt’s like a person who is struck with an arrow, only to be struck with a second arrow. That person experiences the feeling of two arrows.\n\nIn the same way, when an unlearned ordinary person experiences painful physical feelings they sorrow and wail and lament, beating their breast and falling into confusion. They experience two feelings: physical and mental."
 added: "2026-08-20"
+summary: "Reflecting on SN 36.6, the simile of the two arrows: pain cannot be avoided, but mindfulness helped me notice the second arrow and put it down sooner."
 ---
 We will all experience suffering in our lives in one form or another. In that sense, getting struck by the "first arrow" is unavoidable. We age, we get sick and, at some point, we will all die. Along the way there will inevitably be painful and uncomfortable feelings.
 

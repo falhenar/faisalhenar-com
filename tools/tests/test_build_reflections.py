@@ -100,6 +100,21 @@ class DescriptionTests(unittest.TestCase):
         self.assertEqual(result, "A summary FH wrote.")
 
 
+class PageTitleTests(unittest.TestCase):
+    def test_the_reference_is_cleaned_for_the_title(self):
+        self.assertEqual(builder.clean_ref({"ref": "SN 3.3"}), "SN 3.3")
+        self.assertEqual(builder.clean_ref({"ref": "from AN 3.36"}), "AN 3.36")
+        self.assertEqual(builder.clean_ref({"ref": "AN 2.37 (abridged)"}), "AN 2.37")
+        self.assertEqual(builder.clean_ref({"ref": ""}), "")
+        self.assertEqual(builder.clean_ref({}), "")
+
+    def test_the_title_names_the_sutta_when_there_is_one(self):
+        self.assertEqual(builder.page_title({"title": "The Divine Messengers", "ref": "from AN 3.36"}),
+                         "The Divine Messengers (AN 3.36) · Reflections · Faisal Henar")
+        self.assertEqual(builder.page_title({"title": "A Note", "ref": ""}), "A Note · Reflections · Faisal Henar")
+        self.assertEqual(builder.page_title({"title": "A Note"}), "A Note · Reflections · Faisal Henar")
+
+
 class ArchiveReferenceTests(unittest.TestCase):
     """The contents column answers which text, and nothing else."""
 

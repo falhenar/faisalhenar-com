@@ -125,6 +125,20 @@ def description(entry):
     return cut.rstrip(" ,;:.") + "..."
 
 
+def clean_ref(entry):
+    """The sutta reference for the page title: "from AN 3.36" -> "AN 3.36",
+    "AN 2.37 (abridged)" -> "AN 2.37". Empty when there is none. The
+    Website Manager's search preview uses this same rule."""
+    ref = re.sub(r"^from\s+", "", entry.get("ref") or "", flags=re.I)
+    return re.sub(r"\s*\([^)]*\)\s*$", "", ref).strip()
+
+
+def page_title(entry):
+    """<title>, og:title and twitter:title, unescaped."""
+    ref = clean_ref(entry)
+    return entry["title"] + (" (" + ref + ")" if ref else "") + " · Reflections · Faisal Henar"
+
+
 def subtitle(entry):
     """Reference and source title, for the Reflection's own page."""
     reference = entry.get("ref") or entry.get("sourceLocation") or ""
@@ -296,7 +310,7 @@ def nav_markup(previous, total):
 
 def page_markup(entry, previous, total, section, css_version, base_version, menu_version, draw_version="1", unlisted=False):
     url = ORIGIN + "/practice/reflections/" + entry["slug"] + ".html"
-    title = esc(entry["title"]) + " &middot; Reflections &middot; Faisal Henar"
+    title = esc(page_title(entry))
     desc = esc(description(entry))
     sub = subtitle(entry)
     struct = structural(entry)
@@ -312,7 +326,7 @@ def page_markup(entry, previous, total, section, css_version, base_version, menu
         '  "inLanguage": "en",',
         '  "author": { "@type": "Person", "name": "Faisal Henar" },',
         '  "publisher": { "@type": "Person", "name": "Faisal Henar" },',
-        '  "isPartOf": { "@type": "Blog", "name": ' + jsonstr(section["title"]) + ', "url": "' + ORIGIN + '/practice/reflections.html" },',
+        '  "isPartOf": { "@type": "Blog", "name": "Reflections", "url": "' + ORIGIN + '/practice/reflections.html" },',
         '  "mainEntityOfPage": { "@type": "WebPage", "@id": "' + url + '" }' + ("," if url_source else ""),
     ]
     if url_source:

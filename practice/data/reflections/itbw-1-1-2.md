@@ -12,6 +12,7 @@ translator: "sujato"
 url: "https://suttacentral.net/sn3.25/en/sujato"
 excerpt: "“I tell you, Great King, I announce to you: old age and death are advancing upon you. Since old age and death are advancing upon you, what would you do?”\n“Sir, what can I do but practice the teachings, practice morality, doing skillful and good actions?”"
 added: "2026-08-02"
+summary: "Reflecting on SN 3.25: how being mindful of the impermanence of everything helps me to try and devote the present moment to cultivating skilful qualities."
 ---
 In our own way, we are all kings of our own little kingdoms. So often, we seem to believe that having the right friends, accumulating wealth, clinging to our possessions, or behaving as if we're forever youthful can shield ourselves for what is coming. We all know that we are subject to aging, sickness, and death. No mansion, no family, and no amount of money can protect us from these realities. Even though, on some level, we are all aware of these truths, we continue chasing our desires and running from our aversions. Yet no army can stop the forces of nature or alter the course that every human body is destined to follow.
 

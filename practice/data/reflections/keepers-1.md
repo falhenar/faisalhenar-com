@@ -10,6 +10,7 @@ translator: "sujato"
 url: "https://suttacentral.net/sn5.10/en/sujato"
 excerpt: "Who created this sentient being?\nWhere is its maker?\nWhere has the being arisen?\nAnd where does it cease?"
 added: "2026-08-12"
+summary: "Reflecting on SN 5.10: how, by telling stories about ourselves and others as fixed characters, we lose the ability to care for what is in front of us."
 ---
 Who doesn't love to philosophize about life? Probably a lot of people don't. But for most of my life, I enjoyed it. Or maybe enjoyment is the wrong word to describe it, because at times I even took it too far. Always questioning everything. So much that my head would hurt.
 

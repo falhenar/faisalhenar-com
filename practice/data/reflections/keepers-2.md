@@ -10,6 +10,7 @@ translator: "sujato"
 url: "https://suttacentral.net/sn47.19/en/sujato"
 excerpt: "And how do you look after others by looking after yourself? By development, cultivation, and practice of meditation.\nAnd how do you look after yourself by looking after others? By acceptance, harmlessness, love, and sympathy."
 added: "2026-08-19"
+summary: "Reflecting on SN 47.19: how mindfulness can support us in taking care of ourselves and, in that way, enable us to take better care of others."
 ---
 When my spouse and I were still in a so-called long distance relationship, we regularly talked about different suttas that piqued our interest. One of these suttas was the Sedakasutta. This sutta describes the story of how the pole acrobat Medakathālikā climbs up a bamboo pole standing above her teacher’s shoulders. When the teacher told Medakathālikā to look after him, and he shall look after her, Medakathālikā quickly corrected her teacher. She told him it wasn’t that simple. He should look after himself, and she’d look after herself.
 

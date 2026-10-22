@@ -664,7 +664,8 @@ def work_table(room):
 
 
 def wall_page(room, versions):
-    description = "Walks, contact sheets, and the photographs I'd pin on my own wall."
+    description = ("Walks, contact sheets, and the photographs I'd pin on my own wall. "
+                   "Black-and-white and colour photographs from Paramaribo and Vietnam.")
     card = """
           <div class="index-card"><span class="index-pin" aria-hidden="true"></span><p class="room-line">Two walls: one in black and white, one in colour. Each photograph was circled on a contact sheet first.</p></div>"""
     body = f"""

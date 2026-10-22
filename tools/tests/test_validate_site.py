@@ -327,7 +327,7 @@ class ReflectionDataTests(unittest.TestCase):
                 validator.ROOT = original
         return sorted((item["path"], item["code"]) for item in issues)
 
-    GOOD = '---\nid: "a"\nbook: "s"\ntitle: "A"\nadded: "2026-01-01"\n---\nText.\n'
+    GOOD = '---\nid: "a"\nbook: "s"\ntitle: "A"\nadded: "2026-01-01"\nsummary: "Reflecting on A."\n---\nText.\n'
 
     def test_a_good_file_passes(self):
         self.assertEqual(self.issues({"a.md": self.GOOD}), [])
@@ -342,6 +342,14 @@ class ReflectionDataTests(unittest.TestCase):
         self.assertIn(("practice/data/reflections/a.md", "visible-copy-punctuation"), self.issues({"a.md": dashed}))
         quoted = self.GOOD.replace('title: "A"', 'title: "A"\nexcerpt: "old\u2014"')
         self.assertEqual(self.issues({"a.md": quoted}), [])
+
+    def test_a_listed_reflection_needs_a_short_search_description(self):
+        bare = self.GOOD.replace('summary: "Reflecting on A."\n', "")
+        self.assertEqual(self.issues({"a.md": bare}), [("practice/data/reflections/a.md", "reflection-summary")])
+        too_long = self.GOOD.replace("Reflecting on A.", "x" * 171)
+        self.assertEqual(self.issues({"a.md": too_long}), [("practice/data/reflections/a.md", "reflection-summary")])
+        self.assertEqual(self.issues({"a.md": self.GOOD.replace("Reflecting on A.", "x" * 170)}), [])
+        self.assertEqual(self.issues({"a.md": bare}, unlisted=["a"]), [], "an unlisted Reflection is exempt")
 
     def test_unlisting_something_unpublished_is_reported(self):
         self.assertEqual(self.issues({"a.md": self.GOOD}, unlisted=["nope"]),

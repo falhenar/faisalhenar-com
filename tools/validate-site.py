@@ -318,6 +318,11 @@ def read_reflections(issues, sitedata):
     hidden = sections.get("unlisted", []) if isinstance(sections, dict) else []
     if not isinstance(hidden, list) or set(hidden) - {e.get("id") for e in entries}:
         issues.append(issue("reflection-schema", "Reflections", f"{folder}/sections.json", "unlisted must name published Reflections only.", area)); hidden = []
+    for entry in entries:  # listed Reflections carry FH's own search description
+        if entry.get("id") in hidden: continue
+        summary = entry.get("summary") or ""
+        if not summary.strip(): issues.append(issue("reflection-summary", "Reflections", f"{folder}/{entry.get('id')}.md", "Reflection has no search description.", area))
+        elif len(summary) > 170: issues.append(issue("reflection-summary", "Reflections", f"{folder}/{entry.get('id')}.md", "Search description is longer than 170 characters.", area))
     return entries, hidden
 
 

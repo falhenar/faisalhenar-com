@@ -12,6 +12,7 @@ translator: "sujato"
 url: "https://suttacentral.net/sn3.3/en/sujato"
 excerpt: "Fancy chariots of kings wear out,\nand even this body gets old.\nBut the truth of the good never gets old—\nso the good proclaim to the good."
 added: "2026-07-30"
+summary: "Reflecting on SN 3.3: how being mindful of the reality of aging and death can help me decide what is actually worth pursuing in this lifetime."
 ---
 We cannot escape old age and death, that is why we practice while we can. Let's not waste this life on frivolous things, and let's aim for the good. How much time do I spend pursuing things I already know will not satisfy me very deeply, while neglecting things I genuinely consider important? Even fancy chariots of kings wear out, so why not use this chariot of mine for what I consider worthwhile. 
 

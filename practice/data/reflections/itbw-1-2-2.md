@@ -11,6 +11,7 @@ translator: "sujato"
 url: "https://suttacentral.net/an8.6/en/sujato"
 excerpt: "Gain and loss, fame and disgrace,\nblame and praise, and pleasure and pain.\nThese qualities among mankind are impermanent,\ntransient, and perishable.\n\nAn intelligent and mindful person knows these things,\nseeing that they’re perishable.\nDesirable things don’t disturb their mind,\nnor are they repelled by the undesirable."
 added: "2026-08-31"
+summary: "Reflecting on AN 8.6, the eight worldly winds: how easily I am swept away by them, and how the sting of blame and the pleasure of praise share one nature."
 ---
 This sutta concerns the eight worldly conditions, sometimes called ‘the eight worldly winds’. The word *wind* immediately gives this image of being at risk to be swept away by it. And that is exactly what seems to happen to us when we get into contact with these eight worldly conditions of gain and loss, fame and disgrace, blame and praise, pleasure and pain.
 
