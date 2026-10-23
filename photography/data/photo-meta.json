@@ -866,5 +866,82 @@
   "country": "Suriname",
   "captured": "2026-10-04T07:49:43",
   "notes": []
+ },
+ "fh-0109": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-03T21:59",
+  "notes": []
+ },
+ "fh-0110": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-04T00:00",
+  "notes": []
+ },
+ "fh-0111": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-04T01:50",
+  "notes": []
+ },
+ "fh-0112": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-04T01:57",
+  "notes": []
+ },
+ "fh-0113": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-04T02:39",
+  "notes": []
+ },
+ "fh-0114": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-04T23:04",
+  "notes": []
+ },
+ "fh-0115": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-08T02:25",
+  "notes": []
+ },
+ "fh-0116": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-08T22:19",
+  "notes": []
+ },
+ "fh-0117": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-09T05:12",
+  "notes": []
+ },
+ "fh-0118": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-09T23:00",
+  "notes": []
+ },
+ "fh-0119": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-10T15:49",
+  "notes": []
  }
 }
