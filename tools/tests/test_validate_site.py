@@ -316,7 +316,8 @@ class ReflectionDataTests(unittest.TestCase):
             schema = original / "practice" / "data" / "reflections" / "reflection.schema.json"
             (folder / "reflection.schema.json").write_text(schema.read_text(encoding="utf-8"), encoding="utf-8")
             (folder / "sections.json").write_text(json.dumps({
-                "version": 1, "sections": [{"id": "s", "title": "S", "note": "", "order": "chronological"}],
+                "version": 1, "sections": [{"id": "s", "title": "S", "note": "", "order": "chronological"},
+                             {"id": "practice", "title": "From practice", "note": "", "order": "chronological"}],
                 "sequence": [name[:-3] for name in files], "unlisted": list(unlisted)}), encoding="utf-8")
             for name, text in files.items():
                 (folder / name).write_text(text, encoding="utf-8")
@@ -350,6 +351,33 @@ class ReflectionDataTests(unittest.TestCase):
         self.assertEqual(self.issues({"a.md": too_long}), [("practice/data/reflections/a.md", "reflection-summary")])
         self.assertEqual(self.issues({"a.md": self.GOOD.replace("Reflecting on A.", "x" * 170)}), [])
         self.assertEqual(self.issues({"a.md": bare}, unlisted=["a"]), [], "an unlisted Reflection is exempt")
+
+    def test_a_reflection_from_practice_names_a_place_and_no_sutta(self):
+        practice = self.GOOD.replace('book: "s"', 'book: "practice"').replace('title: "A"', 'title: "A"\nplace: "Suddhavari Monastery, São Lourenço, Brazil"')
+        self.assertEqual(self.issues({"a.md": practice}), [])
+        self.assertEqual(self.issues({"a.md": practice.replace('place: "Suddhavari Monastery, São Lourenço, Brazil"', 'ref: "SN 1.1"')}),
+                         [("practice/data/reflections/a.md", "reflection-schema")] * 2)
+
+    def test_an_unclosed_verse_block_is_reported(self):
+        closed = self.GOOD.replace("Text.\n", "Text.\n\n::: verse\nOne\ntwo\n:::\n")
+        self.assertEqual(self.issues({"a.md": closed}), [])
+        unclosed = self.GOOD.replace("Text.\n", "Text.\n\n::: verse\nOne\ntwo\n")
+        self.assertEqual(self.issues({"a.md": unclosed}), [("practice/data/reflections/a.md", "reflection-verse")])
+        original = validator.ROOT
+        issues = []
+        with tempfile.TemporaryDirectory() as temporary:
+            validator.ROOT = Path(temporary)
+            folder = validator.ROOT / "practice" / "data" / "reflections"
+            folder.mkdir(parents=True)
+            (folder / "reflection.schema.json").write_text((original / "practice/data/reflections/reflection.schema.json").read_text(encoding="utf-8"), encoding="utf-8")
+            (folder / "sections.json").write_text(json.dumps({"version": 1, "sections": [{"id": "s", "title": "S", "note": "", "order": "chronological"}],
+                                                              "sequence": ["a"], "unlisted": []}), encoding="utf-8")
+            (folder / "a.md").write_text(unclosed, encoding="utf-8")
+            try:
+                validator.read_reflections(issues, validator._load_sitedata())
+            finally:
+                validator.ROOT = original
+        self.assertEqual([i["message"] for i in issues], ["Verse block is not closed."])
 
     def test_unlisting_something_unpublished_is_reported(self):
         self.assertEqual(self.issues({"a.md": self.GOOD}, unlisted=["nope"]),

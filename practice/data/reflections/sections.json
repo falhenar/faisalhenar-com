@@ -9,8 +9,14 @@
     },
     {
       "id": "keepers",
-      "title": "Reflections on Suttas That Stay With Me",
+      "title": "Suttas I return to",
       "note": "Suttas outside the anthology above, encountered elsewhere, and kept coming back to. No structural spine here, just the ones that stayed.",
+      "order": "chronological"
+    },
+    {
+      "id": "practice",
+      "title": "From practice",
+      "note": "Reflections that grew out of practice rather than out of a sutta.",
       "order": "chronological"
     }
   ],

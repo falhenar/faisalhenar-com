@@ -132,14 +132,20 @@ publishes again.
 published Reflection, `practice/data/reflections/<id>.md`. The details sit
 between `---` lines at the top, one `key: <JSON value>` per line (schema:
 `reflection.schema.json`); FH's text follows, using only `*italic*`,
-`[text](url)` and `> ` quotes. `sections.json` holds the page sections (the
-book and "Reflections on Suttas That Stay With Me"), the order of every
+`[text](url)`, `> ` quotes and verse (lines between `::: verse` and `:::`,
+each kept a line). `sections.json` holds the sections ("In the Buddha's
+Words", "Suttas I return to" and "From practice": no sutta, a `place`
+instead), the order of every
 Reflection (`sequence`) and the unlisted ones (`unlisted`: the page stays at
 its address with noindex, out of the archive, sitemap and previous links).
 Book passages not yet written are in `queue.json`, without text. Drafts are
 private and live in the manager, never here. Run
 `tools/build-reflections.py` after any change; it also writes
-`published.json`, which the hub reads for the link from the sutta of the day.
+`published.json` (the listed Reflections, newest first), which the hub reads
+for its count, contents and "Lately" line and for the link from the sutta of
+the day, and `practice/in-the-buddhas-words.html`, the anthology's own page,
+laid out by the book's parts and chapters from
+`practice/data/itbw-structure.json`.
 Deleting a Reflection's file turns its page into a redirect to the room.
 
 **Quotes** (the line on the wall card on the Practice hub):
@@ -242,10 +248,13 @@ your writing, so when it fails, fix the line yourself and push again.
   source and the pages are output, so an edit made in a generated page is
   lost the next time the tool runs. Each published entry carries a frozen
   `slug` that fixes its URL for good. Its templates write the Reflections
-  room (`practice/reflections.html`, the list and panel between the
-  `BUILD:reflections` markers) and the pages in the redesigned layout. Old
-  `reflections.html#r-<id>` links open the item in the room, through each
-  item's `data-alias`. The old client-side renderer,
+  room (`practice/reflections.html`: one list, newest first, with its filter
+  line, between the `BUILD:reflections` markers, and the card to the
+  anthology between `BUILD:reflections-card`), the anthology's page
+  (`BUILD:itbw-sofar` and `BUILD:itbw-parts`) and the pages in the
+  redesigned layout. Old `reflections.html#r-<id>` links open the item in
+  the room, through each item's `data-alias`; the old group anchors
+  (`#itbw`, `#keepers`) now filter the list to that section. The old client-side renderer,
   `practice/js/render-reflections.js`, was removed in October 2026.
 - `css/base.css` holds the parts that are the same everywhere: the two
   faces every section sets text in, the reset, the skip link and the menu.

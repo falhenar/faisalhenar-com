@@ -14,10 +14,12 @@ what a valid file is. The Website Manager never carries a copy.
   Reflections  parse_reflection / dump_reflection: details at the top,
                between two --- lines, one "key: <JSON value>" per line;
                FH's text below, kept exactly as written.
-  Markdown     render_text: the three things the writing desk offers.
-               *italic*, [a link](https://...), and a paragraph starting
-               with "> " for a quotation. Paragraphs are separated by a
-               blank line; a single line break stays inside its paragraph.
+  Markdown     render_text: the four things the writing desk offers.
+               *italic*, [a link](https://...), a paragraph starting
+               with "> " for a quotation, and verse: the lines between a
+               line "::: verse" and a line ":::", each kept a line.
+               Paragraphs are separated by a blank line; a single line
+               break stays inside its paragraph.
   Schemas      check: a small, strict subset of JSON Schema (see the
                docstring of check). Schemas sit next to the data they
                describe, named <file>.schema.json.
@@ -87,7 +89,7 @@ def site_path(*parts, root=None):
 FENCE = "---"
 # The order the details are written in. Keys not listed here are written
 # after these, in the order they came.
-REFLECTION_KEYS = ("id", "slug", "book", "part", "section", "label", "title", "ref",
+REFLECTION_KEYS = ("id", "slug", "book", "part", "section", "label", "title", "place", "ref",
                    "suttaTitle", "translator", "url", "sourceTitle", "sourceAuthor",
                    "sourceLocation", "sourceUrl", "excerpt", "added", "summary", "origin")
 
@@ -150,8 +152,31 @@ def paragraphs(body):
     return [p.strip() for p in re.split(r"\n\s*\n", body) if p.strip()]
 
 
+# A verse block (October 2026): every line between "::: verse" and ":::"
+# stays a line of its own, blank lines included.
+VERSE = re.compile(r"^::: ?verse[ \t]*\n(.*?)\n:::[ \t]*$", re.M | re.S)
+
+
 def render_text(body):
-    """[(kind, html)] for each paragraph: kind is "p" or "quote"."""
+    """[(kind, html)] for each paragraph: kind is "p", "quote" or "verse".
+    A verse's html is one <span class="verse-l"> per line."""
+    out, at = [], 0
+    for match in VERSE.finditer(body):
+        out += _prose(body[at:match.start()])
+        lines = match.group(1).strip("\n").split("\n")
+        out.append(("verse", "\n".join('<span class="verse-l">%s</span>' % render_inline(line.strip())
+                                       for line in lines)))
+        at = match.end()
+    return out + _prose(body[at:])
+
+
+def unclosed_verse(body):
+    """True if a "::: verse" line has no ":::" line closing it (it would be
+    shown as plain text)."""
+    return bool(re.search(r"^::: ?verse[ \t]*$", VERSE.sub("", body), re.M))
+
+
+def _prose(body):
     out = []
     for para in paragraphs(body):
         lines = para.split("\n")

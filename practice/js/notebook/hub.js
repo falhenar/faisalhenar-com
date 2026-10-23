@@ -10,8 +10,10 @@
 
   Each room's spread is built from that room's own data, never from a copy:
   the room pages themselves (reflections.html, meditation.html,
-  places.html: their intro and their items) and the two data files
-  (reading.json, talks.json). Counts are counted, not written down. If a
+  places.html: their intro and their items) and the three data files
+  (reading.json, talks.json, and reflections/published.json for the
+  Reflections' count, contents and "Lately" line). Counts are counted, not
+  written down. If a
   room cannot be read, its spread is left out and the contents line still
   links to the room.
 
@@ -51,13 +53,22 @@
   }
   function txt(node) { return node ? node.textContent.replace(/\s+/g, ' ').trim() : ''; }
   function sentences(s) { return (s || '').split(/(?<=[.!?])\s+(?=[A-Z“"'])/); }
-  // "16 September 2026", as the room writes its dates (Safari will not parse it)
   var FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  function parseDate(s) {
-    var m = /^(\d{1,2}) (\w+) (\d{4})$/.exec(s || '');
-    return m ? new Date(+m[3], FULL.indexOf(m[2]), +m[1]) : new Date(0);
-  }
   function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+  // "2026-10-10", as published.json writes its dates, read as a local date
+  function isoDate(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date(0);
+  }
+  function longDate(s) { var d = isoDate(s); return d.getDate() + ' ' + FULL[d.getMonth()] + ' ' + d.getFullYear(); }
+  // "Suddhavari Monastery": a Reflection's place up to its first comma
+  function shortPlace(r) { return (r.place || '').split(',')[0].trim(); }
+  // How the hub's "Lately" line introduces a Reflection: by its sutta, or,
+  // from practice, by its place
+  function reflLine(r) {
+    if (r.book === 'practice') return 'A reflection from practice' + (shortPlace(r) ? ' at ' + shortPlace(r) : '');
+    return 'A reflection on ' + r.ref;
+  }
 
   var book = $('.nb-book');
   if (!book) return;
@@ -167,12 +178,6 @@
       };
     });
   }
-  // A reflection's own page, from its "Read the reflection" link in the
-  // room; an entry without one falls back to its item in the room.
-  function reflHref(x) {
-    var a = $('.nb-d-links a[href^="reflections/"]', x.li);
-    return a ? a.getAttribute('href') : 'reflections.html#' + x.id;
-  }
   // A meditation item with a sheet goes straight to it, from its "Read the
   // sheet" link in the room; anything else goes to its item in the room.
   function medHref(x) {
@@ -186,32 +191,38 @@
   }
 
   var jobs = {
+    // The count, "Lately" and the contents come from published.json, the
+    // listed Reflections newest first (written by build-reflections.py);
+    // only the intro and the opening of the newest are read from the room.
     refl: function () {
-      return page('reflections.html').then(function (doc) {
-        var list = items(doc);
-        var dated = list.map(function (x) { return { x: x, d: parseDate(x.where) }; })
-          .sort(function (a, b) { return b.d - a.d; });
-        var newest = dated[0] && dated[0].x;
+      return json('data/reflections/published.json').then(function (data) {
+        var list = data.reflections || [], newest = list[0];
+        var count = plural(list.length, 'entry', 'entries');
+        var c = $('[data-count="refl"]');
+        if (c) c.textContent = count + ' · p. ' + ROOMS.refl.page;
         if (newest) {
           var lately = $('#nb-lately'), link = $('#nb-lately-link');
-          var ref = newest.tag.replace(/^Latest\s*·\s*/, '');
           link.textContent = '';
-          link.appendChild(document.createTextNode('A reflection on ' + ref + ', '));
-          link.appendChild(el('em', '', newest.t));
-          link.href = reflHref(newest);
-          $('#nb-lately-date').textContent = newest.where;
+          link.appendChild(document.createTextNode(reflLine(newest) + ', '));
+          link.appendChild(el('em', '', newest.title));
+          link.href = 'reflections/' + newest.slug + '.html';
+          $('#nb-lately-date').textContent = longDate(newest.added);
           lately.hidden = false;
         }
-        return {
-          count: plural(list.length, 'entry', 'entries'),
-          intro: txt($('.nb-intro', doc)),
-          feat: newest && { title: newest.t, href: reflHref(newest),
-            text: sentences(newest.text[0]).slice(0, 2).join(' '),
-            meta: newest.tag.replace(/^Latest\s*·\s*/, '') + ' · ' + newest.where },
-          rows: dated.slice(0, 12).map(function (o) {
-            return { t: o.x.t, n: o.d.getDate() + ' ' + MONTHS[o.d.getMonth()], href: reflHref(o.x) };
-          })
-        };
+        return page('reflections.html').then(function (doc) {
+          var item = newest && doc.getElementById(newest.slug);
+          return {
+            count: count,
+            intro: txt($('.nb-intro', doc)),
+            feat: newest && { title: newest.title, href: 'reflections/' + newest.slug + '.html',
+              text: item ? sentences(txt($('.nb-d-text', item))).slice(0, 2).join(' ') : '',
+              meta: (newest.ref || shortPlace(newest) || 'From practice') + ' · ' + longDate(newest.added) },
+            rows: list.slice(0, 12).map(function (r) {
+              var d = isoDate(r.added);
+              return { t: r.title, n: d.getDate() + ' ' + MONTHS[d.getMonth()], href: 'reflections/' + r.slug + '.html' };
+            })
+          };
+        });
       });
     },
     med: function () {

@@ -21,6 +21,8 @@
     .nb-detail             the item's text
     .nb-panel              the panel; [data-move] inside it is the drawing's
                            one movement, replayed on each new choice
+    .nb-filter-to          a filter anchor (Reflections): notebook.css hides
+                           the other rows while it is the target
 
   "Elsewhere in the notebook" comes from practice/data/crosslinks.json,
   keyed "<page>#<item id>", and is added to each detail it names.
@@ -200,6 +202,15 @@
       }
     }
     if (!target) return false;
+    if (target.classList.contains('nb-filter-to')) {
+      // a filter anchor (Reflections): the CSS hides the other rows; the
+      // first row still shown goes in the panel (a phone closes its open
+      // row instead), and the browser scrolls itself
+      var shown = this.items.filter(function (item) { return getComputedStyle(item).display !== 'none'; })[0];
+      if (!WIDE.matches) { this.current = null; this.layout(); }
+      else if (shown) this.choose(shown, { quiet: !live });
+      return true;
+    }
     if (target.classList.contains('nb-item')) {
       this.choose(target, { quiet: !live });
     } else if (target.classList.contains('nb-acc')) {

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "parts": [
+    {
+      "part": "I",
+      "title": "The Human Condition",
+      "chapters": [
+        "Old Age, Illness, and Death",
+        "The Tribulations of Unreflective Living",
+        "A World in Turmoil",
+        "Without Discoverable Beginning"
+      ]
+    },
+    {
+      "part": "II",
+      "title": "The Bringer of Light",
+      "chapters": []
+    },
+    {
+      "part": "III",
+      "title": "Approaching the Dhamma",
+      "chapters": []
+    },
+    {
+      "part": "IV",
+      "title": "The Happiness Visible in This Present Life",
+      "chapters": []
+    },
+    {
+      "part": "V",
+      "title": "The Way to a Fortunate Rebirth",
+      "chapters": []
+    },
+    {
+      "part": "VI",
+      "title": "Deepening One's Perspective on the World",
+      "chapters": []
+    },
+    {
+      "part": "VII",
+      "title": "The Path to Liberation",
+      "chapters": []
+    },
+    {
+      "part": "VIII",
+      "title": "Mastering the Mind",
+      "chapters": []
+    },
+    {
+      "part": "IX",
+      "title": "Shining the Light of Wisdom",
+      "chapters": []
+    },
+    {
+      "part": "X",
+      "title": "The Planes of Realization",
+      "chapters": []
+    }
+  ]
+}

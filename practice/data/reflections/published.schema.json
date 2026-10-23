@@ -1,17 +1,52 @@
 {
-  "description": "Written by tools/build-reflections.py, never by hand: the listed Reflections, so the Practice hub can link the sutta of the day to a Reflection on it.",
+  "description": "Written by tools/build-reflections.py, never by hand: the listed Reflections, newest first, so the Practice hub can count them, show the latest in its Lately line and its contents, and link the sutta of the day to a Reflection on it (by ref; a Reflection from practice has an empty ref and never matches).",
   "type": "object",
-  "required": ["version", "reflections"],
+  "required": [
+    "version",
+    "reflections"
+  ],
   "additionalProperties": false,
   "properties": {
-    "version": {"const": 1},
+    "version": {
+      "const": 1
+    },
     "reflections": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "slug", "ref"],
+        "required": [
+          "id",
+          "slug",
+          "ref",
+          "book",
+          "title",
+          "added"
+        ],
         "additionalProperties": false,
-        "properties": {"id": {"type": "string"}, "slug": {"type": "string"}, "ref": {"type": "string"}}
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "ref": {
+            "type": "string"
+          },
+          "book": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "place": {
+            "type": "string"
+          },
+          "added": {
+            "type": "string",
+            "format": "date"
+          }
+        }
       }
     }
   }

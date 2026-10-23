@@ -20,12 +20,20 @@ tools/sitedata.py for their format):
 and lays the same words out as pages.
 
   practice/reflections/<slug>.html   one per published Reflection
-  practice/reflections.html          the archive, between its BUILD markers
-  sitemap.xml                        the Reflection pages, between its markers
+  practice/reflections.html          the room, between its BUILD markers: one
+                                     list, newest first, and the card to the
+                                     anthology's page
+  practice/in-the-buddhas-words.html the anthology's page, between its BUILD
+                                     markers, laid out by the book's parts
+                                     and chapters (practice/data/
+                                     itbw-structure.json)
+  sitemap.xml                        the Reflection pages and the anthology's,
+                                     between its markers
   practice/data/reflections/published.json
-                                     the listed Reflections (id, slug, ref),
-                                     read by the Practice hub to link the
-                                     sutta of the day to its Reflection
+                                     the listed Reflections, newest first,
+                                     read by the Practice hub for its count,
+                                     contents and "Lately" line, and to link
+                                     the sutta of the day to its Reflection
 
 A Reflection is published when its file exists, its text is not empty and
 `added` holds a date. Queued passages get no page.
@@ -63,9 +71,18 @@ CROSSLINKS_PATH = os.path.join(ROOT, "practice", "data", "crosslinks.json")
 CROSSLINKS = {}
 ARCHIVE = os.path.join(ROOT, "practice", "reflections.html")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
+# Reading In the Buddha's Words (October 2026): the anthology's own page,
+# laid out by the book's parts and chapters from itbw-structure.json.
+ANTHOLOGY = os.path.join(ROOT, "practice", "in-the-buddhas-words.html")
+STRUCTURE_PATH = os.path.join(ROOT, "practice", "data", "itbw-structure.json")
 
-MARK_OPEN = "<!-- BUILD:reflections -->"
-MARK_CLOSE = "<!-- /BUILD:reflections -->"
+# The section keys with a behaviour of their own: the anthology has its own
+# page, and a Reflection from practice names a place instead of a sutta.
+BOOK = "itbw"
+PRACTICE = "practice"
+# How each section introduces an entry in the room's list ("where it came
+# from"); a section not named here uses its own title.
+ORIGINS = {BOOK: "In the Buddha's Words", "keepers": "A sutta I return to", PRACTICE: "From practice"}
 
 
 def read(path):
@@ -101,6 +118,35 @@ def slugify(title):
 
 def fmt_date(iso):
     return datetime.date.fromisoformat(iso).strftime("%d %B %Y").lstrip("0")
+
+
+def short_date(iso):
+    """"10 Oct 2026", for the room's list."""
+    return datetime.date.fromisoformat(iso).strftime("%d %b %Y").lstrip("0")
+
+
+def short_place(entry):
+    """"Suddhavari Monastery": the place up to its first comma."""
+    return (entry.get("place") or "").split(",")[0].strip()
+
+
+def long_place(entry):
+    """"Suddhavari Monastery &middot; São Lourenço, Brazil": the first comma
+    becomes a middle dot."""
+    return " &middot; ".join(esc(part.strip()) for part in (entry.get("place") or "").split(",", 1) if part.strip())
+
+
+def origin(entry, books):
+    """Where an entry came from, the second line of its row in the room:
+    "In the Buddha's Words I.3(1) &middot; AN 2.37", "A sutta I return to
+    &middot; SN 5.10", "From practice &middot; Suddhavari Monastery"."""
+    key = entry.get("book")
+    head = esc(ORIGINS.get(key) or books[key]["title"])
+    if key == BOOK and entry.get("label"):
+        head += " " + esc(entry["label"])
+    # A sutta reference never breaks across lines on a phone; a place may.
+    where = esc(short_place(entry)) if key == PRACTICE else esc(clean_ref(entry)).replace(" ", "&nbsp;")
+    return head + (" &middot; " + where if where else "")
 
 
 def strip_tags(value):
@@ -146,25 +192,6 @@ def subtitle(entry):
     if not reference:
         return esc(source) if source else ""
     return esc(reference) + (" &middot; " + esc(source) if source else "")
-
-
-def archive_reference(entry):
-    """The shorter form, for the contents page: one name for the text, not two.
-
-    The Pali title is carried on the Reflection's own page, under the
-    heading, where there is room for it. Here it is the difference between
-    every row fitting on one line and the longest one folding its date onto
-    a second, which made the list look like two different designs.
-
-    The "from" that marks an excerpt is dropped here for the same reason it
-    is kept there. A contents column answers which text; the reader learns
-    it is a passage the moment they open the page, which is when it starts
-    to matter. Leaving it in put one lowercase word in a column of bare
-    references, four times over once the queue is published.
-    """
-    reference = (entry.get("ref") or entry.get("sourceLocation")
-                 or entry.get("sourceTitle") or entry.get("suttaTitle") or "")
-    return esc(re.sub(r"^from\s+", "", reference.strip(), flags=re.I))
 
 
 def structural(entry):
@@ -215,6 +242,8 @@ def note_markup(entry, indent):
     for kind, markup in sitedata.render_text(entry["note"]):
         if kind == "quote":
             out.append(indent + '<blockquote class="reflections-excerpt">' + markup + "</blockquote>\n")
+        elif kind == "verse":
+            out.append(indent + '<div class="verse">' + markup.replace("\n", "\n" + indent + "  ") + "</div>\n")
         else:
             out.append(indent + '<p class="reflection-note">' + markup + "</p>\n")
     return "".join(out)
@@ -241,6 +270,30 @@ NAV = """          <a href="../../">Home</a>
           <a href="../../note.html">A note from me</a>
           <a href="../../contact.html">Contact</a>"""
 
+# The pen beside the notebook: nib, slit, body and clip, all moss. The same
+# four strokes as on the hub's shelf and in the room, where they tip together.
+PEN = ('<path class="moss" pathLength="1" d="M92 52 L95 38 L98 52 Z"></path>'
+       '<path class="slit" pathLength="1" d="M95 45 L95 51"></path>'
+       '<rect class="moss" pathLength="1" x="92" y="52" width="6" height="48" rx="2"></rect>'
+       '<path class="open moss-line" pathLength="1" d="M98 58 L101 58 L101 74"></path>')
+
+# The open book of In the Buddha's Words, back to front: the visible edges
+# of the cover and of the page block (open strokes, so nothing drawn is
+# later hidden under the pages), the two open pages, the four text lines
+# (title size only) and the ribbon.
+BOOK_ART = ('<path class="open" pathLength="1" d="M13 48 L8 48 L8 98 Q34 94 60 100 Q86 94 112 98 L112 48 L107 48"></path>'
+            '<path class="open" pathLength="1" d="M18 40.5 L13 42 L13 96 Q36 92 60 98 Q84 92 107 96 L107 42 L102 40.5"></path>'
+            '<path pathLength="1" d="M18 36 Q38 30 60 38 L60 94 Q38 88 18 92 Z"></path>'
+            '<path pathLength="1" d="M60 38 Q82 30 102 36 L102 92 Q82 88 60 94 Z"></path>'
+            '{lines}'
+            '<path class="moss" pathLength="1" d="M58 38 L58 24 L60 27 L62 24 L62 38 Z"></path>')
+BOOK_LINES = ('<path class="open" pathLength="1" d="M26 50 Q39 46 52 50"></path>'
+              '<path class="open" pathLength="1" d="M26 58 Q39 54 52 58"></path>'
+              '<path class="open" pathLength="1" d="M68 50 Q81 46 94 50"></path>'
+              '<path class="open" pathLength="1" d="M68 58 Q81 54 94 58"></path>')
+BOOK_CARD = ('<svg class="nb-art nb-art-card ink" width="60" height="50" viewBox="0 0 120 100" stroke-width="2.2" '
+             'aria-hidden="true" focusable="false" style="--d: 1.3s">' + BOOK_ART.format(lines="") + '</svg>')
+
 # The Reflections notebook, small, above the title (October 2026): the same
 # drawing as on the Practice hub's shelf. It inks itself in on arrival
 # (notebook.css), then stays still.
@@ -249,7 +302,7 @@ ICON = ('<svg class="nb-art nb-art-small ink" width="60" height="50" viewBox="0 
         '<rect pathLength="1" x="30" y="24" width="54" height="76" rx="3"></rect>'
         '<path class="open" pathLength="1" d="M38 24 L38 100"></path>'
         '<rect class="open" pathLength="1" x="50" y="40" width="24" height="12"></rect>'
-        '<rect class="moss" pathLength="1" x="92" y="44" width="6" height="56" rx="3"></rect></svg>')
+        + '<g>' + PEN + '</g></svg>')
 
 NUMBERS = ["None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
            "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen",
@@ -268,7 +321,9 @@ def opening(entry, at_least=200):
     """The opening of the note, in whole sentences and word for word: what
     the Reflections room shows in its panel before the reader goes on to the
     page. Never the sutta passage: that belongs to the page itself."""
-    first = re.split(r"\n\s*\n", entry["note"].strip())[0]
+    # The first paragraph of prose: a verse block is not cut into sentences.
+    prose = re.sub(sitedata.VERSE, "", entry["note"])
+    first = re.split(r"\n\s*\n", prose.strip())[0]
     text = sitedata.plain_text(first)
     out = []
     for sentence in sentences(text):
@@ -294,9 +349,10 @@ def also_markup(key, indent, base=""):
     return "\n".join(rows) + "\n"
 
 
-def nav_markup(previous, total):
+def nav_markup(previous, total, in_book=False):
     """Before it in the book (the anthology only, where there is one), and
-    the archive with the count of published Reflections."""
+    the archive with the count of published Reflections. An anthology page
+    also links, quietly, to the book's own page."""
     rows = []
     if previous:
         rows.append('      <a class="nb-ref-step" rel="prev" href="' + esc(previous["slug"]) + '.html">'
@@ -305,7 +361,9 @@ def nav_markup(previous, total):
     rows.append('      <a class="nb-ref-step nb-ref-step-all" href="../reflections.html">'
                 '<span class="nb-ref-step-l">All reflections &rarr;</span>'
                 '<span class="nb-ref-step-t">' + in_words(total) + " so far</span></a>")
-    return ('    <nav class="nb-ref-nav" aria-label="More reflections">\n' + "\n".join(rows) + "\n    </nav>\n")
+    book = ('    <p class="nb-ref-book"><a href="../in-the-buddhas-words.html">In the Buddha\'s Words, in order &rarr;</a></p>\n'
+            if in_book else "")
+    return ('    <nav class="nb-ref-nav" aria-label="More reflections">\n' + "\n".join(rows) + "\n    </nav>\n" + book)
 
 
 def page_markup(entry, previous, total, section, css_version, base_version, menu_version, draw_version="1", unlisted=False):
@@ -313,6 +371,8 @@ def page_markup(entry, previous, total, section, css_version, base_version, menu
     title = esc(page_title(entry))
     desc = esc(description(entry))
     sub = subtitle(entry)
+    if entry.get("book") == PRACTICE:
+        sub = esc(section["title"]) + (" &middot; " + esc(entry["place"]) if entry.get("place") else "")
     struct = structural(entry)
     url_source = source_url(entry)
 
@@ -413,7 +473,7 @@ def page_markup(entry, previous, total, section, css_version, base_version, menu
     also = also_markup("reflections.html#" + entry["slug"], "    ", "../")
     if also:
         parts.append(also.rstrip("\n"))
-    parts.append(nav_markup(previous, total).rstrip("\n"))
+    parts.append(nav_markup(previous, total, entry.get("book") == BOOK).rstrip("\n"))
     parts.append("  </article>")
     parts.append("  </main>")
     parts.append("")
@@ -497,67 +557,185 @@ def withdrawn_markup(slug, css_version, base_version, menu_version):
     ]) + "\n"
 
 
-def archive_markup(groups, latest=None):
-    """The Reflections room (October 2026): a list on the left, the chosen
-    Reflection in a panel on the right, opening in place on a phone. Each
-    item carries its reference line, date, the opening of the note and the
-    two links; never the sutta passage, which stays on the page itself.
+def newest_first(entries):
+    """The notebook's order: the latest `added` first, and on a tie the
+    entry earlier in the source order."""
+    return sorted(entries, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]))
 
-    latest: the slug of the most recently published entry, which gets a
-    small "Latest" label in place; the order of the list is unchanged. The
-    old #r-<id> anchors of the accordion archive open the same item."""
-    out = []
-    for group in groups:
-        key = group["key"]
-        out.append('        <section class="nb-group" id="' + esc(key) + '">')
-        out.append('          <h2 class="nb-group-h">' + esc(group["section"]["title"]) + "</h2>")
-        out.append('          <p class="nb-group-d">' + group["section"]["note"] + "</p>")
-        out.append('          <ul class="nb-rows">')
-        for entry in group["entries"]:
-            slug = esc(entry["slug"])
-            line = archive_reference(entry)
-            mark = ("Latest &middot; " if entry["slug"] == latest else "") + line
-            out.append('            <li class="nb-item" id="' + slug + '" data-alias="r-' + esc(entry["id"]) + '">')
-            out.append('              <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-' + slug + '">'
-                       '<span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-t">' + esc(entry["title"]) + "</span></span>"
-                       '<span class="nb-row-r">' + mark + '<span class="nb-sign" aria-hidden="true">+</span></span></button>')
-            out.append('              <div class="nb-detail" id="d-' + slug + '" hidden>')
-            out.append('                <div class="nb-d-where">' + fmt_date(entry["added"]) + "</div>")
-            out.append('                <div class="nb-d-sec">' + esc(group["section"]["title"]) + "</div>")
-            out.append('                <h3 class="nb-d-t">' + esc(entry["title"]) + "</h3>")
-            by = [b for b in (subtitle(entry), structural(entry)) if b]
-            if by:
-                out.append('                <div class="nb-d-by">' + " &middot; ".join(by) + "</div>")
-            out.append('                <p class="nb-d-text">' + esc(opening(entry)) + "</p>")
-            links = ['<a class="nb-btn" href="reflections/' + slug + '.html">Read the reflection</a>']
-            url = source_url(entry)
-            if url and source_label(url) == "Read on SuttaCentral":
-                links.append('<a class="nb-btn" href="' + esc(url) + '" target="_blank" rel="noopener">The sutta on SuttaCentral'
-                             '<span class="ext" aria-hidden="true">&#8239;↗</span></a>')
-            out.append('                <div class="nb-d-links">' + "".join(links) + "</div>")
-            out.append("              </div>")
-            out.append("            </li>")
-        out.append("          </ul>")
-        out.append("        </section>")
+
+def filter_markup(entries, books):
+    """The filter line over the list, with a count per section. Each link is
+    an anchor: notebook.css shows only that section's rows while its anchor
+    is the target, so filtering works without JavaScript, and the old
+    #itbw link of the grouped archive lands on the anthology's rows. A
+    section with nothing listed is left out. The anthology, the longest,
+    comes last."""
+    counts = [(key, sum(1 for e in entries if e.get("book") == key)) for key in reversed(list(books))]
+    counts = [(key, n) for key, n in counts if n]
+    out = ['        <span class="nb-filter-to" id="' + esc(key) + '"></span>' for key, _ in counts]
+    links = ['<a class="nb-filter-all" href="#reflections-list">All &middot; %d</a>' % len(entries)]
+    links += ['<a href="#%s">%s &middot; %d</a>' % (esc(key), esc(books[key]["title"]), n) for key, n in counts]
+    out.append('        <p class="nb-filter" aria-label="Show">' + " &middot; ".join(links) + "</p>")
+    return out
+
+
+def archive_markup(entries, books):
+    """The Reflections room (October 2026): one notebook, newest first, a
+    list on the left and the chosen Reflection in a panel on the right,
+    opening in place on a phone. Each row says where the entry came from;
+    each item carries its date, section, the opening of the note and its
+    links; never the sutta passage, which stays on the page itself.
+
+    The old #r-<id> anchors of the accordion archive open the same item."""
+    out = filter_markup(entries, books)
+    out.append('        <ul class="nb-rows nb-rows-2">')
+    for entry in entries:
+        slug = esc(entry["slug"])
+        key = entry["book"]
+        out.append('          <li class="nb-item" id="' + slug + '" data-alias="r-' + esc(entry["id"]) + '" data-book="' + esc(key) + '">')
+        out.append('            <button class="nb-row" type="button" aria-pressed="false" aria-controls="d-' + slug + '">'
+                   '<span class="nb-row-l"><span class="nb-dot"></span><span class="nb-row-tt"><span class="nb-row-t">' + esc(entry["title"]) + "</span>"
+                   '<span class="nb-row-o">' + origin(entry, books) + "</span></span></span>"
+                   '<span class="nb-row-r">' + short_date(entry["added"]) + '<span class="nb-sign" aria-hidden="true">+</span></span></button>')
+        out.append('            <div class="nb-detail" id="d-' + slug + '" hidden>')
+        out.append('              <div class="nb-d-where">' + fmt_date(entry["added"]) + "</div>")
+        out.append('              <div class="nb-d-sec">' + esc(books[key]["title"]) + "</div>")
+        out.append('              <h3 class="nb-d-t">' + esc(entry["title"]) + "</h3>")
+        by = [long_place(entry)] if key == PRACTICE else [b for b in (subtitle(entry), structural(entry)) if b]
+        if any(by):
+            out.append('              <div class="nb-d-by">' + " &middot; ".join(by) + "</div>")
+        out.append('              <p class="nb-d-text">' + esc(opening(entry)) + "</p>")
+        links = ['<a class="nb-btn" href="reflections/' + slug + '.html">Read the reflection</a>']
+        url = source_url(entry)
+        if url and source_label(url) == "Read on SuttaCentral":
+            links.append('<a class="nb-btn" href="' + esc(url) + '" target="_blank" rel="noopener">The sutta on SuttaCentral'
+                         '<span class="ext" aria-hidden="true">&#8239;↗</span></a>')
+        out.append('              <div class="nb-d-links">' + "".join(links) + "</div>")
+        out.append("            </div>")
+        out.append("          </li>")
+    out.append("        </ul>")
     return "\n".join(out)
 
 
-def splice(text, block, label):
-    start = text.find(MARK_OPEN)
-    end = text.find(MARK_CLOSE)
+def so_far(n):
+    """"Seven reflections so far", "One reflection so far"."""
+    if not n:
+        return "No reflections yet"
+    return in_words(n) + (" reflection" if n == 1 else " reflections") + " so far"
+
+
+LABEL = re.compile(r"^([IVXL]+)\.(\d+)\(\d+\)$")
+
+
+def part_of(entry):
+    """"I" for an entry labelled "I.3(1)", else its `part`."""
+    match = LABEL.match(entry.get("label") or "")
+    return match.group(1) if match else entry.get("part")
+
+
+def chapter_of(entry):
+    match = LABEL.match(entry.get("label") or "")
+    return int(match.group(2)) if match else None
+
+
+def reading(structure, entries):
+    """The anthology laid out by the book, the index of the part being read
+    now (the part of the newest entry) and the newest entry.
+
+    Each part is (part, [(chapter label or None, [entries])], count), its
+    entries in book order. An entry is placed by its label ("I.3(1)": part
+    I, chapter 3), or by its `part` alone. A part whose chapters are not
+    written down yet lists its entries without chapter labels, as does a
+    chapter number the structure does not have."""
+    parts = []
+    for part in structure["parts"]:
+        mine = sorted((e for e in entries if part_of(e) == part["part"]), key=lambda e: e["_index"])
+        chapters = [("%d &middot; %s" % (number, esc(title)), [e for e in mine if chapter_of(e) == number])
+                    for number, title in enumerate(part["chapters"], 1)]
+        placed = {e["id"] for _, inside in chapters for e in inside}
+        rest = [e for e in mine if e["id"] not in placed]
+        if rest:
+            chapters.append((None, rest))
+        parts.append((part, chapters, len(mine)))
+    newest = newest_first(entries)[0] if entries else None
+    now = next((i for i, (part, _, _) in enumerate(parts) if newest and part["part"] == part_of(newest)), 0)
+    return parts, now, newest
+
+
+def anthology_markup(structure, entries):
+    """(the So far box, the parts) for practice/in-the-buddhas-words.html:
+    the parts already read, the part being read now in a paper frame, and
+    only the next one, empty. No other unread part is shown."""
+    parts, now, newest = reading(structure, entries)
+    part = parts[now][0]
+    where = "Part " + esc(part["part"]) + " of " + in_words(len(parts)).lower()
+    if newest and part["chapters"] and chapter_of(newest):
+        where += ", chapter %d" % chapter_of(newest)
+    box = ['          <p class="nb-sofar-where">' + where + "</p>",
+           '          <p class="nb-sofar-text">' + so_far(len(entries)) + ". Translations are Bhikkhu Sujato's via "
+           "SuttaCentral, unless noted otherwise.</p>"]
+    out = []
+    for index, (part, chapters, count) in enumerate(parts[:now + 2]):
+        number = esc(part["part"])
+        if index == now + 1:
+            out.append('      <section class="nb-part nb-part-next" aria-label="Part ' + number + '">')
+            out.append('        <div class="nb-part-head"><span>Part ' + number + "</span><span>Next in the book</span></div>")
+            out.append('        <h2 class="nb-part-t">' + esc(part["title"]) + "</h2>")
+            out.append("      </section>")
+            continue
+        out.append('      <section class="nb-part" id="part-' + number.lower() + '" aria-label="Part ' + number + '">')
+        out.append('        <div class="nb-part-head"><span>Part ' + number + "</span><span>"
+                   + str(count) + (" reflection" if count == 1 else " reflections") + "</span></div>")
+        out.append('        <h2 class="nb-part-t">' + esc(part["title"]) + "</h2>")
+        out.append('        <div class="nb-chapters">')
+        for label, inside in chapters:
+            out.append('          <div class="nb-chapter' + ("" if inside else " is-empty") + '">')
+            if label:
+                out.append('            <h3 class="nb-chapter-h">' + label + "</h3>")
+            if inside:
+                out.append('            <ul class="nb-chapter-list">')
+                for entry in inside:
+                    out.append('              <li><a href="reflections/' + esc(entry["slug"]) + '.html"><span class="nb-chapter-t">'
+                               + esc(entry["title"]) + '</span><span class="nb-chapter-r">' + esc(clean_ref(entry)) + "</span></a></li>")
+                out.append("            </ul>")
+            out.append("          </div>")
+        out.append("        </div>")
+        if index == now:
+            out.append('        <p class="nb-part-now">Reading now</p>')
+        out.append("      </section>")
+    return "\n".join(box), "\n".join(out)
+
+
+def card_markup(structure, entries):
+    """The card under the room's panel that leads to the anthology's page."""
+    parts, now, _ = reading(structure, entries)
+    return "\n".join([
+        '        <a class="nb-bookcard" href="in-the-buddhas-words.html">' + BOOK_CARD,
+        '          <span class="nb-bookcard-t">Reading <em>In the Buddha\'s Words</em> &rarr;</span>',
+        '          <span class="nb-bookcard-d">Bhikkhu Bodhi\'s anthology, in his order. ' + so_far(len(entries))
+        + ", reading Part " + esc(parts[now][0]["part"]) + " now.</span>",
+        "        </a>"])
+
+
+def splice(text, block, label, name="reflections"):
+    start = text.find("<!-- BUILD:%s -->" % name)
+    end = text.find("<!-- /BUILD:%s -->" % name)
     if start < 0 or end < 0 or end < start:
-        raise SystemExit("ERROR: %s has no BUILD:reflections markers." % label)
-    return text[:start + len(MARK_OPEN)] + "\n" + block + "\n" + text[end:]
+        raise SystemExit("ERROR: %s has no BUILD:%s markers." % (label, name))
+    return text[:start + len("<!-- BUILD:%s -->" % name)] + "\n" + block + "\n" + text[end:]
 
 
-def sitemap_markup(groups):
+def sitemap_markup(entries, book_entries):
+    """The anthology's page, then every listed Reflection, newest first."""
     rows = []
-    for group in groups:
-        for entry in group["entries"]:
-            rows.append("  <url>")
-            rows.append("    <loc>" + ORIGIN + "/practice/reflections/" + esc(entry["slug"]) + ".html</loc>")
-            rows.append("    <lastmod>" + esc(entry["added"]) + "</lastmod>")
-            rows.append("  </url>")
+    if book_entries:
+        rows += ["  <url>", "    <loc>" + ORIGIN + "/practice/in-the-buddhas-words.html</loc>",
+                 "    <lastmod>" + esc(newest_first(book_entries)[0]["added"]) + "</lastmod>", "  </url>"]
+    for entry in entries:
+        rows.append("  <url>")
+        rows.append("    <loc>" + ORIGIN + "/practice/reflections/" + esc(entry["slug"]) + ".html</loc>")
+        rows.append("    <lastmod>" + esc(entry["added"]) + "</lastmod>")
+        rows.append("  </url>")
     return "\n".join(rows)
 
 
@@ -675,7 +853,6 @@ def main():
     # Every published entry gets its page, unlisted or not; only the listed
     # ones are counted, linked to from a neighbour, or shown in the archive.
     groups = page_order(books, published)
-    listed_groups = page_order(books, listed)
     total = len(listed)
 
     os.makedirs(OUT_DIR, exist_ok=True)
@@ -704,10 +881,17 @@ def main():
             retired += 1
             print("  withdrawn: practice/reflections/%s now redirects to the archive" % name)
 
-    # The newest listed Reflection: the latest `added` date, and on a tie the
-    # entry earlier in the source order.
-    newest = min(listed, key=lambda e: (-int(e["added"].replace("-", "")), e["_index"]), default=None)
-    archive_text = splice(archive_text, archive_markup(listed_groups, newest and newest.get("slug")), "practice/reflections.html")
+    # The room: every listed Reflection, newest first (the latest `added`
+    # date, and on a tie the entry earlier in the source order).
+    notebook = newest_first(listed)
+    newest = notebook[0] if notebook else None
+    in_book = [e for e in listed if e.get("book") == BOOK]
+    structure = sitedata.read_json(STRUCTURE_PATH)
+    problems = sitedata.check_file(STRUCTURE_PATH, structure)
+    if problems:
+        raise SystemExit("ERROR: practice/data/itbw-structure.json does not hold together:\n  " + "\n  ".join(problems))
+    archive_text = splice(archive_text, archive_markup(notebook, books), "practice/reflections.html")
+    archive_text = splice(archive_text, card_markup(structure, in_book), "practice/reflections.html", "reflections-card")
     # The room opens on the newest Reflection, and its footer says when
     # the room last changed: both follow the data, not the markup. With
     # nothing listed the room opens on nothing and the date is left alone.
@@ -718,9 +902,18 @@ def main():
         archive_text = re.sub(r'(<time data-room-changed datetime=")[^"]*(">)[^<]*(</time>)',
                               lambda m: m.group(1) + newest["added"][:7] + m.group(2) + month + m.group(3), archive_text)
     write(ARCHIVE, archive_text)
-    write(SITEMAP, splice(read(SITEMAP), sitemap_markup(listed_groups), "sitemap.xml"))
-    index = {"version": 1, "reflections": [{"id": e["id"], "slug": e["slug"], "ref": e.get("ref", "")}
-                                             for g in listed_groups for e in g["entries"]]}
+    box, parts = anthology_markup(structure, in_book)
+    book_text = splice(read(ANTHOLOGY), box, "practice/in-the-buddhas-words.html", "itbw-sofar")
+    book_text = splice(book_text, parts, "practice/in-the-buddhas-words.html", "itbw-parts")
+    if read(ANTHOLOGY) != book_text:
+        write(ANTHOLOGY, book_text)
+    write(SITEMAP, splice(read(SITEMAP), sitemap_markup(notebook, in_book), "sitemap.xml"))
+    # What the Practice hub needs without reading the room: the count, the
+    # "Lately" line and the contents, and the sutta of the day's link (ref).
+    index = {"version": 1, "reflections": [
+        dict({"id": e["id"], "slug": e["slug"], "ref": e.get("ref", ""), "book": e["book"], "title": e["title"]},
+             **({"place": e["place"]} if e.get("place") else {}), added=e["added"])
+        for e in notebook]}
     published_path = os.path.join(DATA_DIR, "published.json")
     if not os.path.exists(published_path) or read(published_path) != sitedata.dump_json(index):
         sitedata.write_json(published_path, index)

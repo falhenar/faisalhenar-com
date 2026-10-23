@@ -1,0 +1,44 @@
+{
+  "description": "The structure of Bhikkhu Bodhi's In the Buddha's Words: its ten parts in order, each with its numbered chapters (chapter 1 first). A part whose chapters are not written down yet has an empty list. Read by tools/build-reflections.py for practice/in-the-buddhas-words.html; a Reflection's label (\"I.3(1)\": part, chapter, passage) places it.",
+  "type": "object",
+  "required": [
+    "version",
+    "parts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "parts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "part",
+          "title",
+          "chapters"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "part": {
+            "type": "string",
+            "pattern": "^[IVXL]+$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

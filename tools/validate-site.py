@@ -23,7 +23,7 @@ FORBIDDEN = ("\u2014", "\u2015", "&mdash;", "&#8212;", "&#x2014;")
 ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 DEPENDENCIES = (
-    {"id": "reflections", "label": "Reflections", "sources": ("practice/data/reflections/",), "consumers": ("practice/reflections.html", "practice/reflections/", "tools/build-reflections.py", "tools/sitedata.py", "practice/index.html", "practice/js/notebook/hub.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
+    {"id": "reflections", "label": "Reflections", "sources": ("practice/data/reflections/", "practice/data/itbw-structure.json"), "consumers": ("practice/reflections.html", "practice/in-the-buddhas-words.html", "practice/reflections/", "tools/build-reflections.py", "tools/sitedata.py", "practice/index.html", "practice/js/notebook/hub.js", "practice/js/render-daily-sutta.js"), "effects": ("archive", "latest Reflection line", "daily-sutta matching")},
     {"id": "quotes", "label": "Quotes", "sources": ("practice/data/quotes.json",), "consumers": ("practice/index.html", "practice/js/render-quotes.js"), "effects": ("Practice quote",)},
     {"id": "daily-sutta", "label": "Daily Sutta", "sources": ("practice/data/daily-sutta.json", "practice/data/reflections/published.json"), "consumers": ("practice/index.html", "practice/js/render-daily-sutta.js"), "effects": ("daily rotation", "matching published Reflection link")},
     {"id": "reading", "label": "Reading", "sources": ("practice/data/reading.json",), "consumers": ("practice/reading.html", "practice/js/notebook/render-room-data.js", "practice/js/notebook/hub.js"), "effects": ("Reading room", "hub count")},
@@ -47,6 +47,7 @@ SCHEMA_FILES = (
     ("practice/data/reflections/sections.json", "Reflections", "reflections"),
     ("practice/data/reflections/queue.json", "Reflections", "reflections"),
     ("practice/data/reflections/published.json", "Reflections", "reflections"),
+    ("practice/data/itbw-structure.json", "Reflections", "reflections"),
     ("photography/data/photos.json", "Photography", "photography"),
     ("photography/data/sheets.json", "Photography", "photography"),
     ("photography/data/walls.json", "Photography", "photography"),
@@ -305,6 +306,7 @@ def read_reflections(issues, sitedata):
         for problem in sitedata.check(details, schema): issues.append(issue("reflection-schema", "Reflections", relative, problem, area))
         if details.get("id") != path.stem: issues.append(issue("reflection-schema", "Reflections", relative, "The id must be the name of the file.", area))
         if not body.strip(): issues.append(issue("reflection-schema", "Reflections", relative, "A published Reflection needs its text.", area))
+        if sitedata.unclosed_verse(body): issues.append(issue("reflection-verse", "Reflections", relative, "Verse block is not closed.", area))
         for key, value in details.items():
             if key != "excerpt" and isinstance(value, str) and any(token.lower() in value.lower() for token in FORBIDDEN): issues.append(issue("visible-copy-punctuation", "Visible copy", relative, f"The {key} contains forbidden punctuation.", area)); break
         own = "\n".join(line for line in body.split("\n") if not line.startswith(">"))  # a "> " quotation is not ours
@@ -323,6 +325,9 @@ def read_reflections(issues, sitedata):
         summary = entry.get("summary") or ""
         if not summary.strip(): issues.append(issue("reflection-summary", "Reflections", f"{folder}/{entry.get('id')}.md", "Reflection has no search description.", area))
         elif len(summary) > 170: issues.append(issue("reflection-summary", "Reflections", f"{folder}/{entry.get('id')}.md", "Search description is longer than 170 characters.", area))
+        if entry.get("book") == "practice":  # from practice: a place, never a sutta
+            if not (entry.get("place") or "").strip(): issues.append(issue("reflection-schema", "Reflections", f"{folder}/{entry.get('id')}.md", "A Reflection from practice needs its place.", area))
+            if entry.get("ref"): issues.append(issue("reflection-schema", "Reflections", f"{folder}/{entry.get('id')}.md", "A Reflection from practice has no sutta reference (ref).", area))
     return entries, hidden
 
 
@@ -449,6 +454,8 @@ def validate_data(issues, parsed_pages):
         entries, hidden = reflections
         counts["reflections"] = len(entries)
         validate_reflection_pages(issues, entries, hidden, parsed_pages)
+        # The anthology's own page; being public, the sitemap check also wants it listed there.
+        if not (ROOT / "practice/in-the-buddhas-words.html").is_file(): issues.append(issue("reflection-page", "Reflections", "practice/in-the-buddhas-words.html", "The In the Buddha's Words page is missing. Run tools/build-reflections.py.", ("reflections",)))
         listed = values.get("practice/data/reflections/published.json")
         if isinstance(listed, dict):
             named = {(r.get("id"), r.get("slug")) for r in listed.get("reflections", []) if isinstance(r, dict)}
@@ -502,6 +509,8 @@ def validate_data(issues, parsed_pages):
     counts["language_pairs"] = len(pairs) + len(GENERATED_PAIRS)
     contracts = (
         ("reflections", "practice/reflections.html", ("<!-- BUILD:reflections -->", "js/notebook/room.js"), "The Reflection archive must carry its generated list and the room script."),
+        ("reflections", "practice/in-the-buddhas-words.html", ("<!-- BUILD:itbw-sofar -->", "<!-- BUILD:itbw-parts -->"), "The In the Buddha's Words page must carry its generated parts."),
+        ("reflections", "practice/js/notebook/hub.js", ("data/reflections/published.json",), "The hub must read the Reflections' count and Lately line from published.json."),
         ("reflections", "practice/index.html", ("js/render-daily-sutta.js", "js/notebook/hub.js"), "The Practice hub must load the daily renderer, which links to Reflections, and the hub script."),
         ("quotes", "practice/index.html", ("js/render-quotes.js",), "The Practice hub must load the quote renderer."),
         ("quotes", "practice/js/render-quotes.js", ("data/quotes.json",), "The quote renderer must read practice/data/quotes.json."),

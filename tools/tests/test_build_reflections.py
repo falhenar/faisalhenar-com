@@ -115,28 +115,10 @@ class PageTitleTests(unittest.TestCase):
         self.assertEqual(builder.page_title({"title": "A Note"}), "A Note · Reflections · Faisal Henar")
 
 
-class ArchiveReferenceTests(unittest.TestCase):
-    """The contents column answers which text, and nothing else."""
-
-    def test_the_pali_title_stays_on_the_page_not_in_the_list(self):
-        entry = {"ref": "SN 3.3", "suttaTitle": "Jarāmaraṇasutta"}
-        self.assertEqual(builder.archive_reference(entry), "SN 3.3")
-        self.assertEqual(builder.subtitle(entry), "SN 3.3 &middot; Jarāmaraṇasutta")
-
-    def test_the_excerpt_qualifier_is_dropped_in_the_list_and_kept_on_the_page(self):
-        entry = {"ref": "from AN 3.36", "suttaTitle": "Devadūtasutta"}
-        self.assertEqual(builder.archive_reference(entry), "AN 3.36")
-        self.assertTrue(builder.subtitle(entry).startswith("from AN 3.36"))
-
-    def test_only_a_leading_from_is_dropped(self):
-        self.assertEqual(builder.archive_reference({"ref": "Fromage 1.1"}), "Fromage 1.1")
-        self.assertEqual(builder.archive_reference({"ref": "AN 3.36, from the section on messengers"}),
-                         "AN 3.36, from the section on messengers")
-
-    def test_an_entry_with_no_sutta_reference_falls_back_to_its_source(self):
-        self.assertEqual(builder.archive_reference({"sourceLocation": "chapter 4"}), "chapter 4")
-        self.assertEqual(builder.archive_reference({"sourceTitle": "The Island"}), "The Island")
-        self.assertEqual(builder.archive_reference({}), "")
+class SubtitleTests(unittest.TestCase):
+    def test_the_page_names_the_pali_title_and_keeps_the_excerpt_qualifier(self):
+        self.assertEqual(builder.subtitle({"ref": "SN 3.3", "suttaTitle": "Jarāmaraṇasutta"}), "SN 3.3 &middot; Jarāmaraṇasutta")
+        self.assertTrue(builder.subtitle({"ref": "from AN 3.36", "suttaTitle": "Devadūtasutta"}).startswith("from AN 3.36"))
 
 
 class OrderTests(unittest.TestCase):
@@ -216,7 +198,7 @@ class WithdrawnPageTests(unittest.TestCase):
 class BuildRunTests(unittest.TestCase):
     """Whole builds, run against temporary copies, never the real tree."""
 
-    PATHS = ("DATA_DIR", "ARCHIVE", "SITEMAP", "OUT_DIR", "CROSSLINKS_PATH")
+    PATHS = ("DATA_DIR", "ARCHIVE", "SITEMAP", "OUT_DIR", "CROSSLINKS_PATH", "ANTHOLOGY", "STRUCTURE_PATH")
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -225,6 +207,9 @@ class BuildRunTests(unittest.TestCase):
         self.data.mkdir(parents=True)
         shutil.copy(REPO / "practice" / "reflections.html", self.root / "practice" / "reflections.html")
         shutil.copy(REPO / "sitemap.xml", self.root / "sitemap.xml")
+        shutil.copy(REPO / "practice" / "in-the-buddhas-words.html", self.root / "practice" / "in-the-buddhas-words.html")
+        for name in ("itbw-structure.json", "itbw-structure.schema.json"):
+            shutil.copy(REPO / "practice" / "data" / name, self.root / "practice" / "data" / name)
         for schema in (REPO / "practice" / "data" / "reflections").glob("*.schema.json"):
             shutil.copy(schema, self.data / schema.name)
         self.saved = {name: getattr(builder, name) for name in self.PATHS}
@@ -233,6 +218,8 @@ class BuildRunTests(unittest.TestCase):
         builder.SITEMAP = str(self.root / "sitemap.xml")
         builder.OUT_DIR = str(self.root / "practice" / "reflections")
         builder.CROSSLINKS_PATH = str(self.root / "practice" / "data" / "crosslinks.json")
+        builder.ANTHOLOGY = str(self.root / "practice" / "in-the-buddhas-words.html")
+        builder.STRUCTURE_PATH = str(self.root / "practice" / "data" / "itbw-structure.json")
 
     @property
     def data(self):
@@ -339,8 +326,8 @@ class UnlistingTests(BuildRunTests):
         self.build()
         archive = self.text("practice/reflections.html")
         self.assertIn('data-open="three"', archive)
-        self.assertEqual(archive.count("Latest &middot;"), 1)
-        self.assertIn('id="three"', archive.split("Latest &middot;")[0].rsplit("<li", 1)[1])
+        # newest first: the newest listed entry is simply the first row
+        self.assertIn('id="three"', archive.split('class="nb-item"')[1].split(">")[0])
         self.assertIn('datetime="2026-03">March 2026</time>', archive)
 
         self.configure(unlisted=["s1", "s2", "s3", "k1"])
@@ -348,7 +335,6 @@ class UnlistingTests(BuildRunTests):
         archive, sitemap = self.text("practice/reflections.html"), self.text("sitemap.xml")
         self.assertIn('data-open=""', archive)
         self.assertNotIn("nb-item", archive)
-        self.assertNotIn("Latest &middot;", archive)
         self.assertNotIn("/practice/reflections/", sitemap)
         for slug in ("one", "two", "three", "kept"):
             with self.subTest(slug=slug):
@@ -434,6 +420,143 @@ class UnlistingTests(BuildRunTests):
                 self.assertNotIn("Next", text)
 
 
+class NotebookTests(BuildRunTests):
+    """The room as one notebook, newest first; a Reflection from practice;
+    the anthology's own page. The practice entry exists only here."""
+
+    SECTIONS = [{"id": "itbw", "title": "In the Buddha's Words", "note": "", "order": "structural"},
+                {"id": "keepers", "title": "Suttas I return to", "note": "", "order": "chronological"},
+                {"id": "practice", "title": "From practice", "note": "", "order": "chronological"}]
+    STRUCTURE = {"version": 1, "parts": [
+        {"part": "I", "title": "The Human Condition", "chapters": ["Old Age, Illness, and Death", "The Tribulations of Unreflective Living"]},
+        {"part": "II", "title": "The Bringer of Light", "chapters": []},
+        {"part": "III", "title": "Approaching the Dhamma", "chapters": []}]}
+    PLACE = "Suddhavari Monastery, São Lourenço, Brazil"
+
+    def setUp(self):
+        super().setUp()
+        self.entries = [
+            {"id": "itbw-1-1-1", "book": "itbw", "part": "I", "label": "I.1(1)", "title": "Aging and Death", "slug": "aging-and-death",
+             "ref": "SN 3.3", "url": "https://suttacentral.net/sn3.3/en/sujato", "excerpt": "Old age.", "added": "2026-01-01", "note": "On aging."},
+            {"id": "itbw-1-1-2", "book": "itbw", "part": "I", "label": "I.1(2)", "title": "The Divine Messengers", "slug": "the-divine-messengers",
+             "ref": "from AN 3.36", "url": "https://suttacentral.net/an3.36/en/sujato", "added": "2026-03-01", "note": "On messengers."},
+            {"id": "keepers-1", "book": "keepers", "title": "The Stories We Build", "slug": "the-stories-we-build",
+             "ref": "SN 5.10", "url": "https://suttacentral.net/sn5.10/en/sujato", "added": "2026-02-01", "note": "On stories."},
+            {"id": "practice-1", "book": "practice", "title": "No I there to be found", "slug": "no-i-there-to-be-found",
+             "place": self.PLACE, "added": "2026-04-01", "summary": "A short piece from Suddhavari.",
+             "note": "Before the poem.\n\n::: verse\nFirst line\nsecond line\nthird line\n:::\n\nAfter the poem."},
+        ]
+
+    def configure(self):
+        for entry in self.entries:
+            details = {k: v for k, v in entry.items() if k != "note"}
+            (self.data / (entry["id"] + ".md")).write_text(
+                sitedata.dump_reflection(details, entry["note"]), encoding="utf-8", newline="\n")
+        sitedata.write_json(str(self.data / "sections.json"), {
+            "version": 1, "sections": self.SECTIONS, "sequence": [e["id"] for e in self.entries], "unlisted": []})
+        sitedata.write_json(str(self.data / "queue.json"), {"version": 1, "passages": []})
+        sitedata.write_json(builder.STRUCTURE_PATH, self.STRUCTURE)
+        self.build()
+
+    def rows(self):
+        archive = self.text("practice/reflections.html")
+        return re.findall(r'<li class="nb-item" id="([^"]+)".*?<span class="nb-row-o">(.*?)</span>.*?<span class="nb-row-r">([^<]*)<', archive, re.S)
+
+    def test_the_room_is_one_list_newest_first_across_sections(self):
+        self.configure()
+        self.assertEqual([slug for slug, _, _ in self.rows()],
+                         ["no-i-there-to-be-found", "the-divine-messengers", "the-stories-we-build", "aging-and-death"])
+        self.assertNotIn("nb-group", self.text("practice/reflections.html"))
+        self.assertIn('data-open="no-i-there-to-be-found"', self.text("practice/reflections.html"))
+
+    def test_each_row_says_where_it_came_from(self):
+        self.configure()
+        rows = {slug: (where, date) for slug, where, date in self.rows()}
+        self.assertEqual(rows["the-divine-messengers"], ("In the Buddha's Words I.1(2) &middot; AN&nbsp;3.36", "1 Mar 2026"))
+        self.assertEqual(rows["the-stories-we-build"][0], "A sutta I return to &middot; SN&nbsp;5.10")
+        self.assertEqual(rows["no-i-there-to-be-found"], ("From practice &middot; Suddhavari Monastery", "1 Apr 2026"))
+
+    def test_the_filter_line_counts_each_section(self):
+        self.configure()
+        line = re.search(r'<p class="nb-filter".*?</p>', self.text("practice/reflections.html")).group(0)
+        self.assertIn("All &middot; 4", line)
+        self.assertIn('<a href="#practice">From practice &middot; 1</a>', line)
+        self.assertIn('<a href="#keepers">Suttas I return to &middot; 1</a>', line)
+        self.assertIn('<a href="#itbw">In the Buddha\'s Words &middot; 2</a>', line)
+        self.entries = [e for e in self.entries if e["book"] != "keepers"]
+        for old in self.data.glob("*.md"):
+            old.unlink()
+        self.configure()
+        self.assertNotIn("#keepers", self.text("practice/reflections.html"))
+
+    def test_the_panel_for_a_practice_entry_names_the_place(self):
+        self.configure()
+        archive = self.text("practice/reflections.html")
+        item = archive.split('id="no-i-there-to-be-found"')[1].split("</li>")[0]
+        self.assertIn('<div class="nb-d-sec">From practice</div>', item)
+        self.assertIn('<div class="nb-d-by">Suddhavari Monastery &middot; São Lourenço, Brazil</div>', item)
+        self.assertIn("<p class=\"nb-d-text\">Before the poem.</p>", item)
+        self.assertEqual(item.count('class="nb-btn"'), 1)
+
+    def test_a_practice_page_has_no_sutta(self):
+        self.configure()
+        page = self.text("practice/reflections/no-i-there-to-be-found.html")
+        self.assertIn("<title>No I there to be found · Reflections · Faisal Henar</title>", page)
+        self.assertIn("From practice &middot; Suddhavari Monastery, São Lourenço, Brazil", page)
+        for absent in ("nb-ref-passage", "suttacentral", "Before it in the book", '"citation"', "in-the-buddhas-words.html"):
+            with self.subTest(absent=absent):
+                self.assertNotIn(absent, page)
+        self.assertIn("Four so far", page)
+        self.assertIn("in-the-buddhas-words.html", self.text("practice/reflections/aging-and-death.html"))
+
+    def test_the_verse_is_kept_line_by_line_between_paragraphs(self):
+        self.configure()
+        page = self.text("practice/reflections/no-i-there-to-be-found.html")
+        self.assertRegex(page, r'<p class="reflection-note">Before the poem\.</p>\s*<div class="verse">'
+                               r'<span class="verse-l">First line</span>\s*<span class="verse-l">second line</span>\s*'
+                               r'<span class="verse-l">third line</span></div>\s*<p class="reflection-note">After the poem\.</p>')
+
+    def test_published_json_carries_what_the_hub_needs(self):
+        self.configure()
+        index = json.loads(self.text("practice/data/reflections/published.json"))["reflections"]
+        self.assertEqual(index[0], {"id": "practice-1", "slug": "no-i-there-to-be-found", "ref": "", "book": "practice",
+                                    "title": "No I there to be found", "place": self.PLACE, "added": "2026-04-01"})
+        self.assertEqual([r["added"] for r in index], sorted((r["added"] for r in index), reverse=True))
+
+    def parts(self):
+        return self.text("practice/in-the-buddhas-words.html")
+
+    def test_the_anthology_shows_the_part_read_now_and_only_the_next(self):
+        self.configure()
+        page = self.parts()
+        self.assertIn('<p class="nb-sofar-where">Part I of three, chapter 1</p>', page)
+        self.assertIn("Two reflections so far.", page)
+        now = page.split('id="part-i"')[1].split("</section>")[0]
+        self.assertIn("Reading now", now)
+        self.assertIn("2 reflections", now)
+        self.assertLess(now.index("aging-and-death"), now.index("the-divine-messengers"))
+        self.assertIn('<div class="nb-chapter is-empty">\n            <h3 class="nb-chapter-h">2 &middot; The Tribulations of Unreflective Living</h3>', now)
+        self.assertIn("<span>Part II</span><span>Next in the book</span>", page)
+        self.assertNotIn("Part III", page)
+        self.assertNotIn("not yet begun", page.lower())
+        self.assertIn("in-the-buddhas-words.html", self.text("sitemap.xml"))
+        self.assertIn("Two reflections so far, reading Part I now.", self.text("practice/reflections.html"))
+
+    def test_a_part_with_no_chapters_lists_its_entries_in_book_order(self):
+        self.entries.insert(2, {"id": "itbw-2-1-1", "book": "itbw", "part": "II", "label": "II.1(1)", "title": "The Light",
+                                "slug": "the-light", "ref": "SN 1.1", "added": "2026-05-01", "note": "On light."})
+        self.configure()
+        page = self.parts()
+        self.assertIn('<p class="nb-sofar-where">Part II of three</p>', page)
+        first = page.split('id="part-i"')[1].split("</section>")[0]
+        self.assertNotIn("Reading now", first)
+        second = page.split('id="part-ii"')[1].split("</section>")[0]
+        self.assertIn("Reading now", second)
+        self.assertIn("the-light.html", second)
+        self.assertNotIn("nb-chapter-h", second)
+        self.assertIn("<span>Part III</span><span>Next in the book</span>", page)
+
+
 class MarkdownTests(unittest.TestCase):
     """The writing desk's three marks, and nothing else, become HTML."""
 
@@ -441,6 +564,15 @@ class MarkdownTests(unittest.TestCase):
         out = sitedata.render_text("A *word* and [a page](https://suttacentral.net/sn1.1) and [here](../note.html).\n\n> Quoted.")
         self.assertEqual(out[0], ("p", 'A <em>word</em> and <a href="https://suttacentral.net/sn1.1" target="_blank" rel="noopener">a page</a> and <a href="../note.html">here</a>.'))
         self.assertEqual(out[1], ("quote", "Quoted."))
+
+    def test_a_verse_block_between_two_paragraphs_keeps_its_lines(self):
+        out = sitedata.render_text("Before.\n\n::: verse\nOne *line*\ntwo\nthree\n:::\n\nAfter.")
+        self.assertEqual([kind for kind, _ in out], ["p", "verse", "p"])
+        self.assertEqual(out[1][1], '<span class="verse-l">One <em>line</em></span>\n<span class="verse-l">two</span>\n<span class="verse-l">three</span>')
+        self.assertEqual(sitedata.plain_text("::: verse\nOne\ntwo\n:::"), "One two")
+
+    def test_an_unclosed_verse_marker_stays_text(self):
+        self.assertEqual(sitedata.render_text("::: verse\nOne"), [("p", "::: verse\nOne")])
 
     def test_a_single_line_break_stays_inside_its_paragraph(self):
         self.assertEqual(len(sitedata.render_text("One line\nand the next.")), 1)

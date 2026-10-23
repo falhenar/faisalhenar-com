@@ -1,5 +1,5 @@
 {
-  "description": "The details at the top of a Reflection's file, practice/data/reflections/<id>.md. The text below them is FH's, in the writing desk's Markdown (tools/sitedata.py). slug fixes the page's address for good and is written by tools/build-reflections.py the first time. summary, if given, replaces the opening of the text in search results and shared links. origin names the Curator passage a Reflection began from.",
+  "description": "The details at the top of a Reflection's file, practice/data/reflections/<id>.md. The text below them is FH's, in the writing desk's Markdown (tools/sitedata.py). slug fixes the page's address for good and is written by tools/build-reflections.py the first time. summary, if given, replaces the opening of the text in search results and shared links. origin names the Curator passage a Reflection began from. place, for a Reflection from practice, is where it came from in full, for example Suddhavari Monastery, São Lourenço, Brazil; the part before the first comma is its short form.",
   "type": "object",
   "required": ["id", "book", "title", "added"],
   "additionalProperties": false,
@@ -11,6 +11,7 @@
     "section": {"type": "string"},
     "label": {"type": "string"},
     "title": {"type": "string", "minLength": 1},
+    "place": {"type": "string", "minLength": 1},
     "ref": {"type": "string"},
     "suttaTitle": {"type": "string"},
     "translator": {"type": "string"},

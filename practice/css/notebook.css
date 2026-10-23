@@ -446,6 +446,113 @@ main.nb-main:focus{ outline: none; }
   .nb-ref-passage blockquote{ font-size: 18px; }
   .nb-ref-note{ font-size: 17.5px; }
 }
+.nb-ref-book{ margin: 10px 0 0; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+.nb-ref-book a{ display: inline-block; padding: 12px 0; color: var(--muted); text-decoration: none; }
+.nb-ref-book a:hover{ color: var(--moss); }
+
+/* Verse inside a Reflection (October 2026): each line its own, never
+   justified, set in from the text; a line too long for a phone wraps with
+   a hanging indent so the poem's own breaks stay readable. No left rule:
+   that belongs to the sutta passages. */
+.verse{ margin: 0 0 1.35em 2.2em; font-style: normal; text-align: left; }
+.verse-l{ display: block; padding-left: 1.4em; text-indent: -1.4em; }
+.verse-l:empty::before{ content: "\00a0"; }
+@media (max-width: 599px){ .verse{ margin-left: 0.8em; } }
+
+/* ---------- Reflections: one notebook, newest first (October 2026) ---------- */
+
+/* The pen's nib slit, in the paper's colour; too fine to keep when small. */
+.nb-art .slit{ fill: none; stroke: var(--paper); stroke-width: 1.2; }
+.nb-art-small .slit{ display: none; }
+
+/* The filter line. Each link is an anchor to an empty .nb-filter-to just
+   before it; while one is the target only its section's rows show, so it
+   works without JavaScript (room.js then chooses the first row left). */
+.nb-filter-to{ display: block; height: 0; scroll-margin-top: 24px; }
+.nb-filter{ position: relative; top: var(--mono-drop); margin: 0; padding: 0 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: var(--line); color: var(--faint); }
+.nb-filter a{ color: var(--muted); text-decoration: none; white-space: nowrap; }
+.nb-filter a:hover{ color: var(--moss); }
+.nb-filter .nb-filter-all,
+#practice:target ~ .nb-filter a[href="#practice"],
+#keepers:target ~ .nb-filter a[href="#keepers"],
+#itbw:target ~ .nb-filter a[href="#itbw"]{
+  color: var(--ink); text-decoration: underline; text-decoration-color: var(--moss); text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.nb-filter-to:target ~ .nb-filter .nb-filter-all{ color: var(--muted); text-decoration: none; }
+#practice:target ~ .nb-rows .nb-item:not([data-book="practice"]),
+#keepers:target ~ .nb-rows .nb-item:not([data-book="keepers"]),
+#itbw:target ~ .nb-rows .nb-item:not([data-book="itbw"]){ display: none; }
+
+/* Two-line rows: the title, then where it came from. Two whole lines on
+   the grid, so a row is --row plus one line. */
+.nb-row-tt{ display: flex; flex-direction: column; min-width: 0; }
+.nb-row-o{ position: relative; top: var(--mono-drop); font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* A grid, so the origin line runs the whole width under the title while
+   the date (and, on a phone, the sign) stays on the title's line. */
+.nb-rows-2 .nb-row{ display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0 10px; }
+.nb-rows-2 .nb-row-l, .nb-rows-2 .nb-row-tt{ display: contents; }
+.nb-rows-2 .nb-dot{ grid-column: 1; grid-row: 1; align-self: start; position: relative; top: var(--sink); margin-top: 12px; }
+.nb-rows-2 .nb-row-t{ grid-column: 2; grid-row: 1; position: relative; top: var(--sink); }
+.nb-rows-2 .nb-row-r{ grid-column: 3; grid-row: 1; margin-left: 4px; }
+.nb-rows-2 .nb-row-o{ grid-column: 2 / -1; grid-row: 2; top: calc(var(--mono-drop) + var(--sink)); }
+.nb-rows-2 .nb-row:hover .nb-row-o{ color: var(--muted); }
+
+/* The panel and, under it, the card to the anthology's page. */
+.nb-col{ flex: 1 1 360px; max-width: 420px; position: sticky; top: 24px; display: flex; flex-direction: column; gap: 24px; }
+.nb-col .nb-panel{ position: static; flex: none; max-width: none; }
+.nb-bookcard{ display: grid; grid-template-columns: 60px 1fr; column-gap: 18px; align-items: start; padding: 18px 22px; border: 1px dashed var(--line-3); text-decoration: none; color: var(--ink); }
+/* The ribbon's top (12px down the drawing) level with the top of the
+   title's capitals (about 6px down its first line). */
+.nb-bookcard .nb-art-card{ grid-row: span 2; width: 60px; height: 50px; margin-top: -6px; }
+.nb-bookcard-t{ font-size: 17px; line-height: 1.4; }
+.nb-bookcard-d{ font-size: 14.5px; line-height: 1.5; color: var(--muted); margin-top: 4px; }
+.nb-bookcard:hover .nb-bookcard-t{ color: var(--moss); }
+@media (max-width: 899px){
+  .nb-col{ position: static; flex-basis: 100%; max-width: none; }
+  .nb-row-o{ white-space: normal; }
+  .nb-rows-2 .nb-row{ grid-template-columns: minmax(0, 1fr) auto; }
+  .nb-rows-2 .nb-row-t{ grid-column: 1; }
+  .nb-rows-2 .nb-row-r{ grid-column: 2; }
+  .nb-rows-2 .nb-row-o{ grid-column: 1 / -1; }
+}
+
+/* ---------- Reading In the Buddha's Words ---------- */
+
+/* Beside the title, the ribbon's top (19px down the drawing) level with the
+   top of the capitals of "Reading" (about 10px down its line). */
+@media (min-width: 600px){
+  .nb-itbw-head .nb-head-title{ align-items: flex-start; }
+  .nb-itbw-head .nb-art-title{ margin-top: -9px; }
+}
+.nb-itbw-intro{ display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-start; margin-top: 30px; }
+.nb-itbw-intro .nb-intro{ flex: 1 1 420px; margin: 0; }
+.nb-sofar{ flex: 0 1 300px; background: var(--paper); border: 1px solid var(--line-1); padding: 18px 20px; }
+.nb-sofar-h{ font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; color: var(--muted); margin: 0; }
+.nb-sofar-where{ font-size: 17px; margin: 8px 0 0; }
+.nb-sofar-text{ font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: 6px 0 0; }
+.nb-parts{ display: flex; flex-direction: column; gap: 28px; margin-top: 52px; }
+.nb-part{ background: var(--paper); box-shadow: 0 0 0 1px var(--line-1), var(--shadow); padding: 26px 32px 20px; }
+.nb-part-head{ display: flex; justify-content: space-between; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+.nb-part-t{ font-weight: 400; font-size: 30px; line-height: 1.2; margin: 6px 0 0; }
+.nb-chapters{ display: grid; grid-template-columns: 1fr 1fr; gap: 26px 44px; margin-top: 26px; }
+.nb-chapter-h{ font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; color: var(--muted); margin: 0; }
+.nb-chapter.is-empty .nb-chapter-h{ color: var(--faint); }
+.nb-chapter-list{ list-style: none; margin: 6px 0 0; padding: 0; }
+.nb-chapter-list a{ display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; color: var(--ink); box-shadow: inset 0 -1px 0 var(--rule); }
+.nb-chapter-t{ font-size: 16.5px; }
+.nb-chapter-r{ flex: none; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); }
+.nb-chapter-list a:hover .nb-chapter-t{ color: var(--moss); }
+.nb-part-now{ margin: 18px 0 0; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--moss); }
+.nb-part-next{ background: transparent; box-shadow: none; border: 1px dashed var(--line-3); padding-bottom: 26px; }
+@media (max-width: 599px){
+  .nb-topline-wide{ display: none; }
+  .nb-sofar{ flex-basis: 100%; }
+  .nb-part{ padding: 20px 18px 16px; }
+  .nb-part-next{ padding-bottom: 20px; }
+  .nb-part-t{ font-size: 24px; }
+  .nb-chapters{ grid-template-columns: 1fr; gap: 22px; }
+  .nb-itbw-chain .nb-chain-mid{ display: block; flex-basis: 100%; order: 3; padding-bottom: 14px; }
+}
 
 /* ---------- the hub (Main and TodayAlivePhone boards) ---------- */
 
