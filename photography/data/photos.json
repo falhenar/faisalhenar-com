@@ -639,15 +639,6 @@
     "added": "2026-08-30"
   },
   {
-    "id": "fh-0016",
-    "src": "photos/2026/fh-0016.jpg",
-    "w": 2560,
-    "h": 1920,
-    "color": false,
-    "alt": "Two children play-fighting on stone steps, seen from directly overhead, one lunging at the other.",
-    "added": "2026-08-30"
-  },
-  {
     "id": "fh-0036",
     "src": "photos/2026/fh-0036.jpg",
     "w": 2560,
@@ -1212,6 +1203,96 @@
     "h": 1500,
     "color": false,
     "alt": "A lady sitting at the counter at the bus station, looking over her shoulder into the camera.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0120",
+    "src": "photos/2026/fh-0120.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "A busy market with a young lady walking with a hoody that has \"See you again\" printed on the front.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0121",
+    "src": "photos/2026/fh-0121.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "Waiting for the elderly lady to walk into the light, while the elderly lady seems to be waiting until I put the camera down.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0122",
+    "src": "photos/2026/fh-0122.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "Busy market with a big building in the background with a sign reading \"Game Center\".",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0123",
+    "src": "photos/2026/fh-0123.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "Two ladies with canonical hats are putting down their pole carriers with fruits like cherries and peaches.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0125",
+    "src": "photos/2026/fh-0125.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "A lady bending over to inspect the strawberries from a sales lady with canonical hat. In the back a shopping bag from the Dutch supermarker Albert Heijn.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0126",
+    "src": "photos/2026/fh-0126.jpg",
+    "w": 2000,
+    "h": 1501,
+    "color": true,
+    "alt": "Office working paying a grab delivery driver for his meal.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0127",
+    "src": "photos/2026/fh-0127.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": true,
+    "alt": "Young lady in a red shirt and white dress walking up a stairs carrying an umbrella to protect herself from the sun.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0128",
+    "src": "photos/2026/fh-0128.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": true,
+    "alt": "A young kid with a bear hat in the arms of his mother, looking over her shoulder straight into the camera.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0129",
+    "src": "photos/2026/fh-0129.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": false,
+    "alt": "Woman with shopping bags walking away from a street food stand.",
+    "added": "2026-10-23"
+  },
+  {
+    "id": "fh-0130",
+    "src": "photos/2026/fh-0130.jpg",
+    "w": 2000,
+    "h": 1500,
+    "color": true,
+    "alt": "Woman in red walking past a store front, using her right hand to block the sun from her eyes.",
     "added": "2026-10-23"
   }
 ]

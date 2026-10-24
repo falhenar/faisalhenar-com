@@ -447,13 +447,6 @@
   "captured": "2026-06-15T13:55",
   "notes": []
  },
- "fh-0016": {
-  "tone": "bw",
-  "place": "Đà Lạt",
-  "country": "Vietnam",
-  "captured": "2026-06-15T15:49",
-  "notes": []
- },
  "fh-0036": {
   "tone": "bw",
   "place": "Đà Lạt",
@@ -942,6 +935,76 @@
   "place": "",
   "country": "Vietnam",
   "captured": "2026-06-10T15:49",
+  "notes": []
+ },
+ "fh-0120": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-12T23:50",
+  "notes": []
+ },
+ "fh-0121": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-12T23:51",
+  "notes": []
+ },
+ "fh-0122": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-14T19:25",
+  "notes": []
+ },
+ "fh-0123": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-14T20:45",
+  "notes": []
+ },
+ "fh-0125": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-14T23:37",
+  "notes": []
+ },
+ "fh-0126": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-15T05:36",
+  "notes": []
+ },
+ "fh-0127": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-15T06:19",
+  "notes": []
+ },
+ "fh-0128": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-15T06:22",
+  "notes": []
+ },
+ "fh-0129": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-15T19:33",
+  "notes": []
+ },
+ "fh-0130": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-15T23:57",
   "notes": []
  }
 }
