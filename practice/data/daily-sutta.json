@@ -1220,6 +1220,42 @@
         "sn47.20:3.4",
         "sn47.20:3.5"
       ]
+    },
+    {
+      "id": "curator-44695c7b-de4d-4b10-b3e3-ad377589d612",
+      "title": "Rolling Forth the Wheel of Dhamma",
+      "ref": "SN 56.11",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn56.11/en/sujato",
+      "text": "“Mendicants, these two extremes should not be cultivated by one gone forth. What two? Indulgence in sensual pleasures, which is low, crude, ordinary, ignoble, and pointless. And indulgence in self-mortification, which is painful, ignoble, and pointless. Avoiding these two extremes, the Realized One understood the middle way of practice, which gives vision and knowledge, and leads to peace, direct knowledge, awakening, and extinguishment. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "sn56.11",
+      "selection_id": "44695c7b-de4d-4b10-b3e3-ad377589d612",
+      "segment_ids": [
+        "sn56.11:2.1",
+        "sn56.11:2.2",
+        "sn56.11:2.3",
+        "sn56.11:2.4"
+      ]
+    },
+    {
+      "id": "curator-6512d612-a878-4ae5-91d2-6a08f3e29a1c",
+      "title": "The Analysis of the Truths",
+      "ref": "MN 141",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/mn141/en/sujato",
+      "text": "And what is right effort? It’s when a mendicant generates enthusiasm, tries, makes an effort, exerts the mind, and strives so that bad, unskillful qualities don’t arise. They generate enthusiasm, try, make an effort, exert the mind, and strive so that bad, unskillful qualities that have arisen are given up. They generate enthusiasm, try, make an effort, exert the mind, and strive so that skillful qualities arise. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "mn141",
+      "selection_id": "6512d612-a878-4ae5-91d2-6a08f3e29a1c",
+      "segment_ids": [
+        "mn141:29.1",
+        "mn141:29.2",
+        "mn141:29.3",
+        "mn141:29.4"
+      ]
     }
   ]
 }
