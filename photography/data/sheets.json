@@ -399,8 +399,7 @@
     "fh-0030",
     "fh-0046",
     "fh-0031",
-    "fh-0114",
-    "fh-0110"
+    "fh-0114"
    ],
    "circled": [
     "fh-0111",
@@ -419,7 +418,6 @@
    "frames": [
     "fh-0040",
     "fh-0041",
-    "fh-0042",
     "fh-0043",
     "fh-0109"
    ],
@@ -433,7 +431,9 @@
    "loose": "split into one between-walks sheet per month, October 2026"
   },
   "photos": {
-   "fh-0016": "2026-06-15-da-lat"
+   "fh-0016": "2026-06-15-da-lat",
+   "fh-0042": "2026-06-03-sai-gon",
+   "fh-0110": "2026-06-04-sai-gon"
   }
  }
 }
