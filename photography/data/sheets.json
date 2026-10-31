@@ -1,6 +1,32 @@
 {
  "sheets": [
   {
+   "id": "2026-10-26-in-the-water-leonsberg-26-october",
+   "title": "In the water, Leonsberg, 26 October",
+   "line": "",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0131",
+    "fh-0132",
+    "fh-0133",
+    "fh-0134",
+    "fh-0135",
+    "fh-0136",
+    "fh-0137",
+    "fh-0138",
+    "fh-0139",
+    "fh-0140",
+    "fh-0141",
+    "fh-0142"
+   ],
+   "circled": [
+    "fh-0131",
+    "fh-0133",
+    "fh-0137"
+   ]
+  },
+  {
    "id": "sheet-9a271564b5514ac4a9bd73f8005170f6",
    "address": "2026-10-04-kwattamarket",
    "title": "Another visit to the Kwatta Market, 4 October",
