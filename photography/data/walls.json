@@ -1,6 +1,38 @@
 {
  "bw": [
   {
+   "id": "fh-0153",
+   "title": "God is Liefde"
+  },
+  {
+   "id": "fh-0135",
+   "title": "In the water"
+  },
+  {
+   "id": "fh-0057",
+   "title": "Past the shutters"
+  },
+  {
+   "id": "fh-0065",
+   "title": "The jetty at dawn"
+  },
+  {
+   "id": "fh-0149",
+   "title": "The umbrella and its shadow"
+  },
+  {
+   "id": "fh-0094",
+   "title": "Kwatta market entry"
+  },
+  {
+   "id": "fh-0067",
+   "title": "Looking back"
+  },
+  {
+   "id": "fh-0066",
+   "title": "Coming ashore"
+  },
+  {
    "id": "fh-0008",
    "title": "The steps"
   },
@@ -15,41 +47,25 @@
   {
    "id": "vn-01",
    "title": "Book Street"
-  },
-  {
-   "id": "fh-0094",
-   "title": "Kwatta market entry"
-  },
-  {
-   "id": "fh-0108",
-   "title": "Written over her face"
-  },
-  {
-   "id": "fh-0067",
-   "title": "Looking back"
-  },
-  {
-   "id": "fh-0066",
-   "title": "Coming ashore"
-  },
-  {
-   "id": "fh-0133",
-   "title": "In the water"
-  },
-  {
-   "id": "sr-06",
-   "title": "The umbrella"
-  },
-  {
-   "id": "fh-0057",
-   "title": "Past the shutters"
-  },
-  {
-   "id": "fh-0065",
-   "title": "The jetty at dawn"
   }
  ],
  "colour": [
+  {
+   "id": "fh-0151",
+   "title": "Blue shirt"
+  },
+  {
+   "id": "fh-0104",
+   "title": "Colorful backs"
+  },
+  {
+   "id": "fh-0145",
+   "title": "Red, blue and green"
+  },
+  {
+   "id": "fh-0146",
+   "title": "School's out"
+  },
   {
    "id": "fh-0093",
    "title": "Smile at age"
@@ -65,22 +81,6 @@
   {
    "id": "fh-0049",
    "title": "The cockerel"
-  },
-  {
-   "id": "vc-05",
-   "title": "Cam Ranh"
-  },
-  {
-   "id": "fh-0104",
-   "title": "Colorful backs"
-  },
-  {
-   "id": "fh-0105",
-   "title": "Carrying potatoes"
-  },
-  {
-   "id": "fh-0056",
-   "title": "Leonsberg at sunrise"
   },
   {
    "id": "fh-0088",
