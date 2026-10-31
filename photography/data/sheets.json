@@ -1,6 +1,24 @@
 {
  "sheets": [
   {
+   "id": "2026-10-30-schools-out-city-center-30-october",
+   "title": "School's out, City Center, 30 October",
+   "line": "",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0143",
+    "fh-0145",
+    "fh-0146",
+    "fh-0147",
+    "fh-0148"
+   ],
+   "circled": [
+    "fh-0145",
+    "fh-0146"
+   ]
+  },
+  {
    "id": "2026-10-26-in-the-water-leonsberg-26-october",
    "title": "In the water, Leonsberg, 26 October",
    "line": "",

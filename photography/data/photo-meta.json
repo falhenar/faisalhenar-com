@@ -1076,5 +1076,40 @@
   "country": "Suriname",
   "captured": "2026-10-26T18:18",
   "notes": []
+ },
+ "fh-0143": {
+  "tone": "bw",
+  "place": "",
+  "country": "Suriname",
+  "captured": "2026-10-30T12:04",
+  "notes": []
+ },
+ "fh-0145": {
+  "tone": "colour",
+  "place": "",
+  "country": "Suriname",
+  "captured": "2026-10-30T12:07",
+  "notes": []
+ },
+ "fh-0146": {
+  "tone": "colour",
+  "place": "",
+  "country": "Suriname",
+  "captured": "2026-10-30T12:12",
+  "notes": []
+ },
+ "fh-0147": {
+  "tone": "colour",
+  "place": "",
+  "country": "Suriname",
+  "captured": "2026-10-30T12:13",
+  "notes": []
+ },
+ "fh-0148": {
+  "tone": "colour",
+  "place": "",
+  "country": "Suriname",
+  "captured": "2026-10-30T15:13",
+  "notes": []
  }
 }
