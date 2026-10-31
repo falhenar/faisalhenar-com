@@ -230,6 +230,21 @@ def img_tag(photo, sizes, src_width=800, widths=IMAGE_WIDTHS, lazy=True):
             f'alt="{esc(photo["alt"])}" {loading}>')
 
 
+def image_credit(photo, title):
+    """Structured data naming the photographer, for search engines (Google
+    Images shows it as the credit). It sits in the page itself because
+    Cloudflare drops all metadata from the AVIF and WebP copies it serves.
+    contentUrl is the same address as the photograph's src on its page."""
+    value = {"@context": "https://schema.org", "@type": "ImageObject",
+             "contentUrl": ORIGIN + cf_image(photo, OG_WIDTH),
+             "name": title, "description": photo["alt"],
+             "creator": {"@type": "Person", "name": "Faisal Henar", "url": ORIGIN + "/"},
+             "creditText": "Faisal Henar",
+             "copyrightNotice": "\u00a9 Faisal Henar"}
+    text = json.dumps(value, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return '\n<script type="application/ld+json">\n' + text + '\n</script>'
+
+
 # ---------- what is known about one photograph ----------
 
 def photo_url(photo_id):
@@ -896,7 +911,8 @@ def photo_page(room, i, versions):
     </nav>
   </main>
 """
-    return head(room.heading(i), photo["alt"], photo_url(i), versions, og) + body + foot(versions)
+    return (head(room.heading(i), photo["alt"], photo_url(i), versions, og, extra_head=image_credit(photo, room.heading(i)))
+            + body + foot(versions))
 
 
 # ---------- everything ----------
