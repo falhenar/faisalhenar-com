@@ -1429,5 +1429,59 @@
     "color": true,
     "alt": "A girl with her blue and pink backpack, staring through the window of a bubble tea spot.",
     "added": "2026-10-31"
+  },
+  {
+    "id": "fh-0149",
+    "src": "photos/2026/fh-0149.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "A lady with an umbrella photographed from behind, with the umbrella's shadow cast by the noon sun.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "fh-0150",
+    "src": "photos/2026/fh-0150.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "A mustached man with an Adidas hat is looking straight into the camera.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "fh-0151",
+    "src": "photos/2026/fh-0151.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Side view of a woman with a blue shirt walking past the camera.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "fh-0152",
+    "src": "photos/2026/fh-0152.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "A construction worker who's head is outside of the frame, while his colleague below him is shown from behind his head, showing a towel under his hat.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "fh-0153",
+    "src": "photos/2026/fh-0153.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "A man in a camouflage hat walks in front of a church porch, with the phrase ' God is liefde ' above the door.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "fh-0154",
+    "src": "photos/2026/fh-0154.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "A lady in a blue striped dress and a sunhat selling coconut cakes.",
+    "added": "2026-10-31"
   }
 ]

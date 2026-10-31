@@ -1,6 +1,26 @@
 {
  "sheets": [
   {
+   "id": "2026-10-30-city-center-walk-30-october",
+   "title": "City Center Walk, 30 October",
+   "line": "",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0149",
+    "fh-0150",
+    "fh-0151",
+    "fh-0152",
+    "fh-0153",
+    "fh-0154"
+   ],
+   "circled": [
+    "fh-0149",
+    "fh-0151",
+    "fh-0153"
+   ]
+  },
+  {
    "id": "2026-10-30-schools-out-city-center-30-october",
    "title": "School's out, City Center, 30 October",
    "line": "",
