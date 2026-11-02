@@ -19,4 +19,4 @@ What I can relate it to is my own experience. My own practice is primarily based
 
 As the excerpt says, “in dependence upon feeling there is craving; in dependence upon craving there is pursuit … various evil unwholesome things originate.” As I understand it, when we go along with feelings, we risk ending up with unwholesome mind states. Mind states that can lead us to perform unskillful actions.
 
-But when I note the feeling the moment it arises, it sometimes seems to stop this chain before the next link forms. Whether it is the unpleasant feeling of being blamed or the pleasant feeling of being praised, if I catch it in the right moment, I am not swept away by one of the eight worldly winds.
+But when I note the feeling the moment it arises, it sometimes seems to stop this chain before the next link forms. Whether it is the unpleasant feeling of being blamed or the pleasant feeling of being praised, if I catch it in the right moment, I am not swept away by one of [the eight worldly winds.](https://faisalhenar.com/practice/reflections/the-vicissitudes-of-life.html)
