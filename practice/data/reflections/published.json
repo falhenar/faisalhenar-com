@@ -2,6 +2,14 @@
   "version": 1,
   "reflections": [
     {
+      "id": "itbw-1-3-3",
+      "slug": "the-dark-chain-of-causation",
+      "ref": "from DN 15",
+      "book": "itbw",
+      "title": "The Dark Chain of Causation",
+      "added": "2026-11-02"
+    },
+    {
       "id": "practice-1",
       "slug": "no-i-there-to-be-found",
       "ref": "",
