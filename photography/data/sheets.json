@@ -1,6 +1,25 @@
 {
  "sheets": [
   {
+   "id": "2026-11-04-crushed-in-black-4-november",
+   "title": "Crushed in black, 4 November",
+   "line": "",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0159",
+    "fh-0160",
+    "fh-0161",
+    "fh-0162",
+    "fh-0163",
+    "fh-0164",
+    "fh-0165",
+    "fh-0166",
+    "fh-0167"
+   ],
+   "circled": []
+  },
+  {
    "id": "2026-10-30-city-center-walk-30-october",
    "title": "City Center Walk, 30 October",
    "line": "",
