@@ -187,3 +187,138 @@
 @media print{
   .note-letter{ box-shadow: none; border: 0; background: none; }
 }
+
+/* ---------- /hello (hello.html) ----------
+   Where the QR code on FH's card lands: anyone he met, on the street or at a
+   retreat. A greeting, the doorstep photograph from the card front, and
+   three ways on. The photograph request comes first. */
+.note-hello{ padding-top: 48px; }
+.hello-photo{
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 32px;
+}
+.note-hello .note-lead{ margin-bottom: 18px; }
+.hello-ways{
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 28px;
+  border-top: 1px solid var(--line);
+}
+.note-body .hello-way{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg);
+  text-decoration: none;
+}
+.note-body .hello-way:hover .hello-way-main{ color: var(--accent); }
+.note-body .hello-way:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+.hello-way-main{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.hello-way-main::after{ content: "\2192"; color: var(--accent); font-size: 1rem; }
+.hello-way-title{ font-family: 'Instrument Serif', serif; font-size: 1.35rem; line-height: 1.3; }
+.hello-way-num{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hello-way-dek{ font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
+.note-body .hello-way .hello-way-main + .hello-way-dek{ margin: 0; }
+@media (max-width: 640px){
+  .note-hello{ padding-top: 32px; }
+  .hello-photo{ margin-bottom: 28px; }
+}
+
+/* ---------- /photo (photo.html) ----------
+   For people FH photographed on the street; reached from /hello. It belongs
+   to the Photography room, so it takes the room's dark ground and type
+   (values from photography/room-assets/room.css) by redefining the shared
+   tokens, which also carries the header, menu and footer. One job: send a
+   message. The two links borrow the language switch's look above. */
+@font-face{ font-family: 'Familjen Grotesk'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(../photography/fonts/familjen-grotesk-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face{ font-family: 'Familjen Grotesk'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(../photography/fonts/familjen-grotesk-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+body.page-photo{
+  --bg: #1A1A19;
+  --bg-raised: #242422;
+  --fg: #F1EFEA;
+  --muted: #A9A7A1;
+  --line: #3A3936;
+  --accent: #E58A2E;
+  --menu-bg: #1A1A19;
+  --menu-shadow: 0 10px 24px rgba(0,0,0,0.45);
+  background: var(--bg);
+  color: var(--fg);
+  color-scheme: dark;
+}
+body.page-photo .note-body p,
+body.page-photo .note-lead{ font-family: 'Familjen Grotesk', 'Inter', sans-serif; }
+body.page-photo .note-lead{ font-style: normal; font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; }
+.note-photo{ padding-top: 48px; }
+.photo-card-image{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  object-position: center 55%;
+  margin: 0 0 36px;
+}
+.note-photo .note-lead{ margin-bottom: 24px; }
+.note-body .photo-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.note-body .photo-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--bg);
+  background: var(--fg);
+  border: 1px solid var(--fg);
+  text-decoration: none;
+}
+.note-body .photo-btn-quiet{
+  color: var(--fg);
+  background: transparent;
+  font-weight: 500;
+}
+.note-body .photo-btn:hover{ background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.note-body .photo-btn:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+.note-body .photo-meta{ font-size: 0.95rem; color: var(--muted); }
+body.page-photo .note-body .photo-room,
+.note-body .photo-room{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+.note-body .photo-room a{ color: var(--fg); border-bottom-color: var(--muted); }
+.note-body .photo-room a:hover{ color: var(--accent); }
+@media (max-width: 640px){
+  .note-photo{ padding-top: 32px; }
+  .photo-card-image{ margin-bottom: 28px; }
+}
+@media (max-width: 479px){
+  .note-body .photo-actions{ flex-direction: column; }
+  .note-body .photo-btn{ width: 100%; }
+}
