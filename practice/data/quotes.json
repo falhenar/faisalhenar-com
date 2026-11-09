@@ -56,7 +56,14 @@
     "  Knowing the World. Teachings from the Forest reprints three chapters",
     "  of Now Is the Knowing, so its lines come from the other chapters.",
     "  Knowing the World includes a talk by Ajahn Jundee; only Ajahn Liem's",
-    "  own words were used."
+    "  own words were used.",
+    "- Nov 2026 batch from FH's copies of Ajahn Pasanno, Ajahn Amaro,",
+    "  Ajahn Munindo, Ajahn Jayasaro, Ajahn Viradhammo and Ajahn Sundara",
+    "  books. The Island is mostly quotation: only the compilers' own",
+    "  prose was used, credited jointly (preface lines to Ajahn Pasanno).",
+    "  Lines these books quote from other teachers (Ajahn Chah, forewords)",
+    "  were left out. Walking the World was checked against page images",
+    "  because its text layer drops most full stops."
   ],
   "quotes": [
     {
@@ -1659,6 +1666,206 @@
       ]
     },
     {
+      "text": "The blossoming of compassion is seen as the measure of an awakening mind.",
+      "author": "Ajahn Jayasaro",
+      "source": "Without and Within: Questions and Answers on the Teachings of Theravāda Buddhism, question 75, \"In Buddhism, how important is it to help others?\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Giving without expectations is empowering, reduces attachments and gives rise to self-respect and joy.",
+      "author": "Ajahn Jayasaro",
+      "source": "Without and Within: Questions and Answers on the Teachings of Theravāda Buddhism, question 95, \"What determines the spiritual quality of giving?\"",
+      "themes": [
+        "compassion",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "The most important thing is not to stop. As long as meditators keep putting effort into their meditation, come what may, they are accumulating the conditions for success.",
+      "author": "Ajahn Jayasaro",
+      "source": "Without and Within: Questions and Answers on the Teachings of Theravāda Buddhism, question 113, \"What is the key to a successful long-term meditation practice?\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Constancy and regularity of practice are extremely helpful. Although meditation is not a race, the steady-paced tortoise mind will always have the advantage over the hare.",
+      "author": "Ajahn Jayasaro",
+      "source": "Without and Within: Questions and Answers on the Teachings of Theravāda Buddhism, question 113, \"What is the key to a successful long-term meditation practice?\"",
+      "themes": [
+        "mindfulness",
+        "humility"
+      ]
+    },
+    {
+      "text": "The wish to make others happy or to relieve them of their suffering is a wonderful jewel of the human mind. But for noble feelings to lead to effective action, wisdom is needed.",
+      "author": "Ajahn Jayasaro",
+      "source": "Without and Within: Questions and Answers on the Teachings of Theravāda Buddhism, question 75, \"In Buddhism, how important is it to help others?\"",
+      "themes": [
+        "compassion",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Chanda is the desire that arises from a correct understanding of the way things are. At its heart lies the aspiration for truth and goodness.",
+      "author": "Ajahn Jayasaro",
+      "source": "Without and Within: Questions and Answers on the Teachings of Theravāda Buddhism, question 22, \"Is it correct that Buddhism teaches us to give up all desires?\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Every time we intentionally cause harm, the native kindness and sensitivity of the human heart is obscured.",
+      "author": "Ajahn Munindo",
+      "source": "In Any Given Moment, \"Difficult Lessons\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Guilt is a distorted form of aversion and manifests as self-hatred, obscuring any possibility of real contentment.",
+      "author": "Ajahn Munindo",
+      "source": "In Any Given Moment, \"Difficult Lessons\"",
+      "themes": [
+        "contentment",
+        "compassion"
+      ]
+    },
+    {
+      "text": "We make the suffering happen; being honest and mindful about the process of causing suffering is what leads to the letting go.",
+      "author": "Ajahn Munindo",
+      "source": "In Any Given Moment, \"Riding the Waves\"",
+      "themes": [
+        "suffering-liberation",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Without kindness, compassion and empathetic joy, so-called equanimity can be a form of cold-hearted indifference.",
+      "author": "Ajahn Munindo",
+      "source": "In Any Given Moment, \"Contentment\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "In reality there are no problems. In reality there are difficulties, pain and irritation, but problems are something extra we create out of the resistance which is an expression of unawareness.",
+      "author": "Ajahn Munindo",
+      "source": "In Any Given Moment, \"Venerable Venerables\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "If you notice that you are still entertaining attitudes of untamed greed in the way you hold your meditation, try dwelling on how you would hold a newborn baby – gently, softly and lovingly.",
+      "author": "Ajahn Munindo",
+      "source": "In Any Given Moment, \"Sitting in the Buddha’s Waiting Room\"",
+      "themes": [
+        "mindfulness",
+        "compassion"
+      ]
+    },
+    {
+      "text": "The truth of desire is that it is a movement in the mind. It is not who we are, though we readily make a sense of self out of it.",
+      "author": "Ajahn Munindo",
+      "source": "Alert to the Needs of the Journey, \"Keep Moving On\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "When we are suffering, the truth is that here and now we are imposing limitations on awareness. If we are honest we won’t blame others, we won’t blame the world.",
+      "author": "Ajahn Munindo",
+      "source": "Alert to the Needs of the Journey, \"Keep Moving On\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Insight sees through the world, revealing its instability and the fruitlessness of our habits of clinging. Wisdom sees how the clinging creates resistance and causes suffering. The warm-hearted expression of such wisdom is compassion.",
+      "author": "Ajahn Munindo",
+      "source": "Alert to the Needs of the Journey, \"Keep Moving On\"",
+      "themes": [
+        "wisdom",
+        "compassion"
+      ]
+    },
+    {
+      "text": "We stop struggling to change the nature of the world, and work instead on our relationship with the world.",
+      "author": "Ajahn Munindo",
+      "source": "Alert to the Needs of the Journey, \"The Right Sort of Peace\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Wanting to give up doesn’t mean we have to give up.",
+      "author": "Ajahn Munindo",
+      "source": "Alert to the Needs of the Journey, \"Keep Moving On\"",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "By way of experiment, instead of struggling against some activity which is taking place in awareness, try attending to the quality of awareness itself, the just-knowing mind.",
+      "author": "Ajahn Munindo",
+      "source": "Alert to the Needs of the Journey, \"The Right Sort of Peace\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "A favourite reflection of mine is: “Infinite patience, boundless compassion.” This is the practice.",
+      "author": "Ajahn Viradhammo",
+      "source": "The Stillness of Being, \"Bringing the Teachings Alive\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Attachment is very up and down but compassion is calm. It is not a demand that you make me happy.",
+      "author": "Ajahn Viradhammo",
+      "source": "The Stillness of Being, \"Dhamma and Family Life\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Truthfulness is the heart of the religious life because enlightenment is about truth. Freedom is about truth and suffering is about ignorance, about not understanding.",
+      "author": "Ajahn Viradhammo",
+      "source": "The Stillness of Being, \"Acceptance and Responsibility\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The happiness of a relatively calm mind is not complete freedom. This is still just another experience.",
+      "author": "Ajahn Viradhammo",
+      "source": "The Stillness of Being, \"So What\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Even within a spiritual practice we can have a cruel self-hating attitude towards the very real difficulties that we face. We can demand that we be loving, or forgiving.",
+      "author": "Ajahn Viradhammo",
+      "source": "The Stillness of Being, \"Affectionate Living\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "An angry thought is not mine, it’s a condition of nature; it arises and ceases.",
+      "author": "Ajahn Viradhammo",
+      "source": "The Stillness of Being, \"Bringing the Teachings Alive\"",
+      "themes": [
+        "impermanence",
+        "letting-go"
+      ]
+    },
+    {
       "text": "Sometimes it's better to be harmonious than to be right.",
       "author": "Ajahn Pasanno",
       "source": "The Ajahn Pasanno Question and Story Archive, Abhayagiri Buddhist Monastery",
@@ -1673,6 +1880,174 @@
       "source": "The Ajahn Pasanno Question and Story Archive, Abhayagiri Buddhist Monastery",
       "themes": [
         "letting-go",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "If you respond to somebody with anger and aversion, you’ll probably get a negative response back. If you respond with kindness and patience, you tend to get that same response back.",
+      "author": "Ajahn Pasanno",
+      "source": "Nourishing the Roots, \"Purifying the Foundation\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Mindfulness is the ability to have balance, to not be pulled in, the willingness to relinquish or let go of the positions we tend to take.",
+      "author": "Ajahn Pasanno",
+      "source": "Nourishing the Roots, \"Purifying the Foundation\"",
+      "themes": [
+        "mindfulness",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Ānāpānasati is a meditation that one can take wherever one goes. You have to breathe, so it’s always there for you, always present.",
+      "author": "Ajahn Pasanno",
+      "source": "Nourishing the Roots, \"Mindfulness of Breathing: Food for the Heart\"",
+      "themes": [
+        "mindfulness",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "The contemplation of change is a doorway to insight.",
+      "author": "Ajahn Pasanno",
+      "source": "Nourishing the Roots, \"Mindfulness of Breathing: Food for the Heart\"",
+      "themes": [
+        "impermanence",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "We don’t need to be keeping precepts out of fear of divine retribution; it is an opportunity to beautify the heart and to create the conditions for increased refinement and clarity.",
+      "author": "Ajahn Pasanno",
+      "source": "Nourishing the Roots, \"What Accords With Dhamma\"",
+      "themes": [
+        "simplicity"
+      ]
+    },
+    {
+      "text": "We want to abandon suffering, to let go of suffering, but when it isn’t known—when it isn’t understood clearly—then the cause is still simmering underneath.",
+      "author": "Ajahn Pasanno",
+      "source": "Nourishing the Roots, \"Awakening Through the Noble Truths\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "As the mind becomes settled, then there’s a reflection and acknowledgment, an understanding: “Oh. Mindfulness is present, and I am content.”",
+      "author": "Ajahn Pasanno",
+      "source": "Beneath the Bodhi Tree, \"Balancing the Mind\"",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "The nature of desire is that it’s always going to feel like it’s not enough.",
+      "author": "Ajahn Pasanno",
+      "source": "Beneath the Bodhi Tree, \"Enjoying the Breath\"",
+      "themes": [
+        "contentment",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "When we’re faced with suffering or difficulty, or stress, discontent, dissatisfaction, the habit, culturally, is to seek some kind of pleasure as an escape or distraction.",
+      "author": "Ajahn Pasanno",
+      "source": "Beneath the Bodhi Tree, \"Beneath the Bodhi Tree\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Relinquishing attachment has to rely on something more than just having the right idea, thought, concept, or view.",
+      "author": "Ajahn Pasanno",
+      "source": "Beneath the Bodhi Tree, \"Beneath the Bodhi Tree\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "You start realizing it’s not a path of attainment but of relinquishing.",
+      "author": "Ajahn Pasanno",
+      "source": "Beneath the Bodhi Tree, \"Gradual Instruction\"",
+      "themes": [
+        "letting-go",
+        "humility"
+      ]
+    },
+    {
+      "text": "Dāna is not just something one is doing through material things: it’s that quality of heart that is ready to give, to share, to help, to be of benefit.",
+      "author": "Ajahn Pasanno",
+      "source": "Beneath the Bodhi Tree, \"Gradual Instruction\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Recognizing the power of mindfulness is wisdom in and of itself. The sustaining, cherishing, willingness to maintain the quality of mindfulness takes relinquishment. It takes letting go.",
+      "author": "Ajahn Pasanno",
+      "source": "On Becoming and Stopping (Dhamma talk)",
+      "themes": [
+        "mindfulness",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "We know how to become but we don’t know how to stop. We’re not used to stopping.",
+      "author": "Ajahn Pasanno",
+      "source": "On Becoming and Stopping (Dhamma talk)",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "Each moment of mindfulness is the opportunity to verify the Dhamma of the Buddha.",
+      "author": "Ajahn Pasanno",
+      "source": "On Becoming and Stopping (Dhamma talk)",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Trying to replace desire and greed with trying hard to become perfect practitioners is fraught with suffering.",
+      "author": "Ajahn Pasanno",
+      "source": "On Becoming and Stopping (Dhamma talk)",
+      "themes": [
+        "humility",
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Becoming is why we continually opt to be scattered, confused and stupid rather than peaceful and wise.",
+      "author": "Ajahn Pasanno",
+      "source": "On Becoming and Stopping (Dhamma talk)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "You will see that if you actually stop and stand in awareness, you’ll be able to accomplish things a lot more skillfully.",
+      "author": "Ajahn Pasanno",
+      "source": "On Becoming and Stopping (Dhamma talk)",
+      "themes": [
+        "mindfulness",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "When the end of suffering (Nibbāna) is the topic, one would think the writing about it would be less suffering. Curious how some things are not as they appear.",
+      "author": "Ajahn Pasanno",
+      "source": "The Island: An Anthology of the Buddha's Teachings on Nibbāna, p. 8 (Ajahn Pasanno's preface)",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "If there is any hint of self, a position is then taken and the whole realm of saṃsāra unfolds.",
+      "author": "Ajahn Pasanno",
+      "source": "The Island: An Anthology of the Buddha's Teachings on Nibbāna, p. 8 (Ajahn Pasanno's preface)",
+      "themes": [
         "wisdom"
       ]
     },
@@ -2296,6 +2671,191 @@
       "themes": [
         "wisdom",
         "simplicity"
+      ]
+    },
+    {
+      "text": "Whether we experience pleasure or pain, success or failure, praise or criticism, that knowing nature of the mind is utterly serene.",
+      "author": "Ajahn Amaro",
+      "source": "Small Boat, Great Mountain: Theravadan Reflections on the Natural Great Perfection, Ch. 3, \"The View from the Forest\"",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "We practice to end suffering, yet we get so attached to working with things in the mind that when the dukkha stops and the heart becomes spacious and empty, we can find ourselves feeling lost.",
+      "author": "Ajahn Amaro",
+      "source": "Small Boat, Great Mountain: Theravadan Reflections on the Natural Great Perfection, Ch. 3, \"The View from the Forest\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "We need to see that the heart is attached somewhere and then make the gesture to loosen up, to let go. Sometimes we don’t notice where the suffering gets generated.",
+      "author": "Ajahn Amaro",
+      "source": "Small Boat, Great Mountain: Theravadan Reflections on the Natural Great Perfection, Ch. 1, \"Ultimate and Conventional Reality\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Movement does not apply to awareness. There are movements of the body, but the mind that knows the movements aren’t moving. There’s stillness, but there’s flow.",
+      "author": "Ajahn Amaro",
+      "source": "Small Boat, Great Mountain: Theravadan Reflections on the Natural Great Perfection, Ch. 2, \"The Place of Nonabiding\"",
+      "themes": [
+        "mindfulness",
+        "silence"
+      ]
+    },
+    {
+      "text": "Wisdom can develop only in a mind that is continually reoriented and grounded in truth and selflessness.",
+      "author": "Ajahn Amaro",
+      "source": "Small Boat, Great Mountain: Theravadan Reflections on the Natural Great Perfection, Ch. 8, \"The Portable Retreat\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "We can talk about things like knowing, emptiness, lucidity, clarity, and so forth, but when the mind is fully awake to its own nature, the words run out.",
+      "author": "Ajahn Amaro",
+      "source": "Small Boat, Great Mountain: Theravadan Reflections on the Natural Great Perfection, Ch. 7, \"Off the Wheel\"",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "Until we know the pain of attachment, we won’t really let go.",
+      "author": "Ajahn Amaro",
+      "source": "Who Is Pulling the Strings?, \"Questions and Answers\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "The world is definitely pre-conditioned but what we do with it here in the present moment is entirely up to us.",
+      "author": "Ajahn Amaro",
+      "source": "Who Is Pulling the Strings?, \"Is This Principle of ‘Karmic Fate’ What the Buddha Taught?\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Moment by moment we are not experiencing an objective world; rather we’re experiencing our mind’s representation of the world.",
+      "author": "Ajahn Amaro",
+      "source": "Who Is Pulling the Strings?, \"Is This a Conscious Universe?\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The cause of death is birth. Death is going to happen to all of us in some way or other, everyone is going to die.",
+      "author": "Ajahn Amaro",
+      "source": "Who Is Pulling the Strings?, \"Questions and Answers\"",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "A lot of our suffering, of dukkha, comes from a feeling of dissatisfaction or discontent because we think: ‘It shouldn’t be this way,’ ‘Life is unfair,’ ‘Why is this happening to me?’ or ‘Not this again – I don’t deserve this!’",
+      "author": "Ajahn Amaro",
+      "source": "Who Is Pulling the Strings?, \"Is Nature Fair?\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "To me, then, evil is not something outside of nature, but I would say that it entails a depth of delusion whereby the mind is completely lost in its own self-obsessions.",
+      "author": "Ajahn Amaro",
+      "source": "Who Is Pulling the Strings?, \"Questions and Answers\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Happiness is a fickle friend, no more than freedom from midges; freedom from suffering is another story.",
+      "author": "Ajahn Amaro",
+      "source": "Tudong: The Long Road North, Part 3",
+      "themes": [
+        "suffering-liberation",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Walking in the world you are bound to do some damage, however hard you try to be gentle. Our reflection though is that we walk for peace; at least we are not starting any wars.",
+      "author": "Ajahn Amaro",
+      "source": "Tudong: The Long Road North, Part 3",
+      "themes": [
+        "humility",
+        "compassion"
+      ]
+    },
+    {
+      "text": "Negativity and the situations you blame for your suffering always seem to find a way of dissolving if you are patient.",
+      "author": "Ajahn Amaro",
+      "source": "Tudong: The Long Road North, Part 4",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Letting go, renunciation of conventions, is the learning to be at ease in boundless emptiness.",
+      "author": "Ajahn Amaro",
+      "source": "Tudong: The Long Road North, Part 2",
+      "themes": [
+        "letting-go",
+        "simplicity"
+      ]
+    },
+    {
+      "text": "Finding true happiness in the world is an art, not a sin.",
+      "author": "Ajahn Amaro",
+      "source": "Tudong: The Long Road North, Part 4",
+      "themes": [
+        "ordinary-life",
+        "contentment"
+      ]
+    },
+    {
+      "text": "As long as you are going somewhere you are living in the desire to get there and the fear of not making it: you feel a twinge in your knee, your arm goes dead, your shoe begins to rub; EEEEEEEEEEK! goes the mind.",
+      "author": "Ajahn Amaro",
+      "source": "Tudong: The Long Road North, Part 1",
+      "themes": [
+        "mindfulness",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "When the heart is free of all obscurations, and is utterly in accord with nature, Ultimate Reality (Dhamma), it experiences perfect peace, joy and contentment.",
+      "author": "Ajahn Pasanno and Ajahn Amaro",
+      "source": "The Island: An Anthology of the Buddha's Teachings on Nibbāna, p. 28",
+      "themes": [
+        "suffering-liberation",
+        "contentment"
+      ]
+    },
+    {
+      "text": "The heart can be aware but to try to make awareness an object, in the same way that we would a tree or a thought, is a frustrating process.",
+      "author": "Ajahn Pasanno and Ajahn Amaro",
+      "source": "The Island: An Anthology of the Buddha's Teachings on Nibbāna, p. 197",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "When there is insufficient mindfulness and wisdom, the mind ‘goes out’ and attaches to its perceptions and moods, the result of which is the experience of ‘me being pressured by life.’",
+      "author": "Ajahn Pasanno and Ajahn Amaro",
+      "source": "The Island: An Anthology of the Buddha's Teachings on Nibbāna, p. 124",
+      "themes": [
+        "mindfulness",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Because our sense impressions are so dependent on our sense organs, the sense of the world ‘out there’ as opposed to our self ‘in here’ does not accord with direct experience. When we see how this false dichotomy causes suffering, we will drop it and be released from our attachment both to ‘self’ and to ‘world.’",
+      "author": "Ajahn Pasanno and Ajahn Amaro",
+      "source": "The Island: An Anthology of the Buddha's Teachings on Nibbāna, p. 259",
+      "themes": [
+        "letting-go",
+        "wisdom"
       ]
     },
     {
@@ -3749,6 +4309,56 @@
         "compassion"
       ],
       "verification": "https://amaravati.org/dhamma-article-ajahn-sundara-way-liberation/"
+    },
+    {
+      "text": "The world is the suffering we create. The Buddha says this world is in this fathom-long body – that is where the world arises and ends.",
+      "author": "Ajahn Sundara",
+      "source": "Walking the World, p. 52",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Everything in life influences us, and awareness is key. Awareness of mistakes can take us right into the fire. Sometimes not getting it quite right is what wakes you up much more sharply than developing a lot of techniques for being aware.",
+      "author": "Ajahn Sundara",
+      "source": "Walking the World, \"It Can Be Very Simple\", p. 61",
+      "themes": [
+        "mindfulness",
+        "humility"
+      ]
+    },
+    {
+      "text": "When you have seen with insight that the things we crave are not really worth making ourselves miserable for, it becomes possible to be at peace with whatever is happening.",
+      "author": "Ajahn Sundara",
+      "source": "Walking the World, p. 62",
+      "themes": [
+        "contentment",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Practice is a selfless act. We practise not to gain anything, not to realize our dreams, but just to practise.",
+      "author": "Ajahn Sundara",
+      "source": "Walking the World, \"Mindfulness and Wisdom: The Tools of Practice\", p. 75",
+      "themes": [
+        "simplicity"
+      ]
+    },
+    {
+      "text": "If we ask ourselves honestly, we might find that actually we like our conflict, chaos and delusion, that in many ways we find them quite exciting!",
+      "author": "Ajahn Sundara",
+      "source": "Walking the World, \"Our Nature\", p. 89",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "Delusion, the Buddha teaches, is not a curse. It’s part of nature. He tells us that by seeing it and understanding its cause, we can liberate ourselves from it.",
+      "author": "Ajahn Sundara",
+      "source": "Walking the World, \"Our Nature\", p. 89",
+      "themes": [
+        "wisdom"
+      ]
     },
     {
       "text": "We make peace with things just as they are.",
