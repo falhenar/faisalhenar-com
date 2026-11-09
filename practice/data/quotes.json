@@ -63,7 +63,15 @@
     "  prose was used, credited jointly (preface lines to Ajahn Pasanno).",
     "  Lines these books quote from other teachers (Ajahn Chah, forewords)",
     "  were left out. Walking the World was checked against page images",
-    "  because its text layer drops most full stops."
+    "  because its text layer drops most full stops.",
+    "- Nov 2026 batch from FH's copies of Thich Nhat Hanh (The Diamond That",
+    "  Cuts Through Illusion, The Heart of the Buddha's Teaching, The Heart",
+    "  of Understanding, True Love), Shunryu Suzuki (Zen Mind, Beginner's",
+    "  Mind) and Jack Kornfield (After the Ecstasy, the Laundry; The",
+    "  Eightfold Path for the Householder). Diamond Sutra lines are credited",
+    "  to the Buddha in Thich Nhat Hanh's translation; FH's copy of that book",
+    "  lacks the commentary chapters. Lines Kornfield quotes or paraphrases",
+    "  from other teachers were left out."
   ],
   "quotes": [
     {
@@ -772,6 +780,172 @@
       ]
     },
     {
+      "text": "The only thing worthy of you is compassion—invincible, limitless, unconditional.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Diamond That Cuts Through Illusion, from the poem \"Recommendation\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Even if the world is shattered, your smile will never vanish.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Diamond That Cuts Through Illusion, poem",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "Letting go gives us freedom, and freedom is the only condition for happiness. If, in our heart, we still cling to anything — anger, anxiety, or possessions — we cannot be free.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of the Buddha's Teaching, \"Right Mindfulness\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Impermanence is what makes transformation possible. We should learn to say, \"Long live impermanence.\" Thanks to impermanence, we can change suffering into joy.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of the Buddha's Teaching, \"The Three Dharma Seals\"",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "The practice of mindful living should be joyful and pleasant. If you breathe in and out and feel joy and peace, that is Right Diligence.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of the Buddha's Teaching, \"Right Diligence\"",
+      "themes": [
+        "mindfulness",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Our suffering is us, and we need to treat it with kindness and nonviolence.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of the Buddha's Teaching, \"Touching Our Suffering\"",
+      "themes": [
+        "compassion",
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "With compassion in our heart, every thought, word, and deed can bring about a miracle.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of the Buddha's Teaching, \"The Four Immeasurable Minds\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Some kinds of happiness actually destroy our body, our mind, and our relationships. Freedom from craving is an important practice.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of the Buddha's Teaching, \"The Six Paramitas\"",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "Emptiness is impermanence, it is change. We should not complain about impermanence, because without impermanence nothing is possible.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of Understanding: Commentaries on the Prajñaparamita Heart Sutra",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "The word emptiness should not scare us. It is a wonderful word. To be empty does not mean non-existent.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of Understanding: Commentaries on the Prajñaparamita Heart Sutra",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The wave is full of water, but it is empty of a separate self.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of Understanding: Commentaries on the Prajñaparamita Heart Sutra",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "If we practice walking meditation, we walk just for walking, not to arrive.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of Understanding: Commentaries on the Prajñaparamita Heart Sutra",
+      "themes": [
+        "mindfulness",
+        "simplicity"
+      ]
+    },
+    {
+      "text": "To smile is not to smile only for yourself; the world will change because of your smile.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of Understanding: Commentaries on the Prajñaparamita Heart Sutra",
+      "themes": [
+        "compassion",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Form is empty of a separate self, but it is full of everything in the cosmos.",
+      "author": "Thich Nhat Hanh",
+      "source": "The Heart of Understanding: Commentaries on the Prajñaparamita Heart Sutra",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "To meditate is to bring body and mind back to the present moment so that you do not miss your appointment with life.",
+      "author": "Thich Nhat Hanh",
+      "source": "True Love: A Practice for Awakening the Heart, \"Recognizing the Presence of the Other\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Those who have practiced Buddhist meditation know that meditating is above all being present: to yourself, to those you love, to life.",
+      "author": "Thich Nhat Hanh",
+      "source": "True Love: A Practice for Awakening the Heart, \"Love Is Being There\"",
+      "themes": [
+        "mindfulness",
+        "compassion"
+      ]
+    },
+    {
+      "text": "Training is needed in order to love properly; and to be able to give happiness and joy, you must practice deep looking directed toward the person you love.",
+      "author": "Thich Nhat Hanh",
+      "source": "True Love: A Practice for Awakening the Heart, \"The Four Aspects of Love\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "To be able to provide help, we have to have a little calm, a little joy, a little compassion in ourselves.",
+      "author": "Thich Nhat Hanh",
+      "source": "True Love: A Practice for Awakening the Heart, \"Restoring Peace within Yourself\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Whatever you do mindfully is meditation.",
+      "author": "Thich Nhat Hanh",
+      "source": "True Love: A Practice for Awakening the Heart, \"Recognizing the Presence of the Other\"",
+      "themes": [
+        "mindfulness",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Meditation is the practice of looking deeply into the nature of your suffering and your joy.",
+      "author": "Thich Nhat Hanh",
+      "source": "True Love: A Practice for Awakening the Heart, \"Learning to Speak with Love Again\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
       "text": "Things are more dangerous than fire because we can at least see a fire blazing away and so don't go too close to it, whereas all things are a fire we can't see.",
       "author": "Ajahn Buddhadasa",
       "source": "Handbook for Mankind, Ch. 2, \"The True Nature of Things,\" trans. Ariyananda Bhikkhu (Roderick S. Bucknell)",
@@ -1023,6 +1197,55 @@
       ]
     },
     {
+      "text": "When we have no thought of achievement, no thought of self, we are true beginners. Then we can really learn something. The beginner’s mind is the mind of compassion.",
+      "author": "Shunryu Suzuki",
+      "source": "Zen Mind, Beginner's Mind (1970), \"Prologue: Beginner's Mind\"",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "Mindfulness is, at the same time, wisdom. By wisdom we do not mean some particular faculty or philosophy. It is the readiness of the mind that is wisdom.",
+      "author": "Shunryu Suzuki",
+      "source": "Zen Mind, Beginner's Mind (1970), \"Readiness, Mindfulness\"",
+      "themes": [
+        "mindfulness",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Do not try to stop your mind, but leave everything as it is.",
+      "author": "Shunryu Suzuki",
+      "source": "Zen Mind, Beginner's Mind (1970), \"Beyond Consciousness\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Just continue in your calm, ordinary practice and your character will be built up.",
+      "author": "Shunryu Suzuki",
+      "source": "Zen Mind, Beginner's Mind (1970), \"Zen and Excitement\"",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "We do not seek for something besides ourselves. We should find the truth in this world, through our difficulties, through our suffering.",
+      "author": "Shunryu Suzuki",
+      "source": "Zen Mind, Beginner's Mind (1970), \"Transiency\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "We must have beginner’s mind, free from possessing anything, a mind that knows everything is in flowing change. Nothing exists but momentarily in its present form and color.",
+      "author": "Shunryu Suzuki",
+      "source": "Zen Mind, Beginner's Mind (1970), \"Epilogue: Zen Mind\"",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
       "text": "To study the buddha way is to study the self. To study the self is to forget the self. To forget the self is to be actualized by myriad things.",
       "author": "Dogen",
       "source": "Shobogenzo, \"Genjokoan,\" in Moon in a Dewdrop, trans. Robert Aitken and Kazuaki Tanahashi",
@@ -1174,6 +1397,105 @@
       "themes": [
         "letting-go",
         "suffering-liberation"
+      ]
+    },
+    {
+      "text": "At the root of suffering is a small heart, frightened to be here, afraid to trust the river of change, to let go in this changing world.",
+      "author": "Jack Kornfield",
+      "source": "After the Ecstasy, the Laundry, \"The Wisdom of Not Knowing\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "The truth is that in spiritual life, our awareness of suffering actually increases over the years. We see and know more clearly the sorrows of the world.",
+      "author": "Jack Kornfield",
+      "source": "After the Ecstasy, the Laundry, \"Stretching the Heart’s Mercy\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "The point of spiritual practice is not to wait for illness or death to awaken us, but to draw on the life and health we have now to bring peace to our body, heart, and mind.",
+      "author": "Jack Kornfield",
+      "source": "After the Ecstasy, the Laundry, \"Embodied Courage\"",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Though it sounds simple, letting go is also an advanced practice. It is demanded in the greatest trials of our lives and in our final moments.",
+      "author": "Jack Kornfield",
+      "source": "After the Ecstasy, the Laundry, \"The Secret Embrace\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "We armor and defend the heart not only against the world, but against ourselves. Some of us fear sadness, others fear joy; some fear weakness, others fear strength.",
+      "author": "Jack Kornfield",
+      "source": "After the Ecstasy, the Laundry, \"Weeping Buddha, Wrathful Buddha\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "We can bow to both beauty and suffering, to our entanglements and confusion, to our fears and to the injustices of the world. Honoring the truth in this way is the path to freedom.",
+      "author": "Jack Kornfield",
+      "source": "After the Ecstasy, the Laundry, \"An Opening Bow\"",
+      "themes": [
+        "humility",
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "The opposite of greed is generosity; the opposite of hatred is love; the opposite of delusion is awareness.",
+      "author": "Jack Kornfield",
+      "source": "The Eightfold Path for the Householder (talks, 1995), \"Right Action\", p. 47",
+      "themes": [
+        "compassion",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Fear is always about something that hasn’t come, so is worry, so is desire.",
+      "author": "Jack Kornfield",
+      "source": "The Eightfold Path for the Householder (talks, 1995), \"Right Concentration\", p. 89",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "In the end what one discovers is that mindfulness and love are the same thing.",
+      "author": "Jack Kornfield",
+      "source": "The Eightfold Path for the Householder (talks, 1995), \"Right Awareness\", p. 108",
+      "themes": [
+        "mindfulness",
+        "compassion"
+      ]
+    },
+    {
+      "text": "Right Effort isn’t so much the effort to make the world a different place, as it is the effort to understand the nature of this world, of our body, our mind, this life.",
+      "author": "Jack Kornfield",
+      "source": "The Eightfold Path for the Householder (talks, 1995), \"Right Effort\", p. 65",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "If you really want to learn something in a full way — tennis, piano, not to speak of training the mind and opening the heart — it takes perseverance, patience and a systematic training.",
+      "author": "Jack Kornfield",
+      "source": "The Eightfold Path for the Householder (talks, 1995), \"Right Understanding\", p. 11",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "We don’t need more oil and food as much as we need somebody who understands how to avoid getting caught in anger and fear and prejudice. And that somebody is you.",
+      "author": "Jack Kornfield",
+      "source": "The Eightfold Path for the Householder (talks, 1995), \"Right Understanding\", p. 7",
+      "themes": [
+        "compassion"
       ]
     },
     {
@@ -2999,6 +3321,40 @@
       "source": "Samyutta Nikaya",
       "themes": [
         "impermanence",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "All composed things are like a dream, a phantom, a drop of dew, a flash of lightning. That is how to meditate on them, that is how to observe them.",
+      "author": "The Buddha",
+      "source": "Diamond Sutra, §32, trans. Thich Nhat Hanh, The Diamond That Cuts Through Illusion",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Someone who looks for me in form or seeks me in sound is on a mistaken path and cannot see the Tathagata.",
+      "author": "The Buddha",
+      "source": "Diamond Sutra, §26, trans. Thich Nhat Hanh, The Diamond That Cuts Through Illusion",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Subhuti, the past mind cannot be grasped, neither can the present mind or the future mind.",
+      "author": "The Buddha",
+      "source": "Diamond Sutra, §18, trans. Thich Nhat Hanh, The Diamond That Cuts Through Illusion",
+      "themes": [
+        "impermanence",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Subhuti, a bodhisattva who still depends on notions to practice generosity is like someone walking in the dark.",
+      "author": "The Buddha",
+      "source": "Diamond Sutra, §14, trans. Thich Nhat Hanh, The Diamond That Cuts Through Illusion",
+      "themes": [
+        "compassion",
         "wisdom"
       ]
     },
