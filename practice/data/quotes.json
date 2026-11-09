@@ -71,7 +71,15 @@
     "  Eightfold Path for the Householder). Diamond Sutra lines are credited",
     "  to the Buddha in Thich Nhat Hanh's translation; FH's copy of that book",
     "  lacks the commentary chapters. Lines Kornfield quotes or paraphrases",
-    "  from other teachers were left out."
+    "  from other teachers were left out.",
+    "- Nov 2026 batch from FH's copies of A Tree in a Forest (Ajahn Chah),",
+    "  Essential Themes of Buddhist Lectures (Sayadaw U Thittila), Handbook",
+    "  for Mankind and The Natural Cure for Spiritual Disease (Ajahn",
+    "  Buddhadasa), Snow in the Summer (Sayadaw U Jotika), The Experience of",
+    "  Insight (Joseph Goldstein), Facing the Future (Bhikkhu Bodhi) and Real",
+    "  Love (Sharon Salzberg). A Tree in a Forest was checked against page",
+    "  images because its text layer drops the letters 'Th'. Lines these",
+    "  books quote from other writers were left out."
   ],
   "quotes": [
     {
@@ -680,6 +688,92 @@
       ]
     },
     {
+      "text": "Patience brings forth peace, success, happiness and security.",
+      "author": "Sayadaw U Thittila",
+      "source": "Essential Themes of Buddhist Lectures, \"Patience\", p. 338",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "We may live in this world quite happily if we are not attached to it by foolish desire.",
+      "author": "Sayadaw U Thittila",
+      "source": "Essential Themes of Buddhist Lectures, p. 133",
+      "themes": [
+        "letting-go",
+        "contentment"
+      ]
+    },
+    {
+      "text": "Meditation is mental training, and from a trained mind spring right thoughts, words and deeds.",
+      "author": "Sayadaw U Thittila",
+      "source": "Essential Themes of Buddhist Lectures, p. 163",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "What we call happiness or pleasure in the world, is merely gratification of some desire, but no sooner is the desired thing gained than it begins to be scorned.",
+      "author": "Sayadaw U Thittila",
+      "source": "Essential Themes of Buddhist Lectures, p. 201",
+      "themes": [
+        "contentment",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Impermanence is a suitable subject for everyone. Suffering is too depressing for certain natures to meditate on.",
+      "author": "Sayadaw U Thittila",
+      "source": "Essential Themes of Buddhist Lectures, \"Meditation\", p. 234",
+      "themes": [
+        "impermanence",
+        "humility"
+      ]
+    },
+    {
+      "text": "Don’t use force. Keep your mind soft. Happiness is having a quiet mind, and being completely mindful, so mindful that there is no thought, no sense of I.",
+      "author": "Sayadaw U Jotika",
+      "source": "Snow in the Summer",
+      "themes": [
+        "mindfulness",
+        "silence"
+      ]
+    },
+    {
+      "text": "Only deep understanding of attachment can free the mind of it. If you force your mind to let go of attachment without really seeing the nature of it, it will come back very soon.",
+      "author": "Sayadaw U Jotika",
+      "source": "Snow in the Summer",
+      "themes": [
+        "letting-go",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Defilements make life complicated. Without greed, desire, and attachment you can live a simple life like Ryokan.",
+      "author": "Sayadaw U Jotika",
+      "source": "Snow in the Summer, \"Life, Living and Death\"",
+      "themes": [
+        "simplicity"
+      ]
+    },
+    {
+      "text": "I am not trying to be somebody. I just try my best to understand whatever is happening in my life, in my mind, in my heart. No name and no fame; when I die nothing will remain.",
+      "author": "Sayadaw U Jotika",
+      "source": "Snow in the Summer",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "We use mindfulness as a painkiller. Only when life becomes too painful do we want to go to a quiet place and meditate. Otherwise we are quite content with distractions.",
+      "author": "Sayadaw U Jotika",
+      "source": "Snow in the Summer, \"Mind, Mindfulness and Meditation\"",
+      "themes": [
+        "mindfulness",
+        "humility"
+      ]
+    },
+    {
       "text": "So the Buddhist attitude toward life cultivates samvega — a clear acceptance of the meaninglessness of the cycle of birth, aging, and death — and develops it into pasada: a confident path to the Deathless.",
       "author": "Thanissaro Bhikkhu",
       "source": "\"Affirming the Truths of the Heart: The Buddhist Teachings on Samvega & Pasada,\" in Noble Strategy: Essays on the Buddhist Path (1997)",
@@ -952,6 +1046,90 @@
       "themes": [
         "wisdom",
         "letting-go"
+      ]
+    },
+    {
+      "text": "When the mind is free from attachment, there is nothing to bind it and make it a slave of the world.",
+      "author": "Ajahn Buddhadasa",
+      "source": "Handbook for Mankind, trans. Roderick Bucknell, p. 56",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "With the insight that nothing is worth getting or being constantly present, the mind loses all desire for the things it once used to grasp at and cling to.",
+      "author": "Ajahn Buddhadasa",
+      "source": "Handbook for Mankind, trans. Roderick Bucknell, p. 95",
+      "themes": [
+        "letting-go",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The single phrase “empty of self” sums up the words “impermanent (aniccā), unsatisfactory (dukkha) and not self (anattā)”.",
+      "author": "Ajahn Buddhadasa",
+      "source": "Handbook for Mankind, trans. Roderick Bucknell, p. 35",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "In saying that all things are impermanent we mean that things change perpetually, there being no entity or self that remains unchanged for even an instant.",
+      "author": "Ajahn Buddhadasa",
+      "source": "Handbook for Mankind, trans. Roderick Bucknell, p. 25",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Gain and loss, happiness and sorrow, amount in effect to mental restlessness or instability; they set the mind spinning.",
+      "author": "Ajahn Buddhadasa",
+      "source": "Handbook for Mankind, trans. Roderick Bucknell, p. 70",
+      "themes": [
+        "silence",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "To be truly human is to be above all problems. Study and learn in order to be completely human.",
+      "author": "Ajahn Buddhadasa",
+      "source": "The Natural Cure for Spiritual Disease, talk I, p. 18",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Make the mind empty, free, and spotless, so that you can hear something new.",
+      "author": "Ajahn Buddhadasa",
+      "source": "The Natural Cure for Spiritual Disease, talk I, p. 11",
+      "themes": [
+        "humility",
+        "silence"
+      ]
+    },
+    {
+      "text": "When we’re afraid we become helpless. When there is fear, we lose our mindfulness and wisdom (sati-panna), and our ability to struggle with problems and protect ourselves.",
+      "author": "Ajahn Buddhadasa",
+      "source": "The Natural Cure for Spiritual Disease, talk III, p. 48",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Physical disease pierces the body; spiritual disease stabs the mind or spirit. Dhamma is the latter’s remedy.",
+      "author": "Ajahn Buddhadasa",
+      "source": "The Natural Cure for Spiritual Disease, talk I, p. 12",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "When the mind keeps running all over the world, keeps getting involved in everything, it is impossible to perform even a simple task like writing a letter.",
+      "author": "Ajahn Buddhadasa",
+      "source": "The Natural Cure for Spiritual Disease, talk III, p. 43",
+      "themes": [
+        "mindfulness",
+        "ordinary-life"
       ]
     },
     {
@@ -1391,6 +1569,47 @@
       ]
     },
     {
+      "text": "Right thought means becoming aware of sense desires and letting them go. The more we let go, the lighter the mind becomes.",
+      "author": "Joseph Goldstein",
+      "source": "The Experience of Insight, \"Second Evening\", p. 9",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "We don’t have to figure out the causes of our problems, we have to let go of them.",
+      "author": "Joseph Goldstein",
+      "source": "The Experience of Insight, \"Ninth Evening\", p. 51",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Insight comes from mindfulness, and either we’re aware of what’s happening or not. There’s no way of being mindfully wrong.",
+      "author": "Joseph Goldstein",
+      "source": "The Experience of Insight, p. 59",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Thoughts should not be treated as obstacles or hindrances. They are just another object of mindfulness, another object of meditation.",
+      "author": "Joseph Goldstein",
+      "source": "The Experience of Insight, p. 25",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "In letting go of attachment to our own preconceptions, in that silence of mind, the whole Dharma is revealed.",
+      "author": "Joseph Goldstein",
+      "source": "The Experience of Insight, \"Twenty-Ninth Evening\", p. 132",
+      "themes": [
+        "silence",
+        "letting-go"
+      ]
+    },
+    {
       "text": "Nirvana appears when we let go, when we live in the reality of the present. Sorrow arises when the mind and heart are caught in greed, hatred, and delusion. Nirvana appears in their absence.",
       "author": "Jack Kornfield",
       "source": "\"The Wise Heart,\" interview in Tricycle magazine, Summer 2008",
@@ -1505,6 +1724,47 @@
       "themes": [
         "compassion",
         "wisdom"
+      ]
+    },
+    {
+      "text": "I think love and joy come from the same place—the ability to be with what is happening with an open heart and mind.",
+      "author": "Sharon Salzberg",
+      "source": "Real Love: The Art of Mindful Connection",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "The key in letting go is practice. Each time we let go, we disentangle ourselves from our expectations and begin to experience things as they are.",
+      "author": "Sharon Salzberg",
+      "source": "Real Love: The Art of Mindful Connection",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "The more we practice sympathetic joy, the more we come to realize that the happiness we share with others is inseparable from our own happiness.",
+      "author": "Sharon Salzberg",
+      "source": "Real Love: The Art of Mindful Connection",
+      "themes": [
+        "compassion",
+        "gratitude"
+      ]
+    },
+    {
+      "text": "You might still feel rage, desire, and shame like everyone else in the world, but you can learn to hold these emotions in a context of caring.",
+      "author": "Sharon Salzberg",
+      "source": "Real Love: The Art of Mindful Connection",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "If you still find yourself caught up in self-criticism, turn your attention to the mere fact that you have an urge toward happiness. There is kindness and beauty in that.",
+      "author": "Sharon Salzberg",
+      "source": "Real Love: The Art of Mindful Connection",
+      "themes": [
+        "compassion"
       ]
     },
     {
@@ -3972,6 +4232,48 @@
       "verification": "https://accesstoinsight.org/lib/authors/various/wheel367.html"
     },
     {
+      "text": "To heal the wounds of our world we must work to heal the wounds of our heart, the deep hidden wounds of greed, hatred, and delusion.",
+      "author": "Bhikkhu Bodhi",
+      "source": "Facing the Future: Four Essays on Buddhism and Society (Wheel 438/440), p. 33",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "What we must do is replace greed with non-greed: with generosity, detachment, contentment, and simplicity.",
+      "author": "Bhikkhu Bodhi",
+      "source": "Facing the Future: Four Essays on Buddhism and Society (Wheel 438/440), p. 28",
+      "themes": [
+        "simplicity",
+        "contentment"
+      ]
+    },
+    {
+      "text": "Craving is blind desire, a self-centred drive for sensual pleasure, power, and status.",
+      "author": "Bhikkhu Bodhi",
+      "source": "Facing the Future: Four Essays on Buddhism and Society (Wheel 438/440), p. 24",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The realization that happiness cannot be bought in the shopping mall should awaken in us an urgent desire to find a more genuine sense of meaning for our lives, a peace and happiness that does not depend on outer conditions.",
+      "author": "Bhikkhu Bodhi",
+      "source": "Facing the Future: Four Essays on Buddhism and Society (Wheel 438/440), p. 68",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "Instead of hoarding and accumulating things, Buddhism emphasizes the value of giving: the practice of generosity is the most effective way to erase the greed from one’s own mind as well as to confer benefits on others.",
+      "author": "Bhikkhu Bodhi",
+      "source": "Facing the Future: Four Essays on Buddhism and Society (Wheel 438/440), p. 28",
+      "themes": [
+        "compassion",
+        "letting-go"
+      ]
+    },
+    {
       "text": "We conquer ourselves, we don't try to conquer others.",
       "author": "Ajahn Chah",
       "source": "Food for the Heart, Dhamma Fighting; Sangha translation",
@@ -4145,6 +4447,48 @@
       "text": "Getting beyond suffering does not depend on others’ opinions of us, but on our own individual state of mind.",
       "author": "Ajahn Chah",
       "source": "Everything Is Teaching Us, \"Wholehearted Training\" (Amaravati Publications, 2018)",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Samadhi is one kind of peace, like the stone covering the grass. This is only a temporary peace. The peace of wisdom is like putting the stone down and just leaving it there.",
+      "author": "Ajahn Chah",
+      "source": "A Tree in a Forest: A Collection of Ajahn Chah's Similes, \"Grass\", p. 39",
+      "themes": [
+        "wisdom",
+        "silence"
+      ]
+    },
+    {
+      "text": "Read yourself, not books. Truth isn’t outside. That’s only memory, not wisdom. Memory without wisdom is like an empty thermos bottle — if you don’t fill it, it’s useless.",
+      "author": "Ajahn Chah",
+      "source": "A Tree in a Forest: A Collection of Ajahn Chah's Similes, \"Thermos Bottle\", p. 59",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "If you clearly see the truth through meditation, then suffering will become unwound, just like a screw.",
+      "author": "Ajahn Chah",
+      "source": "A Tree in a Forest: A Collection of Ajahn Chah's Similes, \"Screw\", p. 55",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "You don’t have to read the Tipitaka to have greed, hatred and delusion. They are all already in your mind, and you don’t have to study books to have them.",
+      "author": "Ajahn Chah",
+      "source": "A Tree in a Forest: A Collection of Ajahn Chah's Similes, \"Grand Central Station\", p. 85",
+      "themes": [
+        "ordinary-life",
+        "humility"
+      ]
+    },
+    {
+      "text": "In truth, happiness is suffering in disguise, but in such a subtle form that you don’t see it.",
+      "author": "Ajahn Chah",
+      "source": "A Tree in a Forest: A Collection of Ajahn Chah's Similes, \"Piece of Cake\", p. 103",
       "themes": [
         "suffering-liberation"
       ]
