@@ -42,7 +42,13 @@
     "  Don't Know quote were checked against OCR'd scans with some noise",
     "  elsewhere in the file; the specific lines used fell in clean,",
     "  legible stretches and were cross-confirmed against independent",
-    "  citations, but a print spot-check would be worth doing eventually."
+    "  citations, but a print spot-check would be worth doing eventually.",
+    "- Ajahn Maha Bua's Samaṇa and Arahattamagga – Arahattaphala and Ajahn",
+    "  Jia Cundo's Gold Wrapped in Rags (all Forest Dhamma) were checked",
+    "  against FH's EPUB copies. Samaṇa's last chapter reprints Part 1 of",
+    "  Arahattamagga, so no line is taken from both. Gold Wrapped in Rags",
+    "  lines are Ajahn Jia's own narration, credited to him even where he",
+    "  describes Ajahn Mun's teaching."
   ],
   "quotes": [
     {
@@ -3134,6 +3140,137 @@
         "ordinary-life"
       ],
       "verification": "https://accesstoinsight.org/lib/thai/boowa/london.html"
+    },
+    {
+      "text": "What knows the pain isn’t the pain. It’s the heart. The heart is what knows all about the pain.",
+      "author": "Ajahn Maha Bua",
+      "source": "Samaṇa, \"Right Here in the Heart\", adapted from translations by Thanissaro Bhikkhu (Forest Dhamma Books, 2011)",
+      "themes": [
+        "suffering-liberation",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "When the mind doesn’t get itself worked up with thoughts about various things, it becomes still; that’s all there is to it.",
+      "author": "Ajahn Maha Bua",
+      "source": "Samaṇa, \"Right Here in the Heart\", adapted from translations by Thanissaro Bhikkhu (Forest Dhamma Books, 2011)",
+      "themes": [
+        "mindfulness",
+        "silence"
+      ]
+    },
+    {
+      "text": "Once the mind knows, it is bound to let go of its own accord. The clinging mind is the mind that doesn’t yet know, doesn’t yet understand with wisdom.",
+      "author": "Ajahn Maha Bua",
+      "source": "Samaṇa, \"Birth and Death\", adapted from translations by Thanissaro Bhikkhu (Forest Dhamma Books, 2011)",
+      "themes": [
+        "letting-go",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "When we enjoy the beginning but dislike the end – when we like birth but dislike death – we’re contradicting the truth all the time.",
+      "author": "Ajahn Maha Bua",
+      "source": "Samaṇa, \"Right Here in the Heart\", adapted from translations by Thanissaro Bhikkhu (Forest Dhamma Books, 2011)",
+      "themes": [
+        "impermanence",
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "When mindfulness loses its focus, the defilements rush in to drag your thoughts to a past long gone, or a future yet to come.",
+      "author": "Ajahn Maha Bua",
+      "source": "Samaṇa, \"The Heart of a Samaṇa\", adapted from translations by Thanissaro Bhikkhu (Forest Dhamma Books, 2011)",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Mindfulness fixes the mind in the present, allowing wisdom to focus sharply. Learned experience is stored as memory, and as such should be put aside; otherwise memory will masquerade as wisdom.",
+      "author": "Ajahn Maha Bua",
+      "source": "Arahattamagga – Arahattaphala, Part 1, trans. Bhikkhu Dick Sīlaratano (Forest Dhamma Books, 2005)",
+      "themes": [
+        "mindfulness",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The same body that was there when the pain appeared is still there when the pain ceases. Pain does not alter the nature of the body; the body does not affect the nature of pain.",
+      "author": "Ajahn Maha Bua",
+      "source": "Arahattamagga – Arahattaphala, Part 1, trans. Bhikkhu Dick Sīlaratano (Forest Dhamma Books, 2005)",
+      "themes": [
+        "suffering-liberation",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "In truth, the mind paints elaborate pictures all the time—pictures of oneself and pictures of the external world. It then falls for its own mental imagery, believing it to be real.",
+      "author": "Ajahn Maha Bua",
+      "source": "Arahattamagga – Arahattaphala, Part 1, trans. Bhikkhu Dick Sīlaratano (Forest Dhamma Books, 2005)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "One accepts death—when it comes—as well as life—when it continues. Both are aspects of the same truth.",
+      "author": "Ajahn Maha Bua",
+      "source": "Arahattamagga – Arahattaphala, Part 1, trans. Bhikkhu Dick Sīlaratano (Forest Dhamma Books, 2005)",
+      "themes": [
+        "impermanence",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Unless it supports the development of wisdom, samādhi can sidetrack a meditator from the path to the end of all suffering.",
+      "author": "Ajahn Maha Bua",
+      "source": "Arahattamagga – Arahattaphala, Part 1, trans. Bhikkhu Dick Sīlaratano (Forest Dhamma Books, 2005)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The thinking mind is fabricated; the knowing mind is genuine. The thinking mind is intellect, defiled and complicated, whereas the knowing mind is awareness itself—pure and simple.",
+      "author": "Ajahn Jia Cundo",
+      "source": "Gold Wrapped in Rags: Autobiography of Ajaan Jia Cundo, \"Bones\", trans. Ajaan Dick Sīlaratano (Forest Dhamma Publications, 2024)",
+      "themes": [
+        "wisdom",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "How much we suffer from painful feelings depends more on the degree to which we cling to our bodies than it does on the severity of the affliction the body endures.",
+      "author": "Ajahn Jia Cundo",
+      "source": "Gold Wrapped in Rags: Autobiography of Ajaan Jia Cundo, \"Wilds\", trans. Ajaan Dick Sīlaratano (Forest Dhamma Publications, 2024)",
+      "themes": [
+        "suffering-liberation",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Unsupported by Dhamma and left to its own desires, the heart will be unable to experience genuine happiness, even with a mountain of valuable possessions at its disposal.",
+      "author": "Ajahn Jia Cundo",
+      "source": "Gold Wrapped in Rags: Autobiography of Ajaan Jia Cundo, \"Caves\", trans. Ajaan Dick Sīlaratano (Forest Dhamma Publications, 2024)",
+      "themes": [
+        "contentment",
+        "simplicity"
+      ]
+    },
+    {
+      "text": "Merit encompasses all the good and noble intentions in the mind. That’s where inner worth resides.",
+      "author": "Ajahn Jia Cundo",
+      "source": "Gold Wrapped in Rags: Autobiography of Ajaan Jia Cundo, \"Seeds\", trans. Ajaan Dick Sīlaratano (Forest Dhamma Publications, 2024)",
+      "themes": [
+        "wisdom",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Everyone who is born must die—such is the nature of the world. It’s fruitless trying to resist that truth.",
+      "author": "Ajahn Jia Cundo",
+      "source": "Gold Wrapped in Rags: Autobiography of Ajaan Jia Cundo, \"Wilds\", trans. Ajaan Dick Sīlaratano (Forest Dhamma Publications, 2024)",
+      "themes": [
+        "impermanence"
+      ]
     },
     {
       "text": "We begin to notice the details of kindness and our world becomes much happier.",
