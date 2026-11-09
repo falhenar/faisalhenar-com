@@ -48,7 +48,15 @@
     "  against FH's EPUB copies. Samaṇa's last chapter reprints Part 1 of",
     "  Arahattamagga, so no line is taken from both. Gold Wrapped in Rags",
     "  lines are Ajahn Jia's own narration, credited to him even where he",
-    "  describes Ajahn Mun's teaching."
+    "  describes Ajahn Mun's teaching.",
+    "- Nov 2026 batch from FH's copies: Ajahn Sumedho's The Way It Is, Now",
+    "  Is the Knowing, Teachings from the Forest, Mindfulness: The Path to",
+    "  the Deathless and It's Like This; Ajahn Chah's Bodhinyana and",
+    "  Everything Is Teaching Us; Ajahn Liem's The Ways of the Peaceful and",
+    "  Knowing the World. Teachings from the Forest reprints three chapters",
+    "  of Now Is the Knowing, so its lines come from the other chapters.",
+    "  Knowing the World includes a talk by Ajahn Jundee; only Ajahn Liem's",
+    "  own words were used."
   ],
   "quotes": [
     {
@@ -449,6 +457,104 @@
       "themes": [
         "letting-go",
         "wisdom"
+      ]
+    },
+    {
+      "text": "The suffering of the mind is really like a disease. Desire, never being satisfied, never knowing enough, is the virus which causes it. And peace and seclusion is the medicine which cures the illness.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "The Ways of the Peaceful, p. 9; trans. Wat Nong Pah Pong (2007)",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Feelings are just feelings, happiness is just happiness, suffering is just suffering. Only that. Having arisen, it all ceases.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "The Ways of the Peaceful, p. 123; trans. Wat Nong Pah Pong (2007)",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Our mind is like a flame when the wind is stilled. The flame is unmoved and upright in itself and blazes light into all directions, when we are fully present.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "The Ways of the Peaceful, p. 116; trans. Wat Nong Pah Pong (2007)",
+      "themes": [
+        "silence",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "You need to keep in mind that the source of peace and the attainment to perfection is to be found exactly where dukkha is.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "The Ways of the Peaceful, p. 44; trans. Wat Nong Pah Pong (2007)",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Whenever you don’t get what you like, take it as a training in the Dhamma. At least you get some experience and training with the Dhamma of patient endurance.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "The Ways of the Peaceful, p. 59; trans. Wat Nong Pah Pong (2007)",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "If we get little, that’s enough. If we get much, that’s enough. Even if we don’t get anything at all – that’s enough.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "The Ways of the Peaceful, p. 30; trans. Wat Nong Pah Pong (2007)",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "The guests that come to our monastery are agantukas — only visitors, just like these visiting mental states that arise in our minds. Some make us laugh, some we delight in, while others bring up aversion and disappointment.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "Knowing the World, p. 9; Dhamma talk at Na Uyana Forest Monastery, Sri Lanka, March 2013; trans. Wat Pah Nanachat",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Neither good nor bad. Neither heavy nor light. Neither black nor white. Neither happy nor sad. Just nature pure and simple. This is the normal state of the mind which gives rise to peace.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "Knowing the World, p. 12; Dhamma talk at Na Uyana Forest Monastery, Sri Lanka, March 2013; trans. Wat Pah Nanachat",
+      "themes": [
+        "silence",
+        "simplicity"
+      ]
+    },
+    {
+      "text": "The changes in our lives are just natural because nature changes.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "Knowing the World, p. 17; Dhamma talk at Na Uyana Forest Monastery, Sri Lanka, March 2013; trans. Wat Pah Nanachat",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Delight comes from desire. Satisfaction comes from desire. Aversion and dissatisfaction come from desire.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "Knowing the World, p. 7; Dhamma talk at Na Uyana Forest Monastery, Sri Lanka, March 2013; trans. Wat Pah Nanachat",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "If I hadn’t seen the impurities still in the mind, then I wouldn’t have known how it needed further purifying.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "Knowing the World, p. 20; Dhamma talk at Na Uyana Forest Monastery, Sri Lanka, March 2013; trans. Wat Pah Nanachat",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "Keep abandoning delight and aversion from your mind. See everything as not your self or belonging to you. We have no real power or control over our life or the world.",
+      "author": "Ajahn Liem Thitadhammo",
+      "source": "Knowing the World, p. 21; Dhamma talk at Na Uyana Forest Monastery, Sri Lanka, March 2013; trans. Wat Pah Nanachat",
+      "themes": [
+        "letting-go"
       ]
     },
     {
@@ -1922,6 +2028,259 @@
       ]
     },
     {
+      "text": "You can abide in emptiness by just standing among the barren trees of winter and looking at them without creating anything onto them. One can feel a sense of perfect calm and contentment with just being still and silent like the trees.",
+      "author": "Ajahn Sumedho",
+      "source": "The Way It Is, \"Stillness and Response\" (Amaravati Publications)",
+      "themes": [
+        "silence",
+        "contentment"
+      ]
+    },
+    {
+      "text": "Sickness, and old age and death is something we can always bear with. That's not real suffering. But the suffering is the greed, hatred and delusion we produce through the self-view, through taking it all personally.",
+      "author": "Ajahn Sumedho",
+      "source": "The Way It Is, \"The Formations of Self\" (Amaravati Publications)",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Letting go means to be able to be with what is displeasing without dwelling in aversion - because aversion is an attachment.",
+      "author": "Ajahn Sumedho",
+      "source": "The Way It Is, \"Letting Go of Desire\" (Amaravati Publications)",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "The stillness and silence is ever-present wherever we are, no matter what condition we happen to be in.",
+      "author": "Ajahn Sumedho",
+      "source": "The Way It Is, \"Stillness and Response\" (Amaravati Publications)",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "You do not become a vacuous zombie through understanding Dhamma. You still relate to each other but it is through kindness, compassion, sympathetic joy and serenity, rather than through greed hatred and delusion.",
+      "author": "Ajahn Sumedho",
+      "source": "The Way It Is, \"Letting Go of Desire\" (Amaravati Publications)",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "The practice of meditation is reflecting on 'the way it is' in order to see the fears and desires which we create. This is quite a simple practice, but the practice of Dhamma should be very very simple rather than complicated.",
+      "author": "Ajahn Sumedho",
+      "source": "The Way It Is, \"The Way It Is\" (Amaravati Publications)",
+      "themes": [
+        "simplicity",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Conditions are extraordinary, but the peace of the mind, the unconditioned, is so ordinary that nobody ever notices it.",
+      "author": "Ajahn Sumedho",
+      "source": "Now Is the Knowing, \"Anapanasati\" (Amaravati Publications)",
+      "themes": [
+        "ordinary-life",
+        "silence"
+      ]
+    },
+    {
+      "text": "Without evaluating or analyzing, when we simply recognize thought as thought it begins to slow down and stop. This isn’t annihilation; this is allowing things to cease. It is compassion.",
+      "author": "Ajahn Sumedho",
+      "source": "Now Is the Knowing, \"Anapanasati\" (Amaravati Publications)",
+      "themes": [
+        "mindfulness",
+        "compassion"
+      ]
+    },
+    {
+      "text": "Once we are aware that we have wandered off the breath, then we very gently return to it. We use the attitude of being very, very patient and always willing to begin again.",
+      "author": "Ajahn Sumedho",
+      "source": "Now Is the Knowing, \"Anapanasati\" (Amaravati Publications)",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Most people like the idea of peace, but find the actual experience of it disappointing or frustrating. They desire stimulation, something that will draw them into itself.",
+      "author": "Ajahn Sumedho",
+      "source": "Now Is the Knowing, \"Anapanasati\" (Amaravati Publications)",
+      "themes": [
+        "silence",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Meditation is a way of cleaning the window, purifying the mind, allowing things to come up into consciousness and letting them go.",
+      "author": "Ajahn Sumedho",
+      "source": "Now Is the Knowing, \"Happiness, Unhappiness and Nibbana\" (Amaravati Publications)",
+      "themes": [
+        "letting-go",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Sometimes we get too serious about everything, totally lacking in joy and happiness, with no sense of humour, just repressing everything. Gladden the mind, put a smile on your dial!",
+      "author": "Ajahn Sumedho",
+      "source": "Now Is the Knowing, \"Anapanasati\" (Amaravati Publications)",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "If I am thinking, ‘I’ve got to be mindful’ while I am being mindful, I can see and be aware that I have this idea, ‘I’ve got to be mindful’. That’s mindfulness.",
+      "author": "Ajahn Sumedho",
+      "source": "Teachings from the Forest, \"Nothing Is More Joyless than Selfishness\" (Amaravati Publications, 2025)",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Being sensitive to the needs and the type of people we are with, the time and the place, and the kind of culture we are in – all of this is part of our practice of being mindful.",
+      "author": "Ajahn Sumedho",
+      "source": "Teachings from the Forest, \"Nothing Is More Joyless than Selfishness\" (Amaravati Publications, 2025)",
+      "themes": [
+        "mindfulness",
+        "compassion"
+      ]
+    },
+    {
+      "text": "Desire is energy that’s always looking for something or another.",
+      "author": "Ajahn Sumedho",
+      "source": "Teachings from the Forest, \"Everything Around Us Is Dhamma\" (Amaravati Publications, 2025)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "We let desire be. It’s not a matter of getting rid of desire, but of letting it cease.",
+      "author": "Ajahn Sumedho",
+      "source": "Teachings from the Forest, \"Everything Around Us Is Dhamma\" (Amaravati Publications, 2025)",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "When there is love, that is not a personal thing; even though it seems personal, it’s a condition. Love that is present in my mind is the same kind of thing that is present in yours.",
+      "author": "Ajahn Sumedho",
+      "source": "Teachings from the Forest, \"The Three Characteristics\" (Amaravati Publications, 2025)",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "Wisdom also allows us to wonder again, to be open to the unknown and not frightened by it anymore, allowing this conditioned self we carry through ignorance to cease in the mind.",
+      "author": "Ajahn Sumedho",
+      "source": "Teachings from the Forest, \"Innocence Is Corruptible; Wisdom Is Incorruptible\" (Amaravati Publications, 2025)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "To be mindful means to have mettā towards the fear in your mind, or the anger, or the jealousy.",
+      "author": "Ajahn Sumedho",
+      "source": "Mindfulness: The Path to the Deathless, \"Kindness\" (Amaravati Publications)",
+      "themes": [
+        "mindfulness",
+        "compassion"
+      ]
+    },
+    {
+      "text": "The obstacle to concentration practice is aversion to failure and the incredible desire to succeed. Practice is not a matter of will-power, but of wisdom, of noting wisdom.",
+      "author": "Ajahn Sumedho",
+      "source": "Mindfulness: The Path to the Deathless, \"The Mantra Buddho\" (Amaravati Publications)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "What arises passes, and in its passing is peace.",
+      "author": "Ajahn Sumedho",
+      "source": "Mindfulness: The Path to the Deathless, \"The Need for Wisdom in the World\" (Amaravati Publications)",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Much of the lesson in life is learning to endure what we don’t like in ourselves and in the world around us; being able to be patient and kindly, and not make a scene over the imperfections in the sensory experience.",
+      "author": "Ajahn Sumedho",
+      "source": "Mindfulness: The Path to the Deathless, \"What is Meditation\" (Amaravati Publications)",
+      "themes": [
+        "ordinary-life",
+        "compassion"
+      ]
+    },
+    {
+      "text": "Develop a normal pace, because our meditation moves around the ordinary things rather than the special.",
+      "author": "Ajahn Sumedho",
+      "source": "Mindfulness: The Path to the Deathless, \"Mindfulness of the Ordinary\" (Amaravati Publications)",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Just relax and don’t make meditation into a burdensome task for yourself. See it as an opportunity to be peaceful and at ease with the moment.",
+      "author": "Ajahn Sumedho",
+      "source": "Mindfulness: The Path to the Deathless, \"Effort and Relaxation\" (Amaravati Publications)",
+      "themes": [
+        "simplicity"
+      ]
+    },
+    {
+      "text": "It takes much less skill to live with mosquitoes than with another person.",
+      "author": "Ajahn Sumedho",
+      "source": "It's Like This: Ninety Reflections to Honour Luang Por Sumedho in His Ninetieth Year, No. 7 (Amaravati Publications, 2024)",
+      "themes": [
+        "humility",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "What’s left when there is no grasping is consciousness knowing itself, awareness aware of awareness.",
+      "author": "Ajahn Sumedho",
+      "source": "It's Like This: Ninety Reflections to Honour Luang Por Sumedho in His Ninetieth Year, No. 28 (Amaravati Publications, 2024)",
+      "themes": [
+        "mindfulness",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Paññā, or wisdom, comes from intuition, not from analysis. You can know all about Buddhism and still not use any wisdom in your life.",
+      "author": "Ajahn Sumedho",
+      "source": "It's Like This: Ninety Reflections to Honour Luang Por Sumedho in His Ninetieth Year, No. 47 (Amaravati Publications, 2024)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Enlightenment is nothing more than growing up, being a mature human being.",
+      "author": "Ajahn Sumedho",
+      "source": "It's Like This: Ninety Reflections to Honour Luang Por Sumedho in His Ninetieth Year, No. 82 (Amaravati Publications, 2024)",
+      "themes": [
+        "wisdom",
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Conviviality is an attitude of being at ease with life, of openness and ease with being alive and breathing, at ease with being present with what is arising in consciousness.",
+      "author": "Ajahn Sumedho",
+      "source": "It's Like This: Ninety Reflections to Honour Luang Por Sumedho in His Ninetieth Year, No. 73 (Amaravati Publications, 2024)",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "Keep the practice simple: live your life mindfully and morally, and have faith in letting go.",
+      "author": "Ajahn Sumedho",
+      "source": "It's Like This: Ninety Reflections to Honour Luang Por Sumedho in His Ninetieth Year, No. 42 (Amaravati Publications, 2024)",
+      "themes": [
+        "simplicity",
+        "letting-go"
+      ]
+    },
+    {
       "text": "Desire is a liar.",
       "author": "Ajahn Amaro",
       "source": "Just One More, Appreciative Joy, pp. 20-22, quoted in Abhayagiri Reflections, \"Desire Is a Liar\" (13 Jan. 2017)",
@@ -2774,6 +3133,105 @@
         "suffering-liberation"
       ],
       "verification": "https://accesstoinsight.org/lib/thai/chah/atasteof"
+    },
+    {
+      "text": "Even peace must be seen as impermanent. If you are attached to peaceful states of mind you will suffer when you do not have them.",
+      "author": "Ajahn Chah",
+      "source": "Bodhinyana, \"Questions and Answers\"; trans. Sangha, Bung Wai Forest Monastery",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Actually, this suffering is what brings us wisdom; it makes us contemplate dukkha. Happiness (sukha) tends to make us close our eyes and ears. It never allows us to develop patience.",
+      "author": "Ajahn Chah",
+      "source": "Bodhinyana, \"The Training of the Heart\"; trans. Sangha, Bung Wai Forest Monastery",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Don’t hold that one only meditates while sitting or walking. Everything and everywhere is our practice.",
+      "author": "Ajahn Chah",
+      "source": "Bodhinyana, \"The Training of the Heart\"; trans. Sangha, Bung Wai Forest Monastery",
+      "themes": [
+        "ordinary-life",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "The practice is not to try to achieve anything. Just be mindful of what is. Our whole meditation is looking directly at the mind.",
+      "author": "Ajahn Chah",
+      "source": "Bodhinyana, \"Questions and Answers\"; trans. Sangha, Bung Wai Forest Monastery",
+      "themes": [
+        "mindfulness",
+        "simplicity"
+      ]
+    },
+    {
+      "text": "When anger arises, it grows and changes and finally disappears. Happiness, too, arises, grows and changes and finally disappears. They are empty.",
+      "author": "Ajahn Chah",
+      "source": "Bodhinyana, \"Dhamma Nature\"; trans. Sangha, Bung Wai Forest Monastery",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Be patient. Patience and endurance are necessary. If you act naturally and are mindful, wisdom will come naturally too.",
+      "author": "Ajahn Chah",
+      "source": "Bodhinyana, \"Questions and Answers\"; trans. Sangha, Bung Wai Forest Monastery",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Knowing is fifty percent even if we are unable to let go. Though we can’t let go, we do understand that letting go of these things will bring peace.",
+      "author": "Ajahn Chah",
+      "source": "Everything Is Teaching Us, \"Right Restraint\" (Amaravati Publications, 2018)",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "We want to be teaching the mind, not merely controlling it, so that it becomes aware. Too much forcing will make you crazy.",
+      "author": "Ajahn Chah",
+      "source": "Everything Is Teaching Us, \"Knowing the World\" (Amaravati Publications, 2018)",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Put love to one side, hate to the other side. Put happiness to one side, suffering to the other side. Remain in the middle without letting the mind go in either direction.",
+      "author": "Ajahn Chah",
+      "source": "Everything Is Teaching Us, \"About Being Careful\" (Amaravati Publications, 2018)",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "If we let the water in the basin settle and become still, we can see all sorts of things reflected in it. When the mind is settled and still, wisdom will be able to see things.",
+      "author": "Ajahn Chah",
+      "source": "Everything Is Teaching Us, \"Wholehearted Training\" (Amaravati Publications, 2018)",
+      "themes": [
+        "silence",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Some people get the idea that any kind of desire, such as desire for food and the material requisites for life, is taṇhā. But we can have this kind of desire in an ordinary and natural way.",
+      "author": "Ajahn Chah",
+      "source": "Everything Is Teaching Us, \"About Being Careful\" (Amaravati Publications, 2018)",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Getting beyond suffering does not depend on others’ opinions of us, but on our own individual state of mind.",
+      "author": "Ajahn Chah",
+      "source": "Everything Is Teaching Us, \"Wholehearted Training\" (Amaravati Publications, 2018)",
+      "themes": [
+        "suffering-liberation"
+      ]
     },
     {
       "text": "Even our enemies, when we become familiar with them, can become our friends.",
