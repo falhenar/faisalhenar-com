@@ -1,12 +1,43 @@
 {
  "sheets": [
   {
-   "id": "2026-11-04-crushed-in-black-4-november",
-   "title": "Crushed in black, 31 October & 4 November",
-   "line": "",
+   "id": "2026-11-05-5-november",
+   "title": "5 November",
+   "line": "The Stray Dog",
+   "kind": "day",
+   "places": [],
+   "frames": [
+    "fh-0173",
+    "fh-0174",
+    "fh-0175",
+    "fh-0176"
+   ],
+   "circled": []
+  },
+  {
+   "id": "2026-11-05-5-november-2",
+   "title": "Sunset at Nieuw Amsterdam, 5 November",
+   "line": "Sunset at Nieuw Amsterdam",
    "kind": "walk",
    "places": [],
    "frames": [
+    "fh-0177",
+    "fh-0179",
+    "fh-0180",
+    "fh-0181",
+    "fh-0182"
+   ],
+   "circled": []
+  },
+  {
+   "id": "2026-11-04-crushed-in-black-4-november",
+   "title": "Crushed in black, 31 October & 4 November",
+   "line": "Crushed in Black",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0171",
+    "fh-0172",
     "fh-0168",
     "fh-0159",
     "fh-0160",

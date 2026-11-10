@@ -1618,5 +1618,104 @@
     "color": false,
     "alt": "Gritty close up",
     "added": "2026-11-05"
+  },
+  {
+    "id": "fh-0171",
+    "src": "photos/2026/fh-0171.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "A police officer standing next to his motorcycle with traffic rushing by.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0172",
+    "src": "photos/2026/fh-0172.jpg",
+    "w": 1891,
+    "h": 2522,
+    "color": false,
+    "alt": "Two mannequins and a matrass.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0173",
+    "src": "photos/2026/fh-0173.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "Close up of the stray dog.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0174",
+    "src": "photos/2026/fh-0174.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Blurry shot of the stray dog.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0175",
+    "src": "photos/2026/fh-0175.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "Stray dog laying in the sand, looking to his right.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0176",
+    "src": "photos/2026/fh-0176.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "Stray dog laying in the sand, looking ahead.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0177",
+    "src": "photos/2026/fh-0177.jpg",
+    "w": 1919,
+    "h": 2560,
+    "color": false,
+    "alt": "Black & white photo of a church in Nieuw Amsterdam.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0179",
+    "src": "photos/2026/fh-0179.jpg",
+    "w": 2560,
+    "h": 1919,
+    "color": true,
+    "alt": "Sunset at Nieuw Amsterdam with birds in the sky.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0180",
+    "src": "photos/2026/fh-0180.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Black & white photo of the sunset in Nieuw Amsterdam, with a boat passing by the pier.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0181",
+    "src": "photos/2026/fh-0181.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "Black & white photo of the pier, and a bird sitting on a pole.",
+    "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0182",
+    "src": "photos/2026/fh-0182.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Two palm trees, two light poles.",
+    "added": "2026-11-10"
   }
 ]
