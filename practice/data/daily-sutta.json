@@ -1256,6 +1256,44 @@
         "mn141:29.3",
         "mn141:29.4"
       ]
+    },
+    {
+      "id": "curator-1f9c9988-7cb5-4993-995f-99cdbda53344",
+      "title": "A Question About Suffering",
+      "ref": "SN 38.14",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/sn38.14/en/sujato",
+      "text": "“Reverend Sāriputta, they speak of this thing called ‘suffering’. What is suffering?” “Reverend, there are these three forms of suffering. The suffering inherent in painful feeling; the suffering inherent in conditions; and the suffering inherent in perishing. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "sn38.14",
+      "selection_id": "1f9c9988-7cb5-4993-995f-99cdbda53344",
+      "segment_ids": [
+        "sn38.14:1.1",
+        "sn38.14:1.2",
+        "sn38.14:1.3",
+        "sn38.14:1.4"
+      ]
+    },
+    {
+      "id": "curator-d32b35fa-576e-4c43-a313-e5c2a875a138",
+      "title": "Restraint",
+      "ref": "AN 4.14",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an4.14/en/sujato",
+      "text": "Restraint and giving up, development and preservation: these are the four efforts taught by the Kinsman of the Sun. Any mendicant who keenly applies these may attain the ending of suffering.” ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "an4.14",
+      "selection_id": "d32b35fa-576e-4c43-a313-e5c2a875a138",
+      "segment_ids": [
+        "an4.14:5.1",
+        "an4.14:5.2",
+        "an4.14:5.3",
+        "an4.14:5.4",
+        "an4.14:5.5",
+        "an4.14:5.6"
+      ]
     }
   ]
 }
