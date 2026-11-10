@@ -1294,6 +1294,63 @@
         "an4.14:5.5",
         "an4.14:5.6"
       ]
+    },
+    {
+      "id": "curator-122cc95a-fd44-4792-bf17-89fb30307b05",
+      "title": "The Chapter on Disciplinary Issues",
+      "ref": "AN 2.11-20",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an2.11-20/en/sujato",
+      "text": "And what, mendicants, is the power of reflection? It’s when someone reflects: ‘Bad conduct of body, speech, or mind has a bad, painful result in both this life and the next.’ Reflecting like this, they give up bad conduct by way of body, speech, and mind, and develop good conduct by way of body, speech, and mind, keeping themselves pure. This is called the power of reflection. ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "an2.11-20",
+      "selection_id": "122cc95a-fd44-4792-bf17-89fb30307b05",
+      "segment_ids": [
+        "an2.12:1.4",
+        "an2.12:1.5",
+        "an2.12:1.6",
+        "an2.12:1.7",
+        "an2.12:1.8"
+      ]
+    },
+    {
+      "id": "curator-a02f8b80-d062-49b1-bf62-bd858d29be85",
+      "title": "The Chapter on Disciplinary Issues",
+      "ref": "AN 2.11-20",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an2.11-20/en/sujato",
+      "text": "‘Give up the unskillful.’ And if giving up the unskillful led to harm and suffering, I would not say: ‘Give up the unskillful.’ But giving up the unskillful leads to welfare and happiness, so I say: ‘Give up the unskillful.’ ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "an2.11-20",
+      "selection_id": "a02f8b80-d062-49b1-bf62-bd858d29be85",
+      "segment_ids": [
+        "an2.19:1.6",
+        "an2.19:1.7",
+        "an2.19:1.8",
+        "an2.19:1.9",
+        "an2.19:1.10"
+      ]
+    },
+    {
+      "id": "curator-c3268199-bc42-4420-94fa-51d8c12032e3",
+      "title": "The Chapter on Disciplinary Issues",
+      "ref": "AN 2.11-20",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/an2.11-20/en/sujato",
+      "text": "‘Develop the skillful.’ If developing the skillful led to harm and suffering I wouldn’t say: ‘Develop the skillful.’ But developing the skillful leads to welfare and happiness, so I say: ‘Develop the skillful.’” ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "an2.11-20",
+      "selection_id": "c3268199-bc42-4420-94fa-51d8c12032e3",
+      "segment_ids": [
+        "an2.19:2.6",
+        "an2.19:2.7",
+        "an2.19:2.8",
+        "an2.19:2.9",
+        "an2.19:2.10"
+      ]
     }
   ]
 }
