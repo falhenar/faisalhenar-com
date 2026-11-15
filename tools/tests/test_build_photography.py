@@ -82,6 +82,18 @@ class RoomTests(unittest.TestCase):
         sitemap = (REPO / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn(block, sitemap)
 
+    def test_image_data_says_where_the_usage_terms_are(self):
+        """Google Images asks for license and acquireLicensePage. Both point
+        at the colophon paragraph, which must carry the anchor in both languages."""
+        photo = next(iter(self.photos.values()))
+        block = builder.image_credit(photo, "A title")
+        data = json.loads(block.split(">", 1)[1].rsplit("<", 1)[0])
+        url = "https://faisalhenar.com/colophon.html#photographs"
+        self.assertEqual(data["license"], url)
+        self.assertEqual(data["acquireLicensePage"], url)
+        for page in ("colophon.html", "colophon-nl.html"):
+            self.assertIn('id="photographs"', (REPO / page).read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()
