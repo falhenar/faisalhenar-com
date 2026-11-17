@@ -2,6 +2,14 @@
   "version": 1,
   "reflections": [
     {
+      "id": "keepers-3",
+      "slug": "whats-the-goal-of-skillful-ethics",
+      "ref": "AN 10.1",
+      "book": "keepers",
+      "title": "What’s the Goal of Skillful Ethics?",
+      "added": "2026-11-17"
+    },
+    {
       "id": "itbw-1-3-3",
       "slug": "the-dark-chain-of-causation",
       "ref": "from DN 15",
