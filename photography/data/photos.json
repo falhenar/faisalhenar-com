@@ -1717,5 +1717,23 @@
     "color": false,
     "alt": "Two palm trees, two light poles.",
     "added": "2026-11-10"
+  },
+  {
+    "id": "fh-0183",
+    "src": "photos/2026/fh-0183.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Black and white shot of the dawn at Leonsberg.",
+    "added": "2026-11-17"
+  },
+  {
+    "id": "fh-0184",
+    "src": "photos/2026/fh-0184.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Black and white of a boat laying at the jetty at Leonsberg.",
+    "added": "2026-11-17"
   }
 ]
