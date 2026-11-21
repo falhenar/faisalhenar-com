@@ -1735,5 +1735,95 @@
     "color": false,
     "alt": "Black and white of a boat laying at the jetty at Leonsberg.",
     "added": "2026-11-17"
+  },
+  {
+    "id": "fh-0185",
+    "src": "photos/2026/fh-0185.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Pedestrians",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0186",
+    "src": "photos/2026/fh-0186.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "The Birds",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0187",
+    "src": "photos/2026/fh-0187.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "The ghosts from the boat",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0188",
+    "src": "photos/2026/fh-0188.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "The ghosts from the boat 2",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0189",
+    "src": "photos/2026/fh-0189.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "The boat at the Leonsberg pier",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0190",
+    "src": "photos/2026/fh-0190.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "Half real, half reflection",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0191",
+    "src": "photos/2026/fh-0191.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "God is Liefde, since 1778",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0192",
+    "src": "photos/2026/fh-0192.jpg",
+    "w": 2560,
+    "h": 1919,
+    "color": false,
+    "alt": "The gathering",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0193",
+    "src": "photos/2026/fh-0193.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Niet aanplakken",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0194",
+    "src": "photos/2026/fh-0194.jpg",
+    "w": 1919,
+    "h": 2560,
+    "color": false,
+    "alt": "Black umbrella, black shadow",
+    "added": "2026-11-21"
   }
 ]

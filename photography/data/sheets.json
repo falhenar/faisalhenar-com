@@ -1,6 +1,29 @@
 {
  "sheets": [
   {
+   "id": "2026-11-19-19-november",
+   "title": "Dawn to the City, 19 November",
+   "line": "Another morning in Parbo",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0185",
+    "fh-0186",
+    "fh-0187",
+    "fh-0188",
+    "fh-0189",
+    "fh-0190",
+    "fh-0191",
+    "fh-0192",
+    "fh-0193",
+    "fh-0194"
+   ],
+   "circled": [
+    "fh-0186",
+    "fh-0187"
+   ]
+  },
+  {
    "id": "2026-11-05-5-november",
    "title": "The Stray Dog, 5 November",
    "line": "The Stray Dog",
