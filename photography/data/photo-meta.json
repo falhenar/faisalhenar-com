@@ -1419,5 +1419,40 @@
   "country": "Suriname",
   "captured": "2026-11-19T10:50",
   "notes": []
+ },
+ "fh-0195": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-18T19:48",
+  "notes": []
+ },
+ "fh-0196": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-18T22:49",
+  "notes": []
+ },
+ "fh-0197": {
+  "tone": "bw",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-20T23:43",
+  "notes": []
+ },
+ "fh-0198": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-28T16:33",
+  "notes": []
+ },
+ "fh-0199": {
+  "tone": "colour",
+  "place": "",
+  "country": "Vietnam",
+  "captured": "2026-06-11T04:06",
+  "notes": []
  }
 }

@@ -1825,5 +1825,50 @@
     "color": false,
     "alt": "Black umbrella, black shadow",
     "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0195",
+    "src": "photos/2026/fh-0195.jpg",
+    "w": 1919,
+    "h": 2560,
+    "color": false,
+    "alt": "Coffee and shadow",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0196",
+    "src": "photos/2026/fh-0196.jpg",
+    "w": 1919,
+    "h": 2560,
+    "color": true,
+    "alt": "Golden door and shadow",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0197",
+    "src": "photos/2026/fh-0197.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Vietnam bánh mì",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0198",
+    "src": "photos/2026/fh-0198.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Blue boat, blue skies",
+    "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0199",
+    "src": "photos/2026/fh-0199.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": true,
+    "alt": "Cooking on a wood stove",
+    "added": "2026-11-21"
   }
 ]
