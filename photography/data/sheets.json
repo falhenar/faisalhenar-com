@@ -1,6 +1,26 @@
 {
  "sheets": [
   {
+   "id": "2026-11-22-22-november",
+   "title": "Kong Ngie Tong Sang, 22 November",
+   "line": "",
+   "kind": "walk",
+   "places": [],
+   "frames": [
+    "fh-0200",
+    "fh-0201",
+    "fh-0202",
+    "fh-0203",
+    "fh-0204",
+    "fh-0205",
+    "fh-0206",
+    "fh-0207"
+   ],
+   "circled": [
+    "fh-0207"
+   ]
+  },
+  {
    "id": "2026-11-19-19-november",
    "title": "Dawn to the City, 19 November",
    "line": "Another morning in Parbo",

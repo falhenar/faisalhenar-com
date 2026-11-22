@@ -1870,5 +1870,77 @@
     "color": true,
     "alt": "Cooking on a wood stove",
     "added": "2026-11-21"
+  },
+  {
+    "id": "fh-0200",
+    "src": "photos/2026/fh-0200.jpg",
+    "w": 1920,
+    "h": 2560,
+    "color": false,
+    "alt": "Dots and stripes",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0201",
+    "src": "photos/2026/fh-0201.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Black bow and grocery bags",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0202",
+    "src": "photos/2026/fh-0202.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Shaky marketplace",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0203",
+    "src": "photos/2026/fh-0203.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Young girl on the move",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0204",
+    "src": "photos/2026/fh-0204.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "Looking over your shoulder",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0205",
+    "src": "photos/2026/fh-0205.jpg",
+    "w": 2560,
+    "h": 1920,
+    "color": false,
+    "alt": "The caps",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0206",
+    "src": "photos/2026/fh-0206.jpg",
+    "w": 1919,
+    "h": 2560,
+    "color": false,
+    "alt": "Almost a model",
+    "added": "2026-11-22"
+  },
+  {
+    "id": "fh-0207",
+    "src": "photos/2026/fh-0207.jpg",
+    "w": 1919,
+    "h": 2560,
+    "color": false,
+    "alt": "Became a model",
+    "added": "2026-11-22"
   }
 ]
