@@ -1262,6 +1262,23 @@
       "sutta_id": "sn22.1"
     },
     {
+      "id": "curator-b245eee3-ffb1-43dd-80f9-45b85a93d9f0",
+      "title": "The Shorter Simile of the Heartwood",
+      "ref": "MN 30",
+      "translator": "sujato",
+      "url": "https://suttacentral.net/mn30/en/sujato",
+      "text": "And so, brahmin, this spiritual life is not lived for the sake of possessions, honor, and popularity, or for accomplishment in ethics, or for accomplishment in immersion, or for knowledge and vision. It is this unshakable freedom of heart that is the goal of the spiritual life, the core and the final end.” ",
+      "origin": "curator",
+      "rotation": "in_rotation",
+      "sutta_id": "mn30",
+      "selection_id": "b245eee3-ffb1-43dd-80f9-45b85a93d9f0",
+      "segment_ids": [
+        "mn30:23.1",
+        "mn30:23.2",
+        "mn30:23.3"
+      ]
+    },
+    {
       "id": "sn35.28",
       "title": "Burning",
       "ref": "SN 35.28",
