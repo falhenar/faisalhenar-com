@@ -79,7 +79,17 @@
     "  Insight (Joseph Goldstein), Facing the Future (Bhikkhu Bodhi) and Real",
     "  Love (Sharon Salzberg). A Tree in a Forest was checked against page",
     "  images because its text layer drops the letters 'Th'. Lines these",
-    "  books quote from other writers were left out."
+    "  books quote from other writers were left out.",
+    "- Nov 2026 batch from FH's copies of Ajahn Maha Bua (Wisdom Develops",
+    "  Samādhi, Things As They Are, Acariya Maha Boowa in London), Uncommon",
+    "  Wisdom (Ajahn Paññāvaddho; teaching chapters only, not the",
+    "  biographer's narration), Ajahn Martin Piyadhammo (Signs Along the",
+    "  Path of Practice, The Way to the Heart), No Inner Core (Sayadaw U",
+    "  Silananda), Frames of Reference (Ajahn Lee), Dhamma Discourses",
+    "  (Sayadaw U Kundala), The Great Discourse on the Wheel of Dhamma",
+    "  (Mahasi Sayadaw; the PDF's text layer is unreadable, so lines were",
+    "  OCR'd and checked against page images) and Three Teachings",
+    "  (Jetsunma Tenzin Palmo)."
   ],
   "quotes": [
     {
@@ -661,6 +671,47 @@
       ]
     },
     {
+      "text": "Impermanence is concealed by continuity.",
+      "author": "Sayadaw U Silananda",
+      "source": "No Inner Core: An Introduction to the Doctrine of Anatta, p. 35",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "When yogis practice, they keep themselves aware of everything. When they see something, there are two things: the mind which sees and the object seen; apart from these, there is nothing.",
+      "author": "Sayadaw U Silananda",
+      "source": "No Inner Core: An Introduction to the Doctrine of Anatta, p. 40",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Dukkha means more than just painful. Dukkha also comes from our desire for permanence.",
+      "author": "Sayadaw U Silananda",
+      "source": "No Inner Core: An Introduction to the Doctrine of Anatta, p. 46",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Unwisely, we desire for things to be permanent, yet we realize that we have no power to make impermanent things permanent; we realize that we have no control or authority over things.",
+      "author": "Sayadaw U Silananda",
+      "source": "No Inner Core: An Introduction to the Doctrine of Anatta, p. 41",
+      "themes": [
+        "impermanence",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "The nature of suffering is concealed by changing into different postures. When we are sitting and feel some pain, we change posture and the pain goes away.",
+      "author": "Sayadaw U Silananda",
+      "source": "No Inner Core: An Introduction to the Doctrine of Anatta, p. 35",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
       "text": "Wanting to understand is wisdom, wanting a result is greed.",
       "author": "Sayadaw U Tejaniya",
       "source": "\"The Wise Investigator,\" interview in Tricycle magazine, Winter 2007",
@@ -1203,6 +1254,47 @@
       "themes": [
         "letting-go",
         "simplicity"
+      ]
+    },
+    {
+      "text": "Even if we have been in retreat for 12 years, nothing has been attained if we still have the same internal problems, the same anger, the same clinging to things, the same attachment and greed, the same basic delusion of the mind.",
+      "author": "Jetsunma Tenzin Palmo",
+      "source": "Three Teachings, \"The First Teaching\", p. 6",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "Change and impermanence is the nature of everything. You see, when we lose something we love, it’s our attachment which is the problem, not the loss.",
+      "author": "Jetsunma Tenzin Palmo",
+      "source": "Three Teachings, \"The Second Teaching\", p. 71",
+      "themes": [
+        "impermanence",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Thoughts are not the problem; thoughts are the nature of the mind.",
+      "author": "Jetsunma Tenzin Palmo",
+      "source": "Three Teachings, \"The Second Teaching\", p. 63",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Nobody is really too busy to be aware, at least sometimes.",
+      "author": "Jetsunma Tenzin Palmo",
+      "source": "Three Teachings, \"The Second Teaching\", p. 66",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "If we start to judge our thoughts, just realize that the judgement itself is just another thought, and let it go.",
+      "author": "Jetsunma Tenzin Palmo",
+      "source": "Three Teachings, \"The Second Teaching\", p. 50",
+      "themes": [
+        "letting-go"
       ]
     },
     {
@@ -2648,6 +2740,89 @@
       "source": "Manual of Insight",
       "themes": [
         "wisdom",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Complete and permanent liberation from all kinds of suffering is achieved only when craving has been entirely extinguished.",
+      "author": "Mahasi Sayadaw",
+      "source": "The Great Discourse on the Wheel of Dhamma (Dhammacakkappavattana Sutta), p. 267",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Noting the five aggregates every time they arise dispels attachment. Thus, clear insight as to their impermanence, unsatisfactoriness or suffering is developed.",
+      "author": "Mahasi Sayadaw",
+      "source": "The Great Discourse on the Wheel of Dhamma (Dhammacakkappavattana Sutta), p. 182",
+      "themes": [
+        "mindfulness",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "One-pointedness of mind can be achieved only through patiently bearing some bodily discomforts.",
+      "author": "Mahasi Sayadaw",
+      "source": "The Great Discourse on the Wheel of Dhamma (Dhammacakkappavattana Sutta), p. 81",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "It is very important to see, to know by one’s own knowledge, the Four Noble Truths. Without knowing the real truth yet, mere profession of the Buddhist faith will not have removed all doubts about the Buddha, the Dhamma and the Sangha.",
+      "author": "Mahasi Sayadaw",
+      "source": "The Great Discourse on the Wheel of Dhamma (Dhammacakkappavattana Sutta), p. 364",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The knowing mind also dissolves away so fast that there is no atta, nothing to hold on to.",
+      "author": "Mahasi Sayadaw",
+      "source": "The Great Discourse on the Wheel of Dhamma (Dhammacakkappavattana Sutta), p. 284",
+      "themes": [
+        "impermanence",
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Pain or suffering will come as it will, and your duty is to be mindful of that pain. You must keep a calm mind and be patient.",
+      "author": "Sayadaw U Kundala",
+      "source": "Dhamma Discourses on Vipassanā Meditation, p. 72",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Mindfulness meditation is not for pleasure but to stop the greed in you, and if you cannot kill your greed you will not be able to realize its true nature.",
+      "author": "Sayadaw U Kundala",
+      "source": "Dhamma Discourses on Vipassanā Meditation, p. 71",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "When your mind is calm and at peace, your concentration will become stronger and then insight will arise.",
+      "author": "Sayadaw U Kundala",
+      "source": "Dhamma Discourses on Vipassanā Meditation, p. 70",
+      "themes": [
+        "silence",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "“Patience leads to Nibbāna” is an old Burmese saying.",
+      "author": "Sayadaw U Kundala",
+      "source": "Dhamma Discourses on Vipassanā Meditation, p. 12",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "All these notings of Vipassanā Meditation are never wasted or lost in the mind process of the yogi.",
+      "author": "Sayadaw U Kundala",
+      "source": "Dhamma Discourses on Vipassanā Meditation, p. 7",
+      "themes": [
         "mindfulness"
       ]
     },
@@ -4706,6 +4881,48 @@
       "verification": "https://accesstoinsight.org/lib/thai/lee/goodness"
     },
     {
+      "text": "Genuine knowing lets go of both ends: It lets the object follow its own nature as an object, and lets the mind follow the nature of the mind.",
+      "author": "Ajahn Lee Dhammadharo",
+      "source": "Frames of Reference, trans. Thanissaro Bhikkhu, p. 41",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Keep the mind still, and it will feel at ease. Discernment will arise; an inner light will appear, reducing distractive thought.",
+      "author": "Ajahn Lee Dhammadharo",
+      "source": "Frames of Reference, trans. Thanissaro Bhikkhu, p. 14",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "Genuine knowledge, when it goes about knowing anything, is bound to let go.",
+      "author": "Ajahn Lee Dhammadharo",
+      "source": "Frames of Reference, trans. Thanissaro Bhikkhu, p. 26",
+      "themes": [
+        "letting-go",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The Unconditioned is a perfectly ordinary part of nature, yet no one in the world can know it aside from those who have developed virtue, concentration and discernment.",
+      "author": "Ajahn Lee Dhammadharo",
+      "source": "Frames of Reference, trans. Thanissaro Bhikkhu, p. 37",
+      "themes": [
+        "ordinary-life",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "To know the states of the mind as they change in the present deserves to be called ‘knowledge of death and rebirth’.",
+      "author": "Ajahn Lee Dhammadharo",
+      "source": "Frames of Reference, trans. Thanissaro Bhikkhu, p. 30",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
       "text": "Don't let your attention stray out ahead or behind.",
       "author": "Ajahn Tate",
       "source": "Buddho, meditation instructions; trans. Thanissaro Bhikkhu",
@@ -4942,6 +5159,250 @@
       "text": "Unless it supports the development of wisdom, samādhi can sidetrack a meditator from the path to the end of all suffering.",
       "author": "Ajahn Maha Bua",
       "source": "Arahattamagga – Arahattaphala, Part 1, trans. Bhikkhu Dick Sīlaratano (Forest Dhamma Books, 2005)",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "The true purpose of meditation practice is to bring about calm in the heart.",
+      "author": "Ajahn Maha Bua",
+      "source": "Wisdom Develops Samādhi, \"Samādhi II\"",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "If the heart always has Dhamma within it, the ways of the body and speech are bound to be clean and free from blame in all their activities.",
+      "author": "Ajahn Maha Bua",
+      "source": "Wisdom Develops Samādhi, \"Sīla\"",
+      "themes": [
+        "ordinary-life"
+      ]
+    },
+    {
+      "text": "Wisdom is proclaiming the truth and making the heart listen, and when it is doing this all the time, where can the heart go to oppose the truth that comes from wisdom?",
+      "author": "Ajahn Maha Bua",
+      "source": "Wisdom Develops Samādhi, \"Wisdom\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Samādhi – which means calm or stability of heart, is that which opposes the “outgoing exuberance”.",
+      "author": "Ajahn Maha Bua",
+      "source": "Wisdom Develops Samādhi, \"Samādhi I\"",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "All the time these khandhas are changing, for they appear, remain for a time then die away and cease, and being impermanent they are also dukkha and anattā.",
+      "author": "Ajahn Maha Bua",
+      "source": "Wisdom Develops Samādhi, \"Wisdom\"",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Desire has two sorts: desire in the area of the world and desire in the area of the Dhamma. Desire in the area of the world is craving. Desire in the area of the Dhamma is part of the path.",
+      "author": "Ajahn Maha Bua",
+      "source": "Things As They Are, \"Every Grain of Sand\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Wherever you go, whatever you do, be mindful. Always take your stance in the effort of the practice.",
+      "author": "Ajahn Maha Bua",
+      "source": "Things As They Are, \"The Path of Strength\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Greed, anger, delusion, laziness, discontent, jealousy, possessiveness: All of these things are excrement piled on the heart.",
+      "author": "Ajahn Maha Bua",
+      "source": "Things As They Are, \"The Four Frames of Reference\"",
+      "themes": [
+        "suffering-liberation"
+      ]
+    },
+    {
+      "text": "Even if your mind hasn’t yet attained stillness, it will begin to be still through the power of mindfulness.",
+      "author": "Ajahn Maha Bua",
+      "source": "Things As They Are, \"To Be an Inner Millionaire\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Don’t set your heart on the deceitful and counterfeit issues filling the world of rebirth. Set your heart on the truth of the Dhamma, the truth of the practice.",
+      "author": "Ajahn Maha Bua",
+      "source": "Things As They Are, \"The Work of a Contemplative\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Calm and happiness of heart devoid of all emotionally disturbing things is the kind of happiness and security that we long for the most.",
+      "author": "Ajahn Maha Bua",
+      "source": "Acariya Maha Boowa in London, \"Tenth Meeting\"",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "When mindfulness and wisdom understand the truth rightly until it is accepted by the heart, all doubts come to an end.",
+      "author": "Ajahn Maha Bua",
+      "source": "Acariya Maha Boowa in London, \"Tenth Meeting\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "Teaching Dhamma to a world full of blindness so that it would come to know the truth was very difficult for the Buddha — it was no light task.",
+      "author": "Ajahn Maha Bua",
+      "source": "Acariya Maha Boowa in London, \"Second Meeting\"",
+      "themes": [
+        "compassion"
+      ]
+    },
+    {
+      "text": "If the heart is still attached, you do not know truly. The more you want to be rid of dukkha, the more the dukkha and the origin of dukkha (samudaya) will increase in your heart.",
+      "author": "Ajahn Maha Bua",
+      "source": "Acariya Maha Boowa in London, \"Questions and Answers\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "The citta that is always controlled by mindfulness will remain with oneself. It will be calm and clearly aware.",
+      "author": "Ajahn Maha Bua",
+      "source": "Acariya Maha Boowa in London, \"Questions and Answers\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Letting go of self-identity is not like having given up cigarettes but still constantly craving them. In truth, a person who gives up cigarettes like that has not given them up properly.",
+      "author": "Ajahn Paññāvaddho",
+      "source": "Uncommon Wisdom: Life and Teachings of Ajaan Paññāvaddho, \"Self\"",
+      "themes": [
+        "letting-go"
+      ]
+    },
+    {
+      "text": "Mindfulness means keeping the mind in the present moment and thus being aware of oneself all the time.",
+      "author": "Ajahn Paññāvaddho",
+      "source": "Uncommon Wisdom: Life and Teachings of Ajaan Paññāvaddho, \"Purpose\"",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Moods like happiness and suffering are not intrinsic to the citta. They merely deceive the untrained mind, which follows after them until it forgets itself, forgets its true nature.",
+      "author": "Ajahn Paññāvaddho",
+      "source": "Uncommon Wisdom: Life and Teachings of Ajaan Paññāvaddho, \"Citta\"",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "When the mind develops wisdom to a sufficient level, the dropping of self-identity will happen automatically. There will be no need to actively try to let go.",
+      "author": "Ajahn Paññāvaddho",
+      "source": "Uncommon Wisdom: Life and Teachings of Ajaan Paññāvaddho, \"Self\"",
+      "themes": [
+        "letting-go",
+        "wisdom"
+      ]
+    },
+    {
+      "text": "In truth, impermanence exists because the mind is moving from the present into the past, which is merely memory.",
+      "author": "Ajahn Paññāvaddho",
+      "source": "Uncommon Wisdom: Life and Teachings of Ajaan Paññāvaddho, \"Presence\"",
+      "themes": [
+        "impermanence"
+      ]
+    },
+    {
+      "text": "Actually, peace, happiness and contentment are in the heart all the time, so the heart is where we have to look to find them.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "Signs Along the Path of Practice, p. 15",
+      "themes": [
+        "contentment"
+      ]
+    },
+    {
+      "text": "We can think about “letting go”, letting go of our own greed and hate for the rest of our lives, but it won’t change anything; greed and hate will still reside in the heart.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "Signs Along the Path of Practice, p. 169",
+      "themes": [
+        "letting-go",
+        "humility"
+      ]
+    },
+    {
+      "text": "If we’re in the present moment without thoughts or memories, i.e. if the citta is silent, then this moment, this one moment, is where we are truly alive.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "Signs Along the Path of Practice, \"The Two Kinds of Silence\", p. 45",
+      "themes": [
+        "silence",
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "When emotions come up in the silence of meditation, it means things are going well. Actually, that’s when the practice gets interesting.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "Signs Along the Path of Practice, p. 41",
+      "themes": [
+        "silence"
+      ]
+    },
+    {
+      "text": "Without sati, the kilesas sit on the throne of the heart and make it follow their likes and dislikes, whereas if sati is present, the Dhamma possesses the throne.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "Signs Along the Path of Practice, p. 67",
+      "themes": [
+        "mindfulness"
+      ]
+    },
+    {
+      "text": "Chuck out all the unnecessary thoughts and trains of thought, and get some peace and happiness. The path of practice is the path of practice, not the path of theory.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "The Way to the Heart, p. 53",
+      "themes": [
+        "simplicity"
+      ]
+    },
+    {
+      "text": "Washing, taking care of our kuti and clothes, sweeping, eating, drinking and meditating – in all these activities, we can have sati, we can be aware. The practice is really very simple.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "The Way to the Heart, p. 157",
+      "themes": [
+        "ordinary-life",
+        "simplicity"
+      ]
+    },
+    {
+      "text": "The understanding that we develop in the heart through meditation practice is wisdom, experiencing and seeing things in line with the truth.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "The Way to the Heart, p. 80",
+      "themes": [
+        "wisdom"
+      ]
+    },
+    {
+      "text": "In meditation practice, it takes a long time to really clear out the thoughts, but the important thing is not to give up and not to let go of the training.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "The Way to the Heart, p. 54",
+      "themes": [
+        "humility"
+      ]
+    },
+    {
+      "text": "Knowing in theory is one sort of experience, but practice is quite another.",
+      "author": "Ajahn Martin Piyadhammo",
+      "source": "The Way to the Heart, p. 53",
       "themes": [
         "wisdom"
       ]
